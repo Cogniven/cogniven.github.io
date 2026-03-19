@@ -4,208 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cogniven</title>
-
-  <!-- 字体（系统优先，保证克制） -->
-  <style>
-    :root {
-      --bg: #0f1115;
-      --bg-soft: #14171c;
-      --text: #e6e8eb;
-      --text-dim: #9aa3ad;
-      --accent: #6aa7ff;
-      --line: #1f2329;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    /* ===== NAV ===== */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 20px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .logo {
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    .nav-links a {
-      margin-left: 20px;
-      color: var(--text-dim);
-      font-size: 14px;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      padding: 100px 20px 80px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      color: var(--text-dim);
-      max-width: 520px;
-    }
-
-    /* ===== SECTION ===== */
-    .section {
-      padding: 60px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .section h2 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      color: var(--text-dim);
-    }
-
-    /* ===== PROJECTS ===== */
-    .projects {
-      display: grid;
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--bg-soft);
-      padding: 20px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      transition: all 0.2s ease;
-    }
-
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .card-title {
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-
-    .card-desc {
-      font-size: 14px;
-      color: var(--text-dim);
-    }
-
-    /* ===== FOOTER ===== */
-    .footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--text-dim);
-      font-size: 13px;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
-  <!-- NAV -->
-  <div class="nav">
-    <div class="logo">Cogniven</div>
-    <div class="nav-links">
-      <a href="#">About</a>
-      <a href="#">Projects</a>
-      <a href="#">Contact</a>
-    </div>
-  </div>
-
-  <!-- HERO -->
-  <div class="container hero">
-    <h1>Cogniven</h1>
-    <p>
-      A personal space for quantitative research, system design, and structured thinking.
-      Focused on building robust strategies and clean abstractions.
-    </p>
-  </div>
-
-  <!-- ABOUT -->
-  <div class="container section">
-    <h2>ABOUT</h2>
-    <p style="max-width:600px;color:var(--text-dim);">
-      This site serves as a minimal interface for ongoing work.  
-      It includes trading systems, experimental models, and selected technical notes.
-      The goal is clarity over noise, and structure over complexity.
-    </p>
-  </div>
-
-  <!-- PROJECTS -->
-  <div class="container section">
-    <h2>PROJECTS</h2>
-    <div class="projects">
-
-      <div class="card">
-        <div class="card-title">Quant Strategy Framework</div>
-        <div class="card-desc">
-          A modular trading system integrating signal generation, risk control, and execution logic.
-        </div>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="logo">Cogniven</a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="works.html">Works</a>
+        <a href="writing.html">Writing</a>
+        <a href="projects.html">Projects</a>
+        <a href="archive.html">Archive</a>
       </div>
+    </nav>
+  </header>
 
-      <div class="card">
-        <div class="card-title">Freqtrade Experiments</div>
-        <div class="card-desc">
-          Iterative strategy testing with parameter optimization and reinforcement learning integration.
-        </div>
+  <main class="container">
+    <section class="page-hero">
+      <h1>A personal system for research, creation, and structured work.</h1>
+      <p>
+        Cogniven is a space for projects, writing, visual work, and long-term experiments.
+        Built as an evolving personal interface rather than a static portfolio.
+      </p>
+      <div class="button-row">
+        <a class="button primary" href="works.html">Explore Works</a>
+        <a class="button" href="about.html">About</a>
       </div>
+    </section>
 
-      <div class="card">
-        <div class="card-title">Market Structure Analysis</div>
-        <div class="card-desc">
-          Research on liquidity zones, mean reversion, and short-term inefficiencies.
-        </div>
+    <section class="section">
+      <h2 class="section-title">Sections</h2>
+      <div class="grid grid-3">
+        <a class="card" href="works.html">
+          <h3>Works</h3>
+          <p>Selected outputs across visual design, systems, and completed work.</p>
+        </a>
+        <a class="card" href="writing.html">
+          <h3>Writing</h3>
+          <p>Essays, notes, reflections, and structured thoughts.</p>
+        </a>
+        <a class="card" href="projects.html">
+          <h3>Projects</h3>
+          <p>Ongoing systems, experiments, and longer-term builds.</p>
+        </a>
+        <a class="card" href="about.html">
+          <h3>About</h3>
+          <p>Focus, background, and the logic behind this site.</p>
+        </a>
+        <a class="card" href="archive.html">
+          <h3>Archive</h3>
+          <p>Past work, fragments, and material kept for continuity.</p>
+        </a>
+        <a class="card" href="writing.html">
+          <h3>Notes</h3>
+          <p>Shorter observations and evolving ideas in progress.</p>
+        </a>
       </div>
+    </section>
+  </main>
 
-    </div>
-  </div>
-
-  <!-- CONTACT -->
-  <div class="container section">
-    <h2>CONTACT</h2>
-    <p style="color:var(--text-dim);">
-      GitHub: <a href="https://github.com/Cogniven">github.com/Cogniven</a><br/>
-      Email: your@email.com
-    </p>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    © 2026 Cogniven. Minimal by design.
-  </div>
-
+  <footer class="site-footer">
+    <div class="container">© 2026 Cogniven</div>
+  </footer>
 </body>
 </html>
