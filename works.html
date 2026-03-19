@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Works - Cogniven</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Visual Design - Cogniven</title>
+  <link rel="stylesheet" href="../../css/style.css" />
 </head>
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="index.html" class="logo">Cogniven</a>
+      <a href="../../index.html" class="logo">Cogniven</a>
       <div class="nav-links">
-        <a href="about.html">About</a>
-        <a href="works.html">Works</a>
-        <a href="writing.html">Writing</a>
-        <a href="projects.html">Projects</a>
-        <a href="archive.html">Archive</a>
+        <a href="../../works.html">Works</a>
+        <a href="../../writing.html">Writing</a>
+        <a href="../../projects.html">Projects</a>
+        <a href="../../about.html">About</a>
+        <a href="../../archive.html">Archive</a>
       </div>
     </nav>
   </header>
@@ -23,25 +23,20 @@
   <main>
     <section class="hero">
       <div class="container hero-inner">
-        <p class="eyebrow">Works</p>
-        <h1>
-          Selected work,<br />
-          arranged with clarity.
-        </h1>
+        <p class="eyebrow">Works · Visual Design</p>
+        <h1>Visual Design</h1>
         <p class="hero-text">
-          A curated collection of finished outputs across design, systems,
-          analysis, and visual exploration. Each piece is included not merely
-          for display, but for continuity.
+          A browsable archive of visual work, presented as a structured grid.
         </p>
       </div>
     </section>
 
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note">Editorial Note</p>
+        <p class="section-note">Overview</p>
         <p class="lead-paragraph">
-          Works are presented here as completed or sufficiently shaped outcomes —
-          pieces that can stand on their own, while still belonging to a larger structure.
+          This page is built for browsing first. Each work appears as a card with a cover,
+          title, and short description.
         </p>
       </div>
     </section>
@@ -50,78 +45,15 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="section-note">Categories</p>
-            <h2>Current selection</h2>
+            <p class="section-note">Selection</p>
+            <h2>Current Works</h2>
           </div>
           <p class="section-side-text">
-            The categories below are flexible and will expand as the site develops.
+            You can change titles, descriptions, and images later without touching the page layout.
           </p>
         </div>
 
-        <div class="feature-grid">
-          <div class="feature-card">
-            <span class="card-index">01</span>
-            <h3>Visual Design</h3>
-            <p>
-              Interface concepts, composition studies, and visual systems shaped with
-              restraint and order.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <span class="card-index">02</span>
-            <h3>System Work</h3>
-            <p>
-              Structured outputs built around frameworks, logic, and implementation.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <span class="card-index">03</span>
-            <h3>Analytical Pieces</h3>
-            <p>
-              Selected work focused on explanation, synthesis, and interpretive structure.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <span class="card-index">04</span>
-            <h3>Experimental Forms</h3>
-            <p>
-              Works that emerged from testing, iteration, or deliberate deviation.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section editorial-section">
-      <div class="container editorial-grid">
-        <div class="editorial-left">
-          <p class="section-note">Selection Logic</p>
-          <h2>What belongs here.</h2>
-        </div>
-        <div class="editorial-right">
-          <p>
-            Not every output needs to be exhibited. The aim is not volume, but definition.
-            Works included here should have a visible form, a completed state, or a
-            recognizable direction.
-          </p>
-          <p>
-            Over time, each entry may grow into a standalone page with images, notes,
-            context, and revisions. For now, this page serves as the opening index.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section closing-section">
-      <div class="container narrow center">
-        <p class="section-note">Closing</p>
-        <h2 class="closing-title">A visible record<br />of finished form.</h2>
-        <p class="closing-text">
-          Collected not as trophies, but as part of a readable body of work.
-        </p>
+        <div id="works-grid" class="works-grid"></div>
       </div>
     </section>
   </main>
@@ -129,8 +61,85 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© 2026 Cogniven</p>
-      <p>Works as edited selection.</p>
+      <p>Visual work as structured display.</p>
     </div>
   </footer>
+
+  <script>
+    const visualDesignWorks = [
+      {
+        title: "Visual Work 001",
+        desc: "A short description for this piece.",
+        cover: "../../assets/images/works/visual-design/work-001/cover.jpg",
+        link: "#"
+      },
+      {
+        title: "Visual Work 002",
+        desc: "Another short description for this piece.",
+        cover: "../../assets/images/works/visual-design/work-002/cover.jpg",
+        link: "#"
+      },
+      {
+        title: "Visual Work 003",
+        desc: "This card is ready for future work.",
+        cover: "../../assets/images/works/visual-design/work-003/cover.jpg",
+        link: "#"
+      }
+    ];
+
+    const grid = document.getElementById("works-grid");
+
+    function createWorkCard(work) {
+      const card = document.createElement("article");
+      card.className = "work-card";
+
+      const coverWrapper = document.createElement("a");
+      coverWrapper.className = "work-cover-wrapper";
+      coverWrapper.href = work.link || "#";
+
+      const img = document.createElement("img");
+      img.className = "work-cover";
+      img.src = work.cover;
+      img.alt = work.title;
+
+      img.onerror = function () {
+        this.src =
+          "data:image/svg+xml;utf8," +
+          encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+              <rect width="800" height="500" fill="#161b22"/>
+              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                fill="#9aa3ad" font-size="28" font-family="Georgia, serif">
+                Cover not added yet
+              </text>
+            </svg>
+          `);
+      };
+
+      const body = document.createElement("div");
+      body.className = "work-body";
+
+      const title = document.createElement("h3");
+      title.className = "work-title";
+      title.textContent = work.title;
+
+      const desc = document.createElement("p");
+      desc.className = "work-desc";
+      desc.textContent = work.desc;
+
+      coverWrapper.appendChild(img);
+      body.appendChild(title);
+      body.appendChild(desc);
+
+      card.appendChild(coverWrapper);
+      card.appendChild(body);
+
+      return card;
+    }
+
+    visualDesignWorks.forEach((work) => {
+      grid.appendChild(createWorkCard(work));
+    });
+  </script>
 </body>
 </html>
