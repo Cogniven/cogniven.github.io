@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Visual Design - Cogniven</title>
-  <link rel="stylesheet" href="../../css/style.css" />
+  <title>Works - Cogniven</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../index.html" class="logo">Cogniven</a>
+      <a href="index.html" class="logo">Cogniven</a>
       <div class="nav-links">
-        <a href="../../works.html">Works</a>
-        <a href="../../writing.html">Writing</a>
-        <a href="../../projects.html">Projects</a>
-        <a href="../../about.html">About</a>
-        <a href="../../archive.html">Archive</a>
+        <a href="works.html">Works</a>
+        <a href="writing.html">Writing</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="archive.html">Archive</a>
       </div>
     </nav>
   </header>
@@ -23,10 +23,12 @@
   <main>
     <section class="hero">
       <div class="container hero-inner">
-        <p class="eyebrow">Works · Visual Design</p>
-        <h1>Visual Design</h1>
+        <p class="eyebrow">Works</p>
+        <h1>
+          Current selection
+        </h1>
         <p class="hero-text">
-          A browsable archive of visual work, presented as a structured grid.
+          A structured selection of finished work, grouped by form and function.
         </p>
       </div>
     </section>
@@ -35,8 +37,8 @@
       <div class="container narrow">
         <p class="section-note">Overview</p>
         <p class="lead-paragraph">
-          This page is built for browsing first. Each work appears as a card with a cover,
-          title, and short description.
+          This section remains organized by category. Each category opens into a dedicated page
+          where individual works can be previewed in detail.
         </p>
       </div>
     </section>
@@ -45,15 +47,39 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="section-note">Selection</p>
-            <h2>Current Works</h2>
+            <p class="section-note">Categories</p>
+            <h2>Current selection</h2>
           </div>
           <p class="section-side-text">
-            You can change titles, descriptions, and images later without touching the page layout.
+            Choose a category to enter its archive and browse works in detail.
           </p>
         </div>
 
-        <div id="works-grid" class="works-grid"></div>
+        <div class="feature-grid">
+          <a class="feature-card category-link" href="works/visual-design/index.html">
+            <span class="card-index">01</span>
+            <h3>Visual Design</h3>
+            <p>Interface concepts, composition studies, and visual systems shaped with restraint and order.</p>
+          </a>
+
+          <a class="feature-card category-link" href="works/system-work/index.html">
+            <span class="card-index">02</span>
+            <h3>System Work</h3>
+            <p>Structured outputs built around frameworks, logic, and implementation.</p>
+          </a>
+
+          <a class="feature-card category-link" href="works/analytical-pieces/index.html">
+            <span class="card-index">03</span>
+            <h3>Analytical Pieces</h3>
+            <p>Selected work focused on explanation, synthesis, and interpretive structure.</p>
+          </a>
+
+          <a class="feature-card category-link" href="works/experimental-forms/index.html">
+            <span class="card-index">04</span>
+            <h3>Experimental Forms</h3>
+            <p>Works that emerged from testing, iteration, or deliberate deviation.</p>
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -61,85 +87,8 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© 2026 Cogniven</p>
-      <p>Visual work as structured display.</p>
+      <p>Works as edited selection.</p>
     </div>
   </footer>
-
-  <script>
-    const visualDesignWorks = [
-      {
-        title: "Visual Work 001",
-        desc: "A short description for this piece.",
-        cover: "../../assets/images/works/visual-design/work-001/cover.jpg",
-        link: "#"
-      },
-      {
-        title: "Visual Work 002",
-        desc: "Another short description for this piece.",
-        cover: "../../assets/images/works/visual-design/work-002/cover.jpg",
-        link: "#"
-      },
-      {
-        title: "Visual Work 003",
-        desc: "This card is ready for future work.",
-        cover: "../../assets/images/works/visual-design/work-003/cover.jpg",
-        link: "#"
-      }
-    ];
-
-    const grid = document.getElementById("works-grid");
-
-    function createWorkCard(work) {
-      const card = document.createElement("article");
-      card.className = "work-card";
-
-      const coverWrapper = document.createElement("a");
-      coverWrapper.className = "work-cover-wrapper";
-      coverWrapper.href = work.link || "#";
-
-      const img = document.createElement("img");
-      img.className = "work-cover";
-      img.src = work.cover;
-      img.alt = work.title;
-
-      img.onerror = function () {
-        this.src =
-          "data:image/svg+xml;utf8," +
-          encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-              <rect width="800" height="500" fill="#161b22"/>
-              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-                fill="#9aa3ad" font-size="28" font-family="Georgia, serif">
-                Cover not added yet
-              </text>
-            </svg>
-          `);
-      };
-
-      const body = document.createElement("div");
-      body.className = "work-body";
-
-      const title = document.createElement("h3");
-      title.className = "work-title";
-      title.textContent = work.title;
-
-      const desc = document.createElement("p");
-      desc.className = "work-desc";
-      desc.textContent = work.desc;
-
-      coverWrapper.appendChild(img);
-      body.appendChild(title);
-      body.appendChild(desc);
-
-      card.appendChild(coverWrapper);
-      card.appendChild(body);
-
-      return card;
-    }
-
-    visualDesignWorks.forEach((work) => {
-      grid.appendChild(createWorkCard(work));
-    });
-  </script>
 </body>
 </html>
