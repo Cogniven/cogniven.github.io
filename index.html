@@ -1,25 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cogniven</title>
+
+  <!-- 字体（系统优先，保证克制） -->
   <style>
-    body {
-      background: #0b0b0b;
-      color: white;
-      font-family: -apple-system, BlinkMacSystemFont;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+    :root {
+      --bg: #0f1115;
+      --bg-soft: #14171c;
+      --text: #e6e8eb;
+      --text-dim: #9aa3ad;
+      --accent: #6aa7ff;
+      --line: #1f2329;
     }
-    h1 {
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 20px 80px;
+    }
+
+    .hero h1 {
       font-size: 48px;
-      letter-spacing: 2px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: var(--text-dim);
+      max-width: 520px;
+    }
+
+    /* ===== SECTION ===== */
+    .section {
+      padding: 60px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects {
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg-soft);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-dim);
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
-  <h1>Cogniven</h1>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="logo">Cogniven</div>
+    <div class="nav-links">
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="container hero">
+    <h1>Cogniven</h1>
+    <p>
+      A personal space for quantitative research, system design, and structured thinking.
+      Focused on building robust strategies and clean abstractions.
+    </p>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="container section">
+    <h2>ABOUT</h2>
+    <p style="max-width:600px;color:var(--text-dim);">
+      This site serves as a minimal interface for ongoing work.  
+      It includes trading systems, experimental models, and selected technical notes.
+      The goal is clarity over noise, and structure over complexity.
+    </p>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="container section">
+    <h2>PROJECTS</h2>
+    <div class="projects">
+
+      <div class="card">
+        <div class="card-title">Quant Strategy Framework</div>
+        <div class="card-desc">
+          A modular trading system integrating signal generation, risk control, and execution logic.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Freqtrade Experiments</div>
+        <div class="card-desc">
+          Iterative strategy testing with parameter optimization and reinforcement learning integration.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Market Structure Analysis</div>
+        <div class="card-desc">
+          Research on liquidity zones, mean reversion, and short-term inefficiencies.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="container section">
+    <h2>CONTACT</h2>
+    <p style="color:var(--text-dim);">
+      GitHub: <a href="https://github.com/Cogniven">github.com/Cogniven</a><br/>
+      Email: your@email.com
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2026 Cogniven. Minimal by design.
+  </div>
+
 </body>
 </html>
