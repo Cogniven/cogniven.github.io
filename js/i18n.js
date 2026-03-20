@@ -44,6 +44,15 @@ const i18n = {
     projectsCreativeDesc: "Projects focused on creative process, design, and new forms.",
     projectsPersonal: "Personal Infrastructure",
     projectsPersonalDesc: "Systems and tools for personal productivity, knowledge, and workflow.",
+    // about.html
+    aboutTitle: "About",
+    aboutBrief: "A brief introduction to the site, its focus, and its evolving direction.",
+    aboutProfileTitle: "Profile",
+    aboutProfile: "This website documents work across research, programming, and creation.",
+    aboutFocusTitle: "Focus",
+    aboutFocus: "Current interests include systems, expression, and structured thinking.",
+    aboutApproachTitle: "Approach",
+    aboutApproach: "The site is designed as a long-term personal interface rather than a fixed portfolio.",
     // archive.html
     archiveTitle: "Archive",
     archiveBrief: "Stored material, past work, and experimental fragments.",
@@ -128,6 +137,15 @@ const i18n = {
     projectsCreativeDesc: "聚焦创意过程、设计与新形式的项目。",
     projectsPersonal: "个人基础设施",
     projectsPersonalDesc: "用于个人效率、知识与工作流的系统和工具。",
+    // about.html
+    aboutTitle: "关于",
+    aboutBrief: "此部分简要介绍网站的重点与发展方向。",
+    aboutProfileTitle: "个人简介",
+    aboutProfile: "本站记录研究、编程与创作领域的工作。",
+    aboutFocusTitle: "关注点",
+    aboutFocus: "当前兴趣包括系统、表达与结构性思维。",
+    aboutApproachTitle: "方法",
+    aboutApproach: "本网站设计为长期个人界面，而非固定作品集。",
     // archive.html
     archiveTitle: "归档",
     archiveBrief: "存储的资料、过往作品与实验片段。",
