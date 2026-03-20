@@ -95,7 +95,6 @@
           `);
       };
       coverWrapper.appendChild(img);
-
       card.appendChild(coverWrapper);
 
       const body = document.createElement("div");
@@ -104,8 +103,13 @@
       const title = document.createElement("h3");
       title.className = "work-title";
       title.textContent = work.title;
-
       body.appendChild(title);
+
+      const desc = document.createElement("div");
+      desc.className = "work-desc";
+      desc.textContent = work.desc;
+      body.appendChild(desc);
+
       card.appendChild(body);
 
       // 点击弹窗
