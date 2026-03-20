@@ -44,6 +44,13 @@ const i18n = {
     writingEssaysDesc: "Longer pieces with a clear arc, built around one question, idea, or argument.",
     writingNotes: "Notes",
     writingNotesDesc: "Shorter observations, provisional structures, and working formulations.",
+    writingReadingLogic: "Reading Logic",
+    writingStructureTitle: "Writing as structure.",
+    writingStructureParagraph1: "Writing here is not only a record of opinion, but a device for ordering thought. The goal is not constant publication, but careful accumulation.",
+    writingStructureParagraph2: "This section will gradually become the most book-like part of the site: slower, quieter, and more continuous than the rest.",
+    writingClosingNote: "Closing",
+    writingClosingTitle: "Text as a place\nto refine attention.",
+    writingClosingText: "What is written here is meant to be read slowly, and kept if needed.",
     // projects.html
     projectsHeroEyebrow: "Projects",
     projectsHeroTitle: "Ongoing work,\nstill in formation.",
@@ -156,6 +163,13 @@ const i18n = {
     writingEssaysDesc: "有清晰结构、围绕一个问题或观点展开的长篇。",
     writingNotes: "笔记",
     writingNotesDesc: "简短观察、临时结构与工作性表述。",
+    writingReadingLogic: "阅读逻辑",
+    writingStructureTitle: "将写作视为结构。",
+    writingStructureParagraph1: "这里的写作不只是观点的记录，更是一种整理思想的装置。目标不是持续发表，而是审慎地积累。",
+    writingStructureParagraph2: "这一部分会逐渐成为整个网站里最接近“书”的区域：更缓慢、更安静，也比其他部分更连续。",
+    writingClosingNote: "结语",
+    writingClosingTitle: "将文本视为\n打磨注意力的场所。",
+    writingClosingText: "这里写下的内容，适合被缓慢阅读，也值得在需要时保留。",
     // projects.html
     projectsHeroEyebrow: "项目",
     projectsHeroTitle: "持续推进中，\n尚在形成。",
@@ -220,6 +234,6 @@ const i18n = {
     sortOldest: "最早优先",
     sortAlpha: "字母排序",
     copyright: "© 2026 Cogniven。保留所有权利。",
-    copyright2: "本网站展示的作品均为原创，受版权保护。未经授权，禁止复制、分发或商业使用。",
+    copyright2: "本网站展示的作品均为原创，受版权保护。<br>未经授权，禁止复制、分发或商业使用。",
   }
 };

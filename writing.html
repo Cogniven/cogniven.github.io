@@ -74,7 +74,6 @@
               Shorter observations, provisional structures, and working formulations.
             </p>
           </div>
-
         </div>
       </div>
     </section>
@@ -82,15 +81,15 @@
     <section class="section editorial-section">
       <div class="container editorial-grid">
         <div class="editorial-left">
-          <p class="section-note">Reading Logic</p>
-          <h2>Writing as structure.</h2>
+          <p class="section-note" id="writing-reading-logic">Reading Logic</p>
+          <h2 id="writing-structure-title">Writing as structure.</h2>
         </div>
         <div class="editorial-right">
-          <p>
+          <p id="writing-structure-paragraph-1">
             Writing here is not only a record of opinion, but a device for ordering thought.
             The goal is not constant publication, but careful accumulation.
           </p>
-          <p>
+          <p id="writing-structure-paragraph-2">
             This section will gradually become the most book-like part of the site:
             slower, quieter, and more continuous than the rest.
           </p>
@@ -100,9 +99,9 @@
 
     <section class="section closing-section">
       <div class="container narrow center">
-        <p class="section-note">Closing</p>
-        <h2 class="closing-title">Text as a place<br />to refine attention.</h2>
-        <p class="closing-text">
+        <p class="section-note" id="writing-closing-note">Closing</p>
+        <h2 class="closing-title" id="writing-closing-title">Text as a place<br />to refine attention.</h2>
+        <p class="closing-text" id="writing-closing-text">
           What is written here is meant to be read slowly, and kept if needed.
         </p>
       </div>
@@ -111,29 +110,32 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-        <p>© 2026 Cogniven. All rights reserved.</p>
-        <p>
-          The works presented on this site are original and protected by copyright.<br>
-          Unauthorized reproduction, distribution, or commercial use is prohibited.
-        </p>
+      <p>© 2026 Cogniven. All rights reserved.</p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br>
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
     </div>
   </footer>
+
   <script src="js/i18n.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
+
     function setLang(newLang) {
       lang = newLang;
       localStorage.setItem('lang', lang);
       renderLang();
     }
+
     document.addEventListener('DOMContentLoaded', function() {
       lang = localStorage.getItem('lang') || 'en';
       document.getElementById('lang-en').onclick = () => setLang('en');
       document.getElementById('lang-zh').onclick = () => setLang('zh');
       setLang(lang);
     });
+
     function renderLang() {
-      // 导航
       const navLinks = document.getElementById('nav-links');
       const navs = i18n[lang].nav;
       navLinks.innerHTML = `
@@ -143,12 +145,13 @@
         <a href="about.html">${navs[3]}</a>
         <a href="archive.html">${navs[4]}</a>
       `;
+
       document.getElementById('logo-text').textContent = i18n[lang].logo;
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
-      // 主要内容
+
       document.getElementById('writing-hero-eyebrow').textContent = i18n[lang].writingHeroEyebrow;
-      document.getElementById('writing-hero-title').innerHTML = i18n[lang].writingHeroTitle.replace(/\\n/g, '<br />');
+      document.getElementById('writing-hero-title').innerHTML = i18n[lang].writingHeroTitle.replace(/\n/g, '<br />');
       document.getElementById('writing-hero-text').textContent = i18n[lang].writingHeroText;
       document.getElementById('writing-editorial').textContent = i18n[lang].writingEditorial;
       document.getElementById('writing-lead').textContent = i18n[lang].writingLead;
@@ -159,6 +162,16 @@
       document.getElementById('writing-essays-desc').textContent = i18n[lang].writingEssaysDesc;
       document.getElementById('writing-notes').textContent = i18n[lang].writingNotes;
       document.getElementById('writing-notes-desc').textContent = i18n[lang].writingNotesDesc;
+
+      document.getElementById('writing-reading-logic').textContent = i18n[lang].writingReadingLogic;
+      document.getElementById('writing-structure-title').textContent = i18n[lang].writingStructureTitle;
+      document.getElementById('writing-structure-paragraph-1').textContent = i18n[lang].writingStructureParagraph1;
+      document.getElementById('writing-structure-paragraph-2').textContent = i18n[lang].writingStructureParagraph2;
+
+      document.getElementById('writing-closing-note').textContent = i18n[lang].writingClosingNote;
+      document.getElementById('writing-closing-title').innerHTML = i18n[lang].writingClosingTitle.replace(/\n/g, '<br />');
+      document.getElementById('writing-closing-text').textContent = i18n[lang].writingClosingText;
+
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
     }
