@@ -69,26 +69,26 @@
 
           <a class="feature-card" href="writing.html">
             <span class="card-index">02</span>
-            <h3>Writing</h3>
-            <p>Essays, notes, and written forms of thinking.</p>
+            <h3 id="index-writing">Writing</h3>
+            <p id="index-writing-desc">Essays, notes, and written forms of thinking.</p>
           </a>
 
           <a class="feature-card" href="projects.html">
             <span class="card-index">03</span>
-            <h3>Projects</h3>
-            <p>Ongoing systems, experiments, and work in progress.</p>
+            <h3 id="index-projects">Projects</h3>
+            <p id="index-projects-desc">Ongoing systems, experiments, and work in progress.</p>
           </a>
 
           <a class="feature-card" href="about.html">
             <span class="card-index">04</span>
-            <h3>About</h3>
-            <p>Background, direction, and the logic behind this system.</p>
+            <h3 id="index-about">About</h3>
+            <p id="index-about-desc">Background, direction, and the logic behind this system.</p>
           </a>
 
           <a class="feature-card" href="archive.html">
             <span class="card-index">05</span>
-            <h3>Archive</h3>
-            <p>Past material kept for continuity and reference.</p>
+            <h3 id="index-archive">Archive</h3>
+            <p id="index-archive-desc">Past material kept for continuity and reference.</p>
           </a>
 
         </div>
@@ -100,17 +100,17 @@
       <div class="container editorial-grid">
 
         <div class="editorial-left">
-          <p class="section-note">Approach</p>
-          <h2>Built over time.</h2>
+          <p class="section-note" id="index-approach">Approach</p>
+          <h2 id="index-approach-title">Built over time.</h2>
         </div>
 
         <div class="editorial-right">
-          <p>
+          <p id="index-approach-paragraph-1">
             The system grows through use. Work is added, refined, or removed as needed,
             without aiming for completion.
           </p>
 
-          <p>
+          <p id="index-approach-paragraph-2">
             The focus remains on clarity, structure, and the accumulation of meaningful work.
           </p>
         </div>
@@ -122,10 +122,19 @@
     <section class="section closing-section">
       <div class="container narrow center">
 
-        <p class="section-note">End</p>
+        <p class="section-note" id="index-end">End</p>
 
-        <h2 class="closing-title">
+        <h2 class="closing-title" id="index-closing-title">
           A place to build<br />
+        </h2>
+
+        <p class="closing-text" id="index-closing-text">
+          Structured, quiet, and open to change.
+        </p>
+
+      </div>
+    </section>
+  </main>
           and keep.
         </h2>
 
@@ -187,8 +196,23 @@
       document.getElementById('index-structure').textContent = i18n[lang].indexStructure;
       document.getElementById('index-sections').textContent = i18n[lang].indexSections;
       document.getElementById('index-side-text').textContent = i18n[lang].indexSideText;
-      document.getElementById('index-works').textContent = i18n[lang].nav[0];
-      document.getElementById('index-works-desc').textContent = i18n[lang].worksVisualDesignDesc;
+      document.getElementById('index-works').textContent = i18n[lang].indexWorks;
+      document.getElementById('index-works-desc').textContent = i18n[lang].indexWorksDesc;
+      document.getElementById('index-writing').textContent = i18n[lang].indexWriting;
+      document.getElementById('index-writing-desc').textContent = i18n[lang].indexWritingDesc;
+      document.getElementById('index-projects').textContent = i18n[lang].indexProjects;
+      document.getElementById('index-projects-desc').textContent = i18n[lang].indexProjectsDesc;
+      document.getElementById('index-about').textContent = i18n[lang].indexAbout;
+      document.getElementById('index-about-desc').textContent = i18n[lang].indexAboutDesc;
+      document.getElementById('index-archive').textContent = i18n[lang].indexArchive;
+      document.getElementById('index-archive-desc').textContent = i18n[lang].indexArchiveDesc;
+      document.getElementById('index-approach').textContent = i18n[lang].indexApproach;
+      document.getElementById('index-approach-title').textContent = i18n[lang].indexApproachTitle;
+      document.getElementById('index-approach-paragraph-1').textContent = i18n[lang].indexApproachParagraph1;
+      document.getElementById('index-approach-paragraph-2').textContent = i18n[lang].indexApproachParagraph2;
+      document.getElementById('index-end').textContent = i18n[lang].indexEnd;
+      document.getElementById('index-closing-title').innerHTML = i18n[lang].indexClosingTitle.replace(/\n/g, '<br />');
+      document.getElementById('index-closing-text').textContent = i18n[lang].indexClosingText;
     }
   </script>
 </body>
