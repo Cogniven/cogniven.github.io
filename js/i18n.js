@@ -82,7 +82,7 @@ const i18n = {
     sortOldest: "Oldest First",
     sortAlpha: "A-Z",
     copyright: "© 2026 Cogniven. All rights reserved.",
-    copyright2: "The works presented on this site are original and protected by copyright. Unauthorized reproduction, distribution, or commercial use is prohibited."
+    copyright2: "The works presented on this site are original and protected by copyright. Unauthorized reproduction, distribution, or commercial use is prohibited.",
   },
   zh: {
     nav: ["作品", "写作", "项目", "关于", "归档"],
@@ -166,6 +166,6 @@ const i18n = {
     sortOldest: "最早优先",
     sortAlpha: "字母排序",
     copyright: "© 2026 Cogniven。保留所有权利。",
-    copyright2: "本网站展示的作品均为原创，受版权保护。未经授权，禁止复制、分发或商业使用。"
+    copyright2: "本网站展示的作品均为原创，受版权保护。未经授权，禁止复制、分发或商业使用。",
   }
 };
