@@ -32,7 +32,7 @@
         <p class="eyebrow" id="works-hero-eyebrow">Works</p>
         <h1 id="works-hero-title">Current selection</h1>
         <p class="hero-text" id="works-hero-text">
-          A structured selection of finished work, grouped by form and function.
+          A structured selection of finished work, grouped by form and disposition.
         </p>
       </div>
     </section>
@@ -42,7 +42,7 @@
         <p class="section-note" id="works-overview">Overview</p>
         <p class="lead-paragraph" id="works-lead">
           This section remains organized by category. Each category opens into a dedicated page
-          where individual works can be previewed in detail.
+          where individual works can be browsed in greater detail.
         </p>
       </div>
     </section>
@@ -62,26 +62,34 @@
         <div class="feature-grid">
           <a class="feature-card category-link" href="works/visual-design/index.html">
             <span class="card-index">01</span>
-            <h3 id="works-visual-design">Visual Design</h3>
-            <p id="works-visual-design-desc">Interface concepts, composition studies, and visual systems shaped with restraint and order.</p>
-          </a>
-
-          <a class="feature-card category-link" href="works/system-work/index.html">
-            <span class="card-index">02</span>
-            <h3 id="works-system-work">Auditory Forms</h3>
-            <p id="works-system-work-desc">Explorations in sound, voice, and perception shaped through rhythm, texture, and experimental form.</p>
+            <h3 id="works-visual-design">Artistic Creations</h3>
+            <p id="works-visual-design-desc">
+              Image, sound, and form shaped through constraint and composition.
+            </p>
           </a>
 
           <a class="feature-card category-link" href="works/analytical-pieces/index.html">
-            <span class="card-index">03</span>
+            <span class="card-index">02</span>
             <h3 id="works-analytical-pieces">Analytical Pieces</h3>
-            <p id="works-analytical-pieces-desc">Selected work focused on explanation, synthesis, and interpretive structure.</p>
+            <p id="works-analytical-pieces-desc">
+              Selected work focused on explanation, synthesis, and interpretive structure.
+            </p>
+          </a>
+
+          <a class="feature-card category-link" href="works/system-work/index.html">
+            <span class="card-index">03</span>
+            <h3 id="works-system-work">Technical Creations</h3>
+            <p id="works-system-work-desc">
+              Systems, tools, and code-based outputs shaped through logic and implementation.
+            </p>
           </a>
 
           <a class="feature-card category-link" href="works/experimental-forms/index.html">
             <span class="card-index">04</span>
             <h3 id="works-experimental-forms">Experimental Forms</h3>
-            <p id="works-experimental-forms-desc">Works that emerged from testing, iteration, or deliberate deviation.</p>
+            <p id="works-experimental-forms-desc">
+              Works that emerged from testing, iteration, or deliberate deviation.
+            </p>
           </a>
         </div>
       </div>
@@ -91,27 +99,30 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© 2026 Cogniven. All rights reserved.</p>
-        <p>
-          The works presented on this site are original and protected by copyright.<br>
-          Unauthorized reproduction, distribution, or commercial use is prohibited.
-        </p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br>
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
     </div>
   </footer>
+
   <script src="js/i18n.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
+
     function setLang(newLang) {
       lang = newLang;
       localStorage.setItem('lang', lang);
       renderLang();
     }
+
     document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('lang-en').onclick = () => setLang('en');
       document.getElementById('lang-zh').onclick = () => setLang('zh');
       renderLang();
     });
+
     function renderLang() {
-      // 导航
       const navLinks = document.getElementById('nav-links');
       const navs = i18n[lang].nav;
       navLinks.innerHTML = `
@@ -121,10 +132,11 @@
         <a href="about.html">${navs[3]}</a>
         <a href="archive.html">${navs[4]}</a>
       `;
+
       document.getElementById('logo-text').textContent = i18n[lang].logo;
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
-      // 主要内容
+
       document.getElementById('works-hero-eyebrow').textContent = i18n[lang].worksHeroEyebrow;
       document.getElementById('works-hero-title').textContent = i18n[lang].worksHeroTitle;
       document.getElementById('works-hero-text').textContent = i18n[lang].worksHeroText;
@@ -133,14 +145,19 @@
       document.getElementById('works-categories').textContent = i18n[lang].worksCategories;
       document.getElementById('works-current-selection').textContent = i18n[lang].worksCurrentSelection;
       document.getElementById('works-side-text').textContent = i18n[lang].worksSideText;
+
       document.getElementById('works-visual-design').textContent = i18n[lang].worksVisualDesign;
       document.getElementById('works-visual-design-desc').textContent = i18n[lang].worksVisualDesignDesc;
-      document.getElementById('works-system-work').textContent = i18n[lang].worksSystemWork;
-      document.getElementById('works-system-work-desc').textContent = i18n[lang].worksSystemWorkDesc;
+
       document.getElementById('works-analytical-pieces').textContent = i18n[lang].worksAnalyticalPieces;
       document.getElementById('works-analytical-pieces-desc').textContent = i18n[lang].worksAnalyticalPiecesDesc;
+
+      document.getElementById('works-system-work').textContent = i18n[lang].worksSystemWork;
+      document.getElementById('works-system-work-desc').textContent = i18n[lang].worksSystemWorkDesc;
+
       document.getElementById('works-experimental-forms').textContent = i18n[lang].worksExperimentalForms;
       document.getElementById('works-experimental-forms-desc').textContent = i18n[lang].worksExperimentalFormsDesc;
+
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
     }
