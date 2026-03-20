@@ -9,13 +9,17 @@
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
+      <a href="../../index.html" class="logo" id="logo-text">Cogniven</a>
+      <div class="nav-links" id="nav-links">
         <a href="../../works.html">Works</a>
         <a href="../../writing.html">Writing</a>
         <a href="../../projects.html">Projects</a>
         <a href="../../about.html">About</a>
         <a href="../../archive.html">Archive</a>
+      </div>
+      <div class="lang-switcher" style="margin-left:auto;">
+        <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+        <button id="lang-zh" class="lang-btn">中文</button>
       </div>
     </nav>
   </header>
@@ -76,8 +80,55 @@
     </div>
   </footer>
 
-  <script src="./data.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/visualDesignWorks.js"></script>
   <script>
+    // 语言切换逻辑
+    let lang = localStorage.getItem('lang') || 'en';
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem('lang', lang);
+      renderLang();
+      renderWorks();
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
+      renderLang();
+    });
+    function renderLang() {
+      // 导航
+      const navLinks = document.getElementById('nav-links');
+      const navs = i18n[lang].nav;
+      navLinks.innerHTML = `
+        <a href="../../works.html">${navs[0]}</a>
+        <a href="../../writing.html">${navs[1]}</a>
+        <a href="../../projects.html">${navs[2]}</a>
+        <a href="../../about.html">${navs[3]}</a>
+        <a href="../../archive.html">${navs[4]}</a>
+      `;
+      document.getElementById('logo-text').textContent = i18n[lang].logo;
+      // 英文/中文按钮高亮
+      document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
+      document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
+      // 英文/中文页面内容
+      document.querySelector('.eyebrow').textContent = i18n[lang].heroEyebrow;
+      document.querySelector('h1').textContent = i18n[lang].heroTitle;
+      document.querySelector('.hero-text').textContent = i18n[lang].heroText;
+      document.querySelector('.section-note').textContent = i18n[lang].overview;
+      document.querySelector('.lead-paragraph').textContent = i18n[lang].lead;
+      document.querySelector('.section-head .section-note').textContent = i18n[lang].selection;
+      document.querySelector('.section-head h2').textContent = i18n[lang].currentWorks;
+      document.querySelector('.section-side-text').textContent = i18n[lang].sideText;
+      document.getElementById('search-box').placeholder = i18n[lang].searchPlaceholder;
+      const sortSelect = document.getElementById('sort-select');
+      sortSelect.options[0].text = i18n[lang].sortNewest;
+      sortSelect.options[1].text = i18n[lang].sortOldest;
+      sortSelect.options[2].text = i18n[lang].sortAlpha;
+      // 页脚
+      document.querySelector('.footer-inner p').textContent = i18n[lang].copyright;
+      document.querySelector('.footer-inner p + p').innerHTML = i18n[lang].copyright2;
+    }
     const grid = document.getElementById("works-grid");
     const modalRoot = document.getElementById("modal-root");
     const searchBox = document.getElementById("search-box");
@@ -89,14 +140,12 @@
     function createWorkCard(work, idx) {
       const card = document.createElement("article");
       card.className = "work-card";
-
       const coverWrapper = document.createElement("div");
       coverWrapper.className = "work-cover-wrapper";
-
       const img = document.createElement("img");
       img.className = "work-cover";
       img.src = work.cover;
-      img.alt = work.title;
+      img.alt = work.title[lang];
       img.onerror = function () {
         this.src =
           "data:image/svg+xml;utf8," +
@@ -112,25 +161,19 @@
       };
       coverWrapper.appendChild(img);
       card.appendChild(coverWrapper);
-
       const body = document.createElement("div");
       body.className = "work-body";
-
       const title = document.createElement("h3");
       title.className = "work-title";
-      title.textContent = work.title;
+      title.textContent = work.title[lang];
       body.appendChild(title);
-
       const desc = document.createElement("div");
       desc.className = "work-desc";
-      desc.textContent = work.desc;
+      desc.textContent = work.desc[lang];
       body.appendChild(desc);
-
       card.appendChild(body);
-
       // 点击弹窗
       card.addEventListener("click", () => openModal(work));
-
       return card;
     }
 
@@ -138,35 +181,28 @@
       modalRoot.innerHTML = "";
       const backdrop = document.createElement("div");
       backdrop.className = "modal-backdrop";
-
       const modal = document.createElement("div");
       modal.className = "modal-content";
-
       const closeBtn = document.createElement("button");
       closeBtn.className = "modal-close";
       closeBtn.innerHTML = "&times;";
       closeBtn.onclick = closeModal;
-
       const img = document.createElement("img");
       img.className = "modal-image";
       img.src = work.cover;
-      img.alt = work.title;
-
+      img.alt = work.title[lang];
       const title = document.createElement("div");
       title.className = "modal-title";
-      title.textContent = work.title;
-
+      title.textContent = work.title[lang];
       const desc = document.createElement("div");
       desc.className = "modal-desc";
-      desc.textContent = work.desc;
-
+      desc.textContent = work.desc[lang];
       modal.appendChild(closeBtn);
       modal.appendChild(img);
       modal.appendChild(title);
       modal.appendChild(desc);
       backdrop.appendChild(modal);
       modalRoot.appendChild(backdrop);
-
       backdrop.addEventListener("click", function(e) {
         if (e.target === backdrop) closeModal();
       });
@@ -184,7 +220,7 @@
     // 排序函数
     function sortWorks(works, mode) {
       if (mode === "alpha") {
-        return works.slice().sort((a, b) => a.title.localeCompare(b.title));
+        return works.slice().sort((a, b) => a.title[lang].localeCompare(b.title[lang]));
       } else if (mode === "date-asc") {
         return works.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
       } else {
@@ -198,8 +234,8 @@
       if (!query) return works;
       const q = query.toLowerCase();
       return works.filter(w =>
-        w.title.toLowerCase().includes(q) ||
-        (w.desc && w.desc.toLowerCase().includes(q))
+        w.title[lang].toLowerCase().includes(q) ||
+        (w.desc && w.desc[lang].toLowerCase().includes(q))
       );
     }
 
