@@ -68,9 +68,10 @@
       renderLang();
     }
     document.addEventListener('DOMContentLoaded', function() {
+      lang = localStorage.getItem('lang') || 'en';
       document.getElementById('lang-en').onclick = () => setLang('en');
       document.getElementById('lang-zh').onclick = () => setLang('zh');
-      renderLang();
+      setLang(lang);
     });
     function renderLang() {
       // 导航
