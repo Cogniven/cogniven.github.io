@@ -52,6 +52,14 @@
             You can change titles, descriptions, and images later without changing the page layout.
           </p>
         </div>
+        <div class="search-sort-row" style="display:flex;gap:18px;align-items:center;margin-bottom:24px;">
+          <input id="search-box" type="text" placeholder="Search works..." style="flex:1;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);font-size:15px;">
+          <select id="sort-select" style="padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);font-size:15px;">
+            <option value="date-desc">Newest First</option>
+            <option value="date-asc">Oldest First</option>
+            <option value="alpha">A-Z</option>
+          </select>
+        </div>
         <div id="works-grid" class="works-grid"></div>
         <div id="modal-root"></div>
       </div>
@@ -69,6 +77,11 @@
   <script>
     const grid = document.getElementById("works-grid");
     const modalRoot = document.getElementById("modal-root");
+    const searchBox = document.getElementById("search-box");
+    const sortSelect = document.getElementById("sort-select");
+
+    // 假设每个作品有 date 字段（ISO字符串或时间戳）
+    // 如果没有，可以在 data.js 里补充
 
     function createWorkCard(work, idx) {
       const card = document.createElement("article");
@@ -119,7 +132,6 @@
     }
 
     function openModal(work) {
-      // 清空
       modalRoot.innerHTML = "";
       const backdrop = document.createElement("div");
       backdrop.className = "modal-backdrop";
@@ -152,7 +164,6 @@
       backdrop.appendChild(modal);
       modalRoot.appendChild(backdrop);
 
-      // 点击遮罩关闭
       backdrop.addEventListener("click", function(e) {
         if (e.target === backdrop) closeModal();
       });
@@ -167,7 +178,41 @@
       if (e.key === "Escape") closeModal();
     }
 
-    visualDesignWorks.forEach((work, idx) => {
-      grid.appendChild(createWorkCard(work, idx));
-    });
+    // 排序函数
+    function sortWorks(works, mode) {
+      if (mode === "alpha") {
+        return works.slice().sort((a, b) => a.title.localeCompare(b.title));
+      } else if (mode === "date-asc") {
+        return works.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+      } else {
+        // 默认最新在前
+        return works.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+      }
+    }
+
+    // 搜索过滤
+    function filterWorks(works, query) {
+      if (!query) return works;
+      const q = query.toLowerCase();
+      return works.filter(w =>
+        w.title.toLowerCase().includes(q) ||
+        (w.desc && w.desc.toLowerCase().includes(q))
+      );
+    }
+
+    function renderWorks() {
+      grid.innerHTML = "";
+      let mode = sortSelect.value;
+      let query = searchBox.value;
+      let filtered = filterWorks(visualDesignWorks, query);
+      let sorted = sortWorks(filtered, mode);
+      sorted.forEach((work, idx) => {
+        grid.appendChild(createWorkCard(work, idx));
+      });
+    }
+
+    searchBox.addEventListener("input", renderWorks);
+    sortSelect.addEventListener("change", renderWorks);
+
+    renderWorks();
   </script>
