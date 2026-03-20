@@ -29,11 +29,9 @@
   <main>
     <section class="hero">
       <div class="container hero-inner">
-        <p class="eyebrow">Works</p>
-        <h1>
-          Current selection
-        </h1>
-        <p class="hero-text">
+        <p class="eyebrow" id="works-hero-eyebrow">Works</p>
+        <h1 id="works-hero-title">Current selection</h1>
+        <p class="hero-text" id="works-hero-text">
           A structured selection of finished work, grouped by form and function.
         </p>
       </div>
@@ -41,8 +39,8 @@
 
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note">Overview</p>
-        <p class="lead-paragraph">
+        <p class="section-note" id="works-overview">Overview</p>
+        <p class="lead-paragraph" id="works-lead">
           This section remains organized by category. Each category opens into a dedicated page
           where individual works can be previewed in detail.
         </p>
@@ -53,10 +51,10 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="section-note">Categories</p>
-            <h2>Current selection</h2>
+            <p class="section-note" id="works-categories">Categories</p>
+            <h2 id="works-current-selection">Current selection</h2>
           </div>
-          <p class="section-side-text">
+          <p class="section-side-text" id="works-side-text">
             Choose a category to enter its archive and browse works in detail.
           </p>
         </div>
@@ -64,26 +62,26 @@
         <div class="feature-grid">
           <a class="feature-card category-link" href="works/visual-design/index.html">
             <span class="card-index">01</span>
-            <h3>Visual Design</h3>
-            <p>Interface concepts, composition studies, and visual systems shaped with restraint and order.</p>
+            <h3 id="works-visual-design">Visual Design</h3>
+            <p id="works-visual-design-desc">Interface concepts, composition studies, and visual systems shaped with restraint and order.</p>
           </a>
 
           <a class="feature-card category-link" href="works/system-work/index.html">
             <span class="card-index">02</span>
-            <h3>System Work</h3>
-            <p>Structured outputs built around frameworks, logic, and implementation.</p>
+            <h3 id="works-system-work">System Work</h3>
+            <p id="works-system-work-desc">Structured outputs built around frameworks, logic, and implementation.</p>
           </a>
 
           <a class="feature-card category-link" href="works/analytical-pieces/index.html">
             <span class="card-index">03</span>
-            <h3>Analytical Pieces</h3>
-            <p>Selected work focused on explanation, synthesis, and interpretive structure.</p>
+            <h3 id="works-analytical-pieces">Analytical Pieces</h3>
+            <p id="works-analytical-pieces-desc">Selected work focused on explanation, synthesis, and interpretive structure.</p>
           </a>
 
           <a class="feature-card category-link" href="works/experimental-forms/index.html">
             <span class="card-index">04</span>
-            <h3>Experimental Forms</h3>
-            <p>Works that emerged from testing, iteration, or deliberate deviation.</p>
+            <h3 id="works-experimental-forms">Experimental Forms</h3>
+            <p id="works-experimental-forms-desc">Works that emerged from testing, iteration, or deliberate deviation.</p>
           </a>
         </div>
       </div>
@@ -123,6 +121,23 @@
       document.getElementById('logo-text').textContent = i18n[lang].logo;
       document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
       document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
+      // 主要内容
+      document.getElementById('works-hero-eyebrow').textContent = i18n[lang].worksHeroEyebrow;
+      document.getElementById('works-hero-title').textContent = i18n[lang].worksHeroTitle;
+      document.getElementById('works-hero-text').textContent = i18n[lang].worksHeroText;
+      document.getElementById('works-overview').textContent = i18n[lang].worksOverview;
+      document.getElementById('works-lead').textContent = i18n[lang].worksLead;
+      document.getElementById('works-categories').textContent = i18n[lang].worksCategories;
+      document.getElementById('works-current-selection').textContent = i18n[lang].worksCurrentSelection;
+      document.getElementById('works-side-text').textContent = i18n[lang].worksSideText;
+      document.getElementById('works-visual-design').textContent = i18n[lang].worksVisualDesign;
+      document.getElementById('works-visual-design-desc').textContent = i18n[lang].worksVisualDesignDesc;
+      document.getElementById('works-system-work').textContent = i18n[lang].worksSystemWork;
+      document.getElementById('works-system-work-desc').textContent = i18n[lang].worksSystemWorkDesc;
+      document.getElementById('works-analytical-pieces').textContent = i18n[lang].worksAnalyticalPieces;
+      document.getElementById('works-analytical-pieces-desc').textContent = i18n[lang].worksAnalyticalPiecesDesc;
+      document.getElementById('works-experimental-forms').textContent = i18n[lang].worksExperimentalForms;
+      document.getElementById('works-experimental-forms-desc').textContent = i18n[lang].worksExperimentalFormsDesc;
     }
   </script>
 </body>

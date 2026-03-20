@@ -28,23 +28,23 @@
 
   <main class="container">
     <section class="page-hero">
-      <h1>About</h1>
-      <p>A brief introduction to the site, its focus, and its evolving direction.</p>
+      <h1 id="about-title">About</h1>
+      <p id="about-brief">A brief introduction to the site, its focus, and its evolving direction.</p>
     </section>
 
     <section class="section">
       <div class="list">
         <div class="list-item">
-          <h3>Profile</h3>
-          <p>This website documents work across research, programming, and creation.</p>
+          <h3 id="about-profile-title">Profile</h3>
+          <p id="about-profile">This website documents work across research, programming, and creation.</p>
         </div>
         <div class="list-item">
-          <h3>Focus</h3>
-          <p>Current interests include systems, expression, and structured thinking.</p>
+          <h3 id="about-focus-title">Focus</h3>
+          <p id="about-focus">Current interests include systems, expression, and structured thinking.</p>
         </div>
         <div class="list-item">
-          <h3>Approach</h3>
-          <p>The site is designed as a long-term personal interface rather than a fixed portfolio.</p>
+          <h3 id="about-approach-title">Approach</h3>
+          <p id="about-approach">The site is designed as a long-term personal interface rather than a fixed portfolio.</p>
         </div>
       </div>
     </section>
@@ -86,6 +86,15 @@
       document.getElementById('logo-text').textContent = i18n[lang].logo;
       document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
       document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
+      // 主要内容
+      document.getElementById('about-title').textContent = i18n[lang].aboutTitle;
+      document.getElementById('about-brief').textContent = i18n[lang].aboutBrief;
+      document.getElementById('about-profile-title').textContent = i18n[lang].aboutProfileTitle;
+      document.getElementById('about-profile').textContent = i18n[lang].aboutProfile;
+      document.getElementById('about-focus-title').textContent = i18n[lang].aboutFocusTitle;
+      document.getElementById('about-focus').textContent = i18n[lang].aboutFocus;
+      document.getElementById('about-approach-title').textContent = i18n[lang].aboutApproachTitle;
+      document.getElementById('about-approach').textContent = i18n[lang].aboutApproach;
       // 页脚
       document.getElementById('footer-copyright').textContent = i18n[lang].copyright;
       document.getElementById('footer-copyright2').innerHTML = i18n[lang].copyright2;
