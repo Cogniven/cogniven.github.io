@@ -143,8 +143,6 @@ const i18n = {
     indexClosingTitle: "一个用于构建\n与保存的空间。",
     indexClosingText: "结构化、安静，并对变化保持开放。",
 
-    copyright: "© 2026 Cogniven. 版权所有。",
-    copyright2: "本站展示的作品均为原创并受版权保护。<br>未经授权，禁止复制、传播或用于商业用途。"
     // writing.html
     writingHeroEyebrow: "写作",
     writingHeroTitle: "笔记、随笔，\n与耐心思考。",
