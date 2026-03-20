@@ -32,19 +32,12 @@
     <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
-        <p class="eyebrow">Cogniven</p>
-
-        <h1>
-          Cogniven
-        </h1>
-
-        <p class="hero-text">
-          A personal system, built through work, writing, and ongoing structure.
-        </p>
-
+        <p class="eyebrow" id="index-hero-eyebrow">Cogniven</p>
+        <h1 id="index-hero-title">Cogniven</h1>
+        <p class="hero-text" id="index-hero-text">A personal system, built through work, writing, and ongoing structure.</p>
         <div class="button-row">
-          <a class="button primary" href="works.html">Enter Works</a>
-          <a class="button" href="about.html">About</a>
+          <a class="button primary" id="index-button-works" href="works.html">Enter Works</a>
+          <a class="button" id="index-button-about" href="about.html">About</a>
         </div>
       </div>
     </section>
@@ -52,36 +45,26 @@
     <!-- STATEMENT -->
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note">Statement</p>
-
-        <p class="lead-paragraph">
-          This is a personal site. It exists as a structure for keeping work,
-          developing ideas, and recording what is made over time.
-        </p>
+        <p class="section-note" id="index-statement">Statement</p>
+        <p class="lead-paragraph" id="index-lead">This is a personal site. It exists as a structure for keeping work, developing ideas, and recording what is made over time.</p>
       </div>
     </section>
 
     <!-- SECTIONS -->
     <section class="section">
       <div class="container">
-
         <div class="section-head">
           <div>
-            <p class="section-note">Structure</p>
-            <h2>Sections</h2>
+            <p class="section-note" id="index-structure">Structure</p>
+            <h2 id="index-sections">Sections</h2>
           </div>
-
-          <p class="section-side-text">
-            The site is organized as a set of related parts rather than separate pages.
-          </p>
+          <p class="section-side-text" id="index-side-text">The site is organized as a set of related parts rather than separate pages.</p>
         </div>
-
         <div class="feature-grid">
-
           <a class="feature-card" href="works.html">
             <span class="card-index">01</span>
-            <h3>Works</h3>
-            <p>Completed outputs across design, systems, and structured work.</p>
+            <h3 id="index-works">Works</h3>
+            <p id="index-works-desc">Completed outputs across design, systems, and structured work.</p>
           </a>
 
           <a class="feature-card" href="writing.html">
@@ -192,6 +175,19 @@
       document.getElementById('logo-text').textContent = i18n[lang].logo;
       document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
       document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
+      // 主要内容
+      document.getElementById('index-hero-eyebrow').textContent = i18n[lang].indexHeroEyebrow;
+      document.getElementById('index-hero-title').textContent = i18n[lang].indexHeroTitle;
+      document.getElementById('index-hero-text').textContent = i18n[lang].indexHeroText;
+      document.getElementById('index-button-works').textContent = i18n[lang].indexButtonWorks;
+      document.getElementById('index-button-about').textContent = i18n[lang].indexButtonAbout;
+      document.getElementById('index-statement').textContent = i18n[lang].indexStatement;
+      document.getElementById('index-lead').textContent = i18n[lang].indexLead;
+      document.getElementById('index-structure').textContent = i18n[lang].indexStructure;
+      document.getElementById('index-sections').textContent = i18n[lang].indexSections;
+      document.getElementById('index-side-text').textContent = i18n[lang].indexSideText;
+      document.getElementById('index-works').textContent = i18n[lang].nav[0];
+      document.getElementById('index-works-desc').textContent = i18n[lang].worksVisualDesignDesc;
     }
   </script>
 </body>

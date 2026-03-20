@@ -42,12 +42,21 @@
       </div>
     </section>
 
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow" id="projects-hero-eyebrow">Projects</p>
+        <h1 id="projects-hero-title">Ongoing work,<br />still in formation.</h1>
+        <p class="hero-text" id="projects-hero-text">
+          Projects collect what is active, unfinished, or still being shaped — systems under construction, experiments in progress, and structures not yet settled into final form.
+        </p>
+      </div>
+    </section>
+
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note">Editorial Note</p>
-        <p class="lead-paragraph">
-          Unlike works, projects remain open. Their value often lies not only
-          in outcome, but in direction, method, and change over time.
+        <p class="section-note" id="projects-editorial">Editorial Note</p>
+        <p class="lead-paragraph" id="projects-lead">
+          Unlike works, projects remain open. Their value often lies not only in outcome, but in direction, method, and change over time.
         </p>
       </div>
     </section>
@@ -56,65 +65,49 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="section-note">Current Areas</p>
-            <h2>Active lines of work</h2>
+            <p class="section-note" id="projects-current-areas">Current Areas</p>
+            <h2 id="projects-active-lines">Active lines of work</h2>
           </div>
-          <p class="section-side-text">
-            Each project may later develop into a fuller archive with states,
-            dates, notes, and references.
+          <p class="section-side-text" id="projects-side-text">
+            Each project may later develop into a fuller archive with states, dates, notes, and references.
           </p>
         </div>
 
         <div class="feature-grid">
           <div class="feature-card">
             <span class="card-index">01</span>
-            <h3>Research Systems</h3>
-            <p>
+            <h3 id="projects-research">Research Systems</h3>
+            <p id="projects-research-desc">
               Structured inquiry, evolving frameworks, and material built for long-term use.
             </p>
           </div>
 
           <div class="feature-card">
             <span class="card-index">02</span>
-            <h3>Technical Builds</h3>
-            <p>
+            <h3 id="projects-technical">Technical Builds</h3>
+            <p id="projects-technical-desc">
               Code-based systems, tools, interfaces, and implementation experiments.
             </p>
           </div>
 
           <div class="feature-card">
             <span class="card-index">03</span>
-            <h3>Creative Development</h3>
-            <p>
-              Visual and conceptual work that continues to shift as it is made.
+            <h3 id="projects-creative">Creative Development</h3>
+            <p id="projects-creative-desc">
+              Projects focused on creative process, design, and new forms.
             </p>
           </div>
 
           <div class="feature-card">
             <span class="card-index">04</span>
-            <h3>Personal Infrastructure</h3>
-            <p>
-              Projects that support continuity: this site, documentation, and internal systems.
+            <h3 id="projects-personal">Personal Infrastructure</h3>
+            <p id="projects-personal-desc">
+              Systems and tools for personal productivity, knowledge, and workflow.
             </p>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="section editorial-section">
-      <div class="container editorial-grid">
-        <div class="editorial-left">
-          <p class="section-note">Project Logic</p>
-          <h2>Why unfinished work matters.</h2>
-        </div>
-        <div class="editorial-right">
-          <p>
-            A project page is less concerned with closure than with traceability.
-            It preserves the existence of work that is still moving, changing,
-            or waiting for a later stage.
-          </p>
-          <p>
-            In time, this section may become the most dynamic part of the site:
             a record of motion rather than a shelf of completed objects.
           </p>
         </div>
@@ -168,6 +161,23 @@
       document.getElementById('logo-text').textContent = i18n[lang].logo;
       document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
       document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
+      // 主要内容
+      document.getElementById('projects-hero-eyebrow').textContent = i18n[lang].projectsHeroEyebrow;
+      document.getElementById('projects-hero-title').innerHTML = i18n[lang].projectsHeroTitle.replace(/\\n/g, '<br />');
+      document.getElementById('projects-hero-text').textContent = i18n[lang].projectsHeroText;
+      document.getElementById('projects-editorial').textContent = i18n[lang].projectsEditorial;
+      document.getElementById('projects-lead').textContent = i18n[lang].projectsLead;
+      document.getElementById('projects-current-areas').textContent = i18n[lang].projectsCurrentAreas;
+      document.getElementById('projects-active-lines').textContent = i18n[lang].projectsActiveLines;
+      document.getElementById('projects-side-text').textContent = i18n[lang].projectsSideText;
+      document.getElementById('projects-research').textContent = i18n[lang].projectsResearch;
+      document.getElementById('projects-research-desc').textContent = i18n[lang].projectsResearchDesc;
+      document.getElementById('projects-technical').textContent = i18n[lang].projectsTechnical;
+      document.getElementById('projects-technical-desc').textContent = i18n[lang].projectsTechnicalDesc;
+      document.getElementById('projects-creative').textContent = i18n[lang].projectsCreative;
+      document.getElementById('projects-creative-desc').textContent = i18n[lang].projectsCreativeDesc;
+      document.getElementById('projects-personal').textContent = i18n[lang].projectsPersonal;
+      document.getElementById('projects-personal-desc').textContent = i18n[lang].projectsPersonalDesc;
     }
   </script>
 </body>
