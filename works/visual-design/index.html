@@ -52,8 +52,8 @@
             You can change titles, descriptions, and images later without changing the page layout.
           </p>
         </div>
-
         <div id="works-grid" class="works-grid"></div>
+        <div id="modal-root"></div>
       </div>
     </section>
   </main>
@@ -68,33 +68,35 @@
   <script src="./data.js"></script>
   <script>
     const grid = document.getElementById("works-grid");
+    const modalRoot = document.getElementById("modal-root");
 
-    function createWorkCard(work) {
+    function createWorkCard(work, idx) {
       const card = document.createElement("article");
       card.className = "work-card";
 
-      const coverWrapper = document.createElement("a");
+      const coverWrapper = document.createElement("div");
       coverWrapper.className = "work-cover-wrapper";
-      coverWrapper.href = work.link || "#";
 
       const img = document.createElement("img");
       img.className = "work-cover";
       img.src = work.cover;
       img.alt = work.title;
-
       img.onerror = function () {
         this.src =
           "data:image/svg+xml;utf8," +
           encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-              <rect width="800" height="500" fill="#161b22"/>
-              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-                fill="#9aa3ad" font-size="28" font-family="Georgia, serif">
+            <svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'>
+              <rect width='800' height='500' fill='#161b22'/>
+              <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+                fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>
                 Cover not added yet
               </text>
             </svg>
           `);
       };
+      coverWrapper.appendChild(img);
+
+      card.appendChild(coverWrapper);
 
       const body = document.createElement("div");
       body.className = "work-body";
@@ -103,23 +105,126 @@
       title.className = "work-title";
       title.textContent = work.title;
 
-      const desc = document.createElement("p");
-      desc.className = "work-desc";
-      desc.textContent = work.desc;
-
-      coverWrapper.appendChild(img);
       body.appendChild(title);
-      body.appendChild(desc);
-
-      card.appendChild(coverWrapper);
       card.appendChild(body);
+
+      // 点击弹窗
+      card.addEventListener("click", () => openModal(work));
 
       return card;
     }
 
-    visualDesignWorks.forEach((work) => {
-      grid.appendChild(createWorkCard(work));
+    function openModal(work) {
+      // 清空
+      modalRoot.innerHTML = "";
+      const backdrop = document.createElement("div");
+      backdrop.className = "modal-backdrop";
+
+      const modal = document.createElement("div");
+      modal.className = "modal-content";
+
+      const closeBtn = document.createElement("button");
+      closeBtn.className = "modal-close";
+      closeBtn.innerHTML = "&times;";
+      closeBtn.onclick = closeModal;
+
+      const img = document.createElement("img");
+      img.className = "modal-image";
+      img.src = work.cover;
+      img.alt = work.title;
+
+      const title = document.createElement("div");
+      title.className = "modal-title";
+      title.textContent = work.title;
+
+      const desc = document.createElement("div");
+      desc.className = "modal-desc";
+      desc.textContent = work.desc;
+
+      modal.appendChild(closeBtn);
+      modal.appendChild(img);
+      modal.appendChild(title);
+      modal.appendChild(desc);
+      backdrop.appendChild(modal);
+      modalRoot.appendChild(backdrop);
+
+      // 点击遮罩关闭
+      backdrop.addEventListener("click", function(e) {
+        if (e.target === backdrop) closeModal();
+      });
+      document.addEventListener("keydown", escListener);
+    }
+
+    function closeModal() {
+      modalRoot.innerHTML = "";
+      document.removeEventListener("keydown", escListener);
+    }
+    function escListener(e) {
+      if (e.key === "Escape") closeModal();
+    }
+
+    visualDesignWorks.forEach((work, idx) => {
+      grid.appendChild(createWorkCard(work, idx));
     });
   </script>
-</body>
-</html>
+          card.appendChild(body);
+
+          // 点击弹窗
+          card.addEventListener("click", () => openModal(work));
+
+          return card;
+        }
+
+        function openModal(work) {
+          // 清空
+          modalRoot.innerHTML = "";
+          const backdrop = document.createElement("div");
+          backdrop.className = "modal-backdrop";
+
+          const modal = document.createElement("div");
+          modal.className = "modal-content";
+
+          const closeBtn = document.createElement("button");
+          closeBtn.className = "modal-close";
+          closeBtn.innerHTML = "&times;";
+          closeBtn.onclick = closeModal;
+
+          const img = document.createElement("img");
+          img.className = "modal-image";
+          img.src = work.cover;
+          img.alt = work.title;
+
+          const title = document.createElement("div");
+          title.className = "modal-title";
+          title.textContent = work.title;
+
+          const desc = document.createElement("div");
+          desc.className = "modal-desc";
+          desc.textContent = work.desc;
+
+          modal.appendChild(closeBtn);
+          modal.appendChild(img);
+          modal.appendChild(title);
+          modal.appendChild(desc);
+          backdrop.appendChild(modal);
+          modalRoot.appendChild(backdrop);
+
+          // 点击遮罩关闭
+          backdrop.addEventListener("click", function(e) {
+            if (e.target === backdrop) closeModal();
+          });
+          document.addEventListener("keydown", escListener);
+        }
+
+        function closeModal() {
+          modalRoot.innerHTML = "";
+          document.removeEventListener("keydown", escListener);
+        }
+        function escListener(e) {
+          if (e.key === "Escape") closeModal();
+        }
+
+        visualDesignWorks.forEach((work, idx) => {
+          grid.appendChild(createWorkCard(work, idx));
+        });
+      </script>
