@@ -11,13 +11,17 @@
 
   <header class="site-header">
     <nav class="nav">
-      <a href="index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
+      <a href="index.html" class="logo" id="logo-text">Cogniven</a>
+      <div class="nav-links" id="nav-links">
         <a href="works.html">Works</a>
         <a href="writing.html">Writing</a>
         <a href="projects.html">Projects</a>
         <a href="about.html">About</a>
         <a href="archive.html">Archive</a>
+      </div>
+      <div class="lang-switcher" style="margin-left:auto;">
+        <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+        <button id="lang-zh" class="lang-btn">中文</button>
       </div>
     </nav>
   </header>
@@ -159,5 +163,34 @@
     </div>
   </footer>
 
+  <script src="js/i18n.js"></script>
+  <script>
+    let lang = localStorage.getItem('lang') || 'en';
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem('lang', lang);
+      renderLang();
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
+      renderLang();
+    });
+    function renderLang() {
+      // 导航
+      const navLinks = document.getElementById('nav-links');
+      const navs = i18n[lang].nav;
+      navLinks.innerHTML = `
+        <a href="works.html">${navs[0]}</a>
+        <a href="writing.html">${navs[1]}</a>
+        <a href="projects.html">${navs[2]}</a>
+        <a href="about.html">${navs[3]}</a>
+        <a href="archive.html">${navs[4]}</a>
+      `;
+      document.getElementById('logo-text').textContent = i18n[lang].logo;
+      document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
+      document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
+    }
+  </script>
 </body>
 </html>
