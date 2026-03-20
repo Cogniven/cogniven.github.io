@@ -90,7 +90,7 @@ const i18n = {
     worksVisualDesign: "Visual Design",
     worksVisualDesignDesc: "Interface concepts, composition studies, and visual systems shaped with restraint and order.",
     worksSystemWork: "Auditory Forms",
-    worksSystemWorkDesc: "Explorations in sound, voice, and perception.",
+    worksSystemWorkDesc: "Explorations in sound, voice, and perception shaped through rhythm, texture, and experimental form.",
     worksAnalyticalPieces: "Analytical Pieces",
     worksAnalyticalPiecesDesc: "Selected work focused on explanation, synthesis, and interpretive structure.",
     worksExperimentalForms: "Experimental Forms",
