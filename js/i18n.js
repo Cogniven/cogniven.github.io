@@ -124,6 +124,20 @@ const i18n = {
     indexStructure: "结构",
     indexSections: "分区",
     indexSideText: "本站以相关部分组成，而非完全独立页面。",
+    indexWorks: "作品",
+    indexWorksDesc: "设计、系统与结构化工作的已完成输出。",
+
+    indexWriting: "写作",
+    indexWritingDesc: "文章、笔记，以及以文字展开的思考形式。",
+
+    indexProjects: "项目",
+    indexProjectsDesc: "仍在推进中的系统、实验与进行中的工作。",
+
+    indexAbout: "关于",
+    indexAboutDesc: "这个系统的背景、方向，以及其背后的组织逻辑。",
+
+    indexArchive: "归档",
+    indexArchiveDesc: "为延续性与参考而保留的既往材料。",
     // writing.html
     writingHeroEyebrow: "写作",
     writingHeroTitle: "笔记、随笔，\n与耐心思考。",
