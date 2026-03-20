@@ -130,8 +130,8 @@
         <a href="archive.html">${navs[4]}</a>
       `;
       document.getElementById('logo-text').textContent = i18n[lang].logo;
-      document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
-      document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
       // 主要内容
       document.getElementById('projects-hero-eyebrow').textContent = i18n[lang].projectsHeroEyebrow;
       document.getElementById('projects-hero-title').innerHTML = i18n[lang].projectsHeroTitle.replace(/\\n/g, '<br />');

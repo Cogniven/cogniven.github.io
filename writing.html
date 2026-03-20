@@ -144,8 +144,8 @@
         <a href="archive.html">${navs[4]}</a>
       `;
       document.getElementById('logo-text').textContent = i18n[lang].logo;
-      document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
-      document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
       // 主要内容
       document.getElementById('writing-hero-eyebrow').textContent = i18n[lang].writingHeroEyebrow;
       document.getElementById('writing-hero-title').innerHTML = i18n[lang].writingHeroTitle.replace(/\\n/g, '<br />');

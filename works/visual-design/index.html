@@ -109,8 +109,8 @@
       `;
       document.getElementById('logo-text').textContent = i18n[lang].logo;
       // 英文/中文按钮高亮
-      document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
-      document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
       // 英文/中文页面内容
       document.querySelector('.eyebrow').textContent = i18n[lang].heroEyebrow;
       document.querySelector('h1').textContent = i18n[lang].heroTitle;
