@@ -203,6 +203,9 @@
       document.getElementById('index-end').textContent = i18n[lang].indexEnd;
       document.getElementById('index-closing-title').innerHTML = i18n[lang].indexClosingTitle.replace(/\n/g, '<br />');
       document.getElementById('index-closing-text').textContent = i18n[lang].indexClosingText;
+
+      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
+      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
     }
   </script>
 </body>

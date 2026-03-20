@@ -126,18 +126,25 @@ const i18n = {
     indexSideText: "本站以相关部分组成，而非完全独立页面。",
     indexWorks: "作品",
     indexWorksDesc: "设计、系统与结构化工作的已完成输出。",
-
     indexWriting: "写作",
     indexWritingDesc: "文章、笔记，以及以文字展开的思考形式。",
-
     indexProjects: "项目",
     indexProjectsDesc: "仍在推进中的系统、实验与进行中的工作。",
-
     indexAbout: "关于",
     indexAboutDesc: "这个系统的背景、方向，以及其背后的组织逻辑。",
-
     indexArchive: "归档",
     indexArchiveDesc: "为延续性与参考而保留的既往材料。",
+    indexApproach: "方法",
+    indexApproachTitle: "在时间中构建。",
+    indexApproachParagraph1: "这个系统在使用中生长。工作会随着需要被加入、调整或移除，而不以完成为目标。",
+    indexApproachParagraph2: "重点始终放在清晰性、结构性，以及有意义工作的持续积累上。",
+
+    indexEnd: "结束",
+    indexClosingTitle: "一个用于构建\n与保存的空间。",
+    indexClosingText: "结构化、安静，并对变化保持开放。",
+
+    copyright: "© 2026 Cogniven. 版权所有。",
+    copyright2: "本站展示的作品均为原创并受版权保护。<br>未经授权，禁止复制、传播或用于商业用途。"
     // writing.html
     writingHeroEyebrow: "写作",
     writingHeroTitle: "笔记、随笔，\n与耐心思考。",
