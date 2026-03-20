@@ -28,23 +28,23 @@
 
   <main class="container">
     <section class="page-hero">
-      <h1>Archive</h1>
-      <p>Stored material, past work, and experimental fragments.</p>
+      <h1 id="archive-title">Archive</h1>
+      <p id="archive-subtitle">Stored material, past work, and experimental fragments.</p>
     </section>
 
     <section class="section">
       <div class="list">
         <div class="list-item">
-          <h3>Old Experiments</h3>
-          <p>Previous iterations and discarded approaches.</p>
+          <h3 id="archive-old-experiments-title">Old Experiments</h3>
+          <p id="archive-old-experiments-desc">Previous iterations and discarded approaches.</p>
         </div>
         <div class="list-item">
-          <h3>Unused Concepts</h3>
-          <p>Ideas that were explored but not developed further.</p>
+          <h3 id="archive-unused-concepts-title">Unused Concepts</h3>
+          <p id="archive-unused-concepts-desc">Ideas that were explored but not developed further.</p>
         </div>
         <div class="list-item">
-          <h3>Snapshots</h3>
-          <p>Archived states of ongoing systems.</p>
+          <h3 id="archive-snapshots-title">Snapshots</h3>
+          <p id="archive-snapshots-desc">Archived states of ongoing systems.</p>
         </div>
       </div>
     </section>
@@ -59,21 +59,25 @@
       </p>
     </div>
   </footer>
+
   <script src="js/i18n.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
+
     function setLang(newLang) {
       lang = newLang;
       localStorage.setItem('lang', lang);
       renderLang();
     }
+
     document.addEventListener('DOMContentLoaded', function() {
+      lang = localStorage.getItem('lang') || 'en';
       document.getElementById('lang-en').onclick = () => setLang('en');
       document.getElementById('lang-zh').onclick = () => setLang('zh');
       renderLang();
     });
+
     function renderLang() {
-      // 导航
       const navLinks = document.getElementById('nav-links');
       const navs = i18n[lang].nav;
       navLinks.innerHTML = `
@@ -83,10 +87,23 @@
         <a href="about.html">${navs[3]}</a>
         <a href="archive.html">${navs[4]}</a>
       `;
+
       document.getElementById('logo-text').textContent = i18n[lang].logo;
-      document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
-      document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
-      // 页脚
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+      document.getElementById('archive-title').textContent = i18n[lang].archiveTitle;
+      document.getElementById('archive-subtitle').textContent = i18n[lang].archiveSubtitle;
+
+      document.getElementById('archive-old-experiments-title').textContent = i18n[lang].archiveOldExperimentsTitle;
+      document.getElementById('archive-old-experiments-desc').textContent = i18n[lang].archiveOldExperimentsDesc;
+
+      document.getElementById('archive-unused-concepts-title').textContent = i18n[lang].archiveUnusedConceptsTitle;
+      document.getElementById('archive-unused-concepts-desc').textContent = i18n[lang].archiveUnusedConceptsDesc;
+
+      document.getElementById('archive-snapshots-title').textContent = i18n[lang].archiveSnapshotsTitle;
+      document.getElementById('archive-snapshots-desc').textContent = i18n[lang].archiveSnapshotsDesc;
+
       document.getElementById('footer-copyright').textContent = i18n[lang].copyright;
       document.getElementById('footer-copyright2').innerHTML = i18n[lang].copyright2;
     }
