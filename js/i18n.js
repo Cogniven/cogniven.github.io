@@ -52,7 +52,7 @@ const i18n = {
     archiveUnused: "Unused Concepts",
     archiveUnusedDesc: "Ideas that were explored but not developed further.",
     archiveSnapshots: "Snapshots",
-    archiveSnapshotsDesc: "Archived states of ongoing systems."
+    archiveSnapshotsDesc: "Archived states of ongoing systems.",
     worksHeroEyebrow: "Works",
     worksHeroTitle: "Current selection",
     worksHeroText: "A structured selection of finished work, grouped by form and function.",
@@ -136,7 +136,7 @@ const i18n = {
     archiveUnused: "未用概念",
     archiveUnusedDesc: "曾探索但未进一步发展的想法。",
     archiveSnapshots: "快照",
-    archiveSnapshotsDesc: "在建系统的归档状态。"
+    archiveSnapshotsDesc: "在建系统的归档状态。",
     worksHeroEyebrow: "作品",
     worksHeroTitle: "当前精选",
     worksHeroText: "已完成作品的结构化归档，按形式与功能分组。",
