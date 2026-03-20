@@ -28,23 +28,23 @@
 
   <main class="container">
     <section class="page-hero">
-      <h1 id="archive-title">Archive</h1>
-      <p id="archive-brief">Stored material, past work, and experimental fragments.</p>
+      <h1>Archive</h1>
+      <p>Stored material, past work, and experimental fragments.</p>
     </section>
 
     <section class="section">
       <div class="list">
         <div class="list-item">
-          <h3 id="archive-old">Old Experiments</h3>
-          <p id="archive-old-desc">Previous iterations and discarded approaches.</p>
+          <h3>Old Experiments</h3>
+          <p>Previous iterations and discarded approaches.</p>
         </div>
         <div class="list-item">
-          <h3 id="archive-unused">Unused Concepts</h3>
-          <p id="archive-unused-desc">Ideas that were explored but not developed further.</p>
+          <h3>Unused Concepts</h3>
+          <p>Ideas that were explored but not developed further.</p>
         </div>
         <div class="list-item">
-          <h3 id="archive-snapshots">Snapshots</h3>
-          <p id="archive-snapshots-desc">Archived states of ongoing systems.</p>
+          <h3>Snapshots</h3>
+          <p>Archived states of ongoing systems.</p>
         </div>
       </div>
     </section>
@@ -68,10 +68,9 @@
       renderLang();
     }
     document.addEventListener('DOMContentLoaded', function() {
-      lang = localStorage.getItem('lang') || 'en';
       document.getElementById('lang-en').onclick = () => setLang('en');
       document.getElementById('lang-zh').onclick = () => setLang('zh');
-      setLang(lang);
+      renderLang();
     });
     function renderLang() {
       // 导航
@@ -85,17 +84,8 @@
         <a href="archive.html">${navs[4]}</a>
       `;
       document.getElementById('logo-text').textContent = i18n[lang].logo;
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
-      // 主要内容
-      document.getElementById('archive-title').textContent = i18n[lang].archiveTitle;
-      document.getElementById('archive-brief').textContent = i18n[lang].archiveBrief;
-      document.getElementById('archive-old').textContent = i18n[lang].archiveOld;
-      document.getElementById('archive-old-desc').textContent = i18n[lang].archiveOldDesc;
-      document.getElementById('archive-unused').textContent = i18n[lang].archiveUnused;
-      document.getElementById('archive-unused-desc').textContent = i18n[lang].archiveUnusedDesc;
-      document.getElementById('archive-snapshots').textContent = i18n[lang].archiveSnapshots;
-      document.getElementById('archive-snapshots-desc').textContent = i18n[lang].archiveSnapshotsDesc;
+      document.getElementById('lang-en').style.fontWeight = lang === 'en' ? 'bold' : 'normal';
+      document.getElementById('lang-zh').style.fontWeight = lang === 'zh' ? 'bold' : 'normal';
       // 页脚
       document.getElementById('footer-copyright').textContent = i18n[lang].copyright;
       document.getElementById('footer-copyright2').innerHTML = i18n[lang].copyright2;
