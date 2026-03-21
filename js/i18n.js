@@ -101,8 +101,8 @@ const i18n = {
     worksAnalyticalPieces: "Analytical Pieces",
     worksAnalyticalPiecesDesc: "Selected work focused on explanation, synthesis, and interpretive structure.",
 
-    worksSystemWork: "Technical Works",
-    worksSystemWorkDesc: "Systems, tools, and code-based outputs shaped through logic and implementation.",
+    worksTechnicalWorks: "Technical Works",
+    worksTechnicalWorksDesc: "Systems, tools, and code-based outputs shaped through logic and implementation.",
 
     worksExperimentalForms: "Experimental Forms",
     worksExperimentalFormsDesc: "Works that emerged from testing, iteration, or deliberate deviation.",
@@ -219,8 +219,8 @@ const i18n = {
     worksSideText: "选择一个类别进入其归档，详细浏览作品。",
     worksVisualDesign: "艺术创作",
     worksVisualDesignDesc: "图像、声音与形式在约束与构成中被塑造。",
-    worksSystemWork: "分析作品",
-    worksSystemWorkDesc: "聚焦解释、综合与结构化阐释的精选作品。",
+    worksTechnicalWorks: "分析作品",
+    worksTechnicalWorksDesc: "聚焦解释、综合与结构化阐释的精选作品。",
     worksAnalyticalPieces: "技术工作",
     worksAnalyticalPiecesDesc: "通过逻辑构建与实现形成的系统、工具与代码性成果。",
     worksExperimentalForms: "实验形态",

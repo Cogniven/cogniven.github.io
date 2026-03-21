@@ -365,7 +365,7 @@ a {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Visual Design - Cogniven</title>
+  <title>Artistic Creations - Cogniven</title>
   <link rel="stylesheet" href="../../css/style.css" />
 </head>
 <body>
@@ -385,12 +385,12 @@ a {
   <main>
     <section class="hero">
       <div class="container hero-inner">
-        <p class="eyebrow">Works · Visual Design</p>
+        <p class="eyebrow">Works · Artistic Creations</p>
         <h1>
-          Visual Design
+          Artistic Creations
         </h1>
         <p class="hero-text">
-          A browsable selection of visual work, presented as a structured archive.
+          A browsable selection of artistic work, presented as a structured archive.
         </p>
       </div>
     </section>
@@ -399,7 +399,7 @@ a {
       <div class="container narrow">
         <p class="section-note">Overview</p>
         <p class="lead-paragraph">
-          This page collects visual work in a format intended for browsing first,
+          This page collects artistic work in a format intended for browsing first,
           then closer reading when needed.
         </p>
       </div>
@@ -425,7 +425,7 @@ a {
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© 2026 Cogniven</p>
-      <p>Visual work as structured display.</p>
+      <p>Artistic work as structured display.</p>
     </div>
   </footer>
 
@@ -481,29 +481,29 @@ a {
       return card;
     }
 
-    visualDesignWorks.forEach((work) => {
+    artisticCreationsWorks.forEach((work) => {
       grid.appendChild(createWorkCard(work));
     });
   </script>
 </body>
 </html>
-const visualDesignWorks = [
+const artisticCreationsWorks = [
   {
-    title: "Visual Work 001",
+    title: "Artistic Work 001",
     desc: "A short description for this piece.",
-    cover: "../../assets/images/works/visual-design/work-001/cover.jpg",
+    cover: "../../assets/images/works/artistic-creations/work-001/cover.jpg",
     link: "#"
   },
   {
-    title: "Visual Work 002",
+    title: "Artistic Work 002",
     desc: "Another short description for this piece.",
-    cover: "../../assets/images/works/visual-design/work-002/cover.jpg",
+    cover: "../../assets/images/works/artistic-creations/work-002/cover.jpg",
     link: "#"
   },
   {
-    title: "Visual Work 003",
+    title: "Artistic Work 003",
     desc: "This card is ready for future work.",
-    cover: "../../assets/images/works/visual-design/work-003/cover.jpg",
+    cover: "../../assets/images/works/artistic-creations/work-003/cover.jpg",
     link: "#"
   }
 ];
