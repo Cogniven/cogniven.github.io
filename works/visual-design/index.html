@@ -83,7 +83,7 @@
   </footer>
 
   <script src="../../js/i18n.js"></script>
-  <script src="../../js/visualDesignWorks.js"></script>
+  <script src="../../js/ArtisticCreationWorks.js"></script>
   <script>
     // 语言切换逻辑
     let lang = localStorage.getItem('lang') || 'en';
@@ -245,7 +245,7 @@
       grid.innerHTML = "";
       let mode = sortSelect.value;
       let query = searchBox.value;
-      let filtered = filterWorks(visualDesignWorks, query);
+      let filtered = filterWorks(ArtisticCreationWorks, query);
       let sorted = sortWorks(filtered, mode);
       sorted.forEach((work, idx) => {
         grid.appendChild(createWorkCard(work, idx));

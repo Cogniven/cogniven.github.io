@@ -95,8 +95,8 @@ const i18n = {
     worksCurrentSelection: "Current selection",
     worksSideText: "Choose a category to enter its archive and browse works in detail.",
 
-    worksVisualDesign: "Artistic Creations",
-    worksVisualDesignDesc: "Image, sound, and form shaped through constraint and composition.",
+    worksArtisticCreations: "Artistic Creations",
+    worksArtisticCreationsDesc: "Image, sound, and form shaped through constraint and composition.",
 
     worksAnalyticalPieces: "Analytical Pieces",
     worksAnalyticalPiecesDesc: "Selected work focused on explanation, synthesis, and interpretive structure.",
@@ -217,8 +217,8 @@ const i18n = {
     worksCategories: "类别",
     worksCurrentSelection: "当前精选",
     worksSideText: "选择一个类别进入其归档，详细浏览作品。",
-    worksVisualDesign: "艺术创作",
-    worksVisualDesignDesc: "图像、声音与形式在约束与构成中被塑造。",
+    worksArtisticCreations: "艺术创作",
+    worksArtisticCreationsDesc: "图像、声音与形式在约束与构成中被塑造。",
     worksTechnicalWorks: "分析作品",
     worksTechnicalWorksDesc: "聚焦解释、综合与结构化阐释的精选作品。",
     worksAnalyticalPieces: "技术工作",
