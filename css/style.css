@@ -214,7 +214,7 @@ a {
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 22px;
 }
 
@@ -507,3 +507,49 @@ const visualDesignWorks = [
     link: "#"
   }
 ];
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.work-card {
+  display: block;
+}
+
+.work-cover-wrapper {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--bg-soft);
+}
+
+.work-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.work-card:hover .work-cover {
+  transform: scale(1.04);
+}
+
+.work-body {
+  padding-top: 8px;
+}
+
+.work-title {
+  margin: 4px 0 4px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.work-desc {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
