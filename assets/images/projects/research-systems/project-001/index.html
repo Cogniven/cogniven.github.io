@@ -3,8 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Investment Research System - Cogniven</title>
+  <title>Fiscal Transparency Research Framework - Cogniven</title>
   <link rel="stylesheet" href="../../../css/style.css" />
+  <style>
+    .system-cover {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .system-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .system-meta-card {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .system-meta-card span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .system-meta-card strong {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .system-block {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .system-block-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-top: 4px;
+    }
+
+    .system-block-content h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    .system-block-content p {
+      line-height: 1.78;
+      color: var(--text-soft);
+    }
+
+    .system-module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .system-module-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--bg-soft);
+      padding: 18px;
+    }
+
+    .system-module-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+
+    .system-module-card p {
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 860px) {
+      .system-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .system-block {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .system-module-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .system-meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -21,94 +128,136 @@
   </header>
 
   <main>
-    <section class="hero system-hero">
+    <section class="hero">
       <div class="container narrow">
         <p class="eyebrow">Projects · Research Systems</p>
-        <h1 class="system-title">Investment Research System</h1>
-        <p class="system-subtitle">
-          A structured framework for market observation, allocation logic, and long-term decision making.
+        <h1>Fiscal Transparency Research Framework</h1>
+        <p class="hero-text">
+          A long-term research structure built around fiscal transparency, budget execution deviation, and the institutional logic of local governance.
         </p>
-
-        <div class="system-meta">
-          <span>Active</span>
-          <span>Updated: 2026-03-22</span>
-        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container narrow">
-        <img class="case-cover" src="../../../assets/images/projects/research-systems/project-001/cover.jpg" alt="Investment Research System">
+        <img
+          class="system-cover"
+          src="../../../assets/images/projects/research-systems/project-001/cover.jpg"
+          alt="Fiscal Transparency Research Framework cover"
+          onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Research System Cover</text></svg>`)"
+        />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <div class="system-meta-grid">
+          <div class="system-meta-card">
+            <span>Field</span>
+            <strong>Public Finance</strong>
+          </div>
+          <div class="system-meta-card">
+            <span>Status</span>
+            <strong>Active</strong>
+          </div>
+          <div class="system-meta-card">
+            <span>Scope</span>
+            <strong>Thesis / Long-term Inquiry</strong>
+          </div>
+          <div class="system-meta-card">
+            <span>Output</span>
+            <strong>Papers / Notes / Cases</strong>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note">What This System Is</p>
+        <p class="section-note">System Note</p>
         <p class="lead-paragraph">
-          This page organizes the way I observe markets, structure investment thinking, and track current direction over time.
+          This research system is designed to hold together a set of connected questions rather than a single isolated paper. It tracks how fiscal transparency shapes budget execution, especially through the lens of non-tax revenue and local institutional incentives.
         </p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container narrow">
-        <h2>Core Structure</h2>
-        <p>
-          This system is built around four connected parts: investment framework, market observation, risk structure, and current direction. Together they shape how ideas are filtered, compared, and acted on.
-        </p>
+      <div class="container narrow system-block">
+        <div class="system-block-note">Focus</div>
+        <div class="system-block-content">
+          <h2>Research Focus</h2>
+          <p>
+            The central concern of this framework is the relationship between fiscal transparency and budget execution deviation under tightening fiscal conditions.
+          </p>
+          <p>
+            Instead of treating budget deviation as a purely technical issue, the system approaches it as an institutional phenomenon shaped by incentives, information structure, and governance capacity.
+          </p>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container narrow">
-        <h2>Section 01 — Investment Framework</h2>
-        <p>
-          This section defines the broad logic of allocation, time horizon, and strategic preference. It works as the stable layer of the system.
-        </p>
-
-        <h2>Section 02 — Market Observation</h2>
-        <p>
-          This section tracks indicators, regime changes, and notable signals. It is used to update judgment without reacting to every short-term fluctuation.
-        </p>
-
-        <h2>Section 03 — Risk Structure</h2>
-        <p>
-          This section records how exposure is controlled, how positions are sized, and what conditions require reduction or review.
-        </p>
-
-        <h2>Section 04 — Current Direction</h2>
-        <p>
-          This section summarizes the present stance of the system: what is being watched closely, where conviction is rising, and where uncertainty remains.
-        </p>
+      <div class="container narrow system-block">
+        <div class="system-block-note">Structure</div>
+        <div class="system-block-content">
+          <h2>System Structure</h2>
+          <div class="system-module-grid">
+            <div class="system-module-card">
+              <h3>Theory</h3>
+              <p>
+                Concepts of fiscal transparency, budget governance, and institutional accountability.
+              </p>
+            </div>
+            <div class="system-module-card">
+              <h3>Observation</h3>
+              <p>
+                Local budget deviation patterns, especially around non-tax revenue and execution outcomes.
+              </p>
+            </div>
+            <div class="system-module-card">
+              <h3>Evidence</h3>
+              <p>
+                Literature review, policy texts, local government data, and comparative cases.
+              </p>
+            </div>
+            <div class="system-module-card">
+              <h3>Output</h3>
+              <p>
+                Thesis chapters, analytical notes, structured outlines, and derivative writing.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container narrow">
-        <h2>Current State</h2>
-        <p>
-          The framework is stable, but the observation layer continues to evolve. Recent work is focused on improving how signals are interpreted across different conditions.
-        </p>
+      <div class="container narrow system-block">
+        <div class="system-block-note">Materials</div>
+        <div class="system-block-content">
+          <h2>Materials and Inputs</h2>
+          <p>
+            The system draws from Chinese fiscal policy literature, public finance theory, government budget documents, non-tax revenue data, and case materials from local fiscal practice.
+          </p>
+          <p>
+            Materials are not treated as a flat archive. They are sorted according to conceptual relevance, empirical use, and their relation to the evolving thesis structure.
+          </p>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container narrow">
-        <h2>Sources / Inputs</h2>
-        <p>
-          Inputs include market data, macro signals, strategy results, and written notes. These sources are used together rather than in isolation.
-        </p>
-      </div>
-    </section>
-
-    <section class="section closing-section">
-      <div class="container narrow center">
-        <p class="section-note">Next Step</p>
-        <h2 class="closing-title">Refine the observation layer.</h2>
-        <p class="closing-text">
-          The next stage is to improve how signals are ranked and how conviction is updated.
-        </p>
+      <div class="container narrow system-block">
+        <div class="system-block-note">Direction</div>
+        <div class="system-block-content">
+          <h2>Current Direction</h2>
+          <p>
+            The current direction is to consolidate the literature base, sharpen the explanatory mechanism linking transparency and deviation, and translate the framework into a full thesis architecture.
+          </p>
+          <p>
+            Future outputs may include a refined undergraduate thesis, derivative essays, and a more generalizable research note on fiscal governance under pressure.
+          </p>
+        </div>
       </div>
     </section>
   </main>
@@ -117,7 +266,7 @@
     <div class="container footer-inner">
       <p>© 2026 Cogniven. All rights reserved.</p>
       <p>
-        The works presented on this site are original and protected by copyright.<br>
+        The works presented on this site are original and protected by copyright.<br />
         Unauthorized reproduction, distribution, or commercial use is prohibited.
       </p>
     </div>

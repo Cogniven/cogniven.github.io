@@ -3,8 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[SYSTEM NAME] - Cogniven</title>
+  <title>[SYSTEM PAGE TITLE] - Cogniven</title>
   <link rel="stylesheet" href="../../../css/style.css" />
+  <style>
+    .system-cover {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .system-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .system-meta-card {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .system-meta-card span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .system-meta-card strong {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .system-block {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .system-block-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-top: 4px;
+    }
+
+    .system-block-content h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    .system-block-content p {
+      line-height: 1.78;
+      color: var(--text-soft);
+    }
+
+    .system-module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .system-module-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--bg-soft);
+      padding: 18px;
+    }
+
+    .system-module-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+
+    .system-module-card p {
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 860px) {
+      .system-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .system-block {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .system-module-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .system-meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -21,73 +128,115 @@
   </header>
 
   <main>
-    <section class="hero system-hero">
+    <section class="hero">
       <div class="container narrow">
         <p class="eyebrow">Projects · Research Systems</p>
-        <h1 class="system-title">[SYSTEM NAME]</h1>
-        <p class="system-subtitle">[ONE-LINE DESCRIPTION]</p>
-
-        <div class="system-meta">
-          <span>[STATUS]</span>
-          <span>Updated: [DATE]</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container narrow">
-        <img class="case-cover" src="../../../assets/images/projects/research-systems/[PROJECT-ID]/cover.jpg" alt="[SYSTEM NAME]">
-      </div>
-    </section>
-
-    <section class="section intro-band">
-      <div class="container narrow">
-        <p class="section-note">What This System Is</p>
-        <p class="lead-paragraph">
-          [SHORT EXPLANATION OF WHAT THIS SYSTEM DOES]
+        <h1>[SYSTEM PAGE TITLE]</h1>
+        <p class="hero-text">
+          [ONE-LINE DESCRIPTION OF WHAT THIS RESEARCH SYSTEM IS ABOUT]
         </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container narrow">
-        <h2>Core Structure</h2>
-        <p>[Explain the structure of the system here.]</p>
+        <img
+          class="system-cover"
+          src="../../../assets/images/projects/research-systems/[PROJECT-ID]/cover.jpg"
+          alt="[SYSTEM COVER]"
+        />
       </div>
     </section>
 
     <section class="section">
       <div class="container narrow">
-        <h2>Section 01 — [SECTION TITLE]</h2>
-        <p>[SECTION CONTENT]</p>
+        <div class="system-meta-grid">
+          <div class="system-meta-card">
+            <span>Field</span>
+            <strong>[Public Finance / Policy / Governance]</strong>
+          </div>
+          <div class="system-meta-card">
+            <span>Status</span>
+            <strong>[Active / Developing / Archived]</strong>
+          </div>
+          <div class="system-meta-card">
+            <span>Scope</span>
+            <strong>[Long-term / Thesis / Ongoing Inquiry]</strong>
+          </div>
+          <div class="system-meta-card">
+            <span>Output</span>
+            <strong>[Papers / Notes / Cases / Models]</strong>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <h2>Section 02 — [SECTION TITLE]</h2>
-        <p>[SECTION CONTENT]</p>
-
-        <h2>Section 03 — [SECTION TITLE]</h2>
-        <p>[SECTION CONTENT]</p>
+    <section class="section intro-band">
+      <div class="container narrow">
+        <p class="section-note">System Note</p>
+        <p class="lead-paragraph">
+          [Briefly explain the overall purpose of this research system, what holds it together, and why it is structured as a long-term framework rather than a single paper.]
+        </p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container narrow">
-        <h2>Current State</h2>
-        <p>[What is stable, what is changing, what is being tracked now.]</p>
+      <div class="container narrow system-block">
+        <div class="system-block-note">Focus</div>
+        <div class="system-block-content">
+          <h2>Research Focus</h2>
+          <p>[What central question or theme does this system revolve around?]</p>
+          <p>[What makes this line of inquiry worth sustaining over time?]</p>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container narrow">
-        <h2>Sources / Inputs</h2>
-        <p>[Data, references, or materials used in this system.]</p>
+      <div class="container narrow system-block">
+        <div class="system-block-note">Structure</div>
+        <div class="system-block-content">
+          <h2>System Structure</h2>
+          <div class="system-module-grid">
+            <div class="system-module-card">
+              <h3>[Module 01]</h3>
+              <p>[Describe the first module of the system.]</p>
+            </div>
+            <div class="system-module-card">
+              <h3>[Module 02]</h3>
+              <p>[Describe the second module of the system.]</p>
+            </div>
+            <div class="system-module-card">
+              <h3>[Module 03]</h3>
+              <p>[Describe the third module of the system.]</p>
+            </div>
+            <div class="system-module-card">
+              <h3>[Module 04]</h3>
+              <p>[Describe the fourth module of the system.]</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section closing-section">
-      <div class="container narrow center">
-        <p class="section-note">Next Step</p>
-        <h2 class="closing-title">[NEXT STEP TITLE]</h2>
-        <p class="closing-text">[ONE-LINE NEXT STEP]</p>
+    <section class="section">
+      <div class="container narrow system-block">
+        <div class="system-block-note">Materials</div>
+        <div class="system-block-content">
+          <h2>Materials and Inputs</h2>
+          <p>[What data, literature, notes, cases, or references feed into this system?]</p>
+          <p>[How are materials collected, compared, or organized?]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow system-block">
+        <div class="system-block-note">Direction</div>
+        <div class="system-block-content">
+          <h2>Current Direction</h2>
+          <p>[What is the system currently working toward?]</p>
+          <p>[What are the next likely outputs or extensions?]</p>
+        </div>
       </div>
     </section>
   </main>
@@ -96,7 +245,7 @@
     <div class="container footer-inner">
       <p>© 2026 Cogniven. All rights reserved.</p>
       <p>
-        The works presented on this site are original and protected by copyright.<br>
+        The works presented on this site are original and protected by copyright.<br />
         Unauthorized reproduction, distribution, or commercial use is prohibited.
       </p>
     </div>

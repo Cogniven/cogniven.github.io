@@ -5,54 +5,320 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research Systems - Cogniven</title>
   <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    .system-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .system-intro {
+      max-width: 780px;
+    }
+
+    .system-map {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 22px;
+      margin-top: 8px;
+    }
+
+    .system-panel {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--bg-soft);
+      padding: 22px;
+    }
+
+    .system-panel h3 {
+      margin: 0 0 14px;
+      font-size: 1.2rem;
+    }
+
+    .system-panel p {
+      margin: 0;
+      line-height: 1.76;
+      color: var(--text-soft);
+    }
+
+    .module-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .module-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+      padding: 16px;
+    }
+
+    .module-card h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .module-card p {
+      margin: 0;
+      line-height: 1.65;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+    }
+
+    .system-controls {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin: 30px 0 32px;
+      flex-wrap: wrap;
+    }
+
+    .system-search,
+    .system-sort {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font: inherit;
+    }
+
+    .system-search {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .system-sort {
+      min-width: 150px;
+    }
+
+    .system-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .system-entry {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 22px;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--bg-soft);
+      overflow: hidden;
+      transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+    }
+
+    .system-entry:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .system-entry-cover {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #161b22;
+    }
+
+    .system-entry-body {
+      padding: 18px 18px 18px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .system-entry-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .system-chip {
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 9px;
+    }
+
+    .system-entry-title {
+      font-size: clamp(1.25rem, 2vw, 1.55rem);
+      line-height: 1.2;
+      margin: 0 0 10px;
+    }
+
+    .system-entry-desc {
+      color: var(--text-soft);
+      line-height: 1.72;
+      margin: 0 0 14px;
+      max-width: 760px;
+    }
+
+    .system-entry-category {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .system-entry-link {
+      font-size: 0.95rem;
+      color: var(--accent, var(--text));
+    }
+
+    .system-empty {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      color: var(--muted);
+      background: var(--bg-soft);
+    }
+
+    @media (max-width: 920px) {
+      .system-map {
+        grid-template-columns: 1fr;
+      }
+
+      .module-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .system-entry {
+        grid-template-columns: 1fr;
+      }
+
+      .system-entry-body {
+        padding: 16px;
+      }
+
+      .system-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .system-search,
+      .system-sort {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
-        <a href="../../works.html">Works</a>
-        <a href="../../writing.html">Writing</a>
-        <a href="../../projects.html">Projects</a>
-        <a href="../../about.html">About</a>
-        <a href="../../archive.html">Archive</a>
+      <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+          <a href="../../works.html">Works</a>
+          <a href="../../writing.html">Writing</a>
+          <a href="../../projects.html">Projects</a>
+          <a href="../../about.html">About</a>
+          <a href="../../archive.html">Archive</a>
+        </div>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
       </div>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow">Projects · Research Systems</p>
-        <h1>Research Systems</h1>
-        <p class="hero-text">
-          Ongoing frameworks for inquiry, observation, and structured understanding.
+      <div class="container hero-inner system-shell">
+        <p class="eyebrow" id="rs-hero-eyebrow">Projects · Research Systems</p>
+        <h1 id="rs-hero-title">Research Systems</h1>
+        <p class="hero-text system-intro" id="rs-hero-text">
+          A structured environment for long-term inquiry. This section organizes research as systems of themes, modules, methods, and evolving lines of work.
         </p>
       </div>
     </section>
 
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note">Overview</p>
-        <p class="lead-paragraph">
-          This section gathers long-term research structures. Each entry is a system page that shows how a topic is organized, tracked, and developed over time.
+        <p class="section-note" id="rs-overview-note">Overview</p>
+        <p class="lead-paragraph" id="rs-overview-text">
+          Unlike a narrative project page, a research system describes a framework: what is being studied, how it is divided, and how its parts connect over time.
         </p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
+      <div class="container system-shell">
         <div class="section-head">
           <div>
-            <p class="section-note">Systems</p>
-            <h2>Current Structures</h2>
+            <p class="section-note" id="rs-structure-note">System Structure</p>
+            <h2 id="rs-structure-title">Current Framework</h2>
           </div>
-          <p class="section-side-text">
-            Each card leads to a dedicated system page.
+          <p class="section-side-text" id="rs-structure-side">
+            This top layer presents the system itself before listing individual research pages beneath it.
           </p>
         </div>
 
-        <div id="works-grid" class="works-grid"></div>
+        <div class="system-map">
+          <div class="system-panel">
+            <h3 id="rs-panel-1-title">System Intent</h3>
+            <p id="rs-panel-1-text">
+              The research system provides a stable structure for long-term inquiry, allowing topics, methods, and materials to evolve without losing coherence.
+            </p>
+          </div>
+
+          <div class="system-panel">
+            <h3 id="rs-panel-2-title">Core Modules</h3>
+            <div class="module-list">
+              <div class="module-card">
+                <h4 id="rs-module-1-title">Themes</h4>
+                <p id="rs-module-1-text">Major questions, fields, and conceptual directions.</p>
+              </div>
+              <div class="module-card">
+                <h4 id="rs-module-2-title">Methods</h4>
+                <p id="rs-module-2-text">Approaches, models, and analytical procedures.</p>
+              </div>
+              <div class="module-card">
+                <h4 id="rs-module-3-title">Materials</h4>
+                <p id="rs-module-3-text">Data, literature, cases, notes, and references.</p>
+              </div>
+              <div class="module-card">
+                <h4 id="rs-module-4-title">Outputs</h4>
+                <p id="rs-module-4-text">Papers, briefs, diagrams, and derived work.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top: 48px;">
+          <div>
+            <p class="section-note" id="rs-directory-note">Directory</p>
+            <h2 id="rs-directory-title">Current Research Pages</h2>
+          </div>
+          <p class="section-side-text" id="rs-directory-side">
+            These entries are the active pages currently inside the research system.
+          </p>
+        </div>
+
+        <div class="system-controls">
+          <input id="search-box" class="system-search" type="text" placeholder="Search research pages..." />
+          <select id="sort-select" class="system-sort">
+            <option value="date-desc">Newest</option>
+            <option value="date-asc">Oldest</option>
+            <option value="alpha">A–Z</option>
+          </select>
+        </div>
+
+        <div id="system-list" class="system-list"></div>
       </div>
     </section>
   </main>
@@ -67,61 +333,268 @@
     </div>
   </footer>
 
+  <script src="../../js/i18n.js"></script>
   <script src="../../js/researchSystems.js"></script>
   <script>
-    const grid = document.getElementById("works-grid");
+    let lang = localStorage.getItem("lang") || "en";
 
-    function createCard(item) {
-      const card = document.createElement("article");
-      card.className = "work-card";
+    const list = document.getElementById("system-list");
+    const searchBox = document.getElementById("search-box");
+    const sortSelect = document.getElementById("sort-select");
 
-      const cover = document.createElement("div");
-      cover.className = "work-cover-wrapper";
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem("lang", lang);
+      renderLang();
+      renderSystems();
+    }
+
+    function getText(item, field) {
+      if (!item[field]) return "";
+      if (typeof item[field] === "string") return item[field];
+      return item[field][lang] || item[field].en || "";
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return "";
+      const d = new Date(dateStr);
+      if (Number.isNaN(d.getTime())) return dateStr;
+      if (lang === "zh") {
+        return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+      }
+      return d.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    function createFallbackImage() {
+      return "data:image/svg+xml;utf8," + encodeURIComponent(`
+        <svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'>
+          <rect width='900' height='600' fill='#161b22'/>
+          <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+            fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>
+            Research System
+          </text>
+        </svg>
+      `);
+    }
+
+    function createSystemEntry(item) {
+      const card = document.createElement("a");
+      card.className = "system-entry";
+      card.href = item.link || "#";
 
       const img = document.createElement("img");
-      img.className = "work-cover";
-      img.src = item.cover;
-      img.alt = item.title.en;
+      img.className = "system-entry-cover";
+      img.src = item.cover || createFallbackImage();
+      img.alt = getText(item, "title");
       img.onerror = function () {
-        this.src =
-          "data:image/svg+xml;utf8," +
-          encodeURIComponent(`
-            <svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'>
-              <rect width='800' height='500' fill='#161b22'/>
-              <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-                fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>
-                Cover not added yet
-              </text>
-            </svg>
-          `);
+        this.src = createFallbackImage();
       };
 
       const body = document.createElement("div");
-      body.className = "work-body";
+      body.className = "system-entry-body";
+
+      const top = document.createElement("div");
+
+      const meta = document.createElement("div");
+      meta.className = "system-entry-meta";
+
+      const chipDate = document.createElement("span");
+      chipDate.className = "system-chip";
+      chipDate.textContent = formatDate(item.date);
+
+      const chipStatus = document.createElement("span");
+      chipStatus.className = "system-chip";
+      chipStatus.textContent = getText(item, "status") || (lang === "zh" ? "未标记" : "Unmarked");
+
+      meta.appendChild(chipDate);
+      meta.appendChild(chipStatus);
 
       const title = document.createElement("h3");
-      title.className = "work-title";
-      title.textContent = item.title.en;
+      title.className = "system-entry-title";
+      title.textContent = getText(item, "title");
 
-      const desc = document.createElement("div");
-      desc.className = "work-desc";
-      desc.textContent = item.desc.en;
+      const desc = document.createElement("p");
+      desc.className = "system-entry-desc";
+      desc.textContent = getText(item, "desc");
 
-      cover.appendChild(img);
-      body.appendChild(title);
-      body.appendChild(desc);
-      card.appendChild(cover);
+      const category = document.createElement("div");
+      category.className = "system-entry-category";
+      category.textContent = `${lang === "zh" ? "分类" : "Category"}: ${getText(item, "category") || (lang === "zh" ? "待补充" : "To be added")}`;
+
+      const open = document.createElement("div");
+      open.className = "system-entry-link";
+      open.textContent = lang === "zh" ? "进入系统页 →" : "Open system page →";
+
+      top.appendChild(meta);
+      top.appendChild(title);
+      top.appendChild(desc);
+      top.appendChild(category);
+
+      body.appendChild(top);
+      body.appendChild(open);
+
+      card.appendChild(img);
       card.appendChild(body);
-
-      card.addEventListener("click", () => {
-        window.location.href = item.link;
-      });
 
       return card;
     }
 
-    ResearchSystems.forEach(item => {
-      grid.appendChild(createCard(item));
+    function sortWorks(data, mode) {
+      const copied = [...data];
+      if (mode === "alpha") {
+        return copied.sort((a, b) =>
+          getText(a, "title").localeCompare(getText(b, "title"), lang === "zh" ? "zh" : "en")
+        );
+      } else if (mode === "date-asc") {
+        return copied.sort((a, b) => new Date(a.date) - new Date(b.date));
+      } else {
+        return copied.sort((a, b) => new Date(b.date) - new Date(a.date));
+      }
+    }
+
+    function filterWorks(data, query) {
+      if (!query) return data;
+      const q = query.toLowerCase();
+      return data.filter(item => {
+        const title = getText(item, "title").toLowerCase();
+        const desc = getText(item, "desc").toLowerCase();
+        const category = getText(item, "category").toLowerCase();
+        const status = getText(item, "status").toLowerCase();
+        return title.includes(q) || desc.includes(q) || category.includes(q) || status.includes(q);
+      });
+    }
+
+    function renderSystems() {
+      list.innerHTML = "";
+
+      let data = [...ResearchSystems];
+      data = filterWorks(data, searchBox.value.trim());
+      data = sortWorks(data, sortSelect.value);
+
+      if (!data.length) {
+        const empty = document.createElement("div");
+        empty.className = "system-empty";
+        empty.textContent = lang === "zh" ? "没有匹配的研究页。" : "No matching research pages found.";
+        list.appendChild(empty);
+        return;
+      }
+
+      data.forEach(item => list.appendChild(createSystemEntry(item)));
+    }
+
+    function renderLang() {
+      const navLinks = document.getElementById("nav-links");
+      const navs = i18n[lang].nav;
+
+      navLinks.innerHTML = `
+        <a href="../../works.html">${navs[0]}</a>
+        <a href="../../writing.html">${navs[1]}</a>
+        <a href="../../projects.html">${navs[2]}</a>
+        <a href="../../about.html">${navs[3]}</a>
+        <a href="../../archive.html">${navs[4]}</a>
+      `;
+
+      document.getElementById("logo-text").textContent = i18n[lang].logo;
+      document.getElementById("lang-en").classList.toggle("active", lang === "en");
+      document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
+
+      document.getElementById("rs-hero-eyebrow").textContent =
+        lang === "zh" ? "项目 · 研究系统" : "Projects · Research Systems";
+
+      document.getElementById("rs-hero-title").textContent =
+        lang === "zh" ? "Research Systems" : "Research Systems";
+
+      document.getElementById("rs-hero-text").textContent =
+        lang === "zh"
+          ? "这是一个用于长期研究的结构化环境。这里把研究组织为主题、模块、方法与持续演化的工作线。"
+          : "A structured environment for long-term inquiry. This section organizes research as systems of themes, modules, methods, and evolving lines of work.";
+
+      document.getElementById("rs-overview-note").textContent =
+        lang === "zh" ? "概览" : "Overview";
+
+      document.getElementById("rs-overview-text").textContent =
+        lang === "zh"
+          ? "系统页不是讲一个单线故事，而是说明一个研究框架：研究什么、如何分块、各部分怎样随时间连接。"
+          : "Unlike a narrative project page, a research system describes a framework: what is being studied, how it is divided, and how its parts connect over time.";
+
+      document.getElementById("rs-structure-note").textContent =
+        lang === "zh" ? "系统结构" : "System Structure";
+
+      document.getElementById("rs-structure-title").textContent =
+        lang === "zh" ? "当前框架" : "Current Framework";
+
+      document.getElementById("rs-structure-side").textContent =
+        lang === "zh"
+          ? "这一层先展示系统本身，再列出其下的具体研究页面。"
+          : "This top layer presents the system itself before listing individual research pages beneath it.";
+
+      document.getElementById("rs-panel-1-title").textContent =
+        lang === "zh" ? "系统目的" : "System Intent";
+
+      document.getElementById("rs-panel-1-text").textContent =
+        lang === "zh"
+          ? "研究系统提供一个稳定的长期结构，使主题、方法与材料可以持续演化，同时保持整体连贯。"
+          : "The research system provides a stable structure for long-term inquiry, allowing topics, methods, and materials to evolve without losing coherence.";
+
+      document.getElementById("rs-panel-2-title").textContent =
+        lang === "zh" ? "核心模块" : "Core Modules";
+
+      document.getElementById("rs-module-1-title").textContent =
+        lang === "zh" ? "主题" : "Themes";
+      document.getElementById("rs-module-1-text").textContent =
+        lang === "zh" ? "核心问题、研究领域与概念方向。" : "Major questions, fields, and conceptual directions.";
+
+      document.getElementById("rs-module-2-title").textContent =
+        lang === "zh" ? "方法" : "Methods";
+      document.getElementById("rs-module-2-text").textContent =
+        lang === "zh" ? "分析路径、模型与研究程序。" : "Approaches, models, and analytical procedures.";
+
+      document.getElementById("rs-module-3-title").textContent =
+        lang === "zh" ? "材料" : "Materials";
+      document.getElementById("rs-module-3-text").textContent =
+        lang === "zh" ? "数据、文献、案例、笔记与参考资料。" : "Data, literature, cases, notes, and references.";
+
+      document.getElementById("rs-module-4-title").textContent =
+        lang === "zh" ? "输出" : "Outputs";
+      document.getElementById("rs-module-4-text").textContent =
+        lang === "zh" ? "论文、简报、图示与派生作品。" : "Papers, briefs, diagrams, and derived work.";
+
+      document.getElementById("rs-directory-note").textContent =
+        lang === "zh" ? "目录" : "Directory";
+
+      document.getElementById("rs-directory-title").textContent =
+        lang === "zh" ? "当前研究页面" : "Current Research Pages";
+
+      document.getElementById("rs-directory-side").textContent =
+        lang === "zh"
+          ? "这些条目是目前挂在这个研究系统里的活动页面。"
+          : "These entries are the active pages currently inside the research system.";
+
+      searchBox.placeholder = lang === "zh" ? "搜索研究页面..." : "Search research pages...";
+
+      sortSelect.innerHTML = `
+        <option value="date-desc">${lang === "zh" ? "最新" : "Newest"}</option>
+        <option value="date-asc">${lang === "zh" ? "最早" : "Oldest"}</option>
+        <option value="alpha">${lang === "zh" ? "按字母" : "A–Z"}</option>
+      `;
+
+      document.querySelector(".footer-inner p:first-child").textContent = i18n[lang].copyright;
+      document.querySelector(".footer-inner p:last-child").innerHTML = i18n[lang].copyright2;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("lang-en").onclick = () => setLang("en");
+      document.getElementById("lang-zh").onclick = () => setLang("zh");
+
+      searchBox.addEventListener("input", renderSystems);
+      sortSelect.addEventListener("change", renderSystems);
+
+      renderLang();
+      renderSystems();
     });
   </script>
 </body>
