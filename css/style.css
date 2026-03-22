@@ -553,6 +553,7 @@ const artisticCreationsWorks = [
   line-height: 1.6;
   color: var(--text-dim);
 }
+
 .essay-hero .essay-title {
   margin: 0;
   font-size: clamp(42px, 6vw, 72px);
