@@ -13,8 +13,8 @@ const TechnicalWorks = [
       zh: "策略"
     },
     tools: {
-      en: "Python · Freqtrade",
-      zh: "Python · Freqtrade"
+      en: "Python",
+      zh: "Python"
     },
     cover: "../../assets/images/works/technical-works/work-001/cover.jpg",
     link: "./work-001/index.html",
