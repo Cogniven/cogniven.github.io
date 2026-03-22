@@ -869,7 +869,7 @@ const artisticCreationsWorks = [
   transform: translateX(-50%);
   min-width: 220px;
   padding: 10px;
-  border: 1px solid rgba(255, 215, 160, 0.08);
+  border: 1px solid rgba(10, 3, 44, 0.08);
   border-radius: 14px;
   background: rgba(20, 16, 10, 0.92);
   backdrop-filter: blur(12px);
