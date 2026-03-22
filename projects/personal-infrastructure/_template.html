@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[SYSTEM PAGE TITLE] - Cogniven</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <style>
+        .system-cover {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: var(--bg-soft);
+        }
+
+        .system-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .system-meta-card {
+            border: 1px solid var(--line);
+            background: var(--bg-soft);
+            border-radius: 14px;
+            padding: 14px 16px;
+        }
+
+        .system-meta-card span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .system-meta-card strong {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .system-block {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .system-block-note {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding-top: 4px;
+        }
+
+        .system-block-content h2 {
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .system-block-content p {
+            line-height: 1.78;
+            color: var(--text-soft);
+        }
+
+        .system-module-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .system-module-card {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: var(--bg-soft);
+            padding: 18px;
+        }
+
+        .system-module-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.05rem;
+        }
+
+        .system-module-card p {
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 860px) {
+            .system-meta-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .system-block {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .system-module-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .system-meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a href="../../../index.html" class="logo">Cogniven</a>
+            <div class="nav-links">
+                <a href="../../../works.html">Works</a>
+                <a href="../../../writing.html">Writing</a>
+                <a href="../../../projects.html">Projects</a>
+                <a href="../../../about.html">About</a>
+                <a href="../../../archive.html">Archive</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container narrow">
+                <p class="eyebrow">Projects · Personal Infrastructure</p>
+                <h1>[SYSTEM PAGE TITLE]</h1>
+                <p class="hero-text">
+                    [ONE-LINE DESCRIPTION OF WHAT THIS PERSONAL SYSTEM IS ABOUT]
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow">
+                <img class="system-cover"
+                    src="../../../assets/images/projects/personal-infrastructure/[PROJECT-ID]/cover.jpg"
+                    alt="[SYSTEM COVER]" />
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow">
+                <div class="system-meta-grid">
+                    <div class="system-meta-card">
+                        <span>Field</span>
+                        <strong>[Workflow / Knowledge / Productivity / Tools]</strong>
+                    </div>
+                    <div class="system-meta-card">
+                        <span>Status</span>
+                        <strong>[Active / Developing / Archived]</strong>
+                    </div>
+                    <div class="system-meta-card">
+                        <span>Scope</span>
+                        <strong>[Long-term / Personal System / Ongoing]</strong>
+                    </div>
+                    <div class="system-meta-card">
+                        <span>Output</span>
+                        <strong>[Routines / Structures / Notes / Tools]</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section intro-band">
+            <div class="container narrow">
+                <p class="section-note">System Note</p>
+                <p class="lead-paragraph">
+                    [Briefly explain the overall purpose of this personal infrastructure, what holds it together, and
+                    why it exists as a long-term support system rather than a single isolated tool.]
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow system-block">
+                <div class="system-block-note">Focus</div>
+                <div class="system-block-content">
+                    <h2>System Focus</h2>
+                    <p>[What central need or pressure led to this system?]</p>
+                    <p>[What kind of work does it support over time?]</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow system-block">
+                <div class="system-block-note">Structure</div>
+                <div class="system-block-content">
+                    <h2>System Structure</h2>
+                    <div class="system-module-grid">
+                        <div class="system-module-card">
+                            <h3>[Module 01]</h3>
+                            <p>[Describe the first module.]</p>
+                        </div>
+                        <div class="system-module-card">
+                            <h3>[Module 02]</h3>
+                            <p>[Describe the second module.]</p>
+                        </div>
+                        <div class="system-module-card">
+                            <h3>[Module 03]</h3>
+                            <p>[Describe the third module.]</p>
+                        </div>
+                        <div class="system-module-card">
+                            <h3>[Module 04]</h3>
+                            <p>[Describe the fourth module.]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow system-block">
+                <div class="system-block-note">Materials</div>
+                <div class="system-block-content">
+                    <h2>Tools and Inputs</h2>
+                    <p>[What tools, files, habits, notes, or platforms feed into this system?]</p>
+                    <p>[How are they organized, maintained, or updated?]</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow system-block">
+                <div class="system-block-note">Direction</div>
+                <div class="system-block-content">
+                    <h2>Current Direction</h2>
+                    <p>[What is the system currently trying to improve?]</p>
+                    <p>[What is likely to be added, refined, or stabilized next?]</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 Cogniven. All rights reserved.</p>
+            <p>
+                The works presented on this site are original and protected by copyright.<br />
+                Unauthorized reproduction, distribution, or commercial use is prohibited.
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

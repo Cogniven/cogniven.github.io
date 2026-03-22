@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Workflow Infrastructure - Cogniven</title>
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <style>
+        .system-cover {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: var(--bg-soft);
+        }
+
+        .system-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .system-meta-card {
+            border: 1px solid var(--line);
+            background: var(--bg-soft);
+            border-radius: 14px;
+            padding: 14px 16px;
+        }
+
+        .system-meta-card span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .system-meta-card strong {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .system-block {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .system-block-note {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding-top: 4px;
+        }
+
+        .system-block-content h2 {
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .system-block-content p {
+            line-height: 1.78;
+            color: var(--text-soft);
+        }
+
+        .system-module-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .system-module-card {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: var(--bg-soft);
+            padding: 18px;
+        }
+
+        .system-module-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.05rem;
+        }
+
+        .system-module-card p {
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 860px) {
+            .system-meta-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .system-block {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .system-module-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .system-meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a href="../../../index.html" class="logo">Cogniven</a>
+            <div class="nav-links">
+                <a href="../../../works.html">Works</a>
+                <a href="../../../writing.html">Writing</a>
+                <a href="../../../projects.html">Projects</a>
+                <a href="../../../about.html">About</a>
+                <a href="../../../archive.html">Archive</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container narrow">
+                <p class="eyebrow">Projects · Personal Infrastructure</p>
+                <h1>Personal Workflow Infrastructure</h1>
+                <p class="hero-text">
+                    A long-term support system for tools, files, notes, and routines that keeps personal work stable,
+                    organized, and easier to maintain.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow">
+                <img class="system-cover"
+                    src="../../../assets/images/projects/personal-infrastructure/project-001/cover.jpg"
+                    alt="Personal Workflow Infrastructure cover"
+                    onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Personal Infrastructure Cover</text></svg>`)" />
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow">
+                <div class="system-meta-grid">
+                    <div class="system-meta-card">
+                        <span>Field</span>
+                        <strong>Workflow / Productivity</strong>
+                    </div>
+                    <div class="system-meta-card">
+                        <span>Status</span>
+                        <strong>Active</strong>
+                    </div>
+                    <div class="system-meta-card">
+                        <span>Scope</span>
+                        <strong>Long-term / Personal System</strong>
+                    </div>
+                    <div class="system-meta-card">
+                        <span>Output</span>
+                        <strong>Routines / Structures / Notes</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section intro-band">
+            <div class="container narrow">
+                <p class="section-note">System Note</p>
+                <p class="lead-paragraph">
+                    This page describes a support structure rather than a single tool. Its purpose is to reduce friction
+                    in daily work by aligning files, tools, notes, and routines into a more durable personal operating
+                    system.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow system-block">
+                <div class="system-block-note">Focus</div>
+                <div class="system-block-content">
+                    <h2>System Focus</h2>
+                    <p>
+                        The central pressure behind this system is fragmentation. When tools, notes, folders, and
+                        routines evolve separately, work becomes harder to retrieve, maintain, and repeat.
+                    </p>
+                    <p>
+                        This infrastructure exists to support long-term study, technical experimentation, writing, and
+                        project management without forcing each activity into a disconnected workflow.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow system-block">
+                <div class="system-block-note">Structure</div>
+                <div class="system-block-content">
+                    <h2>System Structure</h2>
+                    <div class="system-module-grid">
+                        <div class="system-module-card">
+                            <h3>Files</h3>
+                            <p>
+                                Directory structure, naming logic, version control, and storage discipline.
+                            </p>
+                        </div>
+                        <div class="system-module-card">
+                            <h3>Tools</h3>
+                            <p>
+                                Editors, scripts, local environments, and technical utilities used in daily work.
+                            </p>
+                        </div>
+                        <div class="system-module-card">
+                            <h3>Notes</h3>
+                            <p>
+                                Working notes, references, draft structures, and searchable knowledge materials.
+                            </p>
+                        </div>
+                        <div class="system-module-card">
+                            <h3>Routines</h3>
+                            <p>
+                                Repeated processes for building, revising, testing, and maintaining work.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow system-block">
+                <div class="system-block-note">Materials</div>
+                <div class="system-block-content">
+                    <h2>Tools and Inputs</h2>
+                    <p>
+                        The system is fed by local files, writing drafts, project folders, web assets, code
+                        repositories, and recurring maintenance habits. These are not treated as isolated resources but
+                        as parts of one operating environment.
+                    </p>
+                    <p>
+                        Inputs are organized through folder structure, naming rules, reusable templates, and a growing
+                        logic for how different forms of work connect to each other.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow system-block">
+                <div class="system-block-note">Direction</div>
+                <div class="system-block-content">
+                    <h2>Current Direction</h2>
+                    <p>
+                        The current direction is to improve consistency across page templates, asset management, and
+                        workflow logic so that technical, academic, and creative work can all be maintained inside one
+                        coherent structure.
+                    </p>
+                    <p>
+                        Next steps include stronger automation, cleaner naming conventions, and a more stable relation
+                        between project pages, image assets, and reusable templates.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 Cogniven. All rights reserved.</p>
+            <p>
+                The works presented on this site are original and protected by copyright.<br />
+                Unauthorized reproduction, distribution, or commercial use is prohibited.
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
