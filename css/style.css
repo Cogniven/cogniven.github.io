@@ -516,23 +516,7 @@ const artisticCreationsWorks = [
 .works-grid {
   display: grid;
   gap: 20px;
-
-  /* 默认：桌面 5列 */
-  grid-template-columns: repeat(5, 1fr);
-}
-
-/* 平板 */
-@media (max-width: 1024px) {
-  .works-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* 手机 */
-@media (max-width: 640px) {
-  .works-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
 .work-card {
