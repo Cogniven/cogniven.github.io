@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notes - Cogniven</title>
+  <title>Essays - Cogniven</title>
   <link rel="stylesheet" href="../../css/style.css" />
   <style>
-    .notes-shell {
+    .essay-index-shell {
       max-width: 860px;
       margin: 0 auto;
     }
 
-    .notes-intro {
-      max-width: 700px;
+    .essay-intro {
+      max-width: 720px;
     }
 
-    .notes-controls {
+    .essay-controls {
       display: flex;
       gap: 16px;
       align-items: center;
-      margin: 30px 0 34px;
+      margin: 32px 0 36px;
       flex-wrap: wrap;
     }
 
-    .notes-search,
-    .notes-sort {
+    .essay-search,
+    .essay-sort {
       border: 1px solid var(--line);
       background: var(--bg-soft);
       color: var(--text);
@@ -33,84 +33,76 @@
       font: inherit;
     }
 
-    .notes-search {
+    .essay-search {
       flex: 1;
       min-width: 220px;
     }
 
-    .notes-sort {
+    .essay-sort {
       min-width: 140px;
     }
 
-    .notes-list {
+    .essay-list {
       display: flex;
       flex-direction: column;
       gap: 0;
       border-top: 1px solid var(--line);
     }
 
-    .note-item {
+    .essay-item {
       display: block;
       text-decoration: none;
       color: inherit;
-      padding: 26px 0;
+      padding: 28px 0;
       border-bottom: 1px solid var(--line);
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
-    .note-item:hover {
+    .essay-item:hover {
+      opacity: 0.94;
       transform: translateY(-1px);
-      opacity: 0.95;
     }
 
-    .note-date {
-      font-size: 0.86rem;
+    .essay-meta {
+      font-size: 0.88rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 10px;
     }
 
-    .note-title {
-      font-size: clamp(1.2rem, 2vw, 1.5rem);
-      line-height: 1.25;
-      margin: 0 0 10px;
+    .essay-title {
+      font-size: clamp(1.45rem, 2.4vw, 2rem);
+      line-height: 1.2;
+      margin: 0 0 12px;
     }
 
-    .note-desc {
+    .essay-desc {
+      max-width: 720px;
       color: var(--text-soft);
-      line-height: 1.72;
-      margin: 0 0 12px;
-      max-width: 720px;
+      line-height: 1.75;
+      margin: 0 0 14px;
     }
 
-    .note-preview {
-      color: var(--muted);
-      line-height: 1.72;
-      margin: 0 0 12px;
-      max-width: 720px;
-      font-style: italic;
-    }
-
-    .note-read {
-      font-size: 0.94rem;
+    .essay-read {
+      font-size: 0.95rem;
       color: var(--accent, var(--text));
     }
 
-    .notes-empty {
+    .essay-empty {
       padding: 28px 0;
       color: var(--muted);
       border-bottom: 1px solid var(--line);
     }
 
     @media (max-width: 720px) {
-      .notes-controls {
+      .essay-controls {
         flex-direction: column;
         align-items: stretch;
       }
 
-      .notes-search,
-      .notes-sort {
+      .essay-search,
+      .essay-sort {
         width: 100%;
       }
     }
@@ -138,46 +130,46 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-inner notes-shell">
-        <p class="eyebrow" id="notes-hero-eyebrow">Writing · Notes</p>
-        <h1 id="notes-hero-title">Notes</h1>
-        <p class="hero-text notes-intro" id="notes-hero-text">
-          Short texts, fragments, and compact observations. This section is designed for quick expression rather than extended argument.
+      <div class="container hero-inner essay-index-shell">
+        <p class="eyebrow" id="essays-hero-eyebrow">Writing · Essays</p>
+        <h1 id="essays-hero-title">Essays</h1>
+        <p class="hero-text essay-intro" id="essays-hero-text">
+          A reading-oriented collection of extended writing, arguments, and structured reflection.
         </p>
       </div>
     </section>
 
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note" id="notes-overview-note">Overview</p>
-        <p class="lead-paragraph" id="notes-overview-text">
-          These pieces are brief by design. They do not aim for full closure, only for clarity in a small space.
+        <p class="section-note" id="essays-overview-note">Overview</p>
+        <p class="lead-paragraph" id="essays-overview-text">
+          This section is organized for reading. Each entry leads to a full essay page with a narrow text column and a sectional structure.
         </p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container notes-shell">
+      <div class="container essay-index-shell">
         <div class="section-head">
           <div>
-            <p class="section-note" id="notes-selection-note">Selection</p>
-            <h2 id="notes-selection-title">Current Notes</h2>
+            <p class="section-note" id="essays-selection-note">Selection</p>
+            <h2 id="essays-selection-title">Current Essays</h2>
           </div>
-          <p class="section-side-text" id="notes-selection-side">
-            Each entry contains a title, a short description, and a small textual fragment before opening the full note.
+          <p class="section-side-text" id="essays-selection-side">
+            The directory emphasizes title, date, and summary rather than visual presentation.
           </p>
         </div>
 
-        <div class="notes-controls">
-          <input id="search-box" class="notes-search" type="text" placeholder="Search notes..." />
-          <select id="sort-select" class="notes-sort">
+        <div class="essay-controls">
+          <input id="search-box" class="essay-search" type="text" placeholder="Search essays..." />
+          <select id="sort-select" class="essay-sort">
             <option value="date-desc">Newest</option>
             <option value="date-asc">Oldest</option>
             <option value="alpha">A–Z</option>
           </select>
         </div>
 
-        <div id="notes-list" class="notes-list"></div>
+        <div id="essay-list" class="essay-list"></div>
       </div>
     </section>
   </main>
@@ -193,25 +185,19 @@
   </footer>
 
   <script src="../../js/i18n.js"></script>
-  <script src="../../js/notes.js"></script>
+  <script src="../../js/essays.js"></script>
   <script>
-    let lang = localStorage.getItem("lang") || "en";
+    let lang = localStorage.getItem('lang') || 'en';
 
-    const list = document.getElementById("notes-list");
+    const list = document.getElementById("essay-list");
     const searchBox = document.getElementById("search-box");
     const sortSelect = document.getElementById("sort-select");
 
     function setLang(newLang) {
       lang = newLang;
-      localStorage.setItem("lang", lang);
+      localStorage.setItem('lang', lang);
       renderLang();
-      renderNotes();
-    }
-
-    function getText(item, field) {
-      if (!item[field]) return "";
-      if (typeof item[field] === "string") return item[field];
-      return item[field][lang] || item[field].en || "";
+      renderEssays();
     }
 
     function formatDate(dateStr) {
@@ -230,40 +216,36 @@
       });
     }
 
-    function truncateText(text, maxLength = 120) {
-      if (!text) return "";
-      return text.length > maxLength ? text.slice(0, maxLength).trim() + "..." : text;
+    function getText(item, field) {
+      if (!item[field]) return "";
+      if (typeof item[field] === "string") return item[field];
+      return item[field][lang] || item[field].en || "";
     }
 
-    function createNoteItem(item) {
+    function createEssayItem(item) {
       const entry = document.createElement("a");
-      entry.className = "note-item";
+      entry.className = "essay-item";
       entry.href = item.link || "#";
 
-      const date = document.createElement("div");
-      date.className = "note-date";
-      date.textContent = formatDate(item.date);
+      const meta = document.createElement("div");
+      meta.className = "essay-meta";
+      meta.textContent = `${formatDate(item.date)} · ${getText(item, "category") || (lang === "zh" ? "文章" : "Essay")}`;
 
       const title = document.createElement("h3");
-      title.className = "note-title";
+      title.className = "essay-title";
       title.textContent = getText(item, "title");
 
       const desc = document.createElement("p");
-      desc.className = "note-desc";
+      desc.className = "essay-desc";
       desc.textContent = getText(item, "desc");
 
-      const preview = document.createElement("p");
-      preview.className = "note-preview";
-      preview.textContent = truncateText(getText(item, "text"), 140);
-
       const read = document.createElement("div");
-      read.className = "note-read";
-      read.textContent = lang === "zh" ? "进入短文 →" : "Open note →";
+      read.className = "essay-read";
+      read.textContent = lang === "zh" ? "进入阅读 →" : "Read essay →";
 
-      entry.appendChild(date);
+      entry.appendChild(meta);
       entry.appendChild(title);
       entry.appendChild(desc);
-      entry.appendChild(preview);
       entry.appendChild(read);
 
       return entry;
@@ -289,31 +271,33 @@
       return data.filter(item => {
         const title = getText(item, "title").toLowerCase();
         const desc = getText(item, "desc").toLowerCase();
-        const text = getText(item, "text").toLowerCase();
-        return title.includes(q) || desc.includes(q) || text.includes(q);
+        const category = getText(item, "category").toLowerCase();
+        return title.includes(q) || desc.includes(q) || category.includes(q);
       });
     }
 
-    function renderNotes() {
+    function renderEssays() {
       list.innerHTML = "";
 
-      let data = [...Notes];
+      let data = [...Essays];
       data = filterWorks(data, searchBox.value.trim());
       data = sortWorks(data, sortSelect.value);
 
       if (!data.length) {
         const empty = document.createElement("div");
-        empty.className = "notes-empty";
-        empty.textContent = lang === "zh" ? "没有匹配的短文。" : "No matching notes found.";
+        empty.className = "essay-empty";
+        empty.textContent = lang === "zh" ? "没有匹配的文章。" : "No matching essays found.";
         list.appendChild(empty);
         return;
       }
 
-      data.forEach(item => list.appendChild(createNoteItem(item)));
+      data.forEach(item => {
+        list.appendChild(createEssayItem(item));
+      });
     }
 
     function renderLang() {
-      const navLinks = document.getElementById("nav-links");
+      const navLinks = document.getElementById('nav-links');
       const navs = i18n[lang].nav;
 
       navLinks.innerHTML = `
@@ -324,61 +308,61 @@
         <a href="../../archive.html">${navs[4]}</a>
       `;
 
-      document.getElementById("logo-text").textContent = i18n[lang].logo;
-      document.getElementById("lang-en").classList.toggle("active", lang === "en");
-      document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
+      document.getElementById('logo-text').textContent = i18n[lang].logo;
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
 
-      document.getElementById("notes-hero-eyebrow").textContent =
-        lang === "zh" ? "写作 · Notes" : "Writing · Notes";
+      document.getElementById('essays-hero-eyebrow').textContent =
+        lang === 'zh' ? '写作 · Essays' : 'Writing · Essays';
 
-      document.getElementById("notes-hero-title").textContent =
-        lang === "zh" ? "Notes" : "Notes";
+      document.getElementById('essays-hero-title').textContent =
+        lang === 'zh' ? 'Essays' : 'Essays';
 
-      document.getElementById("notes-hero-text").textContent =
-        lang === "zh"
-          ? "这里收录短文本、片段与简短观察。重点是快速表达，而不是展开成长篇论证。"
-          : "Short texts, fragments, and compact observations. This section is designed for quick expression rather than extended argument.";
+      document.getElementById('essays-hero-text').textContent =
+        lang === 'zh'
+          ? '这里收录较长的写作、论证与结构化思考，页面以阅读为优先。'
+          : 'A reading-oriented collection of extended writing, arguments, and structured reflection.';
 
-      document.getElementById("notes-overview-note").textContent =
-        lang === "zh" ? "概览" : "Overview";
+      document.getElementById('essays-overview-note').textContent =
+        lang === 'zh' ? '概览' : 'Overview';
 
-      document.getElementById("notes-overview-text").textContent =
-        lang === "zh"
-          ? "这些文本本来就很短。它们不追求完整闭合，只追求在小尺度内说清楚。"
-          : "These pieces are brief by design. They do not aim for full closure, only for clarity in a small space.";
+      document.getElementById('essays-overview-text').textContent =
+        lang === 'zh'
+          ? '这一部分按阅读逻辑组织。每个条目都会进入一个窄版心、分节清晰的完整文章页。'
+          : 'This section is organized for reading. Each entry leads to a full essay page with a narrow text column and a sectional structure.';
 
-      document.getElementById("notes-selection-note").textContent =
-        lang === "zh" ? "目录" : "Selection";
+      document.getElementById('essays-selection-note').textContent =
+        lang === 'zh' ? '目录' : 'Selection';
 
-      document.getElementById("notes-selection-title").textContent =
-        lang === "zh" ? "当前短文" : "Current Notes";
+      document.getElementById('essays-selection-title').textContent =
+        lang === 'zh' ? '当前文章' : 'Current Essays';
 
-      document.getElementById("notes-selection-side").textContent =
-        lang === "zh"
-          ? "每个条目展示标题、简短说明与一句文本预览，然后进入完整短文页。"
-          : "Each entry contains a title, a short description, and a small textual fragment before opening the full note.";
+      document.getElementById('essays-selection-side').textContent =
+        lang === 'zh'
+          ? '这个目录优先展示标题、日期与摘要，而不是视觉封面。'
+          : 'The directory emphasizes title, date, and summary rather than visual presentation.';
 
-      searchBox.placeholder = lang === "zh" ? "搜索短文..." : "Search notes...";
+      searchBox.placeholder = lang === 'zh' ? '搜索文章...' : 'Search essays...';
 
       sortSelect.innerHTML = `
-        <option value="date-desc">${lang === "zh" ? "最新" : "Newest"}</option>
-        <option value="date-asc">${lang === "zh" ? "最早" : "Oldest"}</option>
-        <option value="alpha">${lang === "zh" ? "按字母" : "A–Z"}</option>
+        <option value="date-desc">${lang === 'zh' ? '最新' : 'Newest'}</option>
+        <option value="date-asc">${lang === 'zh' ? '最早' : 'Oldest'}</option>
+        <option value="alpha">${lang === 'zh' ? '按字母' : 'A–Z'}</option>
       `;
 
-      document.querySelector(".footer-inner p:first-child").textContent = i18n[lang].copyright;
-      document.querySelector(".footer-inner p:last-child").innerHTML = i18n[lang].copyright2;
+      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
+      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementById("lang-en").onclick = () => setLang("en");
-      document.getElementById("lang-zh").onclick = () => setLang("zh");
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
 
-      searchBox.addEventListener("input", renderNotes);
-      sortSelect.addEventListener("change", renderNotes);
+      searchBox.addEventListener('input', renderEssays);
+      sortSelect.addEventListener('change', renderEssays);
 
       renderLang();
-      renderNotes();
+      renderEssays();
     });
   </script>
 </body>
