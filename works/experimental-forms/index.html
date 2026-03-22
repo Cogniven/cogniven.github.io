@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experimental Forms - Cogniven</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    .log-index-shell {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .log-index-intro {
+      max-width: 760px;
+    }
+
+    .log-controls {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin: 28px 0 32px;
+      flex-wrap: wrap;
+    }
+
+    .log-search,
+    .log-sort {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font: inherit;
+    }
+
+    .log-search {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .log-sort {
+      min-width: 150px;
+    }
+
+    .log-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .log-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 20px;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--bg-soft);
+      overflow: hidden;
+      transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+    }
+
+    .log-card:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .log-card-cover {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #161b22;
+    }
+
+    .log-card-body {
+      padding: 18px 18px 18px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .log-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .log-chip {
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 9px;
+    }
+
+    .log-card-title {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      line-height: 1.2;
+      margin: 0 0 10px;
+    }
+
+    .log-card-desc {
+      color: var(--text-soft);
+      line-height: 1.72;
+      margin: 0 0 14px;
+      max-width: 760px;
+    }
+
+    .log-card-field {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .log-card-link {
+      font-size: 0.95rem;
+      color: var(--accent, var(--text));
+    }
+
+    .log-empty {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      color: var(--muted);
+      background: var(--bg-soft);
+    }
+
+    @media (max-width: 720px) {
+      .log-card {
+        grid-template-columns: 1fr;
+      }
+
+      .log-card-body {
+        padding: 16px;
+      }
+
+      .log-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .log-search,
+      .log-sort {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+          <a href="../../works.html">Works</a>
+          <a href="../../writing.html">Writing</a>
+          <a href="../../projects.html">Projects</a>
+          <a href="../../about.html">About</a>
+          <a href="../../archive.html">Archive</a>
+        </div>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner log-index-shell">
+        <p class="eyebrow" id="ef-hero-eyebrow">Works · Experimental Forms</p>
+        <h1 id="ef-hero-title">Experimental Forms</h1>
+        <p class="hero-text log-index-intro" id="ef-hero-text">
+          A directory of process-based experiments, iterations, and unfinished formal studies. The emphasis here is not on finality, but on variation, revision, and movement over time.
+        </p>
+      </div>
+    </section>
+
+    <section class="section intro-band">
+      <div class="container narrow">
+        <p class="section-note" id="ef-overview-note">Overview</p>
+        <p class="lead-paragraph" id="ef-overview-text">
+          This section records experimental work as a sequence of attempts. Each entry is structured as a log rather than a finished showcase.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container log-index-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-note" id="ef-selection-note">Log Directory</p>
+            <h2 id="ef-selection-title">Current Experiments</h2>
+          </div>
+          <p class="section-side-text" id="ef-selection-side">
+            Each entry highlights date, status, field, and a short process note before linking to the full experiment page.
+          </p>
+        </div>
+
+        <div class="log-controls">
+          <input id="search-box" class="log-search" type="text" placeholder="Search experiments..." />
+          <select id="sort-select" class="log-sort">
+            <option value="date-desc">Newest</option>
+            <option value="date-asc">Oldest</option>
+            <option value="alpha">A–Z</option>
+          </select>
+        </div>
+
+        <div id="log-list" class="log-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Cogniven. All rights reserved.</p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br>
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/experimentalForms.js"></script>
+  <script>
+    let lang = localStorage.getItem("lang") || "en";
+
+    const list = document.getElementById("log-list");
+    const searchBox = document.getElementById("search-box");
+    const sortSelect = document.getElementById("sort-select");
+
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem("lang", lang);
+      renderLang();
+      renderLogs();
+    }
+
+    function getText(item, field) {
+      if (!item[field]) return "";
+      if (typeof item[field] === "string") return item[field];
+      return item[field][lang] || item[field].en || "";
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return "";
+      const d = new Date(dateStr);
+      if (Number.isNaN(d.getTime())) return dateStr;
+
+      if (lang === "zh") {
+        return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+      }
+
+      return d.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    function createFallbackImage() {
+      return "data:image/svg+xml;utf8," + encodeURIComponent(`
+        <svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'>
+          <rect width='900' height='600' fill='#161b22'/>
+          <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+            fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>
+            Experimental Cover
+          </text>
+        </svg>
+      `);
+    }
+
+    function createLogCard(item) {
+      const card = document.createElement("a");
+      card.className = "log-card";
+      card.href = item.link || "#";
+
+      const img = document.createElement("img");
+      img.className = "log-card-cover";
+      img.src = item.cover || createFallbackImage();
+      img.alt = getText(item, "title");
+      img.onerror = function () {
+        this.src = createFallbackImage();
+      };
+
+      const body = document.createElement("div");
+      body.className = "log-card-body";
+
+      const top = document.createElement("div");
+
+      const meta = document.createElement("div");
+      meta.className = "log-card-meta";
+
+      const chipDate = document.createElement("span");
+      chipDate.className = "log-chip";
+      chipDate.textContent = formatDate(item.date);
+
+      const chipStatus = document.createElement("span");
+      chipStatus.className = "log-chip";
+      chipStatus.textContent = getText(item, "status") || (lang === "zh" ? "未标记" : "Unmarked");
+
+      meta.appendChild(chipDate);
+      meta.appendChild(chipStatus);
+
+      const title = document.createElement("h3");
+      title.className = "log-card-title";
+      title.textContent = getText(item, "title");
+
+      const desc = document.createElement("p");
+      desc.className = "log-card-desc";
+      desc.textContent = getText(item, "desc");
+
+      const field = document.createElement("div");
+      field.className = "log-card-field";
+      field.textContent = `${lang === "zh" ? "领域" : "Field"}: ${getText(item, "field") || (lang === "zh" ? "待补充" : "To be added")}`;
+
+      const open = document.createElement("div");
+      open.className = "log-card-link";
+      open.textContent = lang === "zh" ? "打开实验档案 →" : "Open experiment log →";
+
+      top.appendChild(meta);
+      top.appendChild(title);
+      top.appendChild(desc);
+      top.appendChild(field);
+
+      body.appendChild(top);
+      body.appendChild(open);
+
+      card.appendChild(img);
+      card.appendChild(body);
+
+      return card;
+    }
+
+    function sortWorks(data, mode) {
+      const copied = [...data];
+      if (mode === "alpha") {
+        return copied.sort((a, b) =>
+          getText(a, "title").localeCompare(getText(b, "title"), lang === "zh" ? "zh" : "en")
+        );
+      } else if (mode === "date-asc") {
+        return copied.sort((a, b) => new Date(a.date) - new Date(b.date));
+      } else {
+        return copied.sort((a, b) => new Date(b.date) - new Date(a.date));
+      }
+    }
+
+    function filterWorks(data, query) {
+      if (!query) return data;
+      const q = query.toLowerCase();
+
+      return data.filter(item => {
+        const title = getText(item, "title").toLowerCase();
+        const desc = getText(item, "desc").toLowerCase();
+        const status = getText(item, "status").toLowerCase();
+        const field = getText(item, "field").toLowerCase();
+        return title.includes(q) || desc.includes(q) || status.includes(q) || field.includes(q);
+      });
+    }
+
+    function renderLogs() {
+      list.innerHTML = "";
+
+      let data = [...ExperimentalForms];
+      data = filterWorks(data, searchBox.value.trim());
+      data = sortWorks(data, sortSelect.value);
+
+      if (!data.length) {
+        const empty = document.createElement("div");
+        empty.className = "log-empty";
+        empty.textContent = lang === "zh" ? "没有匹配的实验。" : "No matching experiments found.";
+        list.appendChild(empty);
+        return;
+      }
+
+      data.forEach(item => list.appendChild(createLogCard(item)));
+    }
+
+    function renderLang() {
+      const navLinks = document.getElementById("nav-links");
+      const navs = i18n[lang].nav;
+
+      navLinks.innerHTML = `
+        <a href="../../works.html">${navs[0]}</a>
+        <a href="../../writing.html">${navs[1]}</a>
+        <a href="../../projects.html">${navs[2]}</a>
+        <a href="../../about.html">${navs[3]}</a>
+        <a href="../../archive.html">${navs[4]}</a>
+      `;
+
+      document.getElementById("logo-text").textContent = i18n[lang].logo;
+      document.getElementById("lang-en").classList.toggle("active", lang === "en");
+      document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
+
+      document.getElementById("ef-hero-eyebrow").textContent =
+        lang === "zh" ? "作品 · 实验形式" : "Works · Experimental Forms";
+
+      document.getElementById("ef-hero-title").textContent =
+        lang === "zh" ? "Experimental Forms" : "Experimental Forms";
+
+      document.getElementById("ef-hero-text").textContent =
+        lang === "zh"
+          ? "这里收录以过程为核心的实验、迭代与未完成的形式探索。重点不在于定稿，而在于变化、修订与时间中的移动。"
+          : "A directory of process-based experiments, iterations, and unfinished formal studies. The emphasis here is not on finality, but on variation, revision, and movement over time.";
+
+      document.getElementById("ef-overview-note").textContent =
+        lang === "zh" ? "概览" : "Overview";
+
+      document.getElementById("ef-overview-text").textContent =
+        lang === "zh"
+          ? "这一部分把实验性工作记录为一连串尝试。每个条目都被组织成档案，而不是完成品展示。"
+          : "This section records experimental work as a sequence of attempts. Each entry is structured as a log rather than a finished showcase.";
+
+      document.getElementById("ef-selection-note").textContent =
+        lang === "zh" ? "实验目录" : "Log Directory";
+
+      document.getElementById("ef-selection-title").textContent =
+        lang === "zh" ? "当前实验" : "Current Experiments";
+
+      document.getElementById("ef-selection-side").textContent =
+        lang === "zh"
+          ? "每个条目先展示日期、状态、领域与简短说明，再进入完整实验页。"
+          : "Each entry highlights date, status, field, and a short process note before linking to the full experiment page.";
+
+      searchBox.placeholder = lang === "zh" ? "搜索实验..." : "Search experiments...";
+
+      sortSelect.innerHTML = `
+        <option value="date-desc">${lang === "zh" ? "最新" : "Newest"}</option>
+        <option value="date-asc">${lang === "zh" ? "最早" : "Oldest"}</option>
+        <option value="alpha">${lang === "zh" ? "按字母" : "A–Z"}</option>
+      `;
+
+      document.querySelector(".footer-inner p:first-child").textContent = i18n[lang].copyright;
+      document.querySelector(".footer-inner p:last-child").innerHTML = i18n[lang].copyright2;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("lang-en").onclick = () => setLang("en");
+      document.getElementById("lang-zh").onclick = () => setLang("zh");
+
+      searchBox.addEventListener("input", renderLogs);
+      sortSelect.addEventListener("change", renderLogs);
+
+      renderLang();
+      renderLogs();
+    });
+  </script>
+</body>
+</html>
