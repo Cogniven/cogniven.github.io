@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects - Cogniven</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
   <header class="site-header">
     <nav class="nav">
@@ -32,7 +34,8 @@
         <p class="eyebrow" id="projects-hero-eyebrow">Projects</p>
         <h1 id="projects-hero-title">Ongoing work,<br />still in formation.</h1>
         <p class="hero-text" id="projects-hero-text">
-          Projects collect what is active, unfinished, or still being shaped — systems under construction, experiments in progress, and structures not yet settled into final form.
+          Projects collect what is active, unfinished, or still being shaped — systems under construction, experiments
+          in progress, and structures not yet settled into final form.
         </p>
       </div>
     </section>
@@ -41,7 +44,8 @@
       <div class="container narrow">
         <p class="section-note" id="projects-editorial">Editorial Note</p>
         <p class="lead-paragraph" id="projects-lead">
-          Unlike works, projects remain open. Their value often lies not only in outcome, but in direction, method, and change over time.
+          Unlike works, projects remain open. Their value often lies not only in outcome, but in direction, method, and
+          change over time.
         </p>
       </div>
     </section>
@@ -58,24 +62,25 @@
           </p>
         </div>
 
-        
-          <a class="feature-card" href="./projects/research-systems/index.html">
+
+        <div class="feature-grid">
+          <a class="feature-card" href="projects/research-systems/index.html">
             <span class="card-index">01</span>
             <h3 id="projects-research">Research Systems</h3>
             <p id="projects-research-desc">
               Structured inquiry, evolving frameworks, and material built for long-term use.
             </p>
           </a>
-        
-          <div class="feature-card">
+
+          <a class="feature-card" href="projects/technical-builds/index.html">
             <span class="card-index">02</span>
             <h3 id="projects-technical">Technical Builds</h3>
             <p id="projects-technical-desc">
               Code-based systems, tools, interfaces, and implementation experiments.
             </p>
-          </div>
+          </a>
 
-          <a class="feature-card" href="./projects/creative-development/index.html">
+          <a class="feature-card" href="projects/creative-development/index.html">
             <span class="card-index">03</span>
             <h3 id="projects-creative">Creative Development</h3>
             <p id="projects-creative-desc">
@@ -83,25 +88,26 @@
             </p>
           </a>
 
-          <div class="feature-card">
+          <a class="feature-card" href="projects/personal-infrastructure/index.html">
             <span class="card-index">04</span>
             <h3 id="projects-personal">Personal Infrastructure</h3>
             <p id="projects-personal-desc">
               Systems and tools for personal productivity, knowledge, and workflow.
             </p>
-          </div>
+          </a>
         </div>
+      </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-        <p>© 2026 Cogniven. All rights reserved.</p>
-        <p>
-          The works presented on this site are original and protected by copyright.<br>
-          Unauthorized reproduction, distribution, or commercial use is prohibited.
-        </p>
+      <p>© 2026 Cogniven. All rights reserved.</p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br>
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
     </div>
   </footer>
   <script src="js/i18n.js"></script>
@@ -112,7 +118,7 @@
       localStorage.setItem('lang', lang);
       renderLang();
     }
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       lang = localStorage.getItem('lang') || 'en';
       document.getElementById('lang-en').onclick = () => setLang('en');
       document.getElementById('lang-zh').onclick = () => setLang('zh');
@@ -154,4 +160,5 @@
     }
   </script>
 </body>
+
 </html>
