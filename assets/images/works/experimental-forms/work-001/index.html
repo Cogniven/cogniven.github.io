@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generative Poster Study - Cogniven</title>
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <style>
+    .log-cover,
+    .log-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .log-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .log-meta-card {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .log-meta-card span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .log-meta-card strong {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .log-block {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .log-block-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-top: 4px;
+    }
+
+    .log-block-content h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    .log-block-content p {
+      line-height: 1.78;
+      color: var(--text-soft);
+    }
+
+    .iteration-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .iteration-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--bg-soft);
+      padding: 18px;
+    }
+
+    .iteration-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .iteration-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .iteration-card p {
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .log-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .log-block {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .log-meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="../../../index.html" class="logo">Cogniven</a>
+      <div class="nav-links">
+        <a href="../../../works.html">Works</a>
+        <a href="../../../writing.html">Writing</a>
+        <a href="../../../projects.html">Projects</a>
+        <a href="../../../about.html">About</a>
+        <a href="../../../archive.html">Archive</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container narrow">
+        <p class="eyebrow">Works · Experimental Forms</p>
+        <h1>Generative Poster Study</h1>
+        <p class="hero-text">
+          A process log exploring layered composition, distortion, and typographic rhythm through iterative poster experiments.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <img
+          class="log-cover"
+          src="../../../assets/images/works/experimental-forms/work-001/cover.jpg"
+          alt="Generative Poster Study cover"
+          onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Cover not added yet</text></svg>`)"
+        />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <div class="log-meta-grid">
+          <div class="log-meta-card">
+            <span>Date</span>
+            <strong>2026</strong>
+          </div>
+          <div class="log-meta-card">
+            <span>Status</span>
+            <strong>Ongoing</strong>
+          </div>
+          <div class="log-meta-card">
+            <span>Field</span>
+            <strong>Visual Experiment</strong>
+          </div>
+          <div class="log-meta-card">
+            <span>Mode</span>
+            <strong>Study</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-band">
+      <div class="container narrow">
+        <p class="section-note">Experiment Note</p>
+        <p class="lead-paragraph">
+          This experiment began as an attempt to test whether layered type, unstable alignment, and partial distortion could produce a coherent visual rhythm rather than noise.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow log-block">
+        <div class="log-block-note">Intent</div>
+        <div class="log-block-content">
+          <h2>Starting Point</h2>
+          <p>
+            The initial question was simple: how far can a poster move away from stable grid logic before it loses internal coherence?
+          </p>
+          <p>
+            The study focused less on producing a final poster and more on observing how variation, density, and disruption affect legibility and tension.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow log-block">
+        <div class="log-block-note">Iterations</div>
+        <div class="log-block-content">
+          <h2>Iteration Log</h2>
+
+          <div class="iteration-stack">
+            <article class="iteration-card">
+              <div class="iteration-label">Version 01</div>
+              <h3>Initial Structure Test</h3>
+              <p>
+                The first version stayed relatively close to a readable composition, using a central block and limited distortion as a baseline.
+              </p>
+              <img
+                class="log-image"
+                src="../../../assets/images/works/experimental-forms/work-001/iteration-01.jpg"
+                alt="Iteration 01"
+                onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Iteration 01</text></svg>`)"
+              />
+            </article>
+
+            <article class="iteration-card">
+              <div class="iteration-label">Version 02</div>
+              <h3>Density and Misalignment</h3>
+              <p>
+                The second version pushed overlapping text and broken alignment further, increasing friction while testing whether the layout could still hold together.
+              </p>
+              <img
+                class="log-image"
+                src="../../../assets/images/works/experimental-forms/work-001/iteration-02.jpg"
+                alt="Iteration 02"
+                onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Iteration 02</text></svg>`)"
+              />
+            </article>
+
+            <article class="iteration-card">
+              <div class="iteration-label">Version 03</div>
+              <h3>Controlled Disruption</h3>
+              <p>
+                The third version reduced some visual noise and shifted toward more deliberate contrast, creating a clearer tension between control and breakage.
+              </p>
+              <img
+                class="log-image"
+                src="../../../assets/images/works/experimental-forms/work-001/iteration-03.jpg"
+                alt="Iteration 03"
+                onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Iteration 03</text></svg>`)"
+              />
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow log-block">
+        <div class="log-block-note">Observations</div>
+        <div class="log-block-content">
+          <h2>What Emerged</h2>
+          <p>
+            The most useful finding was that disruption becomes more effective when it is locally concentrated rather than globally applied. Total instability reduced tension instead of increasing it.
+          </p>
+          <p>
+            Another observation was that typographic rhythm depended less on symmetry than on interval control. Even broken layouts needed recurring internal spacing rules.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow log-block">
+        <div class="log-block-note">Next</div>
+        <div class="log-block-content">
+          <h2>Next Step</h2>
+          <p>
+            The next phase is to test the same visual logic under stricter color constraints and with more asymmetrical text distribution.
+          </p>
+          <p>
+            A later branch may also compare manually composed layouts with AI-assisted generative variants to see how each handles rhythm and distortion.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Cogniven. All rights reserved.</p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br />
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
