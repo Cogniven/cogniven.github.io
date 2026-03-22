@@ -1,19 +1,19 @@
 // 视觉设计作品数据（中英文）
-const ArtisticCreationWorks = [
+const ArtisticCreations = [
   {
-    title: { en: "Visual Work 001", zh: "视觉作品 001" },
+    title: { en: "Artistic Creation 001", zh: "艺术创作 001" },
     desc: { en: "A short description for this piece.", zh: "该作品的简短描述。" },
     cover: "../../assets/images/works/artistic-creations/work-001/cover.jpg",
     link: "#"
   },
   {
-    title: { en: "Visual Work 002", zh: "视觉作品 002" },
+    title: { en: "Artistic Creation 002", zh: "艺术创作 002" },
     desc: { en: "Another short description for this piece.", zh: "另一件作品的简短描述。" },
     cover: "../../assets/images/works/artistic-creations/work-002/cover.jpg",
     link: "#"
   },
   {
-    title: { en: "Visual Work 003", zh: "视觉作品 003" },
+    title: { en: "Artistic Creation 003", zh: "艺术创作 003" },
     desc: { en: "This card is ready for future work.", zh: "此卡片为未来作品预留。" },
     cover: "../../assets/images/works/artistic-creations/work-003/cover.jpg",
     link: "#"
