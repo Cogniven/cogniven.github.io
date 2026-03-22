@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[EXPERIMENT TITLE] - Cogniven</title>
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <style>
+    .log-cover,
+    .log-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .log-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .log-meta-card {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .log-meta-card span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .log-meta-card strong {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .log-block {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .log-block-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-top: 4px;
+    }
+
+    .log-block-content h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    .log-block-content p {
+      line-height: 1.78;
+      color: var(--text-soft);
+    }
+
+    .iteration-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .iteration-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--bg-soft);
+      padding: 18px;
+    }
+
+    .iteration-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .iteration-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .iteration-card p {
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .log-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .log-block {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .log-meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="../../../index.html" class="logo">Cogniven</a>
+      <div class="nav-links">
+        <a href="../../../works.html">Works</a>
+        <a href="../../../writing.html">Writing</a>
+        <a href="../../../projects.html">Projects</a>
+        <a href="../../../about.html">About</a>
+        <a href="../../../archive.html">Archive</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container narrow">
+        <p class="eyebrow">Works · Experimental Forms</p>
+        <h1>[EXPERIMENT TITLE]</h1>
+        <p class="hero-text">
+          [ONE-LINE DESCRIPTION OF WHAT THIS EXPERIMENT IS TESTING]
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <img
+          class="log-cover"
+          src="../../../assets/images/works/experimental-forms/[WORK-ID]/cover.jpg"
+          alt="[EXPERIMENT COVER]"
+        />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <div class="log-meta-grid">
+          <div class="log-meta-card">
+            <span>Date</span>
+            <strong>[2026]</strong>
+          </div>
+          <div class="log-meta-card">
+            <span>Status</span>
+            <strong>[Ongoing / Paused / Archived]</strong>
+          </div>
+          <div class="log-meta-card">
+            <span>Field</span>
+            <strong>[Visual / Motion / Interface / Strategy]</strong>
+          </div>
+          <div class="log-meta-card">
+            <span>Mode</span>
+            <strong>[Experiment / Draft / Study]</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-band">
+      <div class="container narrow">
+        <p class="section-note">Experiment Note</p>
+        <p class="lead-paragraph">
+          [Briefly explain what this experiment is trying to test, why it began, and what kind of change or variation it follows.]
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow log-block">
+        <div class="log-block-note">Intent</div>
+        <div class="log-block-content">
+          <h2>Starting Point</h2>
+          <p>[What question, tension, or idea initiated this experiment?]</p>
+          <p>[What specifically did you want to observe or push?]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow log-block">
+        <div class="log-block-note">Iterations</div>
+        <div class="log-block-content">
+          <h2>Iteration Log</h2>
+
+          <div class="iteration-stack">
+            <article class="iteration-card">
+              <div class="iteration-label">Version 01</div>
+              <h3>[First Attempt]</h3>
+              <p>[What was tried here? What changed in this version?]</p>
+              <img
+                class="log-image"
+                src="../../../assets/images/works/experimental-forms/[WORK-ID]/iteration-01.jpg"
+                alt="[ITERATION 01 IMAGE]"
+              />
+            </article>
+
+            <article class="iteration-card">
+              <div class="iteration-label">Version 02</div>
+              <h3>[Second Attempt]</h3>
+              <p>[What was revised? What became clearer or more unstable?]</p>
+              <img
+                class="log-image"
+                src="../../../assets/images/works/experimental-forms/[WORK-ID]/iteration-02.jpg"
+                alt="[ITERATION 02 IMAGE]"
+              />
+            </article>
+
+            <article class="iteration-card">
+              <div class="iteration-label">Version 03</div>
+              <h3>[Third Attempt]</h3>
+              <p>[What direction did the work move toward?]</p>
+              <img
+                class="log-image"
+                src="../../../assets/images/works/experimental-forms/[WORK-ID]/iteration-03.jpg"
+                alt="[ITERATION 03 IMAGE]"
+              />
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow log-block">
+        <div class="log-block-note">Observations</div>
+        <div class="log-block-content">
+          <h2>What Emerged</h2>
+          <p>[What patterns, failures, or interesting shifts became visible through the process?]</p>
+          <p>[What worked unexpectedly, and what remained unresolved?]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow log-block">
+        <div class="log-block-note">Next</div>
+        <div class="log-block-content">
+          <h2>Next Step</h2>
+          <p>[What will be explored next?]</p>
+          <p>[Or, if the experiment stopped here, why did it stop?]</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Cogniven. All rights reserved.</p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br />
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
