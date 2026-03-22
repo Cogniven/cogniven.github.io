@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytical Pieces - Cogniven</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="../../index.html" class="logo">Cogniven</a>
+      <div class="nav-links">
+        <a href="../../works.html">Works</a>
+        <a href="../../writing.html">Writing</a>
+        <a href="../../projects.html">Projects</a>
+        <a href="../../about.html">About</a>
+        <a href="../../archive.html">Archive</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Works · Analytical Pieces</p>
+        <h1>Analytical Pieces</h1>
+        <p class="hero-text">
+          A browsable archive of analytical writing and structured interpretation.
+        </p>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section intro-band">
+      <div class="container narrow">
+        <p class="section-note">Overview</p>
+        <p class="lead-paragraph">
+          This page collects analytical works in a format intended for browsing first, then reading in depth.
+        </p>
+      </div>
+    </section>
+
+    <!-- Selection -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-head">
+          <div>
+            <p class="section-note">Selection</p>
+            <h2>Current Works</h2>
+          </div>
+          <p class="section-side-text">
+            Each card leads to a full reading page.
+          </p>
+        </div>
+
+        <!-- 搜索 + 排序 -->
+        <div style="display:flex;gap:16px;margin-bottom:24px;">
+          <input id="search-box"
+            type="text"
+            placeholder="Search..."
+            style="flex:1;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);">
+
+          <select id="sort-select"
+            style="padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);">
+            <option value="date-desc">Newest</option>
+            <option value="date-asc">Oldest</option>
+            <option value="alpha">A-Z</option>
+          </select>
+        </div>
+
+        <div id="works-grid" class="works-grid"></div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Cogniven. All rights reserved.</p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br>
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
+    </div>
+  </footer>
+
+  <!-- 数据 -->
+  <script src="../../js/analyticalPieces.js"></script>
+
+  <script>
+    const grid = document.getElementById("works-grid");
+    const searchBox = document.getElementById("search-box");
+    const sortSelect = document.getElementById("sort-select");
+
+    function createCard(item) {
+      const card = document.createElement("article");
+      card.className = "work-card";
+
+      const cover = document.createElement("div");
+      cover.className = "work-cover-wrapper";
+
+      const img = document.createElement("img");
+      img.className = "work-cover";
+      img.src = item.cover;
+      img.alt = item.title.en;
+
+      img.onerror = function () {
+        this.src =
+          "data:image/svg+xml;utf8," +
+          encodeURIComponent(`
+            <svg xmlns='http://www.w3.org/2000/svg' width='800' height='500'>
+              <rect width='800' height='500' fill='#161b22'/>
+              <text x='50%' y='50%' text-anchor='middle' fill='#9aa3ad' font-size='24'>
+                No Cover
+              </text>
+            </svg>
+          `);
+      };
+
+      const body = document.createElement("div");
+      body.className = "work-body";
+
+      const title = document.createElement("h3");
+      title.className = "work-title";
+      title.textContent = item.title.en;
+
+      const desc = document.createElement("div");
+      desc.className = "work-desc";
+      desc.textContent = item.desc.en;
+
+      cover.appendChild(img);
+      body.appendChild(title);
+      body.appendChild(desc);
+      card.appendChild(cover);
+      card.appendChild(body);
+
+      card.onclick = () => {
+        window.location.href = item.link;
+      };
+
+      return card;
+    }
+
+    function sortWorks(data, mode) {
+      if (mode === "alpha") {
+        return data.sort((a, b) =>
+          a.title.en.localeCompare(b.title.en)
+        );
+      } else if (mode === "date-asc") {
+        return data.sort((a, b) =>
+          new Date(a.date) - new Date(b.date)
+        );
+      } else {
+        return data.sort((a, b) =>
+          new Date(b.date) - new Date(a.date)
+        );
+      }
+    }
+
+    function filterWorks(data, query) {
+      if (!query) return data;
+      const q = query.toLowerCase();
+      return data.filter(item =>
+        item.title.en.toLowerCase().includes(q) ||
+        item.desc.en.toLowerCase().includes(q)
+      );
+    }
+
+    function render() {
+      grid.innerHTML = "";
+
+      let data = [...AnalyticalPieces];
+
+      data = filterWorks(data, searchBox.value);
+      data = sortWorks(data, sortSelect.value);
+
+      data.forEach(item => {
+        grid.appendChild(createCard(item));
+      });
+    }
+
+    searchBox.addEventListener("input", render);
+    sortSelect.addEventListener("change", render);
+
+    render();
+  </script>
+
+</body>
+</html>
