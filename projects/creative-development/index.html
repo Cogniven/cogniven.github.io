@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Creative Development - Cogniven</title>
   <link rel="stylesheet" href="../../css/style.css" />
 </head>
+
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
-        <a href="../../works.html">Works</a>
-        <a href="../../writing.html">Writing</a>
-        <a href="../../projects.html">Projects</a>
-        <a href="../../about.html">About</a>
-        <a href="../../archive.html">Archive</a>
+      <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+          <a href="../../works.html">Works</a>
+          <a href="../../writing.html">Writing</a>
+          <a href="../../projects.html">Projects</a>
+          <a href="../../about.html">About</a>
+          <a href="../../archive.html">Archive</a>
+        </div>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
       </div>
     </nav>
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
-        <p class="eyebrow">Projects · Creative Development</p>
-        <h1>Creative Development</h1>
-        <p class="hero-text">
+        <p class="eyebrow" id="cd-hero-eyebrow">Projects · Creative Development</p>
+        <h1 id="cd-hero-title">Creative Development</h1>
+        <p class="hero-text" id="cd-hero-text">
           Ongoing experiments, evolving systems, and work still in motion.
         </p>
       </div>
     </section>
 
-    <!-- Overview -->
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note">Overview</p>
-        <p class="lead-paragraph">
-          This section documents work that is not yet finalized. Each entry is a live log — a record of direction, iteration, and experimentation across different domains.
+        <p class="section-note" id="cd-overview-note">Overview</p>
+        <p class="lead-paragraph" id="cd-overview-text">
+          This section documents work that is not yet finalized. Each entry is a live log — a record of direction,
+          iteration, and experimentation across different domains.
         </p>
       </div>
     </section>
 
-    <!-- Works Grid -->
     <section class="section">
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="section-note">Logs</p>
-            <h2>Active Experiments</h2>
+            <p class="section-note" id="cd-logs-note">Logs</p>
+            <h2 id="cd-logs-title">Active Experiments</h2>
           </div>
-          <p class="section-side-text">
+          <p class="section-side-text" id="cd-side-text">
             Each entry is an evolving record rather than a finished project.
           </p>
         </div>
 
         <div class="works-grid">
-
-          <!-- Project Card -->
           <article class="work-card" onclick="location.href='./project-001/index.html'">
             <div class="work-cover-wrapper">
-              <img class="work-cover"
-                src="../../assets/images/projects/creative-development/project-001/cover.jpg"
-                alt="Creative Development Log">
+              <img class="work-cover" src="../../assets/images/projects/creative-development/project-001/cover.jpg"
+                alt="Creative Development Log" />
             </div>
 
             <div class="work-body">
-              <h3 class="work-title">Development Log 001</h3>
-              <div class="work-desc">
+              <h3 class="work-title" id="cd-card-title">Development Log 001</h3>
+              <div class="work-desc" id="cd-card-desc">
                 Investment, quant systems, AI workflows, and site structure evolution.
               </div>
             </div>
           </article>
-
         </div>
       </div>
     </section>
@@ -87,5 +89,82 @@
       </p>
     </div>
   </footer>
+
+  <script src="../../js/i18n.js"></script>
+  <script>
+    let lang = localStorage.getItem('lang') || 'en';
+
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem('lang', lang);
+      renderLang();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      lang = localStorage.getItem('lang') || 'en';
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
+      setLang(lang);
+    });
+
+    function renderLang() {
+      const navLinks = document.getElementById('nav-links');
+      const navs = i18n[lang].nav;
+
+      navLinks.innerHTML = `
+        <a href="../../works.html">${navs[0]}</a>
+        <a href="../../writing.html">${navs[1]}</a>
+        <a href="../../projects.html">${navs[2]}</a>
+        <a href="../../about.html">${navs[3]}</a>
+        <a href="../../archive.html">${navs[4]}</a>
+      `;
+
+      document.getElementById('logo-text').textContent = i18n[lang].logo;
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+      document.getElementById('cd-hero-eyebrow').textContent =
+        lang === 'zh' ? '项目 · 创意开发' : 'Projects · Creative Development';
+
+      document.getElementById('cd-hero-title').textContent =
+        lang === 'zh' ? 'Creative Development' : 'Creative Development';
+
+      document.getElementById('cd-hero-text').textContent =
+        lang === 'zh'
+          ? '这里记录仍在运动中的创意实验、演化中的系统与尚未定稿的工作。'
+          : 'Ongoing experiments, evolving systems, and work still in motion.';
+
+      document.getElementById('cd-overview-note').textContent =
+        lang === 'zh' ? '概览' : 'Overview';
+
+      document.getElementById('cd-overview-text').textContent =
+        lang === 'zh'
+          ? '这一部分记录尚未完成的工作。每个条目都是一个动态日志，用来呈现方向、迭代与跨领域实验。'
+          : 'This section documents work that is not yet finalized. Each entry is a live log — a record of direction, iteration, and experimentation across different domains.';
+
+      document.getElementById('cd-logs-note').textContent =
+        lang === 'zh' ? '日志' : 'Logs';
+
+      document.getElementById('cd-logs-title').textContent =
+        lang === 'zh' ? '当前实验' : 'Active Experiments';
+
+      document.getElementById('cd-side-text').textContent =
+        lang === 'zh'
+          ? '这里的每个条目都是持续演化中的记录，而不是已完成项目。'
+          : 'Each entry is an evolving record rather than a finished project.';
+
+      document.getElementById('cd-card-title').textContent =
+        lang === 'zh' ? 'Development Log 001' : 'Development Log 001';
+
+      document.getElementById('cd-card-desc').textContent =
+        lang === 'zh'
+          ? '投资、量化系统、AI 工作流，以及网站结构的持续演化。'
+          : 'Investment, quant systems, AI workflows, and site structure evolution.';
+
+      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
+      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
+    }
+  </script>
 </body>
+
 </html>
