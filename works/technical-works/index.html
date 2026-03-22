@@ -3,8 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Technical Creations - Cogniven</title>
+  <title>Technical Works - Cogniven</title>
   <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    .case-index-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .case-index-intro {
+      max-width: 760px;
+    }
+
+    .case-controls {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin: 28px 0 32px;
+      flex-wrap: wrap;
+    }
+
+    .case-search,
+    .case-sort {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font: inherit;
+    }
+
+    .case-search {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .case-sort {
+      min-width: 150px;
+    }
+
+    .case-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .case-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 18px;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--bg-soft);
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.18);
+      opacity: 0.96;
+    }
+
+    .case-card-cover {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #161b22;
+    }
+
+    .case-card-body {
+      padding: 18px 18px 18px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .case-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .case-chip {
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 9px;
+    }
+
+    .case-card-title {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      line-height: 1.2;
+      margin: 0 0 10px;
+    }
+
+    .case-card-desc {
+      color: var(--text-soft);
+      line-height: 1.72;
+      margin: 0 0 14px;
+    }
+
+    .case-card-tools {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .case-card-link {
+      font-size: 0.95rem;
+      color: var(--accent, var(--text));
+    }
+
+    .case-empty {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      color: var(--muted);
+      background: var(--bg-soft);
+    }
+
+    @media (max-width: 920px) {
+      .case-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .case-card {
+        grid-template-columns: 1fr;
+      }
+
+      .case-card-body {
+        padding: 16px;
+      }
+
+      .case-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .case-search,
+      .case-sort {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -28,46 +182,46 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow" id="hero-eyebrow">Works · Technical Creations</p>
-        <h1 id="hero-title">Technical Creations</h1>
-        <p class="hero-text" id="hero-text">
-          A browsable archive of systems, tools, and code-based outputs.
+      <div class="container hero-inner case-index-shell">
+        <p class="eyebrow" id="tw-hero-eyebrow">Works · Technical Works</p>
+        <h1 id="tw-hero-title">Technical Works</h1>
+        <p class="hero-text case-index-intro" id="tw-hero-text">
+          A case-study-oriented archive of systems, strategies, and technical builds. Each entry is presented as a structured project rather than a simple visual card.
         </p>
       </div>
     </section>
 
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note" id="overview-label">Overview</p>
-        <p class="lead-paragraph" id="overview-text">
-          This page gathers technical work in a format intended for browsing first, then closer study through dedicated case pages.
+        <p class="section-note" id="tw-overview-note">Overview</p>
+        <p class="lead-paragraph" id="tw-overview-text">
+          This section documents technical work through problem framing, implementation logic, output, and reflection. It is organized as a directory of case studies.
         </p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
+      <div class="container case-index-shell">
         <div class="section-head">
           <div>
-            <p class="section-note" id="selection-label">Selection</p>
-            <h2 id="selection-title">Current Works</h2>
+            <p class="section-note" id="tw-selection-note">Case Directory</p>
+            <h2 id="tw-selection-title">Current Case Studies</h2>
           </div>
-          <p class="section-side-text" id="selection-side">
-            Each card leads to a case study that explains the system, logic, and outcome.
+          <p class="section-side-text" id="tw-selection-side">
+            Each entry summarizes scope, type, tools, and intent before linking to the full project page.
           </p>
         </div>
 
-        <div class="search-sort-row" style="display:flex;gap:18px;align-items:center;margin-bottom:24px;">
-          <input id="search-box" type="text" placeholder="Search works..." style="flex:1;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);font-size:15px;">
-          <select id="sort-select" style="padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);font-size:15px;">
-            <option value="date-desc">Newest First</option>
-            <option value="date-asc">Oldest First</option>
-            <option value="alpha">A-Z</option>
+        <div class="case-controls">
+          <input id="search-box" class="case-search" type="text" placeholder="Search case studies..." />
+          <select id="sort-select" class="case-sort">
+            <option value="date-desc">Newest</option>
+            <option value="date-asc">Oldest</option>
+            <option value="alpha">A–Z</option>
           </select>
         </div>
 
-        <div id="works-grid" class="works-grid"></div>
+        <div id="case-list" class="case-list"></div>
       </div>
     </section>
   </main>
@@ -87,100 +241,55 @@
   <script>
     let lang = localStorage.getItem('lang') || 'en';
 
+    const list = document.getElementById("case-list");
+    const searchBox = document.getElementById("search-box");
+    const sortSelect = document.getElementById("sort-select");
+
     function setLang(newLang) {
       lang = newLang;
-      localStorage.setItem('lang', lang);
+      localStorage.setItem("lang", lang);
       renderLang();
-      renderWorks();
+      renderCases();
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('lang-en').onclick = () => setLang('en');
-      document.getElementById('lang-zh').onclick = () => setLang('zh');
-      renderLang();
-      renderWorks();
-    });
-
-    function renderLang() {
-      const navLinks = document.getElementById('nav-links');
-      const navs = i18n[lang].nav;
-      navLinks.innerHTML = `
-        <a href="../../works.html">${navs[0]}</a>
-        <a href="../../writing.html">${navs[1]}</a>
-        <a href="../../projects.html">${navs[2]}</a>
-        <a href="../../about.html">${navs[3]}</a>
-        <a href="../../archive.html">${navs[4]}</a>
-      `;
-
-      document.getElementById('logo-text').textContent = i18n[lang].logo;
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
-
-      document.getElementById('hero-eyebrow').textContent =
-        lang === 'zh' ? '作品 · 技术创作' : 'Works · Technical Creations';
-
-      document.getElementById('hero-title').textContent =
-        lang === 'zh' ? '技术创作' : 'Technical Creations';
-
-      document.getElementById('hero-text').textContent =
-        lang === 'zh'
-          ? '一个可浏览的技术成果档案，收录系统、工具与代码性产出。'
-          : 'A browsable archive of systems, tools, and code-based outputs.';
-
-      document.getElementById('overview-label').textContent =
-        lang === 'zh' ? '概览' : 'Overview';
-
-      document.getElementById('overview-text').textContent =
-        lang === 'zh'
-          ? '本页面收录技术类作品，适合先浏览，再进入独立 case study 页面深入查看。'
-          : 'This page gathers technical work in a format intended for browsing first, then closer study through dedicated case pages.';
-
-      document.getElementById('selection-label').textContent =
-        lang === 'zh' ? '精选' : 'Selection';
-
-      document.getElementById('selection-title').textContent =
-        lang === 'zh' ? '当前作品' : 'Current Works';
-
-      document.getElementById('selection-side').textContent =
-        lang === 'zh'
-          ? '每张卡片都会进入一个 case study 页面，用来说明系统、逻辑与结果。'
-          : 'Each card leads to a case study that explains the system, logic, and outcome.';
-
-      document.getElementById('search-box').placeholder =
-        lang === 'zh' ? '搜索作品…' : 'Search works...';
-
-      const sortSelect = document.getElementById('sort-select');
-      sortSelect.options[0].text = lang === 'zh' ? '最新优先' : 'Newest First';
-      sortSelect.options[1].text = lang === 'zh' ? '最早优先' : 'Oldest First';
-      sortSelect.options[2].text = lang === 'zh' ? '字母排序' : 'A-Z';
-
-      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
-      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
+    function getText(item, field) {
+      if (!item[field]) return "";
+      if (typeof item[field] === "string") return item[field];
+      return item[field][lang] || item[field].en || "";
     }
 
-    const grid = document.getElementById('works-grid');
-    const searchBox = document.getElementById('search-box');
-    const sortSelect = document.getElementById('sort-select');
+    function formatDate(dateStr) {
+      if (!dateStr) return "";
+      const d = new Date(dateStr);
+      if (Number.isNaN(d.getTime())) return dateStr;
 
-    function createWorkCard(work) {
-      const card = document.createElement('article');
-      card.className = 'work-card';
+      if (lang === "zh") {
+        return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+      }
 
-      const coverWrapper = document.createElement('a');
-      coverWrapper.className = 'work-cover-wrapper';
-      coverWrapper.href = work.link || '#';
+      return d.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
 
-      const img = document.createElement('img');
-      img.className = 'work-cover';
-      img.src = work.cover;
-      img.alt = work.title[lang];
+    function createCaseCard(item) {
+      const card = document.createElement("a");
+      card.className = "case-card";
+      card.href = item.link || "#";
+
+      const img = document.createElement("img");
+      img.className = "case-card-cover";
+      img.src = item.cover || "";
+      img.alt = getText(item, "title");
 
       img.onerror = function () {
         this.src =
           "data:image/svg+xml;utf8," +
           encodeURIComponent(`
-            <svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'>
-              <rect width='800' height='500' fill='#161b22'/>
+            <svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'>
+              <rect width='900' height='600' fill='#161b22'/>
               <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
                 fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>
                 Cover not added yet
@@ -189,61 +298,167 @@
           `);
       };
 
-      const body = document.createElement('div');
-      body.className = 'work-body';
+      const body = document.createElement("div");
+      body.className = "case-card-body";
 
-      const title = document.createElement('h3');
-      title.className = 'work-title';
-      title.textContent = work.title[lang];
+      const top = document.createElement("div");
 
-      const desc = document.createElement('div');
-      desc.className = 'work-desc';
-      desc.textContent = work.desc[lang];
+      const meta = document.createElement("div");
+      meta.className = "case-card-meta";
 
-      coverWrapper.appendChild(img);
-      body.appendChild(title);
-      body.appendChild(desc);
+      const chipDate = document.createElement("span");
+      chipDate.className = "case-chip";
+      chipDate.textContent = formatDate(item.date);
 
-      card.appendChild(coverWrapper);
+      const chipType = document.createElement("span");
+      chipType.className = "case-chip";
+      chipType.textContent = getText(item, "type") || (lang === "zh" ? "未分类" : "Untyped");
+
+      meta.appendChild(chipDate);
+      meta.appendChild(chipType);
+
+      const title = document.createElement("h3");
+      title.className = "case-card-title";
+      title.textContent = getText(item, "title");
+
+      const desc = document.createElement("p");
+      desc.className = "case-card-desc";
+      desc.textContent = getText(item, "desc");
+
+      const tools = document.createElement("div");
+      tools.className = "case-card-tools";
+      tools.textContent = `${lang === "zh" ? "工具" : "Tools"}: ${getText(item, "tools") || (lang === "zh" ? "待补充" : "To be added")}`;
+
+      const link = document.createElement("div");
+      link.className = "case-card-link";
+      link.textContent = lang === "zh" ? "查看案例 →" : "View case study →";
+
+      top.appendChild(meta);
+      top.appendChild(title);
+      top.appendChild(desc);
+      top.appendChild(tools);
+
+      body.appendChild(top);
+      body.appendChild(link);
+
+      card.appendChild(img);
       card.appendChild(body);
-
-      card.addEventListener('click', () => {
-        if (work.link) {
-          window.location.href = work.link;
-        }
-      });
 
       return card;
     }
 
-    function sortWorks(works, mode) {
-      if (mode === 'alpha') {
-        return works.slice().sort((a, b) => a.title[lang].localeCompare(b.title[lang]));
-      } else if (mode === 'date-asc') {
-        return works.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+    function sortWorks(data, mode) {
+      const copied = [...data];
+      if (mode === "alpha") {
+        return copied.sort((a, b) =>
+          getText(a, "title").localeCompare(getText(b, "title"), lang === "zh" ? "zh" : "en")
+        );
+      } else if (mode === "date-asc") {
+        return copied.sort((a, b) => new Date(a.date) - new Date(b.date));
       } else {
-        return works.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+        return copied.sort((a, b) => new Date(b.date) - new Date(a.date));
       }
     }
 
-    function filterWorks(works, query) {
-      if (!query) return works;
+    function filterWorks(data, query) {
+      if (!query) return data;
       const q = query.toLowerCase();
-      return works.filter(w =>
-        w.title[lang].toLowerCase().includes(q) ||
-        w.desc[lang].toLowerCase().includes(q)
-      );
+
+      return data.filter(item => {
+        const title = getText(item, "title").toLowerCase();
+        const desc = getText(item, "desc").toLowerCase();
+        const type = getText(item, "type").toLowerCase();
+        const tools = getText(item, "tools").toLowerCase();
+        return title.includes(q) || desc.includes(q) || type.includes(q) || tools.includes(q);
+      });
     }
 
-    function renderWorks() {
-      grid.innerHTML = '';
-      const filtered = filterWorks(TechnicalWorks, searchBox.value);
-      const sorted = sortWorks(filtered, sortSelect.value);
-      sorted.forEach(work => grid.appendChild(createWorkCard(work)));
+    function renderCases() {
+      list.innerHTML = "";
+
+      let data = [...TechnicalWorks];
+      data = filterWorks(data, searchBox.value.trim());
+      data = sortWorks(data, sortSelect.value);
+
+      if (!data.length) {
+        const empty = document.createElement("div");
+        empty.className = "case-empty";
+        empty.textContent = lang === "zh" ? "没有匹配的案例。" : "No matching case studies found.";
+        list.appendChild(empty);
+        return;
+      }
+
+      data.forEach(item => list.appendChild(createCaseCard(item)));
     }
 
-    searchBox.addEventListener('input', renderWorks);
-    sortSelect.addEventListener('change', renderWorks);
+    function renderLang() {
+      const navLinks = document.getElementById("nav-links");
+      const navs = i18n[lang].nav;
+
+      navLinks.innerHTML = `
+        <a href="../../works.html">${navs[0]}</a>
+        <a href="../../writing.html">${navs[1]}</a>
+        <a href="../../projects.html">${navs[2]}</a>
+        <a href="../../about.html">${navs[3]}</a>
+        <a href="../../archive.html">${navs[4]}</a>
+      `;
+
+      document.getElementById("logo-text").textContent = i18n[lang].logo;
+      document.getElementById("lang-en").classList.toggle("active", lang === "en");
+      document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
+
+      document.getElementById("tw-hero-eyebrow").textContent =
+        lang === "zh" ? "作品 · 技术作品" : "Works · Technical Works";
+
+      document.getElementById("tw-hero-title").textContent =
+        lang === "zh" ? "Technical Works" : "Technical Works";
+
+      document.getElementById("tw-hero-text").textContent =
+        lang === "zh"
+          ? "一个以案例说明为导向的技术作品目录，收录系统、策略与技术构建。每一项都被呈现为结构化项目，而不只是视觉卡片。"
+          : "A case-study-oriented archive of systems, strategies, and technical builds. Each entry is presented as a structured project rather than a simple visual card.";
+
+      document.getElementById("tw-overview-note").textContent =
+        lang === "zh" ? "概览" : "Overview";
+
+      document.getElementById("tw-overview-text").textContent =
+        lang === "zh"
+          ? "这一部分通过问题背景、实现逻辑、输出结果与反思来记录技术作品，因此整体组织方式更接近案例目录。"
+          : "This section documents technical work through problem framing, implementation logic, output, and reflection. It is organized as a directory of case studies.";
+
+      document.getElementById("tw-selection-note").textContent =
+        lang === "zh" ? "案例目录" : "Case Directory";
+
+      document.getElementById("tw-selection-title").textContent =
+        lang === "zh" ? "当前案例" : "Current Case Studies";
+
+      document.getElementById("tw-selection-side").textContent =
+        lang === "zh"
+          ? "每个条目先展示范围、类型、工具与意图，再进入完整项目页。"
+          : "Each entry summarizes scope, type, tools, and intent before linking to the full project page.";
+
+      searchBox.placeholder = lang === "zh" ? "搜索案例..." : "Search case studies...";
+
+      sortSelect.innerHTML = `
+        <option value="date-desc">${lang === "zh" ? "最新" : "Newest"}</option>
+        <option value="date-asc">${lang === "zh" ? "最早" : "Oldest"}</option>
+        <option value="alpha">${lang === "zh" ? "按字母" : "A–Z"}</option>
+      `;
+
+      document.querySelector(".footer-inner p:first-child").textContent = i18n[lang].copyright;
+      document.querySelector(".footer-inner p:last-child").innerHTML = i18n[lang].copyright2;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("lang-en").onclick = () => setLang("en");
+      document.getElementById("lang-zh").onclick = () => setLang("zh");
+
+      searchBox.addEventListener("input", renderCases);
+      sortSelect.addEventListener("change", renderCases);
+
+      renderLang();
+      renderCases();
+    });
   </script>
 </body>
 </html>

@@ -5,105 +5,213 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>[PROJECT NAME] - Cogniven</title>
   <link rel="stylesheet" href="../../../css/style.css" />
+  <style>
+    .case-cover,
+    .case-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .case-meta-card {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .case-meta-card span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .case-meta-card strong {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .case-block {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .case-block-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-top: 4px;
+    }
+
+    .case-block-content h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    .case-block-content p {
+      line-height: 1.78;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 860px) {
+      .case-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .case-block {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .case-meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="../../../index.html" class="logo">Cogniven</a>
+      <div class="nav-links">
+        <a href="../../../works.html">Works</a>
+        <a href="../../../writing.html">Writing</a>
+        <a href="../../../projects.html">Projects</a>
+        <a href="../../../about.html">About</a>
+        <a href="../../../archive.html">Archive</a>
+      </div>
+    </nav>
+  </header>
 
-<header class="site-header">
-  <nav class="nav">
-    <a href="../../../index.html" class="logo">Cogniven</a>
-    <div class="nav-links">
-      <a href="../../../works.html">Works</a>
-      <a href="../../../writing.html">Writing</a>
-      <a href="../../../projects.html">Projects</a>
-      <a href="../../../about.html">About</a>
-      <a href="../../../archive.html">Archive</a>
+  <main>
+    <section class="hero case-hero">
+      <div class="container narrow">
+        <p class="eyebrow">Works · Technical Works</p>
+        <h1 class="case-title">[PROJECT NAME]</h1>
+        <p class="case-subtitle">
+          [ONE-LINE DESCRIPTION OF WHAT THIS PROJECT DOES]
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <img
+          class="case-cover"
+          src="../../../assets/images/works/technical-works/[WORK-ID]/cover.jpg"
+          alt="[PROJECT COVER]"
+        />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <div class="case-meta-grid">
+          <div class="case-meta-card">
+            <span>Year</span>
+            <strong>[2026]</strong>
+          </div>
+          <div class="case-meta-card">
+            <span>Type</span>
+            <strong>[System / Strategy / Tool]</strong>
+          </div>
+          <div class="case-meta-card">
+            <span>Tools</span>
+            <strong>[Python · Freqtrade · Data Analysis]</strong>
+          </div>
+          <div class="case-meta-card">
+            <span>Status</span>
+            <strong>[Prototype / Active / Archived]</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-band">
+      <div class="container narrow">
+        <p class="section-note">Project Summary</p>
+        <p class="lead-paragraph">
+          [Briefly explain what this project is, what it addresses, and why it matters.]
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow case-block">
+        <div class="case-block-note">Problem</div>
+        <div class="case-block-content">
+          <h2>Problem Framing</h2>
+          <p>[What problem or need led to this work?]</p>
+          <p>[What context or constraint shaped the project?]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow case-block">
+        <div class="case-block-note">Approach</div>
+        <div class="case-block-content">
+          <h2>System Design</h2>
+          <p>[Explain the structure, logic, pipeline, or methodology.]</p>
+          <p>[Describe the design choices and why they were made.]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow case-block">
+        <div class="case-block-note">Output</div>
+        <div class="case-block-content">
+          <h2>Results and Output</h2>
+          <p>[Describe backtest results, outputs, system behavior, or implementation outcome.]</p>
+          <img
+            class="case-image"
+            src="../../../assets/images/works/technical-works/[WORK-ID]/result.jpg"
+            alt="[RESULT IMAGE]"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow case-block">
+        <div class="case-block-note">Reflection</div>
+        <div class="case-block-content">
+          <h2>Reflection and Next Step</h2>
+          <p>[What worked well?]</p>
+          <p>[What remained limited or unresolved?]</p>
+          <p>[What would be developed next?]</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Cogniven. All rights reserved.</p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br />
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
     </div>
-  </nav>
-</header>
-
-<main>
-
-<!-- HERO -->
-<section class="hero case-hero">
-  <div class="container narrow">
-    <p class="eyebrow">Works · Technical Creations</p>
-    <h1 class="case-title">[PROJECT NAME]</h1>
-    <p class="case-subtitle">
-      [ONE-LINE DESCRIPTION OF WHAT THIS SYSTEM DOES]
-    </p>
-  </div>
-</section>
-
-<!-- COVER -->
-<section class="section">
-  <div class="container narrow">
-    <img class="case-cover"
-      src="../../../assets/images/works/technical-works/[WORK-ID]/cover.jpg"
-      alt="[PROJECT IMAGE]">
-  </div>
-</section>
-
-<!-- PROJECT INFO -->
-<section class="section case-info-section">
-  <div class="container narrow case-info">
-    <div><span>Year</span><strong>[2026]</strong></div>
-    <div><span>Type</span><strong>Strategy / System</strong></div>
-    <div><span>Tools</span><strong>Python · Freqtrade</strong></div>
-  </div>
-</section>
-
-<!-- OVERVIEW -->
-<section class="section intro-band">
-  <div class="container narrow">
-    <p class="section-note">Overview</p>
-    <p class="lead-paragraph">
-      [WHAT PROBLEM THIS PROJECT SOLVES AND WHY IT MATTERS]
-    </p>
-  </div>
-</section>
-
-<!-- SYSTEM / LOGIC -->
-<section class="section">
-  <div class="container narrow">
-    <h2>System Logic</h2>
-    <p>[Explain your structure: entry, exit, filters, etc.]</p>
-    <p>[Explain why you designed it this way]</p>
-  </div>
-</section>
-
-<!-- RESULT -->
-<section class="section">
-  <div class="container narrow">
-    <h2>Results</h2>
-    <p>[Backtest / performance / output]</p>
-
-    <img class="case-image"
-      src="../../../assets/images/works/technical-works/[WORK-ID]/result.jpg">
-
-  </div>
-</section>
-
-<!-- REFLECTION -->
-<section class="section">
-  <div class="container narrow">
-    <h2>Reflection</h2>
-    <p>[What worked]</p>
-    <p>[What failed]</p>
-    <p>[Next step]</p>
-  </div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <p>© 2026 Cogniven. All rights reserved.</p>
-    <p>
-      The works presented on this site are original and protected by copyright.<br>
-      Unauthorized reproduction, distribution, or commercial use is prohibited.
-    </p>
-  </div>
-</footer>
-
+  </footer>
 </body>
 </html>
