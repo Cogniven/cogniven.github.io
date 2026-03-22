@@ -819,3 +819,24 @@ const artisticCreationsWorks = [
   color: var(--text-dim);
   background: rgba(255,255,255,0.02);
 }
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  display: block;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  text-decoration: none;
+  color: inherit;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
