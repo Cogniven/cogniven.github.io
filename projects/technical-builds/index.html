@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Builds - Cogniven</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <style>
+        .case-index-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .case-index-intro {
+            max-width: 760px;
+        }
+
+        .case-controls {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin: 28px 0 32px;
+            flex-wrap: wrap;
+        }
+
+        .case-search,
+        .case-sort {
+            border: 1px solid var(--line);
+            background: var(--bg-soft);
+            color: var(--text);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font: inherit;
+        }
+
+        .case-search {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .case-sort {
+            min-width: 150px;
+        }
+
+        .case-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .case-card {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 18px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--bg-soft);
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.18);
+            opacity: 0.96;
+        }
+
+        .case-card-cover {
+            width: 100%;
+            height: 100%;
+            min-height: 220px;
+            object-fit: cover;
+            display: block;
+            background: #161b22;
+        }
+
+        .case-card-body {
+            padding: 18px 18px 18px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 0;
+        }
+
+        .case-card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .case-chip {
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 4px 9px;
+        }
+
+        .case-card-title {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            line-height: 1.2;
+            margin: 0 0 10px;
+        }
+
+        .case-card-desc {
+            color: var(--text-soft);
+            line-height: 1.72;
+            margin: 0 0 14px;
+        }
+
+        .case-card-tools {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .case-card-link {
+            font-size: 0.95rem;
+            color: var(--accent, var(--text));
+        }
+
+        .case-empty {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px;
+            color: var(--muted);
+            background: var(--bg-soft);
+        }
+
+        @media (max-width: 920px) {
+            .case-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .case-card {
+                grid-template-columns: 1fr;
+            }
+
+            .case-card-body {
+                padding: 16px;
+            }
+
+            .case-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .case-search,
+            .case-sort {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+            <div style="display:flex;align-items:center;gap:24px;">
+                <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+                    <a href="../../works.html">Works</a>
+                    <a href="../../writing.html">Writing</a>
+                    <a href="../../projects.html">Projects</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../archive.html">Archive</a>
+                </div>
+                <div class="lang-switcher">
+                    <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+                    <button id="lang-zh" class="lang-btn">中文</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-inner case-index-shell">
+                <p class="eyebrow" id="tb-hero-eyebrow">Projects · Technical Builds</p>
+                <h1 id="tb-hero-title">Technical Builds</h1>
+                <p class="hero-text case-index-intro" id="tb-hero-text">
+                    A case-study-oriented archive of active technical projects, systems, and implementation work still
+                    under development.
+                </p>
+            </div>
+        </section>
+
+        <section class="section intro-band">
+            <div class="container narrow">
+                <p class="section-note" id="tb-overview-note">Overview</p>
+                <p class="lead-paragraph" id="tb-overview-text">
+                    This section presents technical projects as structured cases. Each entry describes scope, tools,
+                    logic, and current direction rather than only final output.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container case-index-shell">
+                <div class="section-head">
+                    <div>
+                        <p class="section-note" id="tb-selection-note">Case Directory</p>
+                        <h2 id="tb-selection-title">Current Technical Projects</h2>
+                    </div>
+                    <p class="section-side-text" id="tb-selection-side">
+                        Each entry summarizes the project before linking to its full case page.
+                    </p>
+                </div>
+
+                <div class="case-controls">
+                    <input id="search-box" class="case-search" type="text" placeholder="Search technical projects..." />
+                    <select id="sort-select" class="case-sort">
+                        <option value="date-desc">Newest</option>
+                        <option value="date-asc">Oldest</option>
+                        <option value="alpha">A–Z</option>
+                    </select>
+                </div>
+
+                <div id="case-list" class="case-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 Cogniven. All rights reserved.</p>
+            <p>
+                The works presented on this site are original and protected by copyright.<br>
+                Unauthorized reproduction, distribution, or commercial use is prohibited.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/technicalBuilds.js"></script>
+    <script>
+        let lang = localStorage.getItem('lang') || 'en';
+
+        const list = document.getElementById("case-list");
+        const searchBox = document.getElementById("search-box");
+        const sortSelect = document.getElementById("sort-select");
+
+        function setLang(newLang) {
+            lang = newLang;
+            localStorage.setItem("lang", lang);
+            renderLang();
+            renderCases();
+        }
+
+        function getText(item, field) {
+            if (!item[field]) return "";
+            if (typeof item[field] === "string") return item[field];
+            return item[field][lang] || item[field].en || "";
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return "";
+            const d = new Date(dateStr);
+            if (Number.isNaN(d.getTime())) return dateStr;
+
+            if (lang === "zh") {
+                return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+            }
+
+            return d.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            });
+        }
+
+        function createFallbackImage() {
+            return "data:image/svg+xml;utf8," + encodeURIComponent(`
+        <svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'>
+          <rect width='900' height='600' fill='#161b22'/>
+          <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+            fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>
+            Technical Build
+          </text>
+        </svg>
+      `);
+        }
+
+        function createCaseCard(item) {
+            const card = document.createElement("a");
+            card.className = "case-card";
+            card.href = item.link || "#";
+
+            const img = document.createElement("img");
+            img.className = "case-card-cover";
+            img.src = item.cover || createFallbackImage();
+            img.alt = getText(item, "title");
+            img.onerror = function () {
+                this.src = createFallbackImage();
+            };
+
+            const body = document.createElement("div");
+            body.className = "case-card-body";
+
+            const top = document.createElement("div");
+
+            const meta = document.createElement("div");
+            meta.className = "case-card-meta";
+
+            const chipDate = document.createElement("span");
+            chipDate.className = "case-chip";
+            chipDate.textContent = formatDate(item.date);
+
+            const chipType = document.createElement("span");
+            chipType.className = "case-chip";
+            chipType.textContent = getText(item, "type") || (lang === "zh" ? "未分类" : "Untyped");
+
+            const chipStatus = document.createElement("span");
+            chipStatus.className = "case-chip";
+            chipStatus.textContent = getText(item, "status") || (lang === "zh" ? "未标记" : "Unmarked");
+
+            meta.appendChild(chipDate);
+            meta.appendChild(chipType);
+            meta.appendChild(chipStatus);
+
+            const title = document.createElement("h3");
+            title.className = "case-card-title";
+            title.textContent = getText(item, "title");
+
+            const desc = document.createElement("p");
+            desc.className = "case-card-desc";
+            desc.textContent = getText(item, "desc");
+
+            const tools = document.createElement("div");
+            tools.className = "case-card-tools";
+            tools.textContent = `${lang === "zh" ? "工具" : "Tools"}: ${getText(item, "tools") || (lang === "zh" ? "待补充" : "To be added")}`;
+
+            const open = document.createElement("div");
+            open.className = "case-card-link";
+            open.textContent = lang === "zh" ? "查看案例 →" : "View case study →";
+
+            top.appendChild(meta);
+            top.appendChild(title);
+            top.appendChild(desc);
+            top.appendChild(tools);
+
+            body.appendChild(top);
+            body.appendChild(open);
+
+            card.appendChild(img);
+            card.appendChild(body);
+
+            return card;
+        }
+
+        function sortWorks(data, mode) {
+            const copied = [...data];
+            if (mode === "alpha") {
+                return copied.sort((a, b) =>
+                    getText(a, "title").localeCompare(getText(b, "title"), lang === "zh" ? "zh" : "en")
+                );
+            } else if (mode === "date-asc") {
+                return copied.sort((a, b) => new Date(a.date) - new Date(b.date));
+            } else {
+                return copied.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+        }
+
+        function filterWorks(data, query) {
+            if (!query) return data;
+            const q = query.toLowerCase();
+
+            return data.filter(item => {
+                const title = getText(item, "title").toLowerCase();
+                const desc = getText(item, "desc").toLowerCase();
+                const type = getText(item, "type").toLowerCase();
+                const tools = getText(item, "tools").toLowerCase();
+                const status = getText(item, "status").toLowerCase();
+                return title.includes(q) || desc.includes(q) || type.includes(q) || tools.includes(q) || status.includes(q);
+            });
+        }
+
+        function renderCases() {
+            list.innerHTML = "";
+
+            let data = [...TechnicalBuilds];
+            data = filterWorks(data, searchBox.value.trim());
+            data = sortWorks(data, sortSelect.value);
+
+            if (!data.length) {
+                const empty = document.createElement("div");
+                empty.className = "case-empty";
+                empty.textContent = lang === "zh" ? "没有匹配的案例。" : "No matching case studies found.";
+                list.appendChild(empty);
+                return;
+            }
+
+            data.forEach(item => list.appendChild(createCaseCard(item)));
+        }
+
+        function renderLang() {
+            const navLinks = document.getElementById("nav-links");
+            const navs = i18n[lang].nav;
+
+            navLinks.innerHTML = `
+        <a href="../../works.html">${navs[0]}</a>
+        <a href="../../writing.html">${navs[1]}</a>
+        <a href="../../projects.html">${navs[2]}</a>
+        <a href="../../about.html">${navs[3]}</a>
+        <a href="../../archive.html">${navs[4]}</a>
+      `;
+
+            document.getElementById("logo-text").textContent = i18n[lang].logo;
+            document.getElementById("lang-en").classList.toggle("active", lang === "en");
+            document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
+
+            document.getElementById("tb-hero-eyebrow").textContent =
+                lang === "zh" ? "项目 · 技术构建" : "Projects · Technical Builds";
+
+            document.getElementById("tb-hero-title").textContent =
+                lang === "zh" ? "Technical Builds" : "Technical Builds";
+
+            document.getElementById("tb-hero-text").textContent =
+                lang === "zh"
+                    ? "这里收录仍在推进中的技术项目、系统与实现工作，并以案例说明的方式组织。"
+                    : "A case-study-oriented archive of active technical projects, systems, and implementation work still under development.";
+
+            document.getElementById("tb-overview-note").textContent =
+                lang === "zh" ? "概览" : "Overview";
+
+            document.getElementById("tb-overview-text").textContent =
+                lang === "zh"
+                    ? "这一部分把技术项目作为结构化案例来展示。每个条目优先说明范围、工具、逻辑与当前方向，而不只是结果。"
+                    : "This section presents technical projects as structured cases. Each entry describes scope, tools, logic, and current direction rather than only final output.";
+
+            document.getElementById("tb-selection-note").textContent =
+                lang === "zh" ? "案例目录" : "Case Directory";
+
+            document.getElementById("tb-selection-title").textContent =
+                lang === "zh" ? "当前技术项目" : "Current Technical Projects";
+
+            document.getElementById("tb-selection-side").textContent =
+                lang === "zh"
+                    ? "每个条目先总结项目，再进入完整案例页。"
+                    : "Each entry summarizes the project before linking to its full case page.";
+
+            searchBox.placeholder = lang === "zh" ? "搜索技术项目..." : "Search technical projects...";
+
+            sortSelect.innerHTML = `
+        <option value="date-desc">${lang === "zh" ? "最新" : "Newest"}</option>
+        <option value="date-asc">${lang === "zh" ? "最早" : "Oldest"}</option>
+        <option value="alpha">${lang === "zh" ? "按字母" : "A–Z"}</option>
+      `;
+
+            document.querySelector(".footer-inner p:first-child").textContent = i18n[lang].copyright;
+            document.querySelector(".footer-inner p:last-child").innerHTML = i18n[lang].copyright2;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("lang-en").onclick = () => setLang("en");
+            document.getElementById("lang-zh").onclick = () => setLang("zh");
+
+            searchBox.addEventListener("input", renderCases);
+            sortSelect.addEventListener("change", renderCases);
+
+            renderLang();
+            renderCases();
+        });
+    </script>
+</body>
+
+</html>
