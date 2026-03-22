@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Systems - Cogniven</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="../../index.html" class="logo">Cogniven</a>
+      <div class="nav-links">
+        <a href="../../works.html">Works</a>
+        <a href="../../writing.html">Writing</a>
+        <a href="../../projects.html">Projects</a>
+        <a href="../../about.html">About</a>
+        <a href="../../archive.html">Archive</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Projects · Research Systems</p>
+        <h1>Research Systems</h1>
+        <p class="hero-text">
+          Ongoing frameworks for inquiry, observation, and structured understanding.
+        </p>
+      </div>
+    </section>
+
+    <section class="section intro-band">
+      <div class="container narrow">
+        <p class="section-note">Overview</p>
+        <p class="lead-paragraph">
+          This section gathers long-term research structures. Each entry is a system page that shows how a topic is organized, tracked, and developed over time.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-note">Systems</p>
+            <h2>Current Structures</h2>
+          </div>
+          <p class="section-side-text">
+            Each card leads to a dedicated system page.
+          </p>
+        </div>
+
+        <div id="works-grid" class="works-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Cogniven. All rights reserved.</p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br>
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../js/researchSystems.js"></script>
+  <script>
+    const grid = document.getElementById("works-grid");
+
+    function createCard(item) {
+      const card = document.createElement("article");
+      card.className = "work-card";
+
+      const cover = document.createElement("div");
+      cover.className = "work-cover-wrapper";
+
+      const img = document.createElement("img");
+      img.className = "work-cover";
+      img.src = item.cover;
+      img.alt = item.title.en;
+      img.onerror = function () {
+        this.src =
+          "data:image/svg+xml;utf8," +
+          encodeURIComponent(`
+            <svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'>
+              <rect width='800' height='500' fill='#161b22'/>
+              <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+                fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>
+                Cover not added yet
+              </text>
+            </svg>
+          `);
+      };
+
+      const body = document.createElement("div");
+      body.className = "work-body";
+
+      const title = document.createElement("h3");
+      title.className = "work-title";
+      title.textContent = item.title.en;
+
+      const desc = document.createElement("div");
+      desc.className = "work-desc";
+      desc.textContent = item.desc.en;
+
+      cover.appendChild(img);
+      body.appendChild(title);
+      body.appendChild(desc);
+      card.appendChild(cover);
+      card.appendChild(body);
+
+      card.addEventListener("click", () => {
+        window.location.href = item.link;
+      });
+
+      return card;
+    }
+
+    ResearchSystems.forEach(item => {
+      grid.appendChild(createCard(item));
+    });
+  </script>
+</body>
+</html>

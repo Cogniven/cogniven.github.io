@@ -787,3 +787,35 @@ const artisticCreationsWorks = [
   border-radius: 14px;
   border: 1px solid var(--line);
 }
+
+.system-title {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.system-subtitle {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--text-soft);
+}
+
+.system-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.system-meta span {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.02);
+}
