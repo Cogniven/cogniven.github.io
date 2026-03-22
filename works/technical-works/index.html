@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Creations - Cogniven</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+          <a href="../../works.html">Works</a>
+          <a href="../../writing.html">Writing</a>
+          <a href="../../projects.html">Projects</a>
+          <a href="../../about.html">About</a>
+          <a href="../../archive.html">Archive</a>
+        </div>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow" id="hero-eyebrow">Works · Technical Creations</p>
+        <h1 id="hero-title">Technical Creations</h1>
+        <p class="hero-text" id="hero-text">
+          A browsable archive of systems, tools, and code-based outputs.
+        </p>
+      </div>
+    </section>
+
+    <section class="section intro-band">
+      <div class="container narrow">
+        <p class="section-note" id="overview-label">Overview</p>
+        <p class="lead-paragraph" id="overview-text">
+          This page gathers technical work in a format intended for browsing first, then closer study through dedicated case pages.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-note" id="selection-label">Selection</p>
+            <h2 id="selection-title">Current Works</h2>
+          </div>
+          <p class="section-side-text" id="selection-side">
+            Each card leads to a case study that explains the system, logic, and outcome.
+          </p>
+        </div>
+
+        <div class="search-sort-row" style="display:flex;gap:18px;align-items:center;margin-bottom:24px;">
+          <input id="search-box" type="text" placeholder="Search works..." style="flex:1;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);font-size:15px;">
+          <select id="sort-select" style="padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);font-size:15px;">
+            <option value="date-desc">Newest First</option>
+            <option value="date-asc">Oldest First</option>
+            <option value="alpha">A-Z</option>
+          </select>
+        </div>
+
+        <div id="works-grid" class="works-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Cogniven. All rights reserved.</p>
+      <p>
+        The works presented on this site are original and protected by copyright.<br>
+        Unauthorized reproduction, distribution, or commercial use is prohibited.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/technicalWorks.js"></script>
+  <script>
+    let lang = localStorage.getItem('lang') || 'en';
+
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem('lang', lang);
+      renderLang();
+      renderWorks();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
+      renderLang();
+      renderWorks();
+    });
+
+    function renderLang() {
+      const navLinks = document.getElementById('nav-links');
+      const navs = i18n[lang].nav;
+      navLinks.innerHTML = `
+        <a href="../../works.html">${navs[0]}</a>
+        <a href="../../writing.html">${navs[1]}</a>
+        <a href="../../projects.html">${navs[2]}</a>
+        <a href="../../about.html">${navs[3]}</a>
+        <a href="../../archive.html">${navs[4]}</a>
+      `;
+
+      document.getElementById('logo-text').textContent = i18n[lang].logo;
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+      document.getElementById('hero-eyebrow').textContent =
+        lang === 'zh' ? '作品 · 技术创作' : 'Works · Technical Creations';
+
+      document.getElementById('hero-title').textContent =
+        lang === 'zh' ? '技术创作' : 'Technical Creations';
+
+      document.getElementById('hero-text').textContent =
+        lang === 'zh'
+          ? '一个可浏览的技术成果档案，收录系统、工具与代码性产出。'
+          : 'A browsable archive of systems, tools, and code-based outputs.';
+
+      document.getElementById('overview-label').textContent =
+        lang === 'zh' ? '概览' : 'Overview';
+
+      document.getElementById('overview-text').textContent =
+        lang === 'zh'
+          ? '本页面收录技术类作品，适合先浏览，再进入独立 case study 页面深入查看。'
+          : 'This page gathers technical work in a format intended for browsing first, then closer study through dedicated case pages.';
+
+      document.getElementById('selection-label').textContent =
+        lang === 'zh' ? '精选' : 'Selection';
+
+      document.getElementById('selection-title').textContent =
+        lang === 'zh' ? '当前作品' : 'Current Works';
+
+      document.getElementById('selection-side').textContent =
+        lang === 'zh'
+          ? '每张卡片都会进入一个 case study 页面，用来说明系统、逻辑与结果。'
+          : 'Each card leads to a case study that explains the system, logic, and outcome.';
+
+      document.getElementById('search-box').placeholder =
+        lang === 'zh' ? '搜索作品…' : 'Search works...';
+
+      const sortSelect = document.getElementById('sort-select');
+      sortSelect.options[0].text = lang === 'zh' ? '最新优先' : 'Newest First';
+      sortSelect.options[1].text = lang === 'zh' ? '最早优先' : 'Oldest First';
+      sortSelect.options[2].text = lang === 'zh' ? '字母排序' : 'A-Z';
+
+      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
+      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
+    }
+
+    const grid = document.getElementById('works-grid');
+    const searchBox = document.getElementById('search-box');
+    const sortSelect = document.getElementById('sort-select');
+
+    function createWorkCard(work) {
+      const card = document.createElement('article');
+      card.className = 'work-card';
+
+      const coverWrapper = document.createElement('a');
+      coverWrapper.className = 'work-cover-wrapper';
+      coverWrapper.href = work.link || '#';
+
+      const img = document.createElement('img');
+      img.className = 'work-cover';
+      img.src = work.cover;
+      img.alt = work.title[lang];
+
+      img.onerror = function () {
+        this.src =
+          "data:image/svg+xml;utf8," +
+          encodeURIComponent(`
+            <svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'>
+              <rect width='800' height='500' fill='#161b22'/>
+              <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+                fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>
+                Cover not added yet
+              </text>
+            </svg>
+          `);
+      };
+
+      const body = document.createElement('div');
+      body.className = 'work-body';
+
+      const title = document.createElement('h3');
+      title.className = 'work-title';
+      title.textContent = work.title[lang];
+
+      const desc = document.createElement('div');
+      desc.className = 'work-desc';
+      desc.textContent = work.desc[lang];
+
+      coverWrapper.appendChild(img);
+      body.appendChild(title);
+      body.appendChild(desc);
+
+      card.appendChild(coverWrapper);
+      card.appendChild(body);
+
+      card.addEventListener('click', () => {
+        if (work.link) {
+          window.location.href = work.link;
+        }
+      });
+
+      return card;
+    }
+
+    function sortWorks(works, mode) {
+      if (mode === 'alpha') {
+        return works.slice().sort((a, b) => a.title[lang].localeCompare(b.title[lang]));
+      } else if (mode === 'date-asc') {
+        return works.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+      } else {
+        return works.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+      }
+    }
+
+    function filterWorks(works, query) {
+      if (!query) return works;
+      const q = query.toLowerCase();
+      return works.filter(w =>
+        w.title[lang].toLowerCase().includes(q) ||
+        w.desc[lang].toLowerCase().includes(q)
+      );
+    }
+
+    function renderWorks() {
+      grid.innerHTML = '';
+      const filtered = filterWorks(TechnicalWorks, searchBox.value);
+      const sorted = sortWorks(filtered, sortSelect.value);
+      sorted.forEach(work => grid.appendChild(createWorkCard(work)));
+    }
+
+    searchBox.addEventListener('input', renderWorks);
+    sortSelect.addEventListener('change', renderWorks);
+  </script>
+</body>
+</html>

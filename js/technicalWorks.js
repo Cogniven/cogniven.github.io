@@ -1,8 +1,8 @@
 const TechnicalWorks = [
   {
     title: {
-      en: "Freqtrade Strategy System",
-      zh: "Freqtrade 策略系统"
+      en: "Strategy System",
+      zh: "策略系统"
     },
     desc: {
       en: "A systematic trading strategy with structured entry, risk control, and optimization.",
