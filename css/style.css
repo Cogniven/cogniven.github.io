@@ -643,3 +643,45 @@ const artisticCreationsWorks = [
   font-size: 12px;
   color: var(--accent);
 }
+
+.case-title {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.case-subtitle {
+  margin-top: 20px;
+  font-size: 20px;
+  color: var(--text-soft);
+}
+
+.case-cover {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+}
+
+.case-info {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.case-info span {
+  display: block;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.case-info strong {
+  display: block;
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.case-image {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 16px;
+}
