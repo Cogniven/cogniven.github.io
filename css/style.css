@@ -868,19 +868,22 @@ const artisticCreationsWorks = [
   left: 50%;
   transform: translateX(-50%);
   min-width: 220px;
-  padding: 10px;
-  border: 1px solid rgba(255, 215, 160, 0.08);
+  padding: 14px;
   border-radius: 14px;
-  background: rgba(20,16,11,0.92);
+  /* 深蓝黑（你想要的） */
+  background: rgba(10, 18, 32, 0.92);
+  /* 冷色边框 */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  /* 更干净的阴影 */
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   opacity: 0;
   visibility: hidden;
   transform: translateX(-50%) translateY(6px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  transition: all 0.18s ease;
   z-index: 999;
 }
 
