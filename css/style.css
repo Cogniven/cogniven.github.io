@@ -903,3 +903,21 @@ const artisticCreationsWorks = [
   visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
+
+.lang-switcher {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lang-btn {
+  width: 48px;
+  height: 32px;
+  border: none;
+  background: transparent;
+}
+
+.lang-btn.active {
+  background: rgba(255, 255, 255, 0.15);
+}
