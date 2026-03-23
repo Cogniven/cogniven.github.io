@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>On Incomplete Systems - Cogniven</title>
-  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="../../../../../css/style.css" />
   <style>
     .note-page {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
     }
 
@@ -22,9 +23,16 @@
     .note-subtitle {
       color: var(--text-soft);
       line-height: 1.76;
-      font-size: 1.05rem;
+      font-size: 1.06rem;
       margin: 0;
-      max-width: 680px;
+      max-width: 700px;
+    }
+
+    .note-divider {
+      width: 56px;
+      height: 1px;
+      background: var(--line);
+      margin: 14px 0 0;
     }
 
     .note-body {
@@ -35,26 +43,27 @@
 
     .note-body p {
       margin: 0 0 1.35em;
-    }
-
-    .note-divider {
-      width: 56px;
-      height: 1px;
-      background: var(--line);
-      margin: 10px 0 0;
+      color: var(--text-soft);
     }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../../index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
-        <a href="../../../works.html">Works</a>
-        <a href="../../../writing.html">Writing</a>
-        <a href="../../../projects.html">Projects</a>
-        <a href="../../../about.html">About</a>
-        <a href="../../../archive.html">Archive</a>
+      <a href="../../../../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+          <a href="../../../../../works.html">Works</a>
+          <a href="../../../../../writing.html">Writing</a>
+          <a href="../../../../../projects.html">Projects</a>
+          <a href="../../../../../about.html">About</a>
+          <a href="../../../../../archive.html">Archive</a>
+        </div>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
       </div>
     </nav>
   </header>
@@ -62,10 +71,10 @@
   <main>
     <section class="hero">
       <div class="container hero-inner note-page">
-        <p class="eyebrow">Writing · Notes</p>
-        <h1>On Incomplete Systems</h1>
-        <div class="note-meta">Mar 22, 2026</div>
-        <p class="note-subtitle">
+        <p class="eyebrow" id="note-eyebrow">Writing · Notes</p>
+        <h1 id="note-title">On Incomplete Systems</h1>
+        <div class="note-meta" id="note-meta">Mar 22, 2026</div>
+        <p class="note-subtitle" id="note-subtitle">
           A short note on why unfinished structures may be more revealing than finished ones.
         </p>
         <div class="note-divider"></div>
@@ -75,14 +84,18 @@
     <section class="section">
       <div class="container note-page">
         <article class="note-body">
-          <p>
-            Some systems only become visible when they fail to close. Completion often smooths over the seams that made the structure intelligible in the first place.
+          <p id="note-p1">
+            Some systems only become visible when they fail to close. Completion often smooths over the seams that made
+            the structure intelligible in the first place.
           </p>
-          <p>
-            A finished form can appear coherent precisely because its tensions have been concealed. An unfinished one, by contrast, still shows where pressure collects, where decisions remain unresolved, and where its internal logic resists itself.
+          <p id="note-p2">
+            A finished form can appear coherent precisely because its tensions have been concealed. An unfinished one,
+            by contrast, still shows where pressure collects, where decisions remain unresolved, and where its internal
+            logic resists itself.
           </p>
-          <p>
-            That is why incompletion is not always a weakness. Sometimes it is the only moment at which a structure can still be read clearly, before polish turns it into surface.
+          <p id="note-p3">
+            That is why incompletion is not always a weakness. Sometimes it is the only moment at which a structure can
+            still be read clearly, before polish turns it into surface.
           </p>
         </article>
       </div>
@@ -98,5 +111,72 @@
       </p>
     </div>
   </footer>
+
+  <script src="../../../../../js/i18n.js"></script>
+  <script>
+    let lang = localStorage.getItem("lang") || "en";
+
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem("lang", lang);
+      renderLang();
+    }
+
+    function renderLang() {
+      const navLinks = document.getElementById("nav-links");
+      const navs = i18n[lang].nav;
+
+      navLinks.innerHTML = `
+        <a href="../../../../../works.html">${navs[0]}</a>
+        <a href="../../../../../writing.html">${navs[1]}</a>
+        <a href="../../../../../projects.html">${navs[2]}</a>
+        <a href="../../../../../about.html">${navs[3]}</a>
+        <a href="../../../../../archive.html">${navs[4]}</a>
+      `;
+
+      document.getElementById("logo-text").textContent = i18n[lang].logo;
+      document.getElementById("lang-en").classList.toggle("active", lang === "en");
+      document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
+
+      document.getElementById("note-eyebrow").textContent =
+        lang === "zh" ? "写作 · 笔记" : "Writing · Notes";
+
+      document.getElementById("note-title").textContent =
+        lang === "zh" ? "关于未完成的系统" : "On Incomplete Systems";
+
+      document.getElementById("note-meta").textContent =
+        lang === "zh" ? "2026年3月22日" : "Mar 22, 2026";
+
+      document.getElementById("note-subtitle").textContent =
+        lang === "zh"
+          ? "一则关于“未完成结构为何有时比完成品更能揭示问题”的短文。"
+          : "A short note on why unfinished structures may be more revealing than finished ones.";
+
+      document.getElementById("note-p1").textContent =
+        lang === "zh"
+          ? "有些系统只有在无法闭合时才真正显形。完成往往会把那些原本让结构变得可读的接缝抹平。"
+          : "Some systems only become visible when they fail to close. Completion often smooths over the seams that made the structure intelligible in the first place.";
+
+      document.getElementById("note-p2").textContent =
+        lang === "zh"
+          ? "一个完成的形式之所以显得连贯，恰恰可能是因为其中的张力已经被遮蔽。相较之下，未完成的形式仍会显露压力聚集之处、决策悬而未决之处，以及其内部逻辑彼此抵牾之处。"
+          : "A finished form can appear coherent precisely because its tensions have been concealed. An unfinished one, by contrast, still shows where pressure collects, where decisions remain unresolved, and where its internal logic resists itself.";
+
+      document.getElementById("note-p3").textContent =
+        lang === "zh"
+          ? "因此，未完成并不总是弱点。有时它恰恰是结构仍然可以被清晰阅读的唯一时刻，在抛光把一切变成表面之前。"
+          : "That is why incompletion is not always a weakness. Sometimes it is the only moment at which a structure can still be read clearly, before polish turns it into surface.";
+
+      document.querySelector(".footer-inner p:first-child").textContent = i18n[lang].copyright;
+      document.querySelector(".footer-inner p:last-child").innerHTML = i18n[lang].copyright2;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("lang-en").onclick = () => setLang("en");
+      document.getElementById("lang-zh").onclick = () => setLang("zh");
+      renderLang();
+    });
+  </script>
 </body>
+
 </html>
