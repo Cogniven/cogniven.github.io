@@ -22,7 +22,7 @@ const AnalyticalPieces = [
       en: "An exploration.",
       zh: "探讨。"
     },
-    cover: "../../assets/images/works/analytical-pieces/work-002/cover.jpg",
+    cover: "/assets/images/works/analytical-pieces/work-002/cover.jpg",
     link: "./work-002/index.html",
     date: "2026-03-18"
   },
@@ -36,7 +36,7 @@ const AnalyticalPieces = [
       en: "A structural analysis.",
       zh: "机制分析。"
     },
-    cover: "../../assets/images/works/analytical-pieces/work-003/cover.jpg",
+    cover: "/assets/images/works/analytical-pieces/work-003/cover.jpg",
     link: "./work-003/index.html",
     date: "2026-03-10"
   }
