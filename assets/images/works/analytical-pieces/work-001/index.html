@@ -5,133 +5,211 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Structure and Interpretation - Cogniven</title>
-  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
   <style>
-    .essay-hero {
-      padding: 140px 0 72px;
-      background:
-        linear-gradient(to bottom, rgba(6, 12, 24, 0.88), rgba(8, 14, 28, 0.72)),
-        linear-gradient(to right, rgba(31, 58, 147, 0.10), rgba(0, 0, 0, 0));
-    }
-
-    .essay-title {
-      margin: 12px 0 16px;
-      font-size: clamp(2.6rem, 6vw, 4.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-    }
-
-    .essay-subtitle {
+    .essay-page {
       max-width: 760px;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.72);
-    }
-
-    .essay-meta-section {
-      padding-top: 0;
-      padding-bottom: 28px;
+      margin: 0 auto;
     }
 
     .essay-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+      margin-bottom: 18px;
     }
 
     .essay-meta span {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
       padding: 6px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.10);
+      border: 1px solid var(--line);
       border-radius: 999px;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.72);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .essay-subtitle {
+      color: var(--text-soft);
+      line-height: 1.76;
+      font-size: 1.06rem;
+      margin: 0;
+      max-width: 700px;
+    }
+
+    .essay-divider {
+      width: 56px;
+      height: 1px;
+      background: var(--line);
+      margin: 18px 0 0;
     }
 
     .essay-abstract {
-      max-width: 760px;
-    }
-
-    .essay-body-section {
-      padding-top: 44px;
+      color: var(--text-soft);
+      line-height: 1.9;
+      font-size: 1.04rem;
+      margin: 0;
     }
 
     .essay-body {
-      max-width: 760px;
+      font-size: 1.06rem;
+      line-height: 1.92;
+      color: var(--text);
     }
 
     .essay-body h2 {
-      margin: 56px 0 18px;
-      font-size: 1.45rem;
-      line-height: 1.25;
-      letter-spacing: -0.02em;
+      font-size: 1.35rem;
+      margin: 2.2em 0 0.8em;
+      line-height: 1.3;
+      color: var(--text);
     }
 
     .essay-body p {
-      margin: 0 0 20px;
-      font-size: 1rem;
-      line-height: 1.95;
-      color: rgba(255, 255, 255, 0.82);
+      margin: 0 0 1.35em;
+      color: var(--text-soft);
     }
 
     .essay-figure {
-      margin: 42px 0;
-      padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 18px;
+      margin: 2.2em 0 2em;
     }
 
     .essay-figure img {
-      display: block;
       width: 100%;
-      height: auto;
-      border-radius: 12px;
+      display: block;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
     }
 
     .essay-caption {
-      margin-top: 14px !important;
-      font-size: 0.92rem !important;
-      line-height: 1.7 !important;
-      color: rgba(255, 255, 255, 0.58) !important;
+      margin-top: 12px;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--muted);
     }
 
     .essay-note-block {
-      margin: 36px 0 0;
-      padding: 22px 24px;
-      border-left: 3px solid rgba(255, 255, 255, 0.18);
+      margin: 2.2em 0 0;
+      padding: 18px 18px 16px;
+      border-left: 2px solid var(--line);
       background: rgba(255, 255, 255, 0.03);
-      border-radius: 0 14px 14px 0;
+      border-radius: 0 10px 10px 0;
     }
 
     .essay-note-title {
-      margin-bottom: 8px !important;
-      font-size: 0.82rem !important;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: rgba(255, 255, 255, 0.56) !important;
+      color: var(--muted);
+      margin: 0 0 8px;
     }
 
-    @media (max-width: 768px) {
-      .essay-hero {
-        padding: 112px 0 56px;
+    .essay-note-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      width: 48px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item>a {
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      min-width: 220px;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 16, 28, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+      z-index: 999;
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .has-dropdown:hover .nav-dropdown,
+    .has-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .nav-dropdown {
+        min-width: 180px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .essay-page {
+        max-width: 100%;
       }
 
-      .essay-body h2 {
-        margin-top: 42px;
-        font-size: 1.25rem;
+      .nav {
+        flex-wrap: wrap;
+        gap: 14px;
       }
 
-      .essay-figure {
-        padding: 14px;
-        border-radius: 14px;
-      }
-
-      .essay-note-block {
-        padding: 18px 18px;
+      .nav-links {
+        gap: 14px !important;
+        flex-wrap: wrap;
       }
     }
   </style>
@@ -140,85 +218,97 @@
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../../index.html" class="logo" style="margin-right:auto;">Cogniven</a>
-      <div class="nav-links" style="display:flex;gap:24px;">
-        <a href="../../../works.html">Works</a>
-        <a href="../../../writing.html">Writing</a>
-        <a href="../../../projects.html">Projects</a>
-        <a href="../../../about.html">About</a>
-        <a href="../../../archive.html">Archive</a>
+      <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+          <a href="/works.html">Works</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+          <a href="/archive.html">Archive</a>
+        </div>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero essay-hero">
-      <div class="container narrow">
-        <p class="eyebrow">Works · Analytical Pieces</p>
-        <h1 class="essay-title">Structure and Interpretation</h1>
-        <p class="essay-subtitle">
+    <section class="hero">
+      <div class="container hero-inner essay-page">
+        <p class="eyebrow" id="essay-eyebrow">Works · Analytical Pieces</p>
+        <h1 id="essay-title">Structure and Interpretation</h1>
+
+        <div class="essay-meta">
+          <span id="essay-meta-year">2026</span>
+          <span id="essay-meta-type">Essay</span>
+          <span id="essay-meta-tag">Analysis</span>
+        </div>
+
+        <p class="essay-subtitle" id="essay-subtitle">
           How structure shapes meaning in analytical writing.
         </p>
-      </div>
-    </section>
 
-    <section class="section essay-meta-section">
-      <div class="container narrow">
-        <div class="essay-meta">
-          <span>2026</span>
-          <span>Essay</span>
-          <span>Analysis</span>
-        </div>
+        <div class="essay-divider"></div>
       </div>
     </section>
 
     <section class="section intro-band">
-      <div class="container narrow">
-        <p class="section-note">Abstract</p>
-        <p class="lead-paragraph essay-abstract">
+      <div class="container essay-page">
+        <p class="section-note" id="essay-abstract-label">Abstract</p>
+        <p class="essay-abstract" id="essay-abstract">
           This piece looks at how form, sequence, and emphasis shape interpretation. Instead of treating structure as a
           neutral frame, it reads it as an active part of meaning.
         </p>
       </div>
     </section>
 
-    <section class="section essay-body-section">
-      <div class="container narrow essay-body">
-        <h2>1. Framing</h2>
-        <p>
-          Interpretation is shaped before content is fully understood. Order, emphasis, and framing guide attention from
-          the beginning.
-        </p>
+    <section class="section">
+      <div class="container essay-page">
+        <article class="essay-body">
+          <h2 id="essay-h2-1">1. Framing</h2>
+          <p id="essay-p1">
+            Interpretation is shaped before content is fully understood. Order, emphasis, and framing guide attention
+            from the beginning.
+          </p>
 
-        <h2>2. Guidance</h2>
-        <p>
-          Structure helps distinguish the central line from surrounding material. It determines rhythm, relation, and
-          hierarchy.
-        </p>
+          <h2 id="essay-h2-2">2. Guidance</h2>
+          <p id="essay-p2">
+            Structure helps distinguish the central line from surrounding material. It determines rhythm, relation, and
+            hierarchy.
+          </p>
 
-        <div class="essay-figure">
-          <img src="../../../assets/images/works/analytical-pieces/work-001/cover.jpg" alt="Reference image" />
-          <p class="essay-caption">Figure 1. A supporting image or chart placed within the essay flow.</p>
-        </div>
+          <div class="essay-figure">
+            <img src="./cover.jpg" alt="Reference image"
+              onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='760' viewBox='0 0 1200 760'><rect width='1200' height='760' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='30' font-family='Georgia, serif'>Cover not added yet</text></svg>`)">
+            <p class="essay-caption" id="essay-caption">
+              Figure 1. A supporting image or chart placed within the essay flow.
+            </p>
+          </div>
 
-        <h2>3. Variation</h2>
-        <p>
-          Different structures produce different reading experiences. Compression, expansion, and interruption all
-          affect meaning.
-        </p>
+          <h2 id="essay-h2-3">3. Variation</h2>
+          <p id="essay-p3">
+            Different structures produce different reading experiences. Compression, expansion, and interruption all
+            affect meaning.
+          </p>
 
-        <div class="essay-note-block">
-          <p class="essay-note-title">Note</p>
-          <p>This block can hold a reference, side remark, or short methodological note.</p>
-        </div>
+          <div class="essay-note-block">
+            <p class="essay-note-title" id="essay-note-title">Note</p>
+            <p id="essay-note-text">
+              This block can hold a reference, side remark, or short methodological note.
+            </p>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="section closing-section">
-      <div class="container narrow center">
-        <p class="section-note">Ending</p>
-        <h2 class="closing-title">Structure is part of meaning.</h2>
-        <p class="closing-text">
+      <div class="container essay-page center">
+        <p class="section-note" id="essay-ending-label">Ending</p>
+        <h2 class="closing-title" id="essay-closing-title">Structure is part of meaning.</h2>
+        <p class="closing-text" id="essay-closing-text">
           What is understood depends not only on what is said, but on how it is arranged.
         </p>
       </div>
@@ -234,6 +324,156 @@
       </p>
     </div>
   </footer>
+
+  <script src="/js/i18n.js"></script>
+  <script>
+    let lang = localStorage.getItem('lang') || 'en';
+
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem('lang', lang);
+      renderLang();
+    }
+
+    function renderLang() {
+      const navLinks = document.getElementById('nav-links');
+      const navs = i18n[lang].nav;
+
+      const sub = {
+        works: lang === 'zh'
+          ? ['艺术创作', '分析作品', '技术工作', '实验形式']
+          : ['Artistic Creations', 'Analytical Pieces', 'Technical Works', 'Experimental Forms'],
+        writing: lang === 'zh'
+          ? ['Essays', 'Notes']
+          : ['Essays', 'Notes'],
+        projects: lang === 'zh'
+          ? ['研究系统', '技术构建', '创意开发', '个人基础设施']
+          : ['Research Systems', 'Technical Builds', 'Creative Development', 'Personal Infrastructure']
+      };
+
+      navLinks.innerHTML = `
+        <div class="nav-item has-dropdown">
+          <a href="/works.html">${navs[0]}</a>
+          <div class="nav-dropdown">
+            <a href="/works/artistic-creations/index.html">${sub.works[0]}</a>
+            <a href="/works/analytical-pieces/index.html">${sub.works[1]}</a>
+            <a href="/works/technical-works/index.html">${sub.works[2]}</a>
+            <a href="/works/experimental-forms/index.html">${sub.works[3]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="/writing.html">${navs[1]}</a>
+          <div class="nav-dropdown">
+            <a href="/writing/essays/index.html">${sub.writing[0]}</a>
+            <a href="/writing/notes/index.html">${sub.writing[1]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="/projects.html">${navs[2]}</a>
+          <div class="nav-dropdown">
+            <a href="/projects/research-systems/index.html">${sub.projects[0]}</a>
+            <a href="/projects/technical-builds/index.html">${sub.projects[1]}</a>
+            <a href="/projects/creative-development/index.html">${sub.projects[2]}</a>
+            <a href="/projects/personal-infrastructure/index.html">${sub.projects[3]}</a>
+          </div>
+        </div>
+
+        <a href="/about.html">${navs[3]}</a>
+        <a href="/archive.html">${navs[4]}</a>
+      `;
+
+      document.getElementById('logo-text').textContent = i18n[lang].logo;
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+      document.getElementById('essay-eyebrow').textContent =
+        lang === 'zh' ? '作品 · 分析作品' : 'Works · Analytical Pieces';
+
+      document.getElementById('essay-title').textContent =
+        lang === 'zh' ? '结构与阐释' : 'Structure and Interpretation';
+
+      document.getElementById('essay-meta-year').textContent =
+        lang === 'zh' ? '2026年' : '2026';
+
+      document.getElementById('essay-meta-type').textContent =
+        lang === 'zh' ? '文章' : 'Essay';
+
+      document.getElementById('essay-meta-tag').textContent =
+        lang === 'zh' ? '分析' : 'Analysis';
+
+      document.getElementById('essay-subtitle').textContent =
+        lang === 'zh'
+          ? '结构如何在分析性写作中塑造意义。'
+          : 'How structure shapes meaning in analytical writing.';
+
+      document.getElementById('essay-abstract-label').textContent =
+        lang === 'zh' ? '摘要' : 'Abstract';
+
+      document.getElementById('essay-abstract').textContent =
+        lang === 'zh'
+          ? '这篇作品讨论形式、顺序与强调方式如何塑造阐释。它不把结构视为中性的框架，而把它看作意义本身的主动组成部分。'
+          : 'This piece looks at how form, sequence, and emphasis shape interpretation. Instead of treating structure as a neutral frame, it reads it as an active part of meaning.';
+
+      document.getElementById('essay-h2-1').textContent =
+        lang === 'zh' ? '1. 框定' : '1. Framing';
+
+      document.getElementById('essay-p1').textContent =
+        lang === 'zh'
+          ? '在内容被完全理解之前，阐释就已经开始受到塑造。顺序、强调与框定方式会从一开始就引导注意力。'
+          : 'Interpretation is shaped before content is fully understood. Order, emphasis, and framing guide attention from the beginning.';
+
+      document.getElementById('essay-h2-2').textContent =
+        lang === 'zh' ? '2. 引导' : '2. Guidance';
+
+      document.getElementById('essay-p2').textContent =
+        lang === 'zh'
+          ? '结构帮助读者把中心线索与周边材料区分开来。它决定节奏、关系与层级。'
+          : 'Structure helps distinguish the central line from surrounding material. It determines rhythm, relation, and hierarchy.';
+
+      document.getElementById('essay-caption').textContent =
+        lang === 'zh'
+          ? '图 1：置于文章流程中的辅助图像或图表。'
+          : 'Figure 1. A supporting image or chart placed within the essay flow.';
+
+      document.getElementById('essay-h2-3').textContent =
+        lang === 'zh' ? '3. 变化' : '3. Variation';
+
+      document.getElementById('essay-p3').textContent =
+        lang === 'zh'
+          ? '不同的结构会生成不同的阅读经验。压缩、展开与打断，都会影响意义的形成。'
+          : 'Different structures produce different reading experiences. Compression, expansion, and interruption all affect meaning.';
+
+      document.getElementById('essay-note-title').textContent =
+        lang === 'zh' ? '注' : 'Note';
+
+      document.getElementById('essay-note-text').textContent =
+        lang === 'zh'
+          ? '这个区块可以放参考说明、旁注，或简短的方法说明。'
+          : 'This block can hold a reference, side remark, or short methodological note.';
+
+      document.getElementById('essay-ending-label').textContent =
+        lang === 'zh' ? '结尾' : 'Ending';
+
+      document.getElementById('essay-closing-title').textContent =
+        lang === 'zh' ? '结构本身就是意义的一部分。' : 'Structure is part of meaning.';
+
+      document.getElementById('essay-closing-text').textContent =
+        lang === 'zh'
+          ? '人所理解的内容，不只取决于说了什么，也取决于它是如何被安排的。'
+          : 'What is understood depends not only on what is said, but on how it is arranged.';
+
+      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
+      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
+      setLang(lang);
+    });
+  </script>
 </body>
 
 </html>
