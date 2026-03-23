@@ -16,7 +16,7 @@ const TechnicalWorks = [
       en: "Python",
       zh: "Python"
     },
-    cover: "../../assets/images/works/technical-works/work-001/cover.jpg",
+    cover: "/assets/images/works/technical-works/work-001/cover.jpg",
     link: "./work-001/index.html",
     date: "2026-03-22"
   }

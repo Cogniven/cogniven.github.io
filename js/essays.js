@@ -12,8 +12,8 @@ const Essays = [
       en: "Essay",
       zh: "文章"
     },
-    cover: "../../assets/images/writing/essays/essay-001/cover.jpg",
-    link: "../../assets/images/writing/essays/essay-001/index.html",
+    cover: "/assets/images/writing/essays/essay-001/cover.jpg",
+    link: "/assets/images/writing/essays/essay-001/index.html",
     date: "2026-03-22"
   }
 ];

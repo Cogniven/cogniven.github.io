@@ -16,7 +16,7 @@ const PersonalInfrastructure = [
             en: "Active",
             zh: "进行中"
         },
-        cover: "../../assets/images/projects/personal-infrastructure/project-001/cover.jpg",
+        cover: "/assets/images/projects/personal-infrastructure/project-001/cover.jpg",
         link: "./project-001/index.html",
         date: "2026-03-22"
     }
