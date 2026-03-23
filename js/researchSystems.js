@@ -17,7 +17,7 @@ const ResearchSystems = [
       zh: "进行中"
     },
     cover: "/assets/images/projects/research-systems/project-001/cover.jpg",
-    link: "./project-001/index.html",
+    link: "/assets/images/projects/research-systems/project-001/index.html",
     date: "2026-03-22"
   }
 ];

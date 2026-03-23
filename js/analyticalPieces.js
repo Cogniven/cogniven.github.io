@@ -8,8 +8,8 @@ const AnalyticalPieces = [
       en: "A short description of the piece.",
       zh: "这篇作品的简短说明。"
     },
-    cover: "../../assets/images/works/analytical-pieces/work-001/cover.jpg",
-    link: "./work-001/index.html",
+    cover: "/assets/images/works/analytical-pieces/work-001/cover.jpg",
+    link: "/assets/images/works/analytical-pieces/work-001/index.html",
     date: "2026-03-22"
   },
 
@@ -23,7 +23,7 @@ const AnalyticalPieces = [
       zh: "探讨。"
     },
     cover: "/assets/images/works/analytical-pieces/work-002/cover.jpg",
-    link: "./work-002/index.html",
+    link: "/assets/images/works/analytical-pieces/work-002/index.html",
     date: "2026-03-18"
   },
 
@@ -37,7 +37,7 @@ const AnalyticalPieces = [
       zh: "机制分析。"
     },
     cover: "/assets/images/works/analytical-pieces/work-003/cover.jpg",
-    link: "./work-003/index.html",
+    link: "/assets/images/works/analytical-pieces/work-003/index.html",
     date: "2026-03-10"
   }
 ];
