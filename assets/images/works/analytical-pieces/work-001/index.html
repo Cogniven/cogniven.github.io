@@ -1,16 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Structure and Interpretation - Cogniven</title>
   <link rel="stylesheet" href="../../../css/style.css" />
+  <style>
+    .essay-hero {
+      padding: 140px 0 72px;
+      background:
+        linear-gradient(to bottom, rgba(6, 12, 24, 0.88), rgba(8, 14, 28, 0.72)),
+        linear-gradient(to right, rgba(31, 58, 147, 0.10), rgba(0, 0, 0, 0));
+    }
+
+    .essay-title {
+      margin: 12px 0 16px;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .essay-subtitle {
+      max-width: 760px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .essay-meta-section {
+      padding-top: 0;
+      padding-bottom: 28px;
+    }
+
+    .essay-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .essay-meta span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .essay-abstract {
+      max-width: 760px;
+    }
+
+    .essay-body-section {
+      padding-top: 44px;
+    }
+
+    .essay-body {
+      max-width: 760px;
+    }
+
+    .essay-body h2 {
+      margin: 56px 0 18px;
+      font-size: 1.45rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .essay-body p {
+      margin: 0 0 20px;
+      font-size: 1rem;
+      line-height: 1.95;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .essay-figure {
+      margin: 42px 0;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 18px;
+    }
+
+    .essay-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .essay-caption {
+      margin-top: 14px !important;
+      font-size: 0.92rem !important;
+      line-height: 1.7 !important;
+      color: rgba(255, 255, 255, 0.58) !important;
+    }
+
+    .essay-note-block {
+      margin: 36px 0 0;
+      padding: 22px 24px;
+      border-left: 3px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 0 14px 14px 0;
+    }
+
+    .essay-note-title {
+      margin-bottom: 8px !important;
+      font-size: 0.82rem !important;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.56) !important;
+    }
+
+    @media (max-width: 768px) {
+      .essay-hero {
+        padding: 112px 0 56px;
+      }
+
+      .essay-body h2 {
+        margin-top: 42px;
+        font-size: 1.25rem;
+      }
+
+      .essay-figure {
+        padding: 14px;
+        border-radius: 14px;
+      }
+
+      .essay-note-block {
+        padding: 18px 18px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../../index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
+      <a href="../../../index.html" class="logo" style="margin-right:auto;">Cogniven</a>
+      <div class="nav-links" style="display:flex;gap:24px;">
         <a href="../../../works.html">Works</a>
         <a href="../../../writing.html">Writing</a>
         <a href="../../../projects.html">Projects</a>
@@ -45,7 +176,8 @@
       <div class="container narrow">
         <p class="section-note">Abstract</p>
         <p class="lead-paragraph essay-abstract">
-          This piece looks at how form, sequence, and emphasis shape interpretation. Instead of treating structure as a neutral frame, it reads it as an active part of meaning.
+          This piece looks at how form, sequence, and emphasis shape interpretation. Instead of treating structure as a
+          neutral frame, it reads it as an active part of meaning.
         </p>
       </div>
     </section>
@@ -54,22 +186,25 @@
       <div class="container narrow essay-body">
         <h2>1. Framing</h2>
         <p>
-          Interpretation is shaped before content is fully understood. Order, emphasis, and framing guide attention from the beginning.
+          Interpretation is shaped before content is fully understood. Order, emphasis, and framing guide attention from
+          the beginning.
         </p>
 
         <h2>2. Guidance</h2>
         <p>
-          Structure helps distinguish the central line from surrounding material. It determines rhythm, relation, and hierarchy.
+          Structure helps distinguish the central line from surrounding material. It determines rhythm, relation, and
+          hierarchy.
         </p>
 
         <div class="essay-figure">
-          <img src="../../../assets/images/works/analytical-pieces/work-001/cover.jpg" alt="Reference image">
+          <img src="../../../assets/images/works/analytical-pieces/work-001/cover.jpg" alt="Reference image" />
           <p class="essay-caption">Figure 1. A supporting image or chart placed within the essay flow.</p>
         </div>
 
         <h2>3. Variation</h2>
         <p>
-          Different structures produce different reading experiences. Compression, expansion, and interruption all affect meaning.
+          Different structures produce different reading experiences. Compression, expansion, and interruption all
+          affect meaning.
         </p>
 
         <div class="essay-note-block">
@@ -100,4 +235,5 @@
     </div>
   </footer>
 </body>
+
 </html>
