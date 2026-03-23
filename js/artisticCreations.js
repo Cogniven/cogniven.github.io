@@ -2,7 +2,7 @@ const ArtisticCreations = [
   {
     title: { en: "Artistic Creation 001", zh: "艺术创作 001" },
     desc: { en: "A short description for this piece.", zh: "该作品的简短描述。" },
-    cover: "/assets/images/works/artistic-creations/work-001/cover.jpg",
+    cover: "/assets/images/works/artistic-creations/work-001/屏幕截图 2026-03-20 080805.png",
     link: "#",
     date: "2026-03-20"
   },
