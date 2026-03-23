@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artistic Creation - Cogniven</title>
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+        .art-page {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .art-meta {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 14px;
+        }
+
+        .art-subtitle {
+            color: var(--text-soft);
+            line-height: 1.7;
+            margin-bottom: 18px;
+            max-width: 680px;
+        }
+
+        .art-image {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            margin: 20px 0;
+            display: block;
+            background: var(--bg-soft);
+        }
+
+        .art-body {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-soft);
+        }
+
+        .art-body p {
+            margin-bottom: 1.4em;
+        }
+
+        /* ===== NAV（统一导航 + 下拉）===== */
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            min-width: 220px;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 16, 28, 0.96);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: 0.18s;
+            z-index: 999;
+        }
+
+        .nav-dropdown a {
+            padding: 8px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .nav-dropdown a:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .has-dropdown:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-btn {
+            height: 32px;
+            width: 48px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="nav">
+            <a href="/index.html" class="logo">Cogniven</a>
+
+            <div class="nav-links" style="display:flex;gap:24px;align-items:center;">
+
+                <div class="nav-item has-dropdown">
+                    <a href="/works.html">Works</a>
+                    <div class="nav-dropdown">
+                        <a href="/works/artistic-creations/index.html">Artistic Creations</a>
+                        <a href="/works/analytical-pieces/index.html">Analytical Pieces</a>
+                        <a href="/works/technical-works/index.html">Technical Works</a>
+                        <a href="/works/experimental-forms/index.html">Experimental Forms</a>
+                    </div>
+                </div>
+
+                <div class="nav-item has-dropdown">
+                    <a href="/writing.html">Writing</a>
+                    <div class="nav-dropdown">
+                        <a href="/writing/essays/index.html">Essays</a>
+                        <a href="/writing/notes/index.html">Notes</a>
+                    </div>
+                </div>
+
+                <div class="nav-item has-dropdown">
+                    <a href="/projects.html">Projects</a>
+                    <div class="nav-dropdown">
+                        <a href="/projects/research-systems/index.html">Research Systems</a>
+                        <a href="/projects/technical-builds/index.html">Technical Builds</a>
+                        <a href="/projects/creative-development/index.html">Creative Development</a>
+                        <a href="/projects/personal-infrastructure/index.html">Personal Infrastructure</a>
+                    </div>
+                </div>
+
+                <a href="/about.html">About</a>
+                <a href="/archive.html">Archive</a>
+
+                <button class="lang-btn">EN</button>
+                <button class="lang-btn">中文</button>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- 顶部信息 -->
+        <section class="hero">
+            <div class="container art-page">
+                <p class="eyebrow">Works · Artistic Creations</p>
+                <h1>Artistic Creation 001</h1>
+                <div class="art-meta">2026 · Visual Work</div>
+                <p class="art-subtitle">
+                    A short conceptual description of this piece. This space can hold meaning, context, or simply remain
+                    minimal.
+                </p>
+            </div>
+        </section>
+
+        <!-- 主体内容 -->
+        <section class="section">
+            <div class="container art-page">
+
+                <img src="cover.jpg" class="art-image" />
+
+                <article class="art-body">
+                    <p>
+                        This page is intentionally open. It is not limited to a fixed structure.
+                    </p>
+
+                    <p>
+                        You can place images, fragments of text, process notes, or even leave sections empty.
+                    </p>
+
+                    <p>
+                        Artistic work does not always require explanation. Sometimes the page itself is part of the
+                        work.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 Cogniven. All rights reserved.</p>
+            <p>
+                The works presented on this site are original and protected by copyright.<br>
+                Unauthorized reproduction is prohibited.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
