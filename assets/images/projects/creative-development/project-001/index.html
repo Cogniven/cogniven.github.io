@@ -176,13 +176,19 @@
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="/index.html" class="logo" id="logo-text">Cogniven</a>
-
-      <div id="nav-links"></div>
-
-      <div>
-        <button id="lang-en" class="lang-btn">EN</button>
-        <button id="lang-zh" class="lang-btn">中文</button>
+      <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+          <a href="/works.html">Works</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+          <a href="/archive.html">Archive</a>
+        </div>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
       </div>
     </nav>
   </header>
