@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fiscal Transparency Research Framework - Cogniven</title>
-  <link rel="stylesheet" href="../../../css/style.css" />
+  <title>Research System Template - Cogniven</title>
+  <link rel="stylesheet" href="/css/style.css" />
   <style>
     .system-cover {
       width: 100%;
@@ -89,6 +90,88 @@
     .system-module-card p {
       margin: 0;
       line-height: 1.7;
+      color: var(--text-soft);
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      width: 48px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item>a {
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      min-width: 220px;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 16, 28, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+      z-index: 999;
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .has-dropdown:hover .nav-dropdown,
+    .has-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
     @media (max-width: 860px) {
@@ -111,18 +194,41 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .nav-links {
+        gap: 14px !important;
+        flex-wrap: wrap;
+      }
+
+      .nav-dropdown {
+        min-width: 180px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../../index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
-        <a href="../../../works.html">Works</a>
-        <a href="../../../writing.html">Writing</a>
-        <a href="../../../projects.html">Projects</a>
-        <a href="../../../about.html">About</a>
-        <a href="../../../archive.html">Archive</a>
+      <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+          <a href="/works.html">Works</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+          <a href="/archive.html">Archive</a>
+        </div>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
       </div>
     </nav>
   </header>
@@ -130,22 +236,18 @@
   <main>
     <section class="hero">
       <div class="container narrow">
-        <p class="eyebrow">Projects · Research Systems</p>
-        <h1>Fiscal Transparency Research Framework</h1>
-        <p class="hero-text">
-          A long-term research structure built around fiscal transparency, budget execution deviation, and the institutional logic of local governance.
+        <p class="eyebrow" id="sys-eyebrow">Projects · Research Systems</p>
+        <h1 id="sys-title">Research System Title</h1>
+        <p class="hero-text" id="sys-hero-text">
+          A structured research system built to organize questions, materials, methods, and long-term outputs.
         </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container narrow">
-        <img
-          class="system-cover"
-          src="../../../assets/images/projects/research-systems/project-001/cover.jpg"
-          alt="Fiscal Transparency Research Framework cover"
-          onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Research System Cover</text></svg>`)"
-        />
+        <img class="system-cover" src="./cover.jpg" alt="Research System cover"
+          onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Research System Cover</text></svg>`)" />
       </div>
     </section>
 
@@ -153,20 +255,20 @@
       <div class="container narrow">
         <div class="system-meta-grid">
           <div class="system-meta-card">
-            <span>Field</span>
-            <strong>Public Finance</strong>
+            <span id="meta-field-label">Field</span>
+            <strong id="meta-field-value">Research Field</strong>
           </div>
           <div class="system-meta-card">
-            <span>Status</span>
-            <strong>Active</strong>
+            <span id="meta-status-label">Status</span>
+            <strong id="meta-status-value">In Progress</strong>
           </div>
           <div class="system-meta-card">
-            <span>Scope</span>
-            <strong>Thesis / Long-term Inquiry</strong>
+            <span id="meta-scope-label">Scope</span>
+            <strong id="meta-scope-value">Long-term Project</strong>
           </div>
           <div class="system-meta-card">
-            <span>Output</span>
-            <strong>Papers / Notes / Cases</strong>
+            <span id="meta-output-label">Output</span>
+            <strong id="meta-output-value">Notes / Papers / Cases</strong>
           </div>
         </div>
       </div>
@@ -174,23 +276,24 @@
 
     <section class="section intro-band">
       <div class="container narrow">
-        <p class="section-note">System Note</p>
-        <p class="lead-paragraph">
-          This research system is designed to hold together a set of connected questions rather than a single isolated paper. It tracks how fiscal transparency shapes budget execution, especially through the lens of non-tax revenue and local institutional incentives.
+        <p class="section-note" id="sys-note-label">System Note</p>
+        <p class="lead-paragraph" id="sys-note-text">
+          This system is designed as a stable structure for storing questions, clarifying direction, and turning
+          scattered materials into coherent research output.
         </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container narrow system-block">
-        <div class="system-block-note">Focus</div>
+        <div class="system-block-note" id="focus-label">Focus</div>
         <div class="system-block-content">
-          <h2>Research Focus</h2>
-          <p>
-            The central concern of this framework is the relationship between fiscal transparency and budget execution deviation under tightening fiscal conditions.
+          <h2 id="focus-title">Core Focus</h2>
+          <p id="focus-p1">
+            This section defines the central research question or the main thematic direction of the project.
           </p>
-          <p>
-            Instead of treating budget deviation as a purely technical issue, the system approaches it as an institutional phenomenon shaped by incentives, information structure, and governance capacity.
+          <p id="focus-p2">
+            Use this area to explain what the system is trying to understand, organize, or solve.
           </p>
         </div>
       </div>
@@ -198,32 +301,32 @@
 
     <section class="section">
       <div class="container narrow system-block">
-        <div class="system-block-note">Structure</div>
+        <div class="system-block-note" id="structure-label">Structure</div>
         <div class="system-block-content">
-          <h2>System Structure</h2>
+          <h2 id="structure-title">System Structure</h2>
           <div class="system-module-grid">
             <div class="system-module-card">
-              <h3>Theory</h3>
-              <p>
-                Concepts of fiscal transparency, budget governance, and institutional accountability.
+              <h3 id="m1-title">Module 01</h3>
+              <p id="m1-text">
+                A first module for concepts, theory, or foundational definitions.
               </p>
             </div>
             <div class="system-module-card">
-              <h3>Observation</h3>
-              <p>
-                Local budget deviation patterns, especially around non-tax revenue and execution outcomes.
+              <h3 id="m2-title">Module 02</h3>
+              <p id="m2-text">
+                A second module for empirical observations, cases, or source material.
               </p>
             </div>
             <div class="system-module-card">
-              <h3>Evidence</h3>
-              <p>
-                Literature review, policy texts, local government data, and comparative cases.
+              <h3 id="m3-title">Module 03</h3>
+              <p id="m3-text">
+                A third module for methods, analysis, or interpretive structure.
               </p>
             </div>
             <div class="system-module-card">
-              <h3>Output</h3>
-              <p>
-                Thesis chapters, analytical notes, structured outlines, and derivative writing.
+              <h3 id="m4-title">Module 04</h3>
+              <p id="m4-text">
+                A fourth module for outputs, synthesis, or future development.
               </p>
             </div>
           </div>
@@ -233,14 +336,15 @@
 
     <section class="section">
       <div class="container narrow system-block">
-        <div class="system-block-note">Materials</div>
+        <div class="system-block-note" id="materials-label">Materials</div>
         <div class="system-block-content">
-          <h2>Materials and Inputs</h2>
-          <p>
-            The system draws from Chinese fiscal policy literature, public finance theory, government budget documents, non-tax revenue data, and case materials from local fiscal practice.
+          <h2 id="materials-title">Materials and Inputs</h2>
+          <p id="materials-p1">
+            This section records the kinds of materials used in the system, such as texts, datasets, case studies,
+            references, archives, or notes.
           </p>
-          <p>
-            Materials are not treated as a flat archive. They are sorted according to conceptual relevance, empirical use, and their relation to the evolving thesis structure.
+          <p id="materials-p2">
+            It can also explain how those materials are selected, grouped, and connected to the broader project logic.
           </p>
         </div>
       </div>
@@ -248,14 +352,16 @@
 
     <section class="section">
       <div class="container narrow system-block">
-        <div class="system-block-note">Direction</div>
+        <div class="system-block-note" id="direction-label">Direction</div>
         <div class="system-block-content">
-          <h2>Current Direction</h2>
-          <p>
-            The current direction is to consolidate the literature base, sharpen the explanatory mechanism linking transparency and deviation, and translate the framework into a full thesis architecture.
+          <h2 id="direction-title">Current Direction</h2>
+          <p id="direction-p1">
+            Use this section to describe the current stage of the system, what is being refined now, and what the next
+            step will be.
           </p>
-          <p>
-            Future outputs may include a refined undergraduate thesis, derivative essays, and a more generalizable research note on fiscal governance under pressure.
+          <p id="direction-p2">
+            This can include future writing plans, additional branches, unfinished questions, or later development
+            goals.
           </p>
         </div>
       </div>
@@ -271,5 +377,166 @@
       </p>
     </div>
   </footer>
+
+  <script src="/js/i18n.js"></script>
+  <script>
+    let lang = localStorage.getItem('lang') || 'en';
+
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem('lang', lang);
+      renderLang();
+    }
+
+    function renderLang() {
+      const navLinks = document.getElementById('nav-links');
+      const navs = i18n[lang].nav;
+
+      const sub = {
+        works: lang === 'zh'
+          ? ['艺术创作', '分析作品', '技术工作', '实验形式']
+          : ['Artistic Creations', 'Analytical Pieces', 'Technical Works', 'Experimental Forms'],
+        writing: lang === 'zh'
+          ? ['Essays', 'Notes']
+          : ['Essays', 'Notes'],
+        projects: lang === 'zh'
+          ? ['研究系统', '技术构建', '创意开发', '个人基础设施']
+          : ['Research Systems', 'Technical Builds', 'Creative Development', 'Personal Infrastructure']
+      };
+
+      navLinks.innerHTML = `
+        <div class="nav-item has-dropdown">
+          <a href="/works.html">${navs[0]}</a>
+          <div class="nav-dropdown">
+            <a href="/works/artistic-creations/index.html">${sub.works[0]}</a>
+            <a href="/works/analytical-pieces/index.html">${sub.works[1]}</a>
+            <a href="/works/technical-works/index.html">${sub.works[2]}</a>
+            <a href="/works/experimental-forms/index.html">${sub.works[3]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="/writing.html">${navs[1]}</a>
+          <div class="nav-dropdown">
+            <a href="/writing/essays/index.html">${sub.writing[0]}</a>
+            <a href="/writing/notes/index.html">${sub.writing[1]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="/projects.html">${navs[2]}</a>
+          <div class="nav-dropdown">
+            <a href="/projects/research-systems/index.html">${sub.projects[0]}</a>
+            <a href="/projects/technical-builds/index.html">${sub.projects[1]}</a>
+            <a href="/projects/creative-development/index.html">${sub.projects[2]}</a>
+            <a href="/projects/personal-infrastructure/index.html">${sub.projects[3]}</a>
+          </div>
+        </div>
+
+        <a href="/about.html">${navs[3]}</a>
+        <a href="/archive.html">${navs[4]}</a>
+      `;
+
+      document.getElementById('logo-text').textContent = i18n[lang].logo;
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+      document.getElementById('sys-eyebrow').textContent =
+        lang === 'zh' ? '项目 · 研究系统' : 'Projects · Research Systems';
+
+      document.getElementById('sys-title').textContent =
+        lang === 'zh' ? '研究系统标题' : 'Research System Title';
+
+      document.getElementById('sys-hero-text').textContent =
+        lang === 'zh'
+          ? '一个用于组织问题、材料、方法与长期产出的结构化研究系统。'
+          : 'A structured research system built to organize questions, materials, methods, and long-term outputs.';
+
+      document.getElementById('meta-field-label').textContent = lang === 'zh' ? '领域' : 'Field';
+      document.getElementById('meta-field-value').textContent = lang === 'zh' ? '研究领域' : 'Research Field';
+      document.getElementById('meta-status-label').textContent = lang === 'zh' ? '状态' : 'Status';
+      document.getElementById('meta-status-value').textContent = lang === 'zh' ? '进行中' : 'In Progress';
+      document.getElementById('meta-scope-label').textContent = lang === 'zh' ? '范围' : 'Scope';
+      document.getElementById('meta-scope-value').textContent = lang === 'zh' ? '长期项目' : 'Long-term Project';
+      document.getElementById('meta-output-label').textContent = lang === 'zh' ? '产出' : 'Output';
+      document.getElementById('meta-output-value').textContent = lang === 'zh' ? '笔记 / 论文 / 案例' : 'Notes / Papers / Cases';
+
+      document.getElementById('sys-note-label').textContent = lang === 'zh' ? '系统说明' : 'System Note';
+      document.getElementById('sys-note-text').textContent =
+        lang === 'zh'
+          ? '这个系统被设计成一个稳定结构，用于保存问题、澄清方向，并把分散材料转化为连贯研究产出。'
+          : 'This system is designed as a stable structure for storing questions, clarifying direction, and turning scattered materials into coherent research output.';
+
+      document.getElementById('focus-label').textContent = lang === 'zh' ? '焦点' : 'Focus';
+      document.getElementById('focus-title').textContent = lang === 'zh' ? '核心焦点' : 'Core Focus';
+      document.getElementById('focus-p1').textContent =
+        lang === 'zh'
+          ? '这一部分用于定义项目的核心研究问题或主要主题方向。'
+          : 'This section defines the central research question or the main thematic direction of the project.';
+      document.getElementById('focus-p2').textContent =
+        lang === 'zh'
+          ? '你可以在这里说明这个系统试图理解、组织或解决什么。'
+          : 'Use this area to explain what the system is trying to understand, organize, or solve.';
+
+      document.getElementById('structure-label').textContent = lang === 'zh' ? '结构' : 'Structure';
+      document.getElementById('structure-title').textContent = lang === 'zh' ? '系统结构' : 'System Structure';
+
+      document.getElementById('m1-title').textContent = lang === 'zh' ? '模块 01' : 'Module 01';
+      document.getElementById('m1-text').textContent =
+        lang === 'zh'
+          ? '用于概念、理论或基础定义的第一模块。'
+          : 'A first module for concepts, theory, or foundational definitions.';
+
+      document.getElementById('m2-title').textContent = lang === 'zh' ? '模块 02' : 'Module 02';
+      document.getElementById('m2-text').textContent =
+        lang === 'zh'
+          ? '用于经验观察、案例或来源材料的第二模块。'
+          : 'A second module for empirical observations, cases, or source material.';
+
+      document.getElementById('m3-title').textContent = lang === 'zh' ? '模块 03' : 'Module 03';
+      document.getElementById('m3-text').textContent =
+        lang === 'zh'
+          ? '用于方法、分析或解释结构的第三模块。'
+          : 'A third module for methods, analysis, or interpretive structure.';
+
+      document.getElementById('m4-title').textContent = lang === 'zh' ? '模块 04' : 'Module 04';
+      document.getElementById('m4-text').textContent =
+        lang === 'zh'
+          ? '用于产出、综合或后续发展的第四模块。'
+          : 'A fourth module for outputs, synthesis, or future development.';
+
+      document.getElementById('materials-label').textContent = lang === 'zh' ? '材料' : 'Materials';
+      document.getElementById('materials-title').textContent = lang === 'zh' ? '材料与输入' : 'Materials and Inputs';
+      document.getElementById('materials-p1').textContent =
+        lang === 'zh'
+          ? '这一部分用于记录系统所使用的材料类型，例如文本、数据集、案例、参考文献、档案或笔记。'
+          : 'This section records the kinds of materials used in the system, such as texts, datasets, case studies, references, archives, or notes.';
+      document.getElementById('materials-p2').textContent =
+        lang === 'zh'
+          ? '你也可以在这里说明这些材料如何被筛选、分组，并与更大的项目逻辑相连接。'
+          : 'It can also explain how those materials are selected, grouped, and connected to the broader project logic.';
+
+      document.getElementById('direction-label').textContent = lang === 'zh' ? '方向' : 'Direction';
+      document.getElementById('direction-title').textContent = lang === 'zh' ? '当前方向' : 'Current Direction';
+      document.getElementById('direction-p1').textContent =
+        lang === 'zh'
+          ? '这一部分用于说明系统目前所处阶段、当前正在完善什么，以及下一步将做什么。'
+          : 'Use this section to describe the current stage of the system, what is being refined now, and what the next step will be.';
+      document.getElementById('direction-p2').textContent =
+        lang === 'zh'
+          ? '这里可以放未来写作计划、额外分支、未完成问题或后续发展目标。'
+          : 'This can include future writing plans, additional branches, unfinished questions, or later development goals.';
+
+      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
+      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
+      setLang(lang);
+    });
+  </script>
 </body>
+
 </html>
