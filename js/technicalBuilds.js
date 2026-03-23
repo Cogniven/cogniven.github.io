@@ -21,7 +21,7 @@ const TechnicalBuilds = [
             zh: "进行中"
         },
         cover: "/assets/images/projects/technical-builds/project-001/cover.jpg",
-        link: "./project-001/index.html",
+        link: "/assets/images/projects/technical-builds/project-001/index.html",
         date: "2026-03-22"
     }
 ];

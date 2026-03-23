@@ -17,7 +17,7 @@ const ExperimentalForms = [
       zh: "视觉实验"
     },
     cover: "/assets/images/works/experimental-forms/work-001/cover.jpg",
-    link: "./work-001/index.html",
+    link: "/assets/images/works/experimental-forms/work-001/index.html",
     date: "2026-03-22"
   }
 ];
