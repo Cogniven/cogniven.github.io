@@ -102,18 +102,32 @@ a {
 .lang-switcher {
   display: flex;
   align-items: center;
-  gap: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  padding: 2px;
+  backdrop-filter: blur(6px);
 }
 
 .lang-btn {
-  width: 48px;
-  height: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  padding: 0;
-  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* hover */
+.lang-btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* active状态（关键） */
+.lang-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 
 .hero {
@@ -999,3 +1013,4 @@ const artisticCreationsWorks = [
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
 }
+
