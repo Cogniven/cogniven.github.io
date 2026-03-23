@@ -12,7 +12,7 @@ const Notes = [
       en: "Some systems only become visible when they fail to close. Completion can hide structure; incompletion leaves the joints exposed.",
       zh: "有些系统只有在无法闭合时才真正显形。完成会遮蔽结构，未完成反而让接缝暴露出来。"
     },
-    link: ".assets/writing/notes/note-001/index.html",
+    link: "../../assets/images/writing/notes/note-001/index.html",
     date: "2026-03-22"
   }
 ];
