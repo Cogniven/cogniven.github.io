@@ -23,6 +23,7 @@
       margin-top: 16px;
       display: flex;
       gap: 14px;
+      flex-wrap: wrap;
       font-size: 0.85rem;
       color: var(--muted);
     }
@@ -37,6 +38,7 @@
       font-size: 0.9rem;
       color: var(--muted);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .log-index a:hover {
@@ -51,6 +53,7 @@
     .log-section-intro {
       color: var(--text-soft);
       margin-bottom: 20px;
+      line-height: 1.7;
     }
 
     .log-entry {
@@ -65,7 +68,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 12px;
       margin-bottom: 6px;
+    }
+
+    .log-entry-head h3 {
+      margin: 0;
     }
 
     .log-entry-meta {
@@ -77,13 +85,17 @@
     .log-entry-text {
       color: var(--text-soft);
       line-height: 1.7;
+      margin: 0;
     }
 
     .log-status {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       padding: 4px 8px;
-      border-radius: 6px;
+      border-radius: 999px;
       border: 1px solid var(--line);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
     }
 
     .log-status.active {
@@ -105,8 +117,10 @@
     .log-image {
       margin-top: 12px;
       width: 100%;
+      display: block;
       border-radius: 10px;
       border: 1px solid var(--line);
+      background: var(--bg-soft);
     }
 
     .closing-section {
@@ -121,54 +135,106 @@
       color: var(--text-soft);
     }
 
-    /* ===== 导航下拉 ===== */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      width: 48px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
     .nav-item {
       position: relative;
+    }
+
+    .nav-item>a {
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
     }
 
     .nav-dropdown {
       position: absolute;
       top: calc(100% + 10px);
       left: 0;
-      background: rgba(10, 16, 28, 0.96);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
+      min-width: 220px;
       padding: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 16, 28, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
       opacity: 0;
       visibility: hidden;
       transform: translateY(6px);
-      transition: 0.2s;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
       z-index: 999;
     }
 
     .nav-dropdown a {
       display: block;
-      padding: 8px 12px;
-      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 8px;
       text-decoration: none;
+      color: var(--text);
+      white-space: nowrap;
     }
 
     .nav-dropdown a:hover {
       background: rgba(255, 255, 255, 0.06);
     }
 
-    .has-dropdown:hover .nav-dropdown {
+    .has-dropdown:hover .nav-dropdown,
+    .has-dropdown:focus-within .nav-dropdown {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
 
-    .lang-btn {
-      width: 48px;
-      height: 32px;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: transparent;
-      cursor: pointer;
-    }
+    @media (max-width: 720px) {
+      .nav {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
 
-    .lang-btn.active {
-      background: rgba(255, 255, 255, 0.12);
+      .nav-links {
+        gap: 14px !important;
+        flex-wrap: wrap;
+      }
+
+      .nav-dropdown {
+        min-width: 180px;
+      }
+
+      .log-entry-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -196,16 +262,16 @@
   <main>
     <section class="hero log-hero">
       <div class="container narrow">
-        <p class="eyebrow">Projects · Creative Development</p>
-        <h1 class="log-title">Ongoing Development Log</h1>
-        <p class="log-subtitle">
+        <p class="eyebrow" id="log-eyebrow">Projects · Creative Development</p>
+        <h1 class="log-title" id="log-title">Ongoing Development Log</h1>
+        <p class="log-subtitle" id="log-subtitle">
           A structured record of active experiments, directional changes, and evolving systems.
         </p>
 
         <div class="log-meta">
-          <span>Active</span>
-          <span>Updated: 2026-03-22</span>
-          <span>Multi-track</span>
+          <span id="meta-status">Active</span>
+          <span id="meta-updated">Updated: 2026-03-22</span>
+          <span id="meta-track">Multi-track</span>
         </div>
       </div>
     </section>
@@ -213,17 +279,133 @@
     <section class="section log-index-section">
       <div class="container narrow">
         <div class="log-index">
-          <a href="#investment">Investment</a>
-          <a href="#quant">Quant Systems</a>
-          <a href="#ai">AI Experiments</a>
-          <a href="#visual">Visual Development</a>
+          <a href="#investment" id="anchor-investment">Investment</a>
+          <a href="#quant" id="anchor-quant">Quant Systems</a>
+          <a href="#ai" id="anchor-ai">AI Experiments</a>
+          <a href="#visual" id="anchor-visual">Visual Development</a>
         </div>
       </div>
     </section>
 
-    <!-- 内容完全保留 -->
-    <!-- 你原来的 section 我没有改 -->
+    <section class="section log-section" id="investment">
+      <div class="container narrow">
+        <p class="section-note" id="section1-note">Section 01</p>
+        <h2 class="log-section-title" id="section1-title">Investment</h2>
+        <p class="log-section-intro" id="section1-intro">
+          A running record of investment direction, position logic, and current observations.
+        </p>
 
+        <div class="log-entry">
+          <div class="log-entry-head">
+            <h3 id="investment-entry1-title">Portfolio Direction Review</h3>
+            <span class="log-status active" id="investment-entry1-status">active</span>
+          </div>
+          <p class="log-entry-meta" id="investment-entry1-date">2026-03-22</p>
+          <p class="log-entry-text" id="investment-entry1-text">
+            Current allocation is being reviewed with attention to concentration, volatility, and time horizon.
+          </p>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-entry-head">
+            <h3 id="investment-entry2-title">Weekly Observation</h3>
+            <span class="log-status draft" id="investment-entry2-status">draft</span>
+          </div>
+          <p class="log-entry-meta" id="investment-entry2-date">2026-03-20</p>
+          <p class="log-entry-text" id="investment-entry2-text">
+            Short note on recent market movement, risk exposure, and changes in conviction.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section log-section" id="quant">
+      <div class="container narrow">
+        <p class="section-note" id="section2-note">Section 02</p>
+        <h2 class="log-section-title" id="section2-title">Quant Systems</h2>
+        <p class="log-section-intro" id="section2-intro">
+          Strategy testing, iteration notes, and system-level observations.
+        </p>
+
+        <div class="log-entry">
+          <div class="log-entry-head">
+            <h3 id="quant-entry1-title">Strategy Version 0.4</h3>
+            <span class="log-status test" id="quant-entry1-status">test</span>
+          </div>
+          <p class="log-entry-meta" id="quant-entry1-date">2026-03-22</p>
+          <p class="log-entry-text" id="quant-entry1-text">
+            Revised entry logic and tightened exit conditions. Current focus is reducing unnecessary exposure during
+            sideways periods.
+          </p>
+          <img class="log-image" src="/assets/images/projects/creative-development/project-001/cover.jpg"
+            alt="Quant result"
+            onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Cover not added yet</text></svg>`)" />
+        </div>
+
+        <div class="log-entry">
+          <div class="log-entry-head">
+            <h3 id="quant-entry2-title">Backtest Note</h3>
+            <span class="log-status paused" id="quant-entry2-status">paused</span>
+          </div>
+          <p class="log-entry-meta" id="quant-entry2-date">2026-03-18</p>
+          <p class="log-entry-text" id="quant-entry2-text">
+            Current parameter range needs restructuring before further testing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section log-section" id="ai">
+      <div class="container narrow">
+        <p class="section-note" id="section3-note">Section 03</p>
+        <h2 class="log-section-title" id="section3-title">AI Experiments</h2>
+        <p class="log-section-intro" id="section3-intro">
+          Explorations in model behavior, workflow design, and prompt structure.
+        </p>
+
+        <div class="log-entry">
+          <div class="log-entry-head">
+            <h3 id="ai-entry1-title">Prompt Workflow Test</h3>
+            <span class="log-status active" id="ai-entry1-status">active</span>
+          </div>
+          <p class="log-entry-meta" id="ai-entry1-date">2026-03-21</p>
+          <p class="log-entry-text" id="ai-entry1-text">
+            Comparing different prompting patterns for consistency, control, and output quality.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section log-section" id="visual">
+      <div class="container narrow">
+        <p class="section-note" id="section4-note">Section 04</p>
+        <h2 class="log-section-title" id="section4-title">Visual Development</h2>
+        <p class="log-section-intro" id="section4-intro">
+          Ongoing experiments in layout, identity, and presentation logic.
+        </p>
+
+        <div class="log-entry">
+          <div class="log-entry-head">
+            <h3 id="visual-entry1-title">Portfolio Layout Revision</h3>
+            <span class="log-status test" id="visual-entry1-status">test</span>
+          </div>
+          <p class="log-entry-meta" id="visual-entry1-date">2026-03-19</p>
+          <p class="log-entry-text" id="visual-entry1-text">
+            Testing denser browsing structures for image-heavy pages while keeping the overall tone consistent.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing-section">
+      <div class="container narrow center">
+        <p class="section-note" id="closing-note">Current Direction</p>
+        <h2 class="closing-title" id="closing-title">Still in motion.</h2>
+        <p class="closing-text" id="closing-text">
+          This page records work while it is still changing.
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -240,53 +422,196 @@
   <script>
     let lang = localStorage.getItem('lang') || 'en';
 
-    function setLang(l) {
-      lang = l;
-      localStorage.setItem('lang', l);
-      renderNav();
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem('lang', lang);
+      renderLang();
     }
 
-    function renderNav() {
+    function renderLang() {
       const navLinks = document.getElementById('nav-links');
+      const navs = i18n[lang].nav;
+
+      const sub = {
+        works: lang === 'zh'
+          ? ['艺术创作', '分析作品', '技术工作', '实验形式']
+          : ['Artistic Creations', 'Analytical Pieces', 'Technical Works', 'Experimental Forms'],
+        writing: lang === 'zh'
+          ? ['Essays', 'Notes']
+          : ['Essays', 'Notes'],
+        projects: lang === 'zh'
+          ? ['研究系统', '技术构建', '创意开发', '个人基础设施']
+          : ['Research Systems', 'Technical Builds', 'Creative Development', 'Personal Infrastructure']
+      };
 
       navLinks.innerHTML = `
         <div class="nav-item has-dropdown">
-          <a href="/works.html">Works</a>
+          <a href="/works.html">${navs[0]}</a>
           <div class="nav-dropdown">
-            <a href="/works/artistic-creations/index.html">Artistic</a>
-            <a href="/works/analytical-pieces/index.html">Analytical</a>
-            <a href="/works/technical-works/index.html">Technical</a>
+            <a href="/works/artistic-creations/index.html">${sub.works[0]}</a>
+            <a href="/works/analytical-pieces/index.html">${sub.works[1]}</a>
+            <a href="/works/technical-works/index.html">${sub.works[2]}</a>
+            <a href="/works/experimental-forms/index.html">${sub.works[3]}</a>
           </div>
         </div>
 
         <div class="nav-item has-dropdown">
-          <a href="/writing.html">Writing</a>
+          <a href="/writing.html">${navs[1]}</a>
           <div class="nav-dropdown">
-            <a href="/writing/essays/index.html">Essays</a>
-            <a href="/writing/notes/index.html">Notes</a>
+            <a href="/writing/essays/index.html">${sub.writing[0]}</a>
+            <a href="/writing/notes/index.html">${sub.writing[1]}</a>
           </div>
         </div>
 
         <div class="nav-item has-dropdown">
-          <a href="/projects.html">Projects</a>
+          <a href="/projects.html">${navs[2]}</a>
           <div class="nav-dropdown">
-            <a href="/projects/research-systems/index.html">Research</a>
-            <a href="/projects/creative-development/index.html">Creative</a>
+            <a href="/projects/research-systems/index.html">${sub.projects[0]}</a>
+            <a href="/projects/technical-builds/index.html">${sub.projects[1]}</a>
+            <a href="/projects/creative-development/index.html">${sub.projects[2]}</a>
+            <a href="/projects/personal-infrastructure/index.html">${sub.projects[3]}</a>
           </div>
         </div>
 
-        <a href="/about.html">About</a>
-        <a href="/archive.html">Archive</a>
+        <a href="/about.html">${navs[3]}</a>
+        <a href="/archive.html">${navs[4]}</a>
       `;
 
+      document.getElementById('logo-text').textContent = i18n[lang].logo;
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+      document.getElementById('log-eyebrow').textContent =
+        lang === 'zh' ? '项目 · 创意开发' : 'Projects · Creative Development';
+
+      document.getElementById('log-title').textContent =
+        lang === 'zh' ? '持续开发日志' : 'Ongoing Development Log';
+
+      document.getElementById('log-subtitle').textContent =
+        lang === 'zh'
+          ? '一份关于活跃实验、方向变化与持续演化系统的结构化记录。'
+          : 'A structured record of active experiments, directional changes, and evolving systems.';
+
+      document.getElementById('meta-status').textContent =
+        lang === 'zh' ? '进行中' : 'Active';
+
+      document.getElementById('meta-updated').textContent =
+        lang === 'zh' ? '更新：2026-03-22' : 'Updated: 2026-03-22';
+
+      document.getElementById('meta-track').textContent =
+        lang === 'zh' ? '多线并行' : 'Multi-track';
+
+      document.getElementById('anchor-investment').textContent =
+        lang === 'zh' ? '投资' : 'Investment';
+      document.getElementById('anchor-quant').textContent =
+        lang === 'zh' ? '量化系统' : 'Quant Systems';
+      document.getElementById('anchor-ai').textContent =
+        lang === 'zh' ? 'AI 实验' : 'AI Experiments';
+      document.getElementById('anchor-visual').textContent =
+        lang === 'zh' ? '视觉开发' : 'Visual Development';
+
+      document.getElementById('section1-note').textContent =
+        lang === 'zh' ? '部分 01' : 'Section 01';
+      document.getElementById('section1-title').textContent =
+        lang === 'zh' ? '投资' : 'Investment';
+      document.getElementById('section1-intro').textContent =
+        lang === 'zh'
+          ? '关于投资方向、仓位逻辑与当前观察的持续记录。'
+          : 'A running record of investment direction, position logic, and current observations.';
+      document.getElementById('investment-entry1-title').textContent =
+        lang === 'zh' ? '组合方向复盘' : 'Portfolio Direction Review';
+      document.getElementById('investment-entry1-status').textContent =
+        lang === 'zh' ? '进行中' : 'active';
+      document.getElementById('investment-entry1-text').textContent =
+        lang === 'zh'
+          ? '当前正在重新审视配置结构，重点关注集中度、波动性与时间周期。'
+          : 'Current allocation is being reviewed with attention to concentration, volatility, and time horizon.';
+      document.getElementById('investment-entry2-title').textContent =
+        lang === 'zh' ? '每周观察' : 'Weekly Observation';
+      document.getElementById('investment-entry2-status').textContent =
+        lang === 'zh' ? '草稿' : 'draft';
+      document.getElementById('investment-entry2-text').textContent =
+        lang === 'zh'
+          ? '关于近期市场波动、风险暴露与判断变化的简短记录。'
+          : 'Short note on recent market movement, risk exposure, and changes in conviction.';
+
+      document.getElementById('section2-note').textContent =
+        lang === 'zh' ? '部分 02' : 'Section 02';
+      document.getElementById('section2-title').textContent =
+        lang === 'zh' ? '量化系统' : 'Quant Systems';
+      document.getElementById('section2-intro').textContent =
+        lang === 'zh'
+          ? '策略测试、迭代笔记与系统层面的观察。'
+          : 'Strategy testing, iteration notes, and system-level observations.';
+      document.getElementById('quant-entry1-title').textContent =
+        lang === 'zh' ? '策略版本 0.4' : 'Strategy Version 0.4';
+      document.getElementById('quant-entry1-status').textContent =
+        lang === 'zh' ? '测试' : 'test';
+      document.getElementById('quant-entry1-text').textContent =
+        lang === 'zh'
+          ? '已修改开仓逻辑并收紧离场条件，目前重点在于减少震荡区间中的无效暴露。'
+          : 'Revised entry logic and tightened exit conditions. Current focus is reducing unnecessary exposure during sideways periods.';
+      document.getElementById('quant-entry2-title').textContent =
+        lang === 'zh' ? '回测记录' : 'Backtest Note';
+      document.getElementById('quant-entry2-status').textContent =
+        lang === 'zh' ? '暂停' : 'paused';
+      document.getElementById('quant-entry2-text').textContent =
+        lang === 'zh'
+          ? '当前参数区间需要重构，然后再继续后续测试。'
+          : 'Current parameter range needs restructuring before further testing.';
+
+      document.getElementById('section3-note').textContent =
+        lang === 'zh' ? '部分 03' : 'Section 03';
+      document.getElementById('section3-title').textContent =
+        lang === 'zh' ? 'AI 实验' : 'AI Experiments';
+      document.getElementById('section3-intro').textContent =
+        lang === 'zh'
+          ? '关于模型行为、工作流设计与提示词结构的探索。'
+          : 'Explorations in model behavior, workflow design, and prompt structure.';
+      document.getElementById('ai-entry1-title').textContent =
+        lang === 'zh' ? '提示词工作流测试' : 'Prompt Workflow Test';
+      document.getElementById('ai-entry1-status').textContent =
+        lang === 'zh' ? '进行中' : 'active';
+      document.getElementById('ai-entry1-text').textContent =
+        lang === 'zh'
+          ? '比较不同提示模式在稳定性、可控性与输出质量上的差异。'
+          : 'Comparing different prompting patterns for consistency, control, and output quality.';
+
+      document.getElementById('section4-note').textContent =
+        lang === 'zh' ? '部分 04' : 'Section 04';
+      document.getElementById('section4-title').textContent =
+        lang === 'zh' ? '视觉开发' : 'Visual Development';
+      document.getElementById('section4-intro').textContent =
+        lang === 'zh'
+          ? '关于版式、识别系统与呈现逻辑的持续实验。'
+          : 'Ongoing experiments in layout, identity, and presentation logic.';
+      document.getElementById('visual-entry1-title').textContent =
+        lang === 'zh' ? '作品集版式调整' : 'Portfolio Layout Revision';
+      document.getElementById('visual-entry1-status').textContent =
+        lang === 'zh' ? '测试' : 'test';
+      document.getElementById('visual-entry1-text').textContent =
+        lang === 'zh'
+          ? '正在测试更高密度的图片浏览结构，同时保持整体语气与风格一致。'
+          : 'Testing denser browsing structures for image-heavy pages while keeping the overall tone consistent.';
+
+      document.getElementById('closing-note').textContent =
+        lang === 'zh' ? '当前方向' : 'Current Direction';
+      document.getElementById('closing-title').textContent =
+        lang === 'zh' ? '仍在运动中。' : 'Still in motion.';
+      document.getElementById('closing-text').textContent =
+        lang === 'zh'
+          ? '这个页面记录的是仍在变化中的工作。'
+          : 'This page records work while it is still changing.';
+
+      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
+      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
     }
 
-    document.getElementById('lang-en').onclick = () => setLang('en');
-    document.getElementById('lang-zh').onclick = () => setLang('zh');
-
-    renderNav();
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
+      renderLang();
+    });
   </script>
 </body>
 
