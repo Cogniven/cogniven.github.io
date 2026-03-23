@@ -3,14 +3,14 @@ const ArtisticCreations = [
     title: { en: "Artistic Creation 001", zh: "艺术创作 001" },
     desc: { en: "A short description for this piece.", zh: "该作品的简短描述。" },
     cover: "/assets/images/works/artistic-creations/work-001/cover.jpg",
-    link: "/assets/images/works/artistic-creations/work-001/index.html",
+    link: "#",
     date: "2026-03-20"
   },
   {
     title: { en: "Artistic Creation 002", zh: "艺术创作 002" },
     desc: { en: "Another short description for this piece.", zh: "另一件作品的简短描述。" },
     cover: "/assets/images/works/artistic-creations/work-002/cover.jpg",
-    link: "#",
+    link: "/assets/images/works/artistic-creations/work-002/index.html",
     date: "2026-03-21"
   },
   {
