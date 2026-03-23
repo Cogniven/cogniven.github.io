@@ -5,20 +5,119 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Creative Development - Cogniven</title>
-  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <style>
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      width: 48px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item>a {
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      min-width: 220px;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 16, 28, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+      z-index: 999;
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .nav-dropdown a:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .has-dropdown:hover .nav-dropdown,
+    .has-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .nav-links {
+        gap: 14px !important;
+        flex-wrap: wrap;
+      }
+
+      .nav-dropdown {
+        min-width: 180px;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
       <div style="display:flex;align-items:center;gap:24px;">
         <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
-          <a href="../../works.html">Works</a>
-          <a href="../../writing.html">Writing</a>
-          <a href="../../projects.html">Projects</a>
-          <a href="../../about.html">About</a>
-          <a href="../../archive.html">Archive</a>
+          <a href="/works.html">Works</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+          <a href="/archive.html">Archive</a>
         </div>
         <div class="lang-switcher">
           <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
@@ -61,21 +160,7 @@
           </p>
         </div>
 
-        <div class="works-grid">
-          <article class="work-card" onclick="location.href='./project-001/index.html'">
-            <div class="work-cover-wrapper">
-              <img class="work-cover" src="../../assets/images/projects/creative-development/project-001/cover.jpg"
-                alt="Creative Development Log" />
-            </div>
-
-            <div class="work-body">
-              <h3 class="work-title" id="cd-card-title">Development Log 001</h3>
-              <div class="work-desc" id="cd-card-desc">
-                Investment, quant systems, AI workflows, and site structure evolution.
-              </div>
-            </div>
-          </article>
-        </div>
+        <div id="creative-grid" class="works-grid"></div>
       </div>
     </section>
   </main>
@@ -84,13 +169,14 @@
     <div class="container footer-inner">
       <p>© 2026 Cogniven. All rights reserved.</p>
       <p>
-        The works presented on this site are original and protected by copyright.<br>
+        The works presented on this site are original and protected by copyright.<br />
         Unauthorized reproduction, distribution, or commercial use is prohibited.
       </p>
     </div>
   </footer>
 
-  <script src="../../js/i18n.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/creativeDevelopment.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
 
@@ -98,25 +184,121 @@
       lang = newLang;
       localStorage.setItem('lang', lang);
       renderLang();
+      renderCreativeProjects();
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-      lang = localStorage.getItem('lang') || 'en';
-      document.getElementById('lang-en').onclick = () => setLang('en');
-      document.getElementById('lang-zh').onclick = () => setLang('zh');
-      setLang(lang);
-    });
+    function getText(item, field) {
+      if (!item[field]) return '';
+      if (typeof item[field] === 'string') return item[field];
+      return item[field][lang] || item[field].en || '';
+    }
+
+    function createFallbackImage() {
+      return "data:image/svg+xml;utf8," + encodeURIComponent(`
+        <svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'>
+          <rect width='800' height='500' fill='#161b22'/>
+          <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+            fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>
+            Cover not added yet
+          </text>
+        </svg>
+      `);
+    }
+
+    function renderCreativeProjects() {
+      const grid = document.getElementById('creative-grid');
+      grid.innerHTML = '';
+
+      CreativeDevelopment.forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'work-card';
+        card.addEventListener('click', () => {
+          if (item.link) {
+            window.location.href = item.link;
+          }
+        });
+
+        const coverWrapper = document.createElement('div');
+        coverWrapper.className = 'work-cover-wrapper';
+
+        const img = document.createElement('img');
+        img.className = 'work-cover';
+        img.src = getText(item, 'cover') || createFallbackImage();
+        img.alt = getText(item, 'title');
+        img.onerror = function () {
+          this.src = createFallbackImage();
+        };
+
+        coverWrapper.appendChild(img);
+
+        const body = document.createElement('div');
+        body.className = 'work-body';
+
+        const title = document.createElement('h3');
+        title.className = 'work-title';
+        title.textContent = getText(item, 'title');
+
+        const desc = document.createElement('div');
+        desc.className = 'work-desc';
+        desc.textContent = getText(item, 'desc');
+
+        body.appendChild(title);
+        body.appendChild(desc);
+
+        card.appendChild(coverWrapper);
+        card.appendChild(body);
+
+        grid.appendChild(card);
+      });
+    }
 
     function renderLang() {
       const navLinks = document.getElementById('nav-links');
       const navs = i18n[lang].nav;
 
+      const sub = {
+        works: lang === 'zh'
+          ? ['艺术创作', '分析作品', '技术工作', '实验形式']
+          : ['Artistic Creations', 'Analytical Pieces', 'Technical Works', 'Experimental Forms'],
+        writing: lang === 'zh'
+          ? ['Essays', 'Notes']
+          : ['Essays', 'Notes'],
+        projects: lang === 'zh'
+          ? ['研究系统', '技术构建', '创意开发', '个人基础设施']
+          : ['Research Systems', 'Technical Builds', 'Creative Development', 'Personal Infrastructure']
+      };
+
       navLinks.innerHTML = `
-        <a href="../../works.html">${navs[0]}</a>
-        <a href="../../writing.html">${navs[1]}</a>
-        <a href="../../projects.html">${navs[2]}</a>
-        <a href="../../about.html">${navs[3]}</a>
-        <a href="../../archive.html">${navs[4]}</a>
+        <div class="nav-item has-dropdown">
+          <a href="/works.html">${navs[0]}</a>
+          <div class="nav-dropdown">
+            <a href="/works/artistic-creations/index.html">${sub.works[0]}</a>
+            <a href="/works/analytical-pieces/index.html">${sub.works[1]}</a>
+            <a href="/works/technical-works/index.html">${sub.works[2]}</a>
+            <a href="/works/experimental-forms/index.html">${sub.works[3]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="/writing.html">${navs[1]}</a>
+          <div class="nav-dropdown">
+            <a href="/writing/essays/index.html">${sub.writing[0]}</a>
+            <a href="/writing/notes/index.html">${sub.writing[1]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="/projects.html">${navs[2]}</a>
+          <div class="nav-dropdown">
+            <a href="/projects/research-systems/index.html">${sub.projects[0]}</a>
+            <a href="/projects/technical-builds/index.html">${sub.projects[1]}</a>
+            <a href="/projects/creative-development/index.html">${sub.projects[2]}</a>
+            <a href="/projects/personal-infrastructure/index.html">${sub.projects[3]}</a>
+          </div>
+        </div>
+
+        <a href="/about.html">${navs[3]}</a>
+        <a href="/archive.html">${navs[4]}</a>
       `;
 
       document.getElementById('logo-text').textContent = i18n[lang].logo;
@@ -127,7 +309,7 @@
         lang === 'zh' ? '项目 · 创意开发' : 'Projects · Creative Development';
 
       document.getElementById('cd-hero-title').textContent =
-        lang === 'zh' ? 'Creative Development' : 'Creative Development';
+        lang === 'zh' ? '创意开发' : 'Creative Development';
 
       document.getElementById('cd-hero-text').textContent =
         lang === 'zh'
@@ -153,17 +335,17 @@
           ? '这里的每个条目都是持续演化中的记录，而不是已完成项目。'
           : 'Each entry is an evolving record rather than a finished project.';
 
-      document.getElementById('cd-card-title').textContent =
-        lang === 'zh' ? 'Development Log 001' : 'Development Log 001';
-
-      document.getElementById('cd-card-desc').textContent =
-        lang === 'zh'
-          ? '投资、量化系统、AI 工作流，以及网站结构的持续演化。'
-          : 'Investment, quant systems, AI workflows, and site structure evolution.';
-
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      lang = localStorage.getItem('lang') || 'en';
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
+      renderLang();
+      renderCreativeProjects();
+    });
   </script>
 </body>
 
