@@ -1,0 +1,123 @@
+Date : 2026-03-24 11:12:32
+Directory : d:\GitHub\cogniven.github.io
+Total : 52 files,  11520 codes, 24 comments, 1789 blanks, all 13333 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| HTML       |         37 |     10,079 |         11 |      1,636 |     11,726 |
+| PostCSS    |          1 |        899 |          2 |        144 |      1,045 |
+| JavaScript |         14 |        542 |         11 |          9 |        562 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                               | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                  |         52 |     11,520 |         24 |      1,789 |     13,333 |
+| . (Files)                                                                                          |          6 |        998 |          5 |        128 |      1,131 |
+| archive                                                                                            |          3 |        465 |          6 |         96 |        567 |
+| archive\discarded-paths                                                                            |          1 |        161 |          6 |         36 |        203 |
+| archive\incomplete-fragments                                                                       |          1 |        152 |          0 |         30 |        182 |
+| archive\process-snapshots                                                                          |          1 |        152 |          0 |         30 |        182 |
+| assets                                                                                             |         10 |      3,554 |          0 |        538 |      4,092 |
+| assets\images                                                                                      |         10 |      3,554 |          0 |        538 |      4,092 |
+| assets\images\projects                                                                             |          4 |      1,712 |          0 |        226 |      1,938 |
+| assets\images\projects\creative-development                                                        |          1 |        541 |          0 |         77 |        618 |
+| assets\images\projects\creative-development\project-001                                            |          1 |        541 |          0 |         77 |        618 |
+| assets\images\projects\personal-infrastructure                                                     |          1 |        259 |          0 |         28 |        287 |
+| assets\images\projects\personal-infrastructure\project-001                                         |          1 |        259 |          0 |         28 |        287 |
+| assets\images\projects\research-systems                                                            |          1 |        477 |          0 |         65 |        542 |
+| assets\images\projects\research-systems\project-001                                                |          1 |        477 |          0 |         65 |        542 |
+| assets\images\projects\technical-builds                                                            |          1 |        435 |          0 |         56 |        491 |
+| assets\images\projects\technical-builds\project-001                                                |          1 |        435 |          0 |         56 |        491 |
+| assets\images\works                                                                                |          4 |      1,368 |          0 |        235 |      1,603 |
+| assets\images\works\analytical-pieces                                                              |          1 |        404 |          0 |         75 |        479 |
+| assets\images\works\analytical-pieces\work-001                                                     |          1 |        404 |          0 |         75 |        479 |
+| assets\images\works\artistic-creations                                                             |          1 |        274 |          0 |         46 |        320 |
+| assets\images\works\artistic-creations\work-002                                                    |          1 |        274 |          0 |         46 |        320 |
+| assets\images\works\experimental-forms                                                             |          1 |        492 |          0 |         67 |        559 |
+| assets\images\works\experimental-forms\work-001                                                    |          1 |        492 |          0 |         67 |        559 |
+| assets\images\works\technical-works                                                                |          1 |        198 |          0 |         47 |        245 |
+| assets\images\works\technical-works\work-001                                                       |          1 |        198 |          0 |         47 |        245 |
+| assets\images\writing                                                                              |          2 |        474 |          0 |         77 |        551 |
+| assets\images\writing\essays                                                                       |          1 |        317 |          0 |         52 |        369 |
+| assets\images\writing\essays\essay-001                                                             |          1 |        317 |          0 |         52 |        369 |
+| assets\images\writing\notes                                                                        |          1 |        157 |          0 |         25 |        182 |
+| assets\images\writing\notes\note-001                                                               |          1 |        157 |          0 |         25 |        182 |
+| css                                                                                                |          1 |        899 |          2 |        144 |      1,045 |
+| js                                                                                                 |         14 |        542 |         11 |          9 |        562 |
+| projects                                                                                           |          7 |      2,360 |          0 |        402 |      2,762 |
+| projects\creative-development                                                                      |          1 |        299 |          0 |         53 |        352 |
+| projects\personal-infrastructure                                                                   |          2 |        738 |          0 |        126 |        864 |
+| projects\research-systems                                                                          |          2 |        735 |          0 |        120 |        855 |
+| projects\technical-builds                                                                          |          2 |        588 |          0 |        103 |        691 |
+| works                                                                                              |          7 |      1,885 |          0 |        332 |      2,217 |
+| works\analytical-pieces                                                                            |          2 |        392 |          0 |         72 |        464 |
+| works\artistic-creations                                                                           |          1 |        276 |          0 |         61 |        337 |
+| works\experimental-forms                                                                           |          2 |        632 |          0 |        103 |        735 |
+| works\technical-works                                                                              |          2 |        585 |          0 |         96 |        681 |
+| writing                                                                                            |          4 |        817 |          0 |        140 |        957 |
+| writing\essays                                                                                     |          2 |        408 |          0 |         70 |        478 |
+| writing\notes                                                                                      |          2 |        409 |          0 |         70 |        479 |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                           | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\GitHub\cogniven.github.io\about.html                                                            | HTML       |        101 |          0 |          3 |        104 |
+| d:\GitHub\cogniven.github.io\archive.html                                                          | HTML       |        205 |          0 |         39 |        244 |
+| d:\GitHub\cogniven.github.io\archive\discarded-paths\index.html                                    | HTML       |        161 |          6 |         36 |        203 |
+| d:\GitHub\cogniven.github.io\archive\incomplete-fragments\index.html                               | HTML       |        152 |          0 |         30 |        182 |
+| d:\GitHub\cogniven.github.io\archive\process-snapshots\index.html                                  | HTML       |        152 |          0 |         30 |        182 |
+| d:\GitHub\cogniven.github.io\assets\images\projects\creative-development\project-001\index.html    | HTML       |        541 |          0 |         77 |        618 |
+| d:\GitHub\cogniven.github.io\assets\images\projects\personal-infrastructure\project-001\index.html | HTML       |        259 |          0 |         28 |        287 |
+| d:\GitHub\cogniven.github.io\assets\images\projects\research-systems\project-001\index.html        | HTML       |        477 |          0 |         65 |        542 |
+| d:\GitHub\cogniven.github.io\assets\images\projects\technical-builds\project-001\index.html        | HTML       |        435 |          0 |         56 |        491 |
+| d:\GitHub\cogniven.github.io\assets\images\works\analytical-pieces\work-001\index.html             | HTML       |        404 |          0 |         75 |        479 |
+| d:\GitHub\cogniven.github.io\assets\images\works\artistic-creations\work-002\index.html            | HTML       |        274 |          0 |         46 |        320 |
+| d:\GitHub\cogniven.github.io\assets\images\works\experimental-forms\work-001\index.html            | HTML       |        492 |          0 |         67 |        559 |
+| d:\GitHub\cogniven.github.io\assets\images\works\technical-works\work-001\index.html               | HTML       |        198 |          0 |         47 |        245 |
+| d:\GitHub\cogniven.github.io\assets\images\writing\essays\essay-001\index.html                     | HTML       |        317 |          0 |         52 |        369 |
+| d:\GitHub\cogniven.github.io\assets\images\writing\notes\note-001\index.html                       | HTML       |        157 |          0 |         25 |        182 |
+| d:\GitHub\cogniven.github.io\css\style.css                                                         | PostCSS    |        899 |          2 |        144 |      1,045 |
+| d:\GitHub\cogniven.github.io\index.html                                                            | HTML       |        213 |          5 |         36 |        254 |
+| d:\GitHub\cogniven.github.io\js\analyticalPieces.js                                                | JavaScript |         41 |          0 |          2 |         43 |
+| d:\GitHub\cogniven.github.io\js\artisticCreations.js                                               | JavaScript |         23 |          0 |          0 |         23 |
+| d:\GitHub\cogniven.github.io\js\creativeDevelopment.js                                             | JavaScript |         18 |          0 |          0 |         18 |
+| d:\GitHub\cogniven.github.io\js\discardedPaths.js                                                  | JavaScript |         26 |          0 |          0 |         26 |
+| d:\GitHub\cogniven.github.io\js\essays.js                                                          | JavaScript |         19 |          0 |          0 |         19 |
+| d:\GitHub\cogniven.github.io\js\experimentalForms.js                                               | JavaScript |         23 |          0 |          0 |         23 |
+| d:\GitHub\cogniven.github.io\js\i18n.js                                                            | JavaScript |        226 |         11 |          7 |        244 |
+| d:\GitHub\cogniven.github.io\js\incompleteFragments.js                                             | JavaScript |         26 |          0 |          0 |         26 |
+| d:\GitHub\cogniven.github.io\js\notes.js                                                           | JavaScript |         18 |          0 |          0 |         18 |
+| d:\GitHub\cogniven.github.io\js\personalInfrastructure.js                                          | JavaScript |         23 |          0 |          0 |         23 |
+| d:\GitHub\cogniven.github.io\js\processSnapshots.js                                                | JavaScript |         26 |          0 |          0 |         26 |
+| d:\GitHub\cogniven.github.io\js\researchSystems.js                                                 | JavaScript |         23 |          0 |          0 |         23 |
+| d:\GitHub\cogniven.github.io\js\technicalBuilds.js                                                 | JavaScript |         27 |          0 |          0 |         27 |
+| d:\GitHub\cogniven.github.io\js\technicalWorks.js                                                  | JavaScript |         23 |          0 |          0 |         23 |
+| d:\GitHub\cogniven.github.io\projects.html                                                         | HTML       |        161 |          0 |         13 |        174 |
+| d:\GitHub\cogniven.github.io\projects\creative-development\index.html                              | HTML       |        299 |          0 |         53 |        352 |
+| d:\GitHub\cogniven.github.io\projects\personal-infrastructure\_template.html                       | HTML       |        228 |          0 |         28 |        256 |
+| d:\GitHub\cogniven.github.io\projects\personal-infrastructure\index.html                           | HTML       |        510 |          0 |         98 |        608 |
+| d:\GitHub\cogniven.github.io\projects\research-systems\_template.html                              | HTML       |        229 |          0 |         25 |        254 |
+| d:\GitHub\cogniven.github.io\projects\research-systems\index.html                                  | HTML       |        506 |          0 |         95 |        601 |
+| d:\GitHub\cogniven.github.io\projects\technical-builds\_template.html                              | HTML       |        192 |          0 |         23 |        215 |
+| d:\GitHub\cogniven.github.io\projects\technical-builds\index.html                                  | HTML       |        396 |          0 |         80 |        476 |
+| d:\GitHub\cogniven.github.io\works.html                                                            | HTML       |        156 |          0 |         20 |        176 |
+| d:\GitHub\cogniven.github.io\works\analytical-pieces\_template.html                                | HTML       |         86 |          0 |         10 |         96 |
+| d:\GitHub\cogniven.github.io\works\analytical-pieces\index.html                                    | HTML       |        306 |          0 |         62 |        368 |
+| d:\GitHub\cogniven.github.io\works\artistic-creations\index.html                                   | HTML       |        276 |          0 |         61 |        337 |
+| d:\GitHub\cogniven.github.io\works\experimental-forms\_template.html                               | HTML       |        247 |          0 |         28 |        275 |
+| d:\GitHub\cogniven.github.io\works\experimental-forms\index.html                                   | HTML       |        385 |          0 |         75 |        460 |
+| d:\GitHub\cogniven.github.io\works\technical-works\_template.html                                  | HTML       |        197 |          0 |         20 |        217 |
+| d:\GitHub\cogniven.github.io\works\technical-works\index.html                                      | HTML       |        388 |          0 |         76 |        464 |
+| d:\GitHub\cogniven.github.io\writing.html                                                          | HTML       |        162 |          0 |         17 |        179 |
+| d:\GitHub\cogniven.github.io\writing\essays\_template.html                                         | HTML       |         98 |          0 |         11 |        109 |
+| d:\GitHub\cogniven.github.io\writing\essays\index.html                                             | HTML       |        310 |          0 |         59 |        369 |
+| d:\GitHub\cogniven.github.io\writing\notes\_template.html                                          | HTML       |         86 |          0 |          8 |         94 |
+| d:\GitHub\cogniven.github.io\writing\notes\index.html                                              | HTML       |        323 |          0 |         62 |        385 |
+| Total                                                                                              |            |     11,520 |         24 |      1,789 |     13,333 |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
