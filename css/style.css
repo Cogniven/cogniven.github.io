@@ -1014,3 +1014,32 @@ const artisticCreationsWorks = [
   color: rgba(255, 255, 255, 0.8);
 }
 
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.list-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.list-item:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.list-item h3 {
+  margin: 0 0 10px;
+}
+
+.list-item p {
+  margin: 0;
+  color: var(--text-soft);
+}
