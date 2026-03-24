@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Archive - Cogniven</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
   <header class="site-header">
     <nav class="nav">
@@ -26,26 +28,64 @@
     </nav>
   </header>
 
-  <main class="container">
-    <section class="page-hero">
-      <h1 id="archive-title">Archive</h1>
-      <p id="archive-brief">Stored material, past work, and experimental fragments.</p>
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow" id="archive-hero-eyebrow">Archive</p>
+        <h1 id="archive-title">Archive</h1>
+        <p class="hero-text" id="archive-brief">
+          Retained versions, abandoned paths, and intermediate states.
+        </p>
+      </div>
+    </section>
+
+    <section class="section intro-band">
+      <div class="container narrow">
+        <p class="section-note" id="archive-note">Overview</p>
+        <p class="lead-paragraph" id="archive-lead">
+          This section keeps material that remains relevant as process, reference, or historical trace.
+        </p>
+      </div>
     </section>
 
     <section class="section">
-      <div class="list">
-        <div class="list-item">
-          <h3 id="archive-old">Old Experiments</h3>
-          <p id="archive-old-desc">Previous iterations and discarded approaches.</p>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-note" id="archive-categories-note">Categories</p>
+            <h2 id="archive-categories-title">Archive Sections</h2>
+          </div>
+          <p class="section-side-text" id="archive-side-text">
+            These entries preserve abandoned directions, unfinished fragments, and recorded stages of development.
+          </p>
         </div>
-        <div class="list-item">
-          <h3 id="archive-unused">Unused Concepts</h3>
-          <p id="archive-unused-desc">Ideas that were explored but not developed further.</p>
+
+        <div class="list">
+          <a class="list-item" href="archive/discarded-paths/index.html">
+            <h3 id="archive-old">Discarded Paths</h3>
+            <p id="archive-old-desc">Abandoned directions, previous systems, and discontinued experiments.</p>
+          </a>
+
+          <a class="list-item" href="archive/incomplete-fragments/index.html">
+            <h3 id="archive-unused">Incomplete Fragments</h3>
+            <p id="archive-unused-desc">Partial work, unfinished texts, and undeveloped structures.</p>
+          </a>
+
+          <a class="list-item" href="archive/process-snapshots/index.html">
+            <h3 id="archive-snapshots">Process Snapshots</h3>
+            <p id="archive-snapshots-desc">Intermediate states captured across time during development.</p>
+          </a>
         </div>
-        <div class="list-item">
-          <h3 id="archive-snapshots">Snapshots</h3>
-          <p id="archive-snapshots-desc">Archived states of ongoing systems.</p>
-        </div>
+      </div>
+    </section>
+
+    <section class="section closing-section">
+      <div class="container narrow center">
+        <p class="section-note" id="archive-closing-note">Closing</p>
+        <h2 class="closing-title" id="archive-closing-title">What remains<br />still matters.</h2>
+        <p class="closing-text" id="archive-closing-text">
+          Not every path continues, but each may still clarify how the system took shape.
+        </p>
       </div>
     </section>
   </main>
@@ -70,20 +110,58 @@
       renderLang();
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       lang = localStorage.getItem('lang') || 'en';
       document.getElementById('lang-en').onclick = () => setLang('en');
       document.getElementById('lang-zh').onclick = () => setLang('zh');
-      renderLang();
+      setLang(lang);
     });
 
     function renderLang() {
       const navLinks = document.getElementById('nav-links');
       const navs = i18n[lang].nav;
+
+      const sub = {
+        works: lang === 'zh'
+          ? ['艺术创作', '分析作品', '技术工作', '实验形式']
+          : ['Artistic Creations', 'Analytical Pieces', 'Technical Works', 'Experimental Forms'],
+        writing: lang === 'zh'
+          ? ['Essays', 'Notes']
+          : ['Essays', 'Notes'],
+        projects: lang === 'zh'
+          ? ['研究系统', '技术构建', '创意开发', '个人基础设施']
+          : ['Research Systems', 'Technical Builds', 'Creative Development', 'Personal Infrastructure']
+      };
+
       navLinks.innerHTML = `
-        <a href="works.html">${navs[0]}</a>
-        <a href="writing.html">${navs[1]}</a>
-        <a href="projects.html">${navs[2]}</a>
+        <div class="nav-item has-dropdown">
+          <a href="works.html">${navs[0]}</a>
+          <div class="nav-dropdown">
+            <a href="works/artistic-creations/index.html">${sub.works[0]}</a>
+            <a href="works/analytical-pieces/index.html">${sub.works[1]}</a>
+            <a href="works/technical-works/index.html">${sub.works[2]}</a>
+            <a href="works/experimental-forms/index.html">${sub.works[3]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="writing.html">${navs[1]}</a>
+          <div class="nav-dropdown">
+            <a href="writing/essays/index.html">${sub.writing[0]}</a>
+            <a href="writing/notes/index.html">${sub.writing[1]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="projects.html">${navs[2]}</a>
+          <div class="nav-dropdown">
+            <a href="projects/research-systems/index.html">${sub.projects[0]}</a>
+            <a href="projects/technical-builds/index.html">${sub.projects[1]}</a>
+            <a href="projects/creative-development/index.html">${sub.projects[2]}</a>
+            <a href="projects/personal-infrastructure/index.html">${sub.projects[3]}</a>
+          </div>
+        </div>
+
         <a href="about.html">${navs[3]}</a>
         <a href="archive.html">${navs[4]}</a>
       `;
@@ -92,18 +170,75 @@
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
 
-      document.getElementById('archive-title').textContent = i18n[lang].archiveTitle;
-      document.getElementById('archive-brief').textContent = i18n[lang].archiveBrief;
-      document.getElementById('archive-old').textContent = i18n[lang].archiveOld;
-      document.getElementById('archive-old-desc').textContent = i18n[lang].archiveOldDesc;
-      document.getElementById('archive-unused').textContent = i18n[lang].archiveUnused;
-      document.getElementById('archive-unused-desc').textContent = i18n[lang].archiveUnusedDesc;
-      document.getElementById('archive-snapshots').textContent = i18n[lang].archiveSnapshots;
-      document.getElementById('archive-snapshots-desc').textContent = i18n[lang].archiveSnapshotsDesc;
+      document.getElementById('archive-hero-eyebrow').textContent =
+        lang === 'zh' ? '归档' : 'Archive';
+
+      document.getElementById('archive-title').textContent =
+        lang === 'zh' ? '归档' : 'Archive';
+
+      document.getElementById('archive-brief').textContent =
+        lang === 'zh'
+          ? '用于存放被保留的版本、废弃路径与过程中的中间状态。'
+          : 'Retained versions, abandoned paths, and intermediate states.';
+
+      document.getElementById('archive-note').textContent =
+        lang === 'zh' ? '概览' : 'Overview';
+
+      document.getElementById('archive-lead').textContent =
+        lang === 'zh'
+          ? '这里保留那些仍具有过程价值、参考价值或历史痕迹的材料。'
+          : 'This section keeps material that remains relevant as process, reference, or historical trace.';
+
+      document.getElementById('archive-categories-note').textContent =
+        lang === 'zh' ? '分类' : 'Categories';
+
+      document.getElementById('archive-categories-title').textContent =
+        lang === 'zh' ? '归档分区' : 'Archive Sections';
+
+      document.getElementById('archive-side-text').textContent =
+        lang === 'zh'
+          ? '这些条目保存被放弃的方向、未完成片段与发展过程中的阶段记录。'
+          : 'These entries preserve abandoned directions, unfinished fragments, and recorded stages of development.';
+
+      document.getElementById('archive-old').textContent =
+        lang === 'zh' ? '废弃路径' : 'Discarded Paths';
+
+      document.getElementById('archive-old-desc').textContent =
+        lang === 'zh'
+          ? '被放弃的方向、旧系统与中止的实验。'
+          : 'Abandoned directions, previous systems, and discontinued experiments.';
+
+      document.getElementById('archive-unused').textContent =
+        lang === 'zh' ? '未竟片段' : 'Incomplete Fragments';
+
+      document.getElementById('archive-unused-desc').textContent =
+        lang === 'zh'
+          ? '半成品、未完成文本与未发展结构。'
+          : 'Partial work, unfinished texts, and undeveloped structures.';
+
+      document.getElementById('archive-snapshots').textContent =
+        lang === 'zh' ? '过程切片' : 'Process Snapshots';
+
+      document.getElementById('archive-snapshots-desc').textContent =
+        lang === 'zh'
+          ? '在演化过程中记录的阶段性中间状态。'
+          : 'Intermediate states captured across time during development.';
+
+      document.getElementById('archive-closing-note').textContent =
+        lang === 'zh' ? '结尾' : 'Closing';
+
+      document.getElementById('archive-closing-title').innerHTML =
+        lang === 'zh' ? '被留下的内容<br />仍然重要。' : 'What remains<br />still matters.';
+
+      document.getElementById('archive-closing-text').textContent =
+        lang === 'zh'
+          ? '并非每条路径都会继续，但它们仍能说明这个系统如何形成。'
+          : 'Not every path continues, but each may still clarify how the system took shape.';
 
       document.getElementById('footer-copyright').textContent = i18n[lang].copyright;
       document.getElementById('footer-copyright2').innerHTML = i18n[lang].copyright2;
     }
   </script>
 </body>
+
 </html>
