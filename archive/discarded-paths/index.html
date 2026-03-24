@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discarded Paths - Cogniven</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <header class="site-header">
+        <nav class="nav">
+            <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+            <div style="display:flex;align-items:center;gap:24px;">
+                <div class="nav-links" id="nav-links" style="display:flex;gap:24px;"></div>
+                <div class="lang-switcher">
+                    <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+                    <button id="lang-zh" class="lang-btn">中文</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container hero-inner">
+                <p class="eyebrow" id="dp-eyebrow">Archive · Discarded Paths</p>
+                <h1 id="dp-title">Discarded Paths</h1>
+                <p class="hero-text" id="dp-text">
+                    Abandoned directions, earlier systems, and discontinued experiments.
+                </p>
+            </div>
+        </section>
+
+        <!-- INTRO -->
+        <section class="section intro-band">
+            <div class="container narrow">
+                <p class="section-note" id="dp-note">Overview</p>
+                <p class="lead-paragraph" id="dp-lead">
+                    These entries represent paths that were once explored but no longer continued.
+                    They remain as part of the system’s development history.
+                </p>
+            </div>
+        </section>
+
+        <!-- LIST -->
+        <section class="section">
+            <div class="container">
+
+                <div class="section-head">
+                    <div>
+                        <p class="section-note" id="dp-list-note">Archive List</p>
+                        <h2 id="dp-list-title">Entries</h2>
+                    </div>
+                    <p class="section-side-text" id="dp-side">
+                        Each entry reflects a direction that was tested and later abandoned.
+                    </p>
+                </div>
+
+                <div class="list">
+
+                    <a class="list-item" href="#">
+                        <h3>Experiment 001</h3>
+                        <p>Earlier structural attempt later replaced by a more stable system.</p>
+                    </a>
+
+                    <a class="list-item" href="#">
+                        <h3>Experiment 002</h3>
+                        <p>A discontinued design direction kept for reference.</p>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p id="footer-copyright">© 2026 Cogniven. All rights reserved.</p>
+            <p id="footer-copyright2">
+                The works presented on this site are original and protected by copyright.<br>
+                Unauthorized reproduction, distribution, or commercial use is prohibited.
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script src="../../js/i18n.js"></script>
+    <script>
+        let lang = localStorage.getItem('lang') || 'en';
+
+        function setLang(newLang) {
+            lang = newLang;
+            localStorage.setItem('lang', lang);
+            renderLang();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('lang-en').onclick = () => setLang('en');
+            document.getElementById('lang-zh').onclick = () => setLang('zh');
+            setLang(lang);
+        });
+
+        function renderLang() {
+            const navLinks = document.getElementById('nav-links');
+            const navs = i18n[lang].nav;
+
+            const sub = {
+                works: lang === 'zh'
+                    ? ['艺术创作', '分析作品', '技术工作', '实验形式']
+                    : ['Artistic Creations', 'Analytical Pieces', 'Technical Works', 'Experimental Forms'],
+                writing: lang === 'zh'
+                    ? ['Essays', 'Notes']
+                    : ['Essays', 'Notes'],
+                projects: lang === 'zh'
+                    ? ['研究系统', '技术构建', '创意开发', '个人基础设施']
+                    : ['Research Systems', 'Technical Builds', 'Creative Development', 'Personal Infrastructure']
+            };
+
+            navLinks.innerHTML = `
+        <div class="nav-item has-dropdown">
+          <a href="../../works.html">${navs[0]}</a>
+          <div class="nav-dropdown">
+            <a href="../../works/artistic-creations/index.html">${sub.works[0]}</a>
+            <a href="../../works/analytical-pieces/index.html">${sub.works[1]}</a>
+            <a href="../../works/technical-works/index.html">${sub.works[2]}</a>
+            <a href="../../works/experimental-forms/index.html">${sub.works[3]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="../../writing.html">${navs[1]}</a>
+          <div class="nav-dropdown">
+            <a href="../../writing/essays/index.html">${sub.writing[0]}</a>
+            <a href="../../writing/notes/index.html">${sub.writing[1]}</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a href="../../projects.html">${navs[2]}</a>
+          <div class="nav-dropdown">
+            <a href="../../projects/research-systems/index.html">${sub.projects[0]}</a>
+            <a href="../../projects/technical-builds/index.html">${sub.projects[1]}</a>
+            <a href="../../projects/creative-development/index.html">${sub.projects[2]}</a>
+            <a href="../../projects/personal-infrastructure/index.html">${sub.projects[3]}</a>
+          </div>
+        </div>
+
+        <a href="../../about.html">${navs[3]}</a>
+        <a href="../../archive.html">${navs[4]}</a>
+      `;
+
+            document.getElementById('logo-text').textContent = i18n[lang].logo;
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+            // 页面文本
+            document.getElementById('dp-eyebrow').textContent =
+                lang === 'zh' ? '归档 · 废弃路径' : 'Archive · Discarded Paths';
+
+            document.getElementById('dp-title').textContent =
+                lang === 'zh' ? '废弃路径' : 'Discarded Paths';
+
+            document.getElementById('dp-text').textContent =
+                lang === 'zh'
+                    ? '被放弃的方向、旧系统与中止的实验。'
+                    : 'Abandoned directions, earlier systems, and discontinued experiments.';
+
+            document.getElementById('dp-note').textContent =
+                lang === 'zh' ? '概览' : 'Overview';
+
+            document.getElementById('dp-lead').textContent =
+                lang === 'zh'
+                    ? '这些条目代表曾经探索但未继续推进的路径，它们作为系统发展的一部分被保留下来。'
+                    : 'These entries represent paths that were once explored but no longer continued. They remain as part of the system’s development history.';
+
+            document.getElementById('dp-list-note').textContent =
+                lang === 'zh' ? '归档列表' : 'Archive List';
+
+            document.getElementById('dp-list-title').textContent =
+                lang === 'zh' ? '条目' : 'Entries';
+
+            document.getElementById('dp-side').textContent =
+                lang === 'zh'
+                    ? '每一条记录一个被尝试后放弃的方向。'
+                    : 'Each entry reflects a direction that was tested and later abandoned.';
+
+            document.getElementById('footer-copyright').textContent = i18n[lang].copyright;
+            document.getElementById('footer-copyright2').innerHTML = i18n[lang].copyright2;
+        }
+    </script>
+
+</body>
+
+</html>
