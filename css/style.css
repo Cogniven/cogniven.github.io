@@ -394,153 +394,7 @@ a {
     padding: 0 20px;
   }
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artistic Creations - Cogniven</title>
-  <link rel="stylesheet" href="../../css/style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="../../index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
-        <a href="../../about.html">About</a>
-        <a href="../../works.html">Works</a>
-        <a href="../../writing.html">Writing</a>
-        <a href="../../projects.html">Projects</a>
-        <a href="../../archive.html">Archive</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow">Works · Artistic Creations</p>
-        <h1>
-          Artistic Creations
-        </h1>
-        <p class="hero-text">
-          A browsable selection of artistic work, presented as a structured archive.
-        </p>
-      </div>
-    </section>
-
-    <section class="section intro-band">
-      <div class="container narrow">
-        <p class="section-note">Overview</p>
-        <p class="lead-paragraph">
-          This page collects artistic work in a format intended for browsing first,
-          then closer reading when needed.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="section-note">Selection</p>
-            <h2>Current Works</h2>
-          </div>
-          <p class="section-side-text">
-            Titles and descriptions can be adjusted later without changing the page structure.
-          </p>
-        </div>
-
-        <div id="works-grid" class="works-grid"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© 2026 Cogniven</p>
-      <p>Artistic work as structured display.</p>
-    </div>
-  </footer>
-
-  <script src="./data.js"></script>
-  <script>
-    const grid = document.getElementById("works-grid");
-
-    function createWorkCard(work) {
-      const card = document.createElement("article");
-      card.className = "work-card";
-
-      const coverWrapper = document.createElement("a");
-      coverWrapper.className = "work-cover-wrapper";
-      coverWrapper.href = work.link || "#";
-
-      const img = document.createElement("img");
-      img.className = "work-cover";
-      img.src = work.cover;
-      img.alt = work.title;
-
-      img.onerror = function () {
-        this.src =
-          "data:image/svg+xml;utf8," +
-          encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-              <rect width="800" height="500" fill="#161b22"/>
-              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-                fill="#9aa3ad" font-size="28" font-family="Georgia, serif">
-                Cover not added yet
-              </text>
-            </svg>
-          `);
-      };
-
-      const body = document.createElement("div");
-      body.className = "work-body";
-
-      const title = document.createElement("h3");
-      title.className = "work-title";
-      title.textContent = work.title;
-
-      const desc = document.createElement("p");
-      desc.className = "work-desc";
-      desc.textContent = work.desc;
-
-      coverWrapper.appendChild(img);
-      body.appendChild(title);
-      body.appendChild(desc);
-
-      card.appendChild(coverWrapper);
-      card.appendChild(body);
-
-      return card;
-    }
-
-    artisticCreationsWorks.forEach((work) => {
-      grid.appendChild(createWorkCard(work));
-    });
-  </script>
-</body>
-</html>
-const artisticCreationsWorks = [
-  {
-    title: "Artistic Work 001",
-    desc: "A short description for this piece.",
-    cover: "../../assets/images/works/artistic-creations/work-001/cover.jpg",
-    link: "#"
-  },
-  {
-    title: "Artistic Work 002",
-    desc: "Another short description for this piece.",
-    cover: "../../assets/images/works/artistic-creations/work-002/cover.jpg",
-    link: "#"
-  },
-  {
-    title: "Artistic Work 003",
-    desc: "This card is ready for future work.",
-    cover: "../../assets/images/works/artistic-creations/work-003/cover.jpg",
-    link: "#"
-  }
-];
 .works-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -947,6 +801,109 @@ const artisticCreationsWorks = [
     visibility 0.18s ease;
 
   z-index: 999;
+}
+
+/* Mobile Navigation */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 200;
+  color: var(--text);
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px 0;
+  background-color: currentColor;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger Animation State */
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Utility Classes */
+.mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block !important;
+  }
+
+  .hamburger {
+    display: block;
+    margin-left: 16px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    background: var(--bg-soft);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px 40px;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    backdrop-filter: blur(20px); /* Enhance glass effect */
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  /* Adjust existing styles override */
+  .nav {
+    flex-direction: row !important; /* Force row layout for header */
+    align-items: center !important;
+  }
+  
+  /* Make nav items larger on mobile */
+  .nav-links a {
+    font-size: 20px;
+    height: auto;
+    padding: 12px 0;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* Reset dropdown position for mobile */
+  .nav-dropdown {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 20px;
+    display: none; /* Hide by default, show on click/active */
+    min-width: auto;
+  }
+  
+  .nav-item.has-dropdown:hover .nav-dropdown,
+  .nav-item.has-dropdown.active .nav-dropdown {
+    display: flex;
+  }
 }
 
 .nav-dropdown a {

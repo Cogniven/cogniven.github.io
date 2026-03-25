@@ -25,6 +25,11 @@
           <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
           <button id="lang-zh" class="lang-btn">中文</button>
         </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
     </nav>
   </header>
@@ -187,10 +192,18 @@
           : ['Discarded Paths', 'Incomplete Fragments', 'Process Snapshots']
       };
 
+      const allText = {
+        works: lang === 'zh' ? '全部作品' : 'All Works',
+        writing: lang === 'zh' ? '全部写作' : 'All Writing',
+        projects: lang === 'zh' ? '全部项目' : 'All Projects',
+        archive: lang === 'zh' ? '全部归档' : 'All Archive'
+      };
+
       navLinks.innerHTML = `
         <div class="nav-item has-dropdown">
           <a href="works.html">${navs[0]}</a>
           <div class="nav-dropdown">
+            <a href="works.html" class="mobile-only">${allText.works}</a>
             <a href="works/artistic-creations/index.html">${sub.works[0]}</a>
             <a href="works/analytical-pieces/index.html">${sub.works[1]}</a>
             <a href="works/technical-works/index.html">${sub.works[2]}</a>
@@ -201,6 +214,7 @@
         <div class="nav-item has-dropdown">
           <a href="writing.html">${navs[1]}</a>
           <div class="nav-dropdown">
+            <a href="writing.html" class="mobile-only">${allText.writing}</a>
             <a href="writing/essays/index.html">${sub.writing[0]}</a>
             <a href="writing/notes/index.html">${sub.writing[1]}</a>
           </div>
@@ -209,6 +223,7 @@
         <div class="nav-item has-dropdown">
           <a href="projects.html">${navs[2]}</a>
           <div class="nav-dropdown">
+            <a href="projects.html" class="mobile-only">${allText.projects}</a>
             <a href="projects/research-systems/index.html">${sub.projects[0]}</a>
             <a href="projects/technical-builds/index.html">${sub.projects[1]}</a>
             <a href="projects/creative-development/index.html">${sub.projects[2]}</a>
@@ -221,6 +236,7 @@
         <div class="nav-item has-dropdown">
           <a href="archive.html">${navs[4]}</a>
           <div class="nav-dropdown">
+            <a href="archive.html" class="mobile-only">${allText.archive}</a>
             <a href="archive/discarded-paths/index.html">${sub.archive[0]}</a>
             <a href="archive/incomplete-fragments/index.html">${sub.archive[1]}</a>
             <a href="archive/process-snapshots/index.html">${sub.archive[2]}</a>
@@ -262,6 +278,47 @@
 
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
+    }
+
+    // Mobile Navigation Logic
+    const hamburger = document.getElementById('hamburger-btn');
+    const navLinksContainer = document.getElementById('nav-links');
+
+    if (hamburger && navLinksContainer) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinksContainer.classList.toggle('active');
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinksContainer.contains(e.target) && navLinksContainer.classList.contains('active')) {
+          hamburger.classList.remove('active');
+          navLinksContainer.classList.remove('active');
+        }
+      });
+      
+      // Mobile Dropdown Toggle (Event Delegation)
+      navLinksContainer.addEventListener('click', (e) => {
+        // Only trigger on mobile view
+        if (window.innerWidth > 768) return;
+
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        // Check if it's a parent link with dropdown
+        const navItem = link.closest('.nav-item.has-dropdown');
+        const isParentLink = navItem && link.parentNode === navItem;
+
+        if (isParentLink) {
+           e.preventDefault();
+           navItem.classList.toggle('active');
+        } else {
+           // It's a normal link or sub-link, close menu
+           hamburger.classList.remove('active');
+           navLinksContainer.classList.remove('active');
+        }
+      });
     }
   </script>
 </body>
