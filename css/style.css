@@ -910,17 +910,17 @@ const artisticCreationsWorks = [
   align-items: center;
 }
 
-.nav-item.has-dropdown > a {
+.nav-item.has-dropdown {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  height: 32px;
-  line-height: 1;
 }
 
 .nav-dropdown {
   position: absolute;
   top: calc(100% + 8px);
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
 
   min-width: 180px;
   padding: 8px;
@@ -940,7 +940,6 @@ const artisticCreationsWorks = [
 
   opacity: 0;
   visibility: hidden;
-  transform: translateY(6px);
 
   transition:
     opacity 0.18s ease,
@@ -960,11 +959,7 @@ const artisticCreationsWorks = [
   font-size: 14px;
   line-height: 1.35;
   white-space: nowrap;
-
-  transition:
-    background 0.18s ease,
-    color 0.18s ease,
-    transform 0.18s ease;
+  text-align: left;
 }
 
 .nav-dropdown a:hover {
@@ -977,7 +972,7 @@ const artisticCreationsWorks = [
 .nav-item.has-dropdown:focus-within .nav-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 .lang-switcher {
