@@ -178,18 +178,27 @@
       const navs = i18n[lang].nav;
 
       const sub = {
-        works: lang === 'zh'
-          ? ['艺术创作', '分析作品', '技术工作', '实验形式']
-          : ['Artistic Creations', 'Analytical Pieces', 'Technical Works', 'Experimental Forms'],
-        writing: lang === 'zh'
-          ? ['Essays', 'Notes']
-          : ['Essays', 'Notes'],
-        projects: lang === 'zh'
-          ? ['研究系统', '技术构建', '创意开发', '个人基础设施']
-          : ['Research Systems', 'Technical Builds', 'Creative Development', 'Personal Infrastructure'],
-        archive: lang === 'zh'
-          ? ['废弃路径', '未竟片段', '过程切片']
-          : ['Discarded Paths', 'Incomplete Fragments', 'Process Snapshots']
+        works: [
+          i18n[lang].worksArtisticCreations,
+          i18n[lang].worksAnalyticalPieces,
+          i18n[lang].worksTechnicalWorks,
+          i18n[lang].worksExperimentalForms
+        ],
+        writing: [
+          i18n[lang].writingEssays,
+          i18n[lang].writingNotes
+        ],
+        projects: [
+          i18n[lang].projectsResearch,
+          i18n[lang].projectsTechnical,
+          i18n[lang].projectsCreative,
+          i18n[lang].projectsPersonal
+        ],
+        archive: [
+          i18n[lang].archiveOld,
+          i18n[lang].archiveUnused,
+          i18n[lang].archiveSnapshots
+        ]
       };
 
       const allText = {
@@ -321,6 +330,7 @@
       });
     }
   </script>
+  <script src="js/nav.js"></script>
 </body>
 
 </html>
