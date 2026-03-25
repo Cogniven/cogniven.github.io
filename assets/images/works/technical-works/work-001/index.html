@@ -191,16 +191,11 @@
             const nav = document.getElementById('nav-links');
 
             nav.innerHTML = `
-    <div class="nav-item">
-      <a href="/works.html">${lang === 'zh' ? '作品' : 'Works'}</a>
-    </div>
-    <div class="nav-item">
-      <a href="/writing.html">${lang === 'zh' ? '写作' : 'Writing'}</a>
-    </div>
-    <div class="nav-item">
-      <a href="/projects.html">${lang === 'zh' ? '项目' : 'Projects'}</a>
-    </div>
+    <a href="/works.html">${lang === 'zh' ? '作品' : 'Works'}</a>
+    <a href="/writing.html">${lang === 'zh' ? '写作' : 'Writing'}</a>
+    <a href="/projects.html">${lang === 'zh' ? '项目' : 'Projects'}</a>
     <a href="/about.html">${lang === 'zh' ? '关于' : 'About'}</a>
+    <a href="/archive.html">${lang === 'zh' ? '归档' : 'Archive'}</a>
   `;
 
             document.getElementById('title').textContent =
