@@ -891,17 +891,6 @@ const artisticCreationsWorks = [
   align-items: center;
 }
 
-.nav-item.has-dropdown>a {
-  display: inline-flex;
-  align-items: center;
-}
-
-.nav-item.has-dropdown {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
 .nav-item.has-dropdown > a {
   display: inline-flex;
   align-items: center;
@@ -912,14 +901,13 @@ const artisticCreationsWorks = [
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
-
   min-width: 196px;
   padding: 8px;
 
   border-radius: 14px;
-  border: 1px solid rgba(154, 184, 255, 0.10);
+  border: 1px solid rgba(255, 248, 240, 0.08);
 
-  background: rgba(7, 16, 30, 0.92);   /* 核心改动 */
+  background: rgba(16, 20, 27, 0.96);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
@@ -933,7 +921,7 @@ const artisticCreationsWorks = [
   visibility: hidden;
   transform: translateY(6px);
 
-  transition: 
+  transition:
     opacity 0.18s ease,
     transform 0.18s ease,
     visibility 0.18s ease;
@@ -944,25 +932,23 @@ const artisticCreationsWorks = [
 .nav-dropdown a {
   display: block;
   padding: 10px 12px;
-
   border-radius: 9px;
 
   text-decoration: none;
-  color: rgba(255, 248, 238, 0.92);
+  color: rgba(236, 231, 223, 0.92);
 
   font-size: 14px;
   line-height: 1.35;
-
   white-space: nowrap;
 
-  transition: 
+  transition:
     background 0.18s ease,
     color 0.18s ease,
     transform 0.18s ease;
 }
 
 .nav-dropdown a:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 248, 240, 0.05);
   color: #ffffff;
   transform: translateX(1px);
 }
@@ -972,26 +958,6 @@ const artisticCreationsWorks = [
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-}
-
-.nav-dropdown a {
-  display: block;
-  padding: 10px 12px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: inherit;
-  white-space: nowrap;
-}
-
-.nav-dropdown a:hover {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.nav-item.has-dropdown:hover .nav-dropdown,
-.nav-item.has-dropdown:focus-within .nav-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
 }
 
 .lang-switcher {
