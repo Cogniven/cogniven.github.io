@@ -897,17 +897,38 @@ const artisticCreationsWorks = [
   height: 32px;
 }
 
+.nav-links {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-item.has-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-item.has-dropdown > a {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+}
+
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
+  top: 36px;             /* 直接贴在菜单项下面 */
+  left: 50%;             /* 先以父元素中点定位 */
+  transform: translateX(-50%) translateY(6px);
+
   min-width: 196px;
   padding: 8px;
 
   border-radius: 14px;
   border: 1px solid rgba(255, 248, 240, 0.08);
-
   background: rgba(16, 20, 27, 0.96);
+
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
@@ -919,7 +940,6 @@ const artisticCreationsWorks = [
 
   opacity: 0;
   visibility: hidden;
-  transform: translateY(6px);
 
   transition:
     opacity 0.18s ease,
@@ -927,6 +947,34 @@ const artisticCreationsWorks = [
     visibility 0.18s ease;
 
   z-index: 999;
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 9px;
+  text-decoration: none;
+  color: rgba(236, 231, 223, 0.92);
+  font-size: 14px;
+  line-height: 1.35;
+  white-space: nowrap;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.nav-dropdown a:hover {
+  background: rgba(255, 248, 240, 0.05);
+  color: #ffffff;
+  transform: translateX(1px);
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown,
+.nav-item.has-dropdown:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 .nav-dropdown a {
