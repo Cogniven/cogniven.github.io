@@ -918,15 +918,17 @@ const artisticCreationsWorks = [
 
 .nav-dropdown {
   position: absolute;
-  top: 36px;             /* 直接贴在菜单项下面 */
-  left: 50%;             /* 先以父元素中点定位 */
-  transform: translateX(-50%) translateY(6px);
+  top: 100%;        /* 紧贴按钮底部 */
+  left: 0;          /* 左对齐按钮 */
 
-  min-width: 196px;
+  margin-top: 8px;  /* 微小间距 */
+
+  min-width: 180px;
   padding: 8px;
 
   border-radius: 14px;
   border: 1px solid rgba(255, 248, 240, 0.08);
+
   background: rgba(16, 20, 27, 0.96);
 
   backdrop-filter: blur(14px);
@@ -940,6 +942,7 @@ const artisticCreationsWorks = [
 
   opacity: 0;
   visibility: hidden;
+  transform: translateY(6px);
 
   transition:
     opacity 0.18s ease,
