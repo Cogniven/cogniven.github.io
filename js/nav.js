@@ -60,6 +60,96 @@
       var navLinks = header.querySelector('.nav-links');
       if (!navLinks) return;
 
+      // If nav-links contains only simple anchors (no dropdown items), build the full dropdown structure
+      // using i18n so subpages display the same hoverable submenu as index.html.
+      try {
+        if (typeof i18n === 'object') {
+          var lang = localStorage.getItem('lang') || 'en';
+          var navs = i18n[lang].nav;
+
+          var sub = {
+            works: [
+              i18n[lang].worksArtisticCreations,
+              i18n[lang].worksAnalyticalPieces,
+              i18n[lang].worksTechnicalWorks,
+              i18n[lang].worksExperimentalForms
+            ],
+            writing: [
+              i18n[lang].writingEssays,
+              i18n[lang].writingNotes
+            ],
+            projects: [
+              i18n[lang].projectsResearch,
+              i18n[lang].projectsTechnical,
+              i18n[lang].projectsCreative,
+              i18n[lang].projectsPersonal
+            ],
+            archive: [
+              i18n[lang].archiveOld,
+              i18n[lang].archiveUnused,
+              i18n[lang].archiveSnapshots
+            ]
+          };
+
+          var allText = {
+            works: lang === 'zh' ? '全部作品' : 'All Works',
+            writing: lang === 'zh' ? '全部写作' : 'All Writing',
+            projects: lang === 'zh' ? '全部项目' : 'All Projects',
+            archive: lang === 'zh' ? '全部归档' : 'All Archive'
+          };
+
+          if (!navLinks.querySelector('.nav-item')) {
+            navLinks.innerHTML = `
+              <div class="nav-item has-dropdown">
+                <a href="works.html">${navs[0]}</a>
+                <div class="nav-dropdown">
+                  <a href="works.html" class="mobile-only">${allText.works}</a>
+                  <a href="works/artistic-creations/index.html">${sub.works[0]}</a>
+                  <a href="works/analytical-pieces/index.html">${sub.works[1]}</a>
+                  <a href="works/technical-works/index.html">${sub.works[2]}</a>
+                  <a href="works/experimental-forms/index.html">${sub.works[3]}</a>
+                </div>
+              </div>
+
+              <div class="nav-item has-dropdown">
+                <a href="writing.html">${navs[1]}</a>
+                <div class="nav-dropdown">
+                  <a href="writing.html" class="mobile-only">${allText.writing}</a>
+                  <a href="writing/essays/index.html">${sub.writing[0]}</a>
+                  <a href="writing/notes/index.html">${sub.writing[1]}</a>
+                </div>
+              </div>
+
+              <div class="nav-item has-dropdown">
+                <a href="projects.html">${navs[2]}</a>
+                <div class="nav-dropdown">
+                  <a href="projects.html" class="mobile-only">${allText.projects}</a>
+                  <a href="projects/research-systems/index.html">${sub.projects[0]}</a>
+                  <a href="projects/technical-builds/index.html">${sub.projects[1]}</a>
+                  <a href="projects/creative-development/index.html">${sub.projects[2]}</a>
+                  <a href="projects/personal-infrastructure/index.html">${sub.projects[3]}</a>
+                </div>
+              </div>
+
+              <a href="about.html">${navs[3]}</a>
+
+              <div class="nav-item has-dropdown">
+                <a href="archive.html">${navs[4]}</a>
+                <div class="nav-dropdown">
+                  <a href="archive.html" class="mobile-only">${allText.archive}</a>
+                  <a href="archive/discarded-paths/index.html">${sub.archive[0]}</a>
+                  <a href="archive/incomplete-fragments/index.html">${sub.archive[1]}</a>
+                  <a href="archive/process-snapshots/index.html">${sub.archive[2]}</a>
+                </div>
+              </div>
+            `;
+          }
+        }
+      } catch (e) {
+        // If i18n not available or an error occurs, leave existing simple links intact
+        console.warn('nav enhancement: could not build dropdown nav', e);
+      }
+
       // Initialize ARIA states
       if (!navLinks.hasAttribute('aria-hidden')) navLinks.setAttribute('aria-hidden', 'true');
       if (!hamburger.hasAttribute('aria-expanded')) hamburger.setAttribute('aria-expanded', 'false');
