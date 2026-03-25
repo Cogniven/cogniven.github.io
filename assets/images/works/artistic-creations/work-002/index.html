@@ -162,6 +162,11 @@
                     <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
                     <button id="lang-zh" class="lang-btn">中文</button>
                 </div>
+                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
             </div>
         </nav>
     </header>
@@ -314,6 +319,21 @@
             document.getElementById('lang-zh').onclick = () => setLang('zh');
             renderLang();
         });
+    </script>
+
+    <script src="/js/nav.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        var path = location.pathname;
+        var anchors = document.querySelectorAll('.nav-links a');
+        anchors.forEach(function(a){
+          var href = a.getAttribute('href') || '';
+          if(path.indexOf('/works/') !== -1 && href.indexOf('works.html') !== -1) a.classList.add('active');
+          if(path.indexOf('/writing/') !== -1 && href.indexOf('writing.html') !== -1) a.classList.add('active');
+          if(path.indexOf('/projects/') !== -1 && href.indexOf('projects.html') !== -1) a.classList.add('active');
+          if(path.indexOf('/archive/') !== -1 && href.indexOf('archive.html') !== -1) a.classList.add('active');
+        });
+      });
     </script>
 </body>
 
