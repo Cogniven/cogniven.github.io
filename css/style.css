@@ -898,24 +898,24 @@ const artisticCreationsWorks = [
 
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 220px;
-  padding: 14px;
-  border-radius: 14px;
-  background: rgba(10, 18, 32, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  top: 100%;
+  left: 0;
+
+  background: rgba(10, 18, 30, 0.75);   /* 关键：深蓝透明 */
+  backdrop-filter: blur(12px);         /* 关键：玻璃感 */
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+
+  padding: 10px 0;
+  min-width: 180px;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+
   opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%) translateY(6px);
-  transition: all 0.18s ease;
-  z-index: 999;
+  transform: translateY(8px);
+  transition: all 0.2s ease;
 }
 
 .nav-dropdown a {
