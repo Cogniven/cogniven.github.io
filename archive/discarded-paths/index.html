@@ -115,28 +115,9 @@
         });
 
         function renderLang() {
-            const navLinks = document.getElementById('nav-links');
-            const navs = i18n[lang].nav;
-
-            const sub = {
-                works: lang === 'zh'
-                    ? ['艺术创作', '分析作品', '技术工作', '实验形式']
-                    : ['Artistic Creations', 'Analytical Pieces', 'Technical Works', 'Experimental Forms'],
-                writing: lang === 'zh'
-                    ? ['Essays', 'Notes']
-                    : ['Essays', 'Notes'],
-                projects: lang === 'zh'
-                    ? ['研究系统', '技术构建', '创意开发', '个人基础设施']
-                    : ['Research Systems', 'Technical Builds', 'Creative Development', 'Personal Infrastructure']
-            };
-
-            navLinks.innerHTML = `
-        <a href="../../works.html">${navs[0]}</a>
-        <a href="../../writing.html">${navs[1]}</a>
-        <a href="../../projects.html">${navs[2]}</a>
-        <a href="../../about.html">${navs[3]}</a>
-        <a href="../../archive.html">${navs[4]}</a>
-      `;
+            if (window.buildNav) {
+                window.buildNav(lang);
+            }
 
             document.getElementById('logo-text').textContent = i18n[lang].logo;
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');

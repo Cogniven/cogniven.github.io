@@ -8,102 +8,6 @@
   <link rel="stylesheet" href="/css/style.css" />
 
   <style>
-    .lang-switcher {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .lang-btn {
-      width: 48px;
-      height: 32px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: transparent;
-      color: inherit;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .lang-btn:hover {
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .lang-btn.active {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.24);
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-item>a {
-      display: inline-flex;
-      align-items: center;
-      height: 32px;
-    }
-
-    .nav-dropdown {
-      position: absolute;
-      top: calc(100% + 10px);
-      left: 0;
-      min-width: 220px;
-      padding: 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(10, 16, 28, 0.96);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(6px);
-      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
-      z-index: 999;
-    }
-
-    .nav-dropdown a {
-      display: block;
-      padding: 10px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: var(--text);
-      white-space: nowrap;
-    }
-
-    .nav-dropdown a:hover {
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .has-dropdown:hover .nav-dropdown,
-    .has-dropdown:focus-within .nav-dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 720px) {
-      .nav {
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .nav-links {
-        gap: 14px !important;
-        flex-wrap: wrap;
-      }
-
-      .nav-dropdown {
-        min-width: 180px;
-      }
-    }
   </style>
 </head>
 
@@ -258,28 +162,9 @@
     }
 
     function renderLang() {
-      const navLinks = document.getElementById('nav-links');
-      const navs = i18n[lang].nav;
-
-      const sub = {
-        works: lang === 'zh'
-          ? ['艺术创作', '分析作品', '技术工作', '实验形式']
-          : ['Artistic Creations', 'Analytical Pieces', 'Technical Works', 'Experimental Forms'],
-        writing: lang === 'zh'
-          ? ['Essays', 'Notes']
-          : ['Essays', 'Notes'],
-        projects: lang === 'zh'
-          ? ['研究系统', '技术构建', '创意开发', '个人基础设施']
-          : ['Research Systems', 'Technical Builds', 'Creative Development', 'Personal Infrastructure']
-      };
-
-      navLinks.innerHTML = `
-        <a href="/works.html">${navs[0]}</a>
-        <a href="/writing.html">${navs[1]}</a>
-        <a href="/projects.html">${navs[2]}</a>
-        <a href="/about.html">${navs[3]}</a>
-        <a href="/archive.html">${navs[4]}</a>
-      `;
+      if (window.buildNav) {
+        window.buildNav(lang);
+      }
 
       document.getElementById('logo-text').textContent = i18n[lang].logo;
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');

@@ -51,56 +51,6 @@
             margin-bottom: 1.2em;
         }
 
-        .lang-switcher {
-            display: flex;
-            gap: 4px;
-        }
-
-        .lang-btn {
-            width: 48px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .lang-btn.active {
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-dropdown {
-            position: absolute;
-            top: calc(100% + 10px);
-            left: 0;
-            background: rgba(10, 16, 28, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 10px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(6px);
-            transition: 0.2s;
-        }
-
-        .nav-dropdown a {
-            display: block;
-            padding: 8px 12px;
-            border-radius: 6px;
-        }
-
-        .nav-item:hover .nav-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
     </style>
 </head>
 
@@ -188,15 +138,9 @@
         }
 
         function render() {
-            const nav = document.getElementById('nav-links');
-
-            nav.innerHTML = `
-    <a href="/works.html">${lang === 'zh' ? '作品' : 'Works'}</a>
-    <a href="/writing.html">${lang === 'zh' ? '写作' : 'Writing'}</a>
-    <a href="/projects.html">${lang === 'zh' ? '项目' : 'Projects'}</a>
-    <a href="/about.html">${lang === 'zh' ? '关于' : 'About'}</a>
-    <a href="/archive.html">${lang === 'zh' ? '归档' : 'Archive'}</a>
-  `;
+            if (window.buildNav) {
+                window.buildNav(lang);
+            }
 
             document.getElementById('title').textContent =
                 lang === 'zh' ? '技术作品 001' : 'Technical Work 001';
@@ -241,19 +185,6 @@
     </script>
 
     <script src="/js/nav.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function(){
-        var path = location.pathname;
-        var anchors = document.querySelectorAll('.nav-links a');
-        anchors.forEach(function(a){
-          var href = a.getAttribute('href') || '';
-          if(path.indexOf('/works/') !== -1 && href.indexOf('works.html') !== -1) a.classList.add('active');
-          if(path.indexOf('/writing/') !== -1 && href.indexOf('writing.html') !== -1) a.classList.add('active');
-          if(path.indexOf('/projects/') !== -1 && href.indexOf('projects.html') !== -1) a.classList.add('active');
-          if(path.indexOf('/archive/') !== -1 && href.indexOf('archive.html') !== -1) a.classList.add('active');
-        });
-      });
-    </script>
 
 </body>
 

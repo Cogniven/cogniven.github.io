@@ -492,16 +492,9 @@
     }
 
     function renderLang() {
-      const navLinks = document.getElementById("nav-links");
-      const navs = i18n[lang].nav;
-
-      navLinks.innerHTML = `
-        <a href="../../works.html">${navs[0]}</a>
-        <a href="../../writing.html">${navs[1]}</a>
-        <a href="../../projects.html">${navs[2]}</a>
-        <a href="../../about.html">${navs[3]}</a>
-        <a href="../../archive.html">${navs[4]}</a>
-      `;
+      if (window.buildNav) {
+        window.buildNav(lang);
+      }
 
       document.getElementById("logo-text").textContent = i18n[lang].logo;
       document.getElementById("lang-en").classList.toggle("active", lang === "en");
