@@ -2,165 +2,282 @@
   if (window.__navEnhanced) return;
   window.__navEnhanced = true;
 
-  // Helper to highlight active links
-  function highlightActive() {
-    document.querySelectorAll('.nav-links a').forEach(function(a){
-      try{
-        var href = a.getAttribute('href');
-        if(!href) return;
-        // Resolve absolute URL
-        var url = new URL(href, location.origin);
-        // Normalize paths (remove index.html, trailing slash consistency)
-        var p = url.pathname.replace(/\/index.html$/,'/');
-        var current = location.pathname.replace(/\/index.html$/,'/');
-        
-        // Match logic
-        if (p === '/') {
-           if (current === '/') a.classList.add('active');
-        } else {
-           if(current === p || (p !== '/' && current.indexOf(p) === 0)){
-             a.classList.add('active');
-             var parent = a.closest('.nav-item.has-dropdown');
-             if(parent){
-               var top = parent.querySelector('a');
-               if(top) top.classList.add('active');
-             }
-           }
-        }
-      }catch(e){}
-    });
+  function toPathname(href) {
+    var parser = document.createElement('a');
+    parser.href = href || '/';
+    return parser.pathname || '/';
   }
 
-  function setupDropdownListeners() {
-    // Desktop: nothing needed (CSS hover)
-    
-    // Accessibility: Keyboard support for dropdowns
-    document.querySelectorAll('.nav-item.has-dropdown > a').forEach(function(anchor){
-      anchor.setAttribute('aria-haspopup','true');
-      if (!anchor.hasAttribute('aria-expanded')) anchor.setAttribute('aria-expanded','false');
-      
-      anchor.addEventListener('keydown', function(e){
-        if(e.key === 'ArrowDown'){
+  function normalizePath(path) {
+    var normalized = toPathname(path || '/')
+      .replace(/\\/g, '/')
+      .replace(/\/index\.html$/i, '/')
+      .replace(/\/{2,}/g, '/');
+
+    if (!normalized.startsWith('/')) normalized = '/' + normalized;
+    if (normalized.length > 1 && normalized.endsWith('/')) normalized = normalized.slice(0, -1);
+    return normalized || '/';
+  }
+
+  function inferTargetPath(path) {
+    var current = normalizePath(path || location.pathname);
+    var sampleMatch = current.match(/^\/assets\/images\/(works|writing|projects|archive)\/([^\/]+)/);
+    if (sampleMatch) {
+      return '/' + sampleMatch[1] + '/' + sampleMatch[2];
+    }
+    return current;
+  }
+
+  function getSectionFromPath(path) {
+    var normalized = normalizePath(path);
+    if (/^\/works(?:\/|$|\.html$)/.test(normalized)) return 'works';
+    if (/^\/writing(?:\/|$|\.html$)/.test(normalized)) return 'writing';
+    if (/^\/projects(?:\/|$|\.html$)/.test(normalized)) return 'projects';
+    if (/^\/archive(?:\/|$|\.html$)/.test(normalized)) return 'archive';
+
+    var sample = normalized.match(/^\/assets\/images\/(works|writing|projects|archive)(?:\/|$)/);
+    return sample ? sample[1] : '';
+  }
+
+  function getTopAnchor(navItem) {
+    if (!navItem) return null;
+    for (var i = 0; i < navItem.children.length; i++) {
+      if (navItem.children[i].tagName === 'A') return navItem.children[i];
+    }
+    return navItem.querySelector('a');
+  }
+
+  function highlightActive(navLinks) {
+    var targetNav = navLinks || document.querySelector('.site-header .nav-links');
+    if (!targetNav) return;
+
+    var anchors = targetNav.querySelectorAll('a[href]');
+    anchors.forEach(function (a) { a.classList.remove('active'); });
+
+    var currentPath = normalizePath(location.pathname);
+    var targetPath = inferTargetPath(currentPath);
+    var currentSection = getSectionFromPath(currentPath);
+
+    var bestMatch = null;
+    var bestScore = -1;
+
+    anchors.forEach(function (a) {
+      var linkPath = normalizePath(a.getAttribute('href') || '/');
+      var score = -1;
+
+      if (targetPath === linkPath) {
+        score = 1000 + linkPath.length;
+      } else if (targetPath.indexOf(linkPath + '/') === 0) {
+        score = 500 + linkPath.length;
+      }
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestMatch = a;
+      }
+    });
+
+    if (bestMatch) {
+      bestMatch.classList.add('active');
+      var parent = bestMatch.closest('.nav-item.has-dropdown');
+      if (parent) {
+        var parentTop = getTopAnchor(parent);
+        if (parentTop) parentTop.classList.add('active');
+      }
+    }
+
+    if (currentSection) {
+      targetNav.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
+        var top = getTopAnchor(item);
+        if (!top) return;
+        var topSection = getSectionFromPath(top.getAttribute('href') || '');
+        if (topSection === currentSection) {
+          top.classList.add('active');
+        }
+      });
+    }
+  }
+
+  function setupDropdownListeners(navLinks) {
+    var targetNav = navLinks || document.querySelector('.site-header .nav-links');
+    if (!targetNav) return;
+
+    targetNav.querySelectorAll('.nav-item.has-dropdown > a').forEach(function (anchor) {
+      if (anchor.dataset.navKeybound === '1') return;
+      anchor.dataset.navKeybound = '1';
+
+      anchor.setAttribute('aria-haspopup', 'true');
+      if (!anchor.hasAttribute('aria-expanded')) anchor.setAttribute('aria-expanded', 'false');
+
+      anchor.addEventListener('keydown', function (e) {
+        var navItem = anchor.closest('.nav-item.has-dropdown');
+        if (!navItem) return;
+        var dropdown = navItem.querySelector('.nav-dropdown');
+        if (!dropdown) return;
+
+        if (e.key === 'ArrowDown') {
+          var first = dropdown.querySelector('a');
+          if (!first) return;
           e.preventDefault();
-          var dropdown = anchor.parentNode.querySelector('.nav-dropdown');
-          if(dropdown){
-            anchor.setAttribute('aria-expanded','true');
-            dropdown.style.display = 'flex';
-            var first = dropdown.querySelector('a');
-            if(first) first.focus();
-          }
-        } else if (e.key === 'Escape'){
-          anchor.setAttribute('aria-expanded','false');
-          var dropdown = anchor.parentNode.querySelector('.nav-dropdown');
-          if(dropdown) dropdown.style.display = '';
+          navItem.classList.add('active');
+          anchor.setAttribute('aria-expanded', 'true');
+          first.focus();
+          return;
+        }
+
+        if (e.key === 'Escape') {
+          navItem.classList.remove('active');
+          anchor.setAttribute('aria-expanded', 'false');
+          dropdown.style.display = '';
           anchor.focus();
-        } else if (e.key === 'Enter' || e.key === ' '){
-          if (window.innerWidth <= 768){
-            e.preventDefault();
-            var navItem = anchor.closest('.nav-item.has-dropdown');
-            navItem.classList.toggle('active');
-            var expanded = navItem.classList.contains('active');
-            anchor.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-            var dropdown = navItem.querySelector('.nav-dropdown');
-            if(dropdown) dropdown.style.display = expanded ? 'flex' : 'none';
-          }
+          return;
+        }
+
+        if ((e.key === 'Enter' || e.key === ' ') && window.innerWidth <= 768) {
+          e.preventDefault();
+          var expanded = navItem.classList.toggle('active');
+          anchor.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          dropdown.style.display = expanded ? 'flex' : 'none';
         }
       });
     });
   }
 
-  window.buildNav = function(lang) {
-     var navLinks = document.querySelector('.nav-links');
-     if (!navLinks) return;
-     if (typeof i18n !== 'object') return;
-     
-     // Use passed lang or storage or default
-     lang = lang || localStorage.getItem('lang') || 'en';
-     var navs = i18n[lang].nav;
+  window.buildNav = function (lang, navLinks) {
+    var targetNav = navLinks || document.querySelector('.site-header .nav-links');
+    if (!targetNav || typeof i18n !== 'object') return;
 
-     var sub = {
-            works: [
-              i18n[lang].worksArtisticCreations,
-              i18n[lang].worksAnalyticalPieces,
-              i18n[lang].worksTechnicalWorks,
-              i18n[lang].worksExperimentalForms
-            ],
-            writing: [
-              i18n[lang].writingEssays,
-              i18n[lang].writingNotes
-            ],
-            projects: [
-              i18n[lang].projectsResearch,
-              i18n[lang].projectsTechnical,
-              i18n[lang].projectsCreative,
-              i18n[lang].projectsPersonal
-            ],
-            archive: [
-              i18n[lang].archiveOld,
-              i18n[lang].archiveUnused,
-              i18n[lang].archiveSnapshots
-            ]
-     };
+    var currentLang = lang || localStorage.getItem('lang') || 'en';
+    var dict = i18n[currentLang] || i18n.en;
+    if (!dict || !Array.isArray(dict.nav)) return;
 
-     var allText = {
-            works: lang === 'zh' ? '全部作品' : 'All Works',
-            writing: lang === 'zh' ? '全部写作' : 'All Writing',
-            projects: lang === 'zh' ? '全部项目' : 'All Projects',
-            archive: lang === 'zh' ? '全部归档' : 'All Archive'
-     };
+    var navs = dict.nav;
+    var sub = {
+      works: [
+        dict.worksArtisticCreations || 'Artistic Creations',
+        dict.worksAnalyticalPieces || 'Analytical Pieces',
+        dict.worksTechnicalWorks || 'Technical Works',
+        dict.worksExperimentalForms || 'Experimental Forms'
+      ],
+      writing: [
+        dict.writingEssays || 'Essays',
+        dict.writingNotes || 'Notes'
+      ],
+      projects: [
+        dict.projectsResearch || 'Research Systems',
+        dict.projectsTechnical || 'Technical Builds',
+        dict.projectsCreative || 'Creative Development',
+        dict.projectsPersonal || 'Personal Infrastructure'
+      ],
+      archive: [
+        dict.archiveOld || 'Discarded Paths',
+        dict.archiveUnused || 'Incomplete Fragments',
+        dict.archiveSnapshots || 'Process Snapshots'
+      ]
+    };
 
-     // Using absolute paths starting with /
-     navLinks.innerHTML = `
-              <div class="nav-item has-dropdown">
-                <a href="/works.html">${navs[0]}</a>
-                <div class="nav-dropdown">
-                  <a href="/works.html" class="mobile-only">${allText.works}</a>
-                  <a href="/works/artistic-creations/index.html">${sub.works[0]}</a>
-                  <a href="/works/analytical-pieces/index.html">${sub.works[1]}</a>
-                  <a href="/works/technical-works/index.html">${sub.works[2]}</a>
-                  <a href="/works/experimental-forms/index.html">${sub.works[3]}</a>
-                </div>
-              </div>
+    var allText = {
+      works: currentLang === 'zh' ? '全部作品' : 'All Works',
+      writing: currentLang === 'zh' ? '全部写作' : 'All Writing',
+      projects: currentLang === 'zh' ? '全部项目' : 'All Projects',
+      archive: currentLang === 'zh' ? '全部归档' : 'All Archive'
+    };
 
-              <div class="nav-item has-dropdown">
-                <a href="/writing.html">${navs[1]}</a>
-                <div class="nav-dropdown">
-                  <a href="/writing.html" class="mobile-only">${allText.writing}</a>
-                  <a href="/writing/essays/index.html">${sub.writing[0]}</a>
-                  <a href="/writing/notes/index.html">${sub.writing[1]}</a>
-                </div>
-              </div>
+    targetNav.innerHTML = `
+      <div class="nav-item has-dropdown">
+        <a href="/works.html">${navs[0]}</a>
+        <div class="nav-dropdown">
+          <a href="/works.html" class="mobile-only">${allText.works}</a>
+          <a href="/works/artistic-creations/index.html">${sub.works[0]}</a>
+          <a href="/works/analytical-pieces/index.html">${sub.works[1]}</a>
+          <a href="/works/technical-works/index.html">${sub.works[2]}</a>
+          <a href="/works/experimental-forms/index.html">${sub.works[3]}</a>
+        </div>
+      </div>
 
-              <div class="nav-item has-dropdown">
-                <a href="/projects.html">${navs[2]}</a>
-                <div class="nav-dropdown">
-                  <a href="/projects.html" class="mobile-only">${allText.projects}</a>
-                  <a href="/projects/research-systems/index.html">${sub.projects[0]}</a>
-                  <a href="/projects/technical-builds/index.html">${sub.projects[1]}</a>
-                  <a href="/projects/creative-development/index.html">${sub.projects[2]}</a>
-                  <a href="/projects/personal-infrastructure/index.html">${sub.projects[3]}</a>
-                </div>
-              </div>
+      <div class="nav-item has-dropdown">
+        <a href="/writing.html">${navs[1]}</a>
+        <div class="nav-dropdown">
+          <a href="/writing.html" class="mobile-only">${allText.writing}</a>
+          <a href="/writing/essays/index.html">${sub.writing[0]}</a>
+          <a href="/writing/notes/index.html">${sub.writing[1]}</a>
+        </div>
+      </div>
 
-              <a href="/about.html">${navs[3]}</a>
+      <div class="nav-item has-dropdown">
+        <a href="/projects.html">${navs[2]}</a>
+        <div class="nav-dropdown">
+          <a href="/projects.html" class="mobile-only">${allText.projects}</a>
+          <a href="/projects/research-systems/index.html">${sub.projects[0]}</a>
+          <a href="/projects/technical-builds/index.html">${sub.projects[1]}</a>
+          <a href="/projects/creative-development/index.html">${sub.projects[2]}</a>
+          <a href="/projects/personal-infrastructure/index.html">${sub.projects[3]}</a>
+        </div>
+      </div>
 
-              <div class="nav-item has-dropdown">
-                <a href="/archive.html">${navs[4]}</a>
-                <div class="nav-dropdown">
-                  <a href="/archive.html" class="mobile-only">${allText.archive}</a>
-                  <a href="/archive/discarded-paths/index.html">${sub.archive[0]}</a>
-                  <a href="/archive/incomplete-fragments/index.html">${sub.archive[1]}</a>
-                  <a href="/archive/process-snapshots/index.html">${sub.archive[2]}</a>
-                </div>
-              </div>
-            `;
-      
-      highlightActive();
-      setupDropdownListeners();
+      <a href="/about.html">${navs[3]}</a>
+
+      <div class="nav-item has-dropdown">
+        <a href="/archive.html">${navs[4]}</a>
+        <div class="nav-dropdown">
+          <a href="/archive.html" class="mobile-only">${allText.archive}</a>
+          <a href="/archive/discarded-paths/index.html">${sub.archive[0]}</a>
+          <a href="/archive/incomplete-fragments/index.html">${sub.archive[1]}</a>
+          <a href="/archive/process-snapshots/index.html">${sub.archive[2]}</a>
+        </div>
+      </div>
+    `;
+
+    highlightActive(targetNav);
+    setupDropdownListeners(targetNav);
   };
 
+  function ensureNavStructure(navLinks) {
+    if (!navLinks) return;
+    if (navLinks.querySelector('.nav-item.has-dropdown')) {
+      highlightActive(navLinks);
+      setupDropdownListeners(navLinks);
+      return;
+    }
+    if (typeof i18n === 'object') {
+      window.buildNav(localStorage.getItem('lang') || 'en', navLinks);
+    }
+  }
+
+  function observeNavResets(navLinks) {
+    if (!navLinks || navLinks.__navObserver) return;
+
+    var scheduled = false;
+    var observer = new MutationObserver(function () {
+      if (scheduled) return;
+      scheduled = true;
+
+      window.requestAnimationFrame(function () {
+        scheduled = false;
+        if (!document.body.contains(navLinks)) {
+          observer.disconnect();
+          return;
+        }
+        ensureNavStructure(navLinks);
+      });
+    });
+
+    observer.observe(navLinks, { childList: true });
+    navLinks.__navObserver = observer;
+  }
+
+  function resetMobileDropdowns(navLinks) {
+    if (!navLinks) return;
+    navLinks.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
+      item.classList.remove('active');
+      var top = getTopAnchor(item);
+      if (top) top.setAttribute('aria-expanded', 'false');
+      var dropdown = item.querySelector('.nav-dropdown');
+      if (dropdown) dropdown.style.display = '';
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
-    // Ensure main landmark
     var mainEl = document.querySelector('main');
     if (!mainEl) {
       document.body.id = document.body.id || 'main';
@@ -169,60 +286,39 @@
       mainEl.id = 'main';
     }
 
-    // Skip link
     if (!document.querySelector('.skip-link')) {
       var skip = document.createElement('a');
       skip.className = 'skip-link';
       skip.href = '#' + mainEl.id;
       skip.textContent = 'Skip to content';
-      skip.setAttribute('aria-hidden', 'false');
-      skip.style.position = 'absolute';
-      skip.style.left = '12px';
-      skip.style.top = '8px';
-      skip.style.padding = '8px 12px';
-      skip.style.background = 'rgba(0,0,0,0.6)';
-      skip.style.color = '#fff';
-      skip.style.borderRadius = '6px';
-      skip.style.transform = 'translateY(-120%)';
-      skip.style.transition = 'transform 0.18s ease';
-      skip.style.zIndex = '1200';
-      skip.addEventListener('focus', function () { skip.style.transform = 'translateY(0)'; });
-      skip.addEventListener('blur', function () { skip.style.transform = 'translateY(-120%)'; });
       document.body.insertBefore(skip, document.body.firstChild);
     }
 
-    // Initialize Headers
-    document.querySelectorAll('.site-header').forEach(function (header) {
+    document.querySelectorAll('.site-header').forEach(function (header, index) {
       var nav = header.querySelector('.nav');
       if (!nav) return;
+
+      var navLinks = header.querySelector('.nav-links');
+      if (!navLinks) return;
+      if (!navLinks.id) navLinks.id = 'nav-links-' + index;
 
       var hamburger = nav.querySelector('.hamburger');
       if (!hamburger) {
         hamburger = document.createElement('button');
         hamburger.className = 'hamburger';
-        if (!document.getElementById('hamburger-btn')) hamburger.id = 'hamburger-btn';
         hamburger.setAttribute('aria-label', 'Toggle navigation');
-        hamburger.setAttribute('aria-expanded', 'false');
         hamburger.innerHTML = '<span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>';
-        var container = nav.querySelector('.lang-switcher') || nav.querySelector('div');
-        if (container && container.parentNode) container.parentNode.appendChild(hamburger);
+        var rightContainer = nav.querySelector('.lang-switcher') || nav.querySelector('div');
+        if (rightContainer && rightContainer.parentNode) rightContainer.parentNode.appendChild(hamburger);
         else nav.appendChild(hamburger);
       }
 
-      var navLinks = header.querySelector('.nav-links');
-      if (!navLinks) return;
-      if (!navLinks.id) navLinks.id = 'nav-links';
       hamburger.setAttribute('aria-controls', navLinks.id);
+      hamburger.setAttribute('aria-expanded', 'false');
 
-      // Initial build if empty or simple links
-      if (!navLinks.querySelector('.nav-item') && typeof i18n === 'object') {
-          window.buildNav();
-      } else {
-          highlightActive();
-          setupDropdownListeners();
-      }
+      ensureNavStructure(navLinks);
+      observeNavResets(navLinks);
 
-      // Hamburger logic
       function openNav() {
         hamburger.classList.add('active');
         navLinks.classList.add('active');
@@ -239,59 +335,74 @@
         hamburger.setAttribute('aria-expanded', 'false');
         navLinks.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('no-scroll');
+        resetMobileDropdowns(navLinks);
       }
 
-      hamburger.addEventListener('click', function (e) {
-        e.stopPropagation();
-        if (navLinks.classList.contains('active')) closeNav();
-        else openNav();
-      });
+      if (hamburger.dataset.navToggleBound !== '1') {
+        hamburger.dataset.navToggleBound = '1';
+        hamburger.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (navLinks.classList.contains('active')) closeNav();
+          else openNav();
+        });
+      }
 
-      document.addEventListener('click', function (e) {
-        if (!header.contains(e.target) && navLinks.classList.contains('active')) {
+      if (header.dataset.navGlobalBound !== '1') {
+        header.dataset.navGlobalBound = '1';
+
+        document.addEventListener('click', function (e) {
+          if (!header.contains(e.target) && navLinks.classList.contains('active')) {
+            closeNav();
+          }
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && navLinks.classList.contains('active')) closeNav();
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+            closeNav();
+          }
+        });
+      }
+
+      if (navLinks.dataset.navClickBound !== '1') {
+        navLinks.dataset.navClickBound = '1';
+        navLinks.addEventListener('click', function (e) {
+          if (window.innerWidth > 768) return;
+          var link = e.target.closest('a');
+          if (!link) return;
+
+          var navItem = link.closest('.nav-item.has-dropdown');
+          var isParentLink = navItem && link.parentNode === navItem;
+          if (isParentLink) {
+            e.preventDefault();
+            navItem.classList.toggle('active');
+            var expanded = navItem.classList.contains('active');
+            link.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            var dropdown = navItem.querySelector('.nav-dropdown');
+            if (dropdown) dropdown.style.display = expanded ? 'flex' : 'none';
+            return;
+          }
+
           closeNav();
-        }
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && navLinks.classList.contains('active')) closeNav();
-      });
-
-      window.addEventListener('resize', function () {
-        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-          closeNav();
-        }
-      });
-
-      // Delegate click for mobile dropdown toggle (since elements might be rebuilt)
-      navLinks.addEventListener('click', function (e) {
-        if (window.innerWidth > 768) return;
-        var link = e.target.closest('a');
-        if (!link) return;
-        var navItem = link.closest('.nav-item.has-dropdown');
-        var isParentLink = navItem && link.parentNode === navItem;
-        if (isParentLink) {
-          e.preventDefault();
-          navItem.classList.toggle('active');
-          var expanded = navItem.classList.contains('active');
-          link.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-          var dropdown = navItem.querySelector('.nav-dropdown');
-          if(dropdown) dropdown.style.display = expanded ? 'flex' : 'none';
-        } else {
-          closeNav();
-        }
-      });
+        });
+      }
     });
 
-    // Keyboard user helper
-    function handleFirstTab(e){
-      if(e.key === 'Tab'){
+    function handleFirstTab(e) {
+      if (e.key === 'Tab') {
         document.body.classList.add('user-is-tabbing');
         window.removeEventListener('keydown', handleFirstTab);
       }
     }
     window.addEventListener('keydown', handleFirstTab);
+
+    window.addEventListener('popstate', function () {
+      document.querySelectorAll('.site-header .nav-links').forEach(function (navLinks) {
+        highlightActive(navLinks);
+      });
+    });
   });
 })();
-
-
