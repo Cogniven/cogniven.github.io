@@ -1,109 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Development - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creative Development - Cogniven</title>
-  <link rel="stylesheet" href="/css/style.css" />
+    <style></style>
+  </head>
 
-  <style>
-  </style>
-</head>
-
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
-      <div style="display:flex;align-items:center;gap:24px;">
-        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
-          <a href="/works.html">Works</a>
-          <a href="/writing.html">Writing</a>
-          <a href="/projects.html">Projects</a>
-          <a href="/about.html">About</a>
-          <a href="/archive.html">Archive</a>
-        </div>
-        <div class="lang-switcher">
-          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
-          <button id="lang-zh" class="lang-btn">中文</button>
-        </div>
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow" id="cd-hero-eyebrow">Projects · Creative Development</p>
-        <h1 id="cd-hero-title">Creative Development</h1>
-        <p class="hero-text" id="cd-hero-text">
-          Ongoing experiments, evolving systems, and work still in motion.
-        </p>
-      </div>
-    </section>
-
-    <section class="section intro-band">
-      <div class="container narrow">
-        <p class="section-note" id="cd-overview-note">Overview</p>
-        <p class="lead-paragraph" id="cd-overview-text">
-          This section documents work that is not yet finalized. Each entry is a live log — a record of direction,
-          iteration, and experimentation across different domains.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="section-note" id="cd-logs-note">Logs</p>
-            <h2 id="cd-logs-title">Active Experiments</h2>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="works.html">Works</a>
+            <a href="writing.html">Writing</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="archive.html">Archive</a>
           </div>
-          <p class="section-side-text" id="cd-side-text">
-            Each entry is an evolving record rather than a finished project.
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow" id="cd-hero-eyebrow">
+            Projects · Creative Development
+          </p>
+          <h1 id="cd-hero-title">Creative Development</h1>
+          <p class="hero-text" id="cd-hero-text">
+            Ongoing experiments, evolving systems, and work still in motion.
           </p>
         </div>
+      </section>
 
-        <div id="creative-grid" class="works-grid"></div>
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="cd-overview-note">Overview</p>
+          <p class="lead-paragraph" id="cd-overview-text">
+            This section documents work that is not yet finalized. Each entry is
+            a live log — a record of direction, iteration, and experimentation
+            across different domains.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="cd-logs-note">Logs</p>
+              <h2 id="cd-logs-title">Active Experiments</h2>
+            </div>
+            <p class="section-side-text" id="cd-side-text">
+              Each entry is an evolving record rather than a finished project.
+            </p>
+          </div>
+
+          <div id="creative-grid" class="works-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© 2026 Cogniven. All rights reserved.</p>
-      <p>
-        The works presented on this site are original and protected by copyright.<br />
-        Unauthorized reproduction, distribution, or commercial use is prohibited.
-      </p>
-    </div>
-  </footer>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/creativeDevelopment.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
 
-  <script src="/js/i18n.js"></script>
-  <script src="/js/creativeDevelopment.js"></script>
-  <script>
-    let lang = localStorage.getItem('lang') || 'en';
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+        renderCreativeProjects();
+      }
 
-    function setLang(newLang) {
-      lang = newLang;
-      localStorage.setItem('lang', lang);
-      renderLang();
-      renderCreativeProjects();
-    }
+      function getText(item, field) {
+        if (!item[field]) return "";
+        if (typeof item[field] === "string") return item[field];
+        return item[field][lang] || item[field].en || "";
+      }
 
-    function getText(item, field) {
-      if (!item[field]) return '';
-      if (typeof item[field] === 'string') return item[field];
-      return item[field][lang] || item[field].en || '';
-    }
-
-    function createFallbackImage() {
-      return "data:image/svg+xml;utf8," + encodeURIComponent(`
+      function createFallbackImage() {
+        return (
+          "data:image/svg+xml;utf8," +
+          encodeURIComponent(`
         <svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'>
           <rect width='800' height='500' fill='#161b22'/>
           <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
@@ -111,108 +132,114 @@
             Cover not added yet
           </text>
         </svg>
-      `);
-    }
-
-    function renderCreativeProjects() {
-      const grid = document.getElementById('creative-grid');
-      grid.innerHTML = '';
-
-      CreativeDevelopment.forEach(item => {
-        const card = document.createElement('article');
-        card.className = 'work-card';
-        card.addEventListener('click', () => {
-          if (item.link) {
-            window.location.href = item.link;
-          }
-        });
-
-        const coverWrapper = document.createElement('div');
-        coverWrapper.className = 'work-cover-wrapper';
-
-        const img = document.createElement('img');
-        img.className = 'work-cover';
-        img.src = getText(item, 'cover') || createFallbackImage();
-        img.alt = getText(item, 'title');
-        img.onerror = function () {
-          this.src = createFallbackImage();
-        };
-
-        coverWrapper.appendChild(img);
-
-        const body = document.createElement('div');
-        body.className = 'work-body';
-
-        const title = document.createElement('h3');
-        title.className = 'work-title';
-        title.textContent = getText(item, 'title');
-
-        const desc = document.createElement('div');
-        desc.className = 'work-desc';
-        desc.textContent = getText(item, 'desc');
-
-        body.appendChild(title);
-        body.appendChild(desc);
-
-        card.appendChild(coverWrapper);
-        card.appendChild(body);
-
-        grid.appendChild(card);
-      });
-    }
-
-    function renderLang() {
-      if (window.buildNav) {
-        window.buildNav(lang);
+      `)
+        );
       }
 
-      document.getElementById('logo-text').textContent = i18n[lang].logo;
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+      function renderCreativeProjects() {
+        const grid = document.getElementById("creative-grid");
+        grid.innerHTML = "";
 
-      document.getElementById('cd-hero-eyebrow').textContent =
-        lang === 'zh' ? '项目 · 创意开发' : 'Projects · Creative Development';
+        CreativeDevelopment.forEach((item) => {
+          const card = document.createElement("article");
+          card.className = "work-card";
+          card.addEventListener("click", () => {
+            if (item.link) {
+              window.location.href = item.link;
+            }
+          });
 
-      document.getElementById('cd-hero-title').textContent =
-        lang === 'zh' ? '创意开发' : 'Creative Development';
+          const coverWrapper = document.createElement("div");
+          coverWrapper.className = "work-cover-wrapper";
 
-      document.getElementById('cd-hero-text').textContent =
-        lang === 'zh'
-          ? '这里记录仍在运动中的创意实验、演化中的系统与尚未定稿的工作。'
-          : 'Ongoing experiments, evolving systems, and work still in motion.';
+          const img = document.createElement("img");
+          img.className = "work-cover";
+          img.src = getText(item, "cover") || createFallbackImage();
+          img.alt = getText(item, "title");
+          img.onerror = function () {
+            this.src = createFallbackImage();
+          };
 
-      document.getElementById('cd-overview-note').textContent =
-        lang === 'zh' ? '概览' : 'Overview';
+          coverWrapper.appendChild(img);
 
-      document.getElementById('cd-overview-text').textContent =
-        lang === 'zh'
-          ? '这一部分记录尚未完成的工作。每个条目都是一个动态日志，用来呈现方向、迭代与跨领域实验。'
-          : 'This section documents work that is not yet finalized. Each entry is a live log — a record of direction, iteration, and experimentation across different domains.';
+          const body = document.createElement("div");
+          body.className = "work-body";
 
-      document.getElementById('cd-logs-note').textContent =
-        lang === 'zh' ? '日志' : 'Logs';
+          const title = document.createElement("h3");
+          title.className = "work-title";
+          title.textContent = getText(item, "title");
 
-      document.getElementById('cd-logs-title').textContent =
-        lang === 'zh' ? '当前实验' : 'Active Experiments';
+          const desc = document.createElement("div");
+          desc.className = "work-desc";
+          desc.textContent = getText(item, "desc");
 
-      document.getElementById('cd-side-text').textContent =
-        lang === 'zh'
-          ? '这里的每个条目都是持续演化中的记录，而不是已完成项目。'
-          : 'Each entry is an evolving record rather than a finished project.';
+          body.appendChild(title);
+          body.appendChild(desc);
 
-      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
-      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
-    }
+          card.appendChild(coverWrapper);
+          card.appendChild(body);
 
-    document.addEventListener('DOMContentLoaded', function () {
-      lang = localStorage.getItem('lang') || 'en';
-      document.getElementById('lang-en').onclick = () => setLang('en');
-      document.getElementById('lang-zh').onclick = () => setLang('zh');
-      renderLang();
-      renderCreativeProjects();
-    });
-  </script>
-  <script src="/js/nav.js"></script>
-</body>
+          grid.appendChild(card);
+        });
+      }
 
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        document.getElementById("cd-hero-eyebrow").textContent =
+          lang === "zh" ? "项目 · 创意开发" : "Projects · Creative Development";
+
+        document.getElementById("cd-hero-title").textContent =
+          lang === "zh" ? "创意开发" : "Creative Development";
+
+        document.getElementById("cd-hero-text").textContent =
+          lang === "zh"
+            ? "这里记录仍在运动中的创意实验、演化中的系统与尚未定稿的工作。"
+            : "Ongoing experiments, evolving systems, and work still in motion.";
+
+        document.getElementById("cd-overview-note").textContent =
+          lang === "zh" ? "概览" : "Overview";
+
+        document.getElementById("cd-overview-text").textContent =
+          lang === "zh"
+            ? "这一部分记录尚未完成的工作。每个条目都是一个动态日志，用来呈现方向、迭代与跨领域实验。"
+            : "This section documents work that is not yet finalized. Each entry is a live log — a record of direction, iteration, and experimentation across different domains.";
+
+        document.getElementById("cd-logs-note").textContent =
+          lang === "zh" ? "日志" : "Logs";
+
+        document.getElementById("cd-logs-title").textContent =
+          lang === "zh" ? "当前实验" : "Active Experiments";
+
+        document.getElementById("cd-side-text").textContent =
+          lang === "zh"
+            ? "这里的每个条目都是持续演化中的记录，而不是已完成项目。"
+            : "Each entry is an evolving record rather than a finished project.";
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        lang = localStorage.getItem("lang") || "en";
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+        renderCreativeProjects();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
 </html>
