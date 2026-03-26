@@ -1,146 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Process Snapshots - Cogniven</title>
     <link rel="stylesheet" href="../../css/style.css" />
-</head>
+  </head>
 
-<body>
-
+  <body>
     <header class="site-header">
-        <nav class="nav">
-            <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
-            <div style="display:flex;align-items:center;gap:24px;">
-                <div class="nav-links" id="nav-links" style="display:flex;gap:24px;"></div>
-                <div class="lang-switcher">
-                    <button id="lang-en" class="lang-btn">EN</button>
-                    <button id="lang-zh" class="lang-btn">中文</button>
-                </div>
-                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
+      <nav class="nav">
+        <a
+          href="index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="works.html">Works</a>
+            <a href="writing.html">Writing</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
     </header>
 
     <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow" id="ps-eyebrow">Archive · Process Snapshots</p>
+          <h1 id="ps-title">Process Snapshots</h1>
+          <p class="hero-text" id="ps-text">
+            Intermediate states captured across time.
+          </p>
+        </div>
+      </section>
 
-        <section class="hero">
-            <div class="container hero-inner">
-                <p class="eyebrow" id="ps-eyebrow">Archive · Process Snapshots</p>
-                <h1 id="ps-title">Process Snapshots</h1>
-                <p class="hero-text" id="ps-text">
-                    Intermediate states captured across time.
-                </p>
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="ps-note">Overview</p>
+          <p class="lead-paragraph" id="ps-lead">
+            These entries record transitional moments, preserving how structures
+            evolve over time.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="ps-list-note">Archive List</p>
+              <h2 id="ps-list-title">Snapshots</h2>
             </div>
-        </section>
+            <p class="section-side-text" id="ps-side">
+              Each snapshot reflects a moment within an ongoing process.
+            </p>
+          </div>
 
-        <section class="section intro-band">
-            <div class="container narrow">
-                <p class="section-note" id="ps-note">Overview</p>
-                <p class="lead-paragraph" id="ps-lead">
-                    These entries record transitional moments, preserving how structures evolve over time.
-                </p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-
-                <div class="section-head">
-                    <div>
-                        <p class="section-note" id="ps-list-note">Archive List</p>
-                        <h2 id="ps-list-title">Snapshots</h2>
-                    </div>
-                    <p class="section-side-text" id="ps-side">
-                        Each snapshot reflects a moment within an ongoing process.
-                    </p>
-                </div>
-
-                <div class="list" id="archive-list"></div>
-
-            </div>
-        </section>
-
+          <div class="list" id="archive-list"></div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-        <div class="container footer-inner">
-            <p id="footer-copyright"></p>
-            <p id="footer-copyright2"></p>
-        </div>
+      <div class="container footer-inner">
+        <p id="footer-copyright"></p>
+        <p id="footer-copyright2"></p>
+      </div>
     </footer>
 
     <script src="../../js/processSnapshots.js"></script>
     <script src="../../js/i18n.js"></script>
 
     <script>
-        let lang = localStorage.getItem('lang') || 'en';
+      let lang = localStorage.getItem("lang") || "en";
 
-        function setLang(newLang) {
-            lang = newLang;
-            localStorage.setItem('lang', lang);
-            renderLang();
-        }
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('lang-en').onclick = () => setLang('en');
-            document.getElementById('lang-zh').onclick = () => setLang('zh');
-            renderLang();
-        });
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
 
-        function renderArchiveList() {
-            const list = document.getElementById('archive-list');
-            list.innerHTML = '';
+      function renderArchiveList() {
+        const list = document.getElementById("archive-list");
+        list.innerHTML = "";
 
-            processSnapshots.forEach(item => {
-                const el = document.createElement('a');
-                el.className = 'list-item';
-                el.href = item.link;
+        processSnapshots.forEach((item) => {
+          const el = document.createElement("a");
+          el.className = "list-item";
+          el.href = item.link;
 
-                el.innerHTML = `
-      <div class="essay-meta">${item.date || ''}</div>
+          el.innerHTML = `
+      <div class="essay-meta">${item.date || ""}</div>
       <h3>${item.title[lang]}</h3>
       <p>${item.desc[lang]}</p>
     `;
-                list.appendChild(el);
-            });
+          list.appendChild(el);
+        });
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
         }
 
-        function renderLang() {
-            if (window.buildNav) {
-                window.buildNav(lang);
-            }
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document.getElementById("footer-copyright").textContent =
+          i18n[lang].copyright;
+        document.getElementById("footer-copyright2").innerHTML =
+          i18n[lang].copyright2;
 
-            document.getElementById('logo-text').textContent = i18n[lang].logo;
-            document.getElementById('footer-copyright').textContent = i18n[lang].copyright;
-            document.getElementById('footer-copyright2').innerHTML = i18n[lang].copyright2;
+        document.getElementById("ps-eyebrow").textContent =
+          lang === "zh" ? "归档 · 过程切片" : "Archive · Process Snapshots";
+        document.getElementById("ps-title").textContent =
+          lang === "zh" ? "过程切片" : "Process Snapshots";
+        document.getElementById("ps-text").textContent =
+          lang === "zh"
+            ? "记录系统在时间中的中间状态。"
+            : "Intermediate states captured across time.";
+        document.getElementById("ps-note").textContent =
+          lang === "zh" ? "概览" : "Overview";
+        document.getElementById("ps-lead").textContent =
+          lang === "zh"
+            ? "这些条目记录了结构演化中的阶段性状态。"
+            : "These entries record transitional moments, preserving how structures evolve over time.";
+        document.getElementById("ps-list-note").textContent =
+          lang === "zh" ? "归档列表" : "Archive List";
+        document.getElementById("ps-list-title").textContent =
+          lang === "zh" ? "切片" : "Snapshots";
+        document.getElementById("ps-side").textContent =
+          lang === "zh"
+            ? "每一条都是过程中的一个时间点。"
+            : "Each snapshot reflects a moment within an ongoing process.";
 
-            document.getElementById('ps-eyebrow').textContent = lang === 'zh' ? '归档 · 过程切片' : 'Archive · Process Snapshots';
-            document.getElementById('ps-title').textContent = lang === 'zh' ? '过程切片' : 'Process Snapshots';
-            document.getElementById('ps-text').textContent = lang === 'zh'
-                ? '记录系统在时间中的中间状态。'
-                : 'Intermediate states captured across time.';
-            document.getElementById('ps-note').textContent = lang === 'zh' ? '概览' : 'Overview';
-            document.getElementById('ps-lead').textContent = lang === 'zh'
-                ? '这些条目记录了结构演化中的阶段性状态。'
-                : 'These entries record transitional moments, preserving how structures evolve over time.';
-            document.getElementById('ps-list-note').textContent = lang === 'zh' ? '归档列表' : 'Archive List';
-            document.getElementById('ps-list-title').textContent = lang === 'zh' ? '切片' : 'Snapshots';
-            document.getElementById('ps-side').textContent = lang === 'zh'
-                ? '每一条都是过程中的一个时间点。'
-                : 'Each snapshot reflects a moment within an ongoing process.';
-
-            renderArchiveList();
-        }
+        renderArchiveList();
+      }
     </script>
     <script src="../../js/nav.js"></script>
-
-</body>
-
+  </body>
 </html>
