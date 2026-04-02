@@ -327,10 +327,9 @@
       document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
 
       document.getElementById("notes-hero-eyebrow").textContent =
-        lang === "zh" ? "写作 · Notes" : "Writing · Notes";
+        lang === "zh" ? `写作 · ${i18n[lang].writingNotes}` : "Writing · Notes";
 
-      document.getElementById("notes-hero-title").textContent =
-        lang === "zh" ? "Notes" : "Notes";
+      document.getElementById("notes-hero-title").textContent = i18n[lang].writingNotes;
 
       document.getElementById("notes-hero-text").textContent =
         lang === "zh"

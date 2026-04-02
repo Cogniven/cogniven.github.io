@@ -311,10 +311,9 @@
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
 
       document.getElementById('essays-hero-eyebrow').textContent =
-        lang === 'zh' ? '写作 · Essays' : 'Writing · Essays';
+        lang === 'zh' ? `写作 · ${i18n[lang].writingEssays}` : 'Writing · Essays';
 
-      document.getElementById('essays-hero-title').textContent =
-        lang === 'zh' ? 'Essays' : 'Essays';
+      document.getElementById('essays-hero-title').textContent = i18n[lang].writingEssays;
 
       document.getElementById('essays-hero-text').textContent =
         lang === 'zh'

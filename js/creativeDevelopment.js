@@ -2,7 +2,7 @@ const CreativeDevelopment = [
     {
         title: {
             en: "Development Log 001",
-            zh: "Development Log 001"
+            zh: "开发日志 001"
         },
         desc: {
             en: "Investment, quant systems, AI workflows, and site structure evolution.",
