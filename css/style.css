@@ -1091,3 +1091,7 @@ a {
 body.no-scroll {
   overflow: hidden;
 }
+
+p {
+  white-space: pre-line;
+}
