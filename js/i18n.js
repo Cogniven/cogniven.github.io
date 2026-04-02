@@ -92,10 +92,10 @@ const i18n = {
     // about.html
     aboutTitle: "About",
     aboutBrief:
-      "This site gathers work, ideas, and systems, while recording explorations that remain in progress.\n\nIt is not only a place for display, but a working structure — one that holds thoughts still taking shape, yet continuing over time.\n\nWhat I seek here is something less dependent on immediate context: structures that remain stable across time, relations that hold through change, and forms that can be reused. It is, in a sense, a pursuit of continuity rather than completion.",
+      "This site gathers work, ideas, and systems, while recording explorations that remain in progress.\nIt is not only a place for display, but a working structure — one that holds thoughts still taking shape, yet continuing over time.\nWhat I seek here is something less dependent on immediate context: structures that remain stable across time, relations that hold through change, and forms that can be reused. It is, in a sense, a pursuit of continuity rather than completion.",
     aboutProfileTitle: "Profile",
     aboutProfile:
-      "My work moves across art, systems, and structural design.\n\nI tend to break problems down into structures, then rebuild them through systems. Moving across different fields, I look for patterns and methods that can operate beyond a single context.",
+      "My work moves across art, systems, and structural design.\nI tend to break problems down into structures, then rebuild them through systems. Moving across different fields, I look for patterns and methods that can operate beyond a single context.",
     aboutFocusTitle: "Focus",
     aboutFocus:
       "Structuring complex systems into clear forms.\nDirect exploration through artistic expression.\nThe spread and evolution of behavior within groups.\nThe relationship between tools and cognitive structures.\nStability and iteration in long-term projects.",
