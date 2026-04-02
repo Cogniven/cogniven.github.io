@@ -6,16 +6,20 @@ const i18n = {
     // index.html
     indexHeroEyebrow: "Cogniven",
     indexHeroTitle: "Cogniven",
-    indexHeroText: "A personal system, built through work, writing, and ongoing structure.",
+    indexHeroText:
+      "A personal system, built through work, writing, and ongoing structure.",
     indexButtonWorks: "Enter Works",
     indexButtonAbout: "About",
     indexStatement: "Statement",
-    indexLead: "This is a personal site. It exists as a structure for keeping work, developing ideas, and recording what is made over time.",
+    indexLead:
+      "This is a personal site. It exists as a structure for keeping work, developing ideas, and recording what is made over time.",
     indexStructure: "Structure",
     indexSections: "Sections",
-    indexSideText: "The site is organized as a set of related parts rather than separate pages.",
+    indexSideText:
+      "The site is organized as a set of related parts rather than separate pages.",
     indexWorks: "Works",
-    indexWorksDesc: "Completed outputs across design, systems, and structured work.",
+    indexWorksDesc:
+      "Completed outputs across design, systems, and structured work.",
     indexWriting: "Writing",
     indexWritingDesc: "Essays, notes, and written forms of thinking.",
     indexProjects: "Projects",
@@ -26,57 +30,78 @@ const i18n = {
     indexArchiveDesc: "Past material kept for continuity and reference.",
     indexApproach: "Approach",
     indexApproachTitle: "Built over time.",
-    indexApproachParagraph1: "The system grows through use. Work is added, refined, or removed as needed, without aiming for completion.",
-    indexApproachParagraph2: "The focus remains on clarity, structure, and the accumulation of meaningful work.",
+    indexApproachParagraph1:
+      "The system grows through use. Work is added, refined, or removed as needed, without aiming for completion.",
+    indexApproachParagraph2:
+      "The focus remains on clarity, structure, and the accumulation of meaningful work.",
     indexEnd: "End",
     indexClosingTitle: "A place to build\nand keep.",
     indexClosingText: "Structured, quiet, and open to change.",
     // writing.html
     writingHeroEyebrow: "Writing",
     writingHeroTitle: "Notes, essays,\nand patient thought.",
-    writingHeroText: "Writing serves as the reflective layer of this site — a place for interpretation, structure, fragments, and fully formed text.",
+    writingHeroText:
+      "Writing serves as the reflective layer of this site — a place for interpretation, structure, fragments, and fully formed text.",
     writingEditorial: "Editorial Note",
-    writingLead: "Some texts clarify ideas already known. Others become the place where the thought itself is first discovered.",
+    writingLead:
+      "Some texts clarify ideas already known. Others become the place where the thought itself is first discovered.",
     writingFormats: "Formats",
     writingForms: "Written forms",
-    writingSideText: "The writing section is intended to contain both finished pieces and evolving notes, without forcing them into the same register.",
+    writingSideText:
+      "The writing section is intended to contain both finished pieces and evolving notes, without forcing them into the same register.",
     writingEssays: "Essays",
-    writingEssaysDesc: "Longer pieces with a clear arc, built around one question, idea, or argument.",
+    writingEssaysDesc:
+      "Longer pieces with a clear arc, built around one question, idea, or argument.",
     writingNotes: "Notes",
-    writingNotesDesc: "Shorter observations, provisional structures, and working formulations.",
+    writingNotesDesc:
+      "Shorter observations, provisional structures, and working formulations.",
     writingReadingLogic: "Reading Logic",
     writingStructureTitle: "Writing as structure.",
-    writingStructureParagraph1: "Writing here is not only a record of opinion, but a device for ordering thought. The goal is not constant publication, but careful accumulation.",
-    writingStructureParagraph2: "This section will gradually become the most book-like part of the site: slower, quieter, and more continuous than the rest.",
+    writingStructureParagraph1:
+      "Writing here is not only a record of opinion, but a device for ordering thought. The goal is not constant publication, but careful accumulation.",
+    writingStructureParagraph2:
+      "This section will gradually become the most book-like part of the site: slower, quieter, and more continuous than the rest.",
     writingClosingNote: "Closing",
     writingClosingTitle: "Text as a place\nto refine attention.",
-    writingClosingText: "What is written here is meant to be read slowly, and kept if needed.",
+    writingClosingText:
+      "What is written here is meant to be read slowly, and kept if needed.",
     // projects.html
     projectsHeroEyebrow: "Projects",
     projectsHeroTitle: "Ongoing work,\nstill in formation.",
-    projectsHeroText: "Projects collect what is active, unfinished, or still being shaped — systems under construction, experiments in progress, and structures not yet settled into final form.",
+    projectsHeroText:
+      "Projects collect what is active, unfinished, or still being shaped — systems under construction, experiments in progress, and structures not yet settled into final form.",
     projectsEditorial: "Editorial Note",
-    projectsLead: "Unlike works, projects remain open. Their value often lies not only in outcome, but in direction, method, and change over time.",
+    projectsLead:
+      "Unlike works, projects remain open. Their value often lies not only in outcome, but in direction, method, and change over time.",
     projectsCurrentAreas: "Current Areas",
     projectsActiveLines: "Active lines of work",
-    projectsSideText: "Each project may later develop into a fuller archive with states, dates, notes, and references.",
+    projectsSideText:
+      "Each project may later develop into a fuller archive with states, dates, notes, and references.",
     projectsResearch: "Research Systems",
-    projectsResearchDesc: "Structured inquiry, evolving frameworks, and material built for long-term use.",
+    projectsResearchDesc:
+      "Structured inquiry, evolving frameworks, and material built for long-term use.",
     projectsTechnical: "Technical Builds",
-    projectsTechnicalDesc: "Code-based systems, tools, interfaces, and implementation experiments.",
+    projectsTechnicalDesc:
+      "Code-based systems, tools, interfaces, and implementation experiments.",
     projectsCreative: "Creative Development",
-    projectsCreativeDesc: "Projects focused on creative process, design, and new forms.",
+    projectsCreativeDesc:
+      "Projects focused on creative process, design, and new forms.",
     projectsPersonal: "Personal Infrastructure",
-    projectsPersonalDesc: "Systems and tools for personal productivity, knowledge, and workflow.",
+    projectsPersonalDesc:
+      "Systems and tools for personal productivity, knowledge, and workflow.",
     // about.html
     aboutTitle: "About",
-    aboutBrief: "This site gathers work, ideas, systems, and ongoing explorations. Some pieces are complete, others remain open and continue to evolve. It functions as a working space rather than a fixed presentation.",
+    aboutBrief:
+      "This site gathers work, ideas, and systems, while recording explorations that remain in progress.\n\nIt is not only a place for display, but a working structure — one that holds thoughts still taking shape, yet continuing over time.\n\nWhat I seek here is something less dependent on immediate context: structures that remain stable across time, relations that hold through change, and forms that can be reused. It is, in a sense, a pursuit of continuity rather than completion.",
     aboutProfileTitle: "Profile",
-    aboutProfile: "I work across research, programming, design, writing, and experimental creation.",
+    aboutProfile:
+      "My work moves across art, systems, and structural design.\n\nI tend to break problems down into structures, then rebuild them through systems. Moving across different fields, I look for patterns and methods that can operate beyond a single context.",
     aboutFocusTitle: "Focus",
-    aboutFocus: "Analysis, systems, and form.",
+    aboutFocus:
+      "Structuring complex systems into clear forms.\nDirect exploration through artistic expression.\nThe spread and evolution of behavior within groups.\nThe relationship between tools and cognitive structures.\nStability and iteration in long-term projects.",
     aboutApproachTitle: "Approach",
-    aboutApproach: "Structure first, then iteration.",
+    aboutApproach:
+      "Begin with structure, giving things a place and relation.\nObserve as it unfolds, adjust as it runs.\nAllow incompleteness to remain, and continue from it.\nDistill experience into reusable forms, so the process can extend.",
     // archive.html
     archiveTitle: "Archive",
     archiveBrief: "Stored material, past work, and experimental fragments.",
@@ -88,38 +113,48 @@ const i18n = {
     archiveSnapshotsDesc: "Archived states of ongoing systems.",
     worksHeroEyebrow: "Works",
     worksHeroTitle: "Current selection",
-    worksHeroText: "A structured selection of finished work, grouped by form and disposition.",
+    worksHeroText:
+      "A structured selection of finished work, grouped by form and disposition.",
     worksOverview: "Overview",
-    worksLead: "This section remains organized by category. Each category opens into a dedicated page where individual works can be browsed in greater detail.",
+    worksLead:
+      "This section remains organized by category. Each category opens into a dedicated page where individual works can be browsed in greater detail.",
     worksCategories: "Categories",
     worksCurrentSelection: "Current selection",
-    worksSideText: "Choose a category to enter its archive and browse works in detail.",
+    worksSideText:
+      "Choose a category to enter its archive and browse works in detail.",
 
     worksArtisticCreations: "Artistic Creations",
-    worksArtisticCreationsDesc: "Image, sound, and form shaped through constraint and composition.",
+    worksArtisticCreationsDesc:
+      "Image, sound, and form shaped through constraint and composition.",
 
     worksAnalyticalPieces: "Analytical Pieces",
-    worksAnalyticalPiecesDesc: "Selected work focused on explanation, synthesis, and interpretive structure.",
+    worksAnalyticalPiecesDesc:
+      "Selected work focused on explanation, synthesis, and interpretive structure.",
 
     worksTechnicalWorks: "Technical Works",
-    worksTechnicalWorksDesc: "Systems, tools, and code-based outputs shaped through logic and implementation.",
+    worksTechnicalWorksDesc:
+      "Systems, tools, and code-based outputs shaped through logic and implementation.",
 
     worksExperimentalForms: "Experimental Forms",
-    worksExperimentalFormsDesc: "Works that emerged from testing, iteration, or deliberate deviation.",
+    worksExperimentalFormsDesc:
+      "Works that emerged from testing, iteration, or deliberate deviation.",
     heroEyebrow: "Works · Artistic Creations",
     heroTitle: "Artistic Creations",
-    heroText: "A browsable archive of artistic works, arranged as a structured grid.",
+    heroText:
+      "A browsable archive of artistic works, arranged as a structured grid.",
     overview: "Overview",
     lead: "This page is built for browsing first. Each work appears as a card with a cover, title, and short description.",
     selection: "Selection",
     currentWorks: "Current Works",
-    sideText: "You can change titles, descriptions, and images later without changing the page layout.",
+    sideText:
+      "You can change titles, descriptions, and images later without changing the page layout.",
     searchPlaceholder: "Search works...",
     sortNewest: "Newest First",
     sortOldest: "Oldest First",
     sortAlpha: "A-Z",
     copyright: "© 2026 Cogniven. All rights reserved.",
-    copyright2: "The works presented on this site are original and protected by copyright. Unauthorized reproduction, distribution, or commercial use is prohibited.",
+    copyright2:
+      "The works presented on this site are original and protected by copyright. Unauthorized reproduction, distribution, or commercial use is prohibited.",
   },
   zh: {
     nav: ["作品", "写作", "项目", "关于", "归档"],
@@ -147,8 +182,10 @@ const i18n = {
     indexArchiveDesc: "为延续性与参考而保留的既往材料。",
     indexApproach: "方法",
     indexApproachTitle: "在时间中构建。",
-    indexApproachParagraph1: "这个系统在使用中生长。工作会随着需要被加入、调整或移除，而不以完成为目标。",
-    indexApproachParagraph2: "重点始终放在清晰性、结构性，以及有意义工作的持续积累上。",
+    indexApproachParagraph1:
+      "这个系统在使用中生长。工作会随着需要被加入、调整或移除，而不以完成为目标。",
+    indexApproachParagraph2:
+      "重点始终放在清晰性、结构性，以及有意义工作的持续积累上。",
 
     indexEnd: "结束",
     indexClosingTitle: "一个用于构建\n与保存的空间。",
@@ -169,20 +206,24 @@ const i18n = {
     writingNotesDesc: "简短观察、临时结构与工作性表述。",
     writingReadingLogic: "阅读逻辑",
     writingStructureTitle: "将写作视为结构。",
-    writingStructureParagraph1: "这里的写作不只是观点的记录，更是一种整理思想的装置。目标不是持续发表，而是审慎地积累。",
-    writingStructureParagraph2: "这一部分会逐渐成为整个网站里最接近“书”的区域：更缓慢、更安静，也比其他部分更连续。",
+    writingStructureParagraph1:
+      "这里的写作不只是观点的记录，更是一种整理思想的装置。目标不是持续发表，而是审慎地积累。",
+    writingStructureParagraph2:
+      "这一部分会逐渐成为整个网站里最接近“书”的区域：更缓慢、更安静，也比其他部分更连续。",
     writingClosingNote: "结语",
     writingClosingTitle: "将文本视为\n打磨注意力的场所。",
     writingClosingText: "这里写下的内容，适合被缓慢阅读，也值得在需要时保留。",
     // projects.html
     projectsHeroEyebrow: "项目",
     projectsHeroTitle: "持续推进中，\n尚在形成。",
-    projectsHeroText: "项目收集活跃、未完成或仍在成型的内容——在建系统、进行中的实验和尚未定型的结构。",
+    projectsHeroText:
+      "项目收集活跃、未完成或仍在成型的内容——在建系统、进行中的实验和尚未定型的结构。",
     projectsEditorial: "编者注",
     projectsLead: "与作品不同，项目保持开放，其价值常在于方向、方法和变化。",
     projectsCurrentAreas: "当前领域",
     projectsActiveLines: "活跃工作线",
-    projectsSideText: "每个项目未来都可能发展为包含状态、日期、笔记和参考的完整档案。",
+    projectsSideText:
+      "每个项目未来都可能发展为包含状态、日期、笔记和参考的完整档案。",
     projectsResearch: "研究系统",
     projectsResearchDesc: "结构化探索、演化框架和为长期使用而建的材料。",
     projectsTechnical: "技术构建",
@@ -193,13 +234,15 @@ const i18n = {
     projectsPersonalDesc: "用于个人效率、知识与工作流的系统和工具。",
     // about.html
     aboutTitle: "关于",
-    aboutBrief: "这个网站用于整理作品、想法与系统，也记录一些仍在延展中的探索。有的内容已经完成，有的保持开放并持续变化。它更像一个工作空间，而不是一个固定的展示。",
-    aboutProfileTitle: "个人简介",
-    aboutProfile: "我的工作涉及研究、编程、设计、写作以及实验性创作。",
-    aboutFocusTitle: "关注点",
-    aboutFocus: "分析、系统与形式。",
-    aboutApproachTitle: "方法",
-    aboutApproach: "先结构，再迭代。",
+    aboutBrief:
+   aboutTitle: "关于",
+aboutBrief: "这个网站用于整理作品、想法与系统，也记录一些仍在演进中的探索。\n\n它并不只是一个展示空间，而更像一个工作中的结构，用来容纳那些尚未定型、但不断延续的思考。\n\n我在这里试图寻找某种不完全依赖于具体情境的东西：在时间中保持稳定的结构，在变化中仍然成立的关系，以及那些可以被反复使用的形式。这更接近一种对“长期存在”的追求。",
+aboutProfileTitle: "个人简介",
+aboutProfile: "我的工作主要围绕艺术、系统与结构设计展开。\n\n我倾向于把问题拆解为结构，再通过系统的方式去重建它们。长期在不同领域之间移动，试图寻找可以跨场景使用的逻辑与方法。",
+aboutFocusTitle: "关注点",
+aboutFocus: "复杂系统的结构化表达。\n直截的艺术探索与展示。\n行为在群体中的传播与演化。\n技术工具与认知结构的结合方式。\n长期项目中的稳定性与迭代机制。",
+aboutApproachTitle: "方法",
+aboutApproach: "从结构开始，让事物有其位置与关系。\n在展开中观察，在运行中修正。\n允许未完成的状态存在，并从中继续推进。\n将经验沉淀为可再次调用的部分，使过程得以延续。",
     // archive.html
     archiveTitle: "归档",
     archiveBrief: "存储的资料、过往作品与实验片段。",
@@ -238,6 +281,7 @@ const i18n = {
     sortOldest: "最早优先",
     sortAlpha: "字母排序",
     copyright: "© 2026 Cogniven。保留所有权利。",
-    copyright2: "本网站展示的作品均为原创，受版权保护。<br>未经授权，禁止复制、分发或商业使用。",
-  }
+    copyright2:
+      "本网站展示的作品均为原创，受版权保护。<br>未经授权，禁止复制、分发或商业使用。",
+  },
 };
