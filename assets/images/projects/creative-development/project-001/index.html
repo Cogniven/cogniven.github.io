@@ -165,43 +165,21 @@
             <a href="/about.html">About</a>
             <a href="/archive.html">Archive</a>
           </div>
-          <div
-            class="lang-switcher"
-            style="
-              display: flex;
-              align-items: center;
-              gap: 4px;
-              padding: 4px;
-              border: 1px solid rgba(255, 255, 255, 0.16);
-              border-radius: 16px;
-              box-sizing: border-box;
-            "
-          >
-            <button
-              id="lang-en"
-              class="lang-btn"
-              style="
-                margin: 0;
-                min-width: 56px;
-                white-space: nowrap;
-                word-break: keep-all;
-              "
-            >
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
               EN
             </button>
-            <button
-              id="lang-zh"
-              class="lang-btn"
-              style="
-                margin: 0;
-                min-width: 56px;
-                white-space: nowrap;
-                word-break: keep-all;
-              "
-            >
-              中文
-            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
           </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
         </div>
       </nav>
     </header>
@@ -409,9 +387,16 @@
       }
 
       function renderLang() {
-        if (window.buildNav) {
-          window.buildNav(lang);
-        }
+        const navLinks = document.getElementById("nav-links");
+        const navs = i18n[lang].nav;
+
+        navLinks.innerHTML = `
+          <a href="/works.html">${navs[0]}</a>
+          <a href="/writing.html">${navs[1]}</a>
+          <a href="/projects.html">${navs[2]}</a>
+          <a href="/about.html">${navs[3]}</a>
+          <a href="/archive.html">${navs[4]}</a>
+        `;
 
         document.getElementById("logo-text").textContent = i18n[lang].logo;
         document
@@ -550,10 +535,42 @@
       }
 
       document.addEventListener("DOMContentLoaded", function () {
+        lang = localStorage.getItem("lang") || "en";
         document.getElementById("lang-en").onclick = () => setLang("en");
         document.getElementById("lang-zh").onclick = () => setLang("zh");
-        renderLang();
+        setLang(lang);
       });
+
+      const hamburger = document.getElementById("hamburger-btn");
+      const navLinksContainer = document.getElementById("nav-links");
+
+      if (hamburger && navLinksContainer) {
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navLinksContainer.classList.toggle("active");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !hamburger.contains(e.target) &&
+            !navLinksContainer.contains(e.target) &&
+            navLinksContainer.classList.contains("active")
+          ) {
+            hamburger.classList.remove("active");
+            navLinksContainer.classList.remove("active");
+          }
+        });
+
+        navLinksContainer.addEventListener("click", (e) => {
+          if (window.innerWidth > 768) return;
+
+          const link = e.target.closest("a");
+          if (!link) return;
+
+          hamburger.classList.remove("active");
+          navLinksContainer.classList.remove("active");
+        });
+      }
     </script>
     <script src="/js/nav.js"></script>
   </body>
