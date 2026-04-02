@@ -1,217 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[PROJECT NAME] - Cogniven</title>
-  <link rel="stylesheet" href="../../../css/style.css" />
-  <style>
-    .case-cover,
-    .case-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: var(--bg-soft);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Work 001 - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
 
-    .case-meta-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .case-meta-card {
-      border: 1px solid var(--line);
-      background: var(--bg-soft);
-      border-radius: 14px;
-      padding: 14px 16px;
-    }
-
-    .case-meta-card span {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .case-meta-card strong {
-      font-size: 1rem;
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .case-block {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .case-block-note {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding-top: 4px;
-    }
-
-    .case-block-content h2 {
-      margin-top: 0;
-      margin-bottom: 14px;
-    }
-
-    .case-block-content p {
-      line-height: 1.78;
-      color: var(--text-soft);
-    }
-
-    @media (max-width: 860px) {
-      .case-meta-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    <style>
+      .project-page {
+        max-width: 900px;
+        margin: 0 auto;
       }
 
-      .case-block {
-        grid-template-columns: 1fr;
-        gap: 12px;
+      .project-cover {
+        width: 100%;
+        border-radius: 14px;
+        margin: 24px 0 32px;
+        overflow: hidden;
       }
-    }
 
-    @media (max-width: 560px) {
-      .case-meta-grid {
-        grid-template-columns: 1fr;
+      .project-cover img {
+        width: 100%;
+        display: block;
       }
-    }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="../../../index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
-        <a href="../../../works.html">Works</a>
-        <a href="../../../writing.html">Writing</a>
-        <a href="../../../projects.html">Projects</a>
-        <a href="../../../about.html">About</a>
-        <a href="../../../archive.html">Archive</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero case-hero">
-      <div class="container narrow">
-        <p class="eyebrow">Works · Technical Works</p>
-        <h1 class="case-title">[PROJECT NAME]</h1>
-        <p class="case-subtitle">
-          [ONE-LINE DESCRIPTION OF WHAT THIS PROJECT DOES]
-        </p>
-      </div>
-    </section>
+      .project-meta {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
 
-    <section class="section">
-      <div class="container narrow">
-        <img
-          class="case-cover"
-          src="../../../assets/images/works/technical-works/[WORK-ID]/cover.jpg"
-          alt="[PROJECT COVER]"
-        />
-      </div>
-    </section>
+      .project-desc {
+        color: var(--text-soft);
+        line-height: 1.7;
+        font-size: 1.05rem;
+        margin-bottom: 32px;
+      }
 
-    <section class="section">
-      <div class="container narrow">
-        <div class="case-meta-grid">
-          <div class="case-meta-card">
-            <span>Year</span>
-            <strong>[2026]</strong>
+      .project-section h2 {
+        font-size: 1.3rem;
+        margin: 2em 0 0.8em;
+      }
+
+      .project-section p {
+        color: var(--text-soft);
+        line-height: 1.9;
+        margin-bottom: 1.2em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
           </div>
-          <div class="case-meta-card">
-            <span>Type</span>
-            <strong>[System / Strategy / Tool]</strong>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
           </div>
-          <div class="case-meta-card">
-            <span>Tools</span>
-            <strong>[Python · Data Analysis]</strong>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner project-page">
+          <p class="eyebrow" id="eyebrow">Works · Technical</p>
+          <h1 id="title">Technical Work 001</h1>
+          <div class="project-meta" id="meta">2026 · System Build</div>
+          <p class="project-desc" id="desc">
+            A technical system exploring structured automation and modular
+            architecture.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container project-page">
+          <div class="project-cover">
+            <img src="/assets/images/works/technical-works/work-001/cover.jpg" alt="cover" />
           </div>
-          <div class="case-meta-card">
-            <span>Status</span>
-            <strong>[Prototype / Active / Archived]</strong>
+
+          <div class="project-section">
+            <h2 id="h2-1">Overview</h2>
+            <p id="p1">
+              This project focuses on building a modular technical system
+              designed for scalability and clarity.
+            </p>
+
+            <h2 id="h2-2">Structure</h2>
+            <p id="p2">
+              The architecture separates logic, data, and interface layers,
+              allowing independent iteration.
+            </p>
+
+            <h2 id="h2-3">Conclusion</h2>
+            <p id="p3">
+              The system demonstrates how technical constraints can produce
+              clearer structures.
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <section class="section intro-band">
-      <div class="container narrow">
-        <p class="section-note">Project Summary</p>
-        <p class="lead-paragraph">
-          [Briefly explain what this project is, what it addresses, and why it matters.]
-        </p>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>Unauthorized reproduction prohibited.</p>
       </div>
-    </section>
+    </footer>
 
-    <section class="section">
-      <div class="container narrow case-block">
-        <div class="case-block-note">Problem</div>
-        <div class="case-block-content">
-          <h2>Problem Framing</h2>
-          <p>[What problem or need led to this work?]</p>
-          <p>[What context or constraint shaped the project?]</p>
-        </div>
-      </div>
-    </section>
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
 
-    <section class="section">
-      <div class="container narrow case-block">
-        <div class="case-block-note">Approach</div>
-        <div class="case-block-content">
-          <h2>System Design</h2>
-          <p>[Explain the structure, logic, pipeline, or methodology.]</p>
-          <p>[Describe the design choices and why they were made.]</p>
-        </div>
-      </div>
-    </section>
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
 
-    <section class="section">
-      <div class="container narrow case-block">
-        <div class="case-block-note">Output</div>
-        <div class="case-block-content">
-          <h2>Results and Output</h2>
-          <p>[Describe backtest results, outputs, system behavior, or implementation outcome.]</p>
-          <img
-            class="case-image"
-            src="../../../assets/images/works/technical-works/[WORK-ID]/result.jpg"
-            alt="[RESULT IMAGE]"
-          />
-        </div>
-      </div>
-    </section>
+      document.addEventListener("DOMContentLoaded", function () {
+        lang = localStorage.getItem("lang") || "en";
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
 
-    <section class="section">
-      <div class="container narrow case-block">
-        <div class="case-block-note">Reflection</div>
-        <div class="case-block-content">
-          <h2>Reflection and Next Step</h2>
-          <p>[What worked well?]</p>
-          <p>[What remained limited or unresolved?]</p>
-          <p>[What would be developed next?]</p>
-        </div>
-      </div>
-    </section>
-  </main>
+      function renderLang() {
+        const navLinks = document.getElementById("nav-links");
+        const navs = i18n[lang].nav;
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© 2026 Cogniven. All rights reserved.</p>
-      <p>
-        The works presented on this site are original and protected by copyright.<br />
-        Unauthorized reproduction, distribution, or commercial use is prohibited.
-      </p>
-    </div>
-  </footer>
-</body>
+        navLinks.innerHTML = `
+                <a href="/works.html">${navs[0]}</a>
+                <a href="/writing.html">${navs[1]}</a>
+                <a href="/projects.html">${navs[2]}</a>
+                <a href="/about.html">${navs[3]}</a>
+                <a href="/archive.html">${navs[4]}</a>
+            `;
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        document.getElementById("eyebrow").textContent =
+          lang === "zh" ? "作品 · 技术" : "Works · Technical";
+
+        document.getElementById("title").textContent =
+          lang === "zh" ? "技术作品 001" : "Technical Work 001";
+
+        document.getElementById("meta").textContent =
+          lang === "zh" ? "2026 · 系统构建" : "2026 · System Build";
+
+        document.getElementById("desc").textContent =
+          lang === "zh"
+            ? "一个用于探索自动化结构与模块化架构的技术系统。"
+            : "A technical system exploring structured automation and modular architecture.";
+
+        document.getElementById("h2-1").textContent =
+          lang === "zh" ? "概述" : "Overview";
+
+        document.getElementById("h2-2").textContent =
+          lang === "zh" ? "结构" : "Structure";
+
+        document.getElementById("h2-3").textContent =
+          lang === "zh" ? "结论" : "Conclusion";
+
+        document.getElementById("p1").textContent =
+          lang === "zh"
+            ? "该项目聚焦于构建一个模块化技术系统，以实现可扩展性与结构清晰。"
+            : "This project focuses on building a modular technical system designed for scalability and clarity.";
+
+        document.getElementById("p2").textContent =
+          lang === "zh"
+            ? "架构将逻辑、数据和界面层分离，从而支持独立迭代。"
+            : "The architecture separates logic, data, and interface layers, allowing independent iteration.";
+
+        document.getElementById("p3").textContent =
+          lang === "zh"
+            ? "该系统展示了技术约束如何反而促成更清晰的结构。"
+            : "The system demonstrates how technical constraints can produce clearer structures.";
+      }
+
+      const hamburger = document.getElementById("hamburger-btn");
+      const navLinksContainer = document.getElementById("nav-links");
+
+      if (hamburger && navLinksContainer) {
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navLinksContainer.classList.toggle("active");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !hamburger.contains(e.target) &&
+            !navLinksContainer.contains(e.target) &&
+            navLinksContainer.classList.contains("active")
+          ) {
+            hamburger.classList.remove("active");
+            navLinksContainer.classList.remove("active");
+          }
+        });
+
+        navLinksContainer.addEventListener("click", (e) => {
+          if (window.innerWidth > 768) return;
+
+          const link = e.target.closest("a");
+          if (!link) return;
+
+          hamburger.classList.remove("active");
+          navLinksContainer.classList.remove("active");
+        });
+      }
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
 </html>

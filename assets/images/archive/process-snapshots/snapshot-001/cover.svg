@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Snapshot 001 Placeholder Cover</title>
+  <desc id="desc">Placeholder cover for process snapshot 001.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <g fill="none" stroke="#374151" stroke-width="2" opacity="0.5">
+    <path d="M0 120h1200M0 280h1200M0 440h1200M0 600h1200"/>
+    <path d="M160 0v800M360 0v800M560 0v800M760 0v800M960 0v800"/>
+  </g>
+  <text x="600" y="360" text-anchor="middle" fill="#e5e7eb" font-size="56" font-family="Georgia, serif">Process Snapshot</text>
+  <text x="600" y="430" text-anchor="middle" fill="#9ca3af" font-size="36" font-family="Georgia, serif">Snapshot 001</text>
+</svg>

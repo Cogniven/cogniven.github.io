@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taxonomy Notes (Unfinished) - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .note-page {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .note-meta {
+        font-size: 0.88rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+
+      .note-subtitle {
+        color: var(--text-soft);
+        line-height: 1.76;
+        font-size: 1.06rem;
+        margin: 0;
+        max-width: 700px;
+      }
+
+      .note-divider {
+        width: 56px;
+        height: 1px;
+        background: var(--line);
+        margin: 14px 0 0;
+      }
+
+      .note-body {
+        font-size: 1.06rem;
+        line-height: 1.92;
+        color: var(--text);
+      }
+
+      .note-body p {
+        margin: 0 0 1.35em;
+        color: var(--text-soft);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner note-page">
+          <p class="eyebrow" id="note-eyebrow">Archive · Incomplete Fragments</p>
+          <h1 id="note-title">Taxonomy Notes (Unfinished)</h1>
+          <div class="note-meta" id="note-meta">Mar 05, 2026</div>
+          <p class="note-subtitle" id="note-subtitle">
+            A partial note set for cross-linking category systems across works,
+            writing, and projects.
+          </p>
+          <div class="note-divider"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container note-page">
+          <article class="note-body">
+            <p id="p1">
+              This fragment started as an attempt to normalize category language
+              across three major sections. It proposed shared tags, but the
+              hierarchy definition was left incomplete.
+            </p>
+            <p id="p2">
+              The draft is still useful because it identified overlapping labels
+              that caused ambiguity in navigation and filtering. It also exposed
+              where naming conventions diverged between content and route paths.
+            </p>
+            <p id="p3">
+              Work stopped before enforcement rules were written. The fragment is
+              retained as a reference for future taxonomy consolidation.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        document.getElementById("note-eyebrow").textContent =
+          lang === "zh" ? "归档 · 未竟片段" : "Archive · Incomplete Fragments";
+        document.getElementById("note-title").textContent =
+          lang === "zh" ? "分类法笔记（未完成）" : "Taxonomy Notes (Unfinished)";
+        document.getElementById("note-meta").textContent =
+          lang === "zh" ? "2026年3月5日" : "Mar 05, 2026";
+        document.getElementById("note-subtitle").textContent =
+          lang === "zh"
+            ? "一组尚未完成的笔记，用于连接作品、写作与项目的分类系统。"
+            : "A partial note set for cross-linking category systems across works, writing, and projects.";
+        document.getElementById("p1").textContent =
+          lang === "zh"
+            ? "这个片段最初用于统一三大分区中的分类语言。它提出了共享标签，但层级定义尚未完成。"
+            : "This fragment started as an attempt to normalize category language across three major sections. It proposed shared tags, but the hierarchy definition was left incomplete.";
+        document.getElementById("p2").textContent =
+          lang === "zh"
+            ? "这份草稿仍有价值，因为它识别了导致导航与筛选歧义的重叠标签，也暴露了内容命名与路径命名的不一致。"
+            : "The draft is still useful because it identified overlapping labels that caused ambiguity in navigation and filtering. It also exposed where naming conventions diverged between content and route paths.";
+        document.getElementById("p3").textContent =
+          lang === "zh"
+            ? "在写出执行规则之前该工作就暂停了，因此作为后续分类整合的参考被保留下来。"
+            : "Work stopped before enforcement rules were written. The fragment is retained as a reference for future taxonomy consolidation.";
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

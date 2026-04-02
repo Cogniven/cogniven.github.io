@@ -1,84 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[TITLE] - Cogniven</title>
-  <link rel="stylesheet" href="../../../css/style.css" />
+  <title>Structure and Interpretation - Cogniven</title>
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <style>
+    .essay-page {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .essay-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .essay-meta span {
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .essay-subtitle {
+      color: var(--text-soft);
+      line-height: 1.76;
+      font-size: 1.06rem;
+      margin: 0;
+      max-width: 700px;
+    }
+
+    .essay-divider {
+      width: 56px;
+      height: 1px;
+      background: var(--line);
+      margin: 18px 0 0;
+    }
+
+    .essay-abstract {
+      color: var(--text-soft);
+      line-height: 1.9;
+      font-size: 1.04rem;
+      margin: 0;
+    }
+
+    .essay-body {
+      font-size: 1.06rem;
+      line-height: 1.92;
+      color: var(--text);
+    }
+
+    .essay-body h2 {
+      font-size: 1.35rem;
+      margin: 2.2em 0 0.8em;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    .essay-body p {
+      margin: 0 0 1.35em;
+      color: var(--text-soft);
+    }
+
+    .essay-figure {
+      margin: 2.2em 0 2em;
+    }
+
+    .essay-figure img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .essay-caption {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .essay-note-block {
+      margin: 2.2em 0 0;
+      padding: 18px 18px 16px;
+      border-left: 2px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .essay-note-title {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+
+    .essay-note-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 720px) {
+      .essay-page {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="../../../index.html" class="logo">Cogniven</a>
-      <div class="nav-links">
-        <a href="../../../works.html">Works</a>
-        <a href="../../../writing.html">Writing</a>
-        <a href="../../../projects.html">Projects</a>
-        <a href="../../../about.html">About</a>
-        <a href="../../../archive.html">Archive</a>
+      <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+          <a href="/works.html">Works</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/about.html">About</a>
+          <a href="/archive.html">Archive</a>
+        </div>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero essay-hero">
-      <div class="container narrow">
-        <p class="eyebrow">Works · Analytical Pieces</p>
-        <h1 class="essay-title">[TITLE]</h1>
-        <p class="essay-subtitle">[ONE-LINE SUBTITLE]</p>
-      </div>
-    </section>
+    <section class="hero">
+      <div class="container hero-inner essay-page">
+        <p class="eyebrow" id="essay-eyebrow">Works · Analytical Pieces</p>
+        <h1 id="essay-title">Structure and Interpretation</h1>
 
-    <section class="section essay-meta-section">
-      <div class="container narrow">
         <div class="essay-meta">
-          <span>[YEAR]</span>
-          <span>[TYPE]</span>
-          <span>[TAG 1 / TAG 2]</span>
+          <span id="essay-meta-year">2026</span>
+          <span id="essay-meta-type">Essay</span>
+          <span id="essay-meta-tag">Analysis</span>
         </div>
+
+        <p class="essay-subtitle" id="essay-subtitle">
+          How structure shapes meaning in analytical writing.
+        </p>
+
+        <div class="essay-divider"></div>
       </div>
     </section>
 
     <section class="section intro-band">
-      <div class="container narrow">
-        <p class="section-note">Abstract</p>
-        <p class="lead-paragraph essay-abstract">
-          [ABSTRACT: 2–4 sentences explaining what this piece is about and why it matters.]
+      <div class="container essay-page">
+        <p class="section-note" id="essay-abstract-label">Abstract</p>
+        <p class="essay-abstract" id="essay-abstract">
+          This piece looks at how form, sequence, and emphasis shape interpretation. Instead of treating structure as a
+          neutral frame, it reads it as an active part of meaning.
         </p>
       </div>
     </section>
 
-    <section class="section essay-body-section">
-      <div class="container narrow essay-body">
-        <h2>1. [SECTION TITLE]</h2>
-        <p>[PARAGRAPH]</p>
-        <p>[PARAGRAPH]</p>
+    <section class="section">
+      <div class="container essay-page">
+        <article class="essay-body">
+          <h2 id="essay-h2-1">1. Framing</h2>
+          <p id="essay-p1">
+            Interpretation is shaped before content is fully understood. Order, emphasis, and framing guide attention
+            from the beginning.
+          </p>
 
-        <h2>2. [SECTION TITLE]</h2>
-        <p>[PARAGRAPH]</p>
-        <p>[PARAGRAPH]</p>
+          <h2 id="essay-h2-2">2. Guidance</h2>
+          <p id="essay-p2">
+            Structure helps distinguish the central line from surrounding material. It determines rhythm, relation, and
+            hierarchy.
+          </p>
 
-        <div class="essay-figure">
-          <img src="../../../assets/images/works/analytical-pieces/[WORK-ID]/cover.jpg" alt="[FIGURE ALT]">
-          <p class="essay-caption">Figure 1. [CAPTION]</p>
-        </div>
+          <div class="essay-figure">
+            <img src="/assets/images/works/analytical-pieces/work-001/cover.jpg" alt="Reference image"
+              onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='760' viewBox='0 0 1200 760'><rect width='1200' height='760' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='30' font-family='Georgia, serif'>Cover not added yet</text></svg>`)">
+            <p class="essay-caption" id="essay-caption">
+              Figure 1. A supporting image or chart placed within the essay flow.
+            </p>
+          </div>
 
-        <h2>3. [SECTION TITLE]</h2>
-        <p>[PARAGRAPH]</p>
-        <p>[PARAGRAPH]</p>
+          <h2 id="essay-h2-3">3. Variation</h2>
+          <p id="essay-p3">
+            Different structures produce different reading experiences. Compression, expansion, and interruption all
+            affect meaning.
+          </p>
 
-        <div class="essay-note-block">
-          <p class="essay-note-title">Note</p>
-          <p>[OPTIONAL NOTE / SIDE COMMENT / REFERENCE]</p>
-        </div>
+          <div class="essay-note-block">
+            <p class="essay-note-title" id="essay-note-title">Note</p>
+            <p id="essay-note-text">
+              This block can hold a reference, side remark, or short methodological note.
+            </p>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="section closing-section">
-      <div class="container narrow center">
-        <p class="section-note">Ending</p>
-        <h2 class="closing-title">[ENDING TITLE]</h2>
-        <p class="closing-text">[ENDING SENTENCE]</p>
+      <div class="container essay-page center">
+        <p class="section-note" id="essay-ending-label">Ending</p>
+        <h2 class="closing-title" id="essay-closing-title">Structure is part of meaning.</h2>
+        <p class="closing-text" id="essay-closing-text">
+          What is understood depends not only on what is said, but on how it is arranged.
+        </p>
       </div>
     </section>
   </main>
@@ -92,5 +232,113 @@
       </p>
     </div>
   </footer>
+
+  <script src="/js/i18n.js"></script>
+  <script>
+    let lang = localStorage.getItem('lang') || 'en';
+
+    function setLang(newLang) {
+      lang = newLang;
+      localStorage.setItem('lang', lang);
+      renderLang();
+    }
+
+    function renderLang() {
+      if (window.buildNav) {
+        window.buildNav(lang);
+      }
+
+      document.getElementById('logo-text').textContent = i18n[lang].logo;
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+      document.getElementById('essay-eyebrow').textContent =
+        lang === 'zh' ? '作品 · 分析作品' : 'Works · Analytical Pieces';
+
+      document.getElementById('essay-title').textContent =
+        lang === 'zh' ? '结构与阐释' : 'Structure and Interpretation';
+
+      document.getElementById('essay-meta-year').textContent =
+        lang === 'zh' ? '2026年' : '2026';
+
+      document.getElementById('essay-meta-type').textContent =
+        lang === 'zh' ? '文章' : 'Essay';
+
+      document.getElementById('essay-meta-tag').textContent =
+        lang === 'zh' ? '分析' : 'Analysis';
+
+      document.getElementById('essay-subtitle').textContent =
+        lang === 'zh'
+          ? '结构如何在分析性写作中塑造意义。'
+          : 'How structure shapes meaning in analytical writing.';
+
+      document.getElementById('essay-abstract-label').textContent =
+        lang === 'zh' ? '摘要' : 'Abstract';
+
+      document.getElementById('essay-abstract').textContent =
+        lang === 'zh'
+          ? '这篇作品讨论形式、顺序与强调方式如何塑造阐释。它不把结构视为中性的框架，而把它看作意义本身的主动组成部分。'
+          : 'This piece looks at how form, sequence, and emphasis shape interpretation. Instead of treating structure as a neutral frame, it reads it as an active part of meaning.';
+
+      document.getElementById('essay-h2-1').textContent =
+        lang === 'zh' ? '1. 框定' : '1. Framing';
+
+      document.getElementById('essay-p1').textContent =
+        lang === 'zh'
+          ? '在内容被完全理解之前，阐释就已经开始受到塑造。顺序、强调与框定方式会从一开始就引导注意力。'
+          : 'Interpretation is shaped before content is fully understood. Order, emphasis, and framing guide attention from the beginning.';
+
+      document.getElementById('essay-h2-2').textContent =
+        lang === 'zh' ? '2. 引导' : '2. Guidance';
+
+      document.getElementById('essay-p2').textContent =
+        lang === 'zh'
+          ? '结构帮助读者把中心线索与周边材料区分开来。它决定节奏、关系与层级。'
+          : 'Structure helps distinguish the central line from surrounding material. It determines rhythm, relation, and hierarchy.';
+
+      document.getElementById('essay-caption').textContent =
+        lang === 'zh'
+          ? '图 1：置于文章流程中的辅助图像或图表。'
+          : 'Figure 1. A supporting image or chart placed within the essay flow.';
+
+      document.getElementById('essay-h2-3').textContent =
+        lang === 'zh' ? '3. 变化' : '3. Variation';
+
+      document.getElementById('essay-p3').textContent =
+        lang === 'zh'
+          ? '不同的结构会生成不同的阅读经验。压缩、展开与打断，都会影响意义的形成。'
+          : 'Different structures produce different reading experiences. Compression, expansion, and interruption all affect meaning.';
+
+      document.getElementById('essay-note-title').textContent =
+        lang === 'zh' ? '注' : 'Note';
+
+      document.getElementById('essay-note-text').textContent =
+        lang === 'zh'
+          ? '这个区块可以放参考说明、旁注，或简短的方法说明。'
+          : 'This block can hold a reference, side remark, or short methodological note.';
+
+      document.getElementById('essay-ending-label').textContent =
+        lang === 'zh' ? '结尾' : 'Ending';
+
+      document.getElementById('essay-closing-title').textContent =
+        lang === 'zh' ? '结构本身就是意义的一部分。' : 'Structure is part of meaning.';
+
+      document.getElementById('essay-closing-text').textContent =
+        lang === 'zh'
+          ? '人所理解的内容，不只取决于说了什么，也取决于它是如何被安排的。'
+          : 'What is understood depends not only on what is said, but on how it is arranged.';
+
+      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
+      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('lang-en').onclick = () => setLang('en');
+      document.getElementById('lang-zh').onclick = () => setLang('zh');
+      setLang(lang);
+    });
+  </script>
+  <script src="/js/nav.js"></script>
 </body>
+
 </html>

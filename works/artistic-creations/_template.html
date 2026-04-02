@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artistic Creation 002 - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+        .art-page {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .art-meta {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 14px;
+        }
+
+        .art-subtitle {
+            color: var(--text-soft);
+            line-height: 1.7;
+            margin-bottom: 18px;
+            max-width: 680px;
+        }
+
+        .art-image {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            margin: 20px 0;
+            display: block;
+            background: var(--bg-soft);
+        }
+
+        .art-body {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-soft);
+        }
+
+        .art-body p {
+            margin-bottom: 1.4em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
+            <div style="display:flex;align-items:center;gap:24px;">
+                <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
+                    <a href="/works.html">Works</a>
+                    <a href="/writing.html">Writing</a>
+                    <a href="/projects.html">Projects</a>
+                    <a href="/about.html">About</a>
+                    <a href="/archive.html">Archive</a>
+                </div>
+                <div class="lang-switcher">
+                    <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
+                    <button id="lang-zh" class="lang-btn">中文</button>
+                </div>
+                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container art-page">
+                <p class="eyebrow" id="art-eyebrow">Works · Artistic Creations</p>
+                <h1 id="art-title">Artistic Creation 002</h1>
+                <div class="art-meta" id="art-meta">2026 · Visual Work</div>
+                <p class="art-subtitle" id="art-subtitle">
+                    A short conceptual description of this piece. This space can hold meaning, context, or simply remain
+                    minimal.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container art-page">
+                <img src="/assets/images/works/artistic-creations/work-002/cover.jpg" class="art-image" alt="Artistic Creation 002 cover"
+                    onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Cover not added yet</text></svg>`)" />
+
+                <article class="art-body">
+                    <p id="art-p1">
+                        This page is intentionally open. It is not limited to a fixed structure.
+                    </p>
+
+                    <p id="art-p2">
+                        You can place images, fragments of text, process notes, or even leave sections empty.
+                    </p>
+
+                    <p id="art-p3">
+                        Artistic work does not always require explanation. Sometimes the page itself is part of the
+                        work.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 Cogniven. All rights reserved.</p>
+            <p>
+                The works presented on this site are original and protected by copyright.<br>
+                Unauthorized reproduction, distribution, or commercial use is prohibited.
+            </p>
+        </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+        let lang = localStorage.getItem('lang') || 'en';
+
+        function setLang(newLang) {
+            lang = newLang;
+            localStorage.setItem('lang', lang);
+            renderLang();
+        }
+
+        function renderLang() {
+            if (window.buildNav) {
+                window.buildNav(lang);
+            }
+
+            document.getElementById('logo-text').textContent = i18n[lang].logo;
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+            document.getElementById('art-eyebrow').textContent =
+                lang === 'zh' ? '作品 · 艺术创作' : 'Works · Artistic Creations';
+
+            document.getElementById('art-title').textContent =
+                lang === 'zh' ? '艺术创作 002' : 'Artistic Creation 002';
+
+            document.getElementById('art-meta').textContent =
+                lang === 'zh' ? '2026 · 视觉作品' : '2026 · Visual Work';
+
+            document.getElementById('art-subtitle').textContent =
+                lang === 'zh'
+                    ? '这是一段关于作品的简短说明。这里可以放概念、背景，也可以尽量保持克制与留白。'
+                    : 'A short conceptual description of this piece. This space can hold meaning, context, or simply remain minimal.';
+
+            document.getElementById('art-p1').textContent =
+                lang === 'zh'
+                    ? '这个页面被故意保持开放。它并不受限于固定结构。'
+                    : 'This page is intentionally open. It is not limited to a fixed structure.';
+
+            document.getElementById('art-p2').textContent =
+                lang === 'zh'
+                    ? '你可以在这里放图片、文字碎片、过程笔记，甚至让某些部分保持空白。'
+                    : 'You can place images, fragments of text, process notes, or even leave sections empty.';
+
+            document.getElementById('art-p3').textContent =
+                lang === 'zh'
+                    ? '艺术作品并不总是需要解释。有时页面本身就是作品的一部分。'
+                    : 'Artistic work does not always require explanation. Sometimes the page itself is part of the work.';
+
+            document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
+            document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            lang = localStorage.getItem('lang') || 'en';
+            document.getElementById('lang-en').onclick = () => setLang('en');
+            document.getElementById('lang-zh').onclick = () => setLang('zh');
+            renderLang();
+        });
+    </script>
+
+    <script src="/js/nav.js"></script>
+</body>
+
+</html>
