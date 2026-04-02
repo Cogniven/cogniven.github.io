@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Process Snapshots - Cogniven</title>
-    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
 
   <body>
     <header class="site-header">
       <nav class="nav">
         <a
-          href="index.html"
+          href="/index.html"
           class="logo"
           id="logo-text"
           style="margin-right: auto"
@@ -23,11 +23,11 @@
             id="nav-links"
             style="display: flex; gap: 24px"
           >
-            <a href="works.html">Works</a>
-            <a href="writing.html">Writing</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About</a>
-            <a href="archive.html">Archive</a>
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
           </div>
           <div class="lang-switcher">
             <button id="lang-en" class="lang-btn" style="margin-right: 4px">
@@ -94,7 +94,7 @@
     </footer>
 
     <script src="../../js/processSnapshots.js"></script>
-    <script src="../../js/i18n.js"></script>
+    <script src="/js/i18n.js"></script>
 
     <script>
       let lang = localStorage.getItem("lang") || "en";
@@ -104,12 +104,6 @@
         localStorage.setItem("lang", lang);
         renderLang();
       }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("lang-en").onclick = () => setLang("en");
-        document.getElementById("lang-zh").onclick = () => setLang("zh");
-        renderLang();
-      });
 
       function renderArchiveList() {
         const list = document.getElementById("archive-list");
@@ -121,20 +115,34 @@
           el.href = item.link;
 
           el.innerHTML = `
-      <div class="essay-meta">${item.date || ""}</div>
-      <h3>${item.title[lang]}</h3>
-      <p>${item.desc[lang]}</p>
-    `;
+            <div class="essay-meta">${item.date || ""}</div>
+            <h3>${item.title[lang]}</h3>
+            <p>${item.desc[lang]}</p>
+          `;
           list.appendChild(el);
         });
       }
 
       function renderLang() {
-        if (window.buildNav) {
-          window.buildNav(lang);
-        }
+        const navLinks = document.getElementById("nav-links");
+        const navs = i18n[lang].nav;
+
+        navLinks.innerHTML = `
+          <a href="/works.html">${navs[0]}</a>
+          <a href="/writing.html">${navs[1]}</a>
+          <a href="/projects.html">${navs[2]}</a>
+          <a href="/about.html">${navs[3]}</a>
+          <a href="/archive.html">${navs[4]}</a>
+        `;
 
         document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
         document.getElementById("footer-copyright").textContent =
           i18n[lang].copyright;
         document.getElementById("footer-copyright2").innerHTML =
@@ -165,7 +173,45 @@
 
         renderArchiveList();
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        lang = localStorage.getItem("lang") || "en";
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
+
+      const hamburger = document.getElementById("hamburger-btn");
+      const navLinksContainer = document.getElementById("nav-links");
+
+      if (hamburger && navLinksContainer) {
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navLinksContainer.classList.toggle("active");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !hamburger.contains(e.target) &&
+            !navLinksContainer.contains(e.target) &&
+            navLinksContainer.classList.contains("active")
+          ) {
+            hamburger.classList.remove("active");
+            navLinksContainer.classList.remove("active");
+          }
+        });
+
+        navLinksContainer.addEventListener("click", (e) => {
+          if (window.innerWidth > 768) return;
+
+          const link = e.target.closest("a");
+          if (!link) return;
+
+          hamburger.classList.remove("active");
+          navLinksContainer.classList.remove("active");
+        });
+      }
     </script>
-    <script src="../../js/nav.js"></script>
+    <script src="/js/nav.js"></script>
   </body>
 </html>
