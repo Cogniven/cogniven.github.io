@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bilingual Copy Snapshot - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .log-cover,
+      .log-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+      }
+
+      .log-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .log-meta-card {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 14px;
+        padding: 14px 16px;
+      }
+
+      .log-meta-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .log-meta-card strong {
+        font-size: 1rem;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .log-block {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .log-block-note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding-top: 4px;
+      }
+
+      .log-block-content h2 {
+        margin-top: 0;
+        margin-bottom: 14px;
+      }
+
+      .log-block-content p {
+        line-height: 1.78;
+        color: var(--text-soft);
+      }
+
+      @media (max-width: 860px) {
+        .log-meta-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .log-block {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .log-meta-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container narrow">
+          <p class="eyebrow" id="eyebrow">Archive · Process Snapshots</p>
+          <h1 id="title">Bilingual Copy Snapshot</h1>
+          <p class="hero-text" id="hero-text">
+            A transitional copy pass preserving EN/ZH alignment before final tone
+            normalization.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <img
+            class="log-cover"
+            src="./cover.jpg"
+            alt="Bilingual copy snapshot"
+            onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Snapshot Cover</text></svg>`)"
+          />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <div class="log-meta-grid">
+            <div class="log-meta-card">
+              <span id="meta-date-label">Date</span>
+              <strong id="meta-date-value">2026</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-status-label">Status</span>
+              <strong id="meta-status-value">Transitional</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-field-label">Field</span>
+              <strong id="meta-field-value">Bilingual Copy</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-mode-label">Mode</span>
+              <strong id="meta-mode-value">Snapshot</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="note-label">Snapshot Note</p>
+          <p class="lead-paragraph" id="note-text">
+            This stage recorded text parity between English and Chinese labels
+            across archive pages, while narrative tone and sentence rhythm were
+            still uneven.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="focus-label">Focus</div>
+          <div class="log-block-content">
+            <h2 id="focus-title">What Was Being Aligned</h2>
+            <p id="focus-p1">
+              Section naming, list descriptors, and metadata labels were mapped
+              one-by-one to prevent term drift across language versions.
+            </p>
+            <p id="focus-p2">
+              The pass emphasized structural equivalence first, postponing stylistic
+              refinement to a later phase.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="insight-label">Insight</div>
+          <div class="log-block-content">
+            <h2 id="insight-title">Why This Snapshot Matters</h2>
+            <p id="insight-p1">
+              It marks the moment where bilingual consistency became a system rule
+              instead of an afterthought. Later edits could improve tone without
+              breaking cross-language structure.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        document.getElementById("eyebrow").textContent =
+          lang === "zh" ? "归档 · 过程切片" : "Archive · Process Snapshots";
+        document.getElementById("title").textContent =
+          lang === "zh" ? "双语文案切片" : "Bilingual Copy Snapshot";
+        document.getElementById("hero-text").textContent =
+          lang === "zh"
+            ? "一个中英文本对齐的过渡版本，保留于语气统一完成之前。"
+            : "A transitional copy pass preserving EN/ZH alignment before final tone normalization.";
+        document.getElementById("meta-date-label").textContent =
+          lang === "zh" ? "日期" : "Date";
+        document.getElementById("meta-date-value").textContent =
+          lang === "zh" ? "2026年" : "2026";
+        document.getElementById("meta-status-label").textContent =
+          lang === "zh" ? "状态" : "Status";
+        document.getElementById("meta-status-value").textContent =
+          lang === "zh" ? "过渡版本" : "Transitional";
+        document.getElementById("meta-field-label").textContent =
+          lang === "zh" ? "领域" : "Field";
+        document.getElementById("meta-field-value").textContent =
+          lang === "zh" ? "双语文案" : "Bilingual Copy";
+        document.getElementById("meta-mode-label").textContent =
+          lang === "zh" ? "模式" : "Mode";
+        document.getElementById("meta-mode-value").textContent =
+          lang === "zh" ? "切片记录" : "Snapshot";
+        document.getElementById("note-label").textContent =
+          lang === "zh" ? "切片说明" : "Snapshot Note";
+        document.getElementById("note-text").textContent =
+          lang === "zh"
+            ? "该阶段用于确保归档页面中英标签对齐，但叙述语气与句法节奏仍不完全一致。"
+            : "This stage recorded text parity between English and Chinese labels across archive pages, while narrative tone and sentence rhythm were still uneven.";
+        document.getElementById("focus-label").textContent =
+          lang === "zh" ? "焦点" : "Focus";
+        document.getElementById("focus-title").textContent =
+          lang === "zh" ? "当时对齐内容" : "What Was Being Aligned";
+        document.getElementById("focus-p1").textContent =
+          lang === "zh"
+            ? "分区命名、列表描述和元数据标签逐条映射，以避免中英文版本术语漂移。"
+            : "Section naming, list descriptors, and metadata labels were mapped one-by-one to prevent term drift across language versions.";
+        document.getElementById("focus-p2").textContent =
+          lang === "zh"
+            ? "该轮改动优先保证结构等价，把风格层面的打磨延后处理。"
+            : "The pass emphasized structural equivalence first, postponing stylistic refinement to a later phase.";
+        document.getElementById("insight-label").textContent =
+          lang === "zh" ? "观察" : "Insight";
+        document.getElementById("insight-title").textContent =
+          lang === "zh" ? "该切片价值" : "Why This Snapshot Matters";
+        document.getElementById("insight-p1").textContent =
+          lang === "zh"
+            ? "它标记了双语一致性从“事后修补”转向“系统规则”的时刻，使后续语气优化不会破坏结构一致。"
+            : "It marks the moment where bilingual consistency became a system rule instead of an afterthought. Later edits could improve tone without breaking cross-language structure.";
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

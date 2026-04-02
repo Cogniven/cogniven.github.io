@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Routing Tree v0.6 - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .essay-page {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .essay-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .essay-meta span {
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 6px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .essay-subtitle {
+        color: var(--text-soft);
+        line-height: 1.76;
+        font-size: 1.06rem;
+        margin: 0;
+        max-width: 700px;
+      }
+
+      .essay-divider {
+        width: 56px;
+        height: 1px;
+        background: var(--line);
+        margin: 18px 0 0;
+      }
+
+      .essay-abstract {
+        color: var(--text-soft);
+        line-height: 1.9;
+        font-size: 1.04rem;
+        margin: 0;
+      }
+
+      .essay-body {
+        font-size: 1.06rem;
+        line-height: 1.92;
+        color: var(--text);
+      }
+
+      .essay-body h2 {
+        font-size: 1.35rem;
+        margin: 2.2em 0 0.8em;
+        line-height: 1.3;
+        color: var(--text);
+      }
+
+      .essay-body p {
+        margin: 0 0 1.35em;
+        color: var(--text-soft);
+      }
+
+      .essay-note-block {
+        margin: 2.2em 0 0;
+        padding: 18px 18px 16px;
+        border-left: 2px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 0 10px 10px 0;
+      }
+
+      .essay-note-title {
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 8px;
+      }
+
+      .essay-note-block p:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner essay-page">
+          <p class="eyebrow" id="eyebrow">Archive · Discarded Paths</p>
+          <h1 id="title">Routing Tree v0.6</h1>
+
+          <div class="essay-meta">
+            <span id="meta-year">2026</span>
+            <span id="meta-type">Architecture Draft</span>
+            <span id="meta-tag">Navigation</span>
+          </div>
+
+          <p class="essay-subtitle" id="subtitle">
+            An early deep-nested routing plan that was later replaced by a flatter
+            section-first structure.
+          </p>
+          <div class="essay-divider"></div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container essay-page">
+          <p class="section-note" id="abstract-label">Context</p>
+          <p class="essay-abstract" id="abstract-text">
+            This version attempted to model every content branch through strict
+            nested routes. It made logical sense on paper but introduced fragile
+            URL depth, uneven naming, and hard-to-maintain navigation states.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container essay-page">
+          <article class="essay-body">
+            <h2 id="h2-1">1. Initial Intention</h2>
+            <p id="p1">
+              The goal was to mirror conceptual hierarchy directly in URL depth.
+              Every sub-layer had a path segment, and each segment carried an
+              explicit taxonomy role.
+            </p>
+
+            <h2 id="h2-2">2. Why It Broke</h2>
+            <p id="p2">
+              As categories evolved, links became brittle. Renaming one middle
+              segment propagated changes across many pages and increased maintenance
+              friction during content iteration.
+            </p>
+
+            <h2 id="h2-3">3. What Was Kept</h2>
+            <p id="p3">
+              Although discarded, this path clarified one useful principle: top
+              navigation should expose only section-level stability, while deeper
+              taxonomy remains internal to each section.
+            </p>
+
+            <div class="essay-note-block">
+              <p class="essay-note-title" id="note-title">Archive Note</p>
+              <p id="note-text">
+                This artifact is preserved as a decision trace for future routing
+                refactors.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        document.getElementById("eyebrow").textContent =
+          lang === "zh" ? "归档 · 废弃路径" : "Archive · Discarded Paths";
+        document.getElementById("title").textContent =
+          lang === "zh" ? "路由树 v0.6" : "Routing Tree v0.6";
+        document.getElementById("meta-year").textContent =
+          lang === "zh" ? "2026年" : "2026";
+        document.getElementById("meta-type").textContent =
+          lang === "zh" ? "架构草案" : "Architecture Draft";
+        document.getElementById("meta-tag").textContent =
+          lang === "zh" ? "导航" : "Navigation";
+        document.getElementById("subtitle").textContent =
+          lang === "zh"
+            ? "一个早期的深层嵌套路由方案，后续被更扁平的分区优先结构替代。"
+            : "An early deep-nested routing plan that was later replaced by a flatter section-first structure.";
+        document.getElementById("abstract-label").textContent =
+          lang === "zh" ? "背景" : "Context";
+        document.getElementById("abstract-text").textContent =
+          lang === "zh"
+            ? "这个版本试图用严格嵌套路由表达全部内容分支。它在逻辑上完整，但带来了 URL 过深、命名不均和导航状态难维护的问题。"
+            : "This version attempted to model every content branch through strict nested routes. It made logical sense on paper but introduced fragile URL depth, uneven naming, and hard-to-maintain navigation states.";
+        document.getElementById("h2-1").textContent =
+          lang === "zh" ? "1. 初始意图" : "1. Initial Intention";
+        document.getElementById("p1").textContent =
+          lang === "zh"
+            ? "当时的目标是把概念层级直接映射到 URL 深度。每一层都对应一个路径段，并承载明确的分类角色。"
+            : "The goal was to mirror conceptual hierarchy directly in URL depth. Every sub-layer had a path segment, and each segment carried an explicit taxonomy role.";
+        document.getElementById("h2-2").textContent =
+          lang === "zh" ? "2. 失效原因" : "2. Why It Broke";
+        document.getElementById("p2").textContent =
+          lang === "zh"
+            ? "随着分类演化，链接开始变得脆弱。中间层一旦改名，多个页面都需要同步调整，维护成本迅速上升。"
+            : "As categories evolved, links became brittle. Renaming one middle segment propagated changes across many pages and increased maintenance friction during content iteration.";
+        document.getElementById("h2-3").textContent =
+          lang === "zh" ? "3. 保留下来的结论" : "3. What Was Kept";
+        document.getElementById("p3").textContent =
+          lang === "zh"
+            ? "虽然该路径被放弃，但它明确了一条原则：顶部导航应只暴露分区级稳定结构，深层分类应在各分区内部处理。"
+            : "Although discarded, this path clarified one useful principle: top navigation should expose only section-level stability, while deeper taxonomy remains internal to each section.";
+        document.getElementById("note-title").textContent =
+          lang === "zh" ? "归档注记" : "Archive Note";
+        document.getElementById("note-text").textContent =
+          lang === "zh"
+            ? "该条目被保留为后续路由重构时的决策痕迹。"
+            : "This artifact is preserved as a decision trace for future routing refactors.";
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

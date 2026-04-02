@@ -1,165 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discarded Paths - Cogniven</title>
-    <link rel="stylesheet" href="../../css/style.css" />
-</head>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<body>
-
-    <!-- NAV -->
+  <body>
     <header class="site-header">
-        <nav class="nav">
-            <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
-            <div style="display:flex;align-items:center;gap:24px;">
-                <div class="nav-links" id="nav-links" style="display:flex;gap:24px;"></div>
-                <div class="lang-switcher">
-                    <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
-                    <button id="lang-zh" class="lang-btn">中文</button>
-                </div>
-                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
     </header>
 
     <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow" id="dp-eyebrow">Archive · Discarded Paths</p>
+          <h1 id="dp-title">Discarded Paths</h1>
+          <p class="hero-text" id="dp-text">
+            Abandoned directions, earlier systems, and discontinued experiments.
+          </p>
+        </div>
+      </section>
 
-        <!-- HERO -->
-        <section class="hero">
-            <div class="container hero-inner">
-                <p class="eyebrow" id="dp-eyebrow">Archive · Discarded Paths</p>
-                <h1 id="dp-title">Discarded Paths</h1>
-                <p class="hero-text" id="dp-text">
-                    Abandoned directions, earlier systems, and discontinued experiments.
-                </p>
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="dp-note">Overview</p>
+          <p class="lead-paragraph" id="dp-lead">
+            These entries represent paths that were once explored but no longer
+            continued. They remain as part of the system's development history.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="dp-list-note">Archive List</p>
+              <h2 id="dp-list-title">Entries</h2>
             </div>
-        </section>
+            <p class="section-side-text" id="dp-side">
+              Each entry reflects a direction that was tested and later
+              abandoned.
+            </p>
+          </div>
 
-        <!-- INTRO -->
-        <section class="section intro-band">
-            <div class="container narrow">
-                <p class="section-note" id="dp-note">Overview</p>
-                <p class="lead-paragraph" id="dp-lead">
-                    These entries represent paths that were once explored but no longer continued.
-                    They remain as part of the system’s development history.
-                </p>
-            </div>
-        </section>
-
-        <!-- LIST -->
-        <section class="section">
-            <div class="container">
-
-                <div class="section-head">
-                    <div>
-                        <p class="section-note" id="dp-list-note">Archive List</p>
-                        <h2 id="dp-list-title">Entries</h2>
-                    </div>
-                    <p class="section-side-text" id="dp-side">
-                        Each entry reflects a direction that was tested and later abandoned.
-                    </p>
-                </div>
-
-                <div class="list">
-
-                    <a class="list-item" href="#">
-                        <h3>Experiment 001</h3>
-                        <p>Earlier structural attempt later replaced by a more stable system.</p>
-                    </a>
-
-                    <a class="list-item" href="#">
-                        <h3>Experiment 002</h3>
-                        <p>A discontinued design direction kept for reference.</p>
-                    </a>
-
-                </div>
-
-            </div>
-        </section>
-
+          <div class="list" id="archive-list"></div>
+        </div>
+      </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
-        <div class="container footer-inner">
-            <p id="footer-copyright">© 2026 Cogniven. All rights reserved.</p>
-            <p id="footer-copyright2">
-                The works presented on this site are original and protected by copyright.<br>
-                Unauthorized reproduction, distribution, or commercial use is prohibited.
-            </p>
-        </div>
+      <div class="container footer-inner">
+        <p id="footer-copyright"></p>
+        <p id="footer-copyright2"></p>
+      </div>
     </footer>
 
-    <!-- SCRIPT -->
-    <script src="../../js/i18n.js"></script>
+    <script src="../../js/discardedPaths.js"></script>
+    <script src="/js/i18n.js"></script>
     <script>
-        let lang = localStorage.getItem('lang') || 'en';
+      let lang = localStorage.getItem("lang") || "en";
 
-        function setLang(newLang) {
-            lang = newLang;
-            localStorage.setItem('lang', lang);
-            renderLang();
-        }
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('lang-en').onclick = () => setLang('en');
-            document.getElementById('lang-zh').onclick = () => setLang('zh');
-            setLang(lang);
+      function renderArchiveList() {
+        const list = document.getElementById("archive-list");
+        list.innerHTML = "";
+
+        discardedPaths.forEach((item) => {
+          const el = document.createElement("a");
+          el.className = "list-item";
+          el.href = item.link;
+
+          el.innerHTML = `
+            <div class="essay-meta">${item.date || ""}</div>
+            <h3>${item.title[lang]}</h3>
+            <p>${item.desc[lang]}</p>
+          `;
+          list.appendChild(el);
+        });
+      }
+
+      function renderLang() {
+        const navLinks = document.getElementById("nav-links");
+        const navs = i18n[lang].nav;
+
+        navLinks.innerHTML = `
+          <a href="/works.html">${navs[0]}</a>
+          <a href="/writing.html">${navs[1]}</a>
+          <a href="/projects.html">${navs[2]}</a>
+          <a href="/about.html">${navs[3]}</a>
+          <a href="/archive.html">${navs[4]}</a>
+        `;
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        document.getElementById("footer-copyright").textContent =
+          i18n[lang].copyright;
+        document.getElementById("footer-copyright2").innerHTML =
+          i18n[lang].copyright2;
+
+        document.getElementById("dp-eyebrow").textContent =
+          lang === "zh" ? "归档 · 废弃路径" : "Archive · Discarded Paths";
+        document.getElementById("dp-title").textContent =
+          lang === "zh" ? "废弃路径" : "Discarded Paths";
+        document.getElementById("dp-text").textContent =
+          lang === "zh"
+            ? "被放弃的方向、旧系统与中止的实验。"
+            : "Abandoned directions, earlier systems, and discontinued experiments.";
+        document.getElementById("dp-note").textContent =
+          lang === "zh" ? "概览" : "Overview";
+        document.getElementById("dp-lead").textContent =
+          lang === "zh"
+            ? "这些条目代表曾经探索但未继续推进的路径，它们作为系统发展的一部分被保留下来。"
+            : "These entries represent paths that were once explored but no longer continued. They remain as part of the system's development history.";
+        document.getElementById("dp-list-note").textContent =
+          lang === "zh" ? "归档列表" : "Archive List";
+        document.getElementById("dp-list-title").textContent =
+          lang === "zh" ? "条目" : "Entries";
+        document.getElementById("dp-side").textContent =
+          lang === "zh"
+            ? "每一条记录一个被尝试后放弃的方向。"
+            : "Each entry reflects a direction that was tested and later abandoned.";
+
+        renderArchiveList();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        lang = localStorage.getItem("lang") || "en";
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
+
+      const hamburger = document.getElementById("hamburger-btn");
+      const navLinksContainer = document.getElementById("nav-links");
+
+      if (hamburger && navLinksContainer) {
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navLinksContainer.classList.toggle("active");
         });
 
-        function renderLang() {
-            if (window.buildNav) {
-                window.buildNav(lang);
-            }
+        document.addEventListener("click", (e) => {
+          if (
+            !hamburger.contains(e.target) &&
+            !navLinksContainer.contains(e.target) &&
+            navLinksContainer.classList.contains("active")
+          ) {
+            hamburger.classList.remove("active");
+            navLinksContainer.classList.remove("active");
+          }
+        });
 
-            document.getElementById('logo-text').textContent = i18n[lang].logo;
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-            document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+        navLinksContainer.addEventListener("click", (e) => {
+          if (window.innerWidth > 768) return;
 
-            // 页面文本
-            document.getElementById('dp-eyebrow').textContent =
-                lang === 'zh' ? '归档 · 废弃路径' : 'Archive · Discarded Paths';
+          const link = e.target.closest("a");
+          if (!link) return;
 
-            document.getElementById('dp-title').textContent =
-                lang === 'zh' ? '废弃路径' : 'Discarded Paths';
-
-            document.getElementById('dp-text').textContent =
-                lang === 'zh'
-                    ? '被放弃的方向、旧系统与中止的实验。'
-                    : 'Abandoned directions, earlier systems, and discontinued experiments.';
-
-            document.getElementById('dp-note').textContent =
-                lang === 'zh' ? '概览' : 'Overview';
-
-            document.getElementById('dp-lead').textContent =
-                lang === 'zh'
-                    ? '这些条目代表曾经探索但未继续推进的路径，它们作为系统发展的一部分被保留下来。'
-                    : 'These entries represent paths that were once explored but no longer continued. They remain as part of the system’s development history.';
-
-            document.getElementById('dp-list-note').textContent =
-                lang === 'zh' ? '归档列表' : 'Archive List';
-
-            document.getElementById('dp-list-title').textContent =
-                lang === 'zh' ? '条目' : 'Entries';
-
-            document.getElementById('dp-side').textContent =
-                lang === 'zh'
-                    ? '每一条记录一个被尝试后放弃的方向。'
-                    : 'Each entry reflects a direction that was tested and later abandoned.';
-
-            document.getElementById('footer-copyright').textContent = i18n[lang].copyright;
-            document.getElementById('footer-copyright2').innerHTML = i18n[lang].copyright2;
-        }
+          hamburger.classList.remove("active");
+          navLinksContainer.classList.remove("active");
+        });
+      }
     </script>
-    <script src="../../js/nav.js"></script>
-
-</body>
-
+    <script src="/js/nav.js"></script>
+  </body>
 </html>

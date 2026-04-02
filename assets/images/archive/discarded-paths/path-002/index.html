@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monolithic Landing Draft - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .essay-page {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .essay-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .essay-meta span {
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 6px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .essay-subtitle {
+        color: var(--text-soft);
+        line-height: 1.76;
+        font-size: 1.06rem;
+        margin: 0;
+        max-width: 700px;
+      }
+
+      .essay-divider {
+        width: 56px;
+        height: 1px;
+        background: var(--line);
+        margin: 18px 0 0;
+      }
+
+      .essay-abstract {
+        color: var(--text-soft);
+        line-height: 1.9;
+        font-size: 1.04rem;
+        margin: 0;
+      }
+
+      .essay-body {
+        font-size: 1.06rem;
+        line-height: 1.92;
+        color: var(--text);
+      }
+
+      .essay-body h2 {
+        font-size: 1.35rem;
+        margin: 2.2em 0 0.8em;
+        line-height: 1.3;
+        color: var(--text);
+      }
+
+      .essay-body p {
+        margin: 0 0 1.35em;
+        color: var(--text-soft);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner essay-page">
+          <p class="eyebrow" id="eyebrow">Archive · Discarded Paths</p>
+          <h1 id="title">Monolithic Landing Draft</h1>
+
+          <div class="essay-meta">
+            <span id="meta-year">2026</span>
+            <span id="meta-type">Layout Direction</span>
+            <span id="meta-tag">Homepage</span>
+          </div>
+
+          <p class="essay-subtitle" id="subtitle">
+            A one-page homepage concept that merged all site sections before the
+            structure was split into focused entries.
+          </p>
+          <div class="essay-divider"></div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container essay-page">
+          <p class="section-note" id="context-label">Context</p>
+          <p class="essay-abstract" id="context-text">
+            This direction tried to maximize overview by placing works, writing,
+            projects, and archive previews on one continuous page. It improved
+            immediate exposure but reduced clarity in depth navigation.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container essay-page">
+          <article class="essay-body">
+            <h2 id="h2-1">1. Why It Was Attempted</h2>
+            <p id="p1">
+              At that stage, the main concern was discoverability. A monolithic
+              page made every category visible without extra clicks and looked
+              efficient for first-time visitors.
+            </p>
+
+            <h2 id="h2-2">2. Why It Was Abandoned</h2>
+            <p id="p2">
+              As content volume increased, the page became dense and repetitive.
+              Different content types required different reading speeds and could
+              not share one scroll rhythm effectively.
+            </p>
+
+            <h2 id="h2-3">3. Lasting Insight</h2>
+            <p id="p3">
+              The draft still provided a useful reference for section ordering and
+              narrative flow. Its strongest part was top-level sequencing, not
+              single-page containment.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        document.getElementById("eyebrow").textContent =
+          lang === "zh" ? "归档 · 废弃路径" : "Archive · Discarded Paths";
+        document.getElementById("title").textContent =
+          lang === "zh" ? "单体首页草案" : "Monolithic Landing Draft";
+        document.getElementById("meta-year").textContent =
+          lang === "zh" ? "2026年" : "2026";
+        document.getElementById("meta-type").textContent =
+          lang === "zh" ? "版式方向" : "Layout Direction";
+        document.getElementById("meta-tag").textContent =
+          lang === "zh" ? "首页" : "Homepage";
+        document.getElementById("subtitle").textContent =
+          lang === "zh"
+            ? "一个曾把所有分区集中在单页的首页方案，后续改为分区化入口结构。"
+            : "A one-page homepage concept that merged all site sections before the structure was split into focused entries.";
+        document.getElementById("context-label").textContent =
+          lang === "zh" ? "背景" : "Context";
+        document.getElementById("context-text").textContent =
+          lang === "zh"
+            ? "该方向试图通过单页展示作品、写作、项目和归档预览，以提升概览效率；但随着内容增多，深度导航清晰度下降。"
+            : "This direction tried to maximize overview by placing works, writing, projects, and archive previews on one continuous page. It improved immediate exposure but reduced clarity in depth navigation.";
+        document.getElementById("h2-1").textContent =
+          lang === "zh" ? "1. 尝试原因" : "1. Why It Was Attempted";
+        document.getElementById("p1").textContent =
+          lang === "zh"
+            ? "当时的核心问题是可发现性。单页能让首次访问者在不跳转的情况下看到全部类别。"
+            : "At that stage, the main concern was discoverability. A monolithic page made every category visible without extra clicks and looked efficient for first-time visitors.";
+        document.getElementById("h2-2").textContent =
+          lang === "zh" ? "2. 放弃原因" : "2. Why It Was Abandoned";
+        document.getElementById("p2").textContent =
+          lang === "zh"
+            ? "内容规模扩大后，页面密度和重复度过高。不同内容类型需要不同阅读节奏，无法在同一滚动逻辑中保持质量。"
+            : "As content volume increased, the page became dense and repetitive. Different content types required different reading speeds and could not share one scroll rhythm effectively.";
+        document.getElementById("h2-3").textContent =
+          lang === "zh" ? "3. 保留价值" : "3. Lasting Insight";
+        document.getElementById("p3").textContent =
+          lang === "zh"
+            ? "这个草案仍为分区排序与叙事流提供了参考。它最有价值的不是单页承载，而是顶层序列设计。"
+            : "The draft still provided a useful reference for section ordering and narrative flow. Its strongest part was top-level sequencing, not single-page containment.";
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>
