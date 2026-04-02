@@ -1,191 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Technical Work 001 - Cogniven</title>
     <link rel="stylesheet" href="/css/style.css" />
 
     <style>
-        .project-page {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+      .project-page {
+        max-width: 900px;
+        margin: 0 auto;
+      }
 
-        .project-cover {
-            width: 100%;
-            border-radius: 14px;
-            margin: 24px 0 32px;
-            overflow: hidden;
-        }
+      .project-cover {
+        width: 100%;
+        border-radius: 14px;
+        margin: 24px 0 32px;
+        overflow: hidden;
+      }
 
-        .project-cover img {
-            width: 100%;
-            display: block;
-        }
+      .project-cover img {
+        width: 100%;
+        display: block;
+      }
 
-        .project-meta {
-            font-size: 0.9rem;
-            color: var(--muted);
-            margin-bottom: 14px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
+      .project-meta {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
 
-        .project-desc {
-            color: var(--text-soft);
-            line-height: 1.7;
-            font-size: 1.05rem;
-            margin-bottom: 32px;
-        }
+      .project-desc {
+        color: var(--text-soft);
+        line-height: 1.7;
+        font-size: 1.05rem;
+        margin-bottom: 32px;
+      }
 
-        .project-section h2 {
-            font-size: 1.3rem;
-            margin: 2em 0 0.8em;
-        }
+      .project-section h2 {
+        font-size: 1.3rem;
+        margin: 2em 0 0.8em;
+      }
 
-        .project-section p {
-            color: var(--text-soft);
-            line-height: 1.9;
-            margin-bottom: 1.2em;
-        }
-
+      .project-section p {
+        color: var(--text-soft);
+        line-height: 1.9;
+        margin-bottom: 1.2em;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <header class="site-header">
-        <nav class="nav">
-            <a href="/index.html" class="logo" id="logo">Cogniven</a>
-
-            <div style="display:flex;gap:24px;align-items:center;">
-                <div class="nav-links" id="nav-links"></div>
-
-                <div class="lang-switcher">
-                    <button id="lang-en" class="lang-btn">EN</button>
-                    <button id="lang-zh" class="lang-btn">中文</button>
-                </div>
-                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
     </header>
 
     <main>
+      <section class="hero">
+        <div class="container hero-inner project-page">
+          <p class="eyebrow" id="eyebrow">Works · Technical</p>
+          <h1 id="title">Technical Work 001</h1>
+          <div class="project-meta" id="meta">2026 · System Build</div>
+          <p class="project-desc" id="desc">
+            A technical system exploring structured automation and modular
+            architecture.
+          </p>
+        </div>
+      </section>
 
-        <section class="hero">
-            <div class="container hero-inner project-page">
-                <p class="eyebrow" id="eyebrow">Works · Technical</p>
-                <h1 id="title">Technical Work 001</h1>
-                <div class="project-meta" id="meta">2026 · System Build</div>
-                <p class="project-desc" id="desc">
-                    A technical system exploring structured automation and modular architecture.
-                </p>
-            </div>
-        </section>
+      <section class="section">
+        <div class="container project-page">
+          <div class="project-cover">
+            <img src="./cover.jpg" alt="cover" />
+          </div>
 
-        <section class="section">
-            <div class="container project-page">
+          <div class="project-section">
+            <h2 id="h2-1">Overview</h2>
+            <p id="p1">
+              This project focuses on building a modular technical system
+              designed for scalability and clarity.
+            </p>
 
-                <div class="project-cover">
-                    <img src="./cover.jpg" alt="cover">
-                </div>
+            <h2 id="h2-2">Structure</h2>
+            <p id="p2">
+              The architecture separates logic, data, and interface layers,
+              allowing independent iteration.
+            </p>
 
-                <div class="project-section">
-                    <h2 id="h2-1">Overview</h2>
-                    <p id="p1">
-                        This project focuses on building a modular technical system designed for scalability and
-                        clarity.
-                    </p>
-
-                    <h2 id="h2-2">Structure</h2>
-                    <p id="p2">
-                        The architecture separates logic, data, and interface layers, allowing independent iteration.
-                    </p>
-
-                    <h2 id="h2-3">Conclusion</h2>
-                    <p id="p3">
-                        The system demonstrates how technical constraints can produce clearer structures.
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
+            <h2 id="h2-3">Conclusion</h2>
+            <p id="p3">
+              The system demonstrates how technical constraints can produce
+              clearer structures.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>© 2026 Cogniven. All rights reserved.</p>
-            <p>Unauthorized reproduction prohibited.</p>
-        </div>
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>Unauthorized reproduction prohibited.</p>
+      </div>
     </footer>
 
     <script src="/js/i18n.js"></script>
-
     <script>
-        let lang = localStorage.getItem('lang') || 'en';
+      let lang = localStorage.getItem("lang") || "en";
 
-        function setLang(l) {
-            lang = l;
-            localStorage.setItem('lang', l);
-            render();
-        }
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
 
-        function render() {
-            if (window.buildNav) {
-                window.buildNav(lang);
-            }
+      document.addEventListener("DOMContentLoaded", function () {
+        lang = localStorage.getItem("lang") || "en";
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
 
-            document.getElementById('title').textContent =
-                lang === 'zh' ? '技术作品 001' : 'Technical Work 001';
+      function renderLang() {
+        const navLinks = document.getElementById("nav-links");
+        const navs = i18n[lang].nav;
 
-            document.getElementById('desc').textContent =
-                lang === 'zh'
-                    ? '一个用于探索自动化结构与模块化架构的技术系统。'
-                    : 'A technical system exploring structured automation and modular architecture.';
+        navLinks.innerHTML = `
+                <a href="/works.html">${navs[0]}</a>
+                <a href="/writing.html">${navs[1]}</a>
+                <a href="/projects.html">${navs[2]}</a>
+                <a href="/about.html">${navs[3]}</a>
+                <a href="/archive.html">${navs[4]}</a>
+            `;
 
-            document.getElementById('h2-1').textContent =
-                lang === 'zh' ? '概述' : 'Overview';
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
 
-            document.getElementById('h2-2').textContent =
-                lang === 'zh' ? '结构' : 'Structure';
+        document.getElementById("eyebrow").textContent =
+          lang === "zh" ? "作品 · 技术" : "Works · Technical";
 
-            document.getElementById('h2-3').textContent =
-                lang === 'zh' ? '结论' : 'Conclusion';
+        document.getElementById("title").textContent =
+          lang === "zh" ? "技术作品 001" : "Technical Work 001";
 
-            document.getElementById('p1').textContent =
-                lang === 'zh'
-                    ? '该项目聚焦于构建一个模块化技术系统，以实现可扩展性与结构清晰。'
-                    : 'This project focuses on building a modular technical system designed for scalability and clarity.';
+        document.getElementById("meta").textContent =
+          lang === "zh" ? "2026 · 系统构建" : "2026 · System Build";
 
-            document.getElementById('p2').textContent =
-                lang === 'zh'
-                    ? '架构将逻辑、数据和界面层分离，从而支持独立迭代。'
-                    : 'The architecture separates logic, data, and interface layers, allowing independent iteration.';
+        document.getElementById("desc").textContent =
+          lang === "zh"
+            ? "一个用于探索自动化结构与模块化架构的技术系统。"
+            : "A technical system exploring structured automation and modular architecture.";
 
-            document.getElementById('p3').textContent =
-                lang === 'zh'
-                    ? '该系统展示了技术约束如何反而促成更清晰的结构。'
-                    : 'The system demonstrates how technical constraints can produce clearer structures.';
+        document.getElementById("h2-1").textContent =
+          lang === "zh" ? "概述" : "Overview";
 
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-            document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
-        }
+        document.getElementById("h2-2").textContent =
+          lang === "zh" ? "结构" : "Structure";
 
-        document.getElementById('lang-en').onclick = () => setLang('en');
-        document.getElementById('lang-zh').onclick = () => setLang('zh');
+        document.getElementById("h2-3").textContent =
+          lang === "zh" ? "结论" : "Conclusion";
 
-        render();
+        document.getElementById("p1").textContent =
+          lang === "zh"
+            ? "该项目聚焦于构建一个模块化技术系统，以实现可扩展性与结构清晰。"
+            : "This project focuses on building a modular technical system designed for scalability and clarity.";
+
+        document.getElementById("p2").textContent =
+          lang === "zh"
+            ? "架构将逻辑、数据和界面层分离，从而支持独立迭代。"
+            : "The architecture separates logic, data, and interface layers, allowing independent iteration.";
+
+        document.getElementById("p3").textContent =
+          lang === "zh"
+            ? "该系统展示了技术约束如何反而促成更清晰的结构。"
+            : "The system demonstrates how technical constraints can produce clearer structures.";
+      }
+
+      const hamburger = document.getElementById("hamburger-btn");
+      const navLinksContainer = document.getElementById("nav-links");
+
+      if (hamburger && navLinksContainer) {
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navLinksContainer.classList.toggle("active");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !hamburger.contains(e.target) &&
+            !navLinksContainer.contains(e.target) &&
+            navLinksContainer.classList.contains("active")
+          ) {
+            hamburger.classList.remove("active");
+            navLinksContainer.classList.remove("active");
+          }
+        });
+
+        navLinksContainer.addEventListener("click", (e) => {
+          if (window.innerWidth > 768) return;
+
+          const link = e.target.closest("a");
+          if (!link) return;
+
+          hamburger.classList.remove("active");
+          navLinksContainer.classList.remove("active");
+        });
+      }
     </script>
-
     <script src="/js/nav.js"></script>
-
-</body>
-
+  </body>
 </html>
