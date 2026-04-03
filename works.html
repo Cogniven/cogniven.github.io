@@ -102,9 +102,9 @@
 
     <section class="section closing-section">
       <div class="container narrow center">
-        <p class="section-note">Note</p>
-        <h2 class="closing-title">Browse by structure,<br />not by sequence.</h2>
-        <p class="closing-text">
+        <p class="section-note" id="works-closing-note">Note</p>
+        <h2 class="closing-title" id="works-closing-title">Browse by structure,<br />not by sequence.</h2>
+        <p class="closing-text" id="works-closing-text">
           Each category opens into its own space. What matters is not order, but relation.
         </p>
       </div>
@@ -172,6 +172,9 @@
 
       document.getElementById('works-experimental-forms').textContent = i18n[lang].worksExperimentalForms;
       document.getElementById('works-experimental-forms-desc').textContent = i18n[lang].worksExperimentalFormsDesc;
+      document.getElementById('works-closing-note').textContent = i18n[lang].worksClosingNote;
+      document.getElementById('works-closing-title').innerHTML = i18n[lang].worksClosingTitle.replace(/\n/g, '<br />');
+      document.getElementById('works-closing-text').textContent = i18n[lang].worksClosingText;
 
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

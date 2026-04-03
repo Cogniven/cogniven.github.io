@@ -138,6 +138,14 @@ const i18n = {
     worksExperimentalForms: "Experimental Forms",
     worksExperimentalFormsDesc:
       "Works that emerged from testing, iteration, or deliberate deviation.",
+    worksClosingNote: "Note",
+    worksClosingTitle: "Browse by structure,\nnot by sequence.",
+    worksClosingText:
+      "Each category opens into its own space. What matters is not order, but relation.",
+    projectsClosingNote: "Note",
+    projectsClosingTitle: "Work in motion,\nnot yet resolved.",
+    projectsClosingText:
+      "These systems remain open. Their form may change, expand, or disappear over time.",
     heroEyebrow: "Works · Artistic Creations",
     heroTitle: "Artistic Creations",
     heroText:
@@ -270,6 +278,14 @@ const i18n = {
     worksAnalyticalPiecesDesc: "聚焦解释、综合与结构化阐释的精选作品。",
     worksExperimentalForms: "实验形态",
     worksExperimentalFormsDesc: "源自测试、迭代或有意偏离的作品。",
+    worksClosingNote: "注",
+    worksClosingTitle: "按结构浏览，\n不按顺序浏览。",
+    worksClosingText:
+      "每个类别都会展开成独立空间。真正重要的不是先后，而是关系。",
+    projectsClosingNote: "注",
+    projectsClosingTitle: "工作仍在运动中，\n尚未定稿。",
+    projectsClosingText:
+      "这些系统保持开放。它们的形态可能随时间改变、扩展，或消失。",
     heroEyebrow: "作品 · 艺术创作",
     heroTitle: "艺术创作",
     heroText: "一个可浏览的艺术作品档案，以结构化网格方式呈现。",

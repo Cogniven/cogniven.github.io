@@ -107,9 +107,9 @@
 
     <section class="section closing-section">
       <div class="container narrow center">
-        <p class="section-note">Note</p>
-        <h2 class="closing-title">Work in motion,<br />not yet resolved.</h2>
-        <p class="closing-text">
+        <p class="section-note" id="projects-closing-note">Note</p>
+        <h2 class="closing-title" id="projects-closing-title">Work in motion,<br />not yet resolved.</h2>
+        <p class="closing-text" id="projects-closing-text">
           These systems remain open. Their form may change, expand, or disappear over time.
         </p>
       </div>
@@ -170,6 +170,9 @@
       document.getElementById('projects-creative-desc').textContent = i18n[lang].projectsCreativeDesc;
       document.getElementById('projects-personal').textContent = i18n[lang].projectsPersonal;
       document.getElementById('projects-personal-desc').textContent = i18n[lang].projectsPersonalDesc;
+      document.getElementById('projects-closing-note').textContent = i18n[lang].projectsClosingNote;
+      document.getElementById('projects-closing-title').innerHTML = i18n[lang].projectsClosingTitle.replace(/\n/g, '<br />');
+      document.getElementById('projects-closing-text').textContent = i18n[lang].projectsClosingText;
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
     }
