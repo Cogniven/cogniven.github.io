@@ -277,6 +277,60 @@
     });
   }
 
+  function isDetailEntryPath(path) {
+    var normalized = normalizePath(path);
+    return (
+      /^\/assets\/images\/(works|writing|projects|archive)\//.test(normalized) ||
+      /\/assets\/images\/(works|writing|projects|archive)\//.test(normalized)
+    );
+  }
+
+  function applyDetailEntryPlaceholders() {
+    if (!isDetailEntryPath(location.pathname)) return;
+
+    var lang = localStorage.getItem('lang') || 'en';
+    var contentPlaceholder = lang === 'zh' ? '这里暂时还没有内容。' : 'No content yet.';
+    var metaPlaceholder = lang === 'zh' ? '暂无' : 'N/A';
+
+    document.querySelectorAll('main [id]').forEach(function (el) {
+      var id = el.id || '';
+      if (!id) return;
+
+      var tag = el.tagName;
+      if (tag === 'H1' || tag === 'H2' || tag === 'H3' || tag === 'H4' || tag === 'A' || tag === 'BUTTON' || tag === 'IMG') return;
+      if (/(^|-)label$/.test(id) || /(^|-)title$/.test(id) || /(^|-)note$/.test(id)) return;
+      if (el.classList.contains('eyebrow') || el.classList.contains('section-note') || el.classList.contains('essay-note-title')) return;
+
+      var hasMetaToken = /meta/.test(id);
+      var isMetaLike =
+        (hasMetaToken && !/(^|-)label$/.test(id)) ||
+        /(^|-)status$/.test(id) ||
+        /(^|-)date$/.test(id) ||
+        /(^|-)value$/.test(id);
+
+      var isContentLike =
+        /(^|-)text$/.test(id) ||
+        /(^|-)subtitle$/.test(id) ||
+        /(^|-)intro$/.test(id) ||
+        /^p\d+$/.test(id) ||
+        /-p\d+$/.test(id) ||
+        id === 'desc' ||
+        id === 'subtitle' ||
+        /abstract/.test(id) ||
+        /caption/.test(id);
+
+      if (!isMetaLike && !isContentLike) return;
+
+      el.textContent = isMetaLike ? metaPlaceholder : contentPlaceholder;
+    });
+  }
+
+  function scheduleDetailEntryPlaceholders() {
+    window.requestAnimationFrame(function () {
+      applyDetailEntryPlaceholders();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     var mainEl = document.querySelector('main');
     if (!mainEl) {
@@ -389,6 +443,16 @@
           closeNav();
         });
       }
+    });
+
+    scheduleDetailEntryPlaceholders();
+    ['lang-en', 'lang-zh'].forEach(function (id) {
+      var langBtn = document.getElementById(id);
+      if (!langBtn || langBtn.dataset.detailPlaceholderBound === '1') return;
+      langBtn.dataset.detailPlaceholderBound = '1';
+      langBtn.addEventListener('click', function () {
+        window.setTimeout(scheduleDetailEntryPlaceholders, 0);
+      });
     });
 
     function handleFirstTab(e) {
