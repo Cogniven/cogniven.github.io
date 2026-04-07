@@ -1,9 +1,9 @@
 const ArtisticCreations = [
   {
-    title: { en: "Artistic Creation 001", zh: "艺术创作 001" },
+    title: { en: "Artistic Creation 001", zh: "临兰亭集序" },
     desc: {
       en: "A short description for this piece.",
-      zh: "该作品的简短描述。",
+      zh: "临于癸卯年冬，因某种原因印章有纰漏。使用procreate创作，笔刷来自procreate超话社区。",
     },
     cover: "/assets/images/works/artistic-creations/work-001/临兰亭集序.png",
     link: "#",
