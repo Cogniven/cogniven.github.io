@@ -158,107 +158,176 @@
     <main>
       <section class="hero">
         <div class="container narrow">
-          <p class="eyebrow">Infrastructure · Capability</p>
-          <h1>Personal Capability Infrastructure</h1>
-          <p class="hero-text">
+          <p class="eyebrow" id="hero-eyebrow">
+            Projects · Personal Infrastructure
+          </p>
+          <h1 id="hero-title">Personal Capability Infrastructure</h1>
+          <p class="hero-text" id="hero-text">
             A structured inventory of capabilities across different domains,
-            tracking tools, proficiency, and their functional roles in ongoing
-            work.
+            used to track tools, proficiency, and their practical roles in
+            ongoing work.
           </p>
         </div>
       </section>
 
-      <!-- 模块区 -->
       <section class="section">
         <div class="container narrow">
-          <!-- 分类 1 -->
-          <div class="capability-section">
-            <h2>Visual & Creative</h2>
+          <div class="system-meta-grid">
+            <div class="system-meta-card">
+              <span id="meta-field-label">Field</span>
+              <strong id="meta-field-value">Capability Inventory</strong>
+            </div>
+            <div class="system-meta-card">
+              <span id="meta-status-label">Status</span>
+              <strong id="meta-status-value">Active</strong>
+            </div>
+            <div class="system-meta-card">
+              <span id="meta-scope-label">Scope</span>
+              <strong id="meta-scope-value">Cross-domain / Personal</strong>
+            </div>
+            <div class="system-meta-card">
+              <span id="meta-output-label">Output</span>
+              <strong id="meta-output-value">Skills / Uses / Levels</strong>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="intro-note">Capability Note</p>
+          <p class="lead-paragraph" id="intro-text">
+            This page is used to organize the capabilities I currently possess
+            across different domains. It is not a résumé-like list, but a
+            working inventory for tracking what I can use, how well I can use
+            it, and where it is actually applied.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <div class="capability-head">
+            <div>
+              <p class="section-note" id="cap-note">Directory</p>
+              <h2 id="cap-title">Current Capability Areas</h2>
+            </div>
+            <p class="section-side-text" id="cap-side">
+              These sections are open-ended and can be expanded over time.
+            </p>
+          </div>
+
+          <div class="capability-group">
+            <h3 id="group-1-title">Visual & Creative</h3>
             <div class="capability-grid">
               <div class="capability-card">
-                <div class="cap-header">
-                  <h3>Procreate</h3>
-                  <span class="cap-level">Advanced</span>
+                <div class="cap-card-top">
+                  <h4 id="g1c1-name">Procreate</h4>
+                  <span class="cap-level" id="g1c1-level">Advanced</span>
                 </div>
-                <p class="cap-use">Digital illustration / visual exploration</p>
-                <p class="cap-note">
-                  Used for stylized compositions and comic-based work.
+                <p class="cap-use" id="g1c1-use">
+                  Digital painting / visual work
+                </p>
+                <p class="cap-desc" id="g1c1-desc">
+                  Used for illustration, visual experiments, and stylized
+                  project work.
                 </p>
               </div>
 
               <div class="capability-card">
-                <div class="cap-header">
-                  <h3>Photoshop</h3>
-                  <span class="cap-level">Intermediate</span>
+                <div class="cap-card-top">
+                  <h4 id="g1c2-name">Photoshop</h4>
+                  <span class="cap-level" id="g1c2-level">Intermediate</span>
                 </div>
-                <p class="cap-use">Image processing / layout</p>
-                <p class="cap-note">
-                  Primarily used for post-processing and composition adjustment.
+                <p class="cap-use" id="g1c2-use">Image editing / composition</p>
+                <p class="cap-desc" id="g1c2-desc">
+                  Used for post-processing, layout adjustment, and image
+                  preparation.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- 分类 2 -->
-          <div class="capability-section">
-            <h2>Technical & Computational</h2>
-
+          <div class="capability-group">
+            <h3 id="group-2-title">Technical & Computational</h3>
             <div class="capability-grid">
               <div class="capability-card">
-                <div class="cap-header">
-                  <h3>Python</h3>
-                  <span class="cap-level">Advanced</span>
+                <div class="cap-card-top">
+                  <h4 id="g2c1-name">Python</h4>
+                  <span class="cap-level" id="g2c1-level">Advanced</span>
                 </div>
-                <p class="cap-use">Quant trading / data processing</p>
-                <p class="cap-note">
-                  Core language for strategy development and automation.
+                <p class="cap-use" id="g2c1-use">
+                  Automation / quant / data processing
+                </p>
+                <p class="cap-desc" id="g2c1-desc">
+                  Core language for strategy development, scripting, and
+                  analysis.
                 </p>
               </div>
 
               <div class="capability-card">
-                <div class="cap-header">
-                  <h3>Freqtrade</h3>
-                  <span class="cap-level">Advanced</span>
+                <div class="cap-card-top">
+                  <h4 id="g2c2-name">Freqtrade</h4>
+                  <span class="cap-level" id="g2c2-level">Advanced</span>
                 </div>
-                <p class="cap-use">Strategy backtesting / execution</p>
-                <p class="cap-note">
-                  Used for multi-strategy system design and testing.
+                <p class="cap-use" id="g2c2-use">
+                  Strategy testing / trading systems
                 </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 分类 3 -->
-          <div class="capability-section">
-            <h2>Practical Skills</h2>
-
-            <div class="capability-grid">
-              <div class="capability-card">
-                <div class="cap-header">
-                  <h3>Excel</h3>
-                  <span class="cap-level">Advanced</span>
-                </div>
-                <p class="cap-use">Data analysis / modeling</p>
-                <p class="cap-note">
-                  Used for quick evaluation and structured calculation.
+                <p class="cap-desc" id="g2c2-desc">
+                  Used to build, test, and iterate multi-strategy trading
+                  systems.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- 分类 4 -->
-          <div class="capability-section">
-            <h2>Music & Performance</h2>
-
+          <div class="capability-group">
+            <h3 id="group-3-title">Practical Skills</h3>
             <div class="capability-grid">
               <div class="capability-card">
-                <div class="cap-header">
-                  <h3>Guitar</h3>
-                  <span class="cap-level">Basic</span>
+                <div class="cap-card-top">
+                  <h4 id="g3c1-name">Excel</h4>
+                  <span class="cap-level" id="g3c1-level">Advanced</span>
                 </div>
-                <p class="cap-use">Personal expression</p>
-                <p class="cap-note">Focus on rhythm and simple composition.</p>
+                <p class="cap-use" id="g3c1-use">
+                  Data organization / quick modeling
+                </p>
+                <p class="cap-desc" id="g3c1-desc">
+                  Used for structured calculation, review, and lightweight
+                  analysis.
+                </p>
+              </div>
+
+              <div class="capability-card">
+                <div class="cap-card-top">
+                  <h4 id="g3c2-name">Information Retrieval</h4>
+                  <span class="cap-level" id="g3c2-level">Intermediate</span>
+                </div>
+                <p class="cap-use" id="g3c2-use">
+                  Search / collection / organization
+                </p>
+                <p class="cap-desc" id="g3c2-desc">
+                  Used for gathering, comparing, and re-structuring information
+                  efficiently.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="capability-group">
+            <h3 id="group-4-title">Music & Performance</h3>
+            <div class="capability-grid">
+              <div class="capability-card">
+                <div class="cap-card-top">
+                  <h4 id="g4c1-name">Guitar</h4>
+                  <span class="cap-level" id="g4c1-level">Basic</span>
+                </div>
+                <p class="cap-use" id="g4c1-use">
+                  Personal practice / expression
+                </p>
+                <p class="cap-desc" id="g4c1-desc">
+                  Used mainly for rhythm practice and simple melodic expression.
+                </p>
               </div>
             </div>
           </div>
