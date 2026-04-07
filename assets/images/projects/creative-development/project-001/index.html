@@ -379,6 +379,86 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "log-eyebrow": { en: "Projects · Creative Development", zh: "项目 · 创意开发" },
+        "log-title": { en: "Ongoing Development Log", zh: "持续开发日志" },
+        "log-subtitle": {
+          en: "A structured record of active experiments, directional changes, and evolving systems.",
+          zh: "一份关于活跃实验、方向变化与持续演化系统的结构化记录。",
+        },
+        "meta-status": { en: "Active", zh: "进行中" },
+        "meta-updated": { en: "Updated: 2026-03-22", zh: "更新：2026-03-22" },
+        "meta-track": { en: "Multi-track", zh: "多线并行" },
+        "anchor-investment": { en: "Investment", zh: "投资" },
+        "anchor-quant": { en: "Quant Systems", zh: "量化系统" },
+        "anchor-ai": { en: "AI Experiments", zh: "AI 实验" },
+        "anchor-visual": { en: "Visual Development", zh: "视觉开发" },
+        "section1-note": { en: "Section 01", zh: "部分 01" },
+        "section1-title": { en: "Investment", zh: "投资" },
+        "section1-intro": {
+          en: "A running record of investment direction, position logic, and current observations.",
+          zh: "关于投资方向、仓位逻辑与当前观察的持续记录。",
+        },
+        "investment-entry1-title": { en: "Portfolio Direction Review", zh: "组合方向复盘" },
+        "investment-entry1-status": { en: "active", zh: "进行中" },
+        "investment-entry1-text": {
+          en: "Current allocation is being reviewed with attention to concentration, volatility, and time horizon.",
+          zh: "当前正在重新审视配置结构，重点关注集中度、波动性与时间周期。",
+        },
+        "investment-entry2-title": { en: "Weekly Observation", zh: "每周观察" },
+        "investment-entry2-status": { en: "draft", zh: "草稿" },
+        "investment-entry2-text": {
+          en: "Short note on recent market movement, risk exposure, and changes in conviction.",
+          zh: "关于近期市场波动、风险暴露与判断变化的简短记录。",
+        },
+        "section2-note": { en: "Section 02", zh: "部分 02" },
+        "section2-title": { en: "Quant Systems", zh: "量化系统" },
+        "section2-intro": {
+          en: "Strategy testing, iteration notes, and system-level observations.",
+          zh: "策略测试、迭代笔记与系统层面的观察。",
+        },
+        "quant-entry1-title": { en: "Strategy Version 0.4", zh: "策略版本 0.4" },
+        "quant-entry1-status": { en: "test", zh: "测试" },
+        "quant-entry1-text": {
+          en: "Revised entry logic and tightened exit conditions. Current focus is reducing unnecessary exposure during sideways periods.",
+          zh: "已修改开仓逻辑并收紧离场条件，目前重点在于减少震荡区间中的无效暴露。",
+        },
+        "quant-entry2-title": { en: "Backtest Note", zh: "回测记录" },
+        "quant-entry2-status": { en: "paused", zh: "暂停" },
+        "quant-entry2-text": {
+          en: "Current parameter range needs restructuring before further testing.",
+          zh: "当前参数区间需要重构，然后再继续后续测试。",
+        },
+        "section3-note": { en: "Section 03", zh: "部分 03" },
+        "section3-title": { en: "AI Experiments", zh: "AI 实验" },
+        "section3-intro": {
+          en: "Explorations in model behavior, workflow design, and prompt structure.",
+          zh: "关于模型行为、工作流设计与提示词结构的探索。",
+        },
+        "ai-entry1-title": { en: "Prompt Workflow Test", zh: "提示词工作流测试" },
+        "ai-entry1-status": { en: "active", zh: "进行中" },
+        "ai-entry1-text": {
+          en: "Comparing different prompting patterns for consistency, control, and output quality.",
+          zh: "比较不同提示模式在稳定性、可控性与输出质量上的差异。",
+        },
+        "section4-note": { en: "Section 04", zh: "部分 04" },
+        "section4-title": { en: "Visual Development", zh: "视觉开发" },
+        "section4-intro": {
+          en: "Ongoing experiments in layout, identity, and presentation logic.",
+          zh: "关于版式、识别系统与呈现逻辑的持续实验。",
+        },
+        "visual-entry1-title": { en: "Portfolio Layout Revision", zh: "作品集版式调整" },
+        "visual-entry1-status": { en: "test", zh: "测试" },
+        "visual-entry1-text": {
+          en: "Testing denser browsing structures for image-heavy pages while keeping the overall tone consistent.",
+          zh: "正在测试更高密度的图片浏览结构，同时保持整体语气与风格一致。",
+        },
+        "closing-note": { en: "Current Direction", zh: "当前方向" },
+        "closing-title": { en: "Still in motion.", zh: "仍在运动中。" },
+        "closing-text": { en: "This page records work while it is still changing.", zh: "这个页面记录的是仍在变化中的工作。" },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -406,127 +486,9 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        document.getElementById("log-eyebrow").textContent =
-          lang === "zh" ? "项目 · 创意开发" : "Projects · Creative Development";
-
-        document.getElementById("log-title").textContent =
-          lang === "zh" ? "持续开发日志" : "Ongoing Development Log";
-
-        document.getElementById("log-subtitle").textContent =
-          lang === "zh"
-            ? "一份关于活跃实验、方向变化与持续演化系统的结构化记录。"
-            : "A structured record of active experiments, directional changes, and evolving systems.";
-
-        document.getElementById("meta-status").textContent =
-          lang === "zh" ? "进行中" : "Active";
-
-        document.getElementById("meta-updated").textContent =
-          lang === "zh" ? "更新：2026-03-22" : "Updated: 2026-03-22";
-
-        document.getElementById("meta-track").textContent =
-          lang === "zh" ? "多线并行" : "Multi-track";
-
-        document.getElementById("anchor-investment").textContent =
-          lang === "zh" ? "投资" : "Investment";
-        document.getElementById("anchor-quant").textContent =
-          lang === "zh" ? "量化系统" : "Quant Systems";
-        document.getElementById("anchor-ai").textContent =
-          lang === "zh" ? "AI 实验" : "AI Experiments";
-        document.getElementById("anchor-visual").textContent =
-          lang === "zh" ? "视觉开发" : "Visual Development";
-
-        document.getElementById("section1-note").textContent =
-          lang === "zh" ? "部分 01" : "Section 01";
-        document.getElementById("section1-title").textContent =
-          lang === "zh" ? "投资" : "Investment";
-        document.getElementById("section1-intro").textContent =
-          lang === "zh"
-            ? "关于投资方向、仓位逻辑与当前观察的持续记录。"
-            : "A running record of investment direction, position logic, and current observations.";
-        document.getElementById("investment-entry1-title").textContent =
-          lang === "zh" ? "组合方向复盘" : "Portfolio Direction Review";
-        document.getElementById("investment-entry1-status").textContent =
-          lang === "zh" ? "进行中" : "active";
-        document.getElementById("investment-entry1-text").textContent =
-          lang === "zh"
-            ? "当前正在重新审视配置结构，重点关注集中度、波动性与时间周期。"
-            : "Current allocation is being reviewed with attention to concentration, volatility, and time horizon.";
-        document.getElementById("investment-entry2-title").textContent =
-          lang === "zh" ? "每周观察" : "Weekly Observation";
-        document.getElementById("investment-entry2-status").textContent =
-          lang === "zh" ? "草稿" : "draft";
-        document.getElementById("investment-entry2-text").textContent =
-          lang === "zh"
-            ? "关于近期市场波动、风险暴露与判断变化的简短记录。"
-            : "Short note on recent market movement, risk exposure, and changes in conviction.";
-
-        document.getElementById("section2-note").textContent =
-          lang === "zh" ? "部分 02" : "Section 02";
-        document.getElementById("section2-title").textContent =
-          lang === "zh" ? "量化系统" : "Quant Systems";
-        document.getElementById("section2-intro").textContent =
-          lang === "zh"
-            ? "策略测试、迭代笔记与系统层面的观察。"
-            : "Strategy testing, iteration notes, and system-level observations.";
-        document.getElementById("quant-entry1-title").textContent =
-          lang === "zh" ? "策略版本 0.4" : "Strategy Version 0.4";
-        document.getElementById("quant-entry1-status").textContent =
-          lang === "zh" ? "测试" : "test";
-        document.getElementById("quant-entry1-text").textContent =
-          lang === "zh"
-            ? "已修改开仓逻辑并收紧离场条件，目前重点在于减少震荡区间中的无效暴露。"
-            : "Revised entry logic and tightened exit conditions. Current focus is reducing unnecessary exposure during sideways periods.";
-        document.getElementById("quant-entry2-title").textContent =
-          lang === "zh" ? "回测记录" : "Backtest Note";
-        document.getElementById("quant-entry2-status").textContent =
-          lang === "zh" ? "暂停" : "paused";
-        document.getElementById("quant-entry2-text").textContent =
-          lang === "zh"
-            ? "当前参数区间需要重构，然后再继续后续测试。"
-            : "Current parameter range needs restructuring before further testing.";
-
-        document.getElementById("section3-note").textContent =
-          lang === "zh" ? "部分 03" : "Section 03";
-        document.getElementById("section3-title").textContent =
-          lang === "zh" ? "AI 实验" : "AI Experiments";
-        document.getElementById("section3-intro").textContent =
-          lang === "zh"
-            ? "关于模型行为、工作流设计与提示词结构的探索。"
-            : "Explorations in model behavior, workflow design, and prompt structure.";
-        document.getElementById("ai-entry1-title").textContent =
-          lang === "zh" ? "提示词工作流测试" : "Prompt Workflow Test";
-        document.getElementById("ai-entry1-status").textContent =
-          lang === "zh" ? "进行中" : "active";
-        document.getElementById("ai-entry1-text").textContent =
-          lang === "zh"
-            ? "比较不同提示模式在稳定性、可控性与输出质量上的差异。"
-            : "Comparing different prompting patterns for consistency, control, and output quality.";
-
-        document.getElementById("section4-note").textContent =
-          lang === "zh" ? "部分 04" : "Section 04";
-        document.getElementById("section4-title").textContent =
-          lang === "zh" ? "视觉开发" : "Visual Development";
-        document.getElementById("section4-intro").textContent =
-          lang === "zh"
-            ? "关于版式、识别系统与呈现逻辑的持续实验。"
-            : "Ongoing experiments in layout, identity, and presentation logic.";
-        document.getElementById("visual-entry1-title").textContent =
-          lang === "zh" ? "作品集版式调整" : "Portfolio Layout Revision";
-        document.getElementById("visual-entry1-status").textContent =
-          lang === "zh" ? "测试" : "test";
-        document.getElementById("visual-entry1-text").textContent =
-          lang === "zh"
-            ? "正在测试更高密度的图片浏览结构，同时保持整体语气与风格一致。"
-            : "Testing denser browsing structures for image-heavy pages while keeping the overall tone consistent.";
-
-        document.getElementById("closing-note").textContent =
-          lang === "zh" ? "当前方向" : "Current Direction";
-        document.getElementById("closing-title").textContent =
-          lang === "zh" ? "仍在运动中。" : "Still in motion.";
-        document.getElementById("closing-text").textContent =
-          lang === "zh"
-            ? "这个页面记录的是仍在变化中的工作。"
-            : "This page records work while it is still changing.";
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

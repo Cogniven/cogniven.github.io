@@ -139,6 +139,29 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "note-eyebrow": { en: "Archive · Incomplete Fragments", zh: "归档 · 未竟片段" },
+        "note-title": { en: "Taxonomy Notes (Unfinished)", zh: "分类法笔记（未完成）" },
+        "note-meta": { en: "Mar 05, 2026", zh: "2026年3月5日" },
+        "note-subtitle": {
+          en: "A partial note set for cross-linking category systems across works, writing, and projects.",
+          zh: "一组尚未完成的笔记，用于连接作品、写作与项目的分类系统。",
+        },
+        "p1": {
+          en: "This fragment started as an attempt to normalize category language across three major sections. It proposed shared tags, but the hierarchy definition was left incomplete.",
+          zh: "这个片段最初用于统一三大分区中的分类语言。它提出了共享标签，但层级定义尚未完成。",
+        },
+        "p2": {
+          en: "The draft is still useful because it identified overlapping labels that caused ambiguity in navigation and filtering. It also exposed where naming conventions diverged between content and route paths.",
+          zh: "这份草稿仍有价值，因为它识别了导致导航与筛选歧义的重叠标签，也暴露了内容命名与路径命名的不一致。",
+        },
+        "p3": {
+          en: "Work stopped before enforcement rules were written. The fragment is retained as a reference for future taxonomy consolidation.",
+          zh: "在写出执行规则之前该工作就暂停了，因此作为后续分类整合的参考被保留下来。",
+        },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -159,28 +182,9 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        document.getElementById("note-eyebrow").textContent =
-          lang === "zh" ? "归档 · 未竟片段" : "Archive · Incomplete Fragments";
-        document.getElementById("note-title").textContent =
-          lang === "zh" ? "分类法笔记（未完成）" : "Taxonomy Notes (Unfinished)";
-        document.getElementById("note-meta").textContent =
-          lang === "zh" ? "2026年3月5日" : "Mar 05, 2026";
-        document.getElementById("note-subtitle").textContent =
-          lang === "zh"
-            ? "一组尚未完成的笔记，用于连接作品、写作与项目的分类系统。"
-            : "A partial note set for cross-linking category systems across works, writing, and projects.";
-        document.getElementById("p1").textContent =
-          lang === "zh"
-            ? "这个片段最初用于统一三大分区中的分类语言。它提出了共享标签，但层级定义尚未完成。"
-            : "This fragment started as an attempt to normalize category language across three major sections. It proposed shared tags, but the hierarchy definition was left incomplete.";
-        document.getElementById("p2").textContent =
-          lang === "zh"
-            ? "这份草稿仍有价值，因为它识别了导致导航与筛选歧义的重叠标签，也暴露了内容命名与路径命名的不一致。"
-            : "The draft is still useful because it identified overlapping labels that caused ambiguity in navigation and filtering. It also exposed where naming conventions diverged between content and route paths.";
-        document.getElementById("p3").textContent =
-          lang === "zh"
-            ? "在写出执行规则之前该工作就暂停了，因此作为后续分类整合的参考被保留下来。"
-            : "Work stopped before enforcement rules were written. The fragment is retained as a reference for future taxonomy consolidation.";
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

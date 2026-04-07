@@ -214,6 +214,44 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "eyebrow": { en: "Archive · Discarded Paths", zh: "归档 · 废弃路径" },
+        "title": { en: "Routing Tree v0.6", zh: "路由树 v0.6" },
+        "meta-year": { en: "2026", zh: "2026年" },
+        "meta-type": { en: "Architecture Draft", zh: "架构草案" },
+        "meta-tag": { en: "Navigation", zh: "导航" },
+        "subtitle": {
+          en: "An early deep-nested routing plan that was later replaced by a flatter section-first structure.",
+          zh: "一个早期的深层嵌套路由方案，后续被更扁平的分区优先结构替代。",
+        },
+        "abstract-label": { en: "Context", zh: "背景" },
+        "abstract-text": {
+          en: "This version attempted to model every content branch through strict nested routes. It made logical sense on paper but introduced fragile URL depth, uneven naming, and hard-to-maintain navigation states.",
+          zh: "这个版本试图用严格嵌套路由表达全部内容分支。它在逻辑上完整，但带来了 URL 过深、命名不均和导航状态难维护的问题。",
+        },
+        "h2-1": { en: "1. Initial Intention", zh: "1. 初始意图" },
+        "p1": {
+          en: "The goal was to mirror conceptual hierarchy directly in URL depth. Every sub-layer had a path segment, and each segment carried an explicit taxonomy role.",
+          zh: "当时的目标是把概念层级直接映射到 URL 深度。每一层都对应一个路径段，并承载明确的分类角色。",
+        },
+        "h2-2": { en: "2. Why It Broke", zh: "2. 失效原因" },
+        "p2": {
+          en: "As categories evolved, links became brittle. Renaming one middle segment propagated changes across many pages and increased maintenance friction during content iteration.",
+          zh: "随着分类演化，链接开始变得脆弱。中间层一旦改名，多个页面都需要同步调整，维护成本迅速上升。",
+        },
+        "h2-3": { en: "3. What Was Kept", zh: "3. 保留下来的结论" },
+        "p3": {
+          en: "Although discarded, this path clarified one useful principle: top navigation should expose only section-level stability, while deeper taxonomy remains internal to each section.",
+          zh: "虽然该路径被放弃，但它明确了一条原则：顶部导航应只暴露分区级稳定结构，深层分类应在各分区内部处理。",
+        },
+        "note-title": { en: "Archive Note", zh: "归档注记" },
+        "note-text": {
+          en: "This artifact is preserved as a decision trace for future routing refactors.",
+          zh: "该条目被保留为后续路由重构时的决策痕迹。",
+        },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -234,50 +272,9 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        document.getElementById("eyebrow").textContent =
-          lang === "zh" ? "归档 · 废弃路径" : "Archive · Discarded Paths";
-        document.getElementById("title").textContent =
-          lang === "zh" ? "暂无内容" : "Empty Content";
-        document.getElementById("meta-year").textContent =
-          lang === "zh" ? "2026年" : "2026";
-        document.getElementById("meta-type").textContent =
-          lang === "zh" ? "架构草案" : "Architecture Draft";
-        document.getElementById("meta-tag").textContent =
-          lang === "zh" ? "导航" : "Navigation";
-        document.getElementById("subtitle").textContent =
-          lang === "zh"
-            ? "一个早期的深层嵌套路由方案，后续被更扁平的分区优先结构替代。"
-            : "An early deep-nested routing plan that was later replaced by a flatter section-first structure.";
-        document.getElementById("abstract-label").textContent =
-          lang === "zh" ? "背景" : "Context";
-        document.getElementById("abstract-text").textContent =
-          lang === "zh"
-            ? "这个版本试图用严格嵌套路由表达全部内容分支。它在逻辑上完整，但带来了 URL 过深、命名不均和导航状态难维护的问题。"
-            : "This version attempted to model every content branch through strict nested routes. It made logical sense on paper but introduced fragile URL depth, uneven naming, and hard-to-maintain navigation states.";
-        document.getElementById("h2-1").textContent =
-          lang === "zh" ? "1. 初始意图" : "1. Initial Intention";
-        document.getElementById("p1").textContent =
-          lang === "zh"
-            ? "当时的目标是把概念层级直接映射到 URL 深度。每一层都对应一个路径段，并承载明确的分类角色。"
-            : "The goal was to mirror conceptual hierarchy directly in URL depth. Every sub-layer had a path segment, and each segment carried an explicit taxonomy role.";
-        document.getElementById("h2-2").textContent =
-          lang === "zh" ? "2. 失效原因" : "2. Why It Broke";
-        document.getElementById("p2").textContent =
-          lang === "zh"
-            ? "随着分类演化，链接开始变得脆弱。中间层一旦改名，多个页面都需要同步调整，维护成本迅速上升。"
-            : "As categories evolved, links became brittle. Renaming one middle segment propagated changes across many pages and increased maintenance friction during content iteration.";
-        document.getElementById("h2-3").textContent =
-          lang === "zh" ? "3. 保留下来的结论" : "3. What Was Kept";
-        document.getElementById("p3").textContent =
-          lang === "zh"
-            ? "虽然该路径被放弃，但它明确了一条原则：顶部导航应只暴露分区级稳定结构，深层分类应在各分区内部处理。"
-            : "Although discarded, this path clarified one useful principle: top navigation should expose only section-level stability, while deeper taxonomy remains internal to each section.";
-        document.getElementById("note-title").textContent =
-          lang === "zh" ? "归档注记" : "Archive Note";
-        document.getElementById("note-text").textContent =
-          lang === "zh"
-            ? "该条目被保留为后续路由重构时的决策痕迹。"
-            : "This artifact is preserved as a decision trace for future routing refactors.";
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

@@ -236,6 +236,54 @@
   <script src="/js/i18n.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
+    const pageContent = {
+      // 内容填写区（新手只改这里）
+      // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+      'essay-eyebrow': { en: 'Works · Analytical Pieces', zh: '作品 · 分析作品' },
+      'essay-title': { en: 'Structure and Interpretation', zh: '结构与阐释' },
+      'essay-meta-year': { en: '2026', zh: '2026年' },
+      'essay-meta-type': { en: 'Essay', zh: '文章' },
+      'essay-meta-tag': { en: 'Analysis', zh: '分析' },
+      'essay-subtitle': {
+        en: 'How structure shapes meaning in analytical writing.',
+        zh: '结构如何在分析性写作中塑造意义。',
+      },
+      'essay-abstract-label': { en: 'Abstract', zh: '摘要' },
+      'essay-abstract': {
+        en: 'This piece looks at how form, sequence, and emphasis shape interpretation. Instead of treating structure as a neutral frame, it reads it as an active part of meaning.',
+        zh: '这篇作品讨论形式、顺序与强调方式如何塑造阐释。它不把结构视为中性的框架，而把它看作意义本身的主动组成部分。',
+      },
+      'essay-h2-1': { en: '1. Framing', zh: '1. 框定' },
+      'essay-p1': {
+        en: 'Interpretation is shaped before content is fully understood. Order, emphasis, and framing guide attention from the beginning.',
+        zh: '在内容被完全理解之前，阐释就已经开始受到塑造。顺序、强调与框定方式会从一开始就引导注意力。',
+      },
+      'essay-h2-2': { en: '2. Guidance', zh: '2. 引导' },
+      'essay-p2': {
+        en: 'Structure helps distinguish the central line from surrounding material. It determines rhythm, relation, and hierarchy.',
+        zh: '结构帮助读者把中心线索与周边材料区分开来。它决定节奏、关系与层级。',
+      },
+      'essay-caption': {
+        en: 'Figure 1. A supporting image or chart placed within the essay flow.',
+        zh: '图 1：置于文章流程中的辅助图像或图表。',
+      },
+      'essay-h2-3': { en: '3. Variation', zh: '3. 变化' },
+      'essay-p3': {
+        en: 'Different structures produce different reading experiences. Compression, expansion, and interruption all affect meaning.',
+        zh: '不同的结构会生成不同的阅读经验。压缩、展开与打断，都会影响意义的形成。',
+      },
+      'essay-note-title': { en: 'Note', zh: '注' },
+      'essay-note-text': {
+        en: 'This block can hold a reference, side remark, or short methodological note.',
+        zh: '这个区块可以放参考说明、旁注，或简短的方法说明。',
+      },
+      'essay-ending-label': { en: 'Ending', zh: '结尾' },
+      'essay-closing-title': { en: 'Structure is part of meaning.', zh: '结构本身就是意义的一部分。' },
+      'essay-closing-text': {
+        en: 'What is understood depends not only on what is said, but on how it is arranged.',
+        zh: '人所理解的内容，不只取决于说了什么，也取决于它是如何被安排的。',
+      },
+    };
 
     function setLang(newLang) {
       lang = newLang;
@@ -252,81 +300,9 @@
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
 
-      document.getElementById('essay-eyebrow').textContent =
-        lang === 'zh' ? '作品 · 分析作品' : 'Works · Analytical Pieces';
-
-      document.getElementById('essay-title').textContent =
-        lang === 'zh' ? '结构与阐释' : 'Structure and Interpretation';
-
-      document.getElementById('essay-meta-year').textContent =
-        lang === 'zh' ? '2026年' : '2026';
-
-      document.getElementById('essay-meta-type').textContent =
-        lang === 'zh' ? '文章' : 'Essay';
-
-      document.getElementById('essay-meta-tag').textContent =
-        lang === 'zh' ? '分析' : 'Analysis';
-
-      document.getElementById('essay-subtitle').textContent =
-        lang === 'zh'
-          ? '结构如何在分析性写作中塑造意义。'
-          : 'How structure shapes meaning in analytical writing.';
-
-      document.getElementById('essay-abstract-label').textContent =
-        lang === 'zh' ? '摘要' : 'Abstract';
-
-      document.getElementById('essay-abstract').textContent =
-        lang === 'zh'
-          ? '这篇作品讨论形式、顺序与强调方式如何塑造阐释。它不把结构视为中性的框架，而把它看作意义本身的主动组成部分。'
-          : 'This piece looks at how form, sequence, and emphasis shape interpretation. Instead of treating structure as a neutral frame, it reads it as an active part of meaning.';
-
-      document.getElementById('essay-h2-1').textContent =
-        lang === 'zh' ? '1. 框定' : '1. Framing';
-
-      document.getElementById('essay-p1').textContent =
-        lang === 'zh'
-          ? '在内容被完全理解之前，阐释就已经开始受到塑造。顺序、强调与框定方式会从一开始就引导注意力。'
-          : 'Interpretation is shaped before content is fully understood. Order, emphasis, and framing guide attention from the beginning.';
-
-      document.getElementById('essay-h2-2').textContent =
-        lang === 'zh' ? '2. 引导' : '2. Guidance';
-
-      document.getElementById('essay-p2').textContent =
-        lang === 'zh'
-          ? '结构帮助读者把中心线索与周边材料区分开来。它决定节奏、关系与层级。'
-          : 'Structure helps distinguish the central line from surrounding material. It determines rhythm, relation, and hierarchy.';
-
-      document.getElementById('essay-caption').textContent =
-        lang === 'zh'
-          ? '图 1：置于文章流程中的辅助图像或图表。'
-          : 'Figure 1. A supporting image or chart placed within the essay flow.';
-
-      document.getElementById('essay-h2-3').textContent =
-        lang === 'zh' ? '3. 变化' : '3. Variation';
-
-      document.getElementById('essay-p3').textContent =
-        lang === 'zh'
-          ? '不同的结构会生成不同的阅读经验。压缩、展开与打断，都会影响意义的形成。'
-          : 'Different structures produce different reading experiences. Compression, expansion, and interruption all affect meaning.';
-
-      document.getElementById('essay-note-title').textContent =
-        lang === 'zh' ? '注' : 'Note';
-
-      document.getElementById('essay-note-text').textContent =
-        lang === 'zh'
-          ? '这个区块可以放参考说明、旁注，或简短的方法说明。'
-          : 'This block can hold a reference, side remark, or short methodological note.';
-
-      document.getElementById('essay-ending-label').textContent =
-        lang === 'zh' ? '结尾' : 'Ending';
-
-      document.getElementById('essay-closing-title').textContent =
-        lang === 'zh' ? '结构本身就是意义的一部分。' : 'Structure is part of meaning.';
-
-      document.getElementById('essay-closing-text').textContent =
-        lang === 'zh'
-          ? '人所理解的内容，不只取决于说了什么，也取决于它是如何被安排的。'
-          : 'What is understood depends not only on what is said, but on how it is arranged.';
+      if (window.applyPageContentOverrides) {
+        window.applyPageContentOverrides(lang, pageContent);
+      }
 
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

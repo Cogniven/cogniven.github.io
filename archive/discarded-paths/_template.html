@@ -214,6 +214,12 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        // 例如：
+        // title: { en: "English title", zh: "中文标题" },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -278,6 +284,10 @@
           lang === "zh"
             ? "该条目被保留为后续路由重构时的决策痕迹。"
             : "This artifact is preserved as a decision trace for future routing refactors.";
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

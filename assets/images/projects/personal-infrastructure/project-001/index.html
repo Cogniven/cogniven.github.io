@@ -337,6 +337,81 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "hero-eyebrow": { en: "Projects · Personal Infrastructure", zh: "项目 · 个人基础设施" },
+        "hero-title": { en: "Personal Workflow Infrastructure", zh: "个人工作流基础设施" },
+        "hero-text": {
+          en: "A long-term support system for tools, files, notes, and routines that keeps personal work stable, organized, and easier to maintain.",
+          zh: "一个面向长期使用的支持系统，用于整合工具、文件、笔记与日常流程，使个人工作更稳定、更有序，也更容易维护。",
+        },
+        "meta-field-label": { en: "Field", zh: "领域" },
+        "meta-field-value": { en: "Workflow / Productivity", zh: "工作流 / 生产力" },
+        "meta-status-label": { en: "Status", zh: "状态" },
+        "meta-status-value": { en: "Active", zh: "进行中" },
+        "meta-scope-label": { en: "Scope", zh: "范围" },
+        "meta-scope-value": { en: "Long-term / Personal System", zh: "长期 / 个人系统" },
+        "meta-output-label": { en: "Output", zh: "产出" },
+        "meta-output-value": { en: "Routines / Structures / Notes", zh: "流程 / 结构 / 笔记" },
+        "intro-note": { en: "System Note", zh: "系统说明" },
+        "intro-text": {
+          en: "This page describes a support structure rather than a single tool. Its purpose is to reduce friction in daily work by aligning files, tools, notes, and routines into a more durable personal operating system.",
+          zh: "这一页描述的不是单一工具，而是一套支持结构。它的目的，是通过对齐文件、工具、笔记与日常流程，减少日常工作中的摩擦，并形成更耐用的个人操作系统。",
+        },
+        "focus-note": { en: "Focus", zh: "重点" },
+        "focus-title": { en: "System Focus", zh: "系统重点" },
+        "focus-p1": {
+          en: "The central pressure behind this system is fragmentation. When tools, notes, folders, and routines evolve separately, work becomes harder to retrieve, maintain, and repeat.",
+          zh: "这套系统背后的核心压力来自碎片化。当工具、笔记、文件夹与流程各自独立演化时，工作就会变得更难检索、更难维护，也更难复用。",
+        },
+        "focus-p2": {
+          en: "This infrastructure exists to support long-term study, technical experimentation, writing, and project management without forcing each activity into a disconnected workflow.",
+          zh: "这套基础设施的存在，是为了支持长期学习、技术实验、写作与项目管理，而不必让每一种活动都落入彼此割裂的工作流中。",
+        },
+        "structure-note": { en: "Structure", zh: "结构" },
+        "structure-title": { en: "System Structure", zh: "系统结构" },
+        "module-files-title": { en: "Files", zh: "文件" },
+        "module-files-text": {
+          en: "Directory structure, naming logic, version control, and storage discipline.",
+          zh: "目录结构、命名逻辑、版本控制与存储纪律。",
+        },
+        "module-tools-title": { en: "Tools", zh: "工具" },
+        "module-tools-text": {
+          en: "Editors, scripts, local environments, and technical utilities used in daily work.",
+          zh: "编辑器、脚本、本地环境，以及日常工作中使用的技术工具。",
+        },
+        "module-notes-title": { en: "Notes", zh: "笔记" },
+        "module-notes-text": {
+          en: "Working notes, references, draft structures, and searchable knowledge materials.",
+          zh: "工作笔记、参考资料、草稿结构，以及可检索的知识材料。",
+        },
+        "module-routines-title": { en: "Routines", zh: "流程" },
+        "module-routines-text": {
+          en: "Repeated processes for building, revising, testing, and maintaining work.",
+          zh: "用于构建、修订、测试与维护工作的重复性过程。",
+        },
+        "materials-note": { en: "Materials", zh: "材料" },
+        "materials-title": { en: "Tools and Inputs", zh: "工具与输入" },
+        "materials-p1": {
+          en: "The system is fed by local files, writing drafts, project folders, web assets, code repositories, and recurring maintenance habits. These are not treated as isolated resources but as parts of one operating environment.",
+          zh: "这套系统由本地文件、写作草稿、项目文件夹、网页资源、代码仓库以及周期性的维护习惯共同供给。它们不被视作孤立资源，而被看作同一操作环境的组成部分。",
+        },
+        "materials-p2": {
+          en: "Inputs are organized through folder structure, naming rules, reusable templates, and a growing logic for how different forms of work connect to each other.",
+          zh: "这些输入通过文件夹结构、命名规则、可复用模板，以及不断增长的连接逻辑来组织，使不同形式的工作能够彼此关联。",
+        },
+        "direction-note": { en: "Direction", zh: "方向" },
+        "direction-title": { en: "Current Direction", zh: "当前方向" },
+        "direction-p1": {
+          en: "The current direction is to improve consistency across page templates, asset management, and workflow logic so that technical, academic, and creative work can all be maintained inside one coherent structure.",
+          zh: "当前方向是提高页面模板、资源管理与工作流逻辑之间的一致性，使技术、学术与创意工作都能被维持在一个连贯的结构之中。",
+        },
+        "direction-p2": {
+          en: "Next steps include stronger automation, cleaner naming conventions, and a more stable relation between project pages, image assets, and reusable templates.",
+          zh: "下一步包括更强的自动化、更清晰的命名规范，以及项目页面、图像资源与可复用模板之间更稳定的关系。",
+        },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -364,119 +439,9 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        document.getElementById("hero-eyebrow").textContent =
-          lang === "zh"
-            ? "项目 · 个人基础设施"
-            : "Projects · Personal Infrastructure";
-        document.getElementById("hero-title").textContent =
-          lang === "zh"
-            ? "个人工作流基础设施"
-            : "Personal Workflow Infrastructure";
-        document.getElementById("hero-text").textContent =
-          lang === "zh"
-            ? "一个面向长期使用的支持系统，用于整合工具、文件、笔记与日常流程，使个人工作更稳定、更有序，也更容易维护。"
-            : "A long-term support system for tools, files, notes, and routines that keeps personal work stable, organized, and easier to maintain.";
-
-        document.getElementById("meta-field-label").textContent =
-          lang === "zh" ? "领域" : "Field";
-        document.getElementById("meta-field-value").textContent =
-          lang === "zh" ? "工作流 / 生产力" : "Workflow / Productivity";
-
-        document.getElementById("meta-status-label").textContent =
-          lang === "zh" ? "状态" : "Status";
-        document.getElementById("meta-status-value").textContent =
-          lang === "zh" ? "进行中" : "Active";
-
-        document.getElementById("meta-scope-label").textContent =
-          lang === "zh" ? "范围" : "Scope";
-        document.getElementById("meta-scope-value").textContent =
-          lang === "zh" ? "长期 / 个人系统" : "Long-term / Personal System";
-
-        document.getElementById("meta-output-label").textContent =
-          lang === "zh" ? "产出" : "Output";
-        document.getElementById("meta-output-value").textContent =
-          lang === "zh"
-            ? "流程 / 结构 / 笔记"
-            : "Routines / Structures / Notes";
-
-        document.getElementById("intro-note").textContent =
-          lang === "zh" ? "系统说明" : "System Note";
-        document.getElementById("intro-text").textContent =
-          lang === "zh"
-            ? "这一页描述的不是单一工具，而是一套支持结构。它的目的，是通过对齐文件、工具、笔记与日常流程，减少日常工作中的摩擦，并形成更耐用的个人操作系统。"
-            : "This page describes a support structure rather than a single tool. Its purpose is to reduce friction in daily work by aligning files, tools, notes, and routines into a more durable personal operating system.";
-
-        document.getElementById("focus-note").textContent =
-          lang === "zh" ? "重点" : "Focus";
-        document.getElementById("focus-title").textContent =
-          lang === "zh" ? "系统重点" : "System Focus";
-        document.getElementById("focus-p1").textContent =
-          lang === "zh"
-            ? "这套系统背后的核心压力来自碎片化。当工具、笔记、文件夹与流程各自独立演化时，工作就会变得更难检索、更难维护，也更难复用。"
-            : "The central pressure behind this system is fragmentation. When tools, notes, folders, and routines evolve separately, work becomes harder to retrieve, maintain, and repeat.";
-        document.getElementById("focus-p2").textContent =
-          lang === "zh"
-            ? "这套基础设施的存在，是为了支持长期学习、技术实验、写作与项目管理，而不必让每一种活动都落入彼此割裂的工作流中。"
-            : "This infrastructure exists to support long-term study, technical experimentation, writing, and project management without forcing each activity into a disconnected workflow.";
-
-        document.getElementById("structure-note").textContent =
-          lang === "zh" ? "结构" : "Structure";
-        document.getElementById("structure-title").textContent =
-          lang === "zh" ? "系统结构" : "System Structure";
-
-        document.getElementById("module-files-title").textContent =
-          lang === "zh" ? "文件" : "Files";
-        document.getElementById("module-files-text").textContent =
-          lang === "zh"
-            ? "目录结构、命名逻辑、版本控制与存储纪律。"
-            : "Directory structure, naming logic, version control, and storage discipline.";
-
-        document.getElementById("module-tools-title").textContent =
-          lang === "zh" ? "工具" : "Tools";
-        document.getElementById("module-tools-text").textContent =
-          lang === "zh"
-            ? "编辑器、脚本、本地环境，以及日常工作中使用的技术工具。"
-            : "Editors, scripts, local environments, and technical utilities used in daily work.";
-
-        document.getElementById("module-notes-title").textContent =
-          lang === "zh" ? "笔记" : "Notes";
-        document.getElementById("module-notes-text").textContent =
-          lang === "zh"
-            ? "工作笔记、参考资料、草稿结构，以及可检索的知识材料。"
-            : "Working notes, references, draft structures, and searchable knowledge materials.";
-
-        document.getElementById("module-routines-title").textContent =
-          lang === "zh" ? "流程" : "Routines";
-        document.getElementById("module-routines-text").textContent =
-          lang === "zh"
-            ? "用于构建、修订、测试与维护工作的重复性过程。"
-            : "Repeated processes for building, revising, testing, and maintaining work.";
-
-        document.getElementById("materials-note").textContent =
-          lang === "zh" ? "材料" : "Materials";
-        document.getElementById("materials-title").textContent =
-          lang === "zh" ? "工具与输入" : "Tools and Inputs";
-        document.getElementById("materials-p1").textContent =
-          lang === "zh"
-            ? "这套系统由本地文件、写作草稿、项目文件夹、网页资源、代码仓库以及周期性的维护习惯共同供给。它们不被视作孤立资源，而被看作同一操作环境的组成部分。"
-            : "The system is fed by local files, writing drafts, project folders, web assets, code repositories, and recurring maintenance habits. These are not treated as isolated resources but as parts of one operating environment.";
-        document.getElementById("materials-p2").textContent =
-          lang === "zh"
-            ? "这些输入通过文件夹结构、命名规则、可复用模板，以及不断增长的连接逻辑来组织，使不同形式的工作能够彼此关联。"
-            : "Inputs are organized through folder structure, naming rules, reusable templates, and a growing logic for how different forms of work connect to each other.";
-
-        document.getElementById("direction-note").textContent =
-          lang === "zh" ? "方向" : "Direction";
-        document.getElementById("direction-title").textContent =
-          lang === "zh" ? "当前方向" : "Current Direction";
-        document.getElementById("direction-p1").textContent =
-          lang === "zh"
-            ? "当前方向是提高页面模板、资源管理与工作流逻辑之间的一致性，使技术、学术与创意工作都能被维持在一个连贯的结构之中。"
-            : "The current direction is to improve consistency across page templates, asset management, and workflow logic so that technical, academic, and creative work can all be maintained inside one coherent structure.";
-        document.getElementById("direction-p2").textContent =
-          lang === "zh"
-            ? "下一步包括更强的自动化、更清晰的命名规范，以及项目页面、图像资源与可复用模板之间更稳定的关系。"
-            : "Next steps include stronger automation, cleaner naming conventions, and a more stable relation between project pages, image assets, and reusable templates.";
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

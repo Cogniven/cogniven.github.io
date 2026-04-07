@@ -285,6 +285,81 @@
   <script src="/js/i18n.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
+    const pageContent = {
+      // 内容填写区（新手只改这里）
+      // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+      'sys-eyebrow': { en: 'Projects · Research Systems', zh: '项目 · 研究系统' },
+      'sys-title': { en: 'Research System Title', zh: '研究系统标题' },
+      'sys-hero-text': {
+        en: 'A structured research system built to organize questions, materials, methods, and long-term outputs.',
+        zh: '一个用于组织问题、材料、方法与长期产出的结构化研究系统。',
+      },
+      'meta-field-label': { en: 'Field', zh: '领域' },
+      'meta-field-value': { en: 'Research Field', zh: '研究领域' },
+      'meta-status-label': { en: 'Status', zh: '状态' },
+      'meta-status-value': { en: 'In Progress', zh: '进行中' },
+      'meta-scope-label': { en: 'Scope', zh: '范围' },
+      'meta-scope-value': { en: 'Long-term Project', zh: '长期项目' },
+      'meta-output-label': { en: 'Output', zh: '产出' },
+      'meta-output-value': { en: 'Notes / Papers / Cases', zh: '笔记 / 论文 / 案例' },
+      'sys-note-label': { en: 'System Note', zh: '系统说明' },
+      'sys-note-text': {
+        en: 'This system is designed as a stable structure for storing questions, clarifying direction, and turning scattered materials into coherent research output.',
+        zh: '这个系统被设计成一个稳定结构，用于保存问题、澄清方向，并把分散材料转化为连贯研究产出。',
+      },
+      'focus-label': { en: 'Focus', zh: '焦点' },
+      'focus-title': { en: 'Core Focus', zh: '核心焦点' },
+      'focus-p1': {
+        en: 'This section defines the central research question or the main thematic direction of the project.',
+        zh: '这一部分用于定义项目的核心研究问题或主要主题方向。',
+      },
+      'focus-p2': {
+        en: 'Use this area to explain what the system is trying to understand, organize, or solve.',
+        zh: '你可以在这里说明这个系统试图理解、组织或解决什么。',
+      },
+      'structure-label': { en: 'Structure', zh: '结构' },
+      'structure-title': { en: 'System Structure', zh: '系统结构' },
+      'm1-title': { en: 'Module 01', zh: '模块 01' },
+      'm1-text': {
+        en: 'A first module for concepts, theory, or foundational definitions.',
+        zh: '用于概念、理论或基础定义的第一模块。',
+      },
+      'm2-title': { en: 'Module 02', zh: '模块 02' },
+      'm2-text': {
+        en: 'A second module for empirical observations, cases, or source material.',
+        zh: '用于经验观察、案例或来源材料的第二模块。',
+      },
+      'm3-title': { en: 'Module 03', zh: '模块 03' },
+      'm3-text': {
+        en: 'A third module for methods, analysis, or interpretive structure.',
+        zh: '用于方法、分析或解释结构的第三模块。',
+      },
+      'm4-title': { en: 'Module 04', zh: '模块 04' },
+      'm4-text': {
+        en: 'A fourth module for outputs, synthesis, or future development.',
+        zh: '用于产出、综合或后续发展的第四模块。',
+      },
+      'materials-label': { en: 'Materials', zh: '材料' },
+      'materials-title': { en: 'Materials and Inputs', zh: '材料与输入' },
+      'materials-p1': {
+        en: 'This section records the kinds of materials used in the system, such as texts, datasets, case studies, references, archives, or notes.',
+        zh: '这一部分用于记录系统所使用的材料类型，例如文本、数据集、案例、参考文献、档案或笔记。',
+      },
+      'materials-p2': {
+        en: 'It can also explain how those materials are selected, grouped, and connected to the broader project logic.',
+        zh: '你也可以在这里说明这些材料如何被筛选、分组，并与更大的项目逻辑相连接。',
+      },
+      'direction-label': { en: 'Direction', zh: '方向' },
+      'direction-title': { en: 'Current Direction', zh: '当前方向' },
+      'direction-p1': {
+        en: 'Use this section to describe the current stage of the system, what is being refined now, and what the next step will be.',
+        zh: '这一部分用于说明系统目前所处阶段、当前正在完善什么，以及下一步将做什么。',
+      },
+      'direction-p2': {
+        en: 'This can include future writing plans, additional branches, unfinished questions, or later development goals.',
+        zh: '这里可以放未来写作计划、额外分支、未完成问题或后续发展目标。',
+      },
+    };
 
     function setLang(newLang) {
       lang = newLang;
@@ -301,91 +376,9 @@
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
 
-      document.getElementById('sys-eyebrow').textContent =
-        lang === 'zh' ? '项目 · 研究系统' : 'Projects · Research Systems';
-
-      document.getElementById('sys-title').textContent =
-        lang === 'zh' ? '研究系统标题' : 'Research System Title';
-
-      document.getElementById('sys-hero-text').textContent =
-        lang === 'zh'
-          ? '一个用于组织问题、材料、方法与长期产出的结构化研究系统。'
-          : 'A structured research system built to organize questions, materials, methods, and long-term outputs.';
-
-      document.getElementById('meta-field-label').textContent = lang === 'zh' ? '领域' : 'Field';
-      document.getElementById('meta-field-value').textContent = lang === 'zh' ? '研究领域' : 'Research Field';
-      document.getElementById('meta-status-label').textContent = lang === 'zh' ? '状态' : 'Status';
-      document.getElementById('meta-status-value').textContent = lang === 'zh' ? '进行中' : 'In Progress';
-      document.getElementById('meta-scope-label').textContent = lang === 'zh' ? '范围' : 'Scope';
-      document.getElementById('meta-scope-value').textContent = lang === 'zh' ? '长期项目' : 'Long-term Project';
-      document.getElementById('meta-output-label').textContent = lang === 'zh' ? '产出' : 'Output';
-      document.getElementById('meta-output-value').textContent = lang === 'zh' ? '笔记 / 论文 / 案例' : 'Notes / Papers / Cases';
-
-      document.getElementById('sys-note-label').textContent = lang === 'zh' ? '系统说明' : 'System Note';
-      document.getElementById('sys-note-text').textContent =
-        lang === 'zh'
-          ? '这个系统被设计成一个稳定结构，用于保存问题、澄清方向，并把分散材料转化为连贯研究产出。'
-          : 'This system is designed as a stable structure for storing questions, clarifying direction, and turning scattered materials into coherent research output.';
-
-      document.getElementById('focus-label').textContent = lang === 'zh' ? '焦点' : 'Focus';
-      document.getElementById('focus-title').textContent = lang === 'zh' ? '核心焦点' : 'Core Focus';
-      document.getElementById('focus-p1').textContent =
-        lang === 'zh'
-          ? '这一部分用于定义项目的核心研究问题或主要主题方向。'
-          : 'This section defines the central research question or the main thematic direction of the project.';
-      document.getElementById('focus-p2').textContent =
-        lang === 'zh'
-          ? '你可以在这里说明这个系统试图理解、组织或解决什么。'
-          : 'Use this area to explain what the system is trying to understand, organize, or solve.';
-
-      document.getElementById('structure-label').textContent = lang === 'zh' ? '结构' : 'Structure';
-      document.getElementById('structure-title').textContent = lang === 'zh' ? '系统结构' : 'System Structure';
-
-      document.getElementById('m1-title').textContent = lang === 'zh' ? '模块 01' : 'Module 01';
-      document.getElementById('m1-text').textContent =
-        lang === 'zh'
-          ? '用于概念、理论或基础定义的第一模块。'
-          : 'A first module for concepts, theory, or foundational definitions.';
-
-      document.getElementById('m2-title').textContent = lang === 'zh' ? '模块 02' : 'Module 02';
-      document.getElementById('m2-text').textContent =
-        lang === 'zh'
-          ? '用于经验观察、案例或来源材料的第二模块。'
-          : 'A second module for empirical observations, cases, or source material.';
-
-      document.getElementById('m3-title').textContent = lang === 'zh' ? '模块 03' : 'Module 03';
-      document.getElementById('m3-text').textContent =
-        lang === 'zh'
-          ? '用于方法、分析或解释结构的第三模块。'
-          : 'A third module for methods, analysis, or interpretive structure.';
-
-      document.getElementById('m4-title').textContent = lang === 'zh' ? '模块 04' : 'Module 04';
-      document.getElementById('m4-text').textContent =
-        lang === 'zh'
-          ? '用于产出、综合或后续发展的第四模块。'
-          : 'A fourth module for outputs, synthesis, or future development.';
-
-      document.getElementById('materials-label').textContent = lang === 'zh' ? '材料' : 'Materials';
-      document.getElementById('materials-title').textContent = lang === 'zh' ? '材料与输入' : 'Materials and Inputs';
-      document.getElementById('materials-p1').textContent =
-        lang === 'zh'
-          ? '这一部分用于记录系统所使用的材料类型，例如文本、数据集、案例、参考文献、档案或笔记。'
-          : 'This section records the kinds of materials used in the system, such as texts, datasets, case studies, references, archives, or notes.';
-      document.getElementById('materials-p2').textContent =
-        lang === 'zh'
-          ? '你也可以在这里说明这些材料如何被筛选、分组，并与更大的项目逻辑相连接。'
-          : 'It can also explain how those materials are selected, grouped, and connected to the broader project logic.';
-
-      document.getElementById('direction-label').textContent = lang === 'zh' ? '方向' : 'Direction';
-      document.getElementById('direction-title').textContent = lang === 'zh' ? '当前方向' : 'Current Direction';
-      document.getElementById('direction-p1').textContent =
-        lang === 'zh'
-          ? '这一部分用于说明系统目前所处阶段、当前正在完善什么，以及下一步将做什么。'
-          : 'Use this section to describe the current stage of the system, what is being refined now, and what the next step will be.';
-      document.getElementById('direction-p2').textContent =
-        lang === 'zh'
-          ? '这里可以放未来写作计划、额外分支、未完成问题或后续发展目标。'
-          : 'This can include future writing plans, additional branches, unfinished questions, or later development goals.';
+      if (window.applyPageContentOverrides) {
+        window.applyPageContentOverrides(lang, pageContent);
+      }
 
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

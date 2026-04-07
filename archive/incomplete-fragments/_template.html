@@ -139,6 +139,12 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        // 例如：
+        // "note-title": { en: "English title", zh: "中文标题" },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -181,6 +187,10 @@
           lang === "zh"
             ? "在写出执行规则之前该工作就暂停了，因此作为后续分类整合的参考被保留下来。"
             : "Work stopped before enforcement rules were written. The fragment is retained as a reference for future taxonomy consolidation.";
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

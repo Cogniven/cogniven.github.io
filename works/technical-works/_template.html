@@ -145,6 +145,12 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        // 例如：
+        // title: { en: "English title", zh: "中文标题" },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -216,6 +222,10 @@
           lang === "zh"
             ? "该系统展示了技术约束如何反而促成更清晰的结构。"
             : "The system demonstrates how technical constraints can produce clearer structures.";
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
       }
 
       const hamburger = document.getElementById("hamburger-btn");

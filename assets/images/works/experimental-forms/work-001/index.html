@@ -310,6 +310,79 @@
   <script src="/js/i18n.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
+    const pageContent = {
+      // 内容填写区（新手只改这里）
+      // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+      'exp-eyebrow': { en: 'Works · Experimental Forms', zh: '作品 · 实验形式' },
+      'exp-title': { en: 'Generative Poster Study', zh: '生成式海报研究' },
+      'exp-hero-text': {
+        en: 'A process log exploring layered composition, distortion, and typographic rhythm through iterative poster experiments.',
+        zh: '一份围绕分层构图、形变与字体节奏展开的过程记录，通过多轮海报实验进行观察。',
+      },
+      'meta-date-label': { en: 'Date', zh: '日期' },
+      'meta-date-value': { en: '2026', zh: '2026' },
+      'meta-status-label': { en: 'Status', zh: '状态' },
+      'meta-status-value': { en: 'Ongoing', zh: '进行中' },
+      'meta-field-label': { en: 'Field', zh: '领域' },
+      'meta-field-value': { en: 'Visual Experiment', zh: '视觉实验' },
+      'meta-mode-label': { en: 'Mode', zh: '模式' },
+      'meta-mode-value': { en: 'Study', zh: '研究' },
+      'exp-note-label': { en: 'Experiment Note', zh: '实验说明' },
+      'exp-note-text': {
+        en: 'This experiment began as an attempt to test whether layered type, unstable alignment, and partial distortion could produce a coherent visual rhythm rather than noise.',
+        zh: '这个实验起初是为了测试：分层字体、不稳定对齐与局部扭曲，是否能够形成一种连贯的视觉节奏，而不仅仅是噪音。',
+      },
+      'intent-label': { en: 'Intent', zh: '意图' },
+      'intent-title': { en: 'Starting Point', zh: '起点' },
+      'intent-p1': {
+        en: 'The initial question was simple: how far can a poster move away from stable grid logic before it loses internal coherence?',
+        zh: '最初的问题很简单：一张海报在偏离稳定网格逻辑到什么程度时，才会失去内部连贯性？',
+      },
+      'intent-p2': {
+        en: 'The study focused less on producing a final poster and more on observing how variation, density, and disruption affect legibility and tension.',
+        zh: '这项研究关注的并不是做出一张最终海报，而是观察变化、密度和扰动如何影响可读性与张力。',
+      },
+      'iterations-label': { en: 'Iterations', zh: '迭代' },
+      'iterations-title': { en: 'Iteration Log', zh: '迭代记录' },
+      'v1-label': { en: 'Version 01', zh: '版本 01' },
+      'v1-title': { en: 'Initial Structure Test', zh: '初始结构测试' },
+      'v1-text': {
+        en: 'The first version stayed relatively close to a readable composition, using a central block and limited distortion as a baseline.',
+        zh: '第一版仍较接近可读构图，以中央区块和有限扭曲作为基线。',
+      },
+      'v2-label': { en: 'Version 02', zh: '版本 02' },
+      'v2-title': { en: 'Density and Misalignment', zh: '密度与错位' },
+      'v2-text': {
+        en: 'The second version pushed overlapping text and broken alignment further, increasing friction while testing whether the layout could still hold together.',
+        zh: '第二版进一步推进文本重叠与错位，提高摩擦感，同时测试版面是否仍能维持整体性。',
+      },
+      'v3-label': { en: 'Version 03', zh: '版本 03' },
+      'v3-title': { en: 'Controlled Disruption', zh: '受控扰动' },
+      'v3-text': {
+        en: 'The third version reduced some visual noise and shifted toward more deliberate contrast, creating a clearer tension between control and breakage.',
+        zh: '第三版减少了一部分视觉噪音，并转向更有意图的对比，使控制与破裂之间的张力更清晰。',
+      },
+      'obs-label': { en: 'Observations', zh: '观察' },
+      'obs-title': { en: 'What Emerged', zh: '出现了什么' },
+      'obs-p1': {
+        en: 'The most useful finding was that disruption becomes more effective when it is locally concentrated rather than globally applied. Total instability reduced tension instead of increasing it.',
+        zh: '最有用的发现是：扰动在局部集中时比全局铺开时更有效。完全失稳反而会削弱张力，而不是增强它。',
+      },
+      'obs-p2': {
+        en: 'Another observation was that typographic rhythm depended less on symmetry than on interval control. Even broken layouts needed recurring internal spacing rules.',
+        zh: '另一个观察是，字体节奏依赖的不是对称，而是间距控制。即使是破碎布局，也仍然需要重复出现的内部间隔规则。',
+      },
+      'next-label': { en: 'Next', zh: '下一步' },
+      'next-title': { en: 'Next Step', zh: '下一阶段' },
+      'next-p1': {
+        en: 'The next phase is to test the same visual logic under stricter color constraints and with more asymmetrical text distribution.',
+        zh: '下一阶段将测试同样的视觉逻辑，但施加更严格的颜色约束，并采用更不对称的文本分布。',
+      },
+      'next-p2': {
+        en: 'A later branch may also compare manually composed layouts with AI-assisted generative variants to see how each handles rhythm and distortion.',
+        zh: '后续分支还可能将手工排版与 AI 辅助生成版本进行对比，以观察它们各自如何处理节奏与扭曲。',
+      },
+    };
 
     function setLang(newLang) {
       lang = newLang;
@@ -326,88 +399,9 @@
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
 
-      document.getElementById('exp-eyebrow').textContent =
-        lang === 'zh' ? '作品 · 实验形式' : 'Works · Experimental Forms';
-
-      document.getElementById('exp-title').textContent =
-        lang === 'zh' ? '生成式海报研究' : 'Generative Poster Study';
-
-      document.getElementById('exp-hero-text').textContent =
-        lang === 'zh'
-          ? '一份围绕分层构图、形变与字体节奏展开的过程记录，通过多轮海报实验进行观察。'
-          : 'A process log exploring layered composition, distortion, and typographic rhythm through iterative poster experiments.';
-
-      document.getElementById('meta-date-label').textContent = lang === 'zh' ? '日期' : 'Date';
-      document.getElementById('meta-date-value').textContent = '2026';
-      document.getElementById('meta-status-label').textContent = lang === 'zh' ? '状态' : 'Status';
-      document.getElementById('meta-status-value').textContent = lang === 'zh' ? '进行中' : 'Ongoing';
-      document.getElementById('meta-field-label').textContent = lang === 'zh' ? '领域' : 'Field';
-      document.getElementById('meta-field-value').textContent = lang === 'zh' ? '视觉实验' : 'Visual Experiment';
-      document.getElementById('meta-mode-label').textContent = lang === 'zh' ? '模式' : 'Mode';
-      document.getElementById('meta-mode-value').textContent = lang === 'zh' ? '研究' : 'Study';
-
-      document.getElementById('exp-note-label').textContent = lang === 'zh' ? '实验说明' : 'Experiment Note';
-      document.getElementById('exp-note-text').textContent =
-        lang === 'zh'
-          ? '这个实验起初是为了测试：分层字体、不稳定对齐与局部扭曲，是否能够形成一种连贯的视觉节奏，而不仅仅是噪音。'
-          : 'This experiment began as an attempt to test whether layered type, unstable alignment, and partial distortion could produce a coherent visual rhythm rather than noise.';
-
-      document.getElementById('intent-label').textContent = lang === 'zh' ? '意图' : 'Intent';
-      document.getElementById('intent-title').textContent = lang === 'zh' ? '起点' : 'Starting Point';
-      document.getElementById('intent-p1').textContent =
-        lang === 'zh'
-          ? '最初的问题很简单：一张海报在偏离稳定网格逻辑到什么程度时，才会失去内部连贯性？'
-          : 'The initial question was simple: how far can a poster move away from stable grid logic before it loses internal coherence?';
-      document.getElementById('intent-p2').textContent =
-        lang === 'zh'
-          ? '这项研究关注的并不是做出一张最终海报，而是观察变化、密度和扰动如何影响可读性与张力。'
-          : 'The study focused less on producing a final poster and more on observing how variation, density, and disruption affect legibility and tension.';
-
-      document.getElementById('iterations-label').textContent = lang === 'zh' ? '迭代' : 'Iterations';
-      document.getElementById('iterations-title').textContent = lang === 'zh' ? '迭代记录' : 'Iteration Log';
-
-      document.getElementById('v1-label').textContent = lang === 'zh' ? '版本 01' : 'Version 01';
-      document.getElementById('v1-title').textContent = lang === 'zh' ? '初始结构测试' : 'Initial Structure Test';
-      document.getElementById('v1-text').textContent =
-        lang === 'zh'
-          ? '第一版仍较接近可读构图，以中央区块和有限扭曲作为基线。'
-          : 'The first version stayed relatively close to a readable composition, using a central block and limited distortion as a baseline.';
-
-      document.getElementById('v2-label').textContent = lang === 'zh' ? '版本 02' : 'Version 02';
-      document.getElementById('v2-title').textContent = lang === 'zh' ? '密度与错位' : 'Density and Misalignment';
-      document.getElementById('v2-text').textContent =
-        lang === 'zh'
-          ? '第二版进一步推进文本重叠与错位，提高摩擦感，同时测试版面是否仍能维持整体性。'
-          : 'The second version pushed overlapping text and broken alignment further, increasing friction while testing whether the layout could still hold together.';
-
-      document.getElementById('v3-label').textContent = lang === 'zh' ? '版本 03' : 'Version 03';
-      document.getElementById('v3-title').textContent = lang === 'zh' ? '受控扰动' : 'Controlled Disruption';
-      document.getElementById('v3-text').textContent =
-        lang === 'zh'
-          ? '第三版减少了一部分视觉噪音，并转向更有意图的对比，使控制与破裂之间的张力更清晰。'
-          : 'The third version reduced some visual noise and shifted toward more deliberate contrast, creating a clearer tension between control and breakage.';
-
-      document.getElementById('obs-label').textContent = lang === 'zh' ? '观察' : 'Observations';
-      document.getElementById('obs-title').textContent = lang === 'zh' ? '出现了什么' : 'What Emerged';
-      document.getElementById('obs-p1').textContent =
-        lang === 'zh'
-          ? '最有用的发现是：扰动在局部集中时比全局铺开时更有效。完全失稳反而会削弱张力，而不是增强它。'
-          : 'The most useful finding was that disruption becomes more effective when it is locally concentrated rather than globally applied. Total instability reduced tension instead of increasing it.';
-      document.getElementById('obs-p2').textContent =
-        lang === 'zh'
-          ? '另一个观察是，字体节奏依赖的不是对称，而是间距控制。即使是破碎布局，也仍然需要重复出现的内部间隔规则。'
-          : 'Another observation was that typographic rhythm depended less on symmetry than on interval control. Even broken layouts needed recurring internal spacing rules.';
-
-      document.getElementById('next-label').textContent = lang === 'zh' ? '下一步' : 'Next';
-      document.getElementById('next-title').textContent = lang === 'zh' ? '下一阶段' : 'Next Step';
-      document.getElementById('next-p1').textContent =
-        lang === 'zh'
-          ? '下一阶段将测试同样的视觉逻辑，但施加更严格的颜色约束，并采用更不对称的文本分布。'
-          : 'The next phase is to test the same visual logic under stricter color constraints and with more asymmetrical text distribution.';
-      document.getElementById('next-p2').textContent =
-        lang === 'zh'
-          ? '后续分支还可能将手工排版与 AI 辅助生成版本进行对比，以观察它们各自如何处理节奏与扭曲。'
-          : 'A later branch may also compare manually composed layouts with AI-assisted generative variants to see how each handles rhythm and distortion.';
+      if (window.applyPageContentOverrides) {
+        window.applyPageContentOverrides(lang, pageContent);
+      }
 
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

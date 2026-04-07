@@ -139,6 +139,29 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "note-eyebrow": { en: "Archive · Incomplete Fragments", zh: "归档 · 未竟片段" },
+        "note-title": { en: "Archive Timeline Pass", zh: "归档时间轴草稿" },
+        "note-meta": { en: "Feb 18, 2026", zh: "2026年2月18日" },
+        "note-subtitle": {
+          en: "A partial timeline layout draft for sequencing archive records by decision moments.",
+          zh: "一个按决策时刻串联归档记录的时间轴版式草案，尚未完成。",
+        },
+        "p1": {
+          en: "This draft explored a timeline-first archive view. Instead of grouping by category, entries were arranged by transition events such as deprecation, split, and migration.",
+          zh: "这个草稿尝试了“时间轴优先”的归档视图。它不按分类分组，而按废弃、拆分、迁移等转折事件排序。",
+        },
+        "p2": {
+          en: "The model improved historical readability but remained incomplete because metadata quality was inconsistent across existing items. Several records lacked clear temporal anchors.",
+          zh: "该模型提升了历史可读性，但因为现有条目的元数据不一致而无法完成，多个记录缺少清晰时间锚点。",
+        },
+        "p3": {
+          en: "The page concept was paused and replaced by category lists, while the timeline idea remains reserved for a future archive mode.",
+          zh: "因此该方案被暂停，当前改用分类列表；时间轴模式保留为后续归档扩展方向。",
+        },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -159,28 +182,9 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        document.getElementById("note-eyebrow").textContent =
-          lang === "zh" ? "归档 · 未竟片段" : "Archive · Incomplete Fragments";
-        document.getElementById("note-title").textContent =
-          lang === "zh" ? "归档时间轴草稿" : "Archive Timeline Pass";
-        document.getElementById("note-meta").textContent =
-          lang === "zh" ? "2026年2月18日" : "Feb 18, 2026";
-        document.getElementById("note-subtitle").textContent =
-          lang === "zh"
-            ? "一个按决策时刻串联归档记录的时间轴版式草案，尚未完成。"
-            : "A partial timeline layout draft for sequencing archive records by decision moments.";
-        document.getElementById("p1").textContent =
-          lang === "zh"
-            ? "这个草稿尝试了“时间轴优先”的归档视图。它不按分类分组，而按废弃、拆分、迁移等转折事件排序。"
-            : "This draft explored a timeline-first archive view. Instead of grouping by category, entries were arranged by transition events such as deprecation, split, and migration.";
-        document.getElementById("p2").textContent =
-          lang === "zh"
-            ? "该模型提升了历史可读性，但因为现有条目的元数据不一致而无法完成，多个记录缺少清晰时间锚点。"
-            : "The model improved historical readability but remained incomplete because metadata quality was inconsistent across existing items. Several records lacked clear temporal anchors.";
-        document.getElementById("p3").textContent =
-          lang === "zh"
-            ? "因此该方案被暂停，当前改用分类列表；时间轴模式保留为后续归档扩展方向。"
-            : "The page concept was paused and replaced by category lists, while the timeline idea remains reserved for a future archive mode.";
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;
