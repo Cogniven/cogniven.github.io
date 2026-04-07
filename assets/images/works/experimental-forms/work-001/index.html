@@ -1,420 +1,491 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generative Poster Study - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .log-cover,
+      .log-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Generative Poster Study - Cogniven</title>
-  <link rel="stylesheet" href="/css/style.css" />
-  <style>
-    .log-cover,
-    .log-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: var(--bg-soft);
-    }
-
-    .log-meta-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .log-meta-card {
-      border: 1px solid var(--line);
-      background: var(--bg-soft);
-      border-radius: 14px;
-      padding: 14px 16px;
-    }
-
-    .log-meta-card span {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .log-meta-card strong {
-      font-size: 1rem;
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .log-block {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .log-block-note {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding-top: 4px;
-    }
-
-    .log-block-content h2 {
-      margin-top: 0;
-      margin-bottom: 14px;
-    }
-
-    .log-block-content p {
-      line-height: 1.78;
-      color: var(--text-soft);
-    }
-
-    .iteration-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .iteration-card {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: var(--bg-soft);
-      padding: 18px;
-    }
-
-    .iteration-label {
-      font-size: 0.82rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 8px;
-    }
-
-    .iteration-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.2rem;
-    }
-
-    .iteration-card p {
-      margin-bottom: 14px;
-    }
-
-    @media (max-width: 860px) {
       .log-meta-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .log-meta-card {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 14px;
+        padding: 14px 16px;
+      }
+
+      .log-meta-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .log-meta-card strong {
+        font-size: 1rem;
+        color: var(--text);
+        font-weight: 600;
       }
 
       .log-block {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 24px;
+        align-items: start;
       }
-    }
 
-    @media (max-width: 560px) {
-      .log-meta-grid {
-        grid-template-columns: 1fr;
+      .log-block-note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding-top: 4px;
       }
-    }
 
-  </style>
-</head>
+      .log-block-content h2 {
+        margin-top: 0;
+        margin-bottom: 14px;
+      }
 
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
-      <div style="display:flex;align-items:center;gap:24px;">
-        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
-          <a href="/works.html">Works</a>
-          <a href="/writing.html">Writing</a>
-          <a href="/projects.html">Projects</a>
-          <a href="/about.html">About</a>
-          <a href="/archive.html">Archive</a>
+      .log-block-content p {
+        line-height: 1.78;
+        color: var(--text-soft);
+      }
+
+      .iteration-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .iteration-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--bg-soft);
+        padding: 18px;
+      }
+
+      .iteration-label {
+        font-size: 0.82rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 8px;
+      }
+
+      .iteration-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+      }
+
+      .iteration-card p {
+        margin-bottom: 14px;
+      }
+
+      @media (max-width: 860px) {
+        .log-meta-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .log-block {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .log-meta-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
         </div>
-        <div class="lang-switcher">
-          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
-          <button id="lang-zh" class="lang-btn">中文</button>
-        </div>
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <main>
-    <section class="hero">
-      <div class="container narrow">
-        <p class="eyebrow" id="exp-eyebrow">Works · Experimental Forms</p>
-        <h1 id="exp-title">Generative Poster Study</h1>
-        <p class="hero-text" id="exp-hero-text">
-          A process log exploring layered composition, distortion, and typographic rhythm through iterative poster
-          experiments.
+    <main>
+      <section class="hero">
+        <div class="container narrow">
+          <p class="eyebrow" id="exp-eyebrow">Works · Experimental Forms</p>
+          <h1 id="exp-title">Generative Poster Study</h1>
+          <p class="hero-text" id="exp-hero-text">
+            A process log exploring layered composition, distortion, and
+            typographic rhythm through iterative poster experiments.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <img
+            class="log-cover"
+            src="/assets/images/works/experimental-forms/work-001/cover.jpg"
+            alt="Generative Poster Study cover"
+            onerror="
+              this.src =
+                'data:image/svg+xml;utf8,' +
+                encodeURIComponent(
+                  `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Cover not added yet</text></svg>`,
+                )
+            "
+          />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <div class="log-meta-grid">
+            <div class="log-meta-card">
+              <span id="meta-date-label">Date</span>
+              <strong id="meta-date-value">2026</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-status-label">Status</span>
+              <strong id="meta-status-value">Ongoing</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-field-label">Field</span>
+              <strong id="meta-field-value">Visual Experiment</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-mode-label">Mode</span>
+              <strong id="meta-mode-value">Study</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="exp-note-label">Experiment Note</p>
+          <p class="lead-paragraph" id="exp-note-text">
+            This experiment began as an attempt to test whether layered type,
+            unstable alignment, and partial distortion could produce a coherent
+            visual rhythm rather than noise.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="intent-label">Intent</div>
+          <div class="log-block-content">
+            <h2 id="intent-title">Starting Point</h2>
+            <p id="intent-p1">
+              The initial question was simple: how far can a poster move away
+              from stable grid logic before it loses internal coherence?
+            </p>
+            <p id="intent-p2">
+              The study focused less on producing a final poster and more on
+              observing how variation, density, and disruption affect legibility
+              and tension.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="iterations-label">Iterations</div>
+          <div class="log-block-content">
+            <h2 id="iterations-title">Iteration Log</h2>
+
+            <div class="iteration-stack">
+              <article class="iteration-card">
+                <div class="iteration-label" id="v1-label">Version 01</div>
+                <h3 id="v1-title">Initial Structure Test</h3>
+                <p id="v1-text">
+                  The first version stayed relatively close to a readable
+                  composition, using a central block and limited distortion as a
+                  baseline.
+                </p>
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-001/iteration-01.jpg"
+                  alt="Iteration 01"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Iteration 01</text></svg>`,
+                      )
+                  "
+                />
+              </article>
+
+              <article class="iteration-card">
+                <div class="iteration-label" id="v2-label">Version 02</div>
+                <h3 id="v2-title">Density and Misalignment</h3>
+                <p id="v2-text">
+                  The second version pushed overlapping text and broken
+                  alignment further, increasing friction while testing whether
+                  the layout could still hold together.
+                </p>
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-001/iteration-02.jpg"
+                  alt="Iteration 02"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Iteration 02</text></svg>`,
+                      )
+                  "
+                />
+              </article>
+
+              <article class="iteration-card">
+                <div class="iteration-label" id="v3-label">Version 03</div>
+                <h3 id="v3-title">Controlled Disruption</h3>
+                <p id="v3-text">
+                  The third version reduced some visual noise and shifted toward
+                  more deliberate contrast, creating a clearer tension between
+                  control and breakage.
+                </p>
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-001/iteration-03.jpg"
+                  alt="Iteration 03"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Iteration 03</text></svg>`,
+                      )
+                  "
+                />
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="obs-label">Observations</div>
+          <div class="log-block-content">
+            <h2 id="obs-title">What Emerged</h2>
+            <p id="obs-p1">
+              The most useful finding was that disruption becomes more effective
+              when it is locally concentrated rather than globally applied.
+              Total instability reduced tension instead of increasing it.
+            </p>
+            <p id="obs-p2">
+              Another observation was that typographic rhythm depended less on
+              symmetry than on interval control. Even broken layouts needed
+              recurring internal spacing rules.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="next-label">Next</div>
+          <div class="log-block-content">
+            <h2 id="next-title">Next Step</h2>
+            <p id="next-p1">
+              The next phase is to test the same visual logic under stricter
+              color constraints and with more asymmetrical text distribution.
+            </p>
+            <p id="next-p2">
+              A later branch may also compare manually composed layouts with
+              AI-assisted generative variants to see how each handles rhythm and
+              distortion.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
         </p>
       </div>
-    </section>
+    </footer>
 
-    <section class="section">
-      <div class="container narrow">
-        <img class="log-cover" src="/assets/images/works/experimental-forms/work-001/cover.jpg"
-          alt="Generative Poster Study cover"
-          onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Cover not added yet</text></svg>`)" />
-      </div>
-    </section>
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "exp-eyebrow": {
+          en: "Works · Experimental Forms",
+          zh: "作品 · 实验形式",
+        },
+        "exp-title": {
+          en: "Generative Poster Study",
+          zh: "二维码艺术化制作研究",
+        },
+        "exp-hero-text": {
+          en: "A process log exploring layered composition, distortion, and typographic rhythm through iterative poster experiments.",
+          zh: "一份围绕分层构图、形变与字体节奏展开的过程记录，通过多轮海报实验进行观察。",
+        },
+        "meta-date-label": { en: "Date", zh: "日期" },
+        "meta-date-value": { en: "2026", zh: "2026" },
+        "meta-status-label": { en: "Status", zh: "状态" },
+        "meta-status-value": { en: "Ongoing", zh: "进行中" },
+        "meta-field-label": { en: "Field", zh: "领域" },
+        "meta-field-value": { en: "Visual Experiment", zh: "视觉实验" },
+        "meta-mode-label": { en: "Mode", zh: "模式" },
+        "meta-mode-value": { en: "Study", zh: "研究" },
+        "exp-note-label": { en: "Experiment Note", zh: "实验说明" },
+        "exp-note-text": {
+          en: "This experiment began as an attempt to test whether layered type, unstable alignment, and partial distortion could produce a coherent visual rhythm rather than noise.",
+          zh: "这个实验起初是为了测试：分层字体、不稳定对齐与局部扭曲，是否能够形成一种连贯的视觉节奏，而不仅仅是噪音。",
+        },
+        "intent-label": { en: "Intent", zh: "意图" },
+        "intent-title": { en: "Starting Point", zh: "起点" },
+        "intent-p1": {
+          en: "The initial question was simple: how far can a poster move away from stable grid logic before it loses internal coherence?",
+          zh: "最初的问题很简单：一张海报在偏离稳定网格逻辑到什么程度时，才会失去内部连贯性？",
+        },
+        "intent-p2": {
+          en: "The study focused less on producing a final poster and more on observing how variation, density, and disruption affect legibility and tension.",
+          zh: "这项研究关注的并不是做出一张最终海报，而是观察变化、密度和扰动如何影响可读性与张力。",
+        },
+        "iterations-label": { en: "Iterations", zh: "迭代" },
+        "iterations-title": { en: "Iteration Log", zh: "迭代记录" },
+        "v1-label": { en: "Version 01", zh: "版本 01" },
+        "v1-title": { en: "Initial Structure Test", zh: "初始结构测试" },
+        "v1-text": {
+          en: "The first version stayed relatively close to a readable composition, using a central block and limited distortion as a baseline.",
+          zh: "第一版仍较接近可读构图，以中央区块和有限扭曲作为基线。",
+        },
+        "v2-label": { en: "Version 02", zh: "版本 02" },
+        "v2-title": { en: "Density and Misalignment", zh: "密度与错位" },
+        "v2-text": {
+          en: "The second version pushed overlapping text and broken alignment further, increasing friction while testing whether the layout could still hold together.",
+          zh: "第二版进一步推进文本重叠与错位，提高摩擦感，同时测试版面是否仍能维持整体性。",
+        },
+        "v3-label": { en: "Version 03", zh: "版本 03" },
+        "v3-title": { en: "Controlled Disruption", zh: "受控扰动" },
+        "v3-text": {
+          en: "The third version reduced some visual noise and shifted toward more deliberate contrast, creating a clearer tension between control and breakage.",
+          zh: "第三版减少了一部分视觉噪音，并转向更有意图的对比，使控制与破裂之间的张力更清晰。",
+        },
+        "obs-label": { en: "Observations", zh: "观察" },
+        "obs-title": { en: "What Emerged", zh: "出现了什么" },
+        "obs-p1": {
+          en: "The most useful finding was that disruption becomes more effective when it is locally concentrated rather than globally applied. Total instability reduced tension instead of increasing it.",
+          zh: "最有用的发现是：扰动在局部集中时比全局铺开时更有效。完全失稳反而会削弱张力，而不是增强它。",
+        },
+        "obs-p2": {
+          en: "Another observation was that typographic rhythm depended less on symmetry than on interval control. Even broken layouts needed recurring internal spacing rules.",
+          zh: "另一个观察是，字体节奏依赖的不是对称，而是间距控制。即使是破碎布局，也仍然需要重复出现的内部间隔规则。",
+        },
+        "next-label": { en: "Next", zh: "下一步" },
+        "next-title": { en: "Next Step", zh: "下一阶段" },
+        "next-p1": {
+          en: "The next phase is to test the same visual logic under stricter color constraints and with more asymmetrical text distribution.",
+          zh: "下一阶段将测试同样的视觉逻辑，但施加更严格的颜色约束，并采用更不对称的文本分布。",
+        },
+        "next-p2": {
+          en: "A later branch may also compare manually composed layouts with AI-assisted generative variants to see how each handles rhythm and distortion.",
+          zh: "后续分支还可能将手工排版与 AI 辅助生成版本进行对比，以观察它们各自如何处理节奏与扭曲。",
+        },
+      };
 
-    <section class="section">
-      <div class="container narrow">
-        <div class="log-meta-grid">
-          <div class="log-meta-card">
-            <span id="meta-date-label">Date</span>
-            <strong id="meta-date-value">2026</strong>
-          </div>
-          <div class="log-meta-card">
-            <span id="meta-status-label">Status</span>
-            <strong id="meta-status-value">Ongoing</strong>
-          </div>
-          <div class="log-meta-card">
-            <span id="meta-field-label">Field</span>
-            <strong id="meta-field-value">Visual Experiment</strong>
-          </div>
-          <div class="log-meta-card">
-            <span id="meta-mode-label">Mode</span>
-            <strong id="meta-mode-value">Study</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section intro-band">
-      <div class="container narrow">
-        <p class="section-note" id="exp-note-label">Experiment Note</p>
-        <p class="lead-paragraph" id="exp-note-text">
-          This experiment began as an attempt to test whether layered type, unstable alignment, and partial distortion
-          could produce a coherent visual rhythm rather than noise.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container narrow log-block">
-        <div class="log-block-note" id="intent-label">Intent</div>
-        <div class="log-block-content">
-          <h2 id="intent-title">Starting Point</h2>
-          <p id="intent-p1">
-            The initial question was simple: how far can a poster move away from stable grid logic before it loses
-            internal coherence?
-          </p>
-          <p id="intent-p2">
-            The study focused less on producing a final poster and more on observing how variation, density, and
-            disruption affect legibility and tension.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container narrow log-block">
-        <div class="log-block-note" id="iterations-label">Iterations</div>
-        <div class="log-block-content">
-          <h2 id="iterations-title">Iteration Log</h2>
-
-          <div class="iteration-stack">
-            <article class="iteration-card">
-              <div class="iteration-label" id="v1-label">Version 01</div>
-              <h3 id="v1-title">Initial Structure Test</h3>
-              <p id="v1-text">
-                The first version stayed relatively close to a readable composition, using a central block and limited
-                distortion as a baseline.
-              </p>
-              <img class="log-image" src="/assets/images/works/experimental-forms/work-001/iteration-01.jpg"
-                alt="Iteration 01"
-                onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Iteration 01</text></svg>`)" />
-            </article>
-
-            <article class="iteration-card">
-              <div class="iteration-label" id="v2-label">Version 02</div>
-              <h3 id="v2-title">Density and Misalignment</h3>
-              <p id="v2-text">
-                The second version pushed overlapping text and broken alignment further, increasing friction while
-                testing whether the layout could still hold together.
-              </p>
-              <img class="log-image" src="/assets/images/works/experimental-forms/work-001/iteration-02.jpg"
-                alt="Iteration 02"
-                onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Iteration 02</text></svg>`)" />
-            </article>
-
-            <article class="iteration-card">
-              <div class="iteration-label" id="v3-label">Version 03</div>
-              <h3 id="v3-title">Controlled Disruption</h3>
-              <p id="v3-text">
-                The third version reduced some visual noise and shifted toward more deliberate contrast, creating a
-                clearer tension between control and breakage.
-              </p>
-              <img class="log-image" src="/assets/images/works/experimental-forms/work-001/iteration-03.jpg"
-                alt="Iteration 03"
-                onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Iteration 03</text></svg>`)" />
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container narrow log-block">
-        <div class="log-block-note" id="obs-label">Observations</div>
-        <div class="log-block-content">
-          <h2 id="obs-title">What Emerged</h2>
-          <p id="obs-p1">
-            The most useful finding was that disruption becomes more effective when it is locally concentrated rather
-            than globally applied. Total instability reduced tension instead of increasing it.
-          </p>
-          <p id="obs-p2">
-            Another observation was that typographic rhythm depended less on symmetry than on interval control. Even
-            broken layouts needed recurring internal spacing rules.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container narrow log-block">
-        <div class="log-block-note" id="next-label">Next</div>
-        <div class="log-block-content">
-          <h2 id="next-title">Next Step</h2>
-          <p id="next-p1">
-            The next phase is to test the same visual logic under stricter color constraints and with more asymmetrical
-            text distribution.
-          </p>
-          <p id="next-p2">
-            A later branch may also compare manually composed layouts with AI-assisted generative variants to see how
-            each handles rhythm and distortion.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© 2026 Cogniven. All rights reserved.</p>
-      <p>
-        The works presented on this site are original and protected by copyright.<br />
-        Unauthorized reproduction, distribution, or commercial use is prohibited.
-      </p>
-    </div>
-  </footer>
-
-  <script src="/js/i18n.js"></script>
-  <script>
-    let lang = localStorage.getItem('lang') || 'en';
-    const pageContent = {
-      // 内容填写区（新手只改这里）
-      // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
-      'exp-eyebrow': { en: 'Works · Experimental Forms', zh: '作品 · 实验形式' },
-      'exp-title': { en: 'Generative Poster Study', zh: '生成式海报研究' },
-      'exp-hero-text': {
-        en: 'A process log exploring layered composition, distortion, and typographic rhythm through iterative poster experiments.',
-        zh: '一份围绕分层构图、形变与字体节奏展开的过程记录，通过多轮海报实验进行观察。',
-      },
-      'meta-date-label': { en: 'Date', zh: '日期' },
-      'meta-date-value': { en: '2026', zh: '2026' },
-      'meta-status-label': { en: 'Status', zh: '状态' },
-      'meta-status-value': { en: 'Ongoing', zh: '进行中' },
-      'meta-field-label': { en: 'Field', zh: '领域' },
-      'meta-field-value': { en: 'Visual Experiment', zh: '视觉实验' },
-      'meta-mode-label': { en: 'Mode', zh: '模式' },
-      'meta-mode-value': { en: 'Study', zh: '研究' },
-      'exp-note-label': { en: 'Experiment Note', zh: '实验说明' },
-      'exp-note-text': {
-        en: 'This experiment began as an attempt to test whether layered type, unstable alignment, and partial distortion could produce a coherent visual rhythm rather than noise.',
-        zh: '这个实验起初是为了测试：分层字体、不稳定对齐与局部扭曲，是否能够形成一种连贯的视觉节奏，而不仅仅是噪音。',
-      },
-      'intent-label': { en: 'Intent', zh: '意图' },
-      'intent-title': { en: 'Starting Point', zh: '起点' },
-      'intent-p1': {
-        en: 'The initial question was simple: how far can a poster move away from stable grid logic before it loses internal coherence?',
-        zh: '最初的问题很简单：一张海报在偏离稳定网格逻辑到什么程度时，才会失去内部连贯性？',
-      },
-      'intent-p2': {
-        en: 'The study focused less on producing a final poster and more on observing how variation, density, and disruption affect legibility and tension.',
-        zh: '这项研究关注的并不是做出一张最终海报，而是观察变化、密度和扰动如何影响可读性与张力。',
-      },
-      'iterations-label': { en: 'Iterations', zh: '迭代' },
-      'iterations-title': { en: 'Iteration Log', zh: '迭代记录' },
-      'v1-label': { en: 'Version 01', zh: '版本 01' },
-      'v1-title': { en: 'Initial Structure Test', zh: '初始结构测试' },
-      'v1-text': {
-        en: 'The first version stayed relatively close to a readable composition, using a central block and limited distortion as a baseline.',
-        zh: '第一版仍较接近可读构图，以中央区块和有限扭曲作为基线。',
-      },
-      'v2-label': { en: 'Version 02', zh: '版本 02' },
-      'v2-title': { en: 'Density and Misalignment', zh: '密度与错位' },
-      'v2-text': {
-        en: 'The second version pushed overlapping text and broken alignment further, increasing friction while testing whether the layout could still hold together.',
-        zh: '第二版进一步推进文本重叠与错位，提高摩擦感，同时测试版面是否仍能维持整体性。',
-      },
-      'v3-label': { en: 'Version 03', zh: '版本 03' },
-      'v3-title': { en: 'Controlled Disruption', zh: '受控扰动' },
-      'v3-text': {
-        en: 'The third version reduced some visual noise and shifted toward more deliberate contrast, creating a clearer tension between control and breakage.',
-        zh: '第三版减少了一部分视觉噪音，并转向更有意图的对比，使控制与破裂之间的张力更清晰。',
-      },
-      'obs-label': { en: 'Observations', zh: '观察' },
-      'obs-title': { en: 'What Emerged', zh: '出现了什么' },
-      'obs-p1': {
-        en: 'The most useful finding was that disruption becomes more effective when it is locally concentrated rather than globally applied. Total instability reduced tension instead of increasing it.',
-        zh: '最有用的发现是：扰动在局部集中时比全局铺开时更有效。完全失稳反而会削弱张力，而不是增强它。',
-      },
-      'obs-p2': {
-        en: 'Another observation was that typographic rhythm depended less on symmetry than on interval control. Even broken layouts needed recurring internal spacing rules.',
-        zh: '另一个观察是，字体节奏依赖的不是对称，而是间距控制。即使是破碎布局，也仍然需要重复出现的内部间隔规则。',
-      },
-      'next-label': { en: 'Next', zh: '下一步' },
-      'next-title': { en: 'Next Step', zh: '下一阶段' },
-      'next-p1': {
-        en: 'The next phase is to test the same visual logic under stricter color constraints and with more asymmetrical text distribution.',
-        zh: '下一阶段将测试同样的视觉逻辑，但施加更严格的颜色约束，并采用更不对称的文本分布。',
-      },
-      'next-p2': {
-        en: 'A later branch may also compare manually composed layouts with AI-assisted generative variants to see how each handles rhythm and distortion.',
-        zh: '后续分支还可能将手工排版与 AI 辅助生成版本进行对比，以观察它们各自如何处理节奏与扭曲。',
-      },
-    };
-
-    function setLang(newLang) {
-      lang = newLang;
-      localStorage.setItem('lang', lang);
-      renderLang();
-    }
-
-    function renderLang() {
-      if (window.buildNav) {
-        window.buildNav(lang);
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
       }
 
-      document.getElementById('logo-text').textContent = i18n[lang].logo;
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
 
-      if (window.applyPageContentOverrides) {
-        window.applyPageContentOverrides(lang, pageContent);
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
       }
 
-      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
-      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('lang-en').onclick = () => setLang('en');
-      document.getElementById('lang-zh').onclick = () => setLang('zh');
-      setLang(lang);
-    });
-  </script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
+    </script>
 
     <script src="/js/nav.js"></script>
-</body>
-
+  </body>
 </html>
