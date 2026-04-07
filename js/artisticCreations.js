@@ -1,8 +1,8 @@
 const ArtisticCreations = [
   {
-    title: { en: "Artistic Creation 001", zh: "临兰亭集序" },
+    title: { en: "A copy of the Lantingji Xu", zh: "临兰亭集序" },
     desc: {
-      en: "A short description for this piece.",
+      en: "A copy of the Lantingji Xu, made in the winter of 2023 (Guimao year). The seal contains a minor flaw. Created in Procreate using brushes from the Procreate community.",
       zh: "临于癸卯年冬，因某种原因印章有纰漏。使用procreate创作，笔刷来自procreate超话社区。",
     },
     cover: "/assets/images/works/artistic-creations/work-001/临兰亭集序.png",
