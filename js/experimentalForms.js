@@ -6,7 +6,7 @@ const ExperimentalForms = [
     },
     desc: {
       en: "An experimental research that transforms traditional QR codes into artistic expressions, exploring new visual forms without altering their functionality.",
-      zh: "一个将传统二维码修改为艺术化表达的实验研究，探索不改变用途下的新视觉表达形式",
+      zh: "一个将传统二维码修改为艺术化表达的实验研究，探索不改变用途下的新视觉表达形式。",
     },
     status: {
       en: "Ongoing",
