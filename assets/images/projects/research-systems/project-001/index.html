@@ -303,8 +303,8 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p id="footer-copyright">© 2026 Cogniven. All rights reserved.</p>
-        <p id="footer-copyright2">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
           The works presented on this site are original and protected by
           copyright.<br />
           Unauthorized reproduction, distribution, or commercial use is
@@ -316,8 +316,9 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
-
       const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
         "sys-eyebrow": {
           en: "Projects · Research Systems",
           zh: "项目 · 研究系统",
@@ -327,7 +328,6 @@
           en: "A structured research system built to organize questions, materials, methods, and long-term outputs.",
           zh: "一个用于组织问题、材料、方法与长期产出的结构化研究系统。",
         },
-
         "meta-field-label": { en: "Field", zh: "领域" },
         "meta-field-value": { en: "Research Field", zh: "研究领域" },
         "meta-status-label": { en: "Status", zh: "状态" },
@@ -339,13 +339,11 @@
           en: "Notes / Papers / Cases",
           zh: "笔记 / 论文 / 案例",
         },
-
         "sys-note-label": { en: "System Note", zh: "系统说明" },
         "sys-note-text": {
           en: "This system is designed as a stable structure for storing questions, clarifying direction, and turning scattered materials into coherent research output.",
           zh: "这个系统被设计成一个稳定结构，用于保存问题、澄清方向，并把分散材料转化为连贯研究产出。",
         },
-
         "focus-label": { en: "Focus", zh: "焦点" },
         "focus-title": { en: "Core Focus", zh: "核心焦点" },
         "focus-p1": {
@@ -356,7 +354,6 @@
           en: "Use this area to explain what the system is trying to understand, organize, or solve.",
           zh: "你可以在这里说明这个系统试图理解、组织或解决什么。",
         },
-
         "structure-label": { en: "Structure", zh: "结构" },
         "structure-title": { en: "System Structure", zh: "系统结构" },
         "m1-title": { en: "Module 01", zh: "模块 01" },
@@ -379,7 +376,6 @@
           en: "A fourth module for outputs, synthesis, or future development.",
           zh: "用于产出、综合或后续发展的第四模块。",
         },
-
         "materials-label": { en: "Materials", zh: "材料" },
         "materials-title": { en: "Materials and Inputs", zh: "材料与输入" },
         "materials-p1": {
@@ -390,7 +386,6 @@
           en: "It can also explain how those materials are selected, grouped, and connected to the broader project logic.",
           zh: "你也可以在这里说明这些材料如何被筛选、分组，并与更大的项目逻辑相连接。",
         },
-
         "direction-label": { en: "Direction", zh: "方向" },
         "direction-title": { en: "Current Direction", zh: "当前方向" },
         "direction-p1": {
@@ -401,35 +396,12 @@
           en: "This can include future writing plans, additional branches, unfinished questions, or later development goals.",
           zh: "这里可以放未来写作计划、额外分支、未完成问题或后续发展目标。",
         },
-
-        "footer-copyright": {
-          en: "© 2026 Cogniven. All rights reserved.",
-          zh: "© 2026 Cogniven。保留所有权利。",
-        },
-        "footer-copyright2": {
-          en: "The works presented on this site are original and protected by copyright.<br />Unauthorized reproduction, distribution, or commercial use is prohibited.",
-          zh: "本网站展示的作品均为原创，受版权保护。<br />未经授权，禁止复制、分发或商业使用。",
-        },
       };
 
       function setLang(newLang) {
         lang = newLang;
         localStorage.setItem("lang", lang);
         renderLang();
-      }
-
-      function applyPageContent(lang) {
-        Object.keys(pageContent).forEach((id) => {
-          const el = document.getElementById(id);
-          if (!el) return;
-          const value = pageContent[id][lang];
-          if (typeof value !== "string") return;
-          if (value.includes("<br")) {
-            el.innerHTML = value;
-          } else {
-            el.textContent = value;
-          }
-        });
       }
 
       function renderLang() {
@@ -445,7 +417,14 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        applyPageContent(lang);
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
       }
 
       document.addEventListener("DOMContentLoaded", function () {
