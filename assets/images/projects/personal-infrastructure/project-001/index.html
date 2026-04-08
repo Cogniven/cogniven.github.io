@@ -3,18 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Workflow Infrastructure - Cogniven</title>
+    <title>Personal Capability Infrastructure - Cogniven</title>
     <link rel="stylesheet" href="/css/style.css" />
     <style>
-      .system-cover {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 16px;
-        border: 1px solid var(--line);
-        background: var(--bg-soft);
-      }
-
       .system-meta-grid {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -43,52 +34,74 @@
         font-weight: 600;
       }
 
-      .system-block {
-        display: grid;
-        grid-template-columns: 220px 1fr;
+      .capability-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
         gap: 24px;
-        align-items: start;
+        margin-bottom: 28px;
       }
 
-      .system-block-note {
-        font-size: 0.85rem;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        padding-top: 4px;
+      .capability-head .section-side-text {
+        max-width: 420px;
       }
 
-      .system-block-content h2 {
-        margin-top: 0;
-        margin-bottom: 14px;
+      .capability-group {
+        margin-bottom: 42px;
       }
 
-      .system-block-content p {
-        line-height: 1.78;
-        color: var(--text-soft);
+      .capability-group h3 {
+        margin: 0 0 16px;
+        font-size: 1.2rem;
       }
 
-      .system-module-grid {
+      .capability-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
+        gap: 18px;
       }
 
-      .system-module-card {
+      .capability-card {
         border: 1px solid var(--line);
-        border-radius: 16px;
+        border-radius: 18px;
         background: var(--bg-soft);
-        padding: 18px;
+        padding: 20px;
       }
 
-      .system-module-card h3 {
-        margin: 0 0 10px;
+      .cap-card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .cap-card-top h4 {
+        margin: 0;
         font-size: 1.05rem;
       }
 
-      .system-module-card p {
+      .cap-level {
+        font-size: 0.74rem;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        white-space: nowrap;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .cap-use {
+        margin: 0 0 8px;
+        color: var(--text);
+        font-size: 0.94rem;
+      }
+
+      .cap-desc {
         margin: 0;
-        line-height: 1.7;
+        color: var(--text-soft);
+        line-height: 1.72;
       }
 
       @media (max-width: 860px) {
@@ -96,12 +109,12 @@
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .system-block {
-          grid-template-columns: 1fr;
-          gap: 12px;
+        .capability-head {
+          flex-direction: column;
+          align-items: flex-start;
         }
 
-        .system-module-grid {
+        .capability-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -307,7 +320,7 @@
                   Search / collection / organization
                 </p>
                 <p class="cap-desc" id="g3c2-desc">
-                  Used for gathering, comparing, and re-structuring information
+                  Used for gathering, comparing, and restructuring information
                   efficiently.
                 </p>
               </div>
@@ -337,8 +350,8 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© 2026 Cogniven. All rights reserved.</p>
-        <p>
+        <p id="footer-copyright">© 2026 Cogniven. All rights reserved.</p>
+        <p id="footer-copyright2">
           The works presented on this site are original and protected by
           copyright.<br />
           Unauthorized reproduction, distribution, or commercial use is
@@ -350,94 +363,134 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+
       const pageContent = {
-        // 内容填写区（新手只改这里）
-        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
         "hero-eyebrow": {
           en: "Projects · Personal Infrastructure",
           zh: "项目 · 个人基础设施",
         },
         "hero-title": {
-          en: "Personal Workflow Infrastructure",
-          zh: "个人工作流基础设施",
+          en: "Personal Capability Infrastructure",
+          zh: "个人能力基础设施",
         },
         "hero-text": {
-          en: "A long-term support system for tools, files, notes, and routines that keeps personal work stable, organized, and easier to maintain.",
-          zh: "一个面向长期使用的支持系统，用于整合工具、文件、笔记与日常流程，使个人工作更稳定、更有序，也更容易维护。",
+          en: "A structured inventory of capabilities across different domains, used to track tools, proficiency, and their practical roles in ongoing work.",
+          zh: "一份跨不同领域的能力清单，用于整理我目前掌握的工具、能力程度，以及它们在实际工作中的用途。",
         },
+
         "meta-field-label": { en: "Field", zh: "领域" },
-        "meta-field-value": {
-          en: "Workflow / Productivity",
-          zh: "工作流 / 生产力",
-        },
+        "meta-field-value": { en: "Capability Inventory", zh: "能力清单" },
         "meta-status-label": { en: "Status", zh: "状态" },
         "meta-status-value": { en: "Active", zh: "进行中" },
         "meta-scope-label": { en: "Scope", zh: "范围" },
         "meta-scope-value": {
-          en: "Long-term / Personal System",
-          zh: "长期 / 个人系统",
+          en: "Cross-domain / Personal",
+          zh: "跨领域 / 个人",
         },
-        "meta-output-label": { en: "Output", zh: "产出" },
+        "meta-output-label": { en: "Output", zh: "内容" },
         "meta-output-value": {
-          en: "Routines / Structures / Notes",
-          zh: "流程 / 结构 / 笔记",
+          en: "Skills / Uses / Levels",
+          zh: "能力 / 用途 / 程度",
         },
-        "intro-note": { en: "System Note", zh: "系统说明" },
+
+        "intro-note": { en: "Capability Note", zh: "能力说明" },
         "intro-text": {
-          en: "This page describes a support structure rather than a single tool. Its purpose is to reduce friction in daily work by aligning files, tools, notes, and routines into a more durable personal operating system.",
-          zh: "这一页描述的不是单一工具，而是一套支持结构。它的目的，是通过对齐文件、工具、笔记与日常流程，减少日常工作中的摩擦，并形成更耐用的个人操作系统。",
+          en: "This page is used to organize the capabilities I currently possess across different domains. It is not a résumé-like list, but a working inventory for tracking what I can use, how well I can use it, and where it is actually applied.",
+          zh: "这一页用于整理我目前在不同领域中掌握的能力。它并不是简历式的罗列，而更像一份持续维护中的工作清单，用来记录我能使用什么、掌握到什么程度，以及它们实际被用在什么地方。",
         },
-        "focus-note": { en: "Focus", zh: "重点" },
-        "focus-title": { en: "System Focus", zh: "系统重点" },
-        "focus-p1": {
-          en: "The central pressure behind this system is fragmentation. When tools, notes, folders, and routines evolve separately, work becomes harder to retrieve, maintain, and repeat.",
-          zh: "这套系统背后的核心压力来自碎片化。当工具、笔记、文件夹与流程各自独立演化时，工作就会变得更难检索、更难维护，也更难复用。",
+
+        "cap-note": { en: "Directory", zh: "目录" },
+        "cap-title": { en: "Current Capability Areas", zh: "当前能力分区" },
+        "cap-side": {
+          en: "These sections are open-ended and can be expanded over time.",
+          zh: "这些分区保持开放，可以随着时间继续扩展。",
         },
-        "focus-p2": {
-          en: "This infrastructure exists to support long-term study, technical experimentation, writing, and project management without forcing each activity into a disconnected workflow.",
-          zh: "这套基础设施的存在，是为了支持长期学习、技术实验、写作与项目管理，而不必让每一种活动都落入彼此割裂的工作流中。",
+
+        "group-1-title": { en: "Visual & Creative", zh: "视觉与创作" },
+        "g1c1-name": { en: "Procreate", zh: "Procreate" },
+        "g1c1-level": { en: "Advanced", zh: "熟练" },
+        "g1c1-use": {
+          en: "Digital painting / visual work",
+          zh: "数字绘画 / 视觉创作",
         },
-        "structure-note": { en: "Structure", zh: "结构" },
-        "structure-title": { en: "System Structure", zh: "系统结构" },
-        "module-files-title": { en: "Files", zh: "文件" },
-        "module-files-text": {
-          en: "Directory structure, naming logic, version control, and storage discipline.",
-          zh: "目录结构、命名逻辑、版本控制与存储纪律。",
+        "g1c1-desc": {
+          en: "Used for illustration, visual experiments, and stylized project work.",
+          zh: "用于插画、视觉实验，以及带有明确风格控制的项目创作。",
         },
-        "module-tools-title": { en: "Tools", zh: "工具" },
-        "module-tools-text": {
-          en: "Editors, scripts, local environments, and technical utilities used in daily work.",
-          zh: "编辑器、脚本、本地环境，以及日常工作中使用的技术工具。",
+        "g1c2-name": { en: "Photoshop", zh: "Photoshop" },
+        "g1c2-level": { en: "Intermediate", zh: "中等" },
+        "g1c2-use": {
+          en: "Image editing / composition",
+          zh: "图像处理 / 画面调整",
         },
-        "module-notes-title": { en: "Notes", zh: "笔记" },
-        "module-notes-text": {
-          en: "Working notes, references, draft structures, and searchable knowledge materials.",
-          zh: "工作笔记、参考资料、草稿结构，以及可检索的知识材料。",
+        "g1c2-desc": {
+          en: "Used for post-processing, layout adjustment, and image preparation.",
+          zh: "用于后期处理、版面调整，以及图像整理。",
         },
-        "module-routines-title": { en: "Routines", zh: "流程" },
-        "module-routines-text": {
-          en: "Repeated processes for building, revising, testing, and maintaining work.",
-          zh: "用于构建、修订、测试与维护工作的重复性过程。",
+
+        "group-2-title": { en: "Technical & Computational", zh: "技术与计算" },
+        "g2c1-name": { en: "Python", zh: "Python" },
+        "g2c1-level": { en: "Advanced", zh: "熟练" },
+        "g2c1-use": {
+          en: "Automation / quant / data processing",
+          zh: "自动化 / 量化 / 数据处理",
         },
-        "materials-note": { en: "Materials", zh: "材料" },
-        "materials-title": { en: "Tools and Inputs", zh: "工具与输入" },
-        "materials-p1": {
-          en: "The system is fed by local files, writing drafts, project folders, web assets, code repositories, and recurring maintenance habits. These are not treated as isolated resources but as parts of one operating environment.",
-          zh: "这套系统由本地文件、写作草稿、项目文件夹、网页资源、代码仓库以及周期性的维护习惯共同供给。它们不被视作孤立资源，而被看作同一操作环境的组成部分。",
+        "g2c1-desc": {
+          en: "Core language for strategy development, scripting, and analysis.",
+          zh: "作为策略开发、脚本编写与数据分析的核心语言使用。",
         },
-        "materials-p2": {
-          en: "Inputs are organized through folder structure, naming rules, reusable templates, and a growing logic for how different forms of work connect to each other.",
-          zh: "这些输入通过文件夹结构、命名规则、可复用模板，以及不断增长的连接逻辑来组织，使不同形式的工作能够彼此关联。",
+        "g2c2-name": { en: "Freqtrade", zh: "Freqtrade" },
+        "g2c2-level": { en: "Advanced", zh: "熟练" },
+        "g2c2-use": {
+          en: "Strategy testing / trading systems",
+          zh: "策略测试 / 交易系统",
         },
-        "direction-note": { en: "Direction", zh: "方向" },
-        "direction-title": { en: "Current Direction", zh: "当前方向" },
-        "direction-p1": {
-          en: "The current direction is to improve consistency across page templates, asset management, and workflow logic so that technical, academic, and creative work can all be maintained inside one coherent structure.",
-          zh: "当前方向是提高页面模板、资源管理与工作流逻辑之间的一致性，使技术、学术与创意工作都能被维持在一个连贯的结构之中。",
+        "g2c2-desc": {
+          en: "Used to build, test, and iterate multi-strategy trading systems.",
+          zh: "用于构建、测试和迭代多策略交易系统。",
         },
-        "direction-p2": {
-          en: "Next steps include stronger automation, cleaner naming conventions, and a more stable relation between project pages, image assets, and reusable templates.",
-          zh: "下一步包括更强的自动化、更清晰的命名规范，以及项目页面、图像资源与可复用模板之间更稳定的关系。",
+
+        "group-3-title": { en: "Practical Skills", zh: "实用能力" },
+        "g3c1-name": { en: "Excel", zh: "Excel" },
+        "g3c1-level": { en: "Advanced", zh: "熟练" },
+        "g3c1-use": {
+          en: "Data organization / quick modeling",
+          zh: "数据整理 / 快速建模",
+        },
+        "g3c1-desc": {
+          en: "Used for structured calculation, review, and lightweight analysis.",
+          zh: "用于结构化计算、结果复核与轻量分析。",
+        },
+        "g3c2-name": { en: "Information Retrieval", zh: "信息检索" },
+        "g3c2-level": { en: "Intermediate", zh: "中等" },
+        "g3c2-use": {
+          en: "Search / collection / organization",
+          zh: "搜索 / 收集 / 整理",
+        },
+        "g3c2-desc": {
+          en: "Used for gathering, comparing, and restructuring information efficiently.",
+          zh: "用于高效收集、比较并重组信息。",
+        },
+
+        "group-4-title": { en: "Music & Performance", zh: "音乐与演奏" },
+        "g4c1-name": { en: "Guitar", zh: "吉他" },
+        "g4c1-level": { en: "Basic", zh: "基础" },
+        "g4c1-use": {
+          en: "Personal practice / expression",
+          zh: "个人练习 / 表达",
+        },
+        "g4c1-desc": {
+          en: "Used mainly for rhythm practice and simple melodic expression.",
+          zh: "主要用于节奏练习和简单旋律表达。",
+        },
+
+        "footer-copyright": {
+          en: "© 2026 Cogniven. All rights reserved.",
+          zh: "© 2026 Cogniven。保留所有权利。",
+        },
+        "footer-copyright2": {
+          en: "The works presented on this site are original and protected by copyright.<br />Unauthorized reproduction, distribution, or commercial use is prohibited.",
+          zh: "本网站展示的作品均为原创，受版权保护。<br />未经授权，禁止复制、分发或商业使用。",
         },
       };
 
@@ -447,17 +500,24 @@
         renderLang();
       }
 
-      function renderLang() {
-        const navLinks = document.getElementById("nav-links");
-        const navs = i18n[lang].nav;
+      function applyPageContent(lang) {
+        Object.keys(pageContent).forEach((id) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          const value = pageContent[id][lang];
+          if (typeof value !== "string") return;
+          if (value.includes("<br")) {
+            el.innerHTML = value;
+          } else {
+            el.textContent = value;
+          }
+        });
+      }
 
-        navLinks.innerHTML = `
-                <a href="/works.html">${navs[0]}</a>
-                <a href="/writing.html">${navs[1]}</a>
-                <a href="/projects.html">${navs[2]}</a>
-                <a href="/about.html">${navs[3]}</a>
-                <a href="/archive.html">${navs[4]}</a>
-            `;
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
 
         document.getElementById("logo-text").textContent = i18n[lang].logo;
         document
@@ -467,14 +527,7 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        if (window.applyPageContentOverrides) {
-          window.applyPageContentOverrides(lang, pageContent);
-        }
-
-        document.querySelector(".footer-inner p:first-child").textContent =
-          i18n[lang].copyright;
-        document.querySelector(".footer-inner p:last-child").innerHTML =
-          i18n[lang].copyright2;
+        applyPageContent(lang);
       }
 
       document.addEventListener("DOMContentLoaded", function () {
