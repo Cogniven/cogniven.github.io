@@ -1,12 +1,12 @@
 const ResearchSystems = [
   {
     title: {
-      en: "Quantitative Trading System",
-      zh: "量化交易研究",
+      en: "Investment Research",
+      zh: "投资研究",
     },
     desc: {
-      en: "A research approach to finding deterministic logic in a volatile market.",
-      zh: "一种在波动的市场中寻找确定逻辑的研究。",
+      en: "A method of seeking profit by leveraging market fluctuations.",
+      zh: "一种借助市场的波动谋求利益的方式。",
     },
     category: {
       en: "Investment",
