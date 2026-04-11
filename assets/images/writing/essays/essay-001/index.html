@@ -149,6 +149,44 @@
   <script src="/js/i18n.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
+    const pageContent = {
+      // 内容填写区（新手只改这里）
+      // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+      'essay-eyebrow': { en: 'Writing · Essays', zh: '写作 · 文章' },
+      'essay-title': { en: 'On Structure and Pressure', zh: '结构与压力' },
+      'essay-meta': { en: 'Mar 22, 2026 · Essay', zh: '2026年3月22日 · 文章' },
+      'essay-subtitle': {
+        en: 'An essay on how systems reveal themselves most clearly under constraint.',
+        zh: '一篇关于系统如何在约束下最清楚地显露自身结构的文章。',
+      },
+      'essay-h2-1': { en: 'Structure Under Condition', zh: '条件中的结构' },
+      'essay-p1': {
+        en: 'Systems rarely reveal themselves in moments of ease. When conditions are generous, weak arrangements can appear stable simply because they are not being tested.',
+        zh: '系统很少会在轻松时刻暴露自身。当条件宽松时，脆弱的安排也可能显得稳定，只因为它们尚未真正经受检验。',
+      },
+      'essay-p2': {
+        en: 'Pressure changes that. Constraint makes relations visible. It shows which parts support one another, which parts only imitate coherence, and which parts collapse when their environment becomes less forgiving.',
+        zh: '压力会改变这一点。约束会让关系变得可见。它揭示哪些部分彼此支撑，哪些部分只是模仿出连贯性，以及哪些部分会在环境变得更严苛时开始崩塌。',
+      },
+      'essay-h2-2': { en: 'Why Constraint Clarifies', zh: '为什么约束能澄清结构' },
+      'essay-p3': {
+        en: 'Constraint is not only a limit. It is also a diagnostic condition. Under pressure, the distinction between surface order and actual structure becomes much easier to see.',
+        zh: '约束不仅仅是一种限制，它也是一种诊断条件。在压力下，表面秩序与真实结构之间的区别会更容易被看见。',
+      },
+      'essay-p4': {
+        en: 'A system that survives pressure does not necessarily survive because it is strong in every part. More often, it survives because its core relations are real rather than decorative.',
+        zh: '一个在压力中存活下来的系统，并不一定是因为它的每一个部分都足够强大。更常见的是，它之所以幸存，是因为它的核心关系是真实的，而不是装饰性的。',
+      },
+      'essay-h2-3': { en: 'From Stability to Legibility', zh: '从稳定到可读' },
+      'essay-p5': {
+        en: 'This is why moments of tension are analytically valuable. They transform hidden organization into observable form. What was once background becomes legible.',
+        zh: '这正是为什么紧张时刻具有分析价值。它们把隐藏的组织形式转化为可观察的形式。曾经处于背景中的东西，开始变得可读。',
+      },
+      'essay-p6': {
+        en: 'For that reason, pressure should not always be understood as a purely destructive force. In some cases, it is what allows structure to be read at all.',
+        zh: '因此，压力不应总被理解为纯粹的破坏力量。在某些情况下，恰恰是它让结构第一次真正能够被阅读。',
+      },
+    };
 
     function setLang(newLang) {
       lang = newLang;
@@ -165,58 +203,9 @@
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
 
-      document.getElementById('essay-eyebrow').textContent =
-        lang === 'zh' ? '写作 · 文章' : 'Writing · Essays';
-
-      document.getElementById('essay-title').textContent =
-        lang === 'zh' ? '结构与压力' : 'On Structure and Pressure';
-
-      document.getElementById('essay-meta').textContent =
-        lang === 'zh' ? '2026年3月22日 · 文章' : 'Mar 22, 2026 · Essay';
-
-      document.getElementById('essay-subtitle').textContent =
-        lang === 'zh'
-          ? '一篇关于系统如何在约束下最清楚地显露自身结构的文章。'
-          : 'An essay on how systems reveal themselves most clearly under constraint.';
-
-      document.getElementById('essay-h2-1').textContent =
-        lang === 'zh' ? '条件中的结构' : 'Structure Under Condition';
-
-      document.getElementById('essay-p1').textContent =
-        lang === 'zh'
-          ? '系统很少会在轻松时刻暴露自身。当条件宽松时，脆弱的安排也可能显得稳定，只因为它们尚未真正经受检验。'
-          : 'Systems rarely reveal themselves in moments of ease. When conditions are generous, weak arrangements can appear stable simply because they are not being tested.';
-
-      document.getElementById('essay-p2').textContent =
-        lang === 'zh'
-          ? '压力会改变这一点。约束会让关系变得可见。它揭示哪些部分彼此支撑，哪些部分只是模仿出连贯性，以及哪些部分会在环境变得更严苛时开始崩塌。'
-          : 'Pressure changes that. Constraint makes relations visible. It shows which parts support one another, which parts only imitate coherence, and which parts collapse when their environment becomes less forgiving.';
-
-      document.getElementById('essay-h2-2').textContent =
-        lang === 'zh' ? '为什么约束能澄清结构' : 'Why Constraint Clarifies';
-
-      document.getElementById('essay-p3').textContent =
-        lang === 'zh'
-          ? '约束不仅仅是一种限制，它也是一种诊断条件。在压力下，表面秩序与真实结构之间的区别会更容易被看见。'
-          : 'Constraint is not only a limit. It is also a diagnostic condition. Under pressure, the distinction between surface order and actual structure becomes much easier to see.';
-
-      document.getElementById('essay-p4').textContent =
-        lang === 'zh'
-          ? '一个在压力中存活下来的系统，并不一定是因为它的每一个部分都足够强大。更常见的是，它之所以幸存，是因为它的核心关系是真实的，而不是装饰性的。'
-          : 'A system that survives pressure does not necessarily survive because it is strong in every part. More often, it survives because its core relations are real rather than decorative.';
-
-      document.getElementById('essay-h2-3').textContent =
-        lang === 'zh' ? '从稳定到可读' : 'From Stability to Legibility';
-
-      document.getElementById('essay-p5').textContent =
-        lang === 'zh'
-          ? '这正是为什么紧张时刻具有分析价值。它们把隐藏的组织形式转化为可观察的形式。曾经处于背景中的东西，开始变得可读。'
-          : 'This is why moments of tension are analytically valuable. They transform hidden organization into observable form. What was once background becomes legible.';
-
-      document.getElementById('essay-p6').textContent =
-        lang === 'zh'
-          ? '因此，压力不应总被理解为纯粹的破坏力量。在某些情况下，恰恰是它让结构第一次真正能够被阅读。'
-          : 'For that reason, pressure should not always be understood as a purely destructive force. In some cases, it is what allows structure to be read at all.';
+      if (window.applyPageContentOverrides) {
+        window.applyPageContentOverrides(lang, pageContent);
+      }
 
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

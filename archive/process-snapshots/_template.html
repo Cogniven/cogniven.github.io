@@ -234,6 +234,12 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        // 例如：
+        // title: { en: "English title", zh: "中文标题" },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -304,6 +310,10 @@
           lang === "zh"
             ? "这次改动最关键的结果，是明确区分了分区入口与详情路径，为全站稳定 active 映射打下基础。"
             : "The key result was a clearer distinction between section anchors and content detail paths, which later enabled stable active-state mapping across the whole site.";
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

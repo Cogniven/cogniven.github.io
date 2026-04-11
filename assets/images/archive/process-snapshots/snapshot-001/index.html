@@ -234,6 +234,45 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "eyebrow": { en: "Archive · Process Snapshots", zh: "归档 · 过程切片" },
+        "title": { en: "Navigation Revision Snapshot", zh: "导航改版切片" },
+        "hero-text": {
+          en: "A preserved transition stage where navigation hierarchy and dropdown behavior were being merged into one stable system.",
+          zh: "一个保留的过渡状态：导航层级与下拉行为正在合并为更稳定的系统。",
+        },
+        "meta-date-label": { en: "Date", zh: "日期" },
+        "meta-date-value": { en: "2026", zh: "2026年" },
+        "meta-status-label": { en: "Status", zh: "状态" },
+        "meta-status-value": { en: "Transition", zh: "过渡中" },
+        "meta-field-label": { en: "Field", zh: "领域" },
+        "meta-field-value": { en: "Navigation System", zh: "导航系统" },
+        "meta-mode-label": { en: "Mode", zh: "模式" },
+        "meta-mode-value": { en: "Snapshot", zh: "切片记录" },
+        "note-label": { en: "Snapshot Note", zh: "切片说明" },
+        "note-text": {
+          en: "This snapshot captures the period where static top links and section dropdowns coexisted, before active-state inference and mobile handling were fully aligned.",
+          zh: "该切片记录了静态顶栏链接与分区下拉并存的阶段，当时 active 状态推断与移动端行为尚未完全统一。",
+        },
+        "state-label": { en: "State", zh: "状态" },
+        "state-title": { en: "Observed Structure", zh: "当时结构" },
+        "state-p1": {
+          en: "The page set already used section-level nav groups, but active link logic did not yet account for deep detail paths under shared assets.",
+          zh: "页面已经采用分区导航组，但 active 链接逻辑尚未覆盖共享资源路径下的深层详情页。",
+        },
+        "state-p2": {
+          en: "This caused inconsistent highlight behavior between list pages and detail pages, especially when entry URLs lived under `/assets/images/...`.",
+          zh: "这导致列表页与详情页的高亮行为不一致，尤其是 URL 位于 `/assets/images/...` 时更明显。",
+        },
+        "result-label": { en: "Result", zh: "结果" },
+        "result-title": { en: "Outcome of This Pass", zh: "该阶段产出" },
+        "result-p1": {
+          en: "The key result was a clearer distinction between section anchors and content detail paths, which later enabled stable active-state mapping across the whole site.",
+          zh: "这次改动最关键的结果，是明确区分了分区入口与详情路径，为全站稳定 active 映射打下基础。",
+        },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -254,56 +293,9 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        document.getElementById("eyebrow").textContent =
-          lang === "zh" ? "归档 · 过程切片" : "Archive · Process Snapshots";
-        document.getElementById("title").textContent =
-          lang === "zh" ? "导航改版切片" : "Navigation Revision Snapshot";
-        document.getElementById("hero-text").textContent =
-          lang === "zh"
-            ? "一个保留的过渡状态：导航层级与下拉行为正在合并为更稳定的系统。"
-            : "A preserved transition stage where navigation hierarchy and dropdown behavior were being merged into one stable system.";
-        document.getElementById("meta-date-label").textContent =
-          lang === "zh" ? "日期" : "Date";
-        document.getElementById("meta-date-value").textContent =
-          lang === "zh" ? "2026年" : "2026";
-        document.getElementById("meta-status-label").textContent =
-          lang === "zh" ? "状态" : "Status";
-        document.getElementById("meta-status-value").textContent =
-          lang === "zh" ? "过渡中" : "Transition";
-        document.getElementById("meta-field-label").textContent =
-          lang === "zh" ? "领域" : "Field";
-        document.getElementById("meta-field-value").textContent =
-          lang === "zh" ? "导航系统" : "Navigation System";
-        document.getElementById("meta-mode-label").textContent =
-          lang === "zh" ? "模式" : "Mode";
-        document.getElementById("meta-mode-value").textContent =
-          lang === "zh" ? "切片记录" : "Snapshot";
-        document.getElementById("note-label").textContent =
-          lang === "zh" ? "切片说明" : "Snapshot Note";
-        document.getElementById("note-text").textContent =
-          lang === "zh"
-            ? "该切片记录了静态顶栏链接与分区下拉并存的阶段，当时 active 状态推断与移动端行为尚未完全统一。"
-            : "This snapshot captures the period where static top links and section dropdowns coexisted, before active-state inference and mobile handling were fully aligned.";
-        document.getElementById("state-label").textContent =
-          lang === "zh" ? "状态" : "State";
-        document.getElementById("state-title").textContent =
-          lang === "zh" ? "当时结构" : "Observed Structure";
-        document.getElementById("state-p1").textContent =
-          lang === "zh"
-            ? "页面已经采用分区导航组，但 active 链接逻辑尚未覆盖共享资源路径下的深层详情页。"
-            : "The page set already used section-level nav groups, but active link logic did not yet account for deep detail paths under shared assets.";
-        document.getElementById("state-p2").textContent =
-          lang === "zh"
-            ? "这导致列表页与详情页的高亮行为不一致，尤其是 URL 位于 `/assets/images/...` 时更明显。"
-            : "This caused inconsistent highlight behavior between list pages and detail pages, especially when entry URLs lived under `/assets/images/...`.";
-        document.getElementById("result-label").textContent =
-          lang === "zh" ? "结果" : "Result";
-        document.getElementById("result-title").textContent =
-          lang === "zh" ? "该阶段产出" : "Outcome of This Pass";
-        document.getElementById("result-p1").textContent =
-          lang === "zh"
-            ? "这次改动最关键的结果，是明确区分了分区入口与详情路径，为全站稳定 active 映射打下基础。"
-            : "The key result was a clearer distinction between section anchors and content detail paths, which later enabled stable active-state mapping across the whole site.";
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

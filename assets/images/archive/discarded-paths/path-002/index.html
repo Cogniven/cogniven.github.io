@@ -186,6 +186,39 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "eyebrow": { en: "Archive · Discarded Paths", zh: "归档 · 废弃路径" },
+        "title": { en: "Monolithic Landing Draft", zh: "单页首页草案" },
+        "meta-year": { en: "2026", zh: "2026年" },
+        "meta-type": { en: "Layout Direction", zh: "版式方向" },
+        "meta-tag": { en: "Homepage", zh: "首页" },
+        "subtitle": {
+          en: "A one-page homepage concept that merged all site sections before the structure was split into focused entries.",
+          zh: "一个曾把所有分区集中在单页的首页方案，后续改为分区化入口结构。",
+        },
+        "context-label": { en: "Context", zh: "背景" },
+        "context-text": {
+          en: "This direction tried to maximize overview by placing works, writing, projects, and archive previews on one continuous page. It improved immediate exposure but reduced clarity in depth navigation.",
+          zh: "该方向试图通过单页展示作品、写作、项目和归档预览，以提升概览效率；但随着内容增多，深度导航清晰度下降。",
+        },
+        "h2-1": { en: "1. Why It Was Attempted", zh: "1. 尝试原因" },
+        "p1": {
+          en: "At that stage, the main concern was discoverability. A monolithic page made every category visible without extra clicks and looked efficient for first-time visitors.",
+          zh: "当时的核心问题是可发现性。单页能让首次访问者在不跳转的情况下看到全部类别。",
+        },
+        "h2-2": { en: "2. Why It Was Abandoned", zh: "2. 放弃原因" },
+        "p2": {
+          en: "As content volume increased, the page became dense and repetitive. Different content types required different reading speeds and could not share one scroll rhythm effectively.",
+          zh: "内容规模扩大后，页面密度和重复度过高。不同内容类型需要不同阅读节奏，无法在同一滚动逻辑中保持质量。",
+        },
+        "h2-3": { en: "3. Lasting Insight", zh: "3. 保留价值" },
+        "p3": {
+          en: "The draft still provided a useful reference for section ordering and narrative flow. Its strongest part was top-level sequencing, not single-page containment.",
+          zh: "这个草案仍为分区排序与叙事流提供了参考。它最有价值的不是单页承载，而是顶层序列设计。",
+        },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -206,44 +239,9 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        document.getElementById("eyebrow").textContent =
-          lang === "zh" ? "归档 · 废弃路径" : "Archive · Discarded Paths";
-        document.getElementById("title").textContent =
-          lang === "zh" ? "暂无内容" : "Empty Content";
-        document.getElementById("meta-year").textContent =
-          lang === "zh" ? "2026年" : "2026";
-        document.getElementById("meta-type").textContent =
-          lang === "zh" ? "版式方向" : "Layout Direction";
-        document.getElementById("meta-tag").textContent =
-          lang === "zh" ? "首页" : "Homepage";
-        document.getElementById("subtitle").textContent =
-          lang === "zh"
-            ? "一个曾把所有分区集中在单页的首页方案，后续改为分区化入口结构。"
-            : "A one-page homepage concept that merged all site sections before the structure was split into focused entries.";
-        document.getElementById("context-label").textContent =
-          lang === "zh" ? "背景" : "Context";
-        document.getElementById("context-text").textContent =
-          lang === "zh"
-            ? "该方向试图通过单页展示作品、写作、项目和归档预览，以提升概览效率；但随着内容增多，深度导航清晰度下降。"
-            : "This direction tried to maximize overview by placing works, writing, projects, and archive previews on one continuous page. It improved immediate exposure but reduced clarity in depth navigation.";
-        document.getElementById("h2-1").textContent =
-          lang === "zh" ? "1. 尝试原因" : "1. Why It Was Attempted";
-        document.getElementById("p1").textContent =
-          lang === "zh"
-            ? "当时的核心问题是可发现性。单页能让首次访问者在不跳转的情况下看到全部类别。"
-            : "At that stage, the main concern was discoverability. A monolithic page made every category visible without extra clicks and looked efficient for first-time visitors.";
-        document.getElementById("h2-2").textContent =
-          lang === "zh" ? "2. 放弃原因" : "2. Why It Was Abandoned";
-        document.getElementById("p2").textContent =
-          lang === "zh"
-            ? "内容规模扩大后，页面密度和重复度过高。不同内容类型需要不同阅读节奏，无法在同一滚动逻辑中保持质量。"
-            : "As content volume increased, the page became dense and repetitive. Different content types required different reading speeds and could not share one scroll rhythm effectively.";
-        document.getElementById("h2-3").textContent =
-          lang === "zh" ? "3. 保留价值" : "3. Lasting Insight";
-        document.getElementById("p3").textContent =
-          lang === "zh"
-            ? "这个草案仍为分区排序与叙事流提供了参考。它最有价值的不是单页承载，而是顶层序列设计。"
-            : "The draft still provided a useful reference for section ordering and narrative flow. Its strongest part was top-level sequencing, not single-page containment.";
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

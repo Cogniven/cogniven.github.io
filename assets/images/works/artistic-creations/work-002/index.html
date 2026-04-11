@@ -124,6 +124,29 @@
     <script src="/js/i18n.js"></script>
     <script>
         let lang = localStorage.getItem('lang') || 'en';
+        const pageContent = {
+            // 内容填写区（新手只改这里）
+            // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+            'art-eyebrow': { en: 'Works · Artistic Creations', zh: '作品 · 艺术创作' },
+            'art-title': { en: 'Artistic Creation 002', zh: '艺术创作 002' },
+            'art-meta': { en: '2026 · Visual Work', zh: '2026 · 视觉作品' },
+            'art-subtitle': {
+                en: 'A short conceptual description of this piece. This space can hold meaning, context, or simply remain minimal.',
+                zh: '这是一段关于作品的简短说明。这里可以放概念、背景，也可以尽量保持克制与留白。',
+            },
+            'art-p1': {
+                en: 'This page is intentionally open. It is not limited to a fixed structure.',
+                zh: '这个页面被故意保持开放。它并不受限于固定结构。',
+            },
+            'art-p2': {
+                en: 'You can place images, fragments of text, process notes, or even leave sections empty.',
+                zh: '你可以在这里放图片、文字碎片、过程笔记，甚至让某些部分保持空白。',
+            },
+            'art-p3': {
+                en: 'Artistic work does not always require explanation. Sometimes the page itself is part of the work.',
+                zh: '艺术作品并不总是需要解释。有时页面本身就是作品的一部分。',
+            },
+        };
 
         function setLang(newLang) {
             lang = newLang;
@@ -140,34 +163,9 @@
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
 
-            document.getElementById('art-eyebrow').textContent =
-                lang === 'zh' ? '作品 · 艺术创作' : 'Works · Artistic Creations';
-
-            document.getElementById('art-title').textContent =
-                lang === 'zh' ? '艺术创作 002' : 'Artistic Creation 002';
-
-            document.getElementById('art-meta').textContent =
-                lang === 'zh' ? '2026 · 视觉作品' : '2026 · Visual Work';
-
-            document.getElementById('art-subtitle').textContent =
-                lang === 'zh'
-                    ? '这是一段关于作品的简短说明。这里可以放概念、背景，也可以尽量保持克制与留白。'
-                    : 'A short conceptual description of this piece. This space can hold meaning, context, or simply remain minimal.';
-
-            document.getElementById('art-p1').textContent =
-                lang === 'zh'
-                    ? '这个页面被故意保持开放。它并不受限于固定结构。'
-                    : 'This page is intentionally open. It is not limited to a fixed structure.';
-
-            document.getElementById('art-p2').textContent =
-                lang === 'zh'
-                    ? '你可以在这里放图片、文字碎片、过程笔记，甚至让某些部分保持空白。'
-                    : 'You can place images, fragments of text, process notes, or even leave sections empty.';
-
-            document.getElementById('art-p3').textContent =
-                lang === 'zh'
-                    ? '艺术作品并不总是需要解释。有时页面本身就是作品的一部分。'
-                    : 'Artistic work does not always require explanation. Sometimes the page itself is part of the work.';
+            if (window.applyPageContentOverrides) {
+                window.applyPageContentOverrides(lang, pageContent);
+            }
 
             document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
             document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

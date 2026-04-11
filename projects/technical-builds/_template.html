@@ -252,6 +252,12 @@
     <script src="/js/i18n.js"></script>
     <script>
         let lang = localStorage.getItem('lang') || 'en';
+        const pageContent = {
+            // 内容填写区（新手只改这里）
+            // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+            // 例如：
+            // "tb-title": { en: "English title", zh: "中文标题" },
+        };
 
         function setLang(newLang) {
             lang = newLang;
@@ -335,6 +341,10 @@
                 lang === 'zh'
                     ? '下一步是完善自动化、提升评估结构，并把这个环境逐步变成一个更耐用的个人研究栈。'
                     : 'The next step is to refine automation, improve evaluation structure, and turn the environment into a more durable personal research stack.';
+
+            if (window.applyPageContentOverrides) {
+                window.applyPageContentOverrides(lang, pageContent);
+            }
 
             document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
             document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

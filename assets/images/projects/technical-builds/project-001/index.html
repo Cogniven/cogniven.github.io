@@ -252,6 +252,67 @@
     <script src="/js/i18n.js"></script>
     <script>
         let lang = localStorage.getItem('lang') || 'en';
+        const pageContent = {
+            // 内容填写区（新手只改这里）
+            // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+            'tb-eyebrow': { en: 'Projects · Technical Builds', zh: '项目 · 技术构建' },
+            'tb-title': { en: 'Quant Research Infrastructure', zh: '量化研究基础设施' },
+            'tb-hero-text': {
+                en: 'A technical build focused on creating a usable environment for quantitative strategy research, testing, and iteration.',
+                zh: '一个专注于为量化策略研究、测试与迭代构建可用环境的技术项目。',
+            },
+            'meta-year-label': { en: 'Year', zh: '年份' },
+            'meta-type-label': { en: 'Type', zh: '类型' },
+            'meta-type-value': { en: 'System Build', zh: '系统构建' },
+            'meta-tools-label': { en: 'Tools', zh: '工具' },
+            'meta-status-label': { en: 'Status', zh: '状态' },
+            'meta-status-value': { en: 'Active', zh: '进行中' },
+            'summary-label': { en: 'Project Summary', zh: '项目摘要' },
+            'summary-text': {
+                en: 'This project aims to build a stable technical environment for quantitative research rather than a single isolated strategy. It connects strategy code, testing workflow, deployment logic, and iterative evaluation into one working structure.',
+                zh: '这个项目的目标不是做出一个孤立策略，而是建立一个稳定的量化研究技术环境，把策略代码、测试流程、部署逻辑与迭代评估连接成一个可工作的结构。',
+            },
+            'problem-label': { en: 'Problem', zh: '问题' },
+            'problem-title': { en: 'Problem Framing', zh: '问题界定' },
+            'problem-p1': {
+                en: 'Quantitative strategy work often breaks down when research, testing, and deployment are treated as disconnected tasks. A working strategy is not enough if the surrounding environment remains unstable or inefficient.',
+                zh: '当研究、测试与部署被当作互相割裂的任务时，量化策略工作往往会失效。仅仅有一个可运行策略还不够，如果周边环境仍然不稳定或低效。',
+            },
+            'problem-p2': {
+                en: 'This build began from the need to create a more repeatable system for experimentation, backtesting, parameter adjustment, and execution management.',
+                zh: '这个项目起始于一个需求：建立一个更可重复的系统，用于实验、回测、参数调整和执行管理。',
+            },
+            'approach-label': { en: 'Approach', zh: '方法' },
+            'approach-title': { en: 'System Design', zh: '系统设计' },
+            'approach-p1': {
+                en: 'The project is organized around a Docker-based research environment, Python strategy files, structured configuration, and a workflow for repeated testing and revision.',
+                zh: '该项目围绕一个基于 Docker 的研究环境、Python 策略文件、结构化配置以及重复测试与修订的工作流来组织。',
+            },
+            'approach-p2': {
+                en: 'The design emphasizes modularity: strategies can evolve independently, while logs, data handling, and execution structure remain relatively stable. This reduces friction when moving from idea to implementation.',
+                zh: '设计强调模块化：策略可以独立演化，而日志、数据处理和执行结构保持相对稳定，从而减少从想法到落地过程中的摩擦。',
+            },
+            'output-label': { en: 'Output', zh: '输出' },
+            'output-title': { en: 'Results and Current State', zh: '结果与当前状态' },
+            'output-p1': {
+                en: 'The current result is not a finished platform but a usable infrastructure: strategy experiments can be developed, tested, compared, and revised within a more coherent technical environment.',
+                zh: '当前结果不是一个完成平台，而是一套可用基础设施：策略实验可以在更连贯的技术环境中被开发、测试、比较和修订。',
+            },
+            'reflection-label': { en: 'Reflection', zh: '反思' },
+            'reflection-title': { en: 'Reflection and Next Step', zh: '反思与下一步' },
+            'reflection-p1': {
+                en: 'What works well is the increasing consistency of the workflow: strategy development is becoming easier to manage because the technical environment has started to take shape.',
+                zh: '目前最有效的部分，是工作流一致性正在提高：随着技术环境逐渐成形，策略开发变得更容易管理。',
+            },
+            'reflection-p2': {
+                en: 'What remains unfinished is integration depth. Some parts are still provisional, and the system depends on ongoing cleanup, naming discipline, and clearer separation between research and production layers.',
+                zh: '仍未完成的是整合深度。一些部分仍是临时性的，整个系统仍依赖持续清理、命名纪律，以及研究层与生产层更清晰的分离。',
+            },
+            'reflection-p3': {
+                en: 'The next step is to refine automation, improve evaluation structure, and turn the environment into a more durable personal research stack.',
+                zh: '下一步是完善自动化、提升评估结构，并把这个环境逐步变成一个更耐用的个人研究栈。',
+            },
+        };
 
         function setLang(newLang) {
             lang = newLang;
@@ -268,73 +329,9 @@
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
 
-            document.getElementById('tb-eyebrow').textContent =
-                lang === 'zh' ? '项目 · 技术构建' : 'Projects · Technical Builds';
-
-            document.getElementById('tb-title').textContent =
-                lang === 'zh' ? '量化研究基础设施' : 'Quant Research Infrastructure';
-
-            document.getElementById('tb-hero-text').textContent =
-                lang === 'zh'
-                    ? '一个专注于为量化策略研究、测试与迭代构建可用环境的技术项目。'
-                    : 'A technical build focused on creating a usable environment for quantitative strategy research, testing, and iteration.';
-
-            document.getElementById('meta-year-label').textContent = lang === 'zh' ? '年份' : 'Year';
-            document.getElementById('meta-type-label').textContent = lang === 'zh' ? '类型' : 'Type';
-            document.getElementById('meta-type-value').textContent = lang === 'zh' ? '系统构建' : 'System Build';
-            document.getElementById('meta-tools-label').textContent = lang === 'zh' ? '工具' : 'Tools';
-            document.getElementById('meta-status-label').textContent = lang === 'zh' ? '状态' : 'Status';
-            document.getElementById('meta-status-value').textContent = lang === 'zh' ? '进行中' : 'Active';
-
-            document.getElementById('summary-label').textContent = lang === 'zh' ? '项目摘要' : 'Project Summary';
-            document.getElementById('summary-text').textContent =
-                lang === 'zh'
-                    ? '这个项目的目标不是做出一个孤立策略，而是建立一个稳定的量化研究技术环境，把策略代码、测试流程、部署逻辑与迭代评估连接成一个可工作的结构。'
-                    : 'This project aims to build a stable technical environment for quantitative research rather than a single isolated strategy. It connects strategy code, testing workflow, deployment logic, and iterative evaluation into one working structure.';
-
-            document.getElementById('problem-label').textContent = lang === 'zh' ? '问题' : 'Problem';
-            document.getElementById('problem-title').textContent = lang === 'zh' ? '问题界定' : 'Problem Framing';
-            document.getElementById('problem-p1').textContent =
-                lang === 'zh'
-                    ? '当研究、测试与部署被当作互相割裂的任务时，量化策略工作往往会失效。仅仅有一个可运行策略还不够，如果周边环境仍然不稳定或低效。'
-                    : 'Quantitative strategy work often breaks down when research, testing, and deployment are treated as disconnected tasks. A working strategy is not enough if the surrounding environment remains unstable or inefficient.';
-            document.getElementById('problem-p2').textContent =
-                lang === 'zh'
-                    ? '这个项目起始于一个需求：建立一个更可重复的系统，用于实验、回测、参数调整和执行管理。'
-                    : 'This build began from the need to create a more repeatable system for experimentation, backtesting, parameter adjustment, and execution management.';
-
-            document.getElementById('approach-label').textContent = lang === 'zh' ? '方法' : 'Approach';
-            document.getElementById('approach-title').textContent = lang === 'zh' ? '系统设计' : 'System Design';
-            document.getElementById('approach-p1').textContent =
-                lang === 'zh'
-                    ? '该项目围绕一个基于 Docker 的研究环境、Python 策略文件、结构化配置以及重复测试与修订的工作流来组织。'
-                    : 'The project is organized around a Docker-based research environment, Python strategy files, structured configuration, and a workflow for repeated testing and revision.';
-            document.getElementById('approach-p2').textContent =
-                lang === 'zh'
-                    ? '设计强调模块化：策略可以独立演化，而日志、数据处理和执行结构保持相对稳定，从而减少从想法到落地过程中的摩擦。'
-                    : 'The design emphasizes modularity: strategies can evolve independently, while logs, data handling, and execution structure remain relatively stable. This reduces friction when moving from idea to implementation.';
-
-            document.getElementById('output-label').textContent = lang === 'zh' ? '输出' : 'Output';
-            document.getElementById('output-title').textContent = lang === 'zh' ? '结果与当前状态' : 'Results and Current State';
-            document.getElementById('output-p1').textContent =
-                lang === 'zh'
-                    ? '当前结果不是一个完成平台，而是一套可用基础设施：策略实验可以在更连贯的技术环境中被开发、测试、比较和修订。'
-                    : 'The current result is not a finished platform but a usable infrastructure: strategy experiments can be developed, tested, compared, and revised within a more coherent technical environment.';
-
-            document.getElementById('reflection-label').textContent = lang === 'zh' ? '反思' : 'Reflection';
-            document.getElementById('reflection-title').textContent = lang === 'zh' ? '反思与下一步' : 'Reflection and Next Step';
-            document.getElementById('reflection-p1').textContent =
-                lang === 'zh'
-                    ? '目前最有效的部分，是工作流一致性正在提高：随着技术环境逐渐成形，策略开发变得更容易管理。'
-                    : 'What works well is the increasing consistency of the workflow: strategy development is becoming easier to manage because the technical environment has started to take shape.';
-            document.getElementById('reflection-p2').textContent =
-                lang === 'zh'
-                    ? '仍未完成的是整合深度。一些部分仍是临时性的，整个系统仍依赖持续清理、命名纪律，以及研究层与生产层更清晰的分离。'
-                    : 'What remains unfinished is integration depth. Some parts are still provisional, and the system depends on ongoing cleanup, naming discipline, and clearer separation between research and production layers.';
-            document.getElementById('reflection-p3').textContent =
-                lang === 'zh'
-                    ? '下一步是完善自动化、提升评估结构，并把这个环境逐步变成一个更耐用的个人研究栈。'
-                    : 'The next step is to refine automation, improve evaluation structure, and turn the environment into a more durable personal research stack.';
+            if (window.applyPageContentOverrides) {
+                window.applyPageContentOverrides(lang, pageContent);
+            }
 
             document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
             document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

@@ -337,6 +337,12 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        // 例如：
+        // "hero-title": { en: "English title", zh: "中文标题" },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -477,6 +483,10 @@
           lang === "zh"
             ? "下一步包括更强的自动化、更清晰的命名规范，以及项目页面、图像资源与可复用模板之间更稳定的关系。"
             : "Next steps include stronger automation, cleaner naming conventions, and a more stable relation between project pages, image assets, and reusable templates.";
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;

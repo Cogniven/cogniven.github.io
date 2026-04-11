@@ -149,6 +149,12 @@
   <script src="/js/i18n.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
+    const pageContent = {
+      // 内容填写区（新手只改这里）
+      // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+      // 例如：
+      // "essay-title": { en: "English title", zh: "中文标题" },
+    };
 
     function setLang(newLang) {
       lang = newLang;
@@ -217,6 +223,10 @@
         lang === 'zh'
           ? '因此，压力不应总被理解为纯粹的破坏力量。在某些情况下，恰恰是它让结构第一次真正能够被阅读。'
           : 'For that reason, pressure should not always be understood as a purely destructive force. In some cases, it is what allows structure to be read at all.';
+
+      if (window.applyPageContentOverrides) {
+        window.applyPageContentOverrides(lang, pageContent);
+      }
 
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

@@ -1095,3 +1095,144 @@ body.no-scroll {
 p {
   white-space: pre-line;
 }
+
+.capability-section {
+  margin-bottom: 48px;
+}
+
+.capability-section h2 {
+  margin-bottom: 18px;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.capability-card {
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  border-radius: 16px;
+  padding: 18px;
+  transition: all 0.2s ease;
+}
+
+.capability-card:hover {
+  transform: translateY(-4px);
+  border-color: #2f81f7;
+}
+
+.cap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.cap-level {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+.cap-use {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.cap-note {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .capability-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.capability-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.capability-head .section-side-text {
+  max-width: 420px;
+}
+
+.capability-group {
+  margin-bottom: 42px;
+}
+
+.capability-group h3 {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.capability-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--bg-soft);
+  padding: 20px;
+}
+
+.cap-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.cap-card-top h4 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.cap-level {
+  font-size: 0.74rem;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cap-use {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 0.94rem;
+}
+
+.cap-desc {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.72;
+}
+
+@media (max-width: 860px) {
+  .capability-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .capability-grid {
+    grid-template-columns: 1fr;
+  }
+}

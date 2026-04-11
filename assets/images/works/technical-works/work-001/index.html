@@ -109,7 +109,10 @@
       <section class="section">
         <div class="container project-page">
           <div class="project-cover">
-            <img src="./cover.jpg" alt="cover" />
+            <img
+              src="/assets/images/works/technical-works/work-001/cover.jpg"
+              alt="cover"
+            />
           </div>
 
           <div class="project-section">
@@ -145,6 +148,35 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        eyebrow: { en: "Works · Technical", zh: "作品 · 技术" },
+        title: {
+          en: "all-weather portfolio China market parameter optimization",
+          zh: "全天候投资组合中国市场参数优化",
+        },
+        meta: { en: "2026 · System Build", zh: "2026 · 系统构建" },
+        desc: {
+          en: "A technical system exploring structured automation and modular architecture.",
+          zh: "一个用于探索自动化结构与模块化架构的技术系统。",
+        },
+        "h2-1": { en: "Overview", zh: "概述" },
+        "h2-2": { en: "Structure", zh: "结构" },
+        "h2-3": { en: "Conclusion", zh: "结论" },
+        p1: {
+          en: "This project focuses on building a modular technical system designed for scalability and clarity.",
+          zh: "该项目聚焦于构建一个模块化技术系统，以实现可扩展性与结构清晰。",
+        },
+        p2: {
+          en: "The architecture separates logic, data, and interface layers, allowing independent iteration.",
+          zh: "架构将逻辑、数据和界面层分离，从而支持独立迭代。",
+        },
+        p3: {
+          en: "The system demonstrates how technical constraints can produce clearer structures.",
+          zh: "该系统展示了技术约束如何反而促成更清晰的结构。",
+        },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -179,43 +211,9 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        document.getElementById("eyebrow").textContent =
-          lang === "zh" ? "作品 · 技术" : "Works · Technical";
-
-        document.getElementById("title").textContent =
-          lang === "zh" ? "技术作品 001" : "Technical Work 001";
-
-        document.getElementById("meta").textContent =
-          lang === "zh" ? "2026 · 系统构建" : "2026 · System Build";
-
-        document.getElementById("desc").textContent =
-          lang === "zh"
-            ? "一个用于探索自动化结构与模块化架构的技术系统。"
-            : "A technical system exploring structured automation and modular architecture.";
-
-        document.getElementById("h2-1").textContent =
-          lang === "zh" ? "概述" : "Overview";
-
-        document.getElementById("h2-2").textContent =
-          lang === "zh" ? "结构" : "Structure";
-
-        document.getElementById("h2-3").textContent =
-          lang === "zh" ? "结论" : "Conclusion";
-
-        document.getElementById("p1").textContent =
-          lang === "zh"
-            ? "该项目聚焦于构建一个模块化技术系统，以实现可扩展性与结构清晰。"
-            : "This project focuses on building a modular technical system designed for scalability and clarity.";
-
-        document.getElementById("p2").textContent =
-          lang === "zh"
-            ? "架构将逻辑、数据和界面层分离，从而支持独立迭代。"
-            : "The architecture separates logic, data, and interface layers, allowing independent iteration.";
-
-        document.getElementById("p3").textContent =
-          lang === "zh"
-            ? "该系统展示了技术约束如何反而促成更清晰的结构。"
-            : "The system demonstrates how technical constraints can produce clearer structures.";
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
       }
 
       const hamburger = document.getElementById("hamburger-btn");

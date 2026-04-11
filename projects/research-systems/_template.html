@@ -285,6 +285,12 @@
   <script src="/js/i18n.js"></script>
   <script>
     let lang = localStorage.getItem('lang') || 'en';
+    const pageContent = {
+      // 内容填写区（新手只改这里）
+      // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+      // 例如：
+      // "sys-title": { en: "English title", zh: "中文标题" },
+    };
 
     function setLang(newLang) {
       lang = newLang;
@@ -386,6 +392,10 @@
         lang === 'zh'
           ? '这里可以放未来写作计划、额外分支、未完成问题或后续发展目标。'
           : 'This can include future writing plans, additional branches, unfinished questions, or later development goals.';
+
+      if (window.applyPageContentOverrides) {
+        window.applyPageContentOverrides(lang, pageContent);
+      }
 
       document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;

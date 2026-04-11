@@ -285,8 +285,40 @@
     );
   }
 
+  function resolveLocalizedValue(lang, value) {
+    if (value == null) return '';
+    if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+      return String(value);
+    }
+    if (typeof value === 'object') {
+      var picked = value[lang];
+      if (picked == null) picked = value.en;
+      if (picked == null) picked = value.zh;
+      if (picked == null) return '';
+      return String(picked);
+    }
+    return '';
+  }
+
+  window.applyPageContentOverrides = function (lang, contentMap) {
+    if (!contentMap || typeof contentMap !== 'object') return;
+    var currentLang = lang || localStorage.getItem('lang') || 'en';
+    Object.keys(contentMap).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var text = resolveLocalizedValue(currentLang, contentMap[id]);
+      if (!text) return;
+      el.textContent = text;
+    });
+  };
+
+  function shouldUseDetailEntryPlaceholders() {
+    if (!document.body) return false;
+    return document.body.getAttribute('data-use-detail-placeholders') === 'true';
+  }
+
   function applyDetailEntryPlaceholders() {
-    if (!isDetailEntryPath(location.pathname)) return;
+    if (!isDetailEntryPath(location.pathname) || !shouldUseDetailEntryPlaceholders()) return;
 
     var lang = localStorage.getItem('lang') || 'en';
     var contentPlaceholder = lang === 'zh' ? '这里暂时还没有内容。' : 'No content yet.';
@@ -320,12 +352,14 @@
         /caption/.test(id);
 
       if (!isMetaLike && !isContentLike) return;
+      if (el.textContent && el.textContent.trim()) return;
 
       el.textContent = isMetaLike ? metaPlaceholder : contentPlaceholder;
     });
   }
 
   function scheduleDetailEntryPlaceholders() {
+    if (!isDetailEntryPath(location.pathname) || !shouldUseDetailEntryPlaceholders()) return;
     window.requestAnimationFrame(function () {
       applyDetailEntryPlaceholders();
     });

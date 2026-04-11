@@ -233,6 +233,45 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "eyebrow": { en: "Archive · Process Snapshots", zh: "归档 · 过程切片" },
+        "title": { en: "Bilingual Copy Snapshot", zh: "双语文案切片" },
+        "hero-text": {
+          en: "A transitional copy pass preserving EN/ZH alignment before final tone normalization.",
+          zh: "一个中英文本对齐的过渡版本，保留于语气统一完成之前。",
+        },
+        "meta-date-label": { en: "Date", zh: "日期" },
+        "meta-date-value": { en: "2026", zh: "2026年" },
+        "meta-status-label": { en: "Status", zh: "状态" },
+        "meta-status-value": { en: "Transitional", zh: "过渡版本" },
+        "meta-field-label": { en: "Field", zh: "领域" },
+        "meta-field-value": { en: "Bilingual Copy", zh: "双语文案" },
+        "meta-mode-label": { en: "Mode", zh: "模式" },
+        "meta-mode-value": { en: "Snapshot", zh: "切片记录" },
+        "note-label": { en: "Snapshot Note", zh: "切片说明" },
+        "note-text": {
+          en: "This stage recorded text parity between English and Chinese labels across archive pages, while narrative tone and sentence rhythm were still uneven.",
+          zh: "该阶段用于确保归档页面中英标签对齐，但叙述语气与句法节奏仍不完全一致。",
+        },
+        "focus-label": { en: "Focus", zh: "焦点" },
+        "focus-title": { en: "What Was Being Aligned", zh: "当时对齐内容" },
+        "focus-p1": {
+          en: "Section naming, list descriptors, and metadata labels were mapped one-by-one to prevent term drift across language versions.",
+          zh: "分区命名、列表描述和元数据标签逐条映射，以避免中英文版本术语漂移。",
+        },
+        "focus-p2": {
+          en: "The pass emphasized structural equivalence first, postponing stylistic refinement to a later phase.",
+          zh: "该轮改动优先保证结构等价，把风格层面的打磨延后处理。",
+        },
+        "insight-label": { en: "Insight", zh: "观察" },
+        "insight-title": { en: "Why This Snapshot Matters", zh: "该切片价值" },
+        "insight-p1": {
+          en: "It marks the moment where bilingual consistency became a system rule instead of an afterthought. Later edits could improve tone without breaking cross-language structure.",
+          zh: "它标记了双语一致性从“事后修补”转向“系统规则”的时刻，使后续语气优化不会破坏结构一致。",
+        },
+      };
 
       function setLang(newLang) {
         lang = newLang;
@@ -253,56 +292,9 @@
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
 
-        document.getElementById("eyebrow").textContent =
-          lang === "zh" ? "归档 · 过程切片" : "Archive · Process Snapshots";
-        document.getElementById("title").textContent =
-          lang === "zh" ? "双语文案切片" : "Bilingual Copy Snapshot";
-        document.getElementById("hero-text").textContent =
-          lang === "zh"
-            ? "一个中英文本对齐的过渡版本，保留于语气统一完成之前。"
-            : "A transitional copy pass preserving EN/ZH alignment before final tone normalization.";
-        document.getElementById("meta-date-label").textContent =
-          lang === "zh" ? "日期" : "Date";
-        document.getElementById("meta-date-value").textContent =
-          lang === "zh" ? "2026年" : "2026";
-        document.getElementById("meta-status-label").textContent =
-          lang === "zh" ? "状态" : "Status";
-        document.getElementById("meta-status-value").textContent =
-          lang === "zh" ? "过渡版本" : "Transitional";
-        document.getElementById("meta-field-label").textContent =
-          lang === "zh" ? "领域" : "Field";
-        document.getElementById("meta-field-value").textContent =
-          lang === "zh" ? "双语文案" : "Bilingual Copy";
-        document.getElementById("meta-mode-label").textContent =
-          lang === "zh" ? "模式" : "Mode";
-        document.getElementById("meta-mode-value").textContent =
-          lang === "zh" ? "切片记录" : "Snapshot";
-        document.getElementById("note-label").textContent =
-          lang === "zh" ? "切片说明" : "Snapshot Note";
-        document.getElementById("note-text").textContent =
-          lang === "zh"
-            ? "该阶段用于确保归档页面中英标签对齐，但叙述语气与句法节奏仍不完全一致。"
-            : "This stage recorded text parity between English and Chinese labels across archive pages, while narrative tone and sentence rhythm were still uneven.";
-        document.getElementById("focus-label").textContent =
-          lang === "zh" ? "焦点" : "Focus";
-        document.getElementById("focus-title").textContent =
-          lang === "zh" ? "当时对齐内容" : "What Was Being Aligned";
-        document.getElementById("focus-p1").textContent =
-          lang === "zh"
-            ? "分区命名、列表描述和元数据标签逐条映射，以避免中英文版本术语漂移。"
-            : "Section naming, list descriptors, and metadata labels were mapped one-by-one to prevent term drift across language versions.";
-        document.getElementById("focus-p2").textContent =
-          lang === "zh"
-            ? "该轮改动优先保证结构等价，把风格层面的打磨延后处理。"
-            : "The pass emphasized structural equivalence first, postponing stylistic refinement to a later phase.";
-        document.getElementById("insight-label").textContent =
-          lang === "zh" ? "观察" : "Insight";
-        document.getElementById("insight-title").textContent =
-          lang === "zh" ? "该切片价值" : "Why This Snapshot Matters";
-        document.getElementById("insight-p1").textContent =
-          lang === "zh"
-            ? "它标记了双语一致性从“事后修补”转向“系统规则”的时刻，使后续语气优化不会破坏结构一致。"
-            : "It marks the moment where bilingual consistency became a system rule instead of an afterthought. Later edits could improve tone without breaking cross-language structure.";
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;
