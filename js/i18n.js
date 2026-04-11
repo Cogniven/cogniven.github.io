@@ -95,7 +95,7 @@ const i18n = {
       "This site gathers work, ideas, and systems, while recording explorations that remain in progress.\nIt is like a repository — one that holds thoughts still taking shape, yet continuing over time.\nWhat I seek here is something less dependent on immediate context: structures that remain stable across time, relations that hold through change, and forms that can be reused. It is, in a sense, a pursuit of continuity rather than completion.",
     aboutProfileTitle: "Profile",
     aboutProfile:
-      "My work moves across art, systems, and structural design.\nI tend to break problems down into structures, then rebuild them through systems. Moving across different fields, I look for patterns and methods that can operate beyond a single context.",
+      "A person whose work moves across art, systems, and structural design.\nI tend to break problems down into structures, then rebuild them through systems. Moving across different fields, I look for patterns and methods that can operate beyond a single context.",
     aboutFocusTitle: "Focus",
     aboutFocus:
       "Structuring complex systems into clear forms.\nDirect exploration through artistic expression.\nThe spread and evolution of behavior within groups.\nThe relationship between tools and cognitive structures.\nStability and iteration in long-term projects.",
@@ -246,7 +246,7 @@ const i18n = {
       "这个网站用于整理作品、想法与系统，也记录一些仍在演进中的探索。\n它像一个收纳柜，用来容纳那些尚未定型、但不断延续的思考。\n我在这里试图寻找某种不完全依赖于具体情境的东西：在时间中保持稳定的结构，在变化中仍然成立的关系，以及那些可以被反复使用的形式。这更接近一种对“长期存在”的追求。",
     aboutProfileTitle: "个人简介",
     aboutProfile:
-      "我的工作主要围绕艺术、系统与结构设计展开。\n我倾向于把问题拆解为结构，再通过系统的方式去重建它们。长期在不同领域之间移动，试图寻找可以跨场景使用的逻辑与方法。",
+      "一位工作主要围绕艺术、系统与结构设计展开的个体。\n我倾向于把问题拆解为结构，再通过系统的方式去重建它们。长期在不同领域之间移动，试图寻找可以跨场景使用的逻辑与方法。",
     aboutFocusTitle: "关注点",
     aboutFocus:
       "复杂系统的结构化表达。\n直截的艺术探索与展示。\n行为在群体中的传播与演化。\n技术工具与认知结构的结合方式。\n长期项目中的稳定性与迭代机制。",
