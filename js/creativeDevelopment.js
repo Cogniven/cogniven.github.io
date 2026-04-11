@@ -1,12 +1,12 @@
 const CreativeDevelopment = [
   {
     title: {
-      en: "Weird Town Adventure Novel Writing",
-      zh: "诡镇奇谈冒险小说撰写",
+      en: "Arkham Town Adventure Visualization",
+      zh: "诡镇奇谈冒险故事可视化",
     },
     desc: {
-      en: "An attempt to write a novel about the adventure of Weird Town using AI tools.",
-      zh: "借助AI工具将诡镇奇谈的冒险撰写成一篇小说的尝试",
+      en: "An attempt to present the adventure of Arkham Town as a visual work with the help of AI tools.",
+      zh: "借助AI工具将诡镇奇谈的冒险呈现为可视化作品的尝试",
     },
     cover: {
       en: "/assets/images/projects/creative-development/project-001/cover.jpg",
