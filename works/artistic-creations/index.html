@@ -1,175 +1,234 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artistic Creations - Cogniven</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artistic Creations - Cogniven</title>
-  <link rel="stylesheet" href="../../css/style.css" />
-</head>
-
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="../../index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
-      <div style="display:flex;align-items:center;gap:24px;">
-        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
-          <a href="../../works.html">Works</a>
-          <a href="../../writing.html">Writing</a>
-          <a href="../../projects.html">Projects</a>
-          <a href="../../about.html">About</a>
-          <a href="../../archive.html">Archive</a>
-        </div>
-        <div class="lang-switcher">
-          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
-          <button id="lang-zh" class="lang-btn">中文</button>
-        </div>
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow" id="ac-hero-eyebrow">Works · Artistic Creations</p>
-        <h1 id="ac-hero-title">Artistic Creations</h1>
-        <p class="hero-text" id="ac-hero-text">
-          A browsable archive of artistic work, presented as a structured grid.
-        </p>
-      </div>
-    </section>
-
-    <section class="section intro-band">
-      <div class="container narrow">
-        <p class="section-note" id="ac-overview-note">Overview</p>
-        <p class="lead-paragraph" id="ac-overview-text">
-          This page is built for browsing first. Each work appears as a card with a cover, title, and short description.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="section-note" id="ac-selection-note">Selection</p>
-            <h2 id="ac-selection-title">Current Works</h2>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="../../index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="../../works.html">Works</a>
+            <a href="../../writing.html">Writing</a>
+            <a href="../../projects.html">Projects</a>
+            <a href="../../about.html">About</a>
+            <a href="../../archive.html">Archive</a>
           </div>
-          <p class="section-side-text" id="ac-side-text">
-            You can change titles, descriptions, and images later without changing the page layout.
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow" id="ac-hero-eyebrow">Works · Artistic Creations</p>
+          <h1 id="ac-hero-title">Artistic Creations</h1>
+          <p class="hero-text" id="ac-hero-text">
+            A browsable archive of artistic work, presented as a structured
+            grid.
           </p>
         </div>
+      </section>
 
-        <div class="search-sort-row"
-          style="display:flex;gap:18px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-          <input id="search-box" type="text" placeholder="Search works..."
-            style="flex:1;min-width:220px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);font-size:15px;" />
-          <select id="sort-select"
-            style="padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);font-size:15px;">
-            <option value="date-desc">Newest First</option>
-            <option value="date-asc">Oldest First</option>
-            <option value="alpha">A–Z</option>
-          </select>
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="ac-overview-note">Overview</p>
+          <p class="lead-paragraph" id="ac-overview-text">
+            This page is built for browsing first. Each work appears as a card
+            with a cover, title, and short description.
+          </p>
         </div>
+      </section>
 
-        <div id="works-grid" class="works-grid"></div>
-        <div id="modal-root"></div>
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="ac-selection-note">Selection</p>
+              <h2 id="ac-selection-title">Current Works</h2>
+            </div>
+            <p class="section-side-text" id="ac-side-text">
+              You can change titles, descriptions, and images later without
+              changing the page layout.
+            </p>
+          </div>
+
+          <div
+            class="search-sort-row"
+            style="
+              display: flex;
+              gap: 18px;
+              align-items: center;
+              margin-bottom: 24px;
+              flex-wrap: wrap;
+            "
+          >
+            <input
+              id="search-box"
+              type="text"
+              placeholder="Search works..."
+              style="
+                flex: 1;
+                min-width: 220px;
+                padding: 8px 12px;
+                border-radius: 8px;
+                border: 1px solid var(--line);
+                background: var(--bg-soft);
+                color: var(--text);
+                font-size: 15px;
+              "
+            />
+            <select
+              id="sort-select"
+              style="
+                padding: 8px 12px;
+                border-radius: 8px;
+                border: 1px solid var(--line);
+                background: var(--bg-soft);
+                color: var(--text);
+                font-size: 15px;
+              "
+            >
+              <option value="date-desc">Newest First</option>
+              <option value="date-asc">Oldest First</option>
+              <option value="alpha">A–Z</option>
+            </select>
+          </div>
+
+          <div id="works-grid" class="works-grid"></div>
+          <div id="modal-root"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© 2026 Cogniven. All rights reserved.</p>
-      <p>
-        The works presented on this site are original and protected by copyright.<br>
-        Unauthorized reproduction, distribution, or commercial use is prohibited.
-      </p>
-    </div>
-  </footer>
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/nav.js"></script>
+    <script src="../../js/artisticCreations.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
 
-  <script src="../../js/i18n.js"></script>
-  <script src="../../js/nav.js"></script>
-  <script src="../../js/artisticCreations.js"></script>
-  <script>
-    let lang = localStorage.getItem("lang") || "en";
+      const grid = document.getElementById("works-grid");
+      const modalRoot = document.getElementById("modal-root");
+      const searchBox = document.getElementById("search-box");
+      const sortSelect = document.getElementById("sort-select");
 
-    const grid = document.getElementById("works-grid");
-    const modalRoot = document.getElementById("modal-root");
-    const searchBox = document.getElementById("search-box");
-    const sortSelect = document.getElementById("sort-select");
-
-    function setLang(newLang) {
-      lang = newLang;
-      localStorage.setItem("lang", lang);
-      renderLang();
-      renderWorks();
-    }
-
-    function getText(item, field) {
-      if (!item[field]) return "";
-      if (typeof item[field] === "string") return item[field];
-      return item[field][lang] || item[field].en || "";
-    }
-
-    function renderLang() {
-      if (window.buildNav) {
-        window.buildNav(lang);
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+        renderWorks();
       }
 
-      document.getElementById("logo-text").textContent = i18n[lang].logo;
-      document.getElementById("lang-en").classList.toggle("active", lang === "en");
-      document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
+      function getText(item, field) {
+        if (!item[field]) return "";
+        if (typeof item[field] === "string") return item[field];
+        return item[field][lang] || item[field].en || "";
+      }
 
-      document.getElementById("ac-hero-eyebrow").textContent =
-        lang === "zh" ? "作品 · 艺术创作" : "Works · Artistic Creations";
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
 
-      document.getElementById("ac-hero-title").textContent =
-        lang === "zh" ? "艺术创作" : "Artistic Creations";
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
 
-      document.getElementById("ac-hero-text").textContent =
-        lang === "zh"
-          ? "一个可浏览的艺术作品档案，以结构化网格方式呈现。"
-          : "A browsable archive of artistic work, presented as a structured grid.";
+        document.getElementById("ac-hero-eyebrow").textContent =
+          lang === "zh" ? "作品 · 艺术创作" : "Works · Artistic Creations";
 
-      document.getElementById("ac-overview-note").textContent =
-        lang === "zh" ? "概览" : "Overview";
+        document.getElementById("ac-hero-title").textContent =
+          lang === "zh" ? "艺术创作" : "Artistic Creations";
 
-      document.getElementById("ac-overview-text").textContent =
-        lang === "zh"
-          ? "本页以浏览为主。每个作品以卡片形式展示，包含封面、标题和简短描述。"
-          : "This page is built for browsing first. Each work appears as a card with a cover, title, and short description.";
+        document.getElementById("ac-hero-text").textContent =
+          lang === "zh"
+            ? "一个可浏览的艺术作品档案，以结构化网格方式呈现。"
+            : "A browsable archive of artistic work, presented as a structured grid.";
 
-      document.getElementById("ac-selection-note").textContent =
-        lang === "zh" ? "精选" : "Selection";
+        document.getElementById("ac-overview-note").textContent =
+          lang === "zh" ? "概览" : "Overview";
 
-      document.getElementById("ac-selection-title").textContent =
-        lang === "zh" ? "当前作品" : "Current Works";
+        document.getElementById("ac-overview-text").textContent =
+          lang === "zh"
+            ? "本页以浏览为主。每个作品以卡片形式展示，包含封面、标题和简短描述。"
+            : "This page is built for browsing first. Each work appears as a card with a cover, title, and short description.";
 
-      document.getElementById("ac-side-text").textContent =
-        lang === "zh"
-          ? "慢慢浏览，每一项作品都是独立存在的。"
-          : "Browse slowly. Each piece stands on its own.";
+        document.getElementById("ac-selection-note").textContent =
+          lang === "zh" ? "精选" : "Selection";
 
-      searchBox.placeholder = lang === "zh" ? "搜索作品..." : "Search works...";
+        document.getElementById("ac-selection-title").textContent =
+          lang === "zh" ? "当前作品" : "Current Works";
 
-      sortSelect.innerHTML = `
+        document.getElementById("ac-side-text").textContent =
+          lang === "zh"
+            ? "慢慢浏览，每一项作品都是独立存在的。"
+            : "Browse slowly. Each piece stands on its own.";
+
+        searchBox.placeholder =
+          lang === "zh" ? "搜索作品..." : "Search works...";
+
+        sortSelect.innerHTML = `
         <option value="date-desc">${lang === "zh" ? "最新优先" : "Newest First"}</option>
         <option value="date-asc">${lang === "zh" ? "最早优先" : "Oldest First"}</option>
         <option value="alpha">${lang === "zh" ? "按字母" : "A–Z"}</option>
       `;
 
-      document.querySelector(".footer-inner p:first-child").textContent = i18n[lang].copyright;
-      document.querySelector(".footer-inner p:last-child").innerHTML = i18n[lang].copyright2;
-    }
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
 
-    function createFallbackImage() {
-      return "data:image/svg+xml;utf8," + encodeURIComponent(`
+      function createFallbackImage() {
+        return (
+          "data:image/svg+xml;utf8," +
+          encodeURIComponent(`
         <svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'>
           <rect width='800' height='500' fill='#161b22'/>
           <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
@@ -177,160 +236,168 @@
             Cover not added yet
           </text>
         </svg>
-      `);
-    }
-
-    function createWorkCard(work) {
-      const card = document.createElement("article");
-      card.className = "work-card";
-
-      const coverWrapper = document.createElement("div");
-      coverWrapper.className = "work-cover-wrapper";
-
-      const img = document.createElement("img");
-      img.className = "work-cover";
-      img.src = work.cover || createFallbackImage();
-      img.alt = getText(work, "title");
-      img.onerror = function () {
-        this.src = createFallbackImage();
-      };
-
-      coverWrapper.appendChild(img);
-      card.appendChild(coverWrapper);
-
-      const body = document.createElement("div");
-      body.className = "work-body";
-
-      const title = document.createElement("h3");
-      title.className = "work-title";
-      title.textContent = getText(work, "title");
-
-      const desc = document.createElement("div");
-      desc.className = "work-desc";
-      desc.textContent = getText(work, "desc");
-
-      body.appendChild(title);
-      body.appendChild(desc);
-      card.appendChild(body);
-
-      card.addEventListener("click", () => {
-        if (work.link && work.link !== "#") {
-          window.location.href = work.link;
-        } else {
-          openModal(work);
-        }
-      });
-
-      return card;
-    }
-
-    function openModal(work) {
-      modalRoot.innerHTML = "";
-
-      const backdrop = document.createElement("div");
-      backdrop.className = "modal-backdrop";
-
-      const modal = document.createElement("div");
-      modal.className = "modal-content";
-
-      const closeBtn = document.createElement("button");
-      closeBtn.className = "modal-close";
-      closeBtn.innerHTML = "&times;";
-      closeBtn.onclick = closeModal;
-
-      const img = document.createElement("img");
-      img.className = "modal-image";
-      img.src = work.cover || createFallbackImage();
-      img.alt = getText(work, "title");
-
-      const title = document.createElement("div");
-      title.className = "modal-title";
-      title.textContent = getText(work, "title");
-
-      const desc = document.createElement("div");
-      desc.className = "modal-desc";
-      desc.textContent = getText(work, "desc");
-
-      modal.appendChild(closeBtn);
-      modal.appendChild(img);
-      modal.appendChild(title);
-      modal.appendChild(desc);
-      backdrop.appendChild(modal);
-      modalRoot.appendChild(backdrop);
-
-      backdrop.addEventListener("click", function (e) {
-        if (e.target === backdrop) closeModal();
-      });
-
-      document.addEventListener("keydown", escListener);
-    }
-
-    function closeModal() {
-      modalRoot.innerHTML = "";
-      document.removeEventListener("keydown", escListener);
-    }
-
-    function escListener(e) {
-      if (e.key === "Escape") closeModal();
-    }
-
-    function sortWorks(data, mode) {
-      const copied = [...data];
-
-      if (mode === "alpha") {
-        return copied.sort((a, b) =>
-          getText(a, "title").localeCompare(getText(b, "title"), lang === "zh" ? "zh" : "en")
+      `)
         );
-      } else if (mode === "date-asc") {
-        return copied.sort((a, b) => new Date(a.date || 0) - new Date(b.date || 0));
-      } else {
-        return copied.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-      }
-    }
-
-    function filterWorks(data, query) {
-      if (!query) return data;
-      const q = query.toLowerCase();
-
-      return data.filter(work => {
-        const title = getText(work, "title").toLowerCase();
-        const desc = getText(work, "desc").toLowerCase();
-        return title.includes(q) || desc.includes(q);
-      });
-    }
-
-    function renderWorks() {
-      grid.innerHTML = "";
-
-      let data = [...ArtisticCreations];
-      data = filterWorks(data, searchBox.value.trim());
-      data = sortWorks(data, sortSelect.value);
-
-      if (!data.length) {
-        const empty = document.createElement("div");
-        empty.style.color = "var(--muted)";
-        empty.style.padding = "12px 0";
-        empty.textContent = lang === "zh" ? "没有匹配的作品。" : "No matching works found.";
-        grid.appendChild(empty);
-        return;
       }
 
-      data.forEach(work => {
-        grid.appendChild(createWorkCard(work));
+      function createWorkCard(work) {
+        const card = document.createElement("article");
+        card.className = "work-card";
+
+        const coverWrapper = document.createElement("div");
+        coverWrapper.className = "work-cover-wrapper";
+
+        const img = document.createElement("img");
+        img.className = "work-cover";
+        img.src = work.cover || createFallbackImage();
+        img.alt = getText(work, "title");
+        img.onerror = function () {
+          this.src = createFallbackImage();
+        };
+
+        coverWrapper.appendChild(img);
+        card.appendChild(coverWrapper);
+
+        const body = document.createElement("div");
+        body.className = "work-body";
+
+        const title = document.createElement("h3");
+        title.className = "work-title";
+        title.textContent = getText(work, "title");
+
+        const desc = document.createElement("div");
+        desc.className = "work-desc";
+        desc.textContent = getText(work, "desc");
+
+        body.appendChild(title);
+        body.appendChild(desc);
+        card.appendChild(body);
+
+        card.addEventListener("click", () => {
+          if (work.link && work.link !== "#") {
+            window.location.href = work.link;
+          } else {
+            openModal(work);
+          }
+        });
+
+        return card;
+      }
+
+      function openModal(work) {
+        modalRoot.innerHTML = "";
+
+        const backdrop = document.createElement("div");
+        backdrop.className = "modal-backdrop";
+
+        const modal = document.createElement("div");
+        modal.className = "modal-content";
+
+        const closeBtn = document.createElement("button");
+        closeBtn.className = "modal-close";
+        closeBtn.innerHTML = "&times;";
+        closeBtn.onclick = closeModal;
+
+        const img = document.createElement("img");
+        img.className = "modal-image";
+        img.src = work.cover || createFallbackImage();
+        img.alt = getText(work, "title");
+
+        const title = document.createElement("div");
+        title.className = "modal-title";
+        title.textContent = getText(work, "title");
+
+        const desc = document.createElement("div");
+        desc.className = "modal-desc";
+        desc.textContent = getText(work, "desc");
+
+        modal.appendChild(closeBtn);
+        modal.appendChild(img);
+        modal.appendChild(title);
+        modal.appendChild(desc);
+        backdrop.appendChild(modal);
+        modalRoot.appendChild(backdrop);
+
+        backdrop.addEventListener("click", function (e) {
+          if (e.target === backdrop) closeModal();
+        });
+
+        document.addEventListener("keydown", escListener);
+      }
+
+      function closeModal() {
+        modalRoot.innerHTML = "";
+        document.removeEventListener("keydown", escListener);
+      }
+
+      function escListener(e) {
+        if (e.key === "Escape") closeModal();
+      }
+
+      function sortWorks(data, mode) {
+        const copied = [...data];
+
+        if (mode === "alpha") {
+          return copied.sort((a, b) =>
+            getText(a, "title").localeCompare(
+              getText(b, "title"),
+              lang === "zh" ? "zh" : "en",
+            ),
+          );
+        } else if (mode === "date-asc") {
+          return copied.sort(
+            (a, b) => new Date(a.date || 0) - new Date(b.date || 0),
+          );
+        } else {
+          return copied.sort(
+            (a, b) => new Date(b.date || 0) - new Date(a.date || 0),
+          );
+        }
+      }
+
+      function filterWorks(data, query) {
+        if (!query) return data;
+        const q = query.toLowerCase();
+
+        return data.filter((work) => {
+          const title = getText(work, "title").toLowerCase();
+          const desc = getText(work, "desc").toLowerCase();
+          return title.includes(q) || desc.includes(q);
+        });
+      }
+
+      function renderWorks() {
+        grid.innerHTML = "";
+
+        let data = [...ArtisticCreations];
+        data = filterWorks(data, searchBox.value.trim());
+        data = sortWorks(data, sortSelect.value);
+
+        if (!data.length) {
+          const empty = document.createElement("div");
+          empty.style.color = "var(--muted)";
+          empty.style.padding = "12px 0";
+          empty.textContent =
+            lang === "zh" ? "没有匹配的作品。" : "No matching works found.";
+          grid.appendChild(empty);
+          return;
+        }
+
+        data.forEach((work) => {
+          grid.appendChild(createWorkCard(work));
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+
+        searchBox.addEventListener("input", renderWorks);
+        sortSelect.addEventListener("change", renderWorks);
+
+        renderLang();
+        renderWorks();
       });
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementById("lang-en").onclick = () => setLang("en");
-      document.getElementById("lang-zh").onclick = () => setLang("zh");
-
-      searchBox.addEventListener("input", renderWorks);
-      sortSelect.addEventListener("change", renderWorks);
-
-      renderLang();
-      renderWorks();
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
