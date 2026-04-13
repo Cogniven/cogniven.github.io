@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-label="Stage 02">
+  <rect width="1400" height="820" fill="#0f1622" />
+  <rect x="120" y="110" width="300" height="300" fill="#f5f7fa" opacity="0.92" />
+  <rect x="140" y="130" width="70" height="70" fill="#101827" />
+  <rect x="230" y="130" width="40" height="40" fill="#101827" />
+  <rect x="310" y="130" width="90" height="90" fill="#101827" />
+  <rect x="140" y="220" width="40" height="40" fill="#101827" />
+  <rect x="190" y="220" width="40" height="40" fill="#101827" />
+  <rect x="250" y="220" width="40" height="40" fill="#101827" />
+  <rect x="310" y="240" width="40" height="40" fill="#101827" />
+  <rect x="140" y="290" width="90" height="90" fill="#101827" />
+  <rect x="260" y="300" width="40" height="40" fill="#101827" />
+  <rect x="320" y="300" width="80" height="80" fill="#101827" />
+  <rect x="500" y="140" width="760" height="110" rx="14" fill="#1c2533" />
+  <text x="540" y="208" fill="#f4f7fb" font-size="34" font-family="Consolas, monospace">https://best-domain.example/scan</text>
+  <text x="500" y="340" fill="#f5f7fa" font-size="52" font-family="Georgia, serif">Stage 02</text>
+  <text x="500" y="415" fill="#a9b5c6" font-size="30" font-family="Arial, sans-serif">Scan and Trust Check</text>
+  <text x="500" y="490" fill="#7f8da2" font-size="24" font-family="Arial, sans-serif">Observe hesitation, risk, and confidence</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-label="Stage 01">
+  <rect width="1400" height="820" fill="#121923" />
+  <rect x="90" y="90" width="360" height="360" fill="#f5f7fa" opacity="0.9" />
+  <rect x="105" y="105" width="90" height="90" fill="#0f1622" />
+  <rect x="210" y="105" width="45" height="45" fill="#0f1622" />
+  <rect x="300" y="105" width="120" height="120" fill="#0f1622" />
+  <rect x="105" y="210" width="45" height="45" fill="#0f1622" />
+  <rect x="165" y="210" width="45" height="45" fill="#0f1622" />
+  <rect x="255" y="210" width="45" height="45" fill="#0f1622" />
+  <rect x="315" y="255" width="45" height="45" fill="#0f1622" />
+  <rect x="105" y="315" width="120" height="120" fill="#0f1622" />
+  <rect x="255" y="315" width="45" height="45" fill="#0f1622" />
+  <rect x="315" y="315" width="120" height="120" fill="#0f1622" />
+  <text x="520" y="280" fill="#f5f7fa" font-size="52" font-family="Georgia, serif">Stage 01</text>
+  <text x="520" y="355" fill="#a9b5c6" font-size="30" font-family="Arial, sans-serif">Domain Candidate Set</text>
+  <text x="520" y="430" fill="#7f8da2" font-size="24" font-family="Arial, sans-serif">Naming patterns mapped to scan contexts</text>
+</svg>
