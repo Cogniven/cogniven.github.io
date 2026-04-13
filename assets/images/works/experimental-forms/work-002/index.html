@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Best Domain Name - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .log-cover,
+      .log-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+      }
+
+      .log-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .log-meta-card {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 14px;
+        padding: 14px 16px;
+      }
+
+      .log-meta-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .log-meta-card strong {
+        font-size: 1rem;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .log-block {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .log-block-note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding-top: 4px;
+      }
+
+      .log-block-content h2 {
+        margin-top: 0;
+        margin-bottom: 14px;
+      }
+
+      .log-block-content p {
+        line-height: 1.78;
+        color: var(--text-soft);
+      }
+
+      .iteration-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .iteration-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--bg-soft);
+        padding: 18px;
+      }
+
+      .iteration-label {
+        font-size: 0.82rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 8px;
+      }
+
+      .iteration-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+      }
+
+      .iteration-card p {
+        margin-bottom: 14px;
+      }
+
+      @media (max-width: 860px) {
+        .log-meta-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .log-block {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .log-meta-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container narrow">
+          <p class="eyebrow" id="exp-eyebrow">Works · Experimental Forms</p>
+          <h1 id="exp-title">
+            The Best Domain Name — From a QR Code Perspective
+          </h1>
+          <p class="hero-text" id="exp-hero-text">
+            A naming and interface experiment that uses QR-code behavior as a
+            design constraint to test what a best domain name means in real
+            scanning scenarios.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <img
+            class="log-cover"
+            src="/assets/images/works/experimental-forms/work-002/cover.svg"
+            alt="The Best Domain Name cover"
+            onerror="
+              this.src =
+                'data:image/svg+xml;utf8,' +
+                encodeURIComponent(
+                  `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Cover not added yet</text></svg>`,
+                )
+            "
+          />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <div class="log-meta-grid">
+            <div class="log-meta-card">
+              <span id="meta-date-label">Date</span>
+              <strong id="meta-date-value">2026</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-status-label">Status</span>
+              <strong id="meta-status-value">Ongoing</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-field-label">Field</span>
+              <strong id="meta-field-value">Naming System</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-mode-label">Mode</span>
+              <strong id="meta-mode-value">Experiment / Prototype</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="exp-note-label">Experiment Note</p>
+          <p class="lead-paragraph" id="exp-note-text">
+            This project asks a practical question: in scenarios where users
+            often discover links through QR codes, does a domain name still
+            carry the same value as in typed access?
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="intent-label">Intent</div>
+          <div class="log-block-content">
+            <h2 id="intent-title">Starting Point</h2>
+            <p id="intent-p1">
+              Traditional naming discussions prioritize memorability,
+              pronunciation, and extension availability. This study adds another
+              dimension: scan reliability and post-scan trust.
+            </p>
+            <p id="intent-p2">
+              The goal is not to find one universal answer, but to build a
+              repeatable method for evaluating domain choices through both
+              linguistic quality and QR interaction behavior.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="research-label">Research</div>
+          <div class="log-block-content">
+            <h2 id="research-title">Constraint Model</h2>
+            <p id="research-p1">
+              The project breaks the QR scenario into three moments: before
+              scan, during camera recognition, and after scan confirmation. Each
+              moment introduces different naming pressure.
+            </p>
+            <p id="research-p2">
+              The resulting model compares short domains, meaningful domains,
+              and hybrid domains to see how users balance trust, readability,
+              and perceived legitimacy.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="iterations-label">Iterations</div>
+          <div class="log-block-content">
+            <h2 id="iterations-title">Development Stages</h2>
+
+            <div class="iteration-stack">
+              <article class="iteration-card">
+                <div class="iteration-label" id="v1-label">Stage 01</div>
+                <h3 id="v1-title">Domain Candidate Set</h3>
+                <p id="v1-text">
+                  The first stage defined candidate naming patterns and mapped
+                  them against visual complexity in QR placement contexts
+                  (posters, cards, and mobile screens).
+                </p>
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-002/stage-01.svg"
+                  alt="Stage 01"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Stage 01</text></svg>`,
+                      )
+                  "
+                />
+              </article>
+
+              <article class="iteration-card">
+                <div class="iteration-label" id="v2-label">Stage 02</div>
+                <h3 id="v2-title">Scan and Trust Check</h3>
+                <p id="v2-text">
+                  The second stage tested how users judged scanned URLs. Results
+                  were logged around hesitation points, perceived risk, and
+                  confidence after seeing each domain form.
+                </p>
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-002/stage-02.svg"
+                  alt="Stage 02"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Stage 02</text></svg>`,
+                      )
+                  "
+                />
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="obs-label">Observations</div>
+          <div class="log-block-content">
+            <h2 id="obs-title">What Emerged</h2>
+            <p id="obs-p1">
+              Extremely short domains improved scan-confirm speed but often
+              reduced semantic trust. Descriptive domains improved trust but
+              increased visual load in compact layouts.
+            </p>
+            <p id="obs-p2">
+              The strongest candidates were hybrid names: short enough for
+              clarity, but still carrying one meaningful word that anchors user
+              expectation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="next-label">Next</div>
+          <div class="log-block-content">
+            <h2 id="next-title">Next Step</h2>
+            <p id="next-p1">
+              The next phase will add a small scoring matrix that combines
+              linguistic quality, scan clarity, and trust response into one
+              comparable index.
+            </p>
+            <p id="next-p2">
+              A later branch will also compare different top-level domains to
+              check whether extension semantics change post-scan confidence.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        "exp-eyebrow": {
+          en: "Works · Experimental Forms",
+          zh: "作品 · 实验形式",
+        },
+        "exp-title": {
+          en: "The Best Domain Name — From a QR Code Perspective",
+          zh: "最好的域名——从二维码的角度",
+        },
+        "exp-hero-text": {
+          en: "A naming and interface experiment that uses QR-code behavior as a design constraint to test what a best domain name means in real scanning scenarios.",
+          zh: "一个把二维码识别行为作为设计约束的命名与界面实验，用真实扫码场景重新定义“最好的域名”。",
+        },
+
+        "meta-date-label": { en: "Date", zh: "日期" },
+        "meta-date-value": { en: "2026", zh: "2026" },
+        "meta-status-label": { en: "Status", zh: "状态" },
+        "meta-status-value": { en: "Ongoing", zh: "进行中" },
+        "meta-field-label": { en: "Field", zh: "领域" },
+        "meta-field-value": { en: "Naming System", zh: "命名系统" },
+        "meta-mode-label": { en: "Mode", zh: "模式" },
+        "meta-mode-value": {
+          en: "Experiment / Prototype",
+          zh: "实验 / 原型",
+        },
+
+        "exp-note-label": { en: "Experiment Note", zh: "实验说明" },
+        "exp-note-text": {
+          en: "This project asks a practical question: in scenarios where users often discover links through QR codes, does a domain name still carry the same value as in typed access?",
+          zh: "这个项目提出一个实践问题：在用户主要通过二维码发现链接的场景里，域名是否仍然拥有与手动输入时代相同的价值？",
+        },
+
+        "intent-label": { en: "Intent", zh: "意图" },
+        "intent-title": { en: "Starting Point", zh: "起点" },
+        "intent-p1": {
+          en: "Traditional naming discussions prioritize memorability, pronunciation, and extension availability. This study adds another dimension: scan reliability and post-scan trust.",
+          zh: "传统域名讨论通常优先考虑可记忆性、可读性和后缀可用性。这个实验增加了一个维度：扫码可靠性与扫码后的信任感。",
+        },
+        "intent-p2": {
+          en: "The goal is not to find one universal answer, but to build a repeatable method for evaluating domain choices through both linguistic quality and QR interaction behavior.",
+          zh: "目标不是给出唯一答案，而是建立一套可复用的方法，用语言质量与二维码交互行为共同评估域名选择。",
+        },
+
+        "research-label": { en: "Research", zh: "研究" },
+        "research-title": { en: "Constraint Model", zh: "约束模型" },
+        "research-p1": {
+          en: "The project breaks the QR scenario into three moments: before scan, during camera recognition, and after scan confirmation. Each moment introduces different naming pressure.",
+          zh: "项目把二维码场景拆成三个时刻：扫码前、识别中、确认后。每个时刻都对域名提出不同的要求。",
+        },
+        "research-p2": {
+          en: "The resulting model compares short domains, meaningful domains, and hybrid domains to see how users balance trust, readability, and perceived legitimacy.",
+          zh: "据此形成的模型比较短域名、语义域名与混合域名，观察用户如何在信任、可读和合法性感知之间权衡。",
+        },
+
+        "iterations-label": { en: "Iterations", zh: "阶段" },
+        "iterations-title": { en: "Development Stages", zh: "发展阶段" },
+        "v1-label": { en: "Stage 01", zh: "阶段 01" },
+        "v1-title": { en: "Domain Candidate Set", zh: "候选域名集" },
+        "v1-text": {
+          en: "The first stage defined candidate naming patterns and mapped them against visual complexity in QR placement contexts (posters, cards, and mobile screens).",
+          zh: "第一阶段定义候选命名模式，并将其映射到不同二维码投放场景（海报、卡片、移动端）中的视觉复杂度。",
+        },
+        "v2-label": { en: "Stage 02", zh: "阶段 02" },
+        "v2-title": { en: "Scan and Trust Check", zh: "扫码与信任验证" },
+        "v2-text": {
+          en: "The second stage tested how users judged scanned URLs. Results were logged around hesitation points, perceived risk, and confidence after seeing each domain form.",
+          zh: "第二阶段测试用户如何判断扫码后的链接，重点记录犹豫点、风险感知与不同域名形态带来的确认信心。",
+        },
+
+        "obs-label": { en: "Observations", zh: "观察" },
+        "obs-title": { en: "What Emerged", zh: "结果观察" },
+        "obs-p1": {
+          en: "Extremely short domains improved scan-confirm speed but often reduced semantic trust. Descriptive domains improved trust but increased visual load in compact layouts.",
+          zh: "极短域名能提升扫码确认速度，但常常降低语义信任；描述性域名有助于信任，却会在紧凑版式中增加视觉负担。",
+        },
+        "obs-p2": {
+          en: "The strongest candidates were hybrid names: short enough for clarity, but still carrying one meaningful word that anchors user expectation.",
+          zh: "表现最稳的是混合型命名：长度足够简洁，同时保留一个有意义的词来锚定用户预期。",
+        },
+
+        "next-label": { en: "Next", zh: "下一步" },
+        "next-title": { en: "Next Step", zh: "下一步" },
+        "next-p1": {
+          en: "The next phase will add a small scoring matrix that combines linguistic quality, scan clarity, and trust response into one comparable index.",
+          zh: "下一阶段会加入一个小型评分矩阵，把语言质量、扫码清晰度和信任反馈整合成可比较指标。",
+        },
+        "next-p2": {
+          en: "A later branch will also compare different top-level domains to check whether extension semantics change post-scan confidence.",
+          zh: "后续还会比较不同顶级域后缀，验证后缀语义是否会影响扫码后的信心判断。",
+        },
+      };
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>
