@@ -6,7 +6,54 @@
     <title>Creative Development - Cogniven</title>
     <link rel="stylesheet" href="/css/style.css" />
 
-    <style></style>
+    <style>
+      .creative-controls {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        margin: 30px 0 32px;
+        flex-wrap: wrap;
+      }
+
+      .creative-search,
+      .creative-sort {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px 14px;
+        font: inherit;
+      }
+
+      .creative-search {
+        flex: 1;
+        min-width: 220px;
+      }
+
+      .creative-sort {
+        min-width: 150px;
+      }
+
+      .creative-empty {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 24px;
+        color: var(--muted);
+        background: var(--bg-soft);
+      }
+
+      @media (max-width: 720px) {
+        .creative-controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .creative-search,
+        .creative-sort {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -86,6 +133,20 @@
             </p>
           </div>
 
+          <div class="creative-controls">
+            <input
+              id="search-box"
+              class="creative-search"
+              type="text"
+              placeholder="Search experiments..."
+            />
+            <select id="sort-select" class="creative-sort">
+              <option value="date-desc">Newest</option>
+              <option value="date-asc">Oldest</option>
+              <option value="alpha">A–Z</option>
+            </select>
+          </div>
+
           <div id="creative-grid" class="works-grid"></div>
         </div>
       </section>
@@ -107,6 +168,10 @@
     <script src="/js/creativeDevelopment.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+
+      const grid = document.getElementById("creative-grid");
+      const searchBox = document.getElementById("search-box");
+      const sortSelect = document.getElementById("sort-select");
 
       function setLang(newLang) {
         lang = newLang;
@@ -136,11 +201,51 @@
         );
       }
 
+      function filterProjects(data, query) {
+        if (!query) return data;
+        const q = query.toLowerCase();
+        return data.filter((item) => {
+          const title = getText(item, "title").toLowerCase();
+          const desc = getText(item, "desc").toLowerCase();
+          return title.includes(q) || desc.includes(q);
+        });
+      }
+
+      function sortProjects(data, mode) {
+        const copied = [...data];
+        if (mode === "alpha") {
+          return copied.sort((a, b) =>
+            getText(a, "title").localeCompare(
+              getText(b, "title"),
+              lang === "zh" ? "zh" : "en",
+            ),
+          );
+        } else if (mode === "date-asc") {
+          return copied.sort((a, b) => new Date(a.date) - new Date(b.date));
+        } else {
+          return copied.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+      }
+
       function renderCreativeProjects() {
-        const grid = document.getElementById("creative-grid");
         grid.innerHTML = "";
 
-        CreativeDevelopment.forEach((item) => {
+        let data = [...CreativeDevelopment];
+        data = filterProjects(data, searchBox.value.trim());
+        data = sortProjects(data, sortSelect.value);
+
+        if (!data.length) {
+          const empty = document.createElement("div");
+          empty.className = "creative-empty";
+          empty.textContent =
+            lang === "zh"
+              ? "没有匹配的实验条目。"
+              : "No matching experiments found.";
+          grid.appendChild(empty);
+          return;
+        }
+
+        data.forEach((item) => {
           const card = document.createElement("article");
           card.className = "work-card";
           card.addEventListener("click", () => {
@@ -156,6 +261,7 @@
           img.className = "work-cover";
           img.src = getText(item, "cover") || createFallbackImage();
           img.alt = getText(item, "title");
+          img.loading = "lazy";
           img.onerror = function () {
             this.src = createFallbackImage();
           };
@@ -226,6 +332,15 @@
             ? "这里的每个条目都是持续演化中的记录，而不是已完成项目。"
             : "Each entry is an evolving record rather than a finished project.";
 
+        searchBox.placeholder =
+          lang === "zh" ? "搜索实验条目..." : "Search experiments...";
+
+        sortSelect.innerHTML = `
+          <option value="date-desc">${lang === "zh" ? "最新" : "Newest"}</option>
+          <option value="date-asc">${lang === "zh" ? "最早" : "Oldest"}</option>
+          <option value="alpha">${lang === "zh" ? "按字母" : "A–Z"}</option>
+        `;
+
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;
         document.querySelector(".footer-inner p:last-child").innerHTML =
@@ -236,6 +351,10 @@
         lang = localStorage.getItem("lang") || "en";
         document.getElementById("lang-en").onclick = () => setLang("en");
         document.getElementById("lang-zh").onclick = () => setLang("zh");
+
+        searchBox.addEventListener("input", renderCreativeProjects);
+        sortSelect.addEventListener("change", renderCreativeProjects);
+
         renderLang();
         renderCreativeProjects();
       });

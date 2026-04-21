@@ -1,349 +1,406 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quant Research Infrastructure - Cogniven</title>
     <link rel="stylesheet" href="/css/style.css" />
     <style>
-        .case-cover,
-        .case-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 16px;
-            border: 1px solid var(--line);
-            background: var(--bg-soft);
-        }
+      .case-cover,
+      .case-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+      }
 
+      .case-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .case-meta-card {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 14px;
+        padding: 14px 16px;
+      }
+
+      .case-meta-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .case-meta-card strong {
+        font-size: 1rem;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .case-block {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .case-block-note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding-top: 4px;
+      }
+
+      .case-block-content h2 {
+        margin-top: 0;
+        margin-bottom: 14px;
+      }
+
+      .case-block-content p {
+        line-height: 1.78;
+        color: var(--text-soft);
+      }
+
+      @media (max-width: 860px) {
         .case-meta-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .case-meta-card {
-            border: 1px solid var(--line);
-            background: var(--bg-soft);
-            border-radius: 14px;
-            padding: 14px 16px;
-        }
-
-        .case-meta-card span {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-
-        .case-meta-card strong {
-            font-size: 1rem;
-            color: var(--text);
-            font-weight: 600;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .case-block {
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 24px;
-            align-items: start;
+          grid-template-columns: 1fr;
+          gap: 12px;
         }
+      }
 
-        .case-block-note {
-            font-size: 0.85rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            padding-top: 4px;
+      @media (max-width: 560px) {
+        .case-meta-grid {
+          grid-template-columns: 1fr;
         }
-
-        .case-block-content h2 {
-            margin-top: 0;
-            margin-bottom: 14px;
-        }
-
-        .case-block-content p {
-            line-height: 1.78;
-            color: var(--text-soft);
-        }
-
-        @media (max-width: 860px) {
-            .case-meta-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .case-block {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-        }
-
-        @media (max-width: 560px) {
-            .case-meta-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="site-header">
-        <nav class="nav">
-            <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
-            <div style="display:flex;align-items:center;gap:24px;">
-                <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
-                    <a href="/works.html">Works</a>
-                    <a href="/writing.html">Writing</a>
-                    <a href="/projects.html">Projects</a>
-                    <a href="/about.html">About</a>
-                    <a href="/archive.html">Archive</a>
-                </div>
-                <div class="lang-switcher">
-                    <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
-                    <button id="lang-zh" class="lang-btn">中文</button>
-                </div>
-            </div>
-        </nav>
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container narrow">
-                <p class="eyebrow" id="tb-eyebrow">Projects · Technical Builds</p>
-                <h1 id="tb-title">Quant Research Infrastructure</h1>
-                <p class="hero-text" id="tb-hero-text">
-                    A technical build focused on creating a usable environment for quantitative strategy research,
-                    testing, and iteration.
-                </p>
-            </div>
-        </section>
+      <section class="hero">
+        <div class="container narrow">
+          <p class="eyebrow" id="tb-eyebrow">Projects · Technical Builds</p>
+          <h1 id="tb-title">Quant Research Infrastructure</h1>
+          <p class="hero-text" id="tb-hero-text">
+            A technical build focused on creating a usable environment for
+            quantitative strategy research, testing, and iteration.
+          </p>
+        </div>
+      </section>
 
-        <section class="section">
-            <div class="container narrow">
-                <img class="case-cover" src="/assets/images/projects/technical-builds/project-001/cover.jpg"
-                    alt="Quant Research Infrastructure cover"
-                    onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Technical Build Cover</text></svg>`)">
-            </div>
-        </section>
+      <section class="section">
+        <div class="container narrow">
+          <img
+            class="case-cover"
+            src="/assets/images/projects/technical-builds/project-001/cover.jpg"
+            alt="Quant Research Infrastructure cover"
+            onerror="
+              this.src =
+                'data:image/svg+xml;utf8,' +
+                encodeURIComponent(
+                  `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Technical Build Cover</text></svg>`,
+                )
+            "
+          />
+        </div>
+      </section>
 
-        <section class="section">
-            <div class="container narrow">
-                <div class="case-meta-grid">
-                    <div class="case-meta-card">
-                        <span id="meta-year-label">Year</span>
-                        <strong id="meta-year-value">2026</strong>
-                    </div>
-                    <div class="case-meta-card">
-                        <span id="meta-type-label">Type</span>
-                        <strong id="meta-type-value">System Build</strong>
-                    </div>
-                    <div class="case-meta-card">
-                        <span id="meta-tools-label">Tools</span>
-                        <strong id="meta-tools-value">Python · Freqtrade · Docker</strong>
-                    </div>
-                    <div class="case-meta-card">
-                        <span id="meta-status-label">Status</span>
-                        <strong id="meta-status-value">Active</strong>
-                    </div>
-                </div>
+      <section class="section">
+        <div class="container narrow">
+          <div class="case-meta-grid">
+            <div class="case-meta-card">
+              <span id="meta-year-label">Year</span>
+              <strong id="meta-year-value">2026</strong>
             </div>
-        </section>
+            <div class="case-meta-card">
+              <span id="meta-type-label">Type</span>
+              <strong id="meta-type-value">System Build</strong>
+            </div>
+            <div class="case-meta-card">
+              <span id="meta-tools-label">Tools</span>
+              <strong id="meta-tools-value">Python · Docker</strong>
+            </div>
+            <div class="case-meta-card">
+              <span id="meta-status-label">Status</span>
+              <strong id="meta-status-value">Active</strong>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section class="section intro-band">
-            <div class="container narrow">
-                <p class="section-note" id="summary-label">Project Summary</p>
-                <p class="lead-paragraph" id="summary-text">
-                    This project aims to build a stable technical environment for quantitative research rather than a
-                    single isolated strategy. It connects strategy code, testing workflow, deployment logic, and
-                    iterative evaluation into one working structure.
-                </p>
-            </div>
-        </section>
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="summary-label">Project Summary</p>
+          <p class="lead-paragraph" id="summary-text">
+            This project aims to build a stable technical environment for
+            quantitative research rather than a single isolated strategy. It
+            connects strategy code, testing workflow, deployment logic, and
+            iterative evaluation into one working structure.
+          </p>
+        </div>
+      </section>
 
-        <section class="section">
-            <div class="container narrow case-block">
-                <div class="case-block-note" id="problem-label">Problem</div>
-                <div class="case-block-content">
-                    <h2 id="problem-title">Problem Framing</h2>
-                    <p id="problem-p1">
-                        Quantitative strategy work often breaks down when research, testing, and deployment are treated
-                        as disconnected tasks. A working strategy is not enough if the surrounding environment remains
-                        unstable or inefficient.
-                    </p>
-                    <p id="problem-p2">
-                        This build began from the need to create a more repeatable system for experimentation,
-                        backtesting, parameter adjustment, and execution management.
-                    </p>
-                </div>
-            </div>
-        </section>
+      <section class="section">
+        <div class="container narrow case-block">
+          <div class="case-block-note" id="problem-label">Problem</div>
+          <div class="case-block-content">
+            <h2 id="problem-title">Problem Framing</h2>
+            <p id="problem-p1">
+              Quantitative strategy work often breaks down when research,
+              testing, and deployment are treated as disconnected tasks. A
+              working strategy is not enough if the surrounding environment
+              remains unstable or inefficient.
+            </p>
+            <p id="problem-p2">
+              This build began from the need to create a more repeatable system
+              for experimentation, backtesting, parameter adjustment, and
+              execution management.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <section class="section">
-            <div class="container narrow case-block">
-                <div class="case-block-note" id="approach-label">Approach</div>
-                <div class="case-block-content">
-                    <h2 id="approach-title">System Design</h2>
-                    <p id="approach-p1">
-                        The project is organized around a Docker-based research environment, Python strategy files,
-                        structured configuration, and a workflow for repeated testing and revision.
-                    </p>
-                    <p id="approach-p2">
-                        The design emphasizes modularity: strategies can evolve independently, while logs, data
-                        handling, and execution structure remain relatively stable. This reduces friction when moving
-                        from idea to implementation.
-                    </p>
-                </div>
-            </div>
-        </section>
+      <section class="section">
+        <div class="container narrow case-block">
+          <div class="case-block-note" id="approach-label">Approach</div>
+          <div class="case-block-content">
+            <h2 id="approach-title">System Design</h2>
+            <p id="approach-p1">
+              The project is organized around a Docker-based research
+              environment, Python strategy files, structured configuration, and
+              a workflow for repeated testing and revision.
+            </p>
+            <p id="approach-p2">
+              The design emphasizes modularity: strategies can evolve
+              independently, while logs, data handling, and execution structure
+              remain relatively stable. This reduces friction when moving from
+              idea to implementation.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <section class="section">
-            <div class="container narrow case-block">
-                <div class="case-block-note" id="output-label">Output</div>
-                <div class="case-block-content">
-                    <h2 id="output-title">Results and Current State</h2>
-                    <p id="output-p1">
-                        The current result is not a finished platform but a usable infrastructure: strategy experiments
-                        can be developed, tested, compared, and revised within a more coherent technical environment.
-                    </p>
-                    <img class="case-image" src="/assets/images/projects/technical-builds/project-001/result.jpg"
-                        alt="Quant Research Infrastructure result"
-                        onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Result Image</text></svg>`)">
-                </div>
-            </div>
-        </section>
+      <section class="section">
+        <div class="container narrow case-block">
+          <div class="case-block-note" id="output-label">Output</div>
+          <div class="case-block-content">
+            <h2 id="output-title">Results and Current State</h2>
+            <p id="output-p1">
+              The current result is not a finished platform but a usable
+              infrastructure: strategy experiments can be developed, tested,
+              compared, and revised within a more coherent technical
+              environment.
+            </p>
+            <img
+              class="case-image"
+              src="/assets/images/projects/technical-builds/project-001/result.jpg"
+              alt="Quant Research Infrastructure result"
+              onerror="
+                this.src =
+                  'data:image/svg+xml;utf8,' +
+                  encodeURIComponent(
+                    `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Result Image</text></svg>`,
+                  )
+              "
+            />
+          </div>
+        </div>
+      </section>
 
-        <section class="section">
-            <div class="container narrow case-block">
-                <div class="case-block-note" id="reflection-label">Reflection</div>
-                <div class="case-block-content">
-                    <h2 id="reflection-title">Reflection and Next Step</h2>
-                    <p id="reflection-p1">
-                        What works well is the increasing consistency of the workflow: strategy development is becoming
-                        easier to manage because the technical environment has started to take shape.
-                    </p>
-                    <p id="reflection-p2">
-                        What remains unfinished is integration depth. Some parts are still provisional, and the system
-                        depends on ongoing cleanup, naming discipline, and clearer separation between research and
-                        production layers.
-                    </p>
-                    <p id="reflection-p3">
-                        The next step is to refine automation, improve evaluation structure, and turn the environment
-                        into a more durable personal research stack.
-                    </p>
-                </div>
-            </div>
-        </section>
+      <section class="section">
+        <div class="container narrow case-block">
+          <div class="case-block-note" id="reflection-label">Reflection</div>
+          <div class="case-block-content">
+            <h2 id="reflection-title">Reflection and Next Step</h2>
+            <p id="reflection-p1">
+              What works well is the increasing consistency of the workflow:
+              strategy development is becoming easier to manage because the
+              technical environment has started to take shape.
+            </p>
+            <p id="reflection-p2">
+              What remains unfinished is integration depth. Some parts are still
+              provisional, and the system depends on ongoing cleanup, naming
+              discipline, and clearer separation between research and production
+              layers.
+            </p>
+            <p id="reflection-p3">
+              The next step is to refine automation, improve evaluation
+              structure, and turn the environment into a more durable personal
+              research stack.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>© 2026 Cogniven. All rights reserved.</p>
-            <p>
-                The works presented on this site are original and protected by copyright.<br />
-                Unauthorized reproduction, distribution, or commercial use is prohibited.
-            </p>
-        </div>
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
     </footer>
 
     <script src="/js/i18n.js"></script>
     <script>
-        let lang = localStorage.getItem('lang') || 'en';
-        const pageContent = {
-            // 内容填写区（新手只改这里）
-            // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
-            'tb-eyebrow': { en: 'Projects · Technical Builds', zh: '项目 · 技术构建' },
-            'tb-title': { en: 'Quant Research Infrastructure', zh: '量化研究基础设施' },
-            'tb-hero-text': {
-                en: 'A technical build focused on creating a usable environment for quantitative strategy research, testing, and iteration.',
-                zh: '一个专注于为量化策略研究、测试与迭代构建可用环境的技术项目。',
-            },
-            'meta-year-label': { en: 'Year', zh: '年份' },
-            'meta-type-label': { en: 'Type', zh: '类型' },
-            'meta-type-value': { en: 'System Build', zh: '系统构建' },
-            'meta-tools-label': { en: 'Tools', zh: '工具' },
-            'meta-status-label': { en: 'Status', zh: '状态' },
-            'meta-status-value': { en: 'Active', zh: '进行中' },
-            'summary-label': { en: 'Project Summary', zh: '项目摘要' },
-            'summary-text': {
-                en: 'This project aims to build a stable technical environment for quantitative research rather than a single isolated strategy. It connects strategy code, testing workflow, deployment logic, and iterative evaluation into one working structure.',
-                zh: '这个项目的目标不是做出一个孤立策略，而是建立一个稳定的量化研究技术环境，把策略代码、测试流程、部署逻辑与迭代评估连接成一个可工作的结构。',
-            },
-            'problem-label': { en: 'Problem', zh: '问题' },
-            'problem-title': { en: 'Problem Framing', zh: '问题界定' },
-            'problem-p1': {
-                en: 'Quantitative strategy work often breaks down when research, testing, and deployment are treated as disconnected tasks. A working strategy is not enough if the surrounding environment remains unstable or inefficient.',
-                zh: '当研究、测试与部署被当作互相割裂的任务时，量化策略工作往往会失效。仅仅有一个可运行策略还不够，如果周边环境仍然不稳定或低效。',
-            },
-            'problem-p2': {
-                en: 'This build began from the need to create a more repeatable system for experimentation, backtesting, parameter adjustment, and execution management.',
-                zh: '这个项目起始于一个需求：建立一个更可重复的系统，用于实验、回测、参数调整和执行管理。',
-            },
-            'approach-label': { en: 'Approach', zh: '方法' },
-            'approach-title': { en: 'System Design', zh: '系统设计' },
-            'approach-p1': {
-                en: 'The project is organized around a Docker-based research environment, Python strategy files, structured configuration, and a workflow for repeated testing and revision.',
-                zh: '该项目围绕一个基于 Docker 的研究环境、Python 策略文件、结构化配置以及重复测试与修订的工作流来组织。',
-            },
-            'approach-p2': {
-                en: 'The design emphasizes modularity: strategies can evolve independently, while logs, data handling, and execution structure remain relatively stable. This reduces friction when moving from idea to implementation.',
-                zh: '设计强调模块化：策略可以独立演化，而日志、数据处理和执行结构保持相对稳定，从而减少从想法到落地过程中的摩擦。',
-            },
-            'output-label': { en: 'Output', zh: '输出' },
-            'output-title': { en: 'Results and Current State', zh: '结果与当前状态' },
-            'output-p1': {
-                en: 'The current result is not a finished platform but a usable infrastructure: strategy experiments can be developed, tested, compared, and revised within a more coherent technical environment.',
-                zh: '当前结果不是一个完成平台，而是一套可用基础设施：策略实验可以在更连贯的技术环境中被开发、测试、比较和修订。',
-            },
-            'reflection-label': { en: 'Reflection', zh: '反思' },
-            'reflection-title': { en: 'Reflection and Next Step', zh: '反思与下一步' },
-            'reflection-p1': {
-                en: 'What works well is the increasing consistency of the workflow: strategy development is becoming easier to manage because the technical environment has started to take shape.',
-                zh: '目前最有效的部分，是工作流一致性正在提高：随着技术环境逐渐成形，策略开发变得更容易管理。',
-            },
-            'reflection-p2': {
-                en: 'What remains unfinished is integration depth. Some parts are still provisional, and the system depends on ongoing cleanup, naming discipline, and clearer separation between research and production layers.',
-                zh: '仍未完成的是整合深度。一些部分仍是临时性的，整个系统仍依赖持续清理、命名纪律，以及研究层与生产层更清晰的分离。',
-            },
-            'reflection-p3': {
-                en: 'The next step is to refine automation, improve evaluation structure, and turn the environment into a more durable personal research stack.',
-                zh: '下一步是完善自动化、提升评估结构，并把这个环境逐步变成一个更耐用的个人研究栈。',
-            },
-        };
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "tb-eyebrow": {
+          en: "Projects · Technical Builds",
+          zh: "项目 · 技术构建",
+        },
+        "tb-title": {
+          en: "Quant Research Infrastructure",
+          zh: "量化研究基础设施",
+        },
+        "tb-hero-text": {
+          en: "A technical build focused on creating a usable environment for quantitative strategy research, testing, and iteration.",
+          zh: "一个专注于为量化策略研究、测试与迭代构建可用环境的技术项目。",
+        },
+        "meta-year-label": { en: "Year", zh: "年份" },
+        "meta-type-label": { en: "Type", zh: "类型" },
+        "meta-type-value": { en: "System Build", zh: "系统构建" },
+        "meta-tools-label": { en: "Tools", zh: "工具" },
+        "meta-status-label": { en: "Status", zh: "状态" },
+        "meta-status-value": { en: "Active", zh: "进行中" },
+        "summary-label": { en: "Project Summary", zh: "项目摘要" },
+        "summary-text": {
+          en: "This project aims to build a stable technical environment for quantitative research rather than a single isolated strategy. It connects strategy code, testing workflow, deployment logic, and iterative evaluation into one working structure.",
+          zh: "这个项目的目标不是做出一个孤立策略，而是建立一个稳定的量化研究技术环境，把策略代码、测试流程、部署逻辑与迭代评估连接成一个可工作的结构。",
+        },
+        "problem-label": { en: "Problem", zh: "问题" },
+        "problem-title": { en: "Problem Framing", zh: "问题界定" },
+        "problem-p1": {
+          en: "Quantitative strategy work often breaks down when research, testing, and deployment are treated as disconnected tasks. A working strategy is not enough if the surrounding environment remains unstable or inefficient.",
+          zh: "当研究、测试与部署被当作互相割裂的任务时，量化策略工作往往会失效。仅仅有一个可运行策略还不够，如果周边环境仍然不稳定或低效。",
+        },
+        "problem-p2": {
+          en: "This build began from the need to create a more repeatable system for experimentation, backtesting, parameter adjustment, and execution management.",
+          zh: "这个项目起始于一个需求：建立一个更可重复的系统，用于实验、回测、参数调整和执行管理。",
+        },
+        "approach-label": { en: "Approach", zh: "方法" },
+        "approach-title": { en: "System Design", zh: "系统设计" },
+        "approach-p1": {
+          en: "The project is organized around a Docker-based research environment, Python strategy files, structured configuration, and a workflow for repeated testing and revision.",
+          zh: "该项目围绕一个基于 Docker 的研究环境、Python 策略文件、结构化配置以及重复测试与修订的工作流来组织。",
+        },
+        "approach-p2": {
+          en: "The design emphasizes modularity: strategies can evolve independently, while logs, data handling, and execution structure remain relatively stable. This reduces friction when moving from idea to implementation.",
+          zh: "设计强调模块化：策略可以独立演化，而日志、数据处理和执行结构保持相对稳定，从而减少从想法到落地过程中的摩擦。",
+        },
+        "output-label": { en: "Output", zh: "输出" },
+        "output-title": {
+          en: "Results and Current State",
+          zh: "结果与当前状态",
+        },
+        "output-p1": {
+          en: "The current result is not a finished platform but a usable infrastructure: strategy experiments can be developed, tested, compared, and revised within a more coherent technical environment.",
+          zh: "当前结果不是一个完成平台，而是一套可用基础设施：策略实验可以在更连贯的技术环境中被开发、测试、比较和修订。",
+        },
+        "reflection-label": { en: "Reflection", zh: "反思" },
+        "reflection-title": {
+          en: "Reflection and Next Step",
+          zh: "反思与下一步",
+        },
+        "reflection-p1": {
+          en: "What works well is the increasing consistency of the workflow: strategy development is becoming easier to manage because the technical environment has started to take shape.",
+          zh: "目前最有效的部分，是工作流一致性正在提高：随着技术环境逐渐成形，策略开发变得更容易管理。",
+        },
+        "reflection-p2": {
+          en: "What remains unfinished is integration depth. Some parts are still provisional, and the system depends on ongoing cleanup, naming discipline, and clearer separation between research and production layers.",
+          zh: "仍未完成的是整合深度。一些部分仍是临时性的，整个系统仍依赖持续清理、命名纪律，以及研究层与生产层更清晰的分离。",
+        },
+        "reflection-p3": {
+          en: "The next step is to refine automation, improve evaluation structure, and turn the environment into a more durable personal research stack.",
+          zh: "下一步是完善自动化、提升评估结构，并把这个环境逐步变成一个更耐用的个人研究栈。",
+        },
+      };
 
-        function setLang(newLang) {
-            lang = newLang;
-            localStorage.setItem('lang', lang);
-            renderLang();
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
         }
 
-        function renderLang() {
-            if (window.buildNav) {
-                window.buildNav(lang);
-            }
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
 
-            document.getElementById('logo-text').textContent = i18n[lang].logo;
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-            document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
-
-            if (window.applyPageContentOverrides) {
-                window.applyPageContentOverrides(lang, pageContent);
-            }
-
-            document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
-            document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('lang-en').onclick = () => setLang('en');
-            document.getElementById('lang-zh').onclick = () => setLang('zh');
-            renderLang();
-        });
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
     </script>
     <script src="/js/nav.js"></script>
-</body>
-
+  </body>
 </html>
