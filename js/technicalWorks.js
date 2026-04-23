@@ -5,8 +5,8 @@ const TechnicalWorks = [
       zh: "全天候投资组合中国市场参数优化",
     },
     desc: {
-      en: "Parameter optimization for all-weather portfolio in the China market, forming a simple and effective investment strategy",
-      zh: "对全天候投资组合在中国市场的实践进行参数优化，形成简单而有效的投资策略",
+      en: "Parameter optimization for all-weather portfolio in the China market, forming a simple and effective investment strategy.",
+      zh: "对全天候投资组合在中国市场的实践进行参数优化，形成简单而有效的投资策略。",
     },
     type: {
       en: "Investment",
