@@ -140,117 +140,120 @@
 
     <script src="../../../../../js/i18n.js"></script>
     <script>
-          let lang = localStorage.getItem("lang") || "en";
-          const pageContent = {
-            // 内容填写区（新手只改这里）
-            // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
-            const pageContent = {
-        'essay-eyebrow': { en: 'Writing · Essays', zh: '写作 · 文章' },
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        "essay-eyebrow": { en: "Writing · Essays", zh: "写作 · 文章" },
 
-        'essay-title': {
-          en: 'On Hidden Structure',
-          zh: '关于隐藏结构',
+        "essay-title": {
+          en: "On Hidden Structure",
+          zh: "关于隐藏结构",
         },
 
-        'essay-meta': {
-          en: 'Apr 2026 · Essay',
-          zh: '2026年4月 · 文章',
+        "essay-meta": {
+          en: "Apr 2026 · Essay",
+          zh: "2026年4月 · 文章",
         },
 
-        'essay-subtitle': {
-          en: 'On how the absence of information can itself become a form of information.',
-          zh: '关于信息缺失本身如何成为一种信息。',
+        "essay-subtitle": {
+          en: "On how the absence of information can itself become a form of information.",
+          zh: "关于信息缺失本身如何成为一种信息。",
         },
 
-        'essay-h2-1': {
-          en: 'What Cannot Be Said',
-          zh: '无法被说出的部分',
+        "essay-h2-1": {
+          en: "What Cannot Be Said",
+          zh: "无法被说出的部分",
         },
 
-        'essay-p1': {
-          en: 'Some information is not simply hidden. It is structurally unspeakable. The moment it is stated, it changes the conditions under which it exists.',
-          zh: '有些信息并不是被隐藏，而是在结构上无法被说出。一旦被表达，它所处的条件就已经发生改变。',
+        "essay-p1": {
+          en: "Some information is not simply hidden. It is structurally unspeakable. The moment it is stated, it changes the conditions under which it exists.",
+          zh: "有些信息并不是被隐藏，而是在结构上无法被说出。一旦被表达，它所处的条件就已经发生改变。",
         },
 
-        'essay-p2': {
-          en: 'If I want to prevent you from discovering my identity, and I am aware that there exists a specific method that can reveal it, then I cannot describe that method to you. The act of describing it would already grant you the capability I am trying to avoid.',
-          zh: '如果我不希望你找到我的身份，同时我又知道存在某种方法可以实现这一点，那么我就不能向你说明这种方法。因为一旦说明，你就已经获得了我试图避免你获得的能力。',
+        "essay-p2": {
+          en: "If I want to prevent you from discovering my identity, and I am aware that there exists a specific method that can reveal it, then I cannot describe that method to you. The act of describing it would already grant you the capability I am trying to avoid.",
+          zh: "如果我不希望你找到我的身份，同时我又知道存在某种方法可以实现这一点，那么我就不能向你说明这种方法。因为一旦说明，你就已经获得了我试图避免你获得的能力。",
         },
 
-        'essay-h2-2': {
-          en: 'Information as Constraint',
-          zh: '信息作为约束',
+        "essay-h2-2": {
+          en: "Information as Constraint",
+          zh: "信息作为约束",
         },
 
-        'essay-p3': {
-          en: 'In such cases, information is not only what is present. It is also what is withheld. The boundary of what can be said becomes part of the structure itself.',
-          zh: '在这种情况下，信息不仅存在于被表达的内容中，也存在于被刻意保留的部分。可说与不可说的边界，本身就是结构的一部分。',
+        "essay-p3": {
+          en: "In such cases, information is not only what is present. It is also what is withheld. The boundary of what can be said becomes part of the structure itself.",
+          zh: "在这种情况下，信息不仅存在于被表达的内容中，也存在于被刻意保留的部分。可说与不可说的边界，本身就是结构的一部分。",
         },
 
-        'essay-p4': {
-          en: 'A system that restricts its own expressions is not necessarily lacking in content. More often, it is preserving a deeper layer that would collapse if exposed directly.',
-          zh: '一个限制自身表达的系统，并不一定是缺乏内容。更常见的是，它在保护一个一旦被直接暴露就会失效的深层结构。',
+        "essay-p4": {
+          en: "A system that restricts its own expressions is not necessarily lacking in content. More often, it is preserving a deeper layer that would collapse if exposed directly.",
+          zh: "一个限制自身表达的系统，并不一定是缺乏内容。更常见的是，它在保护一个一旦被直接暴露就会失效的深层结构。",
         },
 
-        'essay-h2-3': {
-          en: 'Absence as Signal',
-          zh: '缺失作为信号',
+        "essay-h2-3": {
+          en: "Absence as Signal",
+          zh: "缺失作为信号",
         },
 
-        'essay-p5': {
-          en: 'There is another form of structure where silence itself carries meaning. Not responding is not equivalent to having nothing to say. It is often a response that operates at a different level.',
-          zh: '还有一种结构中，沉默本身具有意义。不作回应，并不等于没有内容，而是一种在不同层面发生的回应。',
+        "essay-p5": {
+          en: "There is another form of structure where silence itself carries meaning. Not responding is not equivalent to having nothing to say. It is often a response that operates at a different level.",
+          zh: "还有一种结构中，沉默本身具有意义。不作回应，并不等于没有内容，而是一种在不同层面发生的回应。",
         },
 
-        'essay-p6': {
-          en: 'When a question is left unanswered, the absence of an answer becomes a signal. It points not to emptiness, but to a constraint, a boundary, or a condition that makes direct expression impossible or undesirable.',
-          zh: '当一个问题没有被回答时，这种“未回答”本身就成为一种信号。它并不指向空白，而是指向某种约束、边界，或一种使直接表达变得不可能或不合适的条件。',
+        "essay-p6": {
+          en: "When a question is left unanswered, the absence of an answer becomes a signal. It points not to emptiness, but to a constraint, a boundary, or a condition that makes direct expression impossible or undesirable.",
+          zh: "当一个问题没有被回答时，这种“未回答”本身就成为一种信号。它并不指向空白，而是指向某种约束、边界，或一种使直接表达变得不可能或不合适的条件。",
         },
 
-        'essay-h2-4': {
-          en: 'Structure Beyond Expression',
-          zh: '表达之外的结构',
+        "essay-h2-4": {
+          en: "Structure Beyond Expression",
+          zh: "表达之外的结构",
         },
 
-        'essay-p7': {
-          en: 'At this level, structure is no longer only what is written or spoken. It includes what must remain unspoken in order for the system to hold.',
-          zh: '在这个层面上，结构不再只体现在被写下或被说出的内容中，还包括那些必须保持沉默，才能使系统成立的部分。',
+        "essay-p7": {
+          en: "At this level, structure is no longer only what is written or spoken. It includes what must remain unspoken in order for the system to hold.",
+          zh: "在这个层面上，结构不再只体现在被写下或被说出的内容中，还包括那些必须保持沉默，才能使系统成立的部分。",
         },
 
-        'essay-p8': {
-          en: 'Understanding a system, therefore, requires attention not only to its statements, but also to its omissions. In some cases, what is not said is the clearest indication of how the system actually works.',
-          zh: '因此，理解一个系统，不仅要关注它说了什么，还要关注它没有说什么。在某些情况下，未被表达的部分，反而是最清晰的结构线索。',
+        "essay-p8": {
+          en: "Understanding a system, therefore, requires attention not only to its statements, but also to its omissions. In some cases, what is not said is the clearest indication of how the system actually works.",
+          zh: "因此，理解一个系统，不仅要关注它说了什么，还要关注它没有说什么。在某些情况下，未被表达的部分，反而是最清晰的结构线索。",
         },
       };
 
-          function setLang(newLang) {
-            lang = newLang;
-            localStorage.setItem("lang", lang);
-            renderLang();
-          }
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
 
-          function renderLang() {
-            if (window.buildNav) {
-              window.buildNav(lang);
-            }
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
 
-            document.getElementById("logo-text").textContent = i18n[lang].logo;
-            document.getElementById("lang-en").classList.toggle("active", lang === "en");
-            document.getElementById("lang-zh").classList.toggle("active", lang === "zh");
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
 
-            if (window.applyPageContentOverrides) {
-              window.applyPageContentOverrides(lang, pageContent);
-            }
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
 
-            document.querySelector(".footer-inner p:first-child").textContent = i18n[lang].copyright;
-            document.querySelector(".footer-inner p:last-child").innerHTML = i18n[lang].copyright2;
-          }
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
 
-          document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("lang-en").onclick = () => setLang("en");
-            document.getElementById("lang-zh").onclick = () => setLang("zh");
-            renderLang();
-          });
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
     </script>
     <script src="/js/nav.js"></script>
   </body>
