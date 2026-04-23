@@ -142,81 +142,51 @@
     <script>
       let lang = localStorage.getItem("lang") || "en";
       const pageContent = {
-        "essay-eyebrow": { en: "Writing · Essays", zh: "写作 · 文章" },
+        "note-eyebrow": { en: "Writing · Notes", zh: "写作 · 笔记" },
 
-        "essay-title": {
+        "note-title": {
           en: "On Hidden Structure",
           zh: "关于隐藏结构",
         },
 
-        "essay-meta": {
-          en: "Apr 2026 · Essay",
-          zh: "2026年4月 · 文章",
+        "note-meta": {
+          en: "Apr 2026 · Note",
+          zh: "2026年4月 · 笔记",
         },
 
-        "essay-subtitle": {
-          en: "On how the absence of information can itself become a form of information.",
-          zh: "关于信息缺失本身如何成为一种信息。",
+        "note-subtitle": {
+          en: "On how withheld information and unanswered questions can themselves become structure.",
+          zh: "关于被保留的信息与未被回答的问题如何本身构成结构。",
         },
 
-        "essay-h2-1": {
-          en: "What Cannot Be Said",
-          zh: "无法被说出的部分",
+        "note-p1": {
+          en: "Some information is not merely hidden. It cannot be stated directly without changing the conditions under which it exists.",
+          zh: "有些信息并不只是被隐藏，而是不能被直接说出。因为一旦说出，它所处的条件就已经改变了。",
         },
 
-        "essay-p1": {
-          en: "Some information is not simply hidden. It is structurally unspeakable. The moment it is stated, it changes the conditions under which it exists.",
-          zh: "有些信息并不是被隐藏，而是在结构上无法被说出。一旦被表达，它所处的条件就已经发生改变。",
+        "note-p2": {
+          en: "If I do not want you to discover my identity, and I know there is a specific way to infer it, then I cannot tell you the way. The moment I describe it, I have already given you the method itself.",
+          zh: "如果我不希望你发现我的身份，同时我又知道存在一种可以推知我身份的方法，那么我就不能把这件事情告诉你。因为一旦说明，我就已经把方法本身交给了你。",
         },
 
-        "essay-p2": {
-          en: "If I want to prevent you from discovering my identity, and I am aware that there exists a specific method that can reveal it, then I cannot describe that method to you. The act of describing it would already grant you the capability I am trying to avoid.",
-          zh: "如果我不希望你找到我的身份，同时我又知道存在某种方法可以实现这一点，那么我就不能向你说明这种方法。因为一旦说明，你就已经获得了我试图避免你获得的能力。",
+        "note-p3": {
+          en: "In that sense, information is not only what is present. It also includes what must be withheld. The boundary of expression is part of the structure.",
+          zh: "从这个意义上说，信息不仅存在于被表达的内容中，也存在于必须被保留的部分。表达的边界，本身就是结构的一部分。",
         },
 
-        "essay-h2-2": {
-          en: "Information as Constraint",
-          zh: "信息作为约束",
+        "note-p4": {
+          en: "There is another related situation: not answering is itself a kind of answer. Silence does not always mean emptiness. Sometimes it marks a limit that cannot be crossed without breaking the system.",
+          zh: "还有一种相近的情况：不回答，本身也是一种回答。沉默并不总是空白，有时它只是标记出一个不能被越过的边界，因为一旦越过，系统本身就会被破坏。",
         },
 
-        "essay-p3": {
-          en: "In such cases, information is not only what is present. It is also what is withheld. The boundary of what can be said becomes part of the structure itself.",
-          zh: "在这种情况下，信息不仅存在于被表达的内容中，也存在于被刻意保留的部分。可说与不可说的边界，本身就是结构的一部分。",
+        "note-p5": {
+          en: "So what is missing may be more meaningful than what is visible. An omission can indicate risk, constraint, or a deeper logic that cannot survive direct exposure.",
+          zh: "因此，缺失的部分有时比可见的部分更有意义。一次省略，可能指向风险、约束，或某种无法承受直接暴露的更深层逻辑。",
         },
 
-        "essay-p4": {
-          en: "A system that restricts its own expressions is not necessarily lacking in content. More often, it is preserving a deeper layer that would collapse if exposed directly.",
-          zh: "一个限制自身表达的系统，并不一定是缺乏内容。更常见的是，它在保护一个一旦被直接暴露就会失效的深层结构。",
-        },
-
-        "essay-h2-3": {
-          en: "Absence as Signal",
-          zh: "缺失作为信号",
-        },
-
-        "essay-p5": {
-          en: "There is another form of structure where silence itself carries meaning. Not responding is not equivalent to having nothing to say. It is often a response that operates at a different level.",
-          zh: "还有一种结构中，沉默本身具有意义。不作回应，并不等于没有内容，而是一种在不同层面发生的回应。",
-        },
-
-        "essay-p6": {
-          en: "When a question is left unanswered, the absence of an answer becomes a signal. It points not to emptiness, but to a constraint, a boundary, or a condition that makes direct expression impossible or undesirable.",
-          zh: "当一个问题没有被回答时，这种“未回答”本身就成为一种信号。它并不指向空白，而是指向某种约束、边界，或一种使直接表达变得不可能或不合适的条件。",
-        },
-
-        "essay-h2-4": {
-          en: "Structure Beyond Expression",
-          zh: "表达之外的结构",
-        },
-
-        "essay-p7": {
-          en: "At this level, structure is no longer only what is written or spoken. It includes what must remain unspoken in order for the system to hold.",
-          zh: "在这个层面上，结构不再只体现在被写下或被说出的内容中，还包括那些必须保持沉默，才能使系统成立的部分。",
-        },
-
-        "essay-p8": {
-          en: "Understanding a system, therefore, requires attention not only to its statements, but also to its omissions. In some cases, what is not said is the clearest indication of how the system actually works.",
-          zh: "因此，理解一个系统，不仅要关注它说了什么，还要关注它没有说什么。在某些情况下，未被表达的部分，反而是最清晰的结构线索。",
+        "note-p6": {
+          en: "To understand a structure, it is not enough to read what it says. One must also read what it refuses to say.",
+          zh: "要理解一个结构，不能只看它说了什么，也要看它拒绝说什么。",
         },
       };
 
