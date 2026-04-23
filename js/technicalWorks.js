@@ -18,6 +18,6 @@ const TechnicalWorks = [
     },
     cover: "/assets/images/works/technical-works/work-001/cover.jpg",
     link: "/assets/images/works/technical-works/work-001/index.html",
-    date: "2026-03-22",
+    date: "2025-12-25",
   },
 ];
