@@ -1,224 +1,294 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>On Structure and Pressure - Cogniven</title>
-  <link rel="stylesheet" href="/css/style.css" />
-  <style>
-    .essay-page {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .essay-meta {
-      font-size: 0.88rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .essay-subtitle {
-      color: var(--text-soft);
-      line-height: 1.76;
-      font-size: 1.06rem;
-      margin: 0;
-      max-width: 700px;
-    }
-
-    .essay-divider {
-      width: 56px;
-      height: 1px;
-      background: var(--line);
-      margin: 14px 0 0;
-    }
-
-    .essay-body {
-      font-size: 1.06rem;
-      line-height: 1.92;
-      color: var(--text);
-    }
-
-    .essay-body h2 {
-      font-size: 1.35rem;
-      margin: 2.2em 0 0.8em;
-      line-height: 1.3;
-      color: var(--text);
-    }
-
-    .essay-body p {
-      margin: 0 0 1.35em;
-      color: var(--text-soft);
-    }
-
-    @media (max-width: 720px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On Structure and Pressure - Cogniven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
       .essay-page {
-        max-width: 100%;
+        max-width: 760px;
+        margin: 0 auto;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="/index.html" class="logo" id="logo-text" style="margin-right:auto;">Cogniven</a>
-      <div style="display:flex;align-items:center;gap:24px;">
-        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
-          <a href="/works.html">Works</a>
-          <a href="/writing.html">Writing</a>
-          <a href="/projects.html">Projects</a>
-          <a href="/about.html">About</a>
-          <a href="/archive.html">Archive</a>
-        </div>
-        <div class="lang-switcher">
-          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
-          <button id="lang-zh" class="lang-btn">中文</button>
-        </div>
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      </div>
-        </nav>
-        </header>
+      .essay-meta {
+        font-size: 0.88rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
 
-  <main>
-    <section class="hero">
-      <div class="container hero-inner essay-page">
-        <p class="eyebrow" id="essay-eyebrow">Writing · Essays</p>
-        <h1 id="essay-title">On Structure and Pressure</h1>
-        <div class="essay-meta" id="essay-meta">Mar 22, 2026 · Essay</div>
-        <p class="essay-subtitle" id="essay-subtitle">
-          An essay on how systems reveal themselves most clearly under constraint.
+      .essay-subtitle {
+        color: var(--text-soft);
+        line-height: 1.76;
+        font-size: 1.06rem;
+        margin: 0;
+        max-width: 700px;
+      }
+
+      .essay-divider {
+        width: 56px;
+        height: 1px;
+        background: var(--line);
+        margin: 14px 0 0;
+      }
+
+      .essay-body {
+        font-size: 1.06rem;
+        line-height: 1.92;
+        color: var(--text);
+      }
+
+      .essay-body h2 {
+        font-size: 1.35rem;
+        margin: 2.2em 0 0.8em;
+        line-height: 1.3;
+        color: var(--text);
+      }
+
+      .essay-body p {
+        margin: 0 0 1.35em;
+        color: var(--text-soft);
+      }
+
+      @media (max-width: 720px) {
+        .essay-page {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Cogniven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner essay-page">
+          <p class="eyebrow" id="essay-eyebrow">Writing · Essays</p>
+          <h1 id="essay-title">On Structure and Pressure</h1>
+          <div class="essay-meta" id="essay-meta">Mar 22, 2026 · Essay</div>
+          <p class="essay-subtitle" id="essay-subtitle">
+            An essay on how systems reveal themselves most clearly under
+            constraint.
+          </p>
+          <div class="essay-divider"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container essay-page">
+          <article class="essay-body">
+            <h2 id="essay-h2-1">Structure Under Condition</h2>
+            <p id="essay-p1">
+              Systems rarely reveal themselves in moments of ease. When
+              conditions are generous, weak arrangements can appear stable
+              simply because they are not being tested.
+            </p>
+            <p id="essay-p2">
+              Pressure changes that. Constraint makes relations visible. It
+              shows which parts support one another, which parts only imitate
+              coherence, and which parts collapse when their environment becomes
+              less forgiving.
+            </p>
+
+            <h2 id="essay-h2-2">Why Constraint Clarifies</h2>
+            <p id="essay-p3">
+              Constraint is not only a limit. It is also a diagnostic condition.
+              Under pressure, the distinction between surface order and actual
+              structure becomes much easier to see.
+            </p>
+            <p id="essay-p4">
+              A system that survives pressure does not necessarily survive
+              because it is strong in every part. More often, it survives
+              because its core relations are real rather than decorative.
+            </p>
+
+            <h2 id="essay-h2-3">From Stability to Legibility</h2>
+            <p id="essay-p5">
+              This is why moments of tension are analytically valuable. They
+              transform hidden organization into observable form. What was once
+              background becomes legible.
+            </p>
+            <p id="essay-p6">
+              For that reason, pressure should not always be understood as a
+              purely destructive force. In some cases, it is what allows
+              structure to be read at all.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Cogniven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
         </p>
-        <div class="essay-divider"></div>
       </div>
-    </section>
+    </footer>
 
-    <section class="section">
-      <div class="container essay-page">
-        <article class="essay-body">
-          <h2 id="essay-h2-1">Structure Under Condition</h2>
-          <p id="essay-p1">
-            Systems rarely reveal themselves in moments of ease. When conditions are generous, weak arrangements can
-            appear stable simply because they are not being tested.
-          </p>
-          <p id="essay-p2">
-            Pressure changes that. Constraint makes relations visible. It shows which parts support one another, which
-            parts only imitate coherence, and which parts collapse when their environment becomes less forgiving.
-          </p>
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        "essay-eyebrow": { en: "Writing · Essays", zh: "写作 · 文章" },
 
-          <h2 id="essay-h2-2">Why Constraint Clarifies</h2>
-          <p id="essay-p3">
-            Constraint is not only a limit. It is also a diagnostic condition. Under pressure, the distinction between
-            surface order and actual structure becomes much easier to see.
-          </p>
-          <p id="essay-p4">
-            A system that survives pressure does not necessarily survive because it is strong in every part. More often,
-            it survives because its core relations are real rather than decorative.
-          </p>
+        "essay-title": {
+          en: "On Hidden Structure",
+          zh: "关于隐藏结构",
+        },
 
-          <h2 id="essay-h2-3">From Stability to Legibility</h2>
-          <p id="essay-p5">
-            This is why moments of tension are analytically valuable. They transform hidden organization into observable
-            form. What was once background becomes legible.
-          </p>
-          <p id="essay-p6">
-            For that reason, pressure should not always be understood as a purely destructive force. In some cases, it
-            is what allows structure to be read at all.
-          </p>
-        </article>
-      </div>
-    </section>
-  </main>
+        "essay-meta": {
+          en: "Apr 2026 · Essay",
+          zh: "2026年4月 · 文章",
+        },
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© 2026 Cogniven. All rights reserved.</p>
-      <p>
-        The works presented on this site are original and protected by copyright.<br>
-        Unauthorized reproduction, distribution, or commercial use is prohibited.
-      </p>
-    </div>
-  </footer>
+        "essay-subtitle": {
+          en: "On how the absence of information can itself become a form of information.",
+          zh: "关于信息缺失本身如何成为一种信息。",
+        },
 
-  <script src="/js/i18n.js"></script>
-  <script>
-    let lang = localStorage.getItem('lang') || 'en';
-    const pageContent = {
-      // 内容填写区（新手只改这里）
-      // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
-      'essay-eyebrow': { en: 'Writing · Essays', zh: '写作 · 文章' },
-      'essay-title': { en: 'On Structure and Pressure', zh: '结构与压力' },
-      'essay-meta': { en: 'Mar 22, 2026 · Essay', zh: '2026年3月22日 · 文章' },
-      'essay-subtitle': {
-        en: 'An essay on how systems reveal themselves most clearly under constraint.',
-        zh: '一篇关于系统如何在约束下最清楚地显露自身结构的文章。',
-      },
-      'essay-h2-1': { en: 'Structure Under Condition', zh: '条件中的结构' },
-      'essay-p1': {
-        en: 'Systems rarely reveal themselves in moments of ease. When conditions are generous, weak arrangements can appear stable simply because they are not being tested.',
-        zh: '系统很少会在轻松时刻暴露自身。当条件宽松时，脆弱的安排也可能显得稳定，只因为它们尚未真正经受检验。',
-      },
-      'essay-p2': {
-        en: 'Pressure changes that. Constraint makes relations visible. It shows which parts support one another, which parts only imitate coherence, and which parts collapse when their environment becomes less forgiving.',
-        zh: '压力会改变这一点。约束会让关系变得可见。它揭示哪些部分彼此支撑，哪些部分只是模仿出连贯性，以及哪些部分会在环境变得更严苛时开始崩塌。',
-      },
-      'essay-h2-2': { en: 'Why Constraint Clarifies', zh: '为什么约束能澄清结构' },
-      'essay-p3': {
-        en: 'Constraint is not only a limit. It is also a diagnostic condition. Under pressure, the distinction between surface order and actual structure becomes much easier to see.',
-        zh: '约束不仅仅是一种限制，它也是一种诊断条件。在压力下，表面秩序与真实结构之间的区别会更容易被看见。',
-      },
-      'essay-p4': {
-        en: 'A system that survives pressure does not necessarily survive because it is strong in every part. More often, it survives because its core relations are real rather than decorative.',
-        zh: '一个在压力中存活下来的系统，并不一定是因为它的每一个部分都足够强大。更常见的是，它之所以幸存，是因为它的核心关系是真实的，而不是装饰性的。',
-      },
-      'essay-h2-3': { en: 'From Stability to Legibility', zh: '从稳定到可读' },
-      'essay-p5': {
-        en: 'This is why moments of tension are analytically valuable. They transform hidden organization into observable form. What was once background becomes legible.',
-        zh: '这正是为什么紧张时刻具有分析价值。它们把隐藏的组织形式转化为可观察的形式。曾经处于背景中的东西，开始变得可读。',
-      },
-      'essay-p6': {
-        en: 'For that reason, pressure should not always be understood as a purely destructive force. In some cases, it is what allows structure to be read at all.',
-        zh: '因此，压力不应总被理解为纯粹的破坏力量。在某些情况下，恰恰是它让结构第一次真正能够被阅读。',
-      },
-    };
+        "essay-h2-1": {
+          en: "What Cannot Be Said",
+          zh: "无法被说出的部分",
+        },
 
-    function setLang(newLang) {
-      lang = newLang;
-      localStorage.setItem('lang', lang);
-      renderLang();
-    }
+        "essay-p1": {
+          en: "Some information is not simply hidden. It is structurally unspeakable. The moment it is stated, it changes the conditions under which it exists.",
+          zh: "有些信息并不是被隐藏，而是在结构上无法被说出。一旦被表达，它所处的条件就已经发生改变。",
+        },
 
-    function renderLang() {
-      if (window.buildNav) {
-        window.buildNav(lang);
+        "essay-p2": {
+          en: "If I want to prevent you from discovering my identity, and I am aware that there exists a specific method that can reveal it, then I cannot describe that method to you. The act of describing it would already grant you the capability I am trying to avoid.",
+          zh: "如果我不希望你找到我的身份，同时我又知道存在某种方法可以实现这一点，那么我就不能向你说明这种方法。因为一旦说明，你就已经获得了我试图避免你获得的能力。",
+        },
+
+        "essay-h2-2": {
+          en: "Information as Constraint",
+          zh: "信息作为约束",
+        },
+
+        "essay-p3": {
+          en: "In such cases, information is not only what is present. It is also what is withheld. The boundary of what can be said becomes part of the structure itself.",
+          zh: "在这种情况下，信息不仅存在于被表达的内容中，也存在于被刻意保留的部分。可说与不可说的边界，本身就是结构的一部分。",
+        },
+
+        "essay-p4": {
+          en: "A system that restricts its own expressions is not necessarily lacking in content. More often, it is preserving a deeper layer that would collapse if exposed directly.",
+          zh: "一个限制自身表达的系统，并不一定是缺乏内容。更常见的是，它在保护一个一旦被直接暴露就会失效的深层结构。",
+        },
+
+        "essay-h2-3": {
+          en: "Absence as Signal",
+          zh: "缺失作为信号",
+        },
+
+        "essay-p5": {
+          en: "There is another form of structure where silence itself carries meaning. Not responding is not equivalent to having nothing to say. It is often a response that operates at a different level.",
+          zh: "还有一种结构中，沉默本身具有意义。不作回应，并不等于没有内容，而是一种在不同层面发生的回应。",
+        },
+
+        "essay-p6": {
+          en: "When a question is left unanswered, the absence of an answer becomes a signal. It points not to emptiness, but to a constraint, a boundary, or a condition that makes direct expression impossible or undesirable.",
+          zh: "当一个问题没有被回答时，这种“未回答”本身就成为一种信号。它并不指向空白，而是指向某种约束、边界，或一种使直接表达变得不可能或不合适的条件。",
+        },
+
+        "essay-h2-4": {
+          en: "Structure Beyond Expression",
+          zh: "表达之外的结构",
+        },
+
+        "essay-p7": {
+          en: "At this level, structure is no longer only what is written or spoken. It includes what must remain unspoken in order for the system to hold.",
+          zh: "在这个层面上，结构不再只体现在被写下或被说出的内容中，还包括那些必须保持沉默，才能使系统成立的部分。",
+        },
+
+        "essay-p8": {
+          en: "Understanding a system, therefore, requires attention not only to its statements, but also to its omissions. In some cases, what is not said is the clearest indication of how the system actually works.",
+          zh: "因此，理解一个系统，不仅要关注它说了什么，还要关注它没有说什么。在某些情况下，未被表达的部分，反而是最清晰的结构线索。",
+        },
+      };
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
       }
 
-      document.getElementById('logo-text').textContent = i18n[lang].logo;
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
 
-      if (window.applyPageContentOverrides) {
-        window.applyPageContentOverrides(lang, pageContent);
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
       }
 
-      document.querySelector('.footer-inner p:first-child').textContent = i18n[lang].copyright;
-      document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('lang-en').onclick = () => setLang('en');
-      document.getElementById('lang-zh').onclick = () => setLang('zh');
-      setLang(lang);
-    });
-  </script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
+    </script>
 
     <script src="/js/nav.js"></script>
-</body>
-
+  </body>
 </html>
