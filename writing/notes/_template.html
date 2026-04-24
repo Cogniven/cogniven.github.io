@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>On Incomplete Systems - Cogniven</title>
+  <title>On Hidden Structure - Cogniven</title>
   <link rel="stylesheet" href="/css/style.css" />
   <style>
     .note-page {
@@ -77,10 +77,10 @@
     <section class="hero">
       <div class="container hero-inner note-page">
         <p class="eyebrow" id="note-eyebrow">Writing · Notes</p>
-        <h1 id="note-title">On Incomplete Systems</h1>
-        <div class="note-meta" id="note-meta">Mar 22, 2026</div>
+        <h1 id="note-title">On Hidden Structure</h1>
+        <div class="note-meta" id="note-meta">Apr 2026 · Note</div>
         <p class="note-subtitle" id="note-subtitle">
-          A short note on why unfinished structures may be more revealing than finished ones.
+          On how withheld information and unanswered questions can themselves become structure.
         </p>
         <div class="note-divider"></div>
       </div>
@@ -90,17 +90,27 @@
       <div class="container note-page">
         <article class="note-body">
           <p id="note-p1">
-            Some systems only become visible when they fail to close. Completion often smooths over the seams that made
-            the structure intelligible in the first place.
+            Some information is not merely hidden. It cannot be stated directly without changing the conditions under
+            which it exists.
           </p>
           <p id="note-p2">
-            A finished form can appear coherent precisely because its tensions have been concealed. An unfinished one,
-            by contrast, still shows where pressure collects, where decisions remain unresolved, and where its internal
-            logic resists itself.
+            If I do not want you to discover my identity, and I know there is a specific way to infer it, then I cannot
+            tell you the way. The moment I describe it, I have already given you the method itself.
           </p>
           <p id="note-p3">
-            That is why incompletion is not always a weakness. Sometimes it is the only moment at which a structure can
-            still be read clearly, before polish turns it into surface.
+            In that sense, information is not only what is present. It also includes what must be withheld. The boundary
+            of expression is part of the structure.
+          </p>
+          <p id="note-p4">
+            There is another related situation: not answering is itself a kind of answer. Silence does not always mean
+            emptiness. Sometimes it marks a limit that cannot be crossed without breaking the system.
+          </p>
+          <p id="note-p5">
+            So what is missing may be more meaningful than what is visible. An omission can indicate risk, constraint, or
+            a deeper logic that cannot survive direct exposure.
+          </p>
+          <p id="note-p6">
+            To understand a structure, it is not enough to read what it says. One must also read what it refuses to say.
           </p>
         </article>
       </div>
@@ -146,30 +156,45 @@
         lang === "zh" ? "写作 · 笔记" : "Writing · Notes";
 
       document.getElementById("note-title").textContent =
-        lang === "zh" ? "关于未完成的系统" : "On Incomplete Systems";
+        lang === "zh" ? "关于隐藏结构" : "On Hidden Structure";
 
       document.getElementById("note-meta").textContent =
-        lang === "zh" ? "2026年3月22日" : "Mar 22, 2026";
+        lang === "zh" ? "2026年4月 · 笔记" : "Apr 2026 · Note";
 
       document.getElementById("note-subtitle").textContent =
         lang === "zh"
-          ? "一则关于“未完成结构为何有时比完成品更能揭示问题”的短文。"
-          : "A short note on why unfinished structures may be more revealing than finished ones.";
+          ? "关于被保留的信息与未被回答的问题如何本身构成结构。"
+          : "On how withheld information and unanswered questions can themselves become structure.";
 
       document.getElementById("note-p1").textContent =
         lang === "zh"
-          ? "有些系统只有在无法闭合时才真正显形。完成往往会把那些原本让结构变得可读的接缝抹平。"
-          : "Some systems only become visible when they fail to close. Completion often smooths over the seams that made the structure intelligible in the first place.";
+          ? "有些信息并不只是被隐藏，而是不能被直接说出。因为一旦说出，它所处的条件就已经改变了。"
+          : "Some information is not merely hidden. It cannot be stated directly without changing the conditions under which it exists.";
 
       document.getElementById("note-p2").textContent =
         lang === "zh"
-          ? "一个完成的形式之所以显得连贯，恰恰可能是因为其中的张力已经被遮蔽。相较之下，未完成的形式仍会显露压力聚集之处、决策悬而未决之处，以及其内部逻辑彼此抵牾之处。"
-          : "A finished form can appear coherent precisely because its tensions have been concealed. An unfinished one, by contrast, still shows where pressure collects, where decisions remain unresolved, and where its internal logic resists itself.";
+          ? "如果我不希望你发现我的身份，同时我又知道存在一种可以推知我身份的方法，那么我就不能把这件事情告诉你。因为一旦说明，我就已经把方法本身交给了你。"
+          : "If I do not want you to discover my identity, and I know there is a specific way to infer it, then I cannot tell you the way. The moment I describe it, I have already given you the method itself.";
 
       document.getElementById("note-p3").textContent =
         lang === "zh"
-          ? "因此，未完成并不总是弱点。有时它恰恰是结构仍然可以被清晰阅读的唯一时刻，在抛光把一切变成表面之前。"
-          : "That is why incompletion is not always a weakness. Sometimes it is the only moment at which a structure can still be read clearly, before polish turns it into surface.";
+          ? "从这个意义上说，信息不仅存在于被表达的内容中，也存在于必须被保留的部分。表达的边界，本身就是结构的一部分。"
+          : "In that sense, information is not only what is present. It also includes what must be withheld. The boundary of expression is part of the structure.";
+
+      document.getElementById("note-p4").textContent =
+        lang === "zh"
+          ? "还有一种相近的情况：不回答，本身也是一种回答。沉默并不总是空白，有时它只是标记出一个不能被越过的边界，因为一旦越过，系统本身就会被破坏。"
+          : "There is another related situation: not answering is itself a kind of answer. Silence does not always mean emptiness. Sometimes it marks a limit that cannot be crossed without breaking the system.";
+
+      document.getElementById("note-p5").textContent =
+        lang === "zh"
+          ? "因此，缺失的部分有时比可见的部分更有意义。一次省略，可能指向风险、约束，或某种无法承受直接暴露的更深层逻辑。"
+          : "So what is missing may be more meaningful than what is visible. An omission can indicate risk, constraint, or a deeper logic that cannot survive direct exposure.";
+
+      document.getElementById("note-p6").textContent =
+        lang === "zh"
+          ? "要理解一个结构，不能只看它说了什么，也要看它拒绝说什么。"
+          : "To understand a structure, it is not enough to read what it says. One must also read what it refuses to say.";
 
       if (window.applyPageContentOverrides) {
         window.applyPageContentOverrides(lang, pageContent);
