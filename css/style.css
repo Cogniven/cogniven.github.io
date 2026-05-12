@@ -844,6 +844,25 @@ a {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Mobile Navigation Backdrop */
+.nav-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 98;
+}
+
+.nav-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Utility Classes */
 .mobile-only {
   display: none !important;
@@ -1107,19 +1126,6 @@ a {
 }
 body.no-scroll {
   overflow: hidden;
-  padding-right: 17px;
-}
-
-body.no-scroll::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 99;
-  pointer-events: none;
 }
 
 p {
