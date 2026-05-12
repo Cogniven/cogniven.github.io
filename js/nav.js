@@ -466,15 +466,19 @@
           var isParentLink = navItem && link.parentNode === navItem;
           if (isParentLink) {
             e.preventDefault();
-            navItem.classList.toggle('active');
-            var expanded = navItem.classList.contains('active');
-            link.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-            var dropdown = navItem.querySelector('.nav-dropdown');
-            if (dropdown) dropdown.style.display = expanded ? 'flex' : 'none';
             return;
           }
 
           closeNav();
+        });
+      }
+
+      // Initialize all dropdowns as expanded on mobile
+      if (window.innerWidth <= 768) {
+        navLinks.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
+          item.classList.add('active');
+          var top = getTopAnchor(item);
+          if (top) top.setAttribute('aria-expanded', 'true');
         });
       }
     });

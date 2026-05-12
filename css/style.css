@@ -864,18 +864,22 @@ a {
     top: 0;
     right: 0;
     height: 100vh;
-    width: 280px;
+    width: 260px;
     background: var(--bg-soft);
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    padding: 80px 40px;
+    justify-content: flex-start;
+    padding: 70px 24px 24px 24px;
     transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(20px); /* Enhance glass effect */
+    backdrop-filter: blur(20px);
+    overflow-y: auto;
   }
+
+  /* Create overlay to prevent body scroll and avoid shift */
+
 
   .nav-links.active {
     transform: translateX(0);
@@ -883,17 +887,18 @@ a {
 
   /* Adjust existing styles override */
   .nav {
-    flex-direction: row !important; /* Force row layout for header */
+    flex-direction: row !important;
     align-items: center !important;
   }
 
   /* Make nav items larger on mobile */
   .nav-links a {
-    font-size: 20px;
+    font-size: 18px;
     height: auto;
-    padding: 12px 0;
+    padding: 14px 0;
     width: 100%;
     border-bottom: 1px solid var(--line);
+    display: block;
   }
 
   /* Reset dropdown position for mobile */
@@ -905,9 +910,21 @@ a {
     background: transparent;
     border: none;
     box-shadow: none;
-    padding-left: 20px;
-    display: none; /* Hide by default, show on click/active */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     min-width: auto;
+    margin: 8px 0 8px 12px;
+    border-left: 2px solid var(--line);
+    padding-left: 12px;
+  }
+
+  .nav-dropdown a {
+    font-size: 15px;
+    padding: 10px 0 !important;
+    border-bottom: none !important;
+    color: var(--text-soft);
   }
 
   .nav-item.has-dropdown:hover .nav-dropdown,
@@ -1090,6 +1107,19 @@ a {
 }
 body.no-scroll {
   overflow: hidden;
+  padding-right: 17px;
+}
+
+body.no-scroll::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  pointer-events: none;
 }
 
 p {
