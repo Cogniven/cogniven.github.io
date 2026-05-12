@@ -407,12 +407,22 @@
       ensureNavStructure(navLinks);
       observeNavResets(navLinks);
 
+      // Create backdrop element for mobile nav
+      var backdrop = null;
+      if (window.innerWidth <= 768) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'nav-backdrop';
+        backdrop.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(backdrop);
+      }
+
       function openNav() {
         hamburger.classList.add('active');
         navLinks.classList.add('active');
         hamburger.setAttribute('aria-expanded', 'true');
         navLinks.setAttribute('aria-hidden', 'false');
         document.body.classList.add('no-scroll');
+        if (backdrop) backdrop.classList.add('active');
         var first = navLinks.querySelector('a, button');
         if (first) first.focus();
       }
@@ -423,6 +433,7 @@
         hamburger.setAttribute('aria-expanded', 'false');
         navLinks.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('no-scroll');
+        if (backdrop) backdrop.classList.remove('active');
         resetMobileDropdowns(navLinks);
       }
 
@@ -453,6 +464,14 @@
             closeNav();
           }
         });
+
+        // Click backdrop to close nav
+        if (backdrop) {
+          backdrop.addEventListener('click', function (e) {
+            e.stopPropagation();
+            closeNav();
+          });
+        }
       }
 
       if (navLinks.dataset.navClickBound !== '1') {
