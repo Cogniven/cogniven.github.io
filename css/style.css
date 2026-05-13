@@ -920,11 +920,24 @@ a {
     align-items: center !important;
   }
 
+  .nav-links > .nav-item.has-dropdown {
+    width: 100%;
+    display: block;
+  }
+
+  .nav-links > .nav-archive {
+    order: 4;
+  }
+
+  .nav-links > a[href="/about.html"] {
+    order: 5;
+  }
+
   /* Make nav items larger on mobile */
   .nav-links a {
-    font-size: 18px;
+    font-size: 17px;
     height: auto;
-    padding: 14px 0;
+    padding: 12px 0;
     width: 100%;
     border-bottom: 1px solid var(--line);
     display: block;
@@ -944,9 +957,9 @@ a {
     flex-direction: column;
     gap: 0;
     min-width: auto;
-    margin: 8px 0 8px 18px;
+    margin: 6px 0 6px 14px;
     border-left: 2px solid var(--line);
-    padding-left: 16px;
+    padding-left: 14px;
   }
 
   .nav-dropdown a {
