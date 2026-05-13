@@ -53,8 +53,7 @@
   }
 
   function highlightActive(navLinks) {
-    var targetNav =
-      navLinks || document.querySelector(".site-header .nav-links");
+    var targetNav = navLinks || document.querySelector(".site-header .nav-links");
     if (!targetNav) return;
 
     var anchors = targetNav.querySelectorAll("a[href]");
@@ -109,8 +108,7 @@
   }
 
   function setupDropdownListeners(navLinks) {
-    var targetNav =
-      navLinks || document.querySelector(".site-header .nav-links");
+    var targetNav = navLinks || document.querySelector(".site-header .nav-links");
     if (!targetNav) return;
 
     targetNav
@@ -147,10 +145,7 @@
             return;
           }
 
-          if (
-            (e.key === "Enter" || e.key === " ") &&
-            window.innerWidth <= 768
-          ) {
+          if ((e.key === "Enter" || e.key === " ") && window.innerWidth <= 768) {
             e.preventDefault();
             var expanded = navItem.classList.toggle("active");
             anchor.setAttribute("aria-expanded", expanded ? "true" : "false");
@@ -474,61 +469,14 @@
         return backdrop;
       }
 
-<<<<<<< HEAD
-      function isMobileDevice() {
-        try {
-          var mm =
-            window.matchMedia && window.matchMedia("(max-width:768px)").matches;
-          var touch =
-            "ontouchstart" in window ||
-            (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
-          var ua =
-            typeof navigator !== "undefined" && navigator.userAgent
-              ? /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent)
-              : false;
-          return !!(mm || touch || ua);
-        } catch (e) {
-          return false;
-        }
-      }
-
       function openNav() {
-        // ensure backdrop exists on mobile-like devices
-        if (isMobileDevice()) ensureBackdrop();
-=======
-      function openNav() {
-        // ensure backdrop exists on mobile-like devices
         ensureBackdrop();
->>>>>>> content-dev
         hamburger.classList.add("active");
         navLinks.classList.add("active");
         hamburger.setAttribute("aria-expanded", "true");
         navLinks.setAttribute("aria-hidden", "false");
         document.body.classList.add("no-scroll");
-<<<<<<< HEAD
-        // If hamburger is visible (mobile), enforce overlay inline styles so
-        // the nav behaves as an overlay even if media query doesn't apply.
-        if (isMobileDevice()) {
-          // ensure backdrop exists and show it
-          if (backdrop) backdrop.classList.add("active");
-          navLinks.style.display = "flex";
-          navLinks.style.position = "fixed";
-          navLinks.style.top = "0";
-          navLinks.style.right = "0";
-          navLinks.style.bottom = "0";
-          navLinks.style.left = "auto";
-          navLinks.style.height = "100vh";
-          navLinks.style.width = navLinks.style.width || "min(84vw, 380px)";
-          navLinks.style.transform = "translate3d(0, 0, 0)";
-          navLinks.style.opacity = "1";
-          navLinks.style.visibility = "visible";
-          navLinks.style.pointerEvents = "auto";
-        } else {
-          if (backdrop) backdrop.classList.add("active");
-        }
-=======
         if (backdrop) backdrop.classList.add("active");
->>>>>>> content-dev
         var first = navLinks.querySelector("a, button");
         if (first) first.focus();
       }
@@ -540,22 +488,6 @@
         navLinks.setAttribute("aria-hidden", "true");
         document.body.classList.remove("no-scroll");
         if (backdrop) backdrop.classList.remove("active");
-<<<<<<< HEAD
-        // remove any inline overlay styles we may have set so layout returns to normal
-        navLinks.style.transform = "translateX(100%)";
-        navLinks.style.opacity = "0";
-        navLinks.style.visibility = "hidden";
-        navLinks.style.pointerEvents = "none";
-        navLinks.style.position = "";
-        navLinks.style.top = "";
-        navLinks.style.right = "";
-        navLinks.style.bottom = "";
-        navLinks.style.left = "";
-        navLinks.style.height = "";
-        navLinks.style.width = "";
-        navLinks.style.display = "none";
-=======
->>>>>>> content-dev
         resetMobileDropdowns(navLinks);
       }
 
@@ -603,23 +535,17 @@
               backdrop = null;
             }
             // ensure any inline overlay styles are cleared when leaving mobile
-<<<<<<< HEAD
             navLinks.style.position = "";
-=======
->>>>>>> content-dev
             navLinks.style.transform = "";
             navLinks.style.opacity = "";
             navLinks.style.visibility = "";
             navLinks.style.pointerEvents = "";
             navLinks.style.bottom = "";
             navLinks.style.left = "";
-<<<<<<< HEAD
-=======
             navLinks.style.top = "";
             navLinks.style.right = "";
             navLinks.style.height = "";
             navLinks.style.width = "";
->>>>>>> content-dev
             navLinks.style.display = "";
           } else {
             // ensure backdrop exists when returning to mobile
@@ -667,24 +593,6 @@
             var top = getTopAnchor(item);
             if (top) top.setAttribute("aria-expanded", "true");
           });
-<<<<<<< HEAD
-        // prepare backdrop element
-        ensureBackdrop();
-        // enforce hidden inline state so it doesn't push layout if media queries aren't applied
-        navLinks.style.display = "none";
-        navLinks.style.position = "fixed";
-        navLinks.style.top = "0";
-        navLinks.style.right = "0";
-        navLinks.style.bottom = "0";
-        navLinks.style.left = "auto";
-        navLinks.style.height = "100vh";
-        navLinks.style.width = navLinks.style.width || "min(84vw, 380px)";
-        navLinks.style.transform = "translate3d(100%, 0, 0)";
-        navLinks.style.opacity = "0";
-        navLinks.style.visibility = "hidden";
-        navLinks.style.pointerEvents = "none";
-=======
->>>>>>> content-dev
       }
     });
 
