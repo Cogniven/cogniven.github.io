@@ -418,9 +418,20 @@
         return backdrop;
       }
 
+      function isMobileDevice() {
+        try {
+          var mm = window.matchMedia && window.matchMedia('(max-width:768px)').matches;
+          var touch = 'ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+          var ua = typeof navigator !== 'undefined' && navigator.userAgent ? /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent) : false;
+          return !!(mm || touch || ua);
+        } catch (e) {
+          return false;
+        }
+      }
+
       function openNav() {
-        // ensure backdrop exists on mobile (use matchMedia)
-        if (window.matchMedia && window.matchMedia('(max-width:768px)').matches) ensureBackdrop();
+        // ensure backdrop exists on mobile-like devices
+        if (isMobileDevice()) ensureBackdrop();
         hamburger.classList.add('active');
         navLinks.classList.add('active');
         hamburger.setAttribute('aria-expanded', 'true');
@@ -428,7 +439,7 @@
         document.body.classList.add('no-scroll');
         // If hamburger is visible (mobile), enforce overlay inline styles so
         // the nav behaves as an overlay even if media query doesn't apply.
-        if (window.matchMedia && window.matchMedia('(max-width:768px)').matches) {
+        if (isMobileDevice()) {
           // ensure backdrop exists and show it
           if (backdrop) backdrop.classList.add('active');
           navLinks.style.position = 'fixed';
@@ -455,7 +466,7 @@
         document.body.classList.remove('no-scroll');
         if (backdrop) backdrop.classList.remove('active');
         // remove inline overlay styles if we set them
-        if (window.matchMedia && window.matchMedia('(max-width:768px)').matches) {
+        if (isMobileDevice()) {
           navLinks.style.transform = 'translateX(100%)';
           navLinks.style.opacity = '0';
           navLinks.style.visibility = 'hidden';
