@@ -470,8 +470,8 @@
           navLinks.style.opacity = '0';
           navLinks.style.visibility = 'hidden';
           navLinks.style.pointerEvents = 'none';
-          // keep position fixed so transition looks correct, but allow CSS to override on desktop later
-          navLinks.style.position = 'fixed';
+          // clear inline position so layout returns to normal
+          navLinks.style.position = '';
         }
         resetMobileDropdowns(navLinks);
       }
@@ -565,7 +565,6 @@
         navLinks.style.opacity = '0';
         navLinks.style.visibility = 'hidden';
         navLinks.style.pointerEvents = 'none';
-        navLinks.style.position = 'fixed';
       }
     });
 
