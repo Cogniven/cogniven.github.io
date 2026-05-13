@@ -184,7 +184,7 @@
     };
 
     targetNav.innerHTML = `
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown nav-works">
         <a href="/works.html">${navs[0]}</a>
         <div class="nav-dropdown">
           <a href="/works.html" class="mobile-only">${allText.works}</a>
@@ -195,7 +195,7 @@
         </div>
       </div>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown nav-writing">
         <a href="/writing.html">${navs[1]}</a>
         <div class="nav-dropdown">
           <a href="/writing.html" class="mobile-only">${allText.writing}</a>
@@ -204,7 +204,7 @@
         </div>
       </div>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown nav-projects">
         <a href="/projects.html">${navs[2]}</a>
         <div class="nav-dropdown">
           <a href="/projects.html" class="mobile-only">${allText.projects}</a>
@@ -217,7 +217,7 @@
 
       <a href="/about.html">${navs[3]}</a>
 
-      <div class="nav-item has-dropdown">
+      <div class="nav-item has-dropdown nav-archive">
         <a href="/archive.html">${navs[4]}</a>
         <div class="nav-dropdown">
           <a href="/archive.html" class="mobile-only">${allText.archive}</a>
@@ -542,13 +542,6 @@
           if (window.innerWidth > 768) return;
           var link = e.target.closest('a');
           if (!link) return;
-
-          var navItem = link.closest('.nav-item.has-dropdown');
-          var isParentLink = navItem && link.parentNode === navItem;
-          if (isParentLink) {
-            e.preventDefault();
-            return;
-          }
 
           closeNav();
         });
