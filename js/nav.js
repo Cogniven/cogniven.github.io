@@ -446,9 +446,11 @@
           navLinks.style.position = 'fixed';
           navLinks.style.top = '0';
           navLinks.style.right = '0';
+          navLinks.style.bottom = '0';
+          navLinks.style.left = 'auto';
           navLinks.style.height = '100vh';
-          navLinks.style.width = navLinks.style.width || '260px';
-          navLinks.style.transform = 'translateX(0)';
+          navLinks.style.width = navLinks.style.width || 'min(84vw, 380px)';
+          navLinks.style.transform = 'translate3d(0, 0, 0)';
           navLinks.style.opacity = '1';
           navLinks.style.visibility = 'visible';
           navLinks.style.pointerEvents = 'auto';
@@ -474,6 +476,8 @@
         navLinks.style.position = '';
         navLinks.style.top = '';
         navLinks.style.right = '';
+        navLinks.style.bottom = '';
+        navLinks.style.left = '';
         navLinks.style.height = '';
         navLinks.style.width = '';
         navLinks.style.display = 'none';
@@ -521,6 +525,8 @@
             navLinks.style.opacity = '';
             navLinks.style.visibility = '';
             navLinks.style.pointerEvents = '';
+            navLinks.style.bottom = '';
+            navLinks.style.left = '';
             navLinks.style.display = '';
           } else {
             // ensure backdrop exists when returning to mobile
@@ -569,9 +575,11 @@
         navLinks.style.position = 'fixed';
         navLinks.style.top = '0';
         navLinks.style.right = '0';
+        navLinks.style.bottom = '0';
+        navLinks.style.left = 'auto';
         navLinks.style.height = '100vh';
-        navLinks.style.width = navLinks.style.width || '260px';
-        navLinks.style.transform = 'translateX(100%)';
+        navLinks.style.width = navLinks.style.width || 'min(84vw, 380px)';
+        navLinks.style.transform = 'translate3d(100%, 0, 0)';
         navLinks.style.opacity = '0';
         navLinks.style.visibility = 'hidden';
         navLinks.style.pointerEvents = 'none';
