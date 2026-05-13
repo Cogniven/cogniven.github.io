@@ -616,36 +616,6 @@
         setLang(lang);
       });
 
-      const hamburger = document.getElementById("hamburger-btn");
-      const navLinksContainer = document.getElementById("nav-links");
-
-      if (hamburger && navLinksContainer) {
-        hamburger.addEventListener("click", () => {
-          hamburger.classList.toggle("active");
-          navLinksContainer.classList.toggle("active");
-        });
-
-        document.addEventListener("click", (e) => {
-          if (
-            !hamburger.contains(e.target) &&
-            !navLinksContainer.contains(e.target) &&
-            navLinksContainer.classList.contains("active")
-          ) {
-            hamburger.classList.remove("active");
-            navLinksContainer.classList.remove("active");
-          }
-        });
-
-        navLinksContainer.addEventListener("click", (e) => {
-          if (window.innerWidth > 768) return;
-
-          const link = e.target.closest("a");
-          if (!link) return;
-
-          hamburger.classList.remove("active");
-          navLinksContainer.classList.remove("active");
-        });
-      }
     </script>
     <script src="/js/nav.js"></script>
   </body>
