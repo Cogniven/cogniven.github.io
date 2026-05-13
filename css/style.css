@@ -959,19 +959,19 @@ a {
 
   .nav-links > a[href="/about.html"],
   .nav-links > a[href="about.html"] {
-    order: 2;
+    order: 3;
   }
 
   .nav-links > .nav-archive,
   .nav-links > a[href="/archive.html"],
   .nav-links > a[href="archive.html"] {
-    order: 3;
+    order: 4;
   }
 
   .nav-links > .nav-projects,
   .nav-links > a[href="/projects.html"],
   .nav-links > a[href="projects.html"] {
-    order: 4;
+    order: 2;
   }
 
   .nav-links > .nav-writing {
