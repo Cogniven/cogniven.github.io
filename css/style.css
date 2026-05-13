@@ -14,6 +14,8 @@
   --narrow-width: 760px;
   --radius: 24px;
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+  --mobile-header-height: 64px;
+  --mobile-nav-width: min(84vw, 380px);
 }
 
 * {
@@ -873,6 +875,27 @@ a {
 }
 
 @media (max-width: 768px) {
+  html {
+    scroll-padding-top: var(--mobile-header-height);
+  }
+
+  body {
+    padding-top: var(--mobile-header-height);
+  }
+
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: var(--mobile-header-height);
+    z-index: 120;
+  }
+
+  .nav {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+  }
+
   .mobile-only {
     display: block !important;
   }
@@ -884,17 +907,17 @@ a {
 
   .nav-links {
     position: fixed;
-    top: 0;
+    top: var(--mobile-header-height);
     right: 0;
     bottom: 0;
     left: auto;
-    height: 100dvh;
-    width: min(90vw, 420px);
+    height: calc(100dvh - var(--mobile-header-height));
+    width: var(--mobile-nav-width);
     background: var(--bg-soft);
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 60px 20px 20px 20px;
+    padding: 22px 20px 20px 20px;
     transform: translate3d(100%, 0, 0);
     transition:
       transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
@@ -902,20 +925,21 @@ a {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    display: none;
-    z-index: 100;
+    display: none !important;
+    z-index: 115;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px);
     overflow-y: auto;
     will-change: transform;
     gap: 6px;
     overscroll-behavior: contain;
+    border-left: 1px solid rgba(255, 248, 240, 0.06);
   }
 
   /* Create overlay to prevent body scroll and avoid shift */
 
   .nav-links.active {
-    display: flex;
+    display: flex !important;
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
@@ -995,6 +1019,11 @@ a {
   .nav-item.has-dropdown:hover .nav-dropdown,
   .nav-item.has-dropdown.active .nav-dropdown {
     display: flex;
+  }
+
+  .nav-backdrop {
+    top: var(--mobile-header-height);
+    z-index: 110;
   }
 }
 

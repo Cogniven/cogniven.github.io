@@ -474,6 +474,7 @@
         return backdrop;
       }
 
+<<<<<<< HEAD
       function isMobileDevice() {
         try {
           var mm =
@@ -494,11 +495,17 @@
       function openNav() {
         // ensure backdrop exists on mobile-like devices
         if (isMobileDevice()) ensureBackdrop();
+=======
+      function openNav() {
+        // ensure backdrop exists on mobile-like devices
+        ensureBackdrop();
+>>>>>>> content-dev
         hamburger.classList.add("active");
         navLinks.classList.add("active");
         hamburger.setAttribute("aria-expanded", "true");
         navLinks.setAttribute("aria-hidden", "false");
         document.body.classList.add("no-scroll");
+<<<<<<< HEAD
         // If hamburger is visible (mobile), enforce overlay inline styles so
         // the nav behaves as an overlay even if media query doesn't apply.
         if (isMobileDevice()) {
@@ -519,6 +526,9 @@
         } else {
           if (backdrop) backdrop.classList.add("active");
         }
+=======
+        if (backdrop) backdrop.classList.add("active");
+>>>>>>> content-dev
         var first = navLinks.querySelector("a, button");
         if (first) first.focus();
       }
@@ -530,6 +540,7 @@
         navLinks.setAttribute("aria-hidden", "true");
         document.body.classList.remove("no-scroll");
         if (backdrop) backdrop.classList.remove("active");
+<<<<<<< HEAD
         // remove any inline overlay styles we may have set so layout returns to normal
         navLinks.style.transform = "translateX(100%)";
         navLinks.style.opacity = "0";
@@ -543,6 +554,8 @@
         navLinks.style.height = "";
         navLinks.style.width = "";
         navLinks.style.display = "none";
+=======
+>>>>>>> content-dev
         resetMobileDropdowns(navLinks);
       }
 
@@ -590,13 +603,23 @@
               backdrop = null;
             }
             // ensure any inline overlay styles are cleared when leaving mobile
+<<<<<<< HEAD
             navLinks.style.position = "";
+=======
+>>>>>>> content-dev
             navLinks.style.transform = "";
             navLinks.style.opacity = "";
             navLinks.style.visibility = "";
             navLinks.style.pointerEvents = "";
             navLinks.style.bottom = "";
             navLinks.style.left = "";
+<<<<<<< HEAD
+=======
+            navLinks.style.top = "";
+            navLinks.style.right = "";
+            navLinks.style.height = "";
+            navLinks.style.width = "";
+>>>>>>> content-dev
             navLinks.style.display = "";
           } else {
             // ensure backdrop exists when returning to mobile
@@ -644,6 +667,7 @@
             var top = getTopAnchor(item);
             if (top) top.setAttribute("aria-expanded", "true");
           });
+<<<<<<< HEAD
         // prepare backdrop element
         ensureBackdrop();
         // enforce hidden inline state so it doesn't push layout if media queries aren't applied
@@ -659,6 +683,8 @@
         navLinks.style.opacity = "0";
         navLinks.style.visibility = "hidden";
         navLinks.style.pointerEvents = "none";
+=======
+>>>>>>> content-dev
       }
     });
 
