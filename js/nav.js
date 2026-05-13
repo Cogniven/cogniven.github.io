@@ -442,6 +442,7 @@
         if (isMobileDevice()) {
           // ensure backdrop exists and show it
           if (backdrop) backdrop.classList.add('active');
+          navLinks.style.display = 'flex';
           navLinks.style.position = 'fixed';
           navLinks.style.top = '0';
           navLinks.style.right = '0';
@@ -475,6 +476,7 @@
         navLinks.style.right = '';
         navLinks.style.height = '';
         navLinks.style.width = '';
+        navLinks.style.display = 'none';
         resetMobileDropdowns(navLinks);
       }
 
@@ -519,6 +521,7 @@
             navLinks.style.opacity = '';
             navLinks.style.visibility = '';
             navLinks.style.pointerEvents = '';
+            navLinks.style.display = '';
           } else {
             // ensure backdrop exists when returning to mobile
             ensureBackdrop();
@@ -569,6 +572,7 @@
         // prepare backdrop element
         ensureBackdrop();
         // enforce hidden inline state so it doesn't push layout if media queries aren't applied
+        navLinks.style.display = 'none';
         navLinks.style.position = 'fixed';
         navLinks.style.top = '0';
         navLinks.style.right = '0';
