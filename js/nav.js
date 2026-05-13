@@ -465,15 +465,16 @@
         navLinks.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('no-scroll');
         if (backdrop) backdrop.classList.remove('active');
-        // remove inline overlay styles if we set them
-        if (isMobileDevice()) {
-          navLinks.style.transform = 'translateX(100%)';
-          navLinks.style.opacity = '0';
-          navLinks.style.visibility = 'hidden';
-          navLinks.style.pointerEvents = 'none';
-          // clear inline position so layout returns to normal
-          navLinks.style.position = '';
-        }
+        // remove any inline overlay styles we may have set so layout returns to normal
+        navLinks.style.transform = 'translateX(100%)';
+        navLinks.style.opacity = '0';
+        navLinks.style.visibility = 'hidden';
+        navLinks.style.pointerEvents = 'none';
+        navLinks.style.position = '';
+        navLinks.style.top = '';
+        navLinks.style.right = '';
+        navLinks.style.height = '';
+        navLinks.style.width = '';
         resetMobileDropdowns(navLinks);
       }
 
@@ -512,6 +513,12 @@
               backdrop.remove();
               backdrop = null;
             }
+            // ensure any inline overlay styles are cleared when leaving mobile
+            navLinks.style.position = '';
+            navLinks.style.transform = '';
+            navLinks.style.opacity = '';
+            navLinks.style.visibility = '';
+            navLinks.style.pointerEvents = '';
           } else {
             // ensure backdrop exists when returning to mobile
             ensureBackdrop();
@@ -562,6 +569,11 @@
         // prepare backdrop element
         ensureBackdrop();
         // enforce hidden inline state so it doesn't push layout if media queries aren't applied
+        navLinks.style.position = 'fixed';
+        navLinks.style.top = '0';
+        navLinks.style.right = '0';
+        navLinks.style.height = '100vh';
+        navLinks.style.width = navLinks.style.width || '260px';
         navLinks.style.transform = 'translateX(100%)';
         navLinks.style.opacity = '0';
         navLinks.style.visibility = 'hidden';
