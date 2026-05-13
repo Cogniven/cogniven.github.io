@@ -252,46 +252,6 @@
       document.querySelector('.footer-inner p:last-child').innerHTML = i18n[lang].copyright2;
     }
 
-    // Mobile Navigation Logic
-    const hamburger = document.getElementById('hamburger-btn');
-    const navLinksContainer = document.getElementById('nav-links');
-
-    if (hamburger && navLinksContainer) {
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinksContainer.classList.toggle('active');
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinksContainer.contains(e.target) && navLinksContainer.classList.contains('active')) {
-          hamburger.classList.remove('active');
-          navLinksContainer.classList.remove('active');
-        }
-      });
-      
-      // Mobile Dropdown Toggle (Event Delegation)
-      navLinksContainer.addEventListener('click', (e) => {
-        // Only trigger on mobile view
-        if (window.innerWidth > 768) return;
-
-        const link = e.target.closest('a');
-        if (!link) return;
-
-        // Check if it's a parent link with dropdown
-        const navItem = link.closest('.nav-item.has-dropdown');
-        const isParentLink = navItem && link.parentNode === navItem;
-
-        if (isParentLink) {
-           e.preventDefault();
-           navItem.classList.toggle('active');
-        } else {
-           // It's a normal link or sub-link, close menu
-           hamburger.classList.remove('active');
-           navLinksContainer.classList.remove('active');
-        }
-      });
-    }
   </script>
   <script src="js/nav.js"></script>
 </body>
