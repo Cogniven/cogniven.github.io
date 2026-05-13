@@ -418,9 +418,20 @@
         return backdrop;
       }
 
+      function isMobileDevice() {
+        try {
+          var mm = window.matchMedia && window.matchMedia('(max-width:768px)').matches;
+          var touch = 'ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+          var ua = typeof navigator !== 'undefined' && navigator.userAgent ? /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent) : false;
+          return !!(mm || touch || ua);
+        } catch (e) {
+          return false;
+        }
+      }
+
       function openNav() {
-        // ensure backdrop exists on mobile
-        if (window.innerWidth <= 768) ensureBackdrop();
+        // ensure backdrop exists on mobile-like devices
+        if (isMobileDevice()) ensureBackdrop();
         hamburger.classList.add('active');
         navLinks.classList.add('active');
         hamburger.setAttribute('aria-expanded', 'true');
@@ -428,12 +439,7 @@
         document.body.classList.add('no-scroll');
         // If hamburger is visible (mobile), enforce overlay inline styles so
         // the nav behaves as an overlay even if media query doesn't apply.
-        try {
-          var hbDisplay = window.getComputedStyle(hamburger).display;
-        } catch (e) {
-          var hbDisplay = 'block';
-        }
-        if (hbDisplay !== 'none') {
+        if (isMobileDevice()) {
           // ensure backdrop exists and show it
           if (backdrop) backdrop.classList.add('active');
           navLinks.style.position = 'fixed';
@@ -460,18 +466,13 @@
         document.body.classList.remove('no-scroll');
         if (backdrop) backdrop.classList.remove('active');
         // remove inline overlay styles if we set them
-        try {
-          var hbDisplayClose = window.getComputedStyle(hamburger).display;
-        } catch (e) {
-          var hbDisplayClose = 'block';
-        }
-        if (hbDisplayClose !== 'none') {
+        if (isMobileDevice()) {
           navLinks.style.transform = 'translateX(100%)';
           navLinks.style.opacity = '0';
           navLinks.style.visibility = 'hidden';
           navLinks.style.pointerEvents = 'none';
-          // keep position fixed so transition looks correct, but allow CSS to override on desktop later
-          navLinks.style.position = 'fixed';
+          // clear inline position so layout returns to normal
+          navLinks.style.position = '';
         }
         resetMobileDropdowns(navLinks);
       }
@@ -565,7 +566,6 @@
         navLinks.style.opacity = '0';
         navLinks.style.visibility = 'hidden';
         navLinks.style.pointerEvents = 'none';
-        navLinks.style.position = 'fixed';
       }
     });
 
