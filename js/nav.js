@@ -407,22 +407,47 @@
       ensureNavStructure(navLinks);
       observeNavResets(navLinks);
 
-      // Create backdrop element for mobile nav
-      var backdrop = null;
-      if (window.innerWidth <= 768) {
+      // Create or get backdrop element for mobile nav (managed responsively)
+      var backdrop = document.querySelector('.nav-backdrop') || null;
+      function ensureBackdrop() {
+        if (backdrop) return backdrop;
         backdrop = document.createElement('div');
         backdrop.className = 'nav-backdrop';
         backdrop.setAttribute('aria-hidden', 'true');
         document.body.appendChild(backdrop);
+        return backdrop;
       }
 
       function openNav() {
+        // ensure backdrop exists on mobile
+        if (window.innerWidth <= 768) ensureBackdrop();
         hamburger.classList.add('active');
         navLinks.classList.add('active');
         hamburger.setAttribute('aria-expanded', 'true');
         navLinks.setAttribute('aria-hidden', 'false');
         document.body.classList.add('no-scroll');
-        if (backdrop) backdrop.classList.add('active');
+        // If hamburger is visible (mobile), enforce overlay inline styles so
+        // the nav behaves as an overlay even if media query doesn't apply.
+        try {
+          var hbDisplay = window.getComputedStyle(hamburger).display;
+        } catch (e) {
+          var hbDisplay = 'block';
+        }
+        if (hbDisplay !== 'none') {
+          // ensure backdrop exists and show it
+          if (backdrop) backdrop.classList.add('active');
+          navLinks.style.position = 'fixed';
+          navLinks.style.top = '0';
+          navLinks.style.right = '0';
+          navLinks.style.height = '100vh';
+          navLinks.style.width = navLinks.style.width || '260px';
+          navLinks.style.transform = 'translateX(0)';
+          navLinks.style.opacity = '1';
+          navLinks.style.visibility = 'visible';
+          navLinks.style.pointerEvents = 'auto';
+        } else {
+          if (backdrop) backdrop.classList.add('active');
+        }
         var first = navLinks.querySelector('a, button');
         if (first) first.focus();
       }
@@ -434,6 +459,20 @@
         navLinks.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('no-scroll');
         if (backdrop) backdrop.classList.remove('active');
+        // remove inline overlay styles if we set them
+        try {
+          var hbDisplayClose = window.getComputedStyle(hamburger).display;
+        } catch (e) {
+          var hbDisplayClose = 'block';
+        }
+        if (hbDisplayClose !== 'none') {
+          navLinks.style.transform = 'translateX(100%)';
+          navLinks.style.opacity = '0';
+          navLinks.style.visibility = 'hidden';
+          navLinks.style.pointerEvents = 'none';
+          // keep position fixed so transition looks correct, but allow CSS to override on desktop later
+          navLinks.style.position = 'fixed';
+        }
         resetMobileDropdowns(navLinks);
       }
 
@@ -450,6 +489,11 @@
         header.dataset.navGlobalBound = '1';
 
         document.addEventListener('click', function (e) {
+          // clicking outside header or on backdrop closes nav
+          if (backdrop && e.target === backdrop && navLinks.classList.contains('active')) {
+            closeNav();
+            return;
+          }
           if (!header.contains(e.target) && navLinks.classList.contains('active')) {
             closeNav();
           }
@@ -460,18 +504,25 @@
         });
 
         window.addEventListener('resize', function () {
-          if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-            closeNav();
+          // on resize remove/open backdrop appropriately
+          if (window.innerWidth > 768) {
+            if (navLinks.classList.contains('active')) closeNav();
+            if (backdrop) {
+              backdrop.remove();
+              backdrop = null;
+            }
+          } else {
+            // ensure backdrop exists when returning to mobile
+            ensureBackdrop();
           }
         });
 
-        // Click backdrop to close nav
-        if (backdrop) {
-          backdrop.addEventListener('click', function (e) {
-            e.stopPropagation();
+        // Click backdrop to close nav (delegate to ensure it exists)
+        document.addEventListener('click', function (e) {
+          if (e.target && e.target.classList && e.target.classList.contains('nav-backdrop')) {
             closeNav();
-          });
-        }
+          }
+        });
       }
 
       if (navLinks.dataset.navClickBound !== '1') {
@@ -492,13 +543,29 @@
         });
       }
 
-      // Initialize all dropdowns as expanded on mobile
-      if (window.innerWidth <= 768) {
+      // Ensure nav is hidden by default when hamburger is visible (treat as mobile)
+      try {
+        var hbDisplayInit = window.getComputedStyle(hamburger).display;
+      } catch (e) {
+        var hbDisplayInit = 'block';
+      }
+      if (hbDisplayInit !== 'none') {
+        navLinks.classList.remove('active');
+        navLinks.setAttribute('aria-hidden', 'true');
+        // keep dropdowns expanded so submenus are visible inside overlay
         navLinks.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
           item.classList.add('active');
           var top = getTopAnchor(item);
           if (top) top.setAttribute('aria-expanded', 'true');
         });
+        // prepare backdrop element
+        ensureBackdrop();
+        // enforce hidden inline state so it doesn't push layout if media queries aren't applied
+        navLinks.style.transform = 'translateX(100%)';
+        navLinks.style.opacity = '0';
+        navLinks.style.visibility = 'hidden';
+        navLinks.style.pointerEvents = 'none';
+        navLinks.style.position = 'fixed';
       }
     });
 
