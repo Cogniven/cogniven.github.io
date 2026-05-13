@@ -543,8 +543,13 @@
         });
       }
 
-      // Ensure nav is hidden by default on mobile (true overlay)
-      if (window.innerWidth <= 768) {
+      // Ensure nav is hidden by default when hamburger is visible (treat as mobile)
+      try {
+        var hbDisplayInit = window.getComputedStyle(hamburger).display;
+      } catch (e) {
+        var hbDisplayInit = 'block';
+      }
+      if (hbDisplayInit !== 'none') {
         navLinks.classList.remove('active');
         navLinks.setAttribute('aria-hidden', 'true');
         // keep dropdowns expanded so submenus are visible inside overlay
@@ -555,6 +560,12 @@
         });
         // prepare backdrop element
         ensureBackdrop();
+        // enforce hidden inline state so it doesn't push layout if media queries aren't applied
+        navLinks.style.transform = 'translateX(100%)';
+        navLinks.style.opacity = '0';
+        navLinks.style.visibility = 'hidden';
+        navLinks.style.pointerEvents = 'none';
+        navLinks.style.position = 'fixed';
       }
     });
 
