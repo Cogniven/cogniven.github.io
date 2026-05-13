@@ -426,7 +426,28 @@
         hamburger.setAttribute('aria-expanded', 'true');
         navLinks.setAttribute('aria-hidden', 'false');
         document.body.classList.add('no-scroll');
-        if (backdrop) backdrop.classList.add('active');
+        // If hamburger is visible (mobile), enforce overlay inline styles so
+        // the nav behaves as an overlay even if media query doesn't apply.
+        try {
+          var hbDisplay = window.getComputedStyle(hamburger).display;
+        } catch (e) {
+          var hbDisplay = 'block';
+        }
+        if (hbDisplay !== 'none') {
+          // ensure backdrop exists and show it
+          if (backdrop) backdrop.classList.add('active');
+          navLinks.style.position = 'fixed';
+          navLinks.style.top = '0';
+          navLinks.style.right = '0';
+          navLinks.style.height = '100vh';
+          navLinks.style.width = navLinks.style.width || '260px';
+          navLinks.style.transform = 'translateX(0)';
+          navLinks.style.opacity = '1';
+          navLinks.style.visibility = 'visible';
+          navLinks.style.pointerEvents = 'auto';
+        } else {
+          if (backdrop) backdrop.classList.add('active');
+        }
         var first = navLinks.querySelector('a, button');
         if (first) first.focus();
       }
@@ -438,6 +459,20 @@
         navLinks.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('no-scroll');
         if (backdrop) backdrop.classList.remove('active');
+        // remove inline overlay styles if we set them
+        try {
+          var hbDisplayClose = window.getComputedStyle(hamburger).display;
+        } catch (e) {
+          var hbDisplayClose = 'block';
+        }
+        if (hbDisplayClose !== 'none') {
+          navLinks.style.transform = 'translateX(100%)';
+          navLinks.style.opacity = '0';
+          navLinks.style.visibility = 'hidden';
+          navLinks.style.pointerEvents = 'none';
+          // keep position fixed so transition looks correct, but allow CSS to override on desktop later
+          navLinks.style.position = 'fixed';
+        }
         resetMobileDropdowns(navLinks);
       }
 
