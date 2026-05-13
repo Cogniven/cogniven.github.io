@@ -887,7 +887,7 @@ a {
     bottom: 0;
     left: auto;
     height: 100dvh;
-    width: min(84vw, 380px);
+    width: min(90vw, 420px);
     background: var(--bg-soft);
     flex-direction: column;
     align-items: flex-start;
@@ -904,7 +904,8 @@ a {
     backdrop-filter: blur(20px);
     overflow-y: auto;
     will-change: transform;
-    gap: 8px;
+    gap: 6px;
+    overscroll-behavior: contain;
   }
 
   /* Create overlay to prevent body scroll and avoid shift */
@@ -930,7 +931,7 @@ a {
   }
 
   .nav-links > .nav-archive {
-    order: 3;
+    order: 2;
   }
 
   .nav-links > a[href="/about.html"] {
@@ -938,7 +939,7 @@ a {
   }
 
   .nav-links > .nav-projects {
-    order: 2;
+    order: 3;
   }
 
   .nav-links > .nav-writing {
@@ -973,10 +974,10 @@ a {
     flex-direction: column;
     gap: 0;
     min-width: auto;
-    margin: 4px 0 4px 30px;
+    margin: 4px 0 4px 36px;
     border-left: 2px solid var(--line);
-    padding-left: 22px;
-    width: calc(100% - 30px);
+    padding-left: 28px;
+    width: calc(100% - 36px);
   }
 
   .nav-dropdown a {
