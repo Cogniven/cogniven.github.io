@@ -88,6 +88,7 @@
       bestMatch.classList.add("active");
       var parent = bestMatch.closest(".nav-item.has-dropdown");
       if (parent) {
+        parent.classList.add("active");
         var parentTop = getTopAnchor(parent);
         if (parentTop) parentTop.classList.add("active");
       }
@@ -585,14 +586,6 @@
       if (hbDisplayInit !== "none") {
         navLinks.classList.remove("active");
         navLinks.setAttribute("aria-hidden", "true");
-        // keep dropdowns expanded so submenus are visible inside overlay
-        navLinks
-          .querySelectorAll(".nav-item.has-dropdown")
-          .forEach(function (item) {
-            item.classList.add("active");
-            var top = getTopAnchor(item);
-            if (top) top.setAttribute("aria-expanded", "true");
-          });
       }
     });
 
