@@ -123,8 +123,107 @@
         font-size: 0.9rem;
       }
 
-      .image-block {
+      .performance-panel {
         margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--bg-soft);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .performance-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025),
+            transparent 18%,
+            transparent 82%,
+            rgba(255, 255, 255, 0.02)
+          ),
+          radial-gradient(
+            circle at 76% 38%,
+            rgba(216, 199, 154, 0.08),
+            transparent 34%
+          );
+        opacity: 0.9;
+      }
+
+      .performance-toolbar {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 14px 0;
+        flex-wrap: wrap;
+      }
+
+      .performance-title {
+        color: var(--muted);
+        font-size: 0.86rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .chart-switcher {
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .chart-btn {
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.88rem;
+        padding: 7px 13px;
+        transition:
+          background 0.22s ease,
+          color 0.22s ease,
+          opacity 0.22s ease;
+      }
+
+      .chart-btn.active {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+      }
+
+      .chart-btn:hover {
+        opacity: 0.9;
+      }
+
+      .chart-shell {
+        position: relative;
+        z-index: 1;
+        min-height: 460px;
+        padding: 6px 10px 12px;
+      }
+
+      #performance-chart {
+        width: 100%;
+        height: 460px;
+      }
+
+      .chart-fallback {
+        display: none;
+        min-height: 320px;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        text-align: center;
+        padding: 24px;
+        line-height: 1.7;
       }
 
       .image-caption {
@@ -159,6 +258,26 @@
       @media (max-width: 620px) {
         .quant-stat-stack {
           grid-template-columns: 1fr;
+        }
+
+        .performance-toolbar {
+          align-items: flex-start;
+        }
+
+        .chart-switcher {
+          width: 100%;
+        }
+
+        .chart-btn {
+          flex: 1;
+        }
+
+        .chart-shell {
+          min-height: 370px;
+        }
+
+        #performance-chart {
+          height: 370px;
         }
       }
 
@@ -354,63 +473,53 @@
 
       <section class="section">
         <div class="container narrow case-block">
-          <div class="case-block-note" id="output-label">Output</div>
+          <div class="case-block-note" id="performance-label">Output</div>
           <div class="case-block-content">
-            <h2 id="output-title">Equity Curve</h2>
-            <p id="output-p1">
-              The following chart is reserved for a representative equity curve.
-              It is used as evidence of the research process rather than a
-              disclosure of strategy mechanics.
+            <h2 id="performance-title">Performance View</h2>
+            <p id="performance-p1">
+              The chart below switches between a full-range equity view and a
+              recent live window. The backtest curve remains visible in both
+              views; live performance is mapped onto the same equity scale for
+              direct comparison.
             </p>
-            <div class="image-block">
-              <img
-                class="case-image"
-                src="/assets/images/projects/technical-builds/project-001/equity-curve.jpg"
-                alt="Representative equity curve"
-                onerror="
-                  this.src =
-                    'data:image/svg+xml;utf8,' +
-                    encodeURIComponent(
-                      `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Equity Curve</text></svg>`,
-                    )
-                "
-              />
-              <p class="image-caption" id="equity-caption">
-                Representative equity curve from one mature strategy iteration.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="section">
-        <div class="container narrow case-block">
-          <div class="case-block-note" id="compare-label">Comparison</div>
-          <div class="case-block-content">
-            <h2 id="compare-title">Live vs. Backtest</h2>
-            <p id="compare-p1">
-              The comparison between live performance and backtest result is a
-              key part of the current evaluation process. The purpose is to
-              check whether live behavior remains aligned with historical
-              validation rather than relying on backtest performance alone.
-            </p>
-            <div class="image-block">
-              <img
-                class="case-image"
-                src="/assets/images/projects/technical-builds/project-001/live-vs-backtest.jpg"
-                alt="Live performance versus backtest comparison"
-                onerror="
-                  this.src =
-                    'data:image/svg+xml;utf8,' +
-                    encodeURIComponent(
-                      `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Live vs Backtest</text></svg>`,
-                    )
-                "
-              />
-              <p class="image-caption" id="compare-caption">
-                Reserved for live performance and backtest comparison.
-              </p>
+            <div class="performance-panel">
+              <div class="performance-toolbar">
+                <div class="performance-title" id="chart-panel-label">
+                  Interactive Curve
+                </div>
+                <div class="chart-switcher">
+                  <button
+                    class="chart-btn active"
+                    id="chart-btn-long"
+                    type="button"
+                    data-chart-mode="long"
+                  >
+                    Full Range
+                  </button>
+                  <button
+                    class="chart-btn"
+                    id="chart-btn-compare"
+                    type="button"
+                    data-chart-mode="compare"
+                  >
+                    Live Window
+                  </button>
+                </div>
+              </div>
+
+              <div class="chart-shell">
+                <div id="performance-chart"></div>
+                <div class="chart-fallback" id="chart-fallback">
+                  Chart data not available.
+                </div>
+              </div>
             </div>
+
+            <p class="image-caption" id="performance-caption">
+              Full view shows the entire historical structure; live window
+              gradually unfolds the recent period for closer comparison.
+            </p>
           </div>
         </div>
       </section>
@@ -448,12 +557,21 @@
     </footer>
 
     <script src="/js/i18n.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
 
       const STRATEGY_COUNT = 130;
       const LIVE_START_DATE = "2025-01-14";
       const CURRENT_VERSION_START_DATE = "2026-01-14";
+      const EQUITY_DATA_URL =
+        "/assets/images/projects/technical-builds/project-001/quant-equity.json";
+
+      let quantData = null;
+      let chart = null;
+      let chartMode = "long";
+      let currentChartRange = null;
+      let zoomAnimationFrame = null;
 
       const pageContent = {
         "tb-eyebrow": {
@@ -526,26 +644,18 @@
           zh: "研究也已经超出离线回测阶段。此前已有超过一年左右的实盘运行经验，最新版本自 2026 年 1 月 14 日起运行，结果与回测结构保持一致。",
         },
 
-        "output-label": { en: "Output", zh: "输出" },
-        "output-title": { en: "Equity Curve", zh: "收益曲线" },
-        "output-p1": {
-          en: "The following chart is reserved for a representative equity curve. It is used as evidence of the research process rather than a disclosure of strategy mechanics.",
-          zh: "下方位置用于展示一条代表性收益曲线。它作为研究过程的外部痕迹，而不是策略机制的公开说明。",
+        "performance-label": { en: "Output", zh: "输出" },
+        "performance-title": { en: "Performance View", zh: "表现视图" },
+        "performance-p1": {
+          en: "The chart below switches between a full-range equity view and a recent live window. The backtest curve remains visible in both views; live performance is mapped onto the same equity scale for direct comparison.",
+          zh: "下方图表可在全局权益视图与近期实盘窗口之间切换。回测曲线在两个视图中都会保留；实盘表现会映射到同一权益尺度，用于直接对比。",
         },
-        "equity-caption": {
-          en: "Representative equity curve from one mature strategy iteration.",
-          zh: "一条成熟策略迭代版本的代表性收益曲线。",
-        },
-
-        "compare-label": { en: "Comparison", zh: "对比" },
-        "compare-title": { en: "Live vs. Backtest", zh: "实盘与回测对比" },
-        "compare-p1": {
-          en: "The comparison between live performance and backtest result is a key part of the current evaluation process. The purpose is to check whether live behavior remains aligned with historical validation rather than relying on backtest performance alone.",
-          zh: "实盘表现与回测结果的对比，是当前评估流程中的关键部分。它用于检查实际运行是否仍与历史验证保持一致，而不是单纯依赖回测表现。",
-        },
-        "compare-caption": {
-          en: "Reserved for live performance and backtest comparison.",
-          zh: "预留用于放置实盘表现与回测结果对比图。",
+        "chart-panel-label": { en: "Interactive Curve", zh: "交互曲线" },
+        "chart-btn-long": { en: "Full Range", zh: "全局视图" },
+        "chart-btn-compare": { en: "Live Window", zh: "实盘窗口" },
+        "performance-caption": {
+          en: "Full view shows the entire historical structure; live window gradually unfolds the recent period for closer comparison.",
+          zh: "全局视图展示完整历史结构；实盘窗口则像画卷收束一样聚焦到近期区间，用于更细致的对比。",
         },
 
         "reflection-label": { en: "State", zh: "状态" },
@@ -590,6 +700,447 @@
           lang === "zh" ? `${versionDays}+ 天` : `${versionDays}+ days`;
       }
 
+      function getValue(item, keys) {
+        for (const key of keys) {
+          if (
+            item[key] !== undefined &&
+            item[key] !== null &&
+            item[key] !== ""
+          ) {
+            const value = Number(item[key]);
+            if (!Number.isNaN(value)) return value;
+          }
+        }
+        return null;
+      }
+
+      function toSeriesData(items, keys) {
+        if (!Array.isArray(items)) return [];
+
+        return items
+          .filter((item) => item && item.date)
+          .map((item) => {
+            const value = getValue(item, keys);
+            return [item.date, value];
+          });
+      }
+
+      function getDateRange(data) {
+        const valid = data
+          .filter((item) => Array.isArray(item) && item[0])
+          .map((item) => new Date(item[0]).getTime())
+          .filter((time) => !Number.isNaN(time));
+
+        if (!valid.length) return { min: null, max: null };
+
+        return {
+          min: Math.min(...valid),
+          max: Math.max(...valid),
+        };
+      }
+
+      function expandRange(range, ratio = 0.1) {
+        if (range.min === null || range.max === null) return range;
+
+        const width = range.max - range.min || 86400000;
+        return {
+          min: range.min - width * ratio,
+          max: range.max + width * ratio,
+        };
+      }
+
+      function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+
+      function interpolateRange(from, to, progress) {
+        const p = easeInOutCubic(progress);
+        return {
+          min: from.min + (to.min - from.min) * p,
+          max: from.max + (to.max - from.max) * p,
+        };
+      }
+
+      function getChartText() {
+        return {
+          backtest: lang === "zh" ? "回测权益" : "Backtest Equity",
+          live: lang === "zh" ? "实盘权益" : "Live Equity",
+          fullTitle: lang === "zh" ? "全局视图" : "Full Range",
+          liveTitle: lang === "zh" ? "实盘窗口" : "Live Window",
+          noData:
+            lang === "zh"
+              ? "未找到图表数据。请确认 quant-equity.json 已上传。"
+              : "Chart data not found. Please check quant-equity.json.",
+          echartsFailed:
+            lang === "zh" ? "ECharts 加载失败。" : "ECharts failed to load.",
+        };
+      }
+
+      function buildEquitySeries(id, name, data, color, width, opacity = 1) {
+        return {
+          id,
+          name,
+          type: "line",
+          yAxisIndex: 0,
+          data,
+          smooth: true,
+          showSymbol: false,
+          connectNulls: false,
+          lineStyle: {
+            width,
+            color,
+            opacity,
+          },
+          itemStyle: {
+            color,
+            opacity,
+          },
+          emphasis: {
+            focus: "series",
+          },
+          tooltip: {
+            valueFormatter: function (value) {
+              if (value === null || value === undefined) return "-";
+              return Number(value).toFixed(2);
+            },
+          },
+          z: id === "live-equity" ? 6 : 5,
+        };
+      }
+
+      function getLiveBaseEquity() {
+        const comparison = Array.isArray(quantData?.comparison)
+          ? quantData.comparison
+          : [];
+
+        const firstComparison = comparison.find(
+          (item) =>
+            item &&
+            item.date &&
+            item.backtestEquity !== null &&
+            item.backtestEquity !== undefined,
+        );
+
+        if (firstComparison) return Number(firstComparison.backtestEquity);
+
+        const recent = Array.isArray(quantData?.backtestRecent)
+          ? quantData.backtestRecent
+          : [];
+
+        const firstRecent = recent.find(
+          (item) =>
+            item &&
+            item.date &&
+            item.equity !== null &&
+            item.equity !== undefined,
+        );
+
+        if (firstRecent) return Number(firstRecent.equity);
+
+        return 0;
+      }
+
+      function buildSyntheticLiveEquity() {
+        const base = getLiveBaseEquity();
+
+        const source = Array.isArray(quantData?.liveRecent)
+          ? quantData.liveRecent
+          : Array.isArray(quantData?.comparison)
+            ? quantData.comparison
+            : [];
+
+        return source
+          .filter((item) => item && item.date)
+          .map((item) => {
+            const liveChange = getValue(item, [
+              "liveChange",
+              "equity",
+              "live",
+              "value",
+            ]);
+            return [item.date, liveChange === null ? null : base + liveChange];
+          });
+      }
+
+      function getChartPreparedData() {
+        const fullBacktestEquity = toSeriesData(quantData?.backtestFull, [
+          "equity",
+          "backtest",
+          "backtestEquity",
+          "value",
+        ]);
+
+        const liveEquity = buildSyntheticLiveEquity();
+
+        const fullRange = getDateRange(fullBacktestEquity);
+        const liveRange = expandRange(getDateRange(liveEquity), 0.1);
+
+        return {
+          fullBacktestEquity,
+          liveEquity,
+          fullRange,
+          liveRange,
+        };
+      }
+
+      function buildChartBaseOption(range, mode) {
+        const text = getChartText();
+        const data = getChartPreparedData();
+        const isFull = mode === "long";
+
+        return {
+          backgroundColor: "transparent",
+
+          animation: true,
+          animationDuration: 500,
+          animationDurationUpdate: 500,
+          animationEasing: "cubicOut",
+          animationEasingUpdate: "cubicOut",
+
+          title: {
+            text: isFull ? text.fullTitle : text.liveTitle,
+            left: 14,
+            top: 8,
+            textStyle: {
+              color: "rgba(238, 238, 238, 0.86)",
+              fontSize: 15,
+              fontWeight: 500,
+            },
+          },
+
+          legend: {
+            top: 10,
+            right: 18,
+            textStyle: {
+              color: "rgba(220, 220, 220, 0.7)",
+            },
+            itemWidth: 18,
+            itemHeight: 8,
+          },
+
+          tooltip: {
+            trigger: "axis",
+            backgroundColor: "rgba(12, 16, 22, 0.94)",
+            borderColor: "rgba(255, 255, 255, 0.12)",
+            textStyle: {
+              color: "rgba(240, 240, 240, 0.9)",
+            },
+            axisPointer: {
+              type: "line",
+              lineStyle: {
+                color: "rgba(255, 255, 255, 0.18)",
+              },
+            },
+          },
+
+          grid: {
+            left: 58,
+            right: 54,
+            top: 62,
+            bottom: 48,
+          },
+
+          xAxis: {
+            type: "time",
+            min: range.min,
+            max: range.max,
+            boundaryGap: false,
+            axisLine: {
+              lineStyle: {
+                color: "rgba(255, 255, 255, 0.14)",
+              },
+            },
+            axisTick: {
+              show: false,
+            },
+            axisLabel: {
+              color: "rgba(220, 220, 220, 0.58)",
+            },
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: "rgba(255, 255, 255, 0.055)",
+              },
+            },
+          },
+
+          yAxis: {
+            type: "value",
+            scale: true,
+            name: lang === "zh" ? "权益" : "Equity",
+            nameTextStyle: {
+              color: "rgba(220, 220, 220, 0.5)",
+            },
+            axisLabel: {
+              color: "rgba(220, 220, 220, 0.58)",
+            },
+            splitLine: {
+              lineStyle: {
+                color: "rgba(255, 255, 255, 0.075)",
+              },
+            },
+          },
+
+          series: [
+            buildEquitySeries(
+              "backtest-equity",
+              text.backtest,
+              data.fullBacktestEquity,
+              "#7f9fcf",
+              isFull ? 2.1 : 2,
+              isFull ? 0.88 : 0.72,
+            ),
+
+            buildEquitySeries(
+              "live-equity",
+              text.live,
+              data.liveEquity,
+              "#f0d889",
+              isFull ? 2.8 : 3.2,
+              1,
+            ),
+          ],
+        };
+      }
+
+      function getTargetRange(mode) {
+        const data = getChartPreparedData();
+        return mode === "long" ? data.fullRange : data.liveRange;
+      }
+
+      function animateChartRange(fromRange, toRange, mode) {
+        if (!chart || !fromRange || !toRange) return;
+
+        if (zoomAnimationFrame) {
+          cancelAnimationFrame(zoomAnimationFrame);
+          zoomAnimationFrame = null;
+        }
+
+        const duration = 2400;
+        const startTime = performance.now();
+
+        chart.setOption(buildChartBaseOption(fromRange, mode), {
+          notMerge: false,
+          lazyUpdate: false,
+        });
+
+        function step(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(1, elapsed / duration);
+          const range = interpolateRange(fromRange, toRange, progress);
+
+          chart.setOption(
+            {
+              xAxis: {
+                min: range.min,
+                max: range.max,
+              },
+            },
+            {
+              notMerge: false,
+              lazyUpdate: true,
+            },
+          );
+
+          if (progress < 1) {
+            zoomAnimationFrame = requestAnimationFrame(step);
+          } else {
+            currentChartRange = toRange;
+            zoomAnimationFrame = null;
+
+            chart.setOption(buildChartBaseOption(toRange, mode), {
+              notMerge: false,
+              lazyUpdate: false,
+            });
+          }
+        }
+
+        zoomAnimationFrame = requestAnimationFrame(step);
+      }
+
+      function setChartMode(mode) {
+        if (!quantData) return;
+
+        chartMode = mode;
+
+        document
+          .getElementById("chart-btn-long")
+          .classList.toggle("active", chartMode === "long");
+        document
+          .getElementById("chart-btn-compare")
+          .classList.toggle("active", chartMode === "compare");
+
+        const targetRange = getTargetRange(chartMode);
+
+        if (!currentChartRange) {
+          currentChartRange = getTargetRange("long");
+        }
+
+        animateChartRange(currentChartRange, targetRange, chartMode);
+      }
+
+      function showChartFallback(message) {
+        const fallback = document.getElementById("chart-fallback");
+        const chartEl = document.getElementById("performance-chart");
+
+        fallback.style.display = "flex";
+        fallback.textContent = message;
+        chartEl.style.display = "none";
+      }
+
+      function hideChartFallback() {
+        const fallback = document.getElementById("chart-fallback");
+        const chartEl = document.getElementById("performance-chart");
+
+        fallback.style.display = "none";
+        chartEl.style.display = "block";
+      }
+
+      function renderPerformanceChart() {
+        const text = getChartText();
+
+        if (!window.echarts) {
+          showChartFallback(text.echartsFailed);
+          return;
+        }
+
+        if (!quantData) {
+          showChartFallback(text.noData);
+          return;
+        }
+
+        const chartEl = document.getElementById("performance-chart");
+
+        if (!chart) {
+          chart = echarts.init(chartEl);
+          window.addEventListener("resize", () => {
+            if (chart) chart.resize();
+          });
+        }
+
+        hideChartFallback();
+
+        const targetRange = getTargetRange(chartMode);
+        currentChartRange = targetRange;
+
+        chart.setOption(buildChartBaseOption(targetRange, chartMode), {
+          notMerge: false,
+          lazyUpdate: false,
+        });
+      }
+
+      async function loadQuantData() {
+        try {
+          const response = await fetch(EQUITY_DATA_URL, { cache: "no-store" });
+          if (!response.ok) throw new Error("Data file not found");
+          quantData = await response.json();
+          renderPerformanceChart();
+        } catch (error) {
+          const text = getChartText();
+          showChartFallback(text.noData);
+        }
+      }
+
       function setLang(newLang) {
         lang = newLang;
         localStorage.setItem("lang", lang);
@@ -615,6 +1166,10 @@
 
         renderStats();
 
+        if (quantData) {
+          renderPerformanceChart();
+        }
+
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;
         document.querySelector(".footer-inner p:last-child").innerHTML =
@@ -624,7 +1179,14 @@
       document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("lang-en").onclick = () => setLang("en");
         document.getElementById("lang-zh").onclick = () => setLang("zh");
+
+        document.getElementById("chart-btn-long").onclick = () =>
+          setChartMode("long");
+        document.getElementById("chart-btn-compare").onclick = () =>
+          setChartMode("compare");
+
         renderLang();
+        loadQuantData();
       });
     </script>
     <script src="/js/nav.js"></script>
