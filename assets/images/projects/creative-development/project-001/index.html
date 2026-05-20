@@ -14,7 +14,7 @@
 
       .log-subtitle {
         color: var(--text-soft);
-        max-width: 680px;
+        max-width: 720px;
         line-height: 1.7;
       }
 
@@ -105,7 +105,8 @@
         color: #60a5fa;
       }
 
-      .log-status.paused {
+      .log-status.paused,
+      .log-status.waiting {
         color: #facc15;
       }
 
@@ -113,13 +114,41 @@
         color: #a78bfa;
       }
 
-      .log-image {
-        margin-top: 12px;
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .image-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--bg-soft);
+      }
+
+      .image-card img {
         width: 100%;
         display: block;
-        border-radius: 10px;
-        border: 1px solid var(--line);
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
         background: var(--bg-soft);
+      }
+
+      .image-card-body {
+        padding: 14px;
+      }
+
+      .image-card-body h3 {
+        margin: 0 0 6px;
+        font-size: 1rem;
+      }
+
+      .image-card-body p {
+        margin: 0;
+        color: var(--text-soft);
+        font-size: 0.9rem;
+        line-height: 1.6;
       }
 
       .closing-section {
@@ -132,6 +161,12 @@
 
       .closing-text {
         color: var(--text-soft);
+      }
+
+      @media (max-width: 820px) {
+        .image-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 720px) {
@@ -194,12 +229,13 @@
           <p class="log-subtitle" id="log-subtitle">
             A project for turning play sessions of Arkham Horror into narrative
             material through recording, transcription, restructuring, and later
-            AI-assisted rewriting.
+            AI-assisted rewriting. Recent updates include early image
+            experiments based on selected moments from The Dunwich Legacy.
           </p>
 
           <div class="log-meta">
-            <span id="meta-status">Pre-start</span>
-            <span id="meta-updated">Updated: 2026-04-12</span>
+            <span id="meta-status">Visual test added</span>
+            <span id="meta-updated">Updated: 2026-05-21</span>
             <span id="meta-track">Single Project</span>
           </div>
         </div>
@@ -211,6 +247,7 @@
             <a href="#premise" id="anchor-premise">Premise</a>
             <a href="#workflow" id="anchor-workflow">Workflow</a>
             <a href="#current" id="anchor-current">Current Stage</a>
+            <a href="#images" id="anchor-images">Image Tests</a>
             <a href="#extensions" id="anchor-extensions">Extensions</a>
           </div>
         </div>
@@ -223,7 +260,8 @@
           <p class="log-section-intro" id="section1-intro">
             This project begins from actual play. The goal is not only to record
             what happened in the game, but to turn the session into narrative
-            material that can later be rewritten and expanded.
+            material that can later be rewritten, expanded, and selectively
+            visualized.
           </p>
 
           <div class="log-entry">
@@ -235,7 +273,7 @@
             </div>
             <p class="log-entry-meta" id="premise-entry1-date">2026-04-12</p>
             <p class="log-entry-text" id="premise-entry1-text">
-              The primary material will come from actual play sessions of Arkham
+              The primary material comes from actual play sessions of Arkham
               Horror, treated as the first layer of narrative input.
             </p>
           </div>
@@ -262,8 +300,8 @@
           <h2 class="log-section-title" id="section2-title">Workflow</h2>
           <p class="log-section-intro" id="section2-intro">
             The workflow is planned as a staged conversion process: gameplay,
-            recording, transcription, narrative structuring, and later literary
-            rewriting.
+            recording, transcription, narrative structuring, selective image
+            testing, and later literary rewriting.
           </p>
 
           <div class="log-entry">
@@ -319,48 +357,237 @@
           <p class="section-note" id="section3-note">Section 03</p>
           <h2 class="log-section-title" id="section3-title">Current Stage</h2>
           <p class="log-section-intro" id="section3-intro">
-            The project is still at the earliest phase. The game has been
-            played, but recording and text conversion have not started yet.
+            The project has moved beyond the earliest phase. Some moments from
+            The Dunwich Legacy have now been turned into AI-generated images,
+            but the main narrative update is still waiting for later
+            development.
           </p>
 
           <div class="log-entry">
             <div class="log-entry-head">
-              <h3 id="current-entry1-title">Only Gameplay Completed</h3>
+              <h3 id="current-entry1-title">Gameplay Material Collected</h3>
               <span class="log-status active" id="current-entry1-status"
                 >active</span
               >
             </div>
             <p class="log-entry-meta" id="current-entry1-date">current</p>
             <p class="log-entry-text" id="current-entry1-text">
-              At this moment, the project exists only at the level of actual
-              play experience. No audio archive or text reconstruction has been
-              produced yet.
+              The project already has actual play material as its base. This
+              material remains the source for later transcription, sorting, and
+              narrative rewriting.
             </p>
           </div>
 
           <div class="log-entry">
             <div class="log-entry-head">
-              <h3 id="current-entry2-title">Method Still Being Fixed</h3>
-              <span class="log-status draft" id="current-entry2-status"
-                >draft</span
+              <h3 id="current-entry2-title">Image Attempt Added</h3>
+              <span class="log-status test" id="current-entry2-status"
+                >test</span
               >
             </div>
-            <p class="log-entry-meta" id="current-entry2-date">current</p>
+            <p class="log-entry-meta" id="current-entry2-date">2026-05-21</p>
             <p class="log-entry-text" id="current-entry2-text">
-              The exact method for recording, segmenting, and restructuring the
-              play session is still being defined.
+              A group of images has been generated from selected fragments of
+              the first campaign cycle, The Dunwich Legacy. These images are
+              treated as visual notes rather than final illustrations.
             </p>
+          </div>
+
+          <div class="log-entry">
+            <div class="log-entry-head">
+              <h3 id="current-entry3-title">Later Update Still Pending</h3>
+              <span class="log-status waiting" id="current-entry3-status"
+                >waiting</span
+              >
+            </div>
+            <p class="log-entry-meta" id="current-entry3-date">pending</p>
+            <p class="log-entry-text" id="current-entry3-text">
+              The next substantial update is still pending. The text layer,
+              image order, and final presentation format have not yet been
+              fixed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section log-section" id="images">
+        <div class="container narrow">
+          <p class="section-note" id="section4-note">Section 04</p>
+          <h2 class="log-section-title" id="section4-title">Image Tests</h2>
+          <p class="log-section-intro" id="section4-intro">
+            These images are early attempts to visualize selected fragments from
+            the first Arkham Horror campaign cycle, The Dunwich Legacy. They are
+            currently used as supplementary material for the project, not as a
+            finished visual series.
+          </p>
+
+          <div class="image-grid">
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-1.jpg"
+                alt="Cheating attempt at the Clover Club"
+              />
+              <div class="image-card-body">
+                <h3 id="image1-title">At the Clover Club</h3>
+                <p id="image1-text">
+                  An attempt to cheat at the Clover Club, preserved as an early
+                  visual fragment from the campaign.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-2.jpg"
+                alt="Fighting off a monster in a Miskatonic University dormitory"
+              />
+              <div class="image-card-body">
+                <h3 id="image2-title">Miskatonic Dormitory</h3>
+                <p id="image2-text">
+                  A scene in which the investigators fight off a monster inside
+                  the student dormitory of Miskatonic University.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-3.jpg"
+                alt="Drinking too much at La Bella Luna"
+              />
+              <div class="image-card-body">
+                <h3 id="image3-title">La Bella Luna</h3>
+                <p id="image3-text">
+                  A moment of reckless drinking at La Bella Luna, kept as a
+                  lighter but still unstable fragment of the adventure.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-4.jpg"
+                alt="Trying to wake the guard outside the museum security office"
+              />
+              <div class="image-card-body">
+                <h3 id="image4-title">Museum Security Office</h3>
+                <p id="image4-text">
+                  The investigators attempt to wake the guard outside the museum
+                  security office before moving deeper into the case.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-5.jpg"
+                alt="Sneaking into the museum at night"
+              />
+              <div class="image-card-body">
+                <h3 id="image5-title">Night Entry</h3>
+                <p id="image5-text">
+                  A night-time infiltration of the museum, marking the shift
+                  from investigation into direct risk.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-6.jpg"
+                alt="Finding the Necronomicon in the restricted hall of the museum"
+              />
+              <div class="image-card-body">
+                <h3 id="image6-title">Restricted Hall</h3>
+                <p id="image6-text">
+                  The Necronomicon is found inside the museum's restricted hall,
+                  turning the investigation toward forbidden knowledge.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-7.jpg"
+                alt="Boarding the train to Dunwich"
+              />
+              <div class="image-card-body">
+                <h3 id="image7-title">Train to Dunwich</h3>
+                <p id="image7-text">
+                  The investigators board the train to Dunwich, carrying the
+                  unresolved danger of Arkham into the countryside.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-8.jpg"
+                alt="A dangerous moment during the train journey"
+              />
+              <div class="image-card-body">
+                <h3 id="image8-title">Incident on the Train</h3>
+                <p id="image8-text">
+                  A dangerous moment erupts while the train is still running,
+                  breaking the journey into sudden panic and action.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-9.jpg"
+                alt="Arriving at Arkham"
+              />
+              <div class="image-card-body">
+                <h3 id="image9-title">Arrival at Arkham</h3>
+                <p id="image9-text">
+                  The investigators arrive at Arkham, where the route of the
+                  campaign begins to connect scattered clues into a larger
+                  threat.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-10.jpg"
+                alt="Finding the bloodstained altar in Arkham"
+              />
+              <div class="image-card-body">
+                <h3 id="image10-title">Bloodstained Altar</h3>
+                <p id="image10-text">
+                  A bloodstained altar is found in Arkham, giving physical shape
+                  to the ritual danger behind the campaign.
+                </p>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src="/assets/images/projects/creative-development/project-001/ah-1-11.jpg"
+                alt="Using magic against an unspeakable monster"
+              />
+              <div class="image-card-body">
+                <h3 id="image11-title">Against the Unspeakable</h3>
+                <p id="image11-text">
+                  The investigators attempt to use magic against an unspeakable
+                  monster, closing the current visual sequence with
+                  confrontation and uncertainty.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
       <section class="section log-section" id="extensions">
         <div class="container narrow">
-          <p class="section-note" id="section4-note">Section 04</p>
-          <h2 class="log-section-title" id="section4-title">Extensions</h2>
-          <p class="log-section-intro" id="section4-intro">
+          <p class="section-note" id="section5-note">Section 05</p>
+          <h2 class="log-section-title" id="section5-title">Extensions</h2>
+          <p class="log-section-intro" id="section5-intro">
             If the textual layer becomes stable enough, the project may later
-            expand into visual directions.
+            expand into more complete visual or audiovisual directions.
           </p>
 
           <div class="log-entry">
@@ -370,18 +597,19 @@
                 >test</span
               >
             </div>
-            <p class="log-entry-meta" id="extensions-entry1-date">possible</p>
+            <p class="log-entry-meta" id="extensions-entry1-date">started</p>
             <p class="log-entry-text" id="extensions-entry1-text">
-              One possible direction is to generate still images or illustrated
-              scenes based on the reconstructed story.
+              One possible direction is to continue generating still images or
+              illustrated scenes based on the reconstructed story. The current
+              image attempt is only an early test.
             </p>
           </div>
 
           <div class="log-entry">
             <div class="log-entry-head">
               <h3 id="extensions-entry2-title">Video Adaptation Attempt</h3>
-              <span class="log-status test" id="extensions-entry2-status"
-                >test</span
+              <span class="log-status draft" id="extensions-entry2-status"
+                >draft</span
               >
             </div>
             <p class="log-entry-meta" id="extensions-entry2-date">possible</p>
@@ -397,11 +625,12 @@
         <div class="container narrow center">
           <p class="section-note" id="closing-note">Current Direction</p>
           <h2 class="closing-title" id="closing-title">
-            The story has not been written yet.
+            The project is waiting for its next update.
           </h2>
           <p class="closing-text" id="closing-text">
-            For now, the work remains at the stage of collecting material and
-            determining method.
+            For now, the work keeps the original narrative conversion plan, with
+            a group of image fragments from The Dunwich Legacy added as
+            supplementary material.
           </p>
         </div>
       </section>
@@ -432,57 +661,112 @@
           zh: "诡镇奇谈叙事转写实验",
         },
         "log-subtitle": {
-          en: "A project for turning play sessions of Arkham Horror into narrative material through recording, transcription, restructuring, and later AI-assisted rewriting.",
-          zh: "一个将《诡镇奇谈》游玩过程转化为叙事材料的项目，路径包括录音、转写、重组，以及后续借助 AI 进行小说化改写。",
+          en: "A project for turning play sessions of Arkham Horror into narrative material through recording, transcription, restructuring, and later AI-assisted rewriting. Recent updates include early image experiments based on selected moments from The Dunwich Legacy.",
+          zh: "一个将《诡镇奇谈》游玩过程转化为叙事材料的项目，路径包括录音、转写、重组，以及后续借助 AI 进行小说化改写。最近增加了基于《敦威治遗产》片段的早期图像尝试。",
         },
-        "meta-status": { en: "Pre-start", zh: "前期阶段" },
-        "meta-updated": { en: "Updated: 2026-04-12", zh: "更新：2026-04-12" },
-        "meta-track": { en: "Single Project", zh: "单项目" },
+        "meta-status": {
+          en: "Visual test added",
+          zh: "已加入图像尝试",
+        },
+        "meta-updated": {
+          en: "Updated: 2026-05-21",
+          zh: "更新：2026-05-21",
+        },
+        "meta-track": {
+          en: "Single Project",
+          zh: "单项目",
+        },
 
-        "anchor-premise": { en: "Premise", zh: "起点" },
-        "anchor-workflow": { en: "Workflow", zh: "流程" },
-        "anchor-current": { en: "Current Stage", zh: "当前阶段" },
-        "anchor-extensions": { en: "Extensions", zh: "可能延展" },
+        "anchor-premise": {
+          en: "Premise",
+          zh: "起点",
+        },
+        "anchor-workflow": {
+          en: "Workflow",
+          zh: "流程",
+        },
+        "anchor-current": {
+          en: "Current Stage",
+          zh: "当前阶段",
+        },
+        "anchor-images": {
+          en: "Image Tests",
+          zh: "图像尝试",
+        },
+        "anchor-extensions": {
+          en: "Extensions",
+          zh: "可能延展",
+        },
 
-        "section1-note": { en: "Section 01", zh: "部分 01" },
-        "section1-title": { en: "Premise", zh: "起点" },
+        "section1-note": {
+          en: "Section 01",
+          zh: "部分 01",
+        },
+        "section1-title": {
+          en: "Premise",
+          zh: "起点",
+        },
         "section1-intro": {
-          en: "This project begins from actual play. The goal is not only to record what happened in the game, but to turn the session into narrative material that can later be rewritten and expanded.",
-          zh: "这个项目从实际游玩开始。目标不只是记录游戏中发生了什么，而是把整场过程转化为后续可以继续改写和扩展的叙事材料。",
+          en: "This project begins from actual play. The goal is not only to record what happened in the game, but to turn the session into narrative material that can later be rewritten, expanded, and selectively visualized.",
+          zh: "这个项目从实际游玩开始。目标不只是记录游戏中发生了什么，而是把整场过程转化为后续可以继续改写、扩展，并进行选择性图像化的叙事材料。",
         },
         "premise-entry1-title": {
           en: "Play Session as Source Material",
           zh: "以游玩过程作为原始材料",
         },
-        "premise-entry1-status": { en: "active", zh: "进行中" },
-        "premise-entry1-date": { en: "2026-04-12", zh: "2026-04-12" },
+        "premise-entry1-status": {
+          en: "active",
+          zh: "进行中",
+        },
+        "premise-entry1-date": {
+          en: "2026-04-12",
+          zh: "2026-04-12",
+        },
         "premise-entry1-text": {
-          en: "The primary material will come from actual play sessions of Arkham Horror, treated as the first layer of narrative input.",
-          zh: "项目的第一层材料将来自《诡镇奇谈》的实际游玩过程，并被视作叙事输入的起点。",
+          en: "The primary material comes from actual play sessions of Arkham Horror, treated as the first layer of narrative input.",
+          zh: "项目的第一层材料来自《诡镇奇谈》的实际游玩过程，并被视作叙事输入的起点。",
         },
         "premise-entry2-title": {
           en: "Scenario and Rule Context",
           zh: "剧本与规则语境",
         },
-        "premise-entry2-status": { en: "draft", zh: "草稿" },
-        "premise-entry2-date": { en: "2026-04-12", zh: "2026-04-12" },
+        "premise-entry2-status": {
+          en: "draft",
+          zh: "草稿",
+        },
+        "premise-entry2-date": {
+          en: "2026-04-12",
+          zh: "2026-04-12",
+        },
         "premise-entry2-text": {
           en: "Scenario text, card effects, and in-session decisions will be used as supporting context when reconstructing the story.",
           zh: "在整理故事时，剧本文本、卡牌效果与过程中的关键决策都会作为辅助语境一起进入整理。",
         },
 
-        "section2-note": { en: "Section 02", zh: "部分 02" },
-        "section2-title": { en: "Workflow", zh: "流程" },
+        "section2-note": {
+          en: "Section 02",
+          zh: "部分 02",
+        },
+        "section2-title": {
+          en: "Workflow",
+          zh: "流程",
+        },
         "section2-intro": {
-          en: "The workflow is planned as a staged conversion process: gameplay, recording, transcription, narrative structuring, and later literary rewriting.",
-          zh: "这个项目被设想为一个分阶段转换流程：游玩、录音、转写、叙事整理，以及后续的文学化改写。",
+          en: "The workflow is planned as a staged conversion process: gameplay, recording, transcription, narrative structuring, selective image testing, and later literary rewriting.",
+          zh: "这个项目被设想为一个分阶段转换流程：游玩、录音、转写、叙事整理、选择性图像尝试，以及后续的文学化改写。",
         },
         "workflow-entry1-title": {
           en: "Audio Recording Plan",
           zh: "录音方案",
         },
-        "workflow-entry1-status": { en: "draft", zh: "草稿" },
-        "workflow-entry1-date": { en: "planned", zh: "计划中" },
+        "workflow-entry1-status": {
+          en: "draft",
+          zh: "草稿",
+        },
+        "workflow-entry1-date": {
+          en: "planned",
+          zh: "计划中",
+        },
         "workflow-entry1-text": {
           en: "Future sessions will be recorded in audio form so that spoken reactions, decisions, and emergent dramatic moments can be preserved.",
           zh: "后续游玩会以录音方式留下过程，以保存口头反应、决策变化，以及临场出现的戏剧性瞬间。",
@@ -491,8 +775,14 @@
           en: "Transcription and Story Sorting",
           zh: "转写与故事整理",
         },
-        "workflow-entry2-status": { en: "draft", zh: "草稿" },
-        "workflow-entry2-date": { en: "planned", zh: "计划中" },
+        "workflow-entry2-status": {
+          en: "draft",
+          zh: "草稿",
+        },
+        "workflow-entry2-date": {
+          en: "planned",
+          zh: "计划中",
+        },
         "workflow-entry2-text": {
           en: "Recordings will be converted into text, then reorganized together with scenario material into a readable story sequence.",
           zh: "录音会被转成文本，再结合剧本材料重组为可阅读的故事顺序。",
@@ -501,75 +791,238 @@
           en: "AI-Assisted Novelization",
           zh: "借助 AI 进行小说化改写",
         },
-        "workflow-entry3-status": { en: "test", zh: "探索" },
-        "workflow-entry3-date": { en: "later stage", zh: "后续阶段" },
+        "workflow-entry3-status": {
+          en: "test",
+          zh: "探索",
+        },
+        "workflow-entry3-date": {
+          en: "later stage",
+          zh: "后续阶段",
+        },
         "workflow-entry3-text": {
           en: "After the narrative material is stabilized, AI will be used to help rewrite it into a more novel-like form while keeping the original session logic intact.",
           zh: "当叙事材料相对稳定后，会借助 AI 将其改写得更接近小说文本，同时尽量保留原始游玩逻辑。",
         },
 
-        "section3-note": { en: "Section 03", zh: "部分 03" },
-        "section3-title": { en: "Current Stage", zh: "当前阶段" },
+        "section3-note": {
+          en: "Section 03",
+          zh: "部分 03",
+        },
+        "section3-title": {
+          en: "Current Stage",
+          zh: "当前阶段",
+        },
         "section3-intro": {
-          en: "The project is still at the earliest phase. The game has been played, but recording and text conversion have not started yet.",
-          zh: "这个项目仍处在最早期阶段。目前已经完成游玩，但录音和文本转写都还没有开始。",
+          en: "The project has moved beyond the earliest phase. Some moments from The Dunwich Legacy have now been turned into AI-generated images, but the main narrative update is still waiting for later development.",
+          zh: "这个项目已经不再只是最早期设想。目前已经把《敦威治遗产》中的部分瞬间转化为 AI 生成图像，但主要叙事更新仍在等待后续推进。",
         },
         "current-entry1-title": {
-          en: "Only Gameplay Completed",
-          zh: "目前仅完成游玩",
+          en: "Gameplay Material Collected",
+          zh: "已经积累游玩材料",
         },
-        "current-entry1-status": { en: "active", zh: "当前状态" },
-        "current-entry1-date": { en: "current", zh: "当前" },
+        "current-entry1-status": {
+          en: "active",
+          zh: "进行中",
+        },
+        "current-entry1-date": {
+          en: "current",
+          zh: "当前",
+        },
         "current-entry1-text": {
-          en: "At this moment, the project exists only at the level of actual play experience. No audio archive or text reconstruction has been produced yet.",
-          zh: "到目前为止，这个项目还只存在于实际游玩经验层面，尚未形成录音档案，也没有开始文本重构。",
+          en: "The project already has actual play material as its base. This material remains the source for later transcription, sorting, and narrative rewriting.",
+          zh: "项目已经有实际游玩材料作为基础。这些材料仍然是后续转写、整理和叙事改写的来源。",
         },
         "current-entry2-title": {
-          en: "Method Still Being Fixed",
-          zh: "方法仍在确定中",
+          en: "Image Attempt Added",
+          zh: "加入图像尝试",
         },
-        "current-entry2-status": { en: "draft", zh: "草稿" },
-        "current-entry2-date": { en: "current", zh: "当前" },
+        "current-entry2-status": {
+          en: "test",
+          zh: "探索",
+        },
+        "current-entry2-date": {
+          en: "2026-05-21",
+          zh: "2026-05-21",
+        },
         "current-entry2-text": {
-          en: "The exact method for recording, segmenting, and restructuring the play session is still being defined.",
-          zh: "关于如何录音、如何切分材料、如何把游玩过程重组为叙事文本，目前还在确定方法。",
+          en: "A group of images has been generated from selected fragments of the first campaign cycle, The Dunwich Legacy. These images are treated as visual notes rather than final illustrations.",
+          zh: "目前已经基于第一轮战役《敦威治遗产》中的若干片段生成了一组图像。这些图像暂时被视为视觉笔记，而不是最终插画。",
+        },
+        "current-entry3-title": {
+          en: "Later Update Still Pending",
+          zh: "后续更新仍在等待",
+        },
+        "current-entry3-status": {
+          en: "waiting",
+          zh: "等待中",
+        },
+        "current-entry3-date": {
+          en: "pending",
+          zh: "待更新",
+        },
+        "current-entry3-text": {
+          en: "The next substantial update is still pending. The text layer, image order, and final presentation format have not yet been fixed.",
+          zh: "下一次实质性更新还在等待中。文本层、图像顺序和最终呈现形式目前都尚未确定。",
         },
 
-        "section4-note": { en: "Section 04", zh: "部分 04" },
-        "section4-title": { en: "Extensions", zh: "可能延展" },
+        "section4-note": {
+          en: "Section 04",
+          zh: "部分 04",
+        },
+        "section4-title": {
+          en: "Image Tests",
+          zh: "图像尝试",
+        },
         "section4-intro": {
-          en: "If the textual layer becomes stable enough, the project may later expand into visual directions.",
-          zh: "如果文本层整理得足够稳定，这个项目后续可能继续向视觉方向延展。",
+          en: "These images are early attempts to visualize selected fragments from the first Arkham Horror campaign cycle, The Dunwich Legacy. They are currently used as supplementary material for the project, not as a finished visual series.",
+          zh: "这些图像是对《诡镇奇谈》一循环《敦威治遗产》片段进行视觉化的早期尝试。目前它们只是项目的补充材料，并不是已经完成的视觉系列。",
+        },
+
+        "image1-title": {
+          en: "At the Clover Club",
+          zh: "四叶草俱乐部",
+        },
+        "image1-text": {
+          en: "An attempt to cheat at the Clover Club, preserved as an early visual fragment from the campaign.",
+          zh: "在四叶草俱乐部尝试出老千，作为战役早期的视觉片段保留下来。",
+        },
+        "image2-title": {
+          en: "Miskatonic Dormitory",
+          zh: "米斯卡塔尼克大学宿舍",
+        },
+        "image2-text": {
+          en: "A scene in which the investigators fight off a monster inside the student dormitory of Miskatonic University.",
+          zh: "在米斯卡塔尼克大学的学生宿舍中，调查员击退怪物的场景。",
+        },
+        "image3-title": {
+          en: "La Bella Luna",
+          zh: "月下美人酒吧",
+        },
+        "image3-text": {
+          en: "A moment of reckless drinking at La Bella Luna, kept as a lighter but still unstable fragment of the adventure.",
+          zh: "在月下美人酒吧贪杯，是冒险中较轻松但仍带有不稳定感的片段。",
+        },
+        "image4-title": {
+          en: "Museum Security Office",
+          zh: "博物馆保安室门前",
+        },
+        "image4-text": {
+          en: "The investigators attempt to wake the guard outside the museum security office before moving deeper into the case.",
+          zh: "调查员在博物馆保安室门前试图唤醒保安，然后继续深入事件。",
+        },
+        "image5-title": {
+          en: "Night Entry",
+          zh: "夜晚潜入博物馆",
+        },
+        "image5-text": {
+          en: "A night-time infiltration of the museum, marking the shift from investigation into direct risk.",
+          zh: "夜晚潜入博物馆，标志着调查从线索追踪转向直接风险。",
+        },
+        "image6-title": {
+          en: "Restricted Hall",
+          zh: "禁入展厅",
+        },
+        "image6-text": {
+          en: "The Necronomicon is found inside the museum's restricted hall, turning the investigation toward forbidden knowledge.",
+          zh: "在博物馆的禁入展厅里找到死灵之书，调查由此转向禁忌知识。",
+        },
+        "image7-title": {
+          en: "Train to Dunwich",
+          zh: "前往敦威治的火车",
+        },
+        "image7-text": {
+          en: "The investigators board the train to Dunwich, carrying the unresolved danger of Arkham into the countryside.",
+          zh: "调查员搭上前往敦威治的火车，将阿卡姆尚未解决的危险带向乡野。",
+        },
+        "image8-title": {
+          en: "Incident on the Train",
+          zh: "火车上的惊险一幕",
+        },
+        "image8-text": {
+          en: "A dangerous moment erupts while the train is still running, breaking the journey into sudden panic and action.",
+          zh: "火车运行时发生惊险一幕，原本的旅程突然转入混乱与行动。",
+        },
+        "image9-title": {
+          en: "Arrival at Arkham",
+          zh: "到达阿卡姆镇",
+        },
+        "image9-text": {
+          en: "The investigators arrive at Arkham, where scattered clues begin to connect with a larger threat.",
+          zh: "调查员到达阿卡姆镇，分散的线索开始与更大的威胁连接起来。",
+        },
+        "image10-title": {
+          en: "Bloodstained Altar",
+          zh: "血色祭坛",
+        },
+        "image10-text": {
+          en: "A bloodstained altar is found in Arkham, giving physical shape to the ritual danger behind the campaign.",
+          zh: "在阿卡姆镇找到血色祭坛，战役背后的仪式危险开始具象化。",
+        },
+        "image11-title": {
+          en: "Against the Unspeakable",
+          zh: "对抗不可名状的怪物",
+        },
+        "image11-text": {
+          en: "The investigators attempt to use magic against an unspeakable monster, closing the current visual sequence with confrontation and uncertainty.",
+          zh: "调查员试图用魔法对抗不可名状的怪物，以对抗和未知收束当前视觉序列。",
+        },
+
+        "section5-note": {
+          en: "Section 05",
+          zh: "部分 05",
+        },
+        "section5-title": {
+          en: "Extensions",
+          zh: "可能延展",
+        },
+        "section5-intro": {
+          en: "If the textual layer becomes stable enough, the project may later expand into more complete visual or audiovisual directions.",
+          zh: "如果文本层整理得足够稳定，这个项目后续可能继续向更完整的视觉或视听方向延展。",
         },
         "extensions-entry1-title": {
           en: "Image-Based Visualization",
           zh: "图像化尝试",
         },
-        "extensions-entry1-status": { en: "test", zh: "探索" },
-        "extensions-entry1-date": { en: "possible", zh: "可能" },
+        "extensions-entry1-status": {
+          en: "test",
+          zh: "探索",
+        },
+        "extensions-entry1-date": {
+          en: "started",
+          zh: "已开始",
+        },
         "extensions-entry1-text": {
-          en: "One possible direction is to generate still images or illustrated scenes based on the reconstructed story.",
-          zh: "一个可能方向是基于整理后的故事生成静态图像，或尝试插画化场景。",
+          en: "One possible direction is to continue generating still images or illustrated scenes based on the reconstructed story. The current image attempt is only an early test.",
+          zh: "一个可能方向是基于后续整理出的故事继续生成静态图像或插画化场景。目前的图像尝试只是早期测试。",
         },
         "extensions-entry2-title": {
           en: "Video Adaptation Attempt",
           zh: "视频化尝试",
         },
-        "extensions-entry2-status": { en: "test", zh: "探索" },
-        "extensions-entry2-date": { en: "possible", zh: "可能" },
+        "extensions-entry2-status": {
+          en: "draft",
+          zh: "草稿",
+        },
+        "extensions-entry2-date": {
+          en: "possible",
+          zh: "可能",
+        },
         "extensions-entry2-text": {
           en: "Depending on later development, the material may also be extended into short-form video or other audiovisual presentation.",
           zh: "视后续发展情况而定，这些材料也可能被继续扩展为短视频或其他视听呈现形式。",
         },
 
-        "closing-note": { en: "Current Direction", zh: "当前方向" },
+        "closing-note": {
+          en: "Current Direction",
+          zh: "当前方向",
+        },
         "closing-title": {
-          en: "The story has not been written yet.",
-          zh: "故事还没有开始被写成文本。",
+          en: "The project is waiting for its next update.",
+          zh: "项目正在等待下一次更新。",
         },
         "closing-text": {
-          en: "For now, the work remains at the stage of collecting material and determining method.",
-          zh: "目前，这个项目仍停留在材料收集与方法确定的阶段。",
+          en: "For now, the work keeps the original narrative conversion plan, with a group of image fragments from The Dunwich Legacy added as supplementary material.",
+          zh: "目前，这个项目仍然保留原本的叙事转写计划，只是增加了一组来自《敦威治遗产》的图像片段作为补充材料。",
         },
       };
 
@@ -592,9 +1045,11 @@
         `;
 
         document.getElementById("logo-text").textContent = i18n[lang].logo;
+
         document
           .getElementById("lang-en")
           .classList.toggle("active", lang === "en");
+
         document
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
@@ -605,6 +1060,7 @@
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;
+
         document.querySelector(".footer-inner p:last-child").innerHTML =
           i18n[lang].copyright2;
       }
@@ -615,7 +1071,6 @@
         document.getElementById("lang-zh").onclick = () => setLang("zh");
         setLang(lang);
       });
-
     </script>
     <script src="/js/nav.js"></script>
   </body>
