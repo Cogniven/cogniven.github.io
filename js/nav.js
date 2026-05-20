@@ -53,7 +53,8 @@
   }
 
   function highlightActive(navLinks) {
-    var targetNav = navLinks || document.querySelector(".site-header .nav-links");
+    var targetNav =
+      navLinks || document.querySelector(".site-header .nav-links");
     if (!targetNav) return;
 
     var anchors = targetNav.querySelectorAll("a[href]");
@@ -88,7 +89,6 @@
       bestMatch.classList.add("active");
       var parent = bestMatch.closest(".nav-item.has-dropdown");
       if (parent) {
-        parent.classList.add("active");
         var parentTop = getTopAnchor(parent);
         if (parentTop) parentTop.classList.add("active");
       }
@@ -109,7 +109,8 @@
   }
 
   function setupDropdownListeners(navLinks) {
-    var targetNav = navLinks || document.querySelector(".site-header .nav-links");
+    var targetNav =
+      navLinks || document.querySelector(".site-header .nav-links");
     if (!targetNav) return;
 
     targetNav
@@ -146,7 +147,10 @@
             return;
           }
 
-          if ((e.key === "Enter" || e.key === " ") && window.innerWidth <= 768) {
+          if (
+            (e.key === "Enter" || e.key === " ") &&
+            window.innerWidth <= 768
+          ) {
             e.preventDefault();
             var expanded = navItem.classList.toggle("active");
             anchor.setAttribute("aria-expanded", expanded ? "true" : "false");
@@ -471,6 +475,7 @@
       }
 
       function openNav() {
+        // ensure backdrop exists on mobile-like devices
         ensureBackdrop();
         hamburger.classList.add("active");
         navLinks.classList.add("active");
@@ -536,7 +541,6 @@
               backdrop = null;
             }
             // ensure any inline overlay styles are cleared when leaving mobile
-            navLinks.style.position = "";
             navLinks.style.transform = "";
             navLinks.style.opacity = "";
             navLinks.style.visibility = "";
@@ -586,6 +590,14 @@
       if (hbDisplayInit !== "none") {
         navLinks.classList.remove("active");
         navLinks.setAttribute("aria-hidden", "true");
+        // keep dropdowns expanded so submenus are visible inside overlay
+        navLinks
+          .querySelectorAll(".nav-item.has-dropdown")
+          .forEach(function (item) {
+            item.classList.add("active");
+            var top = getTopAnchor(item);
+            if (top) top.setAttribute("aria-expanded", "true");
+          });
       }
     });
 

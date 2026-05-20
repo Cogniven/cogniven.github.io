@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quant Research Infrastructure - Alterven</title>
+    <title>Quant Research Archive - Alterven</title>
     <link rel="stylesheet" href="/css/style.css" />
     <style>
       .case-cover,
@@ -14,6 +14,44 @@
         border-radius: 16px;
         border: 1px solid var(--line);
         background: var(--bg-soft);
+      }
+
+      .quant-hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 28px;
+        align-items: end;
+      }
+
+      .quant-stat-stack {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .quant-floating-stat {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.035);
+        padding: 15px 16px;
+        backdrop-filter: blur(10px);
+      }
+
+      .quant-floating-stat span {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 7px;
+      }
+
+      .quant-floating-stat strong {
+        display: block;
+        color: var(--text);
+        font-size: 1.35rem;
+        line-height: 1.1;
+        font-weight: 600;
       }
 
       .case-meta-grid {
@@ -69,6 +107,44 @@
         color: var(--text-soft);
       }
 
+      .research-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .research-tag {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 11px;
+        color: var(--text-soft);
+        background: var(--bg-soft);
+        font-size: 0.9rem;
+      }
+
+      .image-block {
+        margin-top: 18px;
+      }
+
+      .image-caption {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 900px) {
+        .quant-hero-grid {
+          grid-template-columns: 1fr;
+          align-items: start;
+        }
+
+        .quant-stat-stack {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
       @media (max-width: 860px) {
         .case-meta-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -77,6 +153,12 @@
         .case-block {
           grid-template-columns: 1fr;
           gap: 12px;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .quant-stat-stack {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -122,13 +204,31 @@
 
     <main>
       <section class="hero">
-        <div class="container narrow">
-          <p class="eyebrow" id="tb-eyebrow">Projects · Technical Builds</p>
-          <h1 id="tb-title">Quant Research Infrastructure</h1>
-          <p class="hero-text" id="tb-hero-text">
-            A technical build focused on creating a usable environment for
-            quantitative strategy research, testing, and iteration.
-          </p>
+        <div class="container narrow quant-hero-grid">
+          <div>
+            <p class="eyebrow" id="tb-eyebrow">Projects · Technical Builds</p>
+            <h1 id="tb-title">Quant Research Archive</h1>
+            <p class="hero-text" id="tb-hero-text">
+              A private quantitative research archive focused on strategy
+              evaluation, risk control, backtesting, and long-term live
+              operation.
+            </p>
+          </div>
+
+          <div class="quant-stat-stack">
+            <div class="quant-floating-stat">
+              <span id="stat-strategy-label">Strategies</span>
+              <strong id="stat-strategy-value">--</strong>
+            </div>
+            <div class="quant-floating-stat">
+              <span id="stat-live-label">Live operation</span>
+              <strong id="stat-live-value">--</strong>
+            </div>
+            <div class="quant-floating-stat">
+              <span id="stat-version-label">Current version</span>
+              <strong id="stat-version-value">--</strong>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -136,13 +236,13 @@
         <div class="container narrow">
           <img
             class="case-cover"
-            src="/assets/images/projects/technical-builds/project-001/cover.jpg"
-            alt="Quant Research Infrastructure cover"
+            src="/assets/images/projects/technical-builds/project-001/cover.png"
+            alt="Quant Research Archive cover"
             onerror="
               this.src =
                 'data:image/svg+xml;utf8,' +
                 encodeURIComponent(
-                  `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Technical Build Cover</text></svg>`,
+                  `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Quant Research Cover</text></svg>`,
                 )
             "
           />
@@ -153,12 +253,12 @@
         <div class="container narrow">
           <div class="case-meta-grid">
             <div class="case-meta-card">
-              <span id="meta-year-label">Year</span>
-              <strong id="meta-year-value">2026</strong>
+              <span id="meta-year-label">Period</span>
+              <strong id="meta-year-value">2021–2026</strong>
             </div>
             <div class="case-meta-card">
               <span id="meta-type-label">Type</span>
-              <strong id="meta-type-value">System Build</strong>
+              <strong id="meta-type-value">Research Archive</strong>
             </div>
             <div class="case-meta-card">
               <span id="meta-tools-label">Tools</span>
@@ -176,29 +276,56 @@
         <div class="container narrow">
           <p class="section-note" id="summary-label">Project Summary</p>
           <p class="lead-paragraph" id="summary-text">
-            This project aims to build a stable technical environment for
-            quantitative research rather than a single isolated strategy. It
-            connects strategy code, testing workflow, deployment logic, and
-            iterative evaluation into one working structure.
+            This page does not disclose executable strategies, source code, or
+            market-specific logic. It documents the existence of a long-term
+            quantitative research workflow, including strategy evaluation,
+            backtesting, live monitoring, and iterative improvement.
           </p>
         </div>
       </section>
 
       <section class="section">
         <div class="container narrow case-block">
-          <div class="case-block-note" id="problem-label">Problem</div>
+          <div class="case-block-note" id="scope-label">Scope</div>
           <div class="case-block-content">
-            <h2 id="problem-title">Problem Framing</h2>
-            <p id="problem-p1">
-              Quantitative strategy work often breaks down when research,
-              testing, and deployment are treated as disconnected tasks. A
-              working strategy is not enough if the surrounding environment
-              remains unstable or inefficient.
+            <h2 id="scope-title">Research Scope</h2>
+            <p id="scope-p1">
+              The research covers multiple systematic trading directions without
+              publishing their executable logic. The focus of this page is the
+              research capability itself: how strategies are tested, compared,
+              filtered, and maintained over time.
             </p>
-            <p id="problem-p2">
-              This build began from the need to create a more repeatable system
-              for experimentation, backtesting, parameter adjustment, and
-              execution management.
+            <div class="research-tags">
+              <span class="research-tag" id="tag-1">Trend Following</span>
+              <span class="research-tag" id="tag-2">Volatility Research</span>
+              <span class="research-tag" id="tag-3">Position Management</span>
+              <span class="research-tag" id="tag-4"
+                >Multi-Strategy Portfolio</span
+              >
+              <span class="research-tag" id="tag-5">Risk Control</span>
+              <span class="research-tag" id="tag-6"
+                >Parameter Optimization</span
+              >
+              <span class="research-tag" id="tag-7">Backtesting Framework</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow case-block">
+          <div class="case-block-note" id="infra-label">Infrastructure</div>
+          <div class="case-block-content">
+            <h2 id="infra-title">Research Infrastructure</h2>
+            <p id="infra-p1">
+              The system is built around a general-purpose quantitative research
+              workflow: data processing, strategy testing, result comparison,
+              risk inspection, chart generation, and versioned iteration.
+            </p>
+            <p id="infra-p2">
+              The technical stack remains deliberately general here. The page
+              shows platform capability without exposing market, execution
+              venue, strategy source code, or replicable trading logic.
             </p>
           </div>
         </div>
@@ -206,19 +333,20 @@
 
       <section class="section">
         <div class="container narrow case-block">
-          <div class="case-block-note" id="approach-label">Approach</div>
+          <div class="case-block-note" id="timeline-label">Timeline</div>
           <div class="case-block-content">
-            <h2 id="approach-title">System Design</h2>
-            <p id="approach-p1">
-              The project is organized around a Docker-based research
-              environment, Python strategy files, structured configuration, and
-              a workflow for repeated testing and revision.
+            <h2 id="timeline-title">Research and Live Operation</h2>
+            <p id="timeline-p1">
+              The longest available verification window extends from 2013 to
+              2026, while the most commonly used research window is 2021 to
+              2026. This gives the strategy evaluation process both long-sample
+              checks and more recent market-condition checks.
             </p>
-            <p id="approach-p2">
-              The design emphasizes modularity: strategies can evolve
-              independently, while logs, data handling, and execution structure
-              remain relatively stable. This reduces friction when moving from
-              idea to implementation.
+            <p id="timeline-p2">
+              The research has also gone beyond offline testing. There has been
+              more than one year of live operation experience, and the latest
+              version has been running since January 14, 2026, with results
+              remaining consistent with the backtest structure.
             </p>
           </div>
         </div>
@@ -228,49 +356,79 @@
         <div class="container narrow case-block">
           <div class="case-block-note" id="output-label">Output</div>
           <div class="case-block-content">
-            <h2 id="output-title">Results and Current State</h2>
+            <h2 id="output-title">Equity Curve</h2>
             <p id="output-p1">
-              The current result is not a finished platform but a usable
-              infrastructure: strategy experiments can be developed, tested,
-              compared, and revised within a more coherent technical
-              environment.
+              The following chart is reserved for a representative equity curve.
+              It is used as evidence of the research process rather than a
+              disclosure of strategy mechanics.
             </p>
-            <img
-              class="case-image"
-              src="/assets/images/projects/technical-builds/project-001/result.jpg"
-              alt="Quant Research Infrastructure result"
-              onerror="
-                this.src =
-                  'data:image/svg+xml;utf8,' +
-                  encodeURIComponent(
-                    `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Result Image</text></svg>`,
-                  )
-              "
-            />
+            <div class="image-block">
+              <img
+                class="case-image"
+                src="/assets/images/projects/technical-builds/project-001/equity-curve.jpg"
+                alt="Representative equity curve"
+                onerror="
+                  this.src =
+                    'data:image/svg+xml;utf8,' +
+                    encodeURIComponent(
+                      `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Equity Curve</text></svg>`,
+                    )
+                "
+              />
+              <p class="image-caption" id="equity-caption">
+                Representative equity curve from one mature strategy iteration.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section">
         <div class="container narrow case-block">
-          <div class="case-block-note" id="reflection-label">Reflection</div>
+          <div class="case-block-note" id="compare-label">Comparison</div>
           <div class="case-block-content">
-            <h2 id="reflection-title">Reflection and Next Step</h2>
+            <h2 id="compare-title">Live vs. Backtest</h2>
+            <p id="compare-p1">
+              The comparison between live performance and backtest result is a
+              key part of the current evaluation process. The purpose is to
+              check whether live behavior remains aligned with historical
+              validation rather than relying on backtest performance alone.
+            </p>
+            <div class="image-block">
+              <img
+                class="case-image"
+                src="/assets/images/projects/technical-builds/project-001/live-vs-backtest.jpg"
+                alt="Live performance versus backtest comparison"
+                onerror="
+                  this.src =
+                    'data:image/svg+xml;utf8,' +
+                    encodeURIComponent(
+                      `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Live vs Backtest</text></svg>`,
+                    )
+                "
+              />
+              <p class="image-caption" id="compare-caption">
+                Reserved for live performance and backtest comparison.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow case-block">
+          <div class="case-block-note" id="reflection-label">State</div>
+          <div class="case-block-content">
+            <h2 id="reflection-title">Current State</h2>
             <p id="reflection-p1">
-              What works well is the increasing consistency of the workflow:
-              strategy development is becoming easier to manage because the
-              technical environment has started to take shape.
+              The current state is not a public strategy release. It is a
+              private research system with mature strategy iterations, ongoing
+              monitoring, and a workflow that continues to evolve.
             </p>
             <p id="reflection-p2">
-              What remains unfinished is integration depth. Some parts are still
-              provisional, and the system depends on ongoing cleanup, naming
-              discipline, and clearer separation between research and production
-              layers.
-            </p>
-            <p id="reflection-p3">
-              The next step is to refine automation, improve evaluation
-              structure, and turn the environment into a more durable personal
-              research stack.
+              Most research remains private by design. What is shown here is
+              only the outer layer: research domains, technical workflow,
+              validation horizon, and representative performance traces.
             </p>
           </div>
         </div>
@@ -292,79 +450,145 @@
     <script src="/js/i18n.js"></script>
     <script>
       let lang = localStorage.getItem("lang") || "en";
+
+      const STRATEGY_COUNT = 130;
+      const LIVE_START_DATE = "2025-01-14";
+      const CURRENT_VERSION_START_DATE = "2026-01-14";
+
       const pageContent = {
-        // 内容填写区（新手只改这里）
-        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
         "tb-eyebrow": {
           en: "Projects · Technical Builds",
           zh: "项目 · 技术构建",
         },
         "tb-title": {
-          en: "Quant Research Infrastructure",
-          zh: "量化研究基础设施",
+          en: "Quant Research Archive",
+          zh: "量化研究档案",
         },
         "tb-hero-text": {
-          en: "A technical build focused on creating a usable environment for quantitative strategy research, testing, and iteration.",
-          zh: "一个专注于为量化策略研究、测试与迭代构建可用环境的技术项目。",
+          en: "A private quantitative research archive focused on strategy evaluation, risk control, backtesting, and long-term live operation.",
+          zh: "一个私有量化研究档案，关注策略评估、风险控制、回测验证与长期实盘运行。",
         },
-        "meta-year-label": { en: "Year", zh: "年份" },
+
+        "stat-strategy-label": { en: "Strategies", zh: "策略数量" },
+        "stat-live-label": { en: "Live operation", zh: "实盘运行" },
+        "stat-version-label": { en: "Current version", zh: "当前版本" },
+
+        "meta-year-label": { en: "Period", zh: "周期" },
         "meta-type-label": { en: "Type", zh: "类型" },
-        "meta-type-value": { en: "System Build", zh: "系统构建" },
+        "meta-type-value": { en: "Research Archive", zh: "研究档案" },
         "meta-tools-label": { en: "Tools", zh: "工具" },
         "meta-status-label": { en: "Status", zh: "状态" },
         "meta-status-value": { en: "Active", zh: "进行中" },
+
         "summary-label": { en: "Project Summary", zh: "项目摘要" },
         "summary-text": {
-          en: "This project aims to build a stable technical environment for quantitative research rather than a single isolated strategy. It connects strategy code, testing workflow, deployment logic, and iterative evaluation into one working structure.",
-          zh: "这个项目的目标不是做出一个孤立策略，而是建立一个稳定的量化研究技术环境，把策略代码、测试流程、部署逻辑与迭代评估连接成一个可工作的结构。",
+          en: "This page does not disclose executable strategies, source code, or market-specific logic. It documents the existence of a long-term quantitative research workflow, including strategy evaluation, backtesting, live monitoring, and iterative improvement.",
+          zh: "这一页不公开可执行策略、源码或具体市场逻辑。它记录的是一个长期量化研究工作流，包括策略评估、回测验证、实盘监控与持续迭代。",
         },
-        "problem-label": { en: "Problem", zh: "问题" },
-        "problem-title": { en: "Problem Framing", zh: "问题界定" },
-        "problem-p1": {
-          en: "Quantitative strategy work often breaks down when research, testing, and deployment are treated as disconnected tasks. A working strategy is not enough if the surrounding environment remains unstable or inefficient.",
-          zh: "当研究、测试与部署被当作互相割裂的任务时，量化策略工作往往会失效。仅仅有一个可运行策略还不够，如果周边环境仍然不稳定或低效。",
+
+        "scope-label": { en: "Scope", zh: "范围" },
+        "scope-title": { en: "Research Scope", zh: "研究范围" },
+        "scope-p1": {
+          en: "The research covers multiple systematic trading directions without publishing their executable logic. The focus of this page is the research capability itself: how strategies are tested, compared, filtered, and maintained over time.",
+          zh: "研究覆盖多个系统化交易方向，但不公开其可执行逻辑。这一页关注的是研究能力本身：策略如何被测试、比较、筛选，并在长期中维护。",
         },
-        "problem-p2": {
-          en: "This build began from the need to create a more repeatable system for experimentation, backtesting, parameter adjustment, and execution management.",
-          zh: "这个项目起始于一个需求：建立一个更可重复的系统，用于实验、回测、参数调整和执行管理。",
+
+        "tag-1": { en: "Trend Following", zh: "趋势跟随" },
+        "tag-2": { en: "Volatility Research", zh: "波动率研究" },
+        "tag-3": { en: "Position Management", zh: "仓位管理" },
+        "tag-4": { en: "Multi-Strategy Portfolio", zh: "多策略组合" },
+        "tag-5": { en: "Risk Control", zh: "风险控制" },
+        "tag-6": { en: "Parameter Optimization", zh: "参数优化" },
+        "tag-7": { en: "Backtesting Framework", zh: "回测框架" },
+
+        "infra-label": { en: "Infrastructure", zh: "基础设施" },
+        "infra-title": { en: "Research Infrastructure", zh: "研究基础设施" },
+        "infra-p1": {
+          en: "The system is built around a general-purpose quantitative research workflow: data processing, strategy testing, result comparison, risk inspection, chart generation, and versioned iteration.",
+          zh: "系统围绕一套通用量化研究工作流建立，包括数据处理、策略测试、结果比较、风险检查、图表生成和版本化迭代。",
         },
-        "approach-label": { en: "Approach", zh: "方法" },
-        "approach-title": { en: "System Design", zh: "系统设计" },
-        "approach-p1": {
-          en: "The project is organized around a Docker-based research environment, Python strategy files, structured configuration, and a workflow for repeated testing and revision.",
-          zh: "该项目围绕一个基于 Docker 的研究环境、Python 策略文件、结构化配置以及重复测试与修订的工作流来组织。",
+        "infra-p2": {
+          en: "The technical stack remains deliberately general here. The page shows platform capability without exposing market, execution venue, strategy source code, or replicable trading logic.",
+          zh: "这里有意保持技术栈表述的通用性。页面展示的是平台能力，不暴露市场、执行场所、策略源码或可复现的交易逻辑。",
         },
-        "approach-p2": {
-          en: "The design emphasizes modularity: strategies can evolve independently, while logs, data handling, and execution structure remain relatively stable. This reduces friction when moving from idea to implementation.",
-          zh: "设计强调模块化：策略可以独立演化，而日志、数据处理和执行结构保持相对稳定，从而减少从想法到落地过程中的摩擦。",
+
+        "timeline-label": { en: "Timeline", zh: "时间" },
+        "timeline-title": {
+          en: "Research and Live Operation",
+          zh: "研究与实盘运行",
         },
+        "timeline-p1": {
+          en: "The longest available verification window extends from 2013 to 2026, while the most commonly used research window is 2021 to 2026. This gives the strategy evaluation process both long-sample checks and more recent market-condition checks.",
+          zh: "目前有数据可验算的最长区间从 2013 年延伸至 2026 年，常用研究区间则集中在 2021 年至 2026 年。这使策略评估同时具备长样本检查与近期市场状态检查。",
+        },
+        "timeline-p2": {
+          en: "The research has also gone beyond offline testing. There has been more than one year of live operation experience, and the latest version has been running since January 14, 2026, with results remaining consistent with the backtest structure.",
+          zh: "研究也已经超出离线回测阶段。此前已有超过一年左右的实盘运行经验，最新版本自 2026 年 1 月 14 日起运行，结果与回测结构保持一致。",
+        },
+
         "output-label": { en: "Output", zh: "输出" },
-        "output-title": {
-          en: "Results and Current State",
-          zh: "结果与当前状态",
-        },
+        "output-title": { en: "Equity Curve", zh: "收益曲线" },
         "output-p1": {
-          en: "The current result is not a finished platform but a usable infrastructure: strategy experiments can be developed, tested, compared, and revised within a more coherent technical environment.",
-          zh: "当前结果不是一个完成平台，而是一套可用基础设施：策略实验可以在更连贯的技术环境中被开发、测试、比较和修订。",
+          en: "The following chart is reserved for a representative equity curve. It is used as evidence of the research process rather than a disclosure of strategy mechanics.",
+          zh: "下方位置用于展示一条代表性收益曲线。它作为研究过程的外部痕迹，而不是策略机制的公开说明。",
         },
-        "reflection-label": { en: "Reflection", zh: "反思" },
-        "reflection-title": {
-          en: "Reflection and Next Step",
-          zh: "反思与下一步",
+        "equity-caption": {
+          en: "Representative equity curve from one mature strategy iteration.",
+          zh: "一条成熟策略迭代版本的代表性收益曲线。",
         },
+
+        "compare-label": { en: "Comparison", zh: "对比" },
+        "compare-title": { en: "Live vs. Backtest", zh: "实盘与回测对比" },
+        "compare-p1": {
+          en: "The comparison between live performance and backtest result is a key part of the current evaluation process. The purpose is to check whether live behavior remains aligned with historical validation rather than relying on backtest performance alone.",
+          zh: "实盘表现与回测结果的对比，是当前评估流程中的关键部分。它用于检查实际运行是否仍与历史验证保持一致，而不是单纯依赖回测表现。",
+        },
+        "compare-caption": {
+          en: "Reserved for live performance and backtest comparison.",
+          zh: "预留用于放置实盘表现与回测结果对比图。",
+        },
+
+        "reflection-label": { en: "State", zh: "状态" },
+        "reflection-title": { en: "Current State", zh: "当前状态" },
         "reflection-p1": {
-          en: "What works well is the increasing consistency of the workflow: strategy development is becoming easier to manage because the technical environment has started to take shape.",
-          zh: "目前最有效的部分，是工作流一致性正在提高：随着技术环境逐渐成形，策略开发变得更容易管理。",
+          en: "The current state is not a public strategy release. It is a private research system with mature strategy iterations, ongoing monitoring, and a workflow that continues to evolve.",
+          zh: "当前状态并不是公开策略发布，而是一个私有研究系统：其中包含成熟策略迭代、持续监控，以及仍在演化的工作流。",
         },
         "reflection-p2": {
-          en: "What remains unfinished is integration depth. Some parts are still provisional, and the system depends on ongoing cleanup, naming discipline, and clearer separation between research and production layers.",
-          zh: "仍未完成的是整合深度。一些部分仍是临时性的，整个系统仍依赖持续清理、命名纪律，以及研究层与生产层更清晰的分离。",
-        },
-        "reflection-p3": {
-          en: "The next step is to refine automation, improve evaluation structure, and turn the environment into a more durable personal research stack.",
-          zh: "下一步是完善自动化、提升评估结构，并把这个环境逐步变成一个更耐用的个人研究栈。",
+          en: "Most research remains private by design. What is shown here is only the outer layer: research domains, technical workflow, validation horizon, and representative performance traces.",
+          zh: "大部分研究内容会有意保持私有。这里展示的只是外层：研究方向、技术工作流、验证周期和具有代表性的表现痕迹。",
         },
       };
+
+      function dayDiffFrom(dateString) {
+        const start = new Date(`${dateString}T00:00:00`);
+        const now = new Date();
+        const startUTC = Date.UTC(
+          start.getFullYear(),
+          start.getMonth(),
+          start.getDate(),
+        );
+        const nowUTC = Date.UTC(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+        );
+        return Math.max(0, Math.floor((nowUTC - startUTC) / 86400000));
+      }
+
+      function renderStats() {
+        const liveDays = dayDiffFrom(LIVE_START_DATE);
+        const versionDays = dayDiffFrom(CURRENT_VERSION_START_DATE);
+
+        document.getElementById("stat-strategy-value").textContent =
+          lang === "zh" ? `${STRATEGY_COUNT}+ 个` : `${STRATEGY_COUNT}+`;
+
+        document.getElementById("stat-live-value").textContent =
+          lang === "zh" ? `${liveDays}+ 天` : `${liveDays}+ days`;
+
+        document.getElementById("stat-version-value").textContent =
+          lang === "zh" ? `${versionDays}+ 天` : `${versionDays}+ days`;
+      }
 
       function setLang(newLang) {
         lang = newLang;
@@ -388,6 +612,8 @@
         if (window.applyPageContentOverrides) {
           window.applyPageContentOverrides(lang, pageContent);
         }
+
+        renderStats();
 
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;
