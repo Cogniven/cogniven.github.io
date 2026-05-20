@@ -14,6 +14,7 @@
   --narrow-width: 760px;
   --radius: 24px;
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+  --desktop-header-height: 74px;
   --mobile-header-height: 64px;
   --mobile-nav-width: min(84vw, 380px);
 }
@@ -59,7 +60,7 @@ a {
 }
 
 .site-header {
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 50;
   background: rgba(14, 17, 22, 0.72);
@@ -155,6 +156,23 @@ a {
   font-size: 12px;
   color: var(--accent);
   margin: 0 0 18px;
+}
+
+@media (min-width: 769px) {
+  html {
+    scroll-padding-top: var(--desktop-header-height);
+  }
+
+  body {
+    padding-top: var(--desktop-header-height);
+  }
+
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    width: 100%;
+    z-index: 120;
+  }
 }
 
 .hero h1 {
@@ -957,16 +975,21 @@ a {
     display: block;
   }
 
-  .nav-links > .nav-archive {
-    order: 2;
+  .nav-links > a[href="/about.html"],
+  .nav-links > a[href="about.html"] {
+    order: 3;
   }
 
-  .nav-links > a[href="/about.html"] {
+  .nav-links > .nav-archive,
+  .nav-links > a[href="/archive.html"],
+  .nav-links > a[href="archive.html"] {
     order: 4;
   }
 
-  .nav-links > .nav-projects {
-    order: 3;
+  .nav-links > .nav-projects,
+  .nav-links > a[href="/projects.html"],
+  .nav-links > a[href="projects.html"] {
+    order: 2;
   }
 
   .nav-links > .nav-writing {
@@ -991,6 +1014,7 @@ a {
   .nav-dropdown {
     position: static;
     transform: none;
+    transition: none;
     opacity: 1;
     visibility: visible;
     background: transparent;
@@ -1019,6 +1043,15 @@ a {
   .nav-item.has-dropdown:hover .nav-dropdown,
   .nav-item.has-dropdown.active .nav-dropdown {
     display: flex;
+  }
+
+  .nav-links .nav-item.has-dropdown:focus-within .nav-dropdown,
+  .nav-links .nav-item.has-dropdown:hover .nav-dropdown,
+  .nav-links .nav-item.has-dropdown.active .nav-dropdown {
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: none;
   }
 
   .nav-backdrop {
