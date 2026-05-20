@@ -1,8 +1,8 @@
 const processSnapshots = [
   {
     title: {
-      en: "Navigation Revision Snapshot",
-      zh: "导航改版切片",
+      en: "No content here",
+      zh: "这里没有内容",
     },
     desc: {
       en: "A captured stage where dropdown navigation and section hierarchy were being consolidated.",
@@ -13,8 +13,8 @@ const processSnapshots = [
   },
   {
     title: {
-      en: "Bilingual Copy Snapshot",
-      zh: "双语文案切片",
+      en: "No content here",
+      zh: "这里没有内容",
     },
     desc: {
       en: "A transitional version capturing EN/ZH copy alignment before final tone adjustments.",

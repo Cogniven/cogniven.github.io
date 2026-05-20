@@ -1,8 +1,8 @@
 const discardedPaths = [
     {
         title: {
-            en: "Routing Tree v0.6",
-            zh: "路由树 v0.6"
+            en: "No content here",
+            zh: "这里没有内容"
         },
         desc: {
             en: "An early navigation architecture with deep nesting and brittle URL mapping.",
@@ -13,8 +13,8 @@ const discardedPaths = [
     },
     {
         title: {
-            en: "Monolithic Landing Draft",
-            zh: "单体首页草案"
+            en: "No content here",
+            zh: "这里没有内容"
         },
         desc: {
             en: "A homepage direction that mixed all sections into one dense page and was later split.",
