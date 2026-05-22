@@ -9,10 +9,10 @@ const CreativeDevelopment = [
       zh: "借助AI工具将诡镇奇谈的冒险呈现为可视化作品的尝试",
     },
     cover: {
-      en: "/assets/images/projects/creative-development/project-001/cover.png",
-      zh: "/assets/images/projects/creative-development/project-001/cover.png",
+      en: "/assets/images/projects/creative-development/project-001-arkham-town-adventure-visualization/cover.png",
+      zh: "/assets/images/projects/creative-development/project-001-arkham-town-adventure-visualization/cover.png",
     },
-    link: "/assets/images/projects/creative-development/project-001/index.html",
+    link: "/assets/images/projects/creative-development/project-001-arkham-town-adventure-visualization/index.html",
     date: "2026-03-22",
   },
 ];

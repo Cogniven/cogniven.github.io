@@ -16,8 +16,8 @@ const ExperimentalForms = [
       en: "Visual Experiment",
       zh: "视觉实验",
     },
-    cover: "/assets/images/works/experimental-forms/work-001/cover.png",
-    link: "/assets/images/works/experimental-forms/work-001/index.html",
+    cover: "/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/cover.png",
+    link: "/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/index.html",
     date: "2026-03-22",
   },
 ];

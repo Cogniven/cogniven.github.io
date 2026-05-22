@@ -16,8 +16,8 @@ const PersonalInfrastructure = [
             en: "Active",
             zh: "进行中"
         },
-        cover: "/assets/images/projects/personal-infrastructure/project-001/cover.jpg",
-        link: "/assets/images/projects/personal-infrastructure/project-001/index.html",
+        cover: "/assets/images/projects/personal-infrastructure/project-001-personal-workflow-infrastructure/cover.jpg",
+        link: "/assets/images/projects/personal-infrastructure/project-001-personal-workflow-infrastructure/index.html",
         date: "2026-03-22"
     }
 ];
