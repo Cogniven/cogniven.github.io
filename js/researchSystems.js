@@ -16,8 +16,8 @@ const ResearchSystems = [
       en: "Active",
       zh: "进行中",
     },
-    cover: "/assets/images/projects/research-systems/project-001/cover.jpg",
-    link: "/assets/images/projects/research-systems/project-001/index.html",
+    cover: "/assets/images/projects/research-systems/project-001-investment-research/cover.jpg",
+    link: "/assets/images/projects/research-systems/project-001-investment-research/index.html",
     date: "2026-03-22",
   },
 ];
