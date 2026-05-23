@@ -15,4 +15,20 @@ const CreativeDevelopment = [
     link: "/assets/images/projects/creative-development/project-001-arkham-town-adventure-visualization/index.html",
     date: "2026-03-22",
   },
+  {
+    title: {
+      en: "AI Voice Simulation with DDSP",
+      zh: "基于 DDSP 的 AI 人声模拟",
+    },
+    desc: {
+      en: "A continuing experiment in personal voice modeling, dataset construction, and controllable AI singing voice synthesis.",
+      zh: "一个围绕个人声线建模、音源构建与可控 AI 歌声合成展开的持续实验。",
+    },
+    cover: {
+      en: "/assets/images/projects/creative-development/project-002-ai-voice-simulation-with-ddsp/cover.svg",
+      zh: "/assets/images/projects/creative-development/project-002-ai-voice-simulation-with-ddsp/cover.svg",
+    },
+    link: "/assets/images/projects/creative-development/project-002-ai-voice-simulation-with-ddsp/index.html",
+    date: "2026-04-12",
+  },
 ];
