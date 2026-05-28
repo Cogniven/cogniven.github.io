@@ -16,7 +16,8 @@ const TechnicalWorks = [
       en: "Python,Excel",
       zh: "Python,Excel",
     },
-    cover: "/assets/images/works/technical-works/work-001-all-weather-portfolio-china/cover.png",
+    cover:
+      "/assets/images/works/technical-works/work-001-all-weather-portfolio-china/cover.png",
     link: "/assets/images/works/technical-works/work-001-all-weather-portfolio-china/index.html",
     date: "2025-12-25",
   },

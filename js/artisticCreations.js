@@ -17,8 +17,8 @@ const ArtisticCreations = [
       zh: "一份保留了简谱标注的早期歌词草稿，并附有对应的作品页面。",
     },
     cover:
-      "/assets/images/works/artistic-creations/work-002-artistic-creation-002/cover.jpg",
-    link: "/assets/images/works/artistic-creations/work-002-artistic-creation-002/index.html",
+      "/assets/images/works/artistic-creations/work-002-rain-alley-notation-draft/cover.png",
+    link: "/assets/images/works/artistic-creations/work-002-rain-alley-notation-draft/index.html",
     date: "2026-03-21",
   },
   {
