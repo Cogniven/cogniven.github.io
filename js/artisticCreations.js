@@ -22,14 +22,14 @@ const ArtisticCreations = [
     date: "2026-03-21",
   },
   {
-    title: { en: "Artistic Creation 003", zh: "艺术创作 003" },
+    title: { en: "Mythos Playmat System", zh: "神话牌垫系统" },
     desc: {
-      en: "This card is ready for future work.",
-      zh: "此卡片为未来作品预留。",
+      en: "A custom Arkham Horror: The Card Game playmat with functional zones and a printable tabletop layout.",
+      zh: "一张《阿卡姆恐怖：卡牌游戏》的定制牌垫，包含功能分区与可打印的桌面布局。",
     },
     cover:
-      "/assets/images/works/artistic-creations/work-003-artistic-creation-003/cover.jpg",
-    link: "/assets/images/works/artistic-creations/work-003-artistic-creation-003/index.html",
+      "/assets/images/works/artistic-creations/work-003-mythos-playmat-system/cover.jpg",
+    link: "/assets/images/works/artistic-creations/work-003-mythos-playmat-system/index.html",
     date: "2026-03-22",
   },
 ];
