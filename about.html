@@ -1,106 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Alterven</title>
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="index.html" class="logo" id="logo-text" style="margin-right:auto;">Alterven</a>
-      <div style="display:flex;align-items:center;gap:24px;">
-        <div class="nav-links" id="nav-links" style="display:flex;gap:24px;">
-          <a href="works.html">Works</a>
-          <a href="writing.html">Writing</a>
-          <a href="projects.html">Projects</a>
-          <a href="about.html">About</a>
-          <a href="archive.html">Archive</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="works.html">Works</a>
+            <a href="writing.html">Writing</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
         </div>
-        <div class="lang-switcher">
-          <button id="lang-en" class="lang-btn" style="margin-right:4px;">EN</button>
-          <button id="lang-zh" class="lang-btn">中文</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="page-hero">
+        <h1 id="about-title">About</h1>
+        <p id="about-brief">
+          This site is a long-term personal structure that gathers work, ideas,
+          systems, and research directions that continue to evolve. The material
+          exists in different states: some pieces are relatively complete, while
+          others are still being revised, reorganized, or expanded. It functions
+          more like an ongoing workspace than a fixed presentation. What matters
+          here is not only the outcome, but also how things are structured,
+          clarified through revision, and allowed to develop over time.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="list">
+          <div class="list-item">
+            <h3 id="about-profile-title">Profile</h3>
+            <p id="about-profile">
+              My work moves across several intersecting directions, including
+              research, programming, design, writing, and experimental creation.
+              These areas are not treated as separate domains, but as different
+              ways of engaging with similar questions. Some work takes the form
+              of text, some becomes systems or tools, and some appears as visual
+              or auditory expression. Beyond the medium itself, I am primarily
+              concerned with how things are constructed and how clarity can be
+              maintained within complexity.
+            </p>
+          </div>
+
+          <div class="list-item">
+            <h3 id="about-focus-title">Focus</h3>
+            <p id="about-focus">
+              The work here tends to revolve around several recurring
+              directions. One is analytical, involving reading, comparison, and
+              structuring complex material. Another is technical, focusing on
+              tools, systems, and long-term frameworks. A third is more
+              expressive, working through image, sound, and form. These
+              directions are not isolated; they intersect and shift across
+              different projects, forming new combinations over time.
+            </p>
+          </div>
+
+          <div class="list-item">
+            <h3 id="about-approach-title">Approach</h3>
+            <p id="about-approach">
+              I usually begin with structure and then move into the content
+              itself. Categories, naming, and organization are continuously
+              adjusted along the way. Revision is an ongoing process: some parts
+              are rewritten, some are reorganized, and others are removed. The
+              site itself follows the same logic—it operates as a continuously
+              edited environment rather than a finished endpoint.
+            </p>
+          </div>
+
+          <div class="list-item">
+            <h3 id="about-contact-title">Contact</h3>
+            <p>
+              <span id="about-contact-text"
+                >For correspondence, questions, or collaboration, contact:</span
+              ><br />
+              <a href="mailto:alterven@outlook.com">alterven@outlook.com</a>
+            </p>
+          </div>
         </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p id="footer-copyright">© 2026 Alterven. All rights reserved.</p>
+        <p id="footer-copyright2">
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+        <p id="footer-contact">
+          Contact:
+          <a href="mailto:alterven@outlook.com">alterven@outlook.com</a>
+        </p>
       </div>
-    </nav>
-  </header>
+    </footer>
 
-  <main class="container">
-    <section class="page-hero">
-      <h1 id="about-title">About</h1>
-      <p id="about-brief">This site is a long-term personal structure that gathers work, ideas, systems, and research directions that continue to evolve. The material exists in different states: some pieces are relatively complete, while others are still being revised, reorganized, or expanded. It functions more like an ongoing workspace than a fixed presentation. What matters here is not only the outcome, but also how things are structured, clarified through revision, and allowed to develop over time.</p>
-    </section>
+    <script src="js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
 
-    <section class="section">
-      <div class="list">
-        <div class="list-item">
-          <h3 id="about-profile-title">Profile</h3>
-          <p id="about-profile">My work moves across several intersecting directions, including research, programming, design, writing, and experimental creation. These areas are not treated as separate domains, but as different ways of engaging with similar questions. Some work takes the form of text, some becomes systems or tools, and some appears as visual or auditory expression. Beyond the medium itself, I am primarily concerned with how things are constructed and how clarity can be maintained within complexity.</p>
-        </div>
-        <div class="list-item">
-          <h3 id="about-focus-title">Focus</h3>
-          <p id="about-focus">The work here tends to revolve around several recurring directions. One is analytical, involving reading, comparison, and structuring complex material. Another is technical, focusing on tools, systems, and long-term frameworks. A third is more expressive, working through image, sound, and form. These directions are not isolated; they intersect and shift across different projects, forming new combinations over time.</p>
-        </div>
-        <div class="list-item">
-          <h3 id="about-approach-title">Approach</h3>
-          <p id="about-approach">I usually begin with structure and then move into the content itself. Categories, naming, and organization are continuously adjusted along the way. Revision is an ongoing process: some parts are rewritten, some are reorganized, and others are removed. The site itself follows the same logic—it operates as a continuously edited environment rather than a finished endpoint.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p id="footer-copyright">© 2026 Alterven. All rights reserved.</p>
-      <p id="footer-copyright2">
-        The works presented on this site are original and protected by copyright.<br>
-        Unauthorized reproduction, distribution, or commercial use is prohibited.
-      </p>
-    </div>
-  </footer>
-  <script src="js/i18n.js"></script>
-  <script>
-    let lang = localStorage.getItem('lang') || 'en';
-    function setLang(newLang) {
-      lang = newLang;
-      localStorage.setItem('lang', lang);
-      renderLang();
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('lang-en').onclick = () => setLang('en');
-      document.getElementById('lang-zh').onclick = () => setLang('zh');
-      renderLang();
-    });
-    function renderLang() {
-      // 导航
-      const navLinks = document.getElementById('nav-links');
-      const navs = i18n[lang].nav;
-      navLinks.innerHTML = `
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+
+      function renderLang() {
+        const navLinks = document.getElementById("nav-links");
+        const navs = i18n[lang].nav;
+
+        navLinks.innerHTML = `
         <a href="works.html">${navs[0]}</a>
         <a href="writing.html">${navs[1]}</a>
         <a href="projects.html">${navs[2]}</a>
         <a href="about.html">${navs[3]}</a>
         <a href="archive.html">${navs[4]}</a>
       `;
-      document.getElementById('logo-text').textContent = i18n[lang].logo;
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
-      // 主要内容
-      document.getElementById('about-title').textContent = i18n[lang].aboutTitle;
-      document.getElementById('about-brief').textContent = i18n[lang].aboutBrief;
-      document.getElementById('about-profile-title').textContent = i18n[lang].aboutProfileTitle;
-      document.getElementById('about-profile').textContent = i18n[lang].aboutProfile;
-      document.getElementById('about-focus-title').textContent = i18n[lang].aboutFocusTitle;
-      document.getElementById('about-focus').textContent = i18n[lang].aboutFocus;
-      document.getElementById('about-approach-title').textContent = i18n[lang].aboutApproachTitle;
-      document.getElementById('about-approach').textContent = i18n[lang].aboutApproach;
-      // 页脚
-      document.getElementById('footer-copyright').textContent = i18n[lang].copyright;
-      document.getElementById('footer-copyright2').innerHTML = i18n[lang].copyright2;
-    }
-  </script>
-  <script src="js/nav.js"></script>
-</body>
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        document.getElementById("about-title").textContent =
+          i18n[lang].aboutTitle;
+        document.getElementById("about-brief").textContent =
+          i18n[lang].aboutBrief;
+        document.getElementById("about-profile-title").textContent =
+          i18n[lang].aboutProfileTitle;
+        document.getElementById("about-profile").textContent =
+          i18n[lang].aboutProfile;
+        document.getElementById("about-focus-title").textContent =
+          i18n[lang].aboutFocusTitle;
+        document.getElementById("about-focus").textContent =
+          i18n[lang].aboutFocus;
+        document.getElementById("about-approach-title").textContent =
+          i18n[lang].aboutApproachTitle;
+        document.getElementById("about-approach").textContent =
+          i18n[lang].aboutApproach;
+
+        document.getElementById("about-contact-title").textContent =
+          i18n[lang].aboutContactTitle;
+        document.getElementById("about-contact-text").textContent =
+          i18n[lang].aboutContactText;
+
+        document.getElementById("footer-copyright").textContent =
+          i18n[lang].copyright;
+        document.getElementById("footer-copyright2").innerHTML =
+          i18n[lang].copyright2;
+        document.getElementById("footer-contact").innerHTML =
+          `${i18n[lang].footerContact}: <a href="mailto:alterven@outlook.com">alterven@outlook.com</a>`;
+      }
+    </script>
+    <script src="js/nav.js"></script>
+  </body>
 </html>

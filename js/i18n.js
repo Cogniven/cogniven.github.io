@@ -102,6 +102,10 @@ const i18n = {
     aboutApproachTitle: "Approach",
     aboutApproach:
       "Begin with structure, giving things a place and relation.\nObserve as it unfolds, adjust as it runs.\nAllow incompleteness to remain, and continue from it.\nDistill experience into reusable forms, so the process can extend.",
+    aboutContactTitle: "Contact",
+    aboutContactText:
+      "For correspondence, questions, or guidance, please contact:",
+    footerContact: "Contact",
     // archive.html
     archiveTitle: "Archive",
     archiveBrief: "Stored material, past work, and experimental fragments.",
@@ -253,6 +257,9 @@ const i18n = {
     aboutApproachTitle: "方法",
     aboutApproach:
       "从结构开始，让事物有其位置与关系。\n在展开中观察，在运行中修正。\n允许未完成的状态存在，并从中继续推进。\n将经验沉淀为可再次调用的部分，使过程得以延续。",
+    aboutContactTitle: "联系",
+    aboutContactText: "如需通信、询问或指导，请联系：",
+    footerContact: "联系",
     // archive.html
     archiveTitle: "归档",
     archiveBrief: "存储的资料、过往作品与实验片段。",
