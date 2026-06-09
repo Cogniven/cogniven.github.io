@@ -1,8 +1,8 @@
 const ResearchSystems = [
   {
     title: {
-      en: "Investment Research",
-      zh: "投资研究",
+      en: "EMPTY",
+      zh: "这里没有内容",
     },
     desc: {
       en: "A method of seeking profit by leveraging market fluctuations.",
