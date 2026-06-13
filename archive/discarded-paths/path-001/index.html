@@ -1,0 +1,2426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Assessment Index - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      .ka-shell {
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      .ka-intro {
+        max-width: 820px;
+      }
+
+      .ka-note-box {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--bg-soft);
+        padding: 22px;
+        margin-top: 8px;
+      }
+
+      .ka-note-box p {
+        margin: 0;
+        color: var(--text-soft);
+        line-height: 1.76;
+      }
+
+      .ka-controls {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        margin: 30px 0 32px;
+        flex-wrap: wrap;
+      }
+
+      .ka-search,
+      .ka-sort {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px 14px;
+        font: inherit;
+      }
+
+      .ka-search {
+        flex: 1;
+        min-width: 220px;
+      }
+
+      .ka-sort {
+        min-width: 170px;
+      }
+
+      .domain-list {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .domain-card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--bg-soft);
+        padding: 24px;
+      }
+
+      .domain-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: flex-start;
+        margin-bottom: 18px;
+      }
+
+      .domain-title {
+        margin: 0 0 10px;
+        font-size: clamp(1.25rem, 2vw, 1.6rem);
+        line-height: 1.25;
+      }
+
+      .domain-desc {
+        margin: 0;
+        max-width: 820px;
+        color: var(--text-soft);
+        line-height: 1.72;
+      }
+
+      .domain-index {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px 10px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+      }
+
+      .subfield-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        overflow: hidden;
+      }
+
+      .subfield-table th,
+      .subfield-table td {
+        border-top: 1px solid var(--line);
+        padding: 13px 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .subfield-table th {
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      .subfield-name {
+        width: 24%;
+        color: var(--text);
+        font-size: 0.96rem;
+      }
+
+      .subfield-scope {
+        width: 54%;
+        color: var(--text-soft);
+        line-height: 1.6;
+        font-size: 0.92rem;
+      }
+
+      .subfield-rating {
+        width: 22%;
+        color: var(--muted);
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+
+      .rating-placeholder {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 10px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.05em;
+      }
+
+      .questionnaire-section {
+        margin-top: 48px;
+      }
+
+      .questionnaire-intro {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--bg-soft);
+        padding: 22px;
+        margin-bottom: 22px;
+      }
+
+      .questionnaire-intro p {
+        margin: 0;
+        color: var(--text-soft);
+        line-height: 1.76;
+      }
+
+      .questionnaire-archive {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--bg-soft);
+        overflow: hidden;
+      }
+
+      .questionnaire-archive summary {
+        cursor: pointer;
+        padding: 18px 22px;
+        color: var(--text);
+        border-bottom: 1px solid var(--line);
+        font-size: 1rem;
+      }
+
+      .questionnaire-content {
+        padding: 22px;
+      }
+
+      .question-domain {
+        margin-bottom: 34px;
+      }
+
+      .question-domain:last-child {
+        margin-bottom: 0;
+      }
+
+      .question-domain h3 {
+        margin: 0 0 18px;
+        font-size: 1.2rem;
+      }
+
+      .question-group {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+        margin-top: 16px;
+      }
+
+      .question-group h4 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+        color: var(--text);
+      }
+
+      .question-item {
+        margin: 0 0 14px;
+      }
+
+      .question-code {
+        display: inline-block;
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 5px;
+      }
+
+      .question-text {
+        margin: 0;
+        color: var(--text-soft);
+        line-height: 1.65;
+        font-size: 0.95rem;
+      }
+
+      .ka-empty {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 24px;
+        color: var(--muted);
+        background: var(--bg-soft);
+      }
+
+      @media (max-width: 820px) {
+        .domain-head {
+          flex-direction: column;
+        }
+
+        .subfield-table,
+        .subfield-table thead,
+        .subfield-table tbody,
+        .subfield-table tr,
+        .subfield-table th,
+        .subfield-table td {
+          display: block;
+          width: 100%;
+        }
+
+        .subfield-table thead {
+          display: none;
+        }
+
+        .subfield-table tr {
+          border-top: 1px solid var(--line);
+          padding: 12px 0;
+        }
+
+        .subfield-table td {
+          border-top: none;
+          padding: 5px 0;
+        }
+
+        .subfield-name {
+          font-size: 1rem;
+        }
+
+        .subfield-rating {
+          margin-top: 4px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .ka-controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .ka-search,
+        .ka-sort {
+          width: 100%;
+        }
+
+        .questionnaire-content {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner ka-shell">
+          <p class="eyebrow" id="ka-hero-eyebrow">
+            Archive · Deprecated Framework
+          </p>
+          <h1 id="ka-hero-title">Knowledge Assessment Index</h1>
+          <p class="hero-text ka-intro" id="ka-hero-text">
+            A retired framework for listing knowledge domains, subfields, and an
+            abandoned assessment questionnaire.
+          </p>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="ka-overview-note">Overview</p>
+          <p class="lead-paragraph" id="ka-overview-text">
+            This page preserves a discontinued attempt to build a personal
+            knowledge assessment system. It keeps the structural frame, empty
+            rating slots, and the original question set that was once intended
+            for AI-assisted evaluation.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container ka-shell">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="ka-structure-note">Structure</p>
+              <h2 id="ka-structure-title">Domain and Subfield List</h2>
+            </div>
+            <p class="section-side-text" id="ka-structure-side">
+              Ratings are intentionally left blank.
+            </p>
+          </div>
+
+          <div class="ka-note-box">
+            <p id="ka-note-text">
+              This version was designed as a private sorting framework. The
+              original plan was to answer a set of structured prompts and use AI
+              to infer a rough assessment for each area. The approach was later
+              abandoned, and the page was moved into a deprecated archive path.
+            </p>
+          </div>
+
+          <div class="ka-controls">
+            <input
+              id="search-box"
+              class="ka-search"
+              type="text"
+              placeholder="Search domains and subfields..."
+            />
+            <select id="sort-select" class="ka-sort">
+              <option value="order">Default Order</option>
+              <option value="alpha">A–Z</option>
+            </select>
+          </div>
+
+          <div id="domain-list" class="domain-list"></div>
+
+          <div class="questionnaire-section">
+            <div class="section-head">
+              <div>
+                <p class="section-note" id="ka-questionnaire-note">
+                  Archived Questionnaire
+                </p>
+                <h2 id="ka-questionnaire-title">
+                  Personal Knowledge Atlas Assessment Questions
+                </h2>
+              </div>
+              <p class="section-side-text" id="ka-questionnaire-side">
+                A discontinued attempt to evaluate knowledge through structured
+                prompts.
+              </p>
+            </div>
+
+            <div class="questionnaire-intro">
+              <p id="ka-questionnaire-intro">
+                This section preserves the original questionnaire prepared for
+                AI-assisted evaluation. The plan was to answer these questions,
+                submit the responses to an AI system, and use the result to fill
+                the assessment table above. The process was later discontinued,
+                and the page is now kept only as an archived draft.
+              </p>
+            </div>
+
+            <details class="questionnaire-archive">
+              <summary id="ka-questionnaire-summary">
+                Show archived question set
+              </summary>
+              <div
+                id="questionnaire-content"
+                class="questionnaire-content"
+              ></div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      const domainData = [
+        {
+          order: 1,
+          title: {
+            en: "Natural Sciences",
+            zh: "自然科学",
+          },
+          desc: {
+            en: "Fields concerned with natural laws, material processes, measurement, life systems, earth systems, and the universe.",
+            zh: "关于自然规律、物质过程、测量、生命系统、地球系统与宇宙的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "Mathematics", zh: "数学" },
+              scope: {
+                en: "logic, functions, algebra, geometry, probability, mathematical modeling",
+                zh: "逻辑、函数、代数、几何、概率、数学建模",
+              },
+            },
+            {
+              name: { en: "Statistics", zh: "统计学" },
+              scope: {
+                en: "descriptive statistics, distribution, sampling, correlation, regression, uncertainty",
+                zh: "描述统计、分布、抽样、相关、回归、不确定性",
+              },
+            },
+            {
+              name: { en: "Physics", zh: "物理" },
+              scope: {
+                en: "mechanics, energy, force, thermodynamics, electromagnetism, modern physics",
+                zh: "力学、能量、受力、热学、电磁学、现代物理",
+              },
+            },
+            {
+              name: { en: "Chemistry", zh: "化学" },
+              scope: {
+                en: "elements, molecules, chemical reactions, acids and bases, materials, everyday chemistry",
+                zh: "元素、分子、化学反应、酸碱、材料、日常化学",
+              },
+            },
+            {
+              name: { en: "Biology", zh: "生物" },
+              scope: {
+                en: "evolution, genetics, immunity, ecology, body systems, life processes",
+                zh: "进化、遗传、免疫、生态、身体系统、生命过程",
+              },
+            },
+            {
+              name: { en: "Geography", zh: "地理" },
+              scope: {
+                en: "terrain, climate, resources, human geography, spatial distribution",
+                zh: "地形、气候、资源、人文地理、空间分布",
+              },
+            },
+            {
+              name: { en: "Astronomy", zh: "天文" },
+              scope: {
+                en: "stars, planets, black holes, galaxies, cosmic scale, space observation",
+                zh: "恒星、行星、黑洞、星系、宇宙尺度、太空观测",
+              },
+            },
+            {
+              name: { en: "Environmental Science", zh: "环境科学" },
+              scope: {
+                en: "ecosystems, pollution, climate change, carbon cycle, resources, sustainability",
+                zh: "生态系统、污染、气候变化、碳循环、资源、可持续",
+              },
+            },
+          ],
+        },
+        {
+          order: 2,
+          title: {
+            en: "Social Sciences",
+            zh: "社会科学",
+          },
+          desc: {
+            en: "Fields concerned with institutions, incentives, power, groups, behavior, organizations, and public problems.",
+            zh: "关于制度、激励、权力、群体、行为、组织与公共问题的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "Economics", zh: "经济学" },
+              scope: {
+                en: "supply and demand, incentives, market failure, game theory, money, fiscal policy",
+                zh: "供需、激励、市场失灵、博弈、货币、财政政策",
+              },
+            },
+            {
+              name: { en: "Political Science", zh: "政治学" },
+              scope: {
+                en: "state, regime, governance, legitimacy, power structure, political order",
+                zh: "国家、政体、治理、合法性、权力结构、政治秩序",
+              },
+            },
+            {
+              name: { en: "Sociology", zh: "社会学" },
+              scope: {
+                en: "class, organization, identity, city, group behavior, social structure",
+                zh: "阶层、组织、身份、城市、群体行为、社会结构",
+              },
+            },
+            {
+              name: { en: "Law", zh: "法学" },
+              scope: {
+                en: "rights, obligations, contracts, procedure, liability, legal reasoning",
+                zh: "权利、义务、合同、程序、责任、法律推理",
+              },
+            },
+            {
+              name: { en: "Psychology", zh: "心理学" },
+              scope: {
+                en: "cognitive bias, personality, motivation, emotion, development, decision-making",
+                zh: "认知偏差、人格、动机、情绪、发展、决策",
+              },
+            },
+            {
+              name: { en: "Anthropology", zh: "人类学" },
+              scope: {
+                en: "culture, ritual, kinship, fieldwork, symbolic systems, everyday practice",
+                zh: "文化、仪式、亲属关系、田野、符号系统、日常实践",
+              },
+            },
+            {
+              name: { en: "Public Administration", zh: "公共管理" },
+              scope: {
+                en: "bureaucracy, public policy, implementation, public services, administrative capacity",
+                zh: "官僚制、公共政策、政策执行、公共服务、行政能力",
+              },
+            },
+            {
+              name: { en: "International Relations", zh: "国际关系" },
+              scope: {
+                en: "great-power relations, conflict, trade, global governance, security, diplomacy",
+                zh: "大国关系、冲突、贸易、全球治理、安全、外交",
+              },
+            },
+          ],
+        },
+        {
+          order: 3,
+          title: {
+            en: "Humanities and History",
+            zh: "人文与历史",
+          },
+          desc: {
+            en: "Fields concerned with meaning, value, text, civilization, tradition, narrative, and historical change.",
+            zh: "关于意义、价值、文本、文明、传统、叙事与历史变迁的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "History", zh: "历史" },
+              scope: {
+                en: "Chinese history, world history, modernization, institutions, war, historical explanation",
+                zh: "中国史、世界史、现代化、制度、战争、历史解释",
+              },
+            },
+            {
+              name: { en: "Philosophy", zh: "哲学" },
+              scope: {
+                en: "metaphysics, epistemology, ethics, political philosophy, aesthetics, self-cultivation",
+                zh: "形而上学、认识论、伦理学、政治哲学、美学、自我修养",
+              },
+            },
+            {
+              name: { en: "Literature", zh: "文学" },
+              scope: {
+                en: "novel, science fiction, genre, narrative structure, character, worldbuilding",
+                zh: "小说、科幻文学、类型、叙事结构、角色、世界观",
+              },
+            },
+            {
+              name: { en: "Religion", zh: "宗教" },
+              scope: {
+                en: "major traditions, belief, ritual, theology, sacred texts, religious communities",
+                zh: "主要传统、信仰、仪式、神学、经典、宗教共同体",
+              },
+            },
+            {
+              name: { en: "Mythology", zh: "神话" },
+              scope: {
+                en: "creation myths, archetypes, symbolic order, forbidden knowledge, cosmic imagination",
+                zh: "创世神话、原型、符号秩序、禁忌知识、宇宙想象",
+              },
+            },
+            {
+              name: { en: "Art History", zh: "艺术史" },
+              scope: {
+                en: "visual style, schools, media, historical context, image culture",
+                zh: "视觉风格、流派、媒介、时代背景、图像文化",
+              },
+            },
+            {
+              name: { en: "Ethics", zh: "伦理学" },
+              scope: {
+                en: "virtue, obligation, consequence, responsibility, moral conflict, public ethics",
+                zh: "德性、义务、后果、责任、道德冲突、公共伦理",
+              },
+            },
+            {
+              name: { en: "Linguistics", zh: "语言学" },
+              scope: {
+                en: "language structure, semantics, pragmatics, rhetoric, translation, discourse",
+                zh: "语言结构、语义、语用、修辞、翻译、话语",
+              },
+            },
+          ],
+        },
+        {
+          order: 4,
+          title: {
+            en: "Technology and Engineering",
+            zh: "技术与工程",
+          },
+          desc: {
+            en: "Fields concerned with technical systems, implementation, engineering constraints, tools, and reliability.",
+            zh: "关于技术系统、实现路径、工程约束、工具与可靠性的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "Computer Science", zh: "计算机科学" },
+              scope: {
+                en: "programming, data structures, operating systems, networks, databases, algorithms",
+                zh: "编程、数据结构、操作系统、网络、数据库、算法",
+              },
+            },
+            {
+              name: { en: "Artificial Intelligence", zh: "人工智能" },
+              scope: {
+                en: "machine learning, large language models, generative AI, training, inference, agents",
+                zh: "机器学习、大模型、生成式 AI、训练、推理、智能体",
+              },
+            },
+            {
+              name: { en: "Software Engineering", zh: "软件工程" },
+              scope: {
+                en: "architecture, version control, testing, deployment, automation, maintenance",
+                zh: "架构、版本控制、测试、部署、自动化、维护",
+              },
+            },
+            {
+              name: { en: "Information Security", zh: "信息安全" },
+              scope: {
+                en: "encryption, authentication, permission, privacy, attack surface, threat model",
+                zh: "加密、认证、权限、隐私、攻击面、威胁模型",
+              },
+            },
+            {
+              name: { en: "Electronic Engineering", zh: "电子工程" },
+              scope: {
+                en: "circuits, chips, sensors, communication, embedded systems, hardware constraints",
+                zh: "电路、芯片、传感器、通信、嵌入式系统、硬件约束",
+              },
+            },
+            {
+              name: { en: "Mechanical Engineering", zh: "机械工程" },
+              scope: {
+                en: "force, structure, motion, manufacturing, mechanical systems, reliability",
+                zh: "受力、结构、运动、制造、机械系统、可靠性",
+              },
+            },
+            {
+              name: {
+                en: "Architecture and Built Environment",
+                zh: "建筑与建成环境",
+              },
+              scope: {
+                en: "space, structure, materials, urban form, function, environmental comfort",
+                zh: "空间、结构、材料、城市形态、功能、环境舒适性",
+              },
+            },
+            {
+              name: { en: "Materials and Energy", zh: "材料与能源" },
+              scope: {
+                en: "materials, durability, energy systems, efficiency, resources, technological constraints",
+                zh: "材料、耐久性、能源系统、效率、资源、技术约束",
+              },
+            },
+          ],
+        },
+        {
+          order: 5,
+          title: {
+            en: "Economy, Business and Finance",
+            zh: "经济生活与商业金融",
+          },
+          desc: {
+            en: "Fields concerned with markets, capital, organizations, accounting, management, consumption, and business behavior.",
+            zh: "关于市场、资本、组织、会计、管理、消费与商业行为的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "Investment", zh: "投资" },
+              scope: {
+                en: "asset allocation, valuation, trend, volatility, position sizing, risk control",
+                zh: "资产配置、估值、趋势、波动、仓位、风险控制",
+              },
+            },
+            {
+              name: { en: "Finance", zh: "金融" },
+              scope: {
+                en: "stocks, bonds, funds, derivatives, cash flow, risk management",
+                zh: "股票、债券、基金、衍生品、现金流、风险管理",
+              },
+            },
+            {
+              name: { en: "Accounting", zh: "会计" },
+              scope: {
+                en: "balance sheet, income statement, cash flow statement, profit quality, liabilities",
+                zh: "资产负债表、利润表、现金流量表、利润质量、负债",
+              },
+            },
+            {
+              name: { en: "Management", zh: "管理" },
+              scope: {
+                en: "organization, performance, workflow, human resources, coordination, process",
+                zh: "组织、绩效、流程、人力资源、协调、过程管理",
+              },
+            },
+            {
+              name: { en: "Marketing", zh: "营销" },
+              scope: {
+                en: "brand, channel, positioning, user acquisition, communication, conversion",
+                zh: "品牌、渠道、定位、用户获取、传播、转化",
+              },
+            },
+            {
+              name: { en: "Business Strategy", zh: "商业战略" },
+              scope: {
+                en: "competition, value proposition, moat, business model, growth, platform",
+                zh: "竞争、价值主张、护城河、商业模式、增长、平台",
+              },
+            },
+            {
+              name: { en: "Real Estate", zh: "房地产" },
+              scope: {
+                en: "land, housing price, location, credit, urban development, rental market",
+                zh: "土地、房价、区位、信贷、城市发展、租赁市场",
+              },
+            },
+            {
+              name: { en: "Taxation and Consumption", zh: "税务与消费" },
+              scope: {
+                en: "tax incentives, personal finance, consumption decision, discount, sunk cost",
+                zh: "税收激励、个人财务、消费决策、折扣、沉没成本",
+              },
+            },
+          ],
+        },
+        {
+          order: 6,
+          title: {
+            en: "Culture, Media and Entertainment",
+            zh: "文化、媒介与娱乐",
+          },
+          desc: {
+            en: "Fields concerned with cultural products, media forms, narrative systems, audience behavior, and popular taste.",
+            zh: "关于文化产品、媒介形式、叙事系统、受众行为与大众趣味的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "Film", zh: "电影" },
+              scope: {
+                en: "genre, director, shot language, editing, industry, visual rhythm",
+                zh: "类型片、导演、镜头语言、剪辑、工业体系、视觉节奏",
+              },
+            },
+            {
+              name: { en: "Music", zh: "音乐" },
+              scope: {
+                en: "melody, rhythm, timbre, arrangement, performance, listening aesthetics",
+                zh: "旋律、节奏、音色、编曲、演奏、听觉审美",
+              },
+            },
+            {
+              name: { en: "Games", zh: "游戏" },
+              scope: {
+                en: "rules, interaction, narrative, player behavior, resources, uncertainty",
+                zh: "规则、交互、叙事、玩家行为、资源、不确定性",
+              },
+            },
+            {
+              name: { en: "Animation and Comics", zh: "动漫与漫画" },
+              scope: {
+                en: "visual style, serialized narrative, character design, fandom, adaptation",
+                zh: "视觉风格、连载叙事、角色设计、粉丝文化、改编",
+              },
+            },
+            {
+              name: { en: "Internet Culture", zh: "互联网文化" },
+              scope: {
+                en: "platforms, communities, memes, public opinion, attention, circulation",
+                zh: "平台、社群、梗、舆论、注意力、传播",
+              },
+            },
+            {
+              name: { en: "Sports", zh: "体育" },
+              scope: {
+                en: "rules, tactics, participation, training, sports culture, commercialization",
+                zh: "规则、战术、参与、训练、运动文化、商业化",
+              },
+            },
+            {
+              name: {
+                en: "Fashion and Lifestyle Culture",
+                zh: "时尚与生活方式文化",
+              },
+              scope: {
+                en: "style, identity, trend, consumption, visual symbol, social expression",
+                zh: "风格、身份、潮流、消费、视觉符号、社会表达",
+              },
+            },
+            {
+              name: { en: "Popular Narrative", zh: "大众叙事" },
+              scope: {
+                en: "genre fiction, science fiction, weird fiction, horror, fantasy, media tropes",
+                zh: "类型小说、科幻、怪奇、恐怖、奇幻、媒介母题",
+              },
+            },
+          ],
+        },
+        {
+          order: 7,
+          title: {
+            en: "Life Practice and Embodied Knowledge",
+            zh: "生活实践与身体经验",
+          },
+          desc: {
+            en: "Fields concerned with health, body, routine, food, travel, social interaction, emotion, and daily maintenance.",
+            zh: "关于健康、身体、作息、饮食、旅行、社交、情绪与日常维护的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "Health", zh: "健康" },
+              scope: {
+                en: "sleep, common symptoms, medicine awareness, hygiene, recovery, risk judgment",
+                zh: "睡眠、常见症状、用药意识、卫生、恢复、风险判断",
+              },
+            },
+            {
+              name: { en: "Nutrition", zh: "营养" },
+              scope: {
+                en: "protein, carbohydrates, fat, hydration, diet structure, food safety",
+                zh: "蛋白质、碳水、脂肪、水分、饮食结构、食品安全",
+              },
+            },
+            {
+              name: { en: "Exercise", zh: "运动" },
+              scope: {
+                en: "aerobic exercise, strength, flexibility, intensity, recovery, body feedback",
+                zh: "有氧、力量、柔韧、强度、恢复、身体反馈",
+              },
+            },
+            {
+              name: { en: "Cooking and Household", zh: "烹饪与家务" },
+              scope: {
+                en: "ingredients, preparation, household maintenance, storage, cleaning, practical routine",
+                zh: "食材、处理、家务维护、储存、清洁、实际作息",
+              },
+            },
+            {
+              name: { en: "Travel", zh: "旅行" },
+              scope: {
+                en: "transport, accommodation, budget, safety, route planning, contingency",
+                zh: "交通、住宿、预算、安全、路线规划、应急",
+              },
+            },
+            {
+              name: { en: "Communication", zh: "沟通" },
+              scope: {
+                en: "tone, courtesy, refusal, explanation, negotiation, message writing",
+                zh: "语气、礼仪、拒绝、解释、协商、消息表达",
+              },
+            },
+            {
+              name: { en: "Emotion and Boundary", zh: "情绪与边界" },
+              scope: {
+                en: "emotion management, interpersonal boundary, conflict handling, relationship maintenance",
+                zh: "情绪管理、人际边界、冲突处理、关系维护",
+              },
+            },
+            {
+              name: { en: "Time and Routine", zh: "时间与作息" },
+              scope: {
+                en: "planning, priority, review, habit, focus, daily rhythm",
+                zh: "计划、优先级、复盘、习惯、专注、日常节奏",
+              },
+            },
+          ],
+        },
+        {
+          order: 8,
+          title: {
+            en: "Aesthetics and Creative Practice",
+            zh: "审美与创造实践",
+          },
+          desc: {
+            en: "Fields concerned with transforming perception, material, language, image, sound, and structure into works.",
+            zh: "关于将感知、材料、语言、图像、声音与结构转化为作品的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "Writing", zh: "写作" },
+              scope: {
+                en: "essay, fiction, review, copywriting, academic writing, editing, tone",
+                zh: "议论文、小说、评论、文案、学术写作、编辑、语气",
+              },
+            },
+            {
+              name: { en: "Drawing and Illustration", zh: "绘画与插画" },
+              scope: {
+                en: "line, shape, composition, character, visual theme, image generation",
+                zh: "线条、形体、构图、角色、视觉主题、图像生成",
+              },
+            },
+            {
+              name: { en: "Visual Design", zh: "视觉设计" },
+              scope: {
+                en: "composition, color, typography, layout, icon, information hierarchy",
+                zh: "构图、色彩、字体、版式、图标、信息层级",
+              },
+            },
+            {
+              name: { en: "Photography", zh: "摄影" },
+              scope: {
+                en: "light, lens, framing, post-processing, visual record, atmosphere",
+                zh: "光线、镜头、取景、后期、视觉记录、氛围",
+              },
+            },
+            {
+              name: { en: "Video", zh: "视频" },
+              scope: {
+                en: "editing, rhythm, shot selection, narrative flow, color, sound-image relation",
+                zh: "剪辑、节奏、镜头选择、叙事流动、色彩、声画关系",
+              },
+            },
+            {
+              name: { en: "Sound", zh: "声音" },
+              scope: {
+                en: "recording, mixing, timbre, rhythm, voice processing, sound restoration",
+                zh: "录音、混音、音色、节奏、人声处理、声音修复",
+              },
+            },
+            {
+              name: { en: "Performance", zh: "表演" },
+              scope: {
+                en: "voice, pause, gesture, presence, emotion, audience relation",
+                zh: "声音、停顿、动作、现场感、情绪、观众关系",
+              },
+            },
+            {
+              name: { en: "Handcraft and Object Making", zh: "手工与物件制作" },
+              scope: {
+                en: "material, structure, assembly, miniature object, practical design, tactile form",
+                zh: "材料、结构、组装、小型物件、实用设计、触觉形式",
+              },
+            },
+          ],
+        },
+        {
+          order: 9,
+          title: {
+            en: "World Issues and Contemporary Reality",
+            zh: "世界认知与现实议题",
+          },
+          desc: {
+            en: "Fields concerned with major public issues, structural change, risk, technology, population, climate, and geopolitics.",
+            zh: "关于重大公共议题、结构变化、风险、技术、人口、气候与地缘政治的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "International Affairs", zh: "国际局势" },
+              scope: {
+                en: "great-power relations, regional conflict, trade, diplomacy, global governance",
+                zh: "大国关系、区域冲突、贸易、外交、全球治理",
+              },
+            },
+            {
+              name: { en: "Technology Trends", zh: "科技趋势" },
+              scope: {
+                en: "AI, energy, chips, biotechnology, space technology, automation",
+                zh: "AI、能源、芯片、生物技术、太空技术、自动化",
+              },
+            },
+            {
+              name: { en: "Population", zh: "人口" },
+              scope: {
+                en: "aging, fertility, migration, family structure, education, labor force",
+                zh: "老龄化、生育、迁移、家庭结构、教育、劳动力",
+              },
+            },
+            {
+              name: { en: "Climate", zh: "气候" },
+              scope: {
+                en: "carbon emission, extreme weather, environmental risk, adaptation, mitigation",
+                zh: "碳排放、极端天气、环境风险、适应、减缓",
+              },
+            },
+            {
+              name: { en: "War and Security", zh: "战争与安全" },
+              scope: {
+                en: "military conflict, security dilemma, alliance, deterrence, civilian impact",
+                zh: "军事冲突、安全困境、联盟、威慑、平民影响",
+              },
+            },
+            {
+              name: { en: "Energy", zh: "能源" },
+              scope: {
+                en: "energy transition, fossil fuels, renewables, grid, resource dependency",
+                zh: "能源转型、化石能源、可再生能源、电网、资源依赖",
+              },
+            },
+            {
+              name: { en: "Urbanization", zh: "城市化" },
+              scope: {
+                en: "housing, transport, education, public services, city structure, regional development",
+                zh: "住房、交通、教育、公共服务、城市结构、区域发展",
+              },
+            },
+            {
+              name: { en: "Globalization and Risk", zh: "全球化与风险" },
+              scope: {
+                en: "supply chain, financial crisis, public health, uncertainty, systemic transmission",
+                zh: "供应链、金融危机、公共卫生、不确定性、系统传导",
+              },
+            },
+          ],
+        },
+        {
+          order: 10,
+          title: {
+            en: "Meta-knowledge and Methodology",
+            zh: "元知识与方法论",
+          },
+          desc: {
+            en: "Fields concerned with how knowledge is acquired, verified, organized, argued, revised, and maintained.",
+            zh: "关于知识如何获取、验证、组织、论证、修正与维护的领域。",
+          },
+          subfields: [
+            {
+              name: { en: "Logic", zh: "逻辑" },
+              scope: {
+                en: "concept, proposition, inference, contradiction, fallacy, argument form",
+                zh: "概念、命题、推理、矛盾、谬误、论证形式",
+              },
+            },
+            {
+              name: { en: "Critical Thinking", zh: "批判性思维" },
+              scope: {
+                en: "assumption, evidence, bias, counterexample, alternative explanation, uncertainty",
+                zh: "假设、证据、偏差、反例、替代解释、不确定性",
+              },
+            },
+            {
+              name: { en: "Information Retrieval", zh: "信息检索" },
+              scope: {
+                en: "search, filtering, source tracing, cross-checking, citation, archive",
+                zh: "搜索、筛选、溯源、交叉验证、引用、归档",
+              },
+            },
+            {
+              name: { en: "Research Method", zh: "研究方法" },
+              scope: {
+                en: "research question, literature, data, case, variable, argument",
+                zh: "研究问题、文献、数据、案例、变量、论证",
+              },
+            },
+            {
+              name: { en: "Statistics Method", zh: "统计方法" },
+              scope: {
+                en: "descriptive statistics, correlation, regression, sampling, bias, robustness",
+                zh: "描述统计、相关、回归、抽样、偏差、稳健性",
+              },
+            },
+            {
+              name: { en: "Writing Method", zh: "写作方法" },
+              scope: {
+                en: "structure, claim, evidence, paragraph, revision, tone control",
+                zh: "结构、论点、证据、段落、修改、语气控制",
+              },
+            },
+            {
+              name: { en: "Learning Method", zh: "学习方法" },
+              scope: {
+                en: "notes, review, knowledge organization, long-term memory, practice, feedback",
+                zh: "笔记、复盘、知识组织、长期记忆、练习、反馈",
+              },
+            },
+            {
+              name: { en: "Knowledge Management", zh: "知识管理" },
+              scope: {
+                en: "classification, naming, folder, tag, index, maintenance, retrieval",
+                zh: "分类、命名、文件夹、标签、索引、维护、检索",
+              },
+            },
+          ],
+        },
+      ];
+
+      const questionnaireData = [
+        {
+          title: {
+            en: "I. Natural Sciences",
+            zh: "一、自然科学",
+          },
+          groups: [
+            {
+              title: {
+                en: "1. Mathematics and Statistics",
+                zh: "1. 数学与统计",
+              },
+              questions: [
+                {
+                  code: "NS-MATH-01",
+                  text: {
+                    en: "In one or two sentences, distinguish correlation from causation and give an example where they are easily confused.",
+                    zh: "用一两句话区分“相关性”和“因果性”，并给一个容易混淆的例子。",
+                  },
+                },
+                {
+                  code: "NS-MATH-02",
+                  text: {
+                    en: "Name a mathematical or statistical concept you can explain accurately, and explain what it is suitable for describing. Examples include normal distribution, mean, median, probability, regression, and standard deviation.",
+                    zh: "说出一个你能准确说明的数学或统计概念，并解释它适合描述什么。比如正态分布、均值、中位数、概率、回归、标准差等。",
+                  },
+                },
+                {
+                  code: "NS-MATH-03",
+                  text: {
+                    en: "Give an example of a situation where you used numbers, ratios, tables, or charts rather than intuition to make a judgment.",
+                    zh: "给一个你用数字、比例、表格或图表，而不是直觉做判断的例子。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "2. Physics and Chemistry",
+                zh: "2. 物理与化学",
+              },
+              questions: [
+                {
+                  code: "NS-PHYC-01",
+                  text: {
+                    en: "In one or two sentences, explain either conservation of energy or conservation of mass.",
+                    zh: "用一两句话解释“能量守恒”或“质量守恒”之一。",
+                  },
+                },
+                {
+                  code: "NS-PHYC-02",
+                  text: {
+                    en: "Name a physical or chemical concept, law, or experiment you are familiar with, and explain what phenomenon it helps explain.",
+                    zh: "说出一个你熟悉的物理或化学概念、定律、实验，并说明它解释什么现象。",
+                  },
+                },
+                {
+                  code: "NS-PHYC-03",
+                  text: {
+                    en: "Give an everyday or technical phenomenon and explain how you would understand it using physics or chemistry.",
+                    zh: "举一个生活或技术现象，说明你会如何用物理或化学知识解释它。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "3. Life, Earth, and Environmental Sciences",
+                zh: "3. 生命、地球与环境科学",
+              },
+              questions: [
+                {
+                  code: "NS-BEE-01",
+                  text: {
+                    en: "In one or two sentences, explain the basic logic of either natural selection or an ecosystem.",
+                    zh: "用一两句话说明“自然选择”或“生态系统”之一的基本逻辑。",
+                  },
+                },
+                {
+                  code: "NS-BEE-02",
+                  text: {
+                    en: "Name a biological, earth, or environmental process you are familiar with and briefly describe its key steps. Examples include the carbon cycle, immunity, heredity, climate change, and earthquakes.",
+                    zh: "说出一个你熟悉的生物、地球或环境过程，并简述关键环节。比如碳循环、免疫、遗传、气候变化、地震等。",
+                  },
+                },
+                {
+                  code: "NS-BEE-03",
+                  text: {
+                    en: "Choose a real-world issue such as vaccines, pollution, sleep, diet, or climate, and explain how related knowledge affects your judgment.",
+                    zh: "选一个现实议题，比如疫苗、污染、睡眠、饮食、气候，说明相关知识如何影响你的判断。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: {
+            en: "II. Social Sciences",
+            zh: "二、社会科学",
+          },
+          groups: [
+            {
+              title: {
+                en: "4. Economics",
+                zh: "4. 经济学",
+              },
+              questions: [
+                {
+                  code: "SS-ECO-01",
+                  text: {
+                    en: "In one or two sentences, explain either opportunity cost or market failure.",
+                    zh: "用一两句话解释“机会成本”或“市场失灵”之一。",
+                  },
+                },
+                {
+                  code: "SS-ECO-02",
+                  text: {
+                    en: "Name an economic concept, theory, or scholar you are familiar with, and explain what problem it addresses.",
+                    zh: "说出一个你熟悉的经济学概念、理论或学者，并说明它解决什么问题。",
+                  },
+                },
+                {
+                  code: "SS-ECO-03",
+                  text: {
+                    en: "Choose a real-world phenomenon such as housing prices, employment, subsidies, monopoly, or platforms, and briefly explain it using an economic concept.",
+                    zh: "选一件现实现象，比如房价、就业、补贴、垄断、平台，用一个经济学概念做简短解释。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "5. Politics, Law, and Public Governance",
+                zh: "5. 政治、法律与公共治理",
+              },
+              questions: [
+                {
+                  code: "SS-POL-01",
+                  text: {
+                    en: "Distinguish any two of the following: state, government, law, and policy.",
+                    zh: "区分“国家”“政府”“法律 / 政策”中任意两项。",
+                  },
+                },
+                {
+                  code: "SS-POL-02",
+                  text: {
+                    en: "Name an institutional concept you are familiar with and briefly explain it. Examples include legitimacy, procedural justice, bureaucracy, checks on power, and public choice.",
+                    zh: "说出一个你熟悉的制度概念，并简述其含义。比如合法性、程序正义、官僚制、权力制约、公共选择等。",
+                  },
+                },
+                {
+                  code: "SS-POL-03",
+                  text: {
+                    en: "Use an institutional, legal, or public-governance concept to explain a public issue.",
+                    zh: "用一个制度、法律或公共治理概念解释一件公共事务问题。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "6. Social Psychology and Organizations",
+                zh: "6. 社会心理与组织",
+              },
+              questions: [
+                {
+                  code: "SS-SPO-01",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: conformity, confirmation bias, or organizational inertia.",
+                    zh: "用一两句话解释“从众”“确认偏误”“组织惯性”中任一概念。",
+                  },
+                },
+                {
+                  code: "SS-SPO-02",
+                  text: {
+                    en: "Name a social, psychological, or organizational effect, experiment, or theory you are familiar with, and explain its core finding.",
+                    zh: "说出一个你熟悉的社会、心理或组织效应、实验、理论，并说明核心发现。",
+                  },
+                },
+                {
+                  code: "SS-SPO-03",
+                  text: {
+                    en: "Choose an online phenomenon, team problem, or consumer behavior, and briefly explain it using a sociological or psychological concept.",
+                    zh: "选一个网络现象、团队问题或消费行为，用社会学或心理学概念做简短解释。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: {
+            en: "III. Humanities and History",
+            zh: "三、人文与历史",
+          },
+          groups: [
+            {
+              title: {
+                en: "7. History",
+                zh: "7. 历史",
+              },
+              questions: [
+                {
+                  code: "HH-HIS-01",
+                  text: {
+                    en: "Name a historical period you are most familiar with, list three keywords, and explain in one sentence how they are related.",
+                    zh: "说出你最熟悉的一段历史及三个关键词，并用一句话说明它们如何相关。",
+                  },
+                },
+                {
+                  code: "HH-HIS-02",
+                  text: {
+                    en: "Name a historical concept or method you are familiar with and give an example. Examples include continuity and change, causal explanation, sources, modernization, and institutional change.",
+                    zh: "列出一个你熟悉的历史概念或历史方法，并举一个例子。比如连续与变化、因果解释、史料、现代化、制度变迁等。",
+                  },
+                },
+                {
+                  code: "HH-HIS-03",
+                  text: {
+                    en: "In two or three sentences, explain how you distinguish historical fact from historical interpretation, with an example if possible.",
+                    zh: "用两三句话说明你如何区分“史实”和“历史解释”，可以自举一例。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "8. Philosophy and Ethics",
+                zh: "8. 哲学与伦理",
+              },
+              questions: [
+                {
+                  code: "HH-PHI-01",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: epistemology, utilitarianism, deontology, or free will.",
+                    zh: "用一两句话说明“认识论”“功利主义”“义务论”“自由意志”中任一概念。",
+                  },
+                },
+                {
+                  code: "HH-PHI-02",
+                  text: {
+                    en: "Name a philosopher, school, or intellectual tradition you are familiar with, and state one of its core claims.",
+                    zh: "说出一个你熟悉的哲学家、流派或思想传统，并说出其一个核心主张。",
+                  },
+                },
+                {
+                  code: "HH-PHI-03",
+                  text: {
+                    en: "Choose a real-world controversy and briefly clarify it using a philosophical or ethical concept.",
+                    zh: "选一个现实争议，用一个哲学或伦理概念简短澄清问题。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "9. Literature, Religion, and Myth",
+                zh: "9. 文学、宗教与神话",
+              },
+              questions: [
+                {
+                  code: "HH-LRM-01",
+                  text: {
+                    en: "List three literary, religious, or mythological works or traditions you are familiar with, and give one keyword for each.",
+                    zh: "列三部你熟悉的文学、宗教、神话作品或传统，并各给一个关键词。",
+                  },
+                },
+                {
+                  code: "HH-LRM-02",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: narrative perspective, symbol, mythic archetype, or ritual.",
+                    zh: "用一两句话解释“叙事视角”“象征”“神话原型”“仪式”中任一概念。",
+                  },
+                },
+                {
+                  code: "HH-LRM-03",
+                  text: {
+                    en: "Choose a work and explain how it expresses a theme through character, symbol, worldbuilding, or ritual.",
+                    zh: "选一个作品，说明它如何借角色、象征、世界观或仪式表达某个主题。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: {
+            en: "IV. Technology and Engineering",
+            zh: "四、技术与工程",
+          },
+          groups: [
+            {
+              title: {
+                en: "10. Programming and Software",
+                zh: "10. 编程与软件",
+              },
+              questions: [
+                {
+                  code: "TE-COD-01",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: variable, function, API, or version control.",
+                    zh: "用一两句话说明“变量、函数、API、版本控制”中任一概念。",
+                  },
+                },
+                {
+                  code: "TE-COD-02",
+                  text: {
+                    en: "Name a programming language, framework, or toolchain you are familiar with, and explain two types of tasks it is best suited for.",
+                    zh: "说出一个你熟悉的编程语言、框架或工具链，并说明它最适合的两类任务。",
+                  },
+                },
+                {
+                  code: "TE-COD-03",
+                  text: {
+                    en: "In two or three sentences, describe an instance where you used code or a script to solve a practical problem.",
+                    zh: "用两三句话描述一次你用代码或脚本解决实际问题的经历。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "11. Data, Automation, and Artificial Intelligence",
+                zh: "11. 数据、自动化与人工智能",
+              },
+              questions: [
+                {
+                  code: "TE-DAI-01",
+                  text: {
+                    en: "Distinguish any two of the following: data cleaning, model training, inference, and prediction.",
+                    zh: "区分“数据清洗”“模型训练”“推理 / 预测”中任意两项。",
+                  },
+                },
+                {
+                  code: "TE-DAI-02",
+                  text: {
+                    en: "Name a data or AI concept you are familiar with and briefly explain it. Examples include overfitting, dataset, prompting, local deployment, and generative AI.",
+                    zh: "说出一个你熟悉的数据或 AI 概念，并简述含义。比如过拟合、数据集、提示词、本地部署、生成式 AI 等。",
+                  },
+                },
+                {
+                  code: "TE-DAI-03",
+                  text: {
+                    en: "Give an example where automation or AI significantly saved time or improved quality, and explain its boundary or risk.",
+                    zh: "举一个你用自动化或 AI 显著节省时间、提升质量的例子，并说明边界或风险。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "12. Security, Networks, and Systems Engineering",
+                zh: "12. 安全、网络与系统工程",
+              },
+              questions: [
+                {
+                  code: "TE-SYS-01",
+                  text: {
+                    en: "In one or two sentences, distinguish encryption from hashing, or authentication from authorization.",
+                    zh: "用一两句话区分“加密”和“哈希”，或“认证”和“授权”。",
+                  },
+                },
+                {
+                  code: "TE-SYS-02",
+                  text: {
+                    en: "Name a system or security concept you are familiar with and explain its role. Examples include least privilege, backup, two-factor authentication, attack surface, and permission isolation.",
+                    zh: "说出一个你熟悉的系统或安全概念，并说明它的作用。比如最小权限、备份、双因素认证、攻击面、权限隔离等。",
+                  },
+                },
+                {
+                  code: "TE-SYS-03",
+                  text: {
+                    en: "Describe an information-security or system-maintenance habit you would adopt, and explain what problem it helps prevent.",
+                    zh: "描述一个你会采取的信息安全或系统维护习惯，并说明它防什么问题。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: {
+            en: "V. Economy, Business, and Finance",
+            zh: "五、经济生活与商业金融",
+          },
+          groups: [
+            {
+              title: {
+                en: "13. Investment and Markets",
+                zh: "13. 投资与市场",
+              },
+              questions: [
+                {
+                  code: "EBF-INV-01",
+                  text: {
+                    en: "In one or two sentences, distinguish any two of the following: investment, speculation, and gambling.",
+                    zh: "用一两句话区分“投资、投机、赌博”中任意两项。",
+                  },
+                },
+                {
+                  code: "EBF-INV-02",
+                  text: {
+                    en: "Name a market concept you are familiar with and explain why it matters. Examples include drawdown, position sizing, volatility, trend, liquidity, win rate, and payoff ratio.",
+                    zh: "说出一个你熟悉的市场概念，并说明它为什么重要。比如回撤、仓位、波动、趋势、流动性、胜率、盈亏比等。",
+                  },
+                },
+                {
+                  code: "EBF-INV-03",
+                  text: {
+                    en: "Give a method or case showing how you judge whether a market view is reliable.",
+                    zh: "举一个你判断某个市场观点是否可靠的方法或案例。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "14. Finance and Accounting",
+                zh: "14. 金融与会计",
+              },
+              questions: [
+                {
+                  code: "EBF-FAC-01",
+                  text: {
+                    en: "In one or two sentences, explain what one of the following mainly shows: balance sheet, income statement, or cash flow statement.",
+                    zh: "用一两句话说明资产负债表、利润表、现金流量表中任一报表主要看什么。",
+                  },
+                },
+                {
+                  code: "EBF-FAC-02",
+                  text: {
+                    en: "Name a financial or accounting concept you are familiar with and briefly explain it. Examples include cash flow, discount rate, bond, equity, liability, and liquidity.",
+                    zh: "说出一个你熟悉的金融或会计概念，并简述含义。比如现金流、贴现率、债券、权益、负债、流动性等。",
+                  },
+                },
+                {
+                  code: "EBF-FAC-03",
+                  text: {
+                    en: "If a company is profitable but short of cash, what information would you look at first, and why?",
+                    zh: "假设一家公司“利润不错但现金紧张”，你会优先看什么信息，为什么？",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "15. Business, Management, and Entrepreneurship",
+                zh: "15. 商业、管理与创业",
+              },
+              questions: [
+                {
+                  code: "EBF-BME-01",
+                  text: {
+                    en: "In one or two sentences, distinguish either product, brand, and channel, or strategy and operations.",
+                    zh: "用一两句话区分“产品、品牌、渠道”或“战略、运营”中任意一组。",
+                  },
+                },
+                {
+                  code: "EBF-BME-02",
+                  text: {
+                    en: "Name a business or management framework you are familiar with and explain its use. Examples include business model, user persona, moat, organizational structure, and growth model.",
+                    zh: "说出一个你熟悉的商业或管理框架，并说明用途。比如商业模式、用户画像、护城河、组织结构、增长模型等。",
+                  },
+                },
+                {
+                  code: "EBF-BME-03",
+                  text: {
+                    en: "Choose a company, store, or project you are familiar with, and describe its core value and one risk point using business language.",
+                    zh: "选一个你熟悉的公司、店铺或项目，用商业语言说明它的核心价值和一个风险点。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: {
+            en: "VI. Culture, Media, and Entertainment",
+            zh: "六、文化、媒介与娱乐",
+          },
+          groups: [
+            {
+              title: {
+                en: "16. Games and Rule Systems",
+                zh: "16. 游戏与规则系统",
+              },
+              questions: [
+                {
+                  code: "CME-GAM-01",
+                  text: {
+                    en: "In one or two sentences, explain why a game is fun or unbalanced, mentioning at least one of rules, resources, or choices.",
+                    zh: "用一两句话说明一个游戏为什么“好玩”或“失衡”，至少点到规则、资源或选择之一。",
+                  },
+                },
+                {
+                  code: "CME-GAM-02",
+                  text: {
+                    en: "List three game mechanisms you are familiar with, and give an example for one of them.",
+                    zh: "列出三种你熟悉的游戏机制，并任选一项举例。",
+                  },
+                },
+                {
+                  code: "CME-GAM-03",
+                  text: {
+                    en: "Name a game where rules and narrative are well integrated, and explain the point of integration in two or three sentences.",
+                    zh: "说出一个规则和叙事结合得好的游戏，并用两三句话说明结合点。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "17. Music and Sound",
+                zh: "17. 音乐与声音",
+              },
+              questions: [
+                {
+                  code: "CME-MUS-01",
+                  text: {
+                    en: "In one or two sentences, distinguish any two of the following: melody, rhythm, and timbre.",
+                    zh: "用一两句话区分“旋律”“节奏”“音色”中任意两项。",
+                  },
+                },
+                {
+                  code: "CME-MUS-02",
+                  text: {
+                    en: "Name a music genre, instrument, or production concept you are familiar with, and describe one identifying feature.",
+                    zh: "说出一个你熟悉的音乐类型、乐器或制作概念，并说明一个识别特征。",
+                  },
+                },
+                {
+                  code: "CME-MUS-03",
+                  text: {
+                    en: "Give an example of how you judge whether a sound or song is natural, clean, or distinctive, and explain your basis.",
+                    zh: "举一个你判断一段声音或歌曲“自然、干净或有特色”的例子，并说明依据。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "18. Film, Genre Culture, and Networked Media",
+                zh: "18. 影视、类型文化与网络媒介",
+              },
+              questions: [
+                {
+                  code: "CME-MED-01",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: cinematic language, editing rhythm, genre film, or meme culture.",
+                    zh: "用一两句话解释“镜头语言”“剪辑节奏”“类型片”“梗文化”中任一概念。",
+                  },
+                },
+                {
+                  code: "CME-MED-02",
+                  text: {
+                    en: "List three works or phenomena from film, science fiction, weird fiction, or internet culture that you are familiar with, and give one keyword for each.",
+                    zh: "列出三部你熟悉的影视、科幻、怪奇或网络文化作品 / 现象，并各给一个关键词。",
+                  },
+                },
+                {
+                  code: "CME-MED-03",
+                  text: {
+                    en: "Choose a work or online phenomenon and explain how it attracts people through visual style, genre motifs, or circulation mechanisms.",
+                    zh: "选一个作品或网络现象，说明它如何通过视觉风格、类型母题或传播机制吸引人。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: {
+            en: "VII. Life Practice and Embodied Knowledge",
+            zh: "七、生活实践与身体经验",
+          },
+          groups: [
+            {
+              title: {
+                en: "19. Health and Medical Common Sense",
+                zh: "19. 健康与医疗常识",
+              },
+              questions: [
+                {
+                  code: "LPK-HEA-01",
+                  text: {
+                    en: "In one or two sentences, explain one common concept among inflammation, infection, allergy, antibiotics, and antipyretics.",
+                    zh: "用一两句话说明“发炎”“感染”“过敏”“抗生素 / 退烧药”中任一常见概念。",
+                  },
+                },
+                {
+                  code: "LPK-HEA-02",
+                  text: {
+                    en: "List two health-information sources or judgment principles you are familiar with, and explain why you trust them.",
+                    zh: "列出两个你熟悉的健康信息来源或判断原则，并说明为什么信它。",
+                  },
+                },
+                {
+                  code: "LPK-HEA-03",
+                  text: {
+                    en: "Describe a personal judgment case involving when to observe, when to rest, and when to seek medical care, and explain your basis.",
+                    zh: "说出一个“何时观察、何时就医”的个人判断案例，并说明依据。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "20. Exercise and Nutrition",
+                zh: "20. 运动与营养",
+              },
+              questions: [
+                {
+                  code: "LPK-FIT-01",
+                  text: {
+                    en: "In one or two sentences, distinguish aerobic exercise from strength training, or protein from carbohydrates.",
+                    zh: "用一两句话区分“有氧”和“力量”，或“蛋白质”和“碳水”的主要作用。",
+                  },
+                },
+                {
+                  code: "LPK-FIT-02",
+                  text: {
+                    en: "Name a training or nutrition concept you are familiar with and briefly explain it.",
+                    zh: "说出一个你熟悉的训练或营养概念，并简述含义。",
+                  },
+                },
+                {
+                  code: "LPK-FIT-03",
+                  text: {
+                    en: "In two or three sentences, explain how you would adjust exercise or diet according to a goal.",
+                    zh: "用两三句话说明你会如何根据目标调整运动或饮食。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "21. Time Management, Communication, and Daily Systems",
+                zh: "21. 时间管理、沟通与日常系统",
+              },
+              questions: [
+                {
+                  code: "LPK-LIF-01",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: priority, boundary, review, or procrastination trigger.",
+                    zh: "用一两句话解释“优先级”“边界”“复盘”“拖延触发因素”中任一概念。",
+                  },
+                },
+                {
+                  code: "LPK-LIF-02",
+                  text: {
+                    en: "Name a life-management or communication tool or method you often use, and explain what problem it solves.",
+                    zh: "说出一个你常用的生活或沟通工具 / 方法，并说明它解决什么问题。",
+                  },
+                },
+                {
+                  code: "LPK-LIF-03",
+                  text: {
+                    en: "Give a concrete example of how you optimized a routine, declined an invitation, or arranged tasks, and explain your method.",
+                    zh: "举一个你优化日常流程、拒绝邀请或安排任务的具体例子，并说明做法。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: {
+            en: "VIII. Aesthetics and Creative Practice",
+            zh: "八、审美与创造实践",
+          },
+          groups: [
+            {
+              title: {
+                en: "22. Writing and Editing",
+                zh: "22. 写作与编辑",
+              },
+              questions: [
+                {
+                  code: "ACP-WRI-01",
+                  text: {
+                    en: "In one or two sentences, explain the role of structure, tone, or claim-and-evidence in writing.",
+                    zh: "用一两句话说明“结构”“语气”或“论点—论据”在写作中的作用。",
+                  },
+                },
+                {
+                  code: "ACP-WRI-02",
+                  text: {
+                    en: "List three types of texts you have written or are familiar with, and give one writing focus for each.",
+                    zh: "列三类你写过或熟悉的文本，并各给一个写作重点。",
+                  },
+                },
+                {
+                  code: "ACP-WRI-03",
+                  text: {
+                    en: "Choose one revision action you often make when writing, and explain when you use it.",
+                    zh: "选一项你写作时常做的修改动作，说明你何时这样做。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "23. Visual Design",
+                zh: "23. 视觉设计",
+              },
+              questions: [
+                {
+                  code: "ACP-VIS-01",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: composition, negative space, visual hierarchy, or contrast.",
+                    zh: "用一两句话解释“构图”“留白”“视觉层级”“对比”中任一概念。",
+                  },
+                },
+                {
+                  code: "ACP-VIS-02",
+                  text: {
+                    en: "Name a design element or standard you are familiar with, and explain what it affects.",
+                    zh: "说出一个你熟悉的设计元素或规范，并说明它影响什么。",
+                  },
+                },
+                {
+                  code: "ACP-VIS-03",
+                  text: {
+                    en: "Choose a visual work you made or like, and explain why it is clear or refined.",
+                    zh: "选一个你做过或喜欢的视觉作品，说明它为何“清楚”或“高级”。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "24. Audio, Video, and Web Presentation",
+                zh: "24. 音视频与网页呈现",
+              },
+              questions: [
+                {
+                  code: "ACP-MWP-01",
+                  text: {
+                    en: "In one or two sentences, distinguish recording, mixing, and editing, or navigation and information architecture.",
+                    zh: "用一两句话区分“录音、混音、剪辑”或“导航、信息架构”。",
+                  },
+                },
+                {
+                  code: "ACP-MWP-02",
+                  text: {
+                    en: "Name a production or presentation tool or workflow step you are familiar with, and explain its key judgment point.",
+                    zh: "说出一个你熟悉的制作或呈现工具 / 流程环节，并说明它的关键判断点。",
+                  },
+                },
+                {
+                  code: "ACP-MWP-03",
+                  text: {
+                    en: "Give an example of an audio, video, or web project you made, and explain how you decided its final presentation.",
+                    zh: "举一个你做过的音频、视频或网页项目，说明你如何决定最终呈现方式。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: {
+            en: "IX. World Issues and Contemporary Reality",
+            zh: "九、世界认知与现实议题",
+          },
+          groups: [
+            {
+              title: {
+                en: "25. Technology Trends and Industrial Change",
+                zh: "25. 科技趋势与产业变化",
+              },
+              questions: [
+                {
+                  code: "WIC-TEC-01",
+                  text: {
+                    en: "List two technology trends you have followed most closely in the past three years, and explain the reason for each in one sentence.",
+                    zh: "列出近三年你最关注的两个科技趋势，并各用一句话说明原因。",
+                  },
+                },
+                {
+                  code: "WIC-TEC-02",
+                  text: {
+                    en: "Name a trend concept you are familiar with and briefly explain it. Examples include platformization, automation, local models, chips, energy transition, and biotechnology.",
+                    zh: "说出一个你熟悉的趋势概念，并简述含义。比如平台化、自动化、本地模型、芯片、能源转型、生物技术等。",
+                  },
+                },
+                {
+                  code: "WIC-TEC-03",
+                  text: {
+                    en: "Choose a trend and explain how it concretely changes work, study, or industry structure.",
+                    zh: "选一个趋势，说明它如何具体改变工作、学习或行业结构。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "26. International Relations and Public Risk",
+                zh: "26. 国际关系与公共风险",
+              },
+              questions: [
+                {
+                  code: "WIC-GEO-01",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: geopolitical risk, supply chain, sanctions, or alliance.",
+                    zh: "用一两句话说明“地缘风险”“供应链”“制裁”“联盟”中任一概念。",
+                  },
+                },
+                {
+                  code: "WIC-GEO-02",
+                  text: {
+                    en: "Name an international issue you continuously follow, and state two types of information you usually check.",
+                    zh: "列出一个你持续关注的国际议题，并说出你通常会看的两类信息。",
+                  },
+                },
+                {
+                  code: "WIC-GEO-03",
+                  text: {
+                    en: "Choose an international event and explain how it may affect ordinary people’s prices, employment, energy, or investment expectations.",
+                    zh: "选一个国际事件，说明它如何影响普通人的价格、就业、能源或投资预期。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "27. Population, Cities, Climate, and Sustainability",
+                zh: "27. 人口、城市、气候与可持续",
+              },
+              questions: [
+                {
+                  code: "WIC-UES-01",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: aging, urbanization, carbon emissions, or energy transition.",
+                    zh: "用一两句话说明“老龄化”“城市化”“碳排放”“能源转型”中任一概念。",
+                  },
+                },
+                {
+                  code: "WIC-UES-02",
+                  text: {
+                    en: "Name a real-world indicator or observation point you are familiar with, and explain what it reflects. Examples include housing-price-to-income ratio, commuting time, fertility rate, and frequency of extreme weather.",
+                    zh: "说出一个你熟悉的现实指标或观察点，并说明它反映什么。比如房价收入比、通勤时间、出生率、极端天气频率等。",
+                  },
+                },
+                {
+                  code: "WIC-UES-03",
+                  text: {
+                    en: "Choose a city, population, or climate issue you can feel around you, and explain how it changes personal choices.",
+                    zh: "选一个你身边能感受到的城市、人口或气候问题，说明它如何改变个人选择。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: {
+            en: "X. Meta-knowledge and Methodology",
+            zh: "十、元知识与方法论",
+          },
+          groups: [
+            {
+              title: {
+                en: "28. Research Design and Argumentation",
+                zh: "28. 研究设计与论证",
+              },
+              questions: [
+                {
+                  code: "MMM-RES-01",
+                  text: {
+                    en: "In one or two sentences, explain one of the following: research question, variable, case, or causality.",
+                    zh: "用一两句话说明“研究问题”“变量”“案例”“因果”中任一概念。",
+                  },
+                },
+                {
+                  code: "MMM-RES-02",
+                  text: {
+                    en: "State a method-selection rule you are familiar with: what kinds of questions are better suited for quantitative methods, and what kinds for qualitative methods?",
+                    zh: "说出一个你熟悉的方法选择规则：什么问题更适合定量，什么更适合定性？",
+                  },
+                },
+                {
+                  code: "MMM-RES-03",
+                  text: {
+                    en: "Give a research question you have worked on or would like to study, and state what materials you would collect.",
+                    zh: "给一个你想研究或研究过的问题，并说出你会收集什么材料。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "29. Information Retrieval, Source Judgment, and Statistical Thinking",
+                zh: "29. 信息检索、来源判断与统计思维",
+              },
+              questions: [
+                {
+                  code: "MMM-INF-01",
+                  text: {
+                    en: "In one or two sentences, distinguish fact, opinion, and speculation, or correlation and causation.",
+                    zh: "用一两句话区分“事实、观点、推测”或“相关、因果”。",
+                  },
+                },
+                {
+                  code: "MMM-INF-02",
+                  text: {
+                    en: "Name a search or verification action you often use, and explain its function.",
+                    zh: "说出一个你常用的检索或核查动作，并说明作用。",
+                  },
+                },
+                {
+                  code: "MMM-INF-03",
+                  text: {
+                    en: "Give an example where data, a source, or a chart changed your judgment.",
+                    zh: "举一个你因为数据、来源或图表而改变判断的例子。",
+                  },
+                },
+              ],
+            },
+            {
+              title: {
+                en: "30. Knowledge Organization and Long-term Maintenance",
+                zh: "30. 知识组织与长期维护",
+              },
+              questions: [
+                {
+                  code: "MMM-KNO-01",
+                  text: {
+                    en: "In one or two sentences, explain why one of the following matters: classification, tagging, naming rules, or archiving.",
+                    zh: "用一两句话说明“分类”“标签”“命名规则”“归档”之一为何重要。",
+                  },
+                },
+                {
+                  code: "MMM-KNO-02",
+                  text: {
+                    en: "Name a knowledge-organization unit you actually use, and explain its suitable context. Examples include folders, project pages, spreadsheets, note databases, index pages, and tag systems.",
+                    zh: "说出一个你实际使用的知识组织单元，并说明适用场景。比如文件夹、项目页、表格、笔记库、索引页、标签系统等。",
+                  },
+                },
+                {
+                  code: "MMM-KNO-03",
+                  text: {
+                    en: "Give an example of how you handle materials that may be useful later, and explain your selection criteria.",
+                    zh: "举一个你如何处理“以后可能有用”的资料的例子，并说明取舍标准。",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ];
+
+      const pageText = {
+        en: {
+          heroEyebrow: "Archive · Deprecated Framework",
+          heroTitle: "Knowledge Assessment Index",
+          heroText:
+            "A retired framework for listing knowledge domains, subfields, and an abandoned assessment questionnaire.",
+          overviewNote: "Overview",
+          overviewText:
+            "This page preserves a discontinued attempt to build a personal knowledge assessment system. It keeps the structural frame, empty rating slots, and the original question set that was once intended for AI-assisted evaluation.",
+          structureNote: "Structure",
+          structureTitle: "Domain and Subfield List",
+          structureSide: "Ratings are intentionally left blank.",
+          noteText:
+            "This version was designed as a private sorting framework. The original plan was to answer a set of structured prompts and use AI to infer a rough assessment for each area. The approach was later abandoned, and the page was moved into a deprecated archive path.",
+          searchPlaceholder: "Search domains and subfields...",
+          defaultOrder: "Default Order",
+          alpha: "A–Z",
+          tableSubfield: "Subfield",
+          tableScope: "Scope",
+          tableRating: "Assessment",
+          unrated: "Unfilled",
+          empty: "No matching domains found.",
+          questionnaireNote: "Archived Questionnaire",
+          questionnaireTitle: "Personal Knowledge Atlas Assessment Questions",
+          questionnaireSide:
+            "A discontinued attempt to evaluate knowledge through structured prompts.",
+          questionnaireIntro:
+            "This section preserves the original questionnaire prepared for AI-assisted evaluation. The plan was to answer these questions, submit the responses to an AI system, and use the result to fill the assessment table above. The process was later discontinued, and the page is now kept only as an archived draft.",
+          questionnaireSummary: "Show archived question set",
+        },
+        zh: {
+          heroEyebrow: "归档 · 废弃框架",
+          heroTitle: "知识评估索引",
+          heroText: "一个用于列出知识大类、子学科和废弃评估题库的归档框架。",
+          overviewNote: "概览",
+          overviewText:
+            "这一页保留一次已经中止的个人知识评估系统尝试。它包含结构框架、空置的掌握程度栏，以及原本准备用于 AI 辅助评估的题库。",
+          structureNote: "结构",
+          structureTitle: "大类与子学科清单",
+          structureSide: "掌握程度刻意留空。",
+          noteText:
+            "这个版本原本用于私人整理。最初设想是回答一组结构化问题，再交给 AI 辅助推断各领域的大致掌握情况。后来放弃继续维护这个方案，并将页面移入废弃归档路径。",
+          searchPlaceholder: "搜索知识大类和子学科...",
+          defaultOrder: "默认顺序",
+          alpha: "按字母",
+          tableSubfield: "子学科",
+          tableScope: "范围",
+          tableRating: "掌握程度",
+          unrated: "未填写",
+          empty: "没有匹配的领域。",
+          questionnaireNote: "废弃题库",
+          questionnaireTitle: "个人知识图谱评估题库",
+          questionnaireSide: "一次试图通过结构化问题评估知识状态的废弃尝试。",
+          questionnaireIntro:
+            "这一部分保留原本准备用于 AI 辅助评估的完整题库。最初计划是逐题回答后，将答案交给 AI 分析，并据此填写上方的掌握程度表格。后来这个流程被放弃，页面也被放入废弃路径，仅作为草稿归档。",
+          questionnaireSummary: "展开废弃题库",
+        },
+      };
+
+      const domainList = document.getElementById("domain-list");
+      const searchBox = document.getElementById("search-box");
+      const sortSelect = document.getElementById("sort-select");
+      const questionnaireContent = document.getElementById(
+        "questionnaire-content",
+      );
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+        renderDomains();
+        renderQuestionnaire();
+      }
+
+      function getText(value) {
+        if (!value) return "";
+        if (typeof value === "string") return value;
+        return value[lang] || value.en || "";
+      }
+
+      function setText(id, value) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+      }
+
+      function domainMatches(domain, query) {
+        if (!query) return true;
+
+        const q = query.toLowerCase();
+        const parts = [getText(domain.title), getText(domain.desc)];
+
+        domain.subfields.forEach((item) => {
+          parts.push(getText(item.name), getText(item.scope));
+        });
+
+        return parts.join(" ").toLowerCase().includes(q);
+      }
+
+      function createDomainCard(domain) {
+        const t = pageText[lang];
+
+        const card = document.createElement("article");
+        card.className = "domain-card";
+
+        const head = document.createElement("div");
+        head.className = "domain-head";
+
+        const left = document.createElement("div");
+
+        const title = document.createElement("h3");
+        title.className = "domain-title";
+        title.textContent = getText(domain.title);
+
+        const desc = document.createElement("p");
+        desc.className = "domain-desc";
+        desc.textContent = getText(domain.desc);
+
+        left.appendChild(title);
+        left.appendChild(desc);
+
+        const index = document.createElement("span");
+        index.className = "domain-index";
+        index.textContent = String(domain.order).padStart(2, "0");
+
+        head.appendChild(left);
+        head.appendChild(index);
+
+        const table = document.createElement("table");
+        table.className = "subfield-table";
+
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>${t.tableSubfield}</th>
+              <th>${t.tableScope}</th>
+              <th>${t.tableRating}</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        `;
+
+        const tbody = table.querySelector("tbody");
+
+        domain.subfields.forEach((item) => {
+          const tr = document.createElement("tr");
+
+          const name = document.createElement("td");
+          name.className = "subfield-name";
+          name.textContent = getText(item.name);
+
+          const scope = document.createElement("td");
+          scope.className = "subfield-scope";
+          scope.textContent = getText(item.scope);
+
+          const rating = document.createElement("td");
+          rating.className = "subfield-rating";
+          rating.innerHTML = `<span class="rating-placeholder">${t.unrated}</span>`;
+
+          tr.appendChild(name);
+          tr.appendChild(scope);
+          tr.appendChild(rating);
+          tbody.appendChild(tr);
+        });
+
+        card.appendChild(head);
+        card.appendChild(table);
+
+        return card;
+      }
+
+      function renderDomains() {
+        domainList.innerHTML = "";
+
+        const query = searchBox.value.trim();
+        let data = domainData.filter((domain) => domainMatches(domain, query));
+
+        if (sortSelect.value === "alpha") {
+          data = data.sort((a, b) =>
+            getText(a.title).localeCompare(
+              getText(b.title),
+              lang === "zh" ? "zh" : "en",
+            ),
+          );
+        } else {
+          data = data.sort((a, b) => a.order - b.order);
+        }
+
+        if (!data.length) {
+          const empty = document.createElement("div");
+          empty.className = "ka-empty";
+          empty.textContent = pageText[lang].empty;
+          domainList.appendChild(empty);
+          return;
+        }
+
+        data.forEach((domain) => {
+          domainList.appendChild(createDomainCard(domain));
+        });
+      }
+
+      function renderQuestionnaire() {
+        questionnaireContent.innerHTML = "";
+
+        questionnaireData.forEach((domain) => {
+          const domainEl = document.createElement("div");
+          domainEl.className = "question-domain";
+
+          const h3 = document.createElement("h3");
+          h3.textContent = getText(domain.title);
+          domainEl.appendChild(h3);
+
+          domain.groups.forEach((group) => {
+            const groupEl = document.createElement("div");
+            groupEl.className = "question-group";
+
+            const h4 = document.createElement("h4");
+            h4.textContent = getText(group.title);
+            groupEl.appendChild(h4);
+
+            group.questions.forEach((q) => {
+              const item = document.createElement("div");
+              item.className = "question-item";
+
+              const code = document.createElement("span");
+              code.className = "question-code";
+              code.textContent = q.code;
+
+              const text = document.createElement("p");
+              text.className = "question-text";
+              text.textContent = getText(q.text);
+
+              item.appendChild(code);
+              item.appendChild(text);
+              groupEl.appendChild(item);
+            });
+
+            domainEl.appendChild(groupEl);
+          });
+
+          questionnaireContent.appendChild(domainEl);
+        });
+      }
+
+      function renderLang() {
+        const t = pageText[lang];
+
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        if (window.i18n && window.i18n[lang]) {
+          document.getElementById("logo-text").textContent = i18n[lang].logo;
+          document.querySelector(".footer-inner p:first-child").textContent =
+            i18n[lang].copyright;
+          document.querySelector(".footer-inner p:last-child").innerHTML =
+            i18n[lang].copyright2;
+        }
+
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        setText("ka-hero-eyebrow", t.heroEyebrow);
+        setText("ka-hero-title", t.heroTitle);
+        setText("ka-hero-text", t.heroText);
+
+        setText("ka-overview-note", t.overviewNote);
+        setText("ka-overview-text", t.overviewText);
+
+        setText("ka-structure-note", t.structureNote);
+        setText("ka-structure-title", t.structureTitle);
+        setText("ka-structure-side", t.structureSide);
+        setText("ka-note-text", t.noteText);
+
+        setText("ka-questionnaire-note", t.questionnaireNote);
+        setText("ka-questionnaire-title", t.questionnaireTitle);
+        setText("ka-questionnaire-side", t.questionnaireSide);
+        setText("ka-questionnaire-intro", t.questionnaireIntro);
+        setText("ka-questionnaire-summary", t.questionnaireSummary);
+
+        searchBox.placeholder = t.searchPlaceholder;
+
+        sortSelect.innerHTML = `
+          <option value="order">${t.defaultOrder}</option>
+          <option value="alpha">${t.alpha}</option>
+        `;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        lang = localStorage.getItem("lang") || "en";
+
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+
+        searchBox.addEventListener("input", renderDomains);
+        sortSelect.addEventListener("change", renderDomains);
+
+        renderLang();
+        renderDomains();
+        renderQuestionnaire();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

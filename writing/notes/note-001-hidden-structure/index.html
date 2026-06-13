@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On Hidden Structure - Alterven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .note-page {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .note-meta {
+        font-size: 0.88rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+
+      .note-subtitle {
+        color: var(--text-soft);
+        line-height: 1.76;
+        font-size: 1.06rem;
+        margin: 0;
+        max-width: 700px;
+      }
+
+      .note-divider {
+        width: 56px;
+        height: 1px;
+        background: var(--line);
+        margin: 14px 0 0;
+      }
+
+      .note-body {
+        font-size: 1.06rem;
+        line-height: 1.92;
+        color: var(--text);
+      }
+
+      .note-body p {
+        margin: 0 0 1.35em;
+        color: var(--text-soft);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner note-page">
+          <p class="eyebrow" id="note-eyebrow">Writing · Notes</p>
+          <h1 id="note-title">On Hidden Structure</h1>
+          <div class="note-meta" id="note-meta">Apr 2026 · Note</div>
+          <p class="note-subtitle" id="note-subtitle">
+            On how withheld information and unanswered questions can themselves
+            become structure.
+          </p>
+          <div class="note-divider"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container note-page">
+          <article class="note-body">
+            <p id="note-p1">
+              Some information is not merely hidden. It cannot be stated directly
+              without changing the conditions under which it exists.
+            </p>
+            <p id="note-p2">
+              If I do not want you to discover my identity, and I know there is a
+              specific way to infer it, then I cannot tell you the way. The moment
+              I describe it, I have already given you the method itself.
+            </p>
+            <p id="note-p3">
+              In that sense, information is not only what is present. It also
+              includes what must be withheld. The boundary of expression is part
+              of the structure.
+            </p>
+            <p id="note-p4">
+              There is another related situation: not answering is itself a kind
+              of answer. Silence does not always mean emptiness. Sometimes it
+              marks a limit that cannot be crossed without breaking the system.
+            </p>
+            <p id="note-p5">
+              So what is missing may be more meaningful than what is visible. An
+              omission can indicate risk, constraint, or a deeper logic that
+              cannot survive direct exposure.
+            </p>
+            <p id="note-p6">
+              To understand a structure, it is not enough to read what it says.
+              One must also read what it refuses to say.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        "note-eyebrow": { en: "Writing · Notes", zh: "写作 · 笔记" },
+
+        "note-title": {
+          en: "On Hidden Structure",
+          zh: "关于隐藏结构",
+        },
+
+        "note-meta": {
+          en: "Apr 2026 · Note",
+          zh: "2026年4月 · 笔记",
+        },
+
+        "note-subtitle": {
+          en: "On how withheld information and unanswered questions can themselves become structure.",
+          zh: "关于被保留的信息与未被回答的问题如何本身构成结构。",
+        },
+
+        "note-p1": {
+          en: "Some information is not merely hidden. It cannot be stated directly without changing the conditions under which it exists.",
+          zh: "有些信息并不只是被隐藏，而是不能被直接说出。因为一旦说出，它所处的条件就已经改变了。",
+        },
+
+        "note-p2": {
+          en: "If I do not want you to discover my identity, and I know there is a specific way to infer it, then I cannot tell you the way. The moment I describe it, I have already given you the method itself.",
+          zh: "如果我不希望你发现我的身份，同时我又知道存在一种可以推知我身份的方法，那么我就不能把这件事情告诉你。因为一旦说明，我就已经把方法本身交给了你。",
+        },
+
+        "note-p3": {
+          en: "In that sense, information is not only what is present. It also includes what must be withheld. The boundary of expression is part of the structure.",
+          zh: "从这个意义上说，信息不仅存在于被表达的内容中，也存在于必须被保留的部分。表达的边界，本身就是结构的一部分。",
+        },
+
+        "note-p4": {
+          en: "There is another related situation: not answering is itself a kind of answer. Silence does not always mean emptiness. Sometimes it marks a limit that cannot be crossed without breaking the system.",
+          zh: "还有一种相近的情况：不回答，本身也是一种回答。沉默并不总是空白，有时它只是标记出一个不能被越过的边界，因为一旦越过，系统本身就会被破坏。",
+        },
+
+        "note-p5": {
+          en: "So what is missing may be more meaningful than what is visible. An omission can indicate risk, constraint, or a deeper logic that cannot survive direct exposure.",
+          zh: "因此，缺失的部分有时比可见的部分更有意义。一次省略，可能指向风险、约束，或某种无法承受直接暴露的更深层逻辑。",
+        },
+
+        "note-p6": {
+          en: "To understand a structure, it is not enough to read what it says. One must also read what it refuses to say.",
+          zh: "要理解一个结构，不能只看它说了什么，也要看它拒绝说什么。",
+        },
+      };
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

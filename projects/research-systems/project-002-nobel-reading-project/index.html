@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nobel Reading Project - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      .nobel-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .nobel-wide-button {
+        min-width: 180px;
+        padding-left: 34px;
+        padding-right: 34px;
+        text-align: center;
+      }
+
+      .system-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .system-meta-card {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 14px;
+        padding: 15px 16px;
+      }
+
+      .system-meta-card span {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--text-dim);
+        margin-bottom: 7px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .system-meta-card strong {
+        display: block;
+        font-size: 1rem;
+        color: var(--text);
+        font-weight: 600;
+        line-height: 1.35;
+      }
+
+      .system-block {
+        display: grid;
+        grid-template-columns: 210px 1fr;
+        gap: 32px;
+        align-items: start;
+      }
+
+      .system-block-note {
+        font-size: 0.82rem;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding-top: 7px;
+      }
+
+      .system-block-content h2 {
+        margin-top: 0;
+        margin-bottom: 16px;
+      }
+
+      .system-block-content p {
+        line-height: 1.82;
+        color: var(--text-soft);
+      }
+
+      .system-module-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .system-module-card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--bg-soft);
+        padding: 20px;
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .system-module-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(214, 194, 162, 0.34);
+        background: rgba(255, 248, 240, 0.055);
+      }
+
+      .system-module-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.05rem;
+      }
+
+      .system-module-card p {
+        margin: 0;
+        line-height: 1.72;
+        color: var(--text-soft);
+      }
+
+      .nobel-review-card {
+        border-color: rgba(214, 194, 162, 0.32);
+        background: linear-gradient(
+          145deg,
+          rgba(214, 194, 162, 0.11),
+          rgba(255, 248, 240, 0.035)
+        );
+      }
+
+      .nobel-category-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .nobel-category-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+        padding: 13px 0;
+      }
+
+      .nobel-category-item strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .nobel-category-item span {
+        color: var(--text-dim);
+      }
+
+      .nobel-final-action {
+        margin-top: 28px;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      @media (max-width: 980px) {
+        .system-module-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .system-meta-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .system-block {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .system-module-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nobel-category-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .system-meta-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nobel-actions {
+          flex-direction: column;
+        }
+
+        .nobel-actions .button,
+        .nobel-final-action .button {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container narrow">
+          <p class="eyebrow" id="sys-eyebrow">Projects · Research Systems</p>
+
+          <h1 id="sys-title">Nobel Reading Project</h1>
+
+          <p class="hero-text" id="sys-hero-text">
+            A long-term reading project on Nobel-related works, lectures,
+            papers, books, and the contexts behind awarded ideas.
+          </p>
+
+          <div class="nobel-actions">
+            <a
+              class="button primary nobel-wide-button"
+              id="enter-reviews-link"
+              href="/projects/research-systems/project-002-nobel-reading-project/reviews/"
+              >Enter Reviews</a
+            >
+            <a class="button" id="back-projects-link" href="/projects.html"
+              >Back to Projects</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <div class="system-meta-grid">
+            <div class="system-meta-card">
+              <span id="meta-field-label">Field</span>
+              <strong id="meta-field-value">Reading / Commentary</strong>
+            </div>
+
+            <div class="system-meta-card">
+              <span id="meta-status-label">Status</span>
+              <strong id="meta-status-value">Planned</strong>
+            </div>
+
+            <div class="system-meta-card">
+              <span id="meta-scope-label">Scope</span>
+              <strong id="meta-scope-value">Nobel Prizes</strong>
+            </div>
+
+            <div class="system-meta-card">
+              <span id="meta-output-label">Output</span>
+              <strong id="meta-output-value">Reviews / Notes</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="sys-note-label">Project Note</p>
+
+          <p class="lead-paragraph" id="sys-note-text">
+            This page defines the project itself. The actual reviews are
+            collected under this project in the Reviews section, where entries
+            are organized by prize category and year.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow system-block">
+          <div class="system-block-note" id="focus-label">Focus</div>
+
+          <div class="system-block-content">
+            <h2 id="focus-title">A readable archive of Nobel-related works</h2>
+
+            <p id="focus-p1">
+              The project reads Nobel Prize-winning works, Nobel lectures,
+              representative books, major papers, speeches, and later
+              discussions around past laureates.
+            </p>
+
+            <p id="focus-p2">
+              The aim is not to produce exhaustive academic papers. Each entry
+              is written as a concise review that preserves the core
+              contribution, context, and personal judgment in a form that
+              remains easy to read.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow system-block">
+          <div class="system-block-note" id="structure-label">Structure</div>
+
+          <div class="system-block-content">
+            <h2 id="structure-title">How the project is organized</h2>
+
+            <div class="system-module-grid">
+              <div class="system-module-card">
+                <h3 id="m1-title">Prize Context</h3>
+                <p id="m1-text">
+                  Year, prize category, laureate, awarded reason, and historical
+                  background.
+                </p>
+              </div>
+
+              <div class="system-module-card">
+                <h3 id="m2-title">Source Reading</h3>
+                <p id="m2-text">
+                  Awarded works, Nobel lectures, representative books, articles,
+                  or speeches.
+                </p>
+              </div>
+
+              <div class="system-module-card">
+                <h3 id="m3-title">Core Contribution</h3>
+                <p id="m3-text">
+                  The main idea, discovery, argument, achievement, or public
+                  significance.
+                </p>
+              </div>
+
+              <div class="system-module-card">
+                <h3 id="m4-title">Readable Review</h3>
+                <p id="m4-text">
+                  A short evaluation of what remains valuable, limited,
+                  difficult, or disputed.
+                </p>
+              </div>
+
+              <div class="system-module-card">
+                <h3 id="m5-title">Connections</h3>
+                <p id="m5-text">
+                  Links between laureates, years, disciplines, schools of
+                  thought, and later debates.
+                </p>
+              </div>
+
+              <div class="system-module-card nobel-review-card">
+                <h3 id="m6-title">Reviews Section</h3>
+                <p id="m6-text">
+                  The actual reviews are collected inside this project rather
+                  than under the general Writing section.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow system-block">
+          <div class="system-block-note" id="categories-label">Categories</div>
+
+          <div class="system-block-content">
+            <h2 id="categories-title">Prize categories</h2>
+
+            <p id="categories-intro">
+              Reviews are first grouped by Nobel Prize category, then arranged
+              by year.
+            </p>
+
+            <div class="nobel-category-list">
+              <div class="nobel-category-item">
+                <strong id="cat-literature">Literature</strong>
+                <span id="cat-literature-note">Works and lectures</span>
+              </div>
+
+              <div class="nobel-category-item">
+                <strong id="cat-peace">Peace</strong>
+                <span id="cat-peace-note">Actions and contexts</span>
+              </div>
+
+              <div class="nobel-category-item">
+                <strong id="cat-physics">Physics</strong>
+                <span id="cat-physics-note">Discoveries and models</span>
+              </div>
+
+              <div class="nobel-category-item">
+                <strong id="cat-chemistry">Chemistry</strong>
+                <span id="cat-chemistry-note">Methods and matter</span>
+              </div>
+
+              <div class="nobel-category-item">
+                <strong id="cat-medicine">Physiology or Medicine</strong>
+                <span id="cat-medicine-note">Life and disease</span>
+              </div>
+
+              <div class="nobel-category-item">
+                <strong id="cat-economics">Economic Sciences</strong>
+                <span id="cat-economics-note">Theories and systems</span>
+              </div>
+            </div>
+
+            <div class="nobel-final-action">
+              <a
+                class="button primary nobel-wide-button"
+                id="enter-reviews-link-bottom"
+                href="/projects/research-systems/project-002-nobel-reading-project/reviews/"
+                >Enter Reviews</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      const pageContent = {
+        "sys-eyebrow": {
+          en: "Projects · Research Systems",
+          zh: "项目 · 研究系统",
+        },
+        "sys-title": {
+          en: "Nobel Reading Project",
+          zh: "诺贝尔阅读计划",
+        },
+        "sys-hero-text": {
+          en: "A long-term reading project on Nobel-related works, lectures, papers, books, and the contexts behind awarded ideas.",
+          zh: "一个围绕诺贝尔奖相关作品、演讲、论文、著作及获奖思想背景展开的长期阅读项目。",
+        },
+        "enter-reviews-link": {
+          en: "Enter Reviews",
+          zh: "进入评述",
+        },
+        "enter-reviews-link-bottom": {
+          en: "Enter Reviews",
+          zh: "进入评述",
+        },
+        "back-projects-link": {
+          en: "Back to Projects",
+          zh: "返回项目",
+        },
+
+        "meta-field-label": {
+          en: "Field",
+          zh: "领域",
+        },
+        "meta-field-value": {
+          en: "Reading / Commentary",
+          zh: "阅读 / 评述",
+        },
+        "meta-status-label": {
+          en: "Status",
+          zh: "状态",
+        },
+        "meta-status-value": {
+          en: "Planned",
+          zh: "计划中",
+        },
+        "meta-scope-label": {
+          en: "Scope",
+          zh: "范围",
+        },
+        "meta-scope-value": {
+          en: "Nobel Prizes",
+          zh: "诺贝尔奖",
+        },
+        "meta-output-label": {
+          en: "Output",
+          zh: "产出",
+        },
+        "meta-output-value": {
+          en: "Reviews / Notes",
+          zh: "评述 / 笔记",
+        },
+
+        "sys-note-label": {
+          en: "Project Note",
+          zh: "项目说明",
+        },
+        "sys-note-text": {
+          en: "This page defines the project itself. The actual reviews are collected under this project in the Reviews section, where entries are organized by prize category and year.",
+          zh: "本页用于说明项目本身。具体评述将收录在本项目内部的“评述”部分，并按奖项类别与年份整理。",
+        },
+
+        "focus-label": {
+          en: "Focus",
+          zh: "焦点",
+        },
+        "focus-title": {
+          en: "A readable archive of Nobel-related works",
+          zh: "一个易读的诺贝尔相关作品档案",
+        },
+        "focus-p1": {
+          en: "The project reads Nobel Prize-winning works, Nobel lectures, representative books, major papers, speeches, and later discussions around past laureates.",
+          zh: "这个项目阅读诺贝尔获奖作品、获奖演讲、代表性著作、重要论文、演说，以及围绕历年获奖者产生的后续讨论。",
+        },
+        "focus-p2": {
+          en: "The aim is not to produce exhaustive academic papers. Each entry is written as a concise review that preserves the core contribution, context, and personal judgment in a form that remains easy to read.",
+          zh: "目标不是写成穷尽式学术论文。每篇内容都会以简要评述的形式呈现，在保持易读的同时保留核心贡献、历史语境与个人判断。",
+        },
+
+        "structure-label": {
+          en: "Structure",
+          zh: "结构",
+        },
+        "structure-title": {
+          en: "How the project is organized",
+          zh: "项目如何组织",
+        },
+        "m1-title": {
+          en: "Prize Context",
+          zh: "获奖语境",
+        },
+        "m1-text": {
+          en: "Year, prize category, laureate, awarded reason, and historical background.",
+          zh: "记录年份、奖项类别、获奖者、授奖理由与相关历史背景。",
+        },
+        "m2-title": {
+          en: "Source Reading",
+          zh: "原始阅读",
+        },
+        "m2-text": {
+          en: "Awarded works, Nobel lectures, representative books, articles, or speeches.",
+          zh: "阅读获奖作品、诺贝尔演讲、代表性著作、文章或演说。",
+        },
+        "m3-title": {
+          en: "Core Contribution",
+          zh: "核心贡献",
+        },
+        "m3-text": {
+          en: "The main idea, discovery, argument, achievement, or public significance.",
+          zh: "提炼主要思想、发现、论证、成就或公共意义。",
+        },
+        "m4-title": {
+          en: "Readable Review",
+          zh: "易读评述",
+        },
+        "m4-text": {
+          en: "A short evaluation of what remains valuable, limited, difficult, or disputed.",
+          zh: "简要评价其仍有价值之处、局限、难点或争议。",
+        },
+        "m5-title": {
+          en: "Connections",
+          zh: "关联",
+        },
+        "m5-text": {
+          en: "Links between laureates, years, disciplines, schools of thought, and later debates.",
+          zh: "连接不同获奖者、年份、学科、思想流派与后续讨论。",
+        },
+        "m6-title": {
+          en: "Reviews Section",
+          zh: "评述部分",
+        },
+        "m6-text": {
+          en: "The actual reviews are collected inside this project rather than under the general Writing section.",
+          zh: "具体评述收录在本项目内部，而不是放在普通写作栏目下。",
+        },
+
+        "categories-label": {
+          en: "Categories",
+          zh: "奖项",
+        },
+        "categories-title": {
+          en: "Prize categories",
+          zh: "奖项分类",
+        },
+        "categories-intro": {
+          en: "Reviews are first grouped by Nobel Prize category, then arranged by year.",
+          zh: "评述会先按诺贝尔奖项分类，再按年份排列。",
+        },
+        "cat-literature": {
+          en: "Literature",
+          zh: "文学奖",
+        },
+        "cat-literature-note": {
+          en: "Works and lectures",
+          zh: "作品与演讲",
+        },
+        "cat-peace": {
+          en: "Peace",
+          zh: "和平奖",
+        },
+        "cat-peace-note": {
+          en: "Actions and contexts",
+          zh: "行动与语境",
+        },
+        "cat-physics": {
+          en: "Physics",
+          zh: "物理学奖",
+        },
+        "cat-physics-note": {
+          en: "Discoveries and models",
+          zh: "发现与模型",
+        },
+        "cat-chemistry": {
+          en: "Chemistry",
+          zh: "化学奖",
+        },
+        "cat-chemistry-note": {
+          en: "Methods and matter",
+          zh: "方法与物质",
+        },
+        "cat-medicine": {
+          en: "Physiology or Medicine",
+          zh: "生理学或医学奖",
+        },
+        "cat-medicine-note": {
+          en: "Life and disease",
+          zh: "生命与疾病",
+        },
+        "cat-economics": {
+          en: "Economic Sciences",
+          zh: "经济学奖",
+        },
+        "cat-economics-note": {
+          en: "Theories and systems",
+          zh: "理论与系统",
+        },
+      };
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
+    </script>
+
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

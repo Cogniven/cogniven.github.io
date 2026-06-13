@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All-Weather Portfolio China Market Parameter Optimization</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      .project-page {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .project-cover {
+        width: 100%;
+        border-radius: 14px;
+        margin: 24px 0 32px;
+        overflow: hidden;
+      }
+
+      .project-cover img {
+        width: 100%;
+        display: block;
+      }
+
+      .project-meta {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .project-desc {
+        color: var(--text-soft);
+        line-height: 1.7;
+        font-size: 1.05rem;
+        margin-bottom: 32px;
+      }
+
+      .project-section h2 {
+        font-size: 1.3rem;
+        margin: 2em 0 0.8em;
+      }
+
+      .project-section p {
+        color: var(--text-soft);
+        line-height: 1.9;
+        margin-bottom: 1.2em;
+      }
+
+      .project-link-box {
+        margin: 18px 0 30px;
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--bg-soft);
+      }
+
+      .project-link-label {
+        font-size: 0.84rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 8px;
+      }
+
+      .project-link-box a {
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+        padding-bottom: 2px;
+      }
+
+      .project-link-box a:hover {
+        opacity: 0.88;
+      }
+
+      .project-chart {
+        width: 100%;
+        border-radius: 14px;
+        margin: 20px 0 32px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+      }
+
+      .project-chart img {
+        width: 100%;
+        display: block;
+      }
+
+      .project-chart-note {
+        font-size: 0.92rem;
+        color: var(--text-soft);
+        line-height: 1.8;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner project-page">
+          <p class="eyebrow" id="eyebrow">Works · Technical</p>
+          <h1 id="title">
+            All-Weather Portfolio China Market Parameter Optimization
+          </h1>
+          <div class="project-meta" id="meta">
+            2026 · Strategy Test / Excel Backtest
+          </div>
+          <p class="project-desc" id="desc">
+            A practical attempt to adapt the all-weather portfolio to the
+            Chinese market, moving from strategy scripting to manual Excel
+            backtesting and parameter tuning.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container project-page">
+          <div class="project-cover"></div>
+
+          <div class="project-link-box">
+            <div class="project-link-label" id="excel-label">Spreadsheet</div>
+            <a
+              id="excel-link"
+              href="/assets/files/works/technical-works/work-001-all-weather-portfolio-china/all-weather-backtest.xlsx"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open the Excel backtest file
+            </a>
+          </div>
+
+          <div class="project-section">
+            <h2 id="h2-1">Overview</h2>
+            <p id="p1">
+              This project started from the idea of applying the all-weather
+              portfolio to the Chinese market. The purpose was not simply to
+              imitate the classic foreign allocation model, but to test whether
+              a simplified domestic version could be made workable under a
+              clearer and more controlled asset structure.
+            </p>
+            <p id="p2">
+              In practical terms, the portfolio was reduced to four components:
+              CSI 300, gold, treasury bond ETF, and cash. These corresponded to
+              equity exposure, inflation-sensitive asset, defensive bond
+              allocation, and liquidity reserve.
+            </p>
+
+            <h2 id="h2-2">Method</h2>
+            <p id="p3">
+              Historical data for the four assets was collected and aligned into
+              a unified sequence. The original plan was to write a formal
+              strategy file and validate the allocation and rebalancing logic
+              using a standard backtesting method. That attempt failed to
+              produce a usable result, so the project could not continue through
+              its intended automated route.
+            </p>
+            <p id="p4">
+              After that, the entire model was rebuilt in Excel. The portfolio
+              process was reconstructed directly with formulas, including price
+              updates, position value, weight changes, rebalancing signals,
+              turnover, and fee effects. In this version, weekend gaps were
+              handled by carrying forward Friday prices, and trades were assumed
+              to take place at 8:00 every morning.
+            </p>
+            <p id="p5">
+              The rebalancing logic began from equal weights. Each asset started
+              at one quarter of total capital. A parameter k was introduced as
+              the rebalancing threshold: once any asset weight moved above or
+              below 25% ± k, the portfolio would rebalance back to equal
+              allocation.
+            </p>
+
+            <h2 id="h2-3">Data Range</h2>
+            <p id="p6">
+              The current dataset used in the Excel model runs from 2013-07-29
+              to 2025-12-09. This period covers a relatively long cross-cycle
+              interval and provides enough span to observe the interaction
+              between allocation, rebalancing threshold, and long-term portfolio
+              stability.
+            </p>
+
+            <h2 id="h2-4">Excel Framework</h2>
+            <p id="p7">
+              The workbook already contains price data, parameter inputs,
+              backtest calculations, chart output, and parameter adjustment
+              sections. In other words, Excel is not only a record of results
+              here, but the actual environment in which the strategy was rebuilt
+              and tested after the scripted route failed.
+            </p>
+            <p id="p8">
+              This manual framework makes each part of the process explicit:
+              asset values, total equity, asset weights, rebalance signals,
+              turnover, fees, historical peak, drawdown, and parameter
+              comparison can all be traced directly in the file.
+            </p>
+
+            <h2 id="h2-5">Equity Curve</h2>
+            <div class="project-chart">
+              <img
+                src="/assets/images/works/technical-works/work-001-all-weather-portfolio-china/equity-curve.png"
+                alt="equity curve"
+                onerror="
+                  this.src =
+                    'data:image/svg+xml;utf8,' +
+                    encodeURIComponent(
+                      `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='700' viewBox='0 0 1200 700'><rect width='1200' height='700' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='32' font-family='Georgia, serif'>Equity curve not added yet</text></svg>`,
+                    )
+                "
+              />
+            </div>
+            <p class="project-chart-note" id="chart-note">
+              This figure is reserved for the portfolio equity curve generated
+              from the Excel backtest.
+            </p>
+
+            <h2 id="h2-6">Result</h2>
+            <p id="p9">
+              The final outcome was not a clean system-level strategy
+              implementation, but a transparent manual backtesting framework.
+              What this project shows is not only a domestic adaptation of the
+              all-weather idea, but also a change in method: when the intended
+              technical path failed, the strategy was rebuilt as an explicit
+              calculation structure.
+            </p>
+            <p id="p10">
+              The result is slower and more manual, but also easier to inspect.
+              Every assumption is visible, every parameter can be adjusted, and
+              the logic of the portfolio remains open rather than hidden inside
+              a failed automated process.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>Unauthorized reproduction prohibited.</p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        eyebrow: { en: "Works · Technical", zh: "作品 · 技术" },
+
+        title: {
+          en: "All-Weather Portfolio China Market Parameter Optimization",
+          zh: "全天候投资组合中国市场参数优化",
+        },
+
+        meta: {
+          en: "2026 · Strategy Test / Excel Backtest",
+          zh: "2026 · 策略实验 / Excel 回测",
+        },
+
+        desc: {
+          en: "A practical attempt to adapt the all-weather portfolio to the Chinese market, moving from strategy scripting to manual Excel backtesting and parameter tuning.",
+          zh: "一个将全天候投资组合应用于中国市场的实践尝试，从策略脚本实现转向手动 Excel 回测与参数调整。",
+        },
+
+        "excel-label": {
+          en: "Spreadsheet",
+          zh: "表格文件",
+        },
+
+        "excel-link": {
+          en: "Open the Excel backtest file",
+          zh: "打开 Excel 回测文件",
+        },
+
+        "h2-1": {
+          en: "Overview",
+          zh: "概述",
+        },
+
+        p1: {
+          en: "This project started from the idea of applying the all-weather portfolio to the Chinese market. The purpose was not simply to imitate the classic foreign allocation model, but to test whether a simplified domestic version could be made workable under a clearer and more controlled asset structure.",
+          zh: "这个项目从将全天候投资组合应用于中国市场的设想开始。目的并不是简单模仿海外经典配置模型，而是测试在更清晰、更可控的资产结构下，是否能够构造出一个可运行的本土版本。",
+        },
+
+        p2: {
+          en: "In practical terms, the portfolio was reduced to four components: CSI 300, gold, treasury bond ETF, and cash. These corresponded to equity exposure, inflation-sensitive asset, defensive bond allocation, and liquidity reserve.",
+          zh: "在实际处理上，组合被简化为四个部分：沪深300、黄金、国债ETF和现金。它们分别对应权益暴露、通胀敏感资产、防御性债券配置和流动性储备。",
+        },
+
+        "h2-2": {
+          en: "Method",
+          zh: "方法",
+        },
+
+        p3: {
+          en: "Historical data for the four assets was collected and aligned into a unified sequence. The original plan was to write a formal strategy file and validate the allocation and rebalancing logic using a standard backtesting method. That attempt failed to produce a usable result, so the project could not continue through its intended automated route.",
+          zh: "四类资产的历史数据被收集并整理为统一序列。最初的计划，是编写正式策略文件，并使用标准回测方法验证配置与调仓逻辑。但这一尝试未能产出可用结果，因此项目无法沿着原定自动化路线继续推进。",
+        },
+
+        p4: {
+          en: "After that, the entire model was rebuilt in Excel. The portfolio process was reconstructed directly with formulas, including price updates, position value, weight changes, rebalancing signals, turnover, and fee effects. In this version, weekend gaps were handled by carrying forward Friday prices, and trades were assumed to take place at 8:00 every morning.",
+          zh: "在这之后，整个模型被转移到 Excel 中重建。组合过程通过公式直接重构，包括价格更新、持仓净值、权重变化、调仓信号、成交额和手续费影响。在这一版本中，周末空缺通过沿用周五价格处理，交易统一假设为每天早上 8 点执行。",
+        },
+
+        p5: {
+          en: "The rebalancing logic began from equal weights. Each asset started at one quarter of total capital. A parameter k was introduced as the rebalancing threshold: once any asset weight moved above or below 25% ± k, the portfolio would rebalance back to equal allocation.",
+          zh: "调仓逻辑从等权配置开始。四类资产各占初始资金的四分之一。随后引入参数 k 作为调仓阈值：当任一资产权重高于或低于 25% ± k 时，组合就重新调回等权。",
+        },
+
+        "h2-3": {
+          en: "Data Range",
+          zh: "数据时间",
+        },
+
+        p6: {
+          en: "The current dataset used in the Excel model runs from 2013-07-29 to 2025-12-09. This period covers a relatively long cross-cycle interval and provides enough span to observe the interaction between allocation, rebalancing threshold, and long-term portfolio stability.",
+          zh: "当前 Excel 模型所使用的数据时间范围为 2013-07-29 至 2025-12-09。这个区间覆盖了较长的跨周期阶段，足以观察配置结构、调仓阈值与长期组合稳定性之间的关系。",
+        },
+
+        "h2-4": {
+          en: "Excel Framework",
+          zh: "Excel 框架",
+        },
+
+        p7: {
+          en: "The workbook already contains price data, parameter inputs, backtest calculations, chart output, and parameter adjustment sections. In other words, Excel is not only a record of results here, but the actual environment in which the strategy was rebuilt and tested after the scripted route failed.",
+          zh: "这个工作簿已经包含价格数据、参数输入、回测计算、图表输出和参数调整等部分。也就是说，这里的 Excel 不只是结果记录，而是在脚本路线失败后真正承载策略重建与测试的执行环境。",
+        },
+
+        p8: {
+          en: "This manual framework makes each part of the process explicit: asset values, total equity, asset weights, rebalance signals, turnover, fees, historical peak, drawdown, and parameter comparison can all be traced directly in the file.",
+          zh: "这一手动框架把过程中的各个部分都显性化了：资产净值、组合总权益、资产权重、调仓信号、成交额、手续费、历史峰值、回撤与参数比较，都可以在文件中直接追踪。",
+        },
+
+        "h2-5": {
+          en: "Equity Curve",
+          zh: "收益曲线",
+        },
+
+        "chart-note": {
+          en: "This is the portfolio equity curve generated from the Excel backtest.",
+          zh: "这里是由 Excel 回测生成的组合收益曲线图。",
+        },
+
+        "h2-6": {
+          en: "Result",
+          zh: "结果",
+        },
+
+        p9: {
+          en: "The final result shows that this strategy remains relatively simple in structure, but it is still able to produce a usable return path under the chosen Chinese-market asset set and rebalancing rule.",
+          zh: "最终结果表明，这个策略的结构虽然比较简单，但在所选的中国市场资产组合与调仓规则下，仍然能够形成一条可用的收益路径。",
+        },
+
+        p10: {
+          en: "Its value does not lie in complexity, but in stability of logic: starting from equal allocation, using a fixed threshold and explicit rebalancing rule, the portfolio still delivered a sustained upward equity curve over a long sample period.",
+          zh: "它的价值不在于复杂，而在于逻辑的稳定性：在等权起始、固定阈值和明确调仓规则的前提下，组合仍然在较长样本区间内走出了持续向上的收益曲线。",
+        },
+      };
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        lang = localStorage.getItem("lang") || "en";
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
+
+      function renderLang() {
+        const navLinks = document.getElementById("nav-links");
+        const navs = i18n[lang].nav;
+
+        navLinks.innerHTML = `
+                <a href="/works.html">${navs[0]}</a>
+                <a href="/writing.html">${navs[1]}</a>
+                <a href="/projects.html">${navs[2]}</a>
+                <a href="/about.html">${navs[3]}</a>
+                <a href="/archive.html">${navs[4]}</a>
+            `;
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        document.getElementById("eyebrow").textContent =
+          lang === "zh" ? "作品 · 技术" : "Works · Technical";
+
+        document.getElementById("title").textContent =
+          lang === "zh"
+            ? "全天候投资组合中国市场参数优化"
+            : "All-Weather Portfolio China Market Parameter Optimization";
+
+        document.getElementById("meta").textContent =
+          lang === "zh"
+            ? "2026 · 策略实验 / Excel 回测"
+            : "2026 · Strategy Test / Excel Backtest";
+
+        document.getElementById("desc").textContent =
+          lang === "zh"
+            ? "一个将全天候投资组合应用于中国市场的实践尝试，从策略脚本实现转向手动 Excel 回测与参数调整。"
+            : "A practical attempt to adapt the all-weather portfolio to the Chinese market, moving from strategy scripting to manual Excel backtesting and parameter tuning.";
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+      }
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

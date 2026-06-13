@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On Diluted Expression - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .note-page {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .note-meta {
+        font-size: 0.88rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+
+      .note-subtitle {
+        color: var(--text-soft);
+        line-height: 1.76;
+        font-size: 1.06rem;
+        margin: 0;
+        max-width: 700px;
+      }
+
+      .note-divider {
+        width: 56px;
+        height: 1px;
+        background: var(--line);
+        margin: 14px 0 0;
+      }
+
+      .note-body {
+        font-size: 1.06rem;
+        line-height: 1.92;
+        color: var(--text);
+      }
+
+      .note-body p {
+        margin: 0 0 1.35em;
+        color: var(--text-soft);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner note-page">
+          <p class="eyebrow" id="note-eyebrow">Writing · Notes</p>
+          <h1 id="note-title">On Diluted Expression</h1>
+          <div class="note-meta" id="note-meta">Apr 2026 · Note</div>
+          <p class="note-subtitle" id="note-subtitle">
+            On how ideas can be expressed without being fully exposed.
+          </p>
+          <div class="note-divider"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container note-page">
+          <article class="note-body">
+            <p id="note-p1">
+              Years ago, I had the idea of refining my own writing into a more
+              condensed form. Not to simplify it, but to strip it down to
+              structure — to keep the meaning while reducing the surface.
+            </p>
+
+            <p id="note-p2">
+              At the time, this was difficult to execute. Writing tends to
+              expand itself. Once a sentence is started, it often carries more
+              detail than intended, and the act of editing becomes another layer
+              of rewriting.
+            </p>
+
+            <p id="note-p3">
+              Now, with AI, this process becomes possible. I can keep only a
+              rough outline — a compressed version of what I want to express —
+              and let another system complete the wording, the rhythm, and the
+              surface form.
+            </p>
+
+            <p id="note-p4">
+              This creates a separation between structure and expression. What
+              is written is no longer a direct exposure of the original thought,
+              but a mediated version of it. In that sense, the text becomes less
+              personal, or at least less directly traceable.
+            </p>
+
+            <p id="note-p5">
+              However, this distance is only partial. As the amount of writing
+              increases, patterns accumulate. Even if each piece is individually
+              reduced, the collection as a whole begins to reconstruct the
+              underlying structure.
+            </p>
+
+            <p id="note-p6">
+              Over time, repetition forms consistency, and consistency forms a
+              recognizable system. What was once diffused across many fragments
+              gradually becomes concentrated again.
+            </p>
+
+            <p id="note-p7">
+              So this approach does not remove exposure. It only delays it. The
+              structure remains there, and given enough material, it will
+              surface again.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      const pageContent = {
+        "note-eyebrow": { en: "Writing · Notes", zh: "写作 · 笔记" },
+
+        "note-title": {
+          en: "On Diluted Expression",
+          zh: "关于稀释表达",
+        },
+
+        "note-meta": {
+          en: "Apr 2026 · Note",
+          zh: "2026年4月 · 笔记",
+        },
+
+        "note-subtitle": {
+          en: "On how ideas can be expressed without being fully exposed.",
+          zh: "关于思想如何在不完全暴露的情况下被表达。",
+        },
+
+        "note-p1": {
+          en: "Years ago, I had the idea of refining my own writing into a more condensed form. Not to simplify it, but to strip it down to structure — to keep the meaning while reducing the surface.",
+          zh: "多年前，我曾有过一种想法：将自己的文字不断压缩与提炼。目的并不是简化，而是保留结构，在尽可能减少表层的同时保留意义。",
+        },
+
+        "note-p2": {
+          en: "At the time, this was difficult to execute. Writing tends to expand itself. Once a sentence is started, it often carries more detail than intended.",
+          zh: "当时，这一过程很难实现。文字具有自我扩张的倾向，一旦开始表达，就会不可避免地带出更多细节。",
+        },
+
+        "note-p3": {
+          en: "Now, with AI, this becomes possible. I only keep a compressed outline, and let another system complete the expression.",
+          zh: "现在，这件事变得可行。我只保留一个压缩后的轮廓，其余的表达、文笔与节奏交由另一套系统完成。",
+        },
+
+        "note-p4": {
+          en: "This creates a separation between structure and expression. What appears on the surface is no longer a direct projection of the original thought.",
+          zh: "这使结构与表达发生分离。呈现出来的文字，不再是原始思想的直接映射，而是一种被中介后的结果。",
+        },
+
+        "note-p5": {
+          en: "However, this distance is limited. As more texts accumulate, patterns begin to emerge. Even if each piece is reduced, the overall structure gradually becomes visible.",
+          zh: "但这种距离是有限的。随着文本数量的增加，模式会逐渐显现。即便单个片段被压缩，整体结构仍会被还原出来。",
+        },
+
+        "note-p6": {
+          en: "In the end, this approach does not remove exposure. It only delays it.",
+          zh: "最终，这种方式并不会消除暴露，只是将其延后。",
+        },
+
+        "note-p7": {
+          en: "Given enough material, structure will always reassemble itself.",
+          zh: "当信息足够多时，结构总会重新聚合。",
+        },
+      };
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

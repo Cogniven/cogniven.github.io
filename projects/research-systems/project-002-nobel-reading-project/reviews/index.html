@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nobel Reviews - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a href="/index.html" class="logo" id="logo-text" style="margin-right: auto">Alterven</a>
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div class="nav-links" id="nav-links" style="display: flex; gap: 24px">
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">EN</button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container narrow">
+          <p class="eyebrow" id="rv-eyebrow">Projects · Research Systems</p>
+          <h1 id="rv-title">Nobel Reviews</h1>
+          <p class="hero-text" id="rv-hero-text">Short and readable reviews organized by Nobel Prize category and year.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <p class="lead-paragraph" id="rv-desc">按诺贝尔奖项与年份整理的简要、易读评述。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <ul class="simple-list">
+            <li><a href="/projects/research-systems/project-002-nobel-reading-project/reviews/literature/" id="link-literature">Literature / 文学奖</a></li>
+            <li><a href="/projects/research-systems/project-002-nobel-reading-project/reviews/peace/" id="link-peace">Peace / 和平奖</a></li>
+            <li><a href="/projects/research-systems/project-002-nobel-reading-project/reviews/physics/" id="link-physics">Physics / 物理学奖</a></li>
+            <li><a href="/projects/research-systems/project-002-nobel-reading-project/reviews/chemistry/" id="link-chemistry">Chemistry / 化学奖</a></li>
+            <li><a href="/projects/research-systems/project-002-nobel-reading-project/reviews/medicine/" id="link-medicine">Physiology or Medicine / 生理学或医学奖</a></li>
+            <li><a href="/projects/research-systems/project-002-nobel-reading-project/reviews/economics/" id="link-economics">Economic Sciences / 经济学奖</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        "rv-eyebrow": { en: "Projects · Research Systems", zh: "项目 · 研究系统" },
+        "rv-title": { en: "Nobel Reviews", zh: "诺贝尔评述" },
+        "rv-hero-text": { en: "Short and readable reviews organized by Nobel Prize category and year.", zh: "按诺贝尔奖项与年份整理的简要、易读评述。" },
+        "rv-desc": { en: "Short and readable reviews organized by Nobel Prize category and year.", zh: "按诺贝尔奖项与年份整理的简要、易读评述。" },
+        "link-literature": { en: "Literature / 文学奖", zh: "文学奖 / Literature" },
+        "link-peace": { en: "Peace / 和平奖", zh: "和平奖 / Peace" },
+        "link-physics": { en: "Physics / 物理学奖", zh: "物理学奖 / Physics" },
+        "link-chemistry": { en: "Chemistry / 化学奖", zh: "化学奖 / Chemistry" },
+        "link-medicine": { en: "Physiology or Medicine / 生理学或医学奖", zh: "生理学或医学奖 / Physiology or Medicine" },
+        "link-economics": { en: "Economic Sciences / 经济学奖", zh: "经济学奖 / Economic Sciences" }
+      };
+
+      function setLang(newLang) { lang = newLang; localStorage.setItem("lang", lang); renderLang(); }
+      function renderLang() { if (window.buildNav) window.buildNav(lang); document.getElementById("logo-text").textContent = i18n[lang].logo; document.getElementById("lang-en").classList.toggle("active", lang === "en"); document.getElementById("lang-zh").classList.toggle("active", lang === "zh"); if (window.applyPageContentOverrides) window.applyPageContentOverrides(lang, pageContent); }
+      document.addEventListener("DOMContentLoaded", function () { document.getElementById("lang-en").onclick = () => setLang("en"); document.getElementById("lang-zh").onclick = () => setLang("zh"); setLang(lang); });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

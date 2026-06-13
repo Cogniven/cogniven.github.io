@@ -18,7 +18,7 @@ const ExperimentalForms = [
     },
     cover:
       "/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/cover.png",
-    link: "/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/index.html",
+    link: "/works/experimental-forms/work-001-qr-code-artistry-research/",
     date: "2026-03-22",
   },
 ];

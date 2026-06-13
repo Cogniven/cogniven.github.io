@@ -22,7 +22,7 @@ const TechnicalBuilds = [
     },
     cover:
       "/assets/images/projects/technical-builds/project-001-quant-research/cover.png",
-    link: "/assets/images/projects/technical-builds/project-001-quant-research/index.html",
+    link: "/projects/technical-builds/project-001-quant-research/",
     date: "2026-03-22",
   },
 ];

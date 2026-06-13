@@ -13,7 +13,7 @@ const Essays = [
       zh: "文章",
     },
     cover: "/assets/images/writing/essays/essay-001-structure-and-pressure/cover.jpg",
-    link: "/assets/images/writing/essays/essay-001-structure-and-pressure/index.html",
+    link: "/writing/essays/essay-001-structure-and-pressure/",
     date: "2026-03-22",
   },
 ];

@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Voice Simulation with DDSP - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      .project-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .project-meta span {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        color: var(--muted);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 0.9rem;
+      }
+
+      .project-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 48px;
+        align-items: start;
+      }
+
+      .project-content {
+        display: grid;
+        gap: 42px;
+      }
+
+      .project-block {
+        border-top: 1px solid var(--line);
+        padding-top: 28px;
+      }
+
+      .project-block h2 {
+        margin-bottom: 16px;
+      }
+
+      .project-block p {
+        color: var(--muted);
+        line-height: 1.85;
+        margin-bottom: 16px;
+      }
+
+      .project-block p:last-child {
+        margin-bottom: 0;
+      }
+
+      .project-sidebar {
+        position: sticky;
+        top: 110px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 18px;
+        padding: 22px;
+      }
+
+      .project-sidebar h3 {
+        margin-bottom: 18px;
+        font-size: 1rem;
+      }
+
+      .project-sidebar dl {
+        margin: 0;
+      }
+
+      .project-sidebar dt {
+        color: var(--muted);
+        font-size: 0.82rem;
+        margin-top: 18px;
+      }
+
+      .project-sidebar dt:first-child {
+        margin-top: 0;
+      }
+
+      .project-sidebar dd {
+        margin: 6px 0 0;
+        color: var(--text);
+        line-height: 1.55;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 18px;
+      }
+
+      .timeline-item {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 16px;
+        padding: 22px;
+      }
+
+      .timeline-item h3 {
+        margin-bottom: 10px;
+      }
+
+      .timeline-item p {
+        color: var(--muted);
+        line-height: 1.75;
+        margin: 0;
+      }
+
+      .note-box {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 18px;
+        padding: 24px;
+      }
+
+      .note-box p {
+        margin: 0;
+      }
+
+      @media (max-width: 900px) {
+        .project-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .project-sidebar {
+          position: static;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow" id="project-eyebrow">
+            Projects · Creative Development
+          </p>
+          <h1 id="project-title">AI Voice Simulation with DDSP</h1>
+          <p class="hero-text" id="project-subtitle">
+            A continuing experiment in personal voice modeling, dataset
+            construction, and controllable AI singing voice synthesis.
+          </p>
+
+          <div class="project-meta">
+            <span id="meta-status">Status · In Progress</span>
+            <span id="meta-field">Field · AI Audio</span>
+            <span id="meta-tool">Tool · DDSP</span>
+            <span id="meta-type">Type · Experimental System</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="overview-note">Overview</p>
+          <p class="lead-paragraph" id="overview-text">
+            This project explores AI-based voice simulation through DDSP. Across
+            three rounds of experimentation, the work has moved from early model
+            training based on archived voice recordings to a more deliberate
+            workflow involving dataset screening, updated model versions, and
+            newly recorded first-hand audio material.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container project-layout">
+          <article class="project-content">
+            <section class="project-block">
+              <h2 id="background-title">Background</h2>
+              <p id="background-p1">
+                The project began as an exploration of whether previously
+                recorded voice materials could be used to construct a usable
+                personal voice model. The earliest dataset came from old voice
+                acting recordings. Those materials were not originally recorded
+                for machine learning, but they provided a practical starting
+                point for testing DDSP-based voice modeling.
+              </p>
+              <p id="background-p2">
+                The first version used an early DDSP workflow. The exact number
+                of training steps was not fully recorded, but it was likely in
+                the range of several tens of thousands, roughly around forty to
+                fifty thousand steps. The result was sufficient for basic voice
+                conversion experiments, especially for replacing the vocal tone
+                of existing songs with a voice closer to my own.
+              </p>
+            </section>
+
+            <section class="project-block">
+              <h2 id="timeline-title">Development Log</h2>
+
+              <div class="timeline">
+                <div class="timeline-item">
+                  <h3 id="phase1-title">Phase I · Early DDSP Experiment</h3>
+                  <p id="phase1-text">
+                    The first round used an early version of DDSP and a dataset
+                    assembled from old voice acting recordings. The training
+                    process was exploratory, with an estimated scale of forty to
+                    fifty thousand steps. This phase mainly tested whether the
+                    available audio could produce a recognizable personal voice
+                    model.
+                  </p>
+                </div>
+
+                <div class="timeline-item">
+                  <h3 id="phase2-title">Phase II · DDSP-barbara-6.1</h3>
+                  <p id="phase2-text">
+                    The second round used the same general source material, but
+                    the recordings were screened more carefully before training.
+                    This version was trained with DDSP-barbara-6.1 for 110,000
+                    steps. Compared with the first version, the workflow became
+                    more controlled, and the model was used more regularly for
+                    song-based voice replacement experiments.
+                  </p>
+                </div>
+
+                <div class="timeline-item">
+                  <h3 id="phase3-title">
+                    Phase III · Current Dataset and Updated Model
+                  </h3>
+                  <p id="phase3-text">
+                    The current round is still in progress. It is planned around
+                    a newer model and a more deliberate dataset-building
+                    process. In addition to earlier materials, I am collecting
+                    first-hand voice recordings while playing games and speaking
+                    through voice chat. Since ordinary speech may not cover a
+                    wide enough pitch range, I am also considering recording
+                    selected songs as supplementary source material.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="project-block">
+              <h2 id="method-title">Method and Materials</h2>
+              <p id="method-p1">
+                The current workflow treats dataset construction as a central
+                part of the project. Instead of relying only on archived voice
+                clips, the newer phase emphasizes source control: clearer
+                recordings, more consistent vocal material, and a broader range
+                of pitch and expression.
+              </p>
+              <p id="method-p2">
+                Game voice-chat recordings provide natural speech samples and
+                capture a more spontaneous speaking style. However, they may be
+                limited in pitch coverage, recording consistency, and vocal
+                stability. For that reason, sung material may be added later to
+                improve coverage of high and low registers.
+              </p>
+            </section>
+
+            <section class="project-block">
+              <h2 id="application-title">Application</h2>
+              <p id="application-p1">
+                Previous models were mainly used for experimental song
+                conversion. The basic process was to take an existing song and
+                transform the vocal timbre toward a model trained on my own
+                voice. The purpose was not only to produce a novelty effect, but
+                also to understand how training quality, dataset selection, and
+                model version affect the final vocal texture.
+              </p>
+              <p id="application-p2">
+                In its current form, the project remains a personal technical
+                experiment rather than a finished audio product. The focus is on
+                model behavior, dataset quality, and the boundary between voice
+                resemblance and controllable synthesis.
+              </p>
+            </section>
+
+            <section class="project-block">
+              <h2 id="future-title">Future Direction</h2>
+              <p id="future-p1">
+                A later research direction is to experiment with cryptography-
+                inspired modification of the model itself. Conceptually, if a
+                trained model can be regarded as a structured sequence of
+                numerical parameters, then selected numerical changes may be
+                introduced to examine whether the model can be altered,
+                watermarked, weakened, protected, or made more personally
+                identifiable.
+              </p>
+              <p id="future-p2">
+                This idea is still speculative. Its feasibility has not yet been
+                evaluated, and it would require a clearer understanding of model
+                structure, parameter sensitivity, and the relationship between
+                numerical modification and audible output. At the present stage,
+                it is best understood as a possible experimental direction
+                rather than a confirmed technical route.
+              </p>
+            </section>
+
+            <section class="project-block">
+              <div class="note-box">
+                <p id="note-text">
+                  This is an active project. The model, dataset, and technical
+                  route are still being revised as new recordings are collected
+                  and tested.
+                </p>
+              </div>
+            </section>
+          </article>
+
+          <aside class="project-sidebar">
+            <h3 id="sidebar-title">Project Information</h3>
+            <dl>
+              <dt id="side-status-label">Status</dt>
+              <dd id="side-status-value">In Progress</dd>
+
+              <dt id="side-tool-label">Main Tool</dt>
+              <dd id="side-tool-value">DDSP / DDSP-barbara-6.1</dd>
+
+              <dt id="side-data-label">Source Material</dt>
+              <dd id="side-data-value">
+                Archived voice acting clips, screened voice recordings, game
+                voice-chat recordings, possible song recordings
+              </dd>
+
+              <dt id="side-training-label">Training Record</dt>
+              <dd id="side-training-value">
+                Phase I: approx. 40k–50k steps<br />
+                Phase II: 110k steps
+              </dd>
+
+              <dt id="side-output-label">Output</dt>
+              <dd id="side-output-value">
+                Personal voice simulation and song voice conversion experiments
+              </dd>
+            </dl>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      const text = {
+        en: {
+          logo: "Alterven",
+          projectEyebrow: "Projects · Creative Development",
+          projectTitle: "AI Voice Simulation with DDSP",
+          projectSubtitle:
+            "A continuing experiment in personal voice modeling, dataset construction, and controllable AI singing voice synthesis.",
+          metaStatus: "Status · In Progress",
+          metaField: "Field · AI Audio",
+          metaTool: "Tool · DDSP",
+          metaType: "Type · Experimental System",
+
+          overviewNote: "Overview",
+          overviewText:
+            "This project explores AI-based voice simulation through DDSP. Across three rounds of experimentation, the work has moved from early model training based on archived voice recordings to a more deliberate workflow involving dataset screening, updated model versions, and newly recorded first-hand audio material.",
+
+          backgroundTitle: "Background",
+          backgroundP1:
+            "The project began as an exploration of whether previously recorded voice materials could be used to construct a usable personal voice model. The earliest dataset came from old voice acting recordings. Those materials were not originally recorded for machine learning, but they provided a practical starting point for testing DDSP-based voice modeling.",
+          backgroundP2:
+            "The first version used an early DDSP workflow. The exact number of training steps was not fully recorded, but it was likely in the range of several tens of thousands, roughly around forty to fifty thousand steps. The result was sufficient for basic voice conversion experiments, especially for replacing the vocal tone of existing songs with a voice closer to my own.",
+
+          timelineTitle: "Development Log",
+          phase1Title: "Phase I · Early DDSP Experiment",
+          phase1Text:
+            "The first round used an early version of DDSP and a dataset assembled from old voice acting recordings. The training process was exploratory, with an estimated scale of forty to fifty thousand steps. This phase mainly tested whether the available audio could produce a recognizable personal voice model.",
+          phase2Title: "Phase II · DDSP-barbara-6.1",
+          phase2Text:
+            "The second round used the same general source material, but the recordings were screened more carefully before training. This version was trained with DDSP-barbara-6.1 for 110,000 steps. Compared with the first version, the workflow became more controlled, and the model was used more regularly for song-based voice replacement experiments.",
+          phase3Title: "Phase III · Current Dataset and Updated Model",
+          phase3Text:
+            "The current round is still in progress. It is planned around a newer model and a more deliberate dataset-building process. In addition to earlier materials, I am collecting first-hand voice recordings while playing games and speaking through voice chat. Since ordinary speech may not cover a wide enough pitch range, I am also considering recording selected songs as supplementary source material.",
+
+          methodTitle: "Method and Materials",
+          methodP1:
+            "The current workflow treats dataset construction as a central part of the project. Instead of relying only on archived voice clips, the newer phase emphasizes source control: clearer recordings, more consistent vocal material, and a broader range of pitch and expression.",
+          methodP2:
+            "Game voice-chat recordings provide natural speech samples and capture a more spontaneous speaking style. However, they may be limited in pitch coverage, recording consistency, and vocal stability. For that reason, sung material may be added later to improve coverage of high and low registers.",
+
+          applicationTitle: "Application",
+          applicationP1:
+            "Previous models were mainly used for experimental song conversion. The basic process was to take an existing song and transform the vocal timbre toward a model trained on my own voice. The purpose was not only to produce a novelty effect, but also to understand how training quality, dataset selection, and model version affect the final vocal texture.",
+          applicationP2:
+            "In its current form, the project remains a personal technical experiment rather than a finished audio product. The focus is on model behavior, dataset quality, and the boundary between voice resemblance and controllable synthesis.",
+
+          futureTitle: "Future Direction",
+          futureP1:
+            "A later research direction is to experiment with cryptography-inspired modification of the model itself. Conceptually, if a trained model can be regarded as a structured sequence of numerical parameters, then selected numerical changes may be introduced to examine whether the model can be altered, watermarked, weakened, protected, or made more personally identifiable.",
+          futureP2:
+            "This idea is still speculative. Its feasibility has not yet been evaluated, and it would require a clearer understanding of model structure, parameter sensitivity, and the relationship between numerical modification and audible output. At the present stage, it is best understood as a possible experimental direction rather than a confirmed technical route.",
+
+          noteText:
+            "This is an active project. The model, dataset, and technical route are still being revised as new recordings are collected and tested.",
+
+          sidebarTitle: "Project Information",
+          sideStatusLabel: "Status",
+          sideStatusValue: "In Progress",
+          sideToolLabel: "Main Tool",
+          sideToolValue: "DDSP / DDSP-barbara-6.1",
+          sideDataLabel: "Source Material",
+          sideDataValue:
+            "Archived voice acting clips, screened voice recordings, game voice-chat recordings, possible song recordings",
+          sideTrainingLabel: "Training Record",
+          sideTrainingValue:
+            "Phase I: approx. 40k–50k steps<br />Phase II: 110k steps",
+          sideOutputLabel: "Output",
+          sideOutputValue:
+            "Personal voice simulation and song voice conversion experiments",
+        },
+
+        zh: {
+          logo: "Alterven",
+          projectEyebrow: "项目 · 创意开发",
+          projectTitle: "基于 DDSP 的 AI 人声模拟",
+          projectSubtitle:
+            "一个围绕个人声线建模、音源构建与可控 AI 歌声合成展开的持续实验。",
+          metaStatus: "状态 · 进行中",
+          metaField: "领域 · AI 音频",
+          metaTool: "工具 · DDSP",
+          metaType: "类型 · 实验系统",
+
+          overviewNote: "概览",
+          overviewText:
+            "这个项目围绕 DDSP 进行 AI 模拟人声实验。项目前后经历了三次迭代：从早期版本 DDSP 与旧配音音频开始，到使用 DDSP-barbara-6.1 进行更长步数训练，再到现在重新收集一手音源并计划使用更新模型继续炼制。",
+
+          backgroundTitle: "项目背景",
+          backgroundP1:
+            "这个项目最初的目的，是测试过去录制的配音音频能否用于训练一个可用的个人声线模型。最早使用的音源并不是专门为机器学习准备的素材，而是以前录制配音时留下的一批音频，但它们为 DDSP 人声建模提供了一个可以开始实验的基础。",
+          backgroundP2:
+            "第一次实验使用的是较早版本的 DDSP。训练步数没有完整记录，大致应在几万步规模，可能约四五万步。这个阶段的模型已经可以用于基础的人声转换实验，例如将一些歌曲中的人声替换成更接近自己声音的音色。",
+
+          timelineTitle: "迭代记录",
+          phase1Title: "第一阶段 · 早期 DDSP 实验",
+          phase1Text:
+            "第一次实验使用较早版本的 DDSP，音源来自过去录制配音时留下的一批音频。训练过程以探索为主，步数大约在四五万步左右。这个阶段主要验证现有音频能否训练出具有个人声线特征的模型。",
+          phase2Title: "第二阶段 · DDSP-barbara-6.1",
+          phase2Text:
+            "第二次实验仍然使用相近来源的音频，但对素材做了一定筛选。模型版本为 DDSP-barbara-6.1，训练了 11 万步。相比第一次，这一阶段的流程更稳定，模型也更多用于歌曲人声替换实验。",
+          phase3Title: "第三阶段 · 当前数据集与新模型",
+          phase3Text:
+            "目前正在进行第三次实验，计划使用更新的模型继续炼制。新的素材不再只依赖旧音频，而是开始收集一手音源，例如在玩游戏开麦时录制自己的自然说话声音。考虑到普通说话可能无法覆盖高音和低音区间，后续也可能录制一些歌曲作为补充材料。",
+
+          methodTitle: "方法与素材",
+          methodP1:
+            "当前阶段更重视数据集本身的构建。相比单纯使用旧配音素材，现在的重点是提高音源的可控性，包括录音清晰度、声音一致性、音域覆盖和表达范围。",
+          methodP2:
+            "游戏开麦录音的优势在于自然，能够记录更接近日常表达的说话状态。但这类材料也可能存在音高范围较窄、录音环境不稳定、语音强度不一致等问题。因此，后续加入歌唱材料，主要是为了补足高低音覆盖不足的问题。",
+
+          applicationTitle: "项目用途",
+          applicationP1:
+            "此前训练出的模型主要用于歌曲人声转换实验。基本做法是将已有歌曲中的人声替换成基于自己声音训练出的音色。这不仅是一个趣味性的声音实验，也可以用来观察训练质量、素材筛选和模型版本对最终音色质感的影响。",
+          applicationP2:
+            "目前这个项目仍然属于个人技术实验，而不是已经完成的音频产品。它关注的是模型行为、数据质量，以及个人声线相似度与可控合成之间的边界。",
+
+          futureTitle: "后续方向",
+          futureP1:
+            "后续可能尝试一种类似加密学思路的模型调整方法。粗略地说，如果一个训练完成的模型可以被理解为一组结构化的数字参数，那么也许可以尝试对其中部分数字进行有意识的修改，用来观察模型是否能够被改变、标记、削弱、保护，或者形成某种更具个人识别性的特征。",
+          futureP2:
+            "这一方向目前还只是设想，可行性尚未验证。它需要进一步理解模型结构、参数敏感性，以及数值改动和实际听感之间的关系。因此，现阶段它更适合作为一个后续实验方向，而不是已经确定的技术路线。",
+
+          noteText:
+            "这是一个仍在进行中的项目。模型、数据集和技术路线都会随着新音源的收集与测试继续调整。",
+
+          sidebarTitle: "项目信息",
+          sideStatusLabel: "状态",
+          sideStatusValue: "进行中",
+          sideToolLabel: "主要工具",
+          sideToolValue: "DDSP / DDSP-barbara-6.1",
+          sideDataLabel: "音源材料",
+          sideDataValue:
+            "旧配音音频、筛选后的语音素材、游戏开麦录音、可能补充的歌曲录音",
+          sideTrainingLabel: "训练记录",
+          sideTrainingValue:
+            "第一阶段：约 4 万至 5 万步<br />第二阶段：11 万步",
+          sideOutputLabel: "输出形式",
+          sideOutputValue: "个人声线模拟与歌曲人声转换实验",
+        },
+      };
+
+      function setText(id, value, html = false) {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        if (html) {
+          el.innerHTML = value;
+        } else {
+          el.textContent = value;
+        }
+      }
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        const t = text[lang] || text.en;
+
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        setText("logo-text", t.logo);
+        setText("project-eyebrow", t.projectEyebrow);
+        setText("project-title", t.projectTitle);
+        setText("project-subtitle", t.projectSubtitle);
+        setText("meta-status", t.metaStatus);
+        setText("meta-field", t.metaField);
+        setText("meta-tool", t.metaTool);
+        setText("meta-type", t.metaType);
+
+        setText("overview-note", t.overviewNote);
+        setText("overview-text", t.overviewText);
+
+        setText("background-title", t.backgroundTitle);
+        setText("background-p1", t.backgroundP1);
+        setText("background-p2", t.backgroundP2);
+
+        setText("timeline-title", t.timelineTitle);
+        setText("phase1-title", t.phase1Title);
+        setText("phase1-text", t.phase1Text);
+        setText("phase2-title", t.phase2Title);
+        setText("phase2-text", t.phase2Text);
+        setText("phase3-title", t.phase3Title);
+        setText("phase3-text", t.phase3Text);
+
+        setText("method-title", t.methodTitle);
+        setText("method-p1", t.methodP1);
+        setText("method-p2", t.methodP2);
+
+        setText("application-title", t.applicationTitle);
+        setText("application-p1", t.applicationP1);
+        setText("application-p2", t.applicationP2);
+
+        setText("future-title", t.futureTitle);
+        setText("future-p1", t.futureP1);
+        setText("future-p2", t.futureP2);
+
+        setText("note-text", t.noteText);
+
+        setText("sidebar-title", t.sidebarTitle);
+        setText("side-status-label", t.sideStatusLabel);
+        setText("side-status-value", t.sideStatusValue);
+        setText("side-tool-label", t.sideToolLabel);
+        setText("side-tool-value", t.sideToolValue);
+        setText("side-data-label", t.sideDataLabel);
+        setText("side-data-value", t.sideDataValue);
+        setText("side-training-label", t.sideTrainingLabel);
+        setText("side-training-value", t.sideTrainingValue, true);
+        setText("side-output-label", t.sideOutputLabel);
+        setText("side-output-value", t.sideOutputValue);
+
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.i18n && window.i18n[lang]) {
+          document.querySelector(".footer-inner p:first-child").textContent =
+            window.i18n[lang].copyright;
+          document.querySelector(".footer-inner p:last-child").innerHTML =
+            window.i18n[lang].copyright2;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        lang = localStorage.getItem("lang") || "en";
+
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+
+        renderLang();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

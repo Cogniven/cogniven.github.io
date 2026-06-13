@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>雨巷简曲 - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      .work-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .work-meta-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 18px;
+        background: var(--bg-soft);
+      }
+
+      .work-meta-label {
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .work-meta-value {
+        margin: 0;
+        color: var(--text);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .statement-block {
+        max-width: 860px;
+      }
+
+      .statement-block p {
+        color: var(--text);
+        line-height: 1.95;
+        margin: 0 0 18px;
+      }
+
+      .score-panel {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--bg-soft);
+        overflow: hidden;
+      }
+
+      .score-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: flex-start;
+        padding: 24px 26px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .score-title {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.4;
+      }
+
+      .score-note {
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .notation-rule {
+        min-width: 260px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .score-body {
+        padding: 8px 0;
+      }
+
+      .score-row {
+        padding: 20px 26px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.16);
+      }
+
+      .score-row:last-child {
+        border-bottom: 0;
+      }
+
+      .score-original-line {
+        margin-bottom: 12px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+      }
+
+      .score-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .score-cell {
+        min-width: 44px;
+        border: 1px solid rgba(128, 128, 128, 0.28);
+        border-radius: 10px;
+        overflow: hidden;
+        background: rgba(128, 128, 128, 0.04);
+      }
+
+      .score-char {
+        padding: 8px 8px 6px;
+        text-align: center;
+        color: var(--text);
+        font-size: 17px;
+        line-height: 1.4;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.18);
+      }
+
+      .score-note-cell {
+        padding: 6px 8px 8px;
+        text-align: center;
+        color: var(--muted);
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-size: 15px;
+        line-height: 1.4;
+      }
+
+      .score-warning {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 760px) {
+        .work-meta-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .score-head {
+          display: block;
+          padding: 22px 20px;
+        }
+
+        .notation-rule {
+          margin-top: 18px;
+          min-width: 0;
+        }
+
+        .score-row {
+          padding: 18px 20px;
+        }
+
+        .score-grid {
+          gap: 6px;
+        }
+
+        .score-cell {
+          min-width: 38px;
+        }
+
+        .score-char {
+          font-size: 16px;
+          padding: 7px 6px 5px;
+        }
+
+        .score-note-cell {
+          font-size: 14px;
+          padding: 5px 6px 7px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow" id="work-eyebrow">
+            Works · Artistic Creations · Early Notation Draft
+          </p>
+          <h1 id="work-title">雨巷简曲</h1>
+          <p class="hero-text" id="work-hero-text">
+            An early attempt made under a personal composition rule, currently
+            preserved as a lyric text with numbered notation.
+          </p>
+
+          <div class="work-meta-grid">
+            <div class="work-meta-card">
+              <p class="work-meta-label" id="meta-type-label">Type</p>
+              <p class="work-meta-value" id="meta-type-value">
+                Lyric text with numbered notation
+              </p>
+            </div>
+            <div class="work-meta-card">
+              <p class="work-meta-label" id="meta-period-label">Period</p>
+              <p class="work-meta-value" id="meta-period-value">
+                Early personal work
+              </p>
+            </div>
+            <div class="work-meta-card">
+              <p class="work-meta-label" id="meta-status-label">Status</p>
+              <p class="work-meta-value" id="meta-status-value">
+                Notation drafted; rhythm not yet developed
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="overview-note">Overview</p>
+          <p class="lead-paragraph" id="overview-text">
+            This is one of my earliest works. It records an initial attempt made
+            under a personal composition rule. At the current stage, the work
+            has only produced a lyric text with numbered notation and has not
+            yet been developed into a complete song.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="statement-note">Statement</p>
+              <h2 id="statement-title">About this work</h2>
+            </div>
+          </div>
+
+          <div class="statement-block">
+            <p id="statement-p1">
+              This draft belongs to an early layer of my personal creative
+              archive. It is not presented as a finished song, but as a record
+              of a compositional attempt: preserving the numbered notation
+              beside the lyric text so that the melodic direction formed at that
+              time can be reviewed.
+            </p>
+            <p id="statement-p2">
+              The current version only contains the lyric text and numbered
+              notation. It does not yet include rhythm, note length, rests,
+              breathing marks, dynamics, or a complete performance structure.
+              The composition rule behind this attempt and its later development
+              will be discussed separately on this site.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="score-section-note">Notation</p>
+              <h2 id="score-section-title">Text and numbered notation</h2>
+            </div>
+            <p class="section-side-text" id="score-side-text">
+              Each block places the lyric character above its corresponding
+              numbered note.
+            </p>
+          </div>
+
+          <article class="score-panel">
+            <div class="score-head">
+              <div>
+                <h3 class="score-title" id="score-title">雨巷简曲</h3>
+                <p class="score-note" id="score-note">
+                  The display below presents the existing numbered notation
+                  only. Rhythm and performance details are not marked.
+                </p>
+              </div>
+              <div class="notation-rule" id="notation-rule">
+                1–7: numbered scale degrees<br />
+                b: lowered note<br />
+                rhythm: not yet marked
+              </div>
+            </div>
+
+            <div class="score-body" id="score-body"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script src="/js/nav.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      const scoreData = [
+        ["撑着油纸伞，独自", "3123b5b51"],
+        ["彷徨在悠长、悠长", "1b7b6b5b4b3b4"],
+        ["又寂寥的雨巷", "b511b511"],
+        ["我希望逢着", "11321"],
+        ["一个丁香一样地", "1133221"],
+        ["结着愁怨的姑娘", "11b6b5b611"],
+        ["她是有", "312"],
+        ["丁香一样的颜色", "3331233"],
+        ["丁香一样的芬芳", "b7b7b7b6b3b7b7"],
+        ["丁香一样的忧愁", "b7b7b7b3b711"],
+        ["在雨中哀怨", "11321"],
+        ["哀怨又彷徨", "11b612"],
+        ["她彷徨在这寂寥的雨巷", "3331234312"],
+        ["撑着油纸伞", "2123b5"],
+        ["像我一样", "b5b511"],
+        ["像我一样地", "b6b6111"],
+        ["默默彳亍着", "11321"],
+        ["寒漠、凄清，又惆怅", "111b6122"],
+        ["她默默地走近", "312343"],
+        ["走近，又投出", "12112"],
+        ["太息一般的眼光", "b7b7b7b3b711"],
+        ["她飘过", "311"],
+        ["像梦一般地", "11321"],
+        ["像梦一般地凄婉迷茫", "113211122"],
+        ["像梦中飘过", "31233"],
+        ["一枝丁香地", "12432"],
+        ["我身旁飘过这女郎", "112b7b7b311"],
+        ["她静默地远了、远了", "31121112"],
+        ["到了颓圮的篱墙", "1b611432"],
+        ["走尽这雨巷", "2b5b6b71"],
+        ["在雨的哀曲里", "312432"],
+        ["消了她的颜色", "111122"],
+        ["散了她的芬芳", "b7b7b7311"],
+        ["消散了，甚至她的", "3111111"],
+        ["太息般的眼光", "111122"],
+        ["丁香般的惆怅", "b7b7b7311"],
+        ["撑着油纸伞，独自", "3123b5b51"],
+        ["彷徨在悠长、悠长", "1b7b6b5b4b3b4"],
+        ["又寂寥的雨巷", "b511b611"],
+        ["我希望飘过", "11321"],
+        ["一个丁香一样地", "1113221"],
+        ["结着愁怨的姑娘", "b6b5b6b5b611"],
+      ];
+
+      function setText(id, value) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+      }
+
+      function tokenizeNotes(noteLine) {
+        const tokens = [];
+
+        for (let i = 0; i < noteLine.length; i += 1) {
+          if (noteLine[i] === "b" && i + 1 < noteLine.length) {
+            tokens.push(noteLine[i] + noteLine[i + 1]);
+            i += 1;
+          } else {
+            tokens.push(noteLine[i]);
+          }
+        }
+
+        return tokens;
+      }
+
+      function getLyricCharacters(lyricLine) {
+        return Array.from(lyricLine).filter((char) => {
+          return ![
+            "，",
+            "、",
+            "。",
+            "；",
+            "：",
+            "！",
+            "？",
+            " ",
+            "\t",
+          ].includes(char);
+        });
+      }
+
+      function createPlainScore(lyricLine, noteLine) {
+        return lyricLine + "\n" + noteLine;
+      }
+
+      function renderScore() {
+        const scoreBody = document.getElementById("score-body");
+        scoreBody.innerHTML = "";
+
+        scoreData.forEach(([lyricLine, noteLine]) => {
+          const row = document.createElement("div");
+          row.className = "score-row";
+
+          const original = document.createElement("div");
+          original.className = "score-original-line";
+          original.textContent = createPlainScore(lyricLine, noteLine);
+
+          const grid = document.createElement("div");
+          grid.className = "score-grid";
+
+          const chars = getLyricCharacters(lyricLine);
+          const notes = tokenizeNotes(noteLine);
+          const maxLength = Math.max(chars.length, notes.length);
+
+          for (let i = 0; i < maxLength; i += 1) {
+            const cell = document.createElement("div");
+            cell.className = "score-cell";
+
+            const charEl = document.createElement("div");
+            charEl.className = "score-char";
+            charEl.textContent = chars[i] || "—";
+
+            const noteEl = document.createElement("div");
+            noteEl.className = "score-note-cell";
+            noteEl.textContent = notes[i] || "—";
+
+            cell.appendChild(charEl);
+            cell.appendChild(noteEl);
+            grid.appendChild(cell);
+          }
+
+          row.appendChild(original);
+          row.appendChild(grid);
+
+          if (chars.length !== notes.length) {
+            const warning = document.createElement("div");
+            warning.className = "score-warning";
+            warning.textContent =
+              lang === "zh"
+                ? "提示：这一行的文字数量与音符数量不完全一致，请确认是否为有意处理。"
+                : "Note: the number of lyric characters and note tokens does not fully match. Please check whether this is intentional.";
+            row.appendChild(warning);
+          }
+
+          scoreBody.appendChild(row);
+        });
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        if (typeof i18n !== "undefined" && i18n[lang]) {
+          setText("logo-text", i18n[lang].logo || "Alterven");
+
+          const footerFirst = document.querySelector(
+            ".footer-inner p:first-child",
+          );
+          const footerSecond = document.querySelector(
+            ".footer-inner p:last-child",
+          );
+
+          if (footerFirst && i18n[lang].copyright) {
+            footerFirst.textContent = i18n[lang].copyright;
+          }
+
+          if (footerSecond && i18n[lang].copyright2) {
+            footerSecond.innerHTML = i18n[lang].copyright2;
+          }
+        }
+
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (lang === "zh") {
+          document.documentElement.lang = "zh-CN";
+          document.title = "雨巷简曲 - Alterven";
+
+          setText("work-eyebrow", "作品 · 艺术创作 · 早期简谱草稿");
+          setText("work-title", "雨巷简曲");
+          setText(
+            "work-hero-text",
+            "一份按照某份创作规则进行的早期尝试，目前保留下来的形态是带有简谱标注的歌词文本。",
+          );
+
+          setText("meta-type-label", "类型");
+          setText("meta-type-value", "歌词文本 / 简谱标注");
+          setText("meta-period-label", "时期");
+          setText("meta-period-value", "多年前的初始作品");
+          setText("meta-status-label", "状态");
+          setText("meta-status-value", "已有简谱内容，暂未整理节奏");
+
+          setText("overview-note", "概览");
+          setText(
+            "overview-text",
+            "这份作品是我多年前留下的初始作品之一。它记录的是一次按照某份创作规则进行的尝试。当前阶段只得出了带有简谱标注的内容，还没有进一步整理成完整歌曲。",
+          );
+
+          setText("statement-note", "说明");
+          setText("statement-title", "关于这份作品");
+          setText(
+            "statement-p1",
+            "这份草稿属于我较早阶段的个人创作档案。它不是作为完成后的歌曲呈现，而是作为一次创作方法尝试的记录：在歌词文本旁保留对应的简谱，使当时形成的旋律走向能够被重新查看。",
+          );
+          setText(
+            "statement-p2",
+            "当前版本只包含歌词文本与简谱内容，还没有正式整理节奏、时值、休止、换气、强弱和完整演唱结构。它背后的创作规则及后续整理，会在本站中另行写出。",
+          );
+
+          setText("score-section-note", "简谱");
+          setText("score-section-title", "文本与简谱内容");
+          setText(
+            "score-side-text",
+            "每个小格上方是歌词文字，下方是对应简谱；标点不参与对应。",
+          );
+          setText("score-title", "雨巷简曲");
+          setText(
+            "score-note",
+            "下方展示的是目前已经形成的简谱内容。本页暂不标注节奏、时值、停顿和换气。",
+          );
+          document.getElementById("notation-rule").innerHTML =
+            "1–7：数字简谱音级<br />b：降音<br />节奏：暂未整理";
+        } else {
+          document.documentElement.lang = "en";
+          document.title = "Rain Alley Notation Draft - Alterven";
+
+          setText(
+            "work-eyebrow",
+            "Works · Artistic Creations · Early Notation Draft",
+          );
+          setText("work-title", "Rain Alley Notation Draft");
+          setText(
+            "work-hero-text",
+            "An early attempt made under a personal composition rule, currently preserved as a lyric text with numbered notation.",
+          );
+
+          setText("meta-type-label", "Type");
+          setText("meta-type-value", "Lyric text with numbered notation");
+          setText("meta-period-label", "Period");
+          setText("meta-period-value", "Early personal work");
+          setText("meta-status-label", "Status");
+          setText(
+            "meta-status-value",
+            "Notation drafted; rhythm not yet developed",
+          );
+
+          setText("overview-note", "Overview");
+          setText(
+            "overview-text",
+            "This is one of my earliest works. It records an initial attempt made under a personal composition rule. At the current stage, the work has only produced a lyric text with numbered notation and has not yet been developed into a complete song.",
+          );
+
+          setText("statement-note", "Statement");
+          setText("statement-title", "About this work");
+          setText(
+            "statement-p1",
+            "This draft belongs to an early layer of my personal creative archive. It is not presented as a finished song, but as a record of a compositional attempt: preserving the numbered notation beside the lyric text so that the melodic direction formed at that time can be reviewed.",
+          );
+          setText(
+            "statement-p2",
+            "The current version only contains the lyric text and numbered notation. It does not yet include rhythm, note length, rests, breathing marks, dynamics, or a complete performance structure. The composition rule behind this attempt and its later development will be discussed separately on this site.",
+          );
+
+          setText("score-section-note", "Notation");
+          setText("score-section-title", "Text and numbered notation");
+          setText(
+            "score-side-text",
+            "Each block places the lyric character above its corresponding numbered note; punctuation is not counted.",
+          );
+          setText("score-title", "Rain Alley Notation Draft");
+          setText(
+            "score-note",
+            "The display below presents the existing numbered notation only. Rhythm, duration, pauses, and breathing are not marked.",
+          );
+          document.getElementById("notation-rule").innerHTML =
+            "1–7: numbered scale degrees<br />b: lowered note<br />rhythm: not yet developed";
+        }
+
+        renderScore();
+      }
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+    </script>
+  </body>
+</html>

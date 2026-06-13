@@ -18,7 +18,7 @@ const ArtisticCreations = [
     },
     cover:
       "/assets/images/works/artistic-creations/work-002-rain-alley-notation-draft/cover.png",
-    link: "/assets/images/works/artistic-creations/work-002-rain-alley-notation-draft/index.html",
+    link: "/works/artistic-creations/work-002-rain-alley-notation-draft/",
     date: "2026-03-21",
   },
   {
@@ -29,7 +29,7 @@ const ArtisticCreations = [
     },
     cover:
       "/assets/images/works/artistic-creations/work-003-mythos-playmat-system/cover.jpg",
-    link: "/assets/images/works/artistic-creations/work-003-mythos-playmat-system/index.html",
+    link: "/works/artistic-creations/work-003-mythos-playmat-system/",
     date: "2026-03-22",
   },
 ];

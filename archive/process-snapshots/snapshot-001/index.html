@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation Revision Snapshot - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .log-cover,
+      .log-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+      }
+
+      .log-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .log-meta-card {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 14px;
+        padding: 14px 16px;
+      }
+
+      .log-meta-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .log-meta-card strong {
+        font-size: 1rem;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .log-block {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .log-block-note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding-top: 4px;
+      }
+
+      .log-block-content h2 {
+        margin-top: 0;
+        margin-bottom: 14px;
+      }
+
+      .log-block-content p {
+        line-height: 1.78;
+        color: var(--text-soft);
+      }
+
+      @media (max-width: 860px) {
+        .log-meta-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .log-block {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .log-meta-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container narrow">
+          <p class="eyebrow" id="eyebrow">Archive · Process Snapshots</p>
+          <h1 id="title">Navigation Revision Snapshot</h1>
+          <p class="hero-text" id="hero-text">
+            A preserved transition stage where navigation hierarchy and dropdown
+            behavior were being merged into one stable system.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <img
+            class="log-cover"
+            src="/assets/images/archive/process-snapshots/snapshot-001/cover.svg"
+            alt="Navigation revision snapshot"
+            onerror="this.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Snapshot Cover</text></svg>`)"
+          />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <div class="log-meta-grid">
+            <div class="log-meta-card">
+              <span id="meta-date-label">Date</span>
+              <strong id="meta-date-value">2026</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-status-label">Status</span>
+              <strong id="meta-status-value">Transition</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-field-label">Field</span>
+              <strong id="meta-field-value">Navigation System</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-mode-label">Mode</span>
+              <strong id="meta-mode-value">Snapshot</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="note-label">Snapshot Note</p>
+          <p class="lead-paragraph" id="note-text">
+            This snapshot captures the period where static top links and section
+            dropdowns coexisted, before active-state inference and mobile handling
+            were fully aligned.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="state-label">State</div>
+          <div class="log-block-content">
+            <h2 id="state-title">Observed Structure</h2>
+            <p id="state-p1">
+              The page set already used section-level nav groups, but active link
+              logic did not yet account for deep detail paths under shared assets.
+            </p>
+            <p id="state-p2">
+              This caused inconsistent highlight behavior between list pages and
+              detail pages, especially when entry URLs lived under
+              <code>/assets/images/...</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="result-label">Result</div>
+          <div class="log-block-content">
+            <h2 id="result-title">Outcome of This Pass</h2>
+            <p id="result-p1">
+              The key result was a clearer distinction between section anchors and
+              content detail paths, which later enabled stable active-state mapping
+              across the whole site.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        // 内容填写区（新手只改这里）
+        // 键名写页面元素的 id；值写成 { en: "...", zh: "..." }
+        "eyebrow": { en: "Archive · Process Snapshots", zh: "归档 · 过程切片" },
+        "title": { en: "Navigation Revision Snapshot", zh: "导航改版切片" },
+        "hero-text": {
+          en: "A preserved transition stage where navigation hierarchy and dropdown behavior were being merged into one stable system.",
+          zh: "一个保留的过渡状态：导航层级与下拉行为正在合并为更稳定的系统。",
+        },
+        "meta-date-label": { en: "Date", zh: "日期" },
+        "meta-date-value": { en: "2026", zh: "2026年" },
+        "meta-status-label": { en: "Status", zh: "状态" },
+        "meta-status-value": { en: "Transition", zh: "过渡中" },
+        "meta-field-label": { en: "Field", zh: "领域" },
+        "meta-field-value": { en: "Navigation System", zh: "导航系统" },
+        "meta-mode-label": { en: "Mode", zh: "模式" },
+        "meta-mode-value": { en: "Snapshot", zh: "切片记录" },
+        "note-label": { en: "Snapshot Note", zh: "切片说明" },
+        "note-text": {
+          en: "This snapshot captures the period where static top links and section dropdowns coexisted, before active-state inference and mobile handling were fully aligned.",
+          zh: "该切片记录了静态顶栏链接与分区下拉并存的阶段，当时 active 状态推断与移动端行为尚未完全统一。",
+        },
+        "state-label": { en: "State", zh: "状态" },
+        "state-title": { en: "Observed Structure", zh: "当时结构" },
+        "state-p1": {
+          en: "The page set already used section-level nav groups, but active link logic did not yet account for deep detail paths under shared assets.",
+          zh: "页面已经采用分区导航组，但 active 链接逻辑尚未覆盖共享资源路径下的深层详情页。",
+        },
+        "state-p2": {
+          en: "This caused inconsistent highlight behavior between list pages and detail pages, especially when entry URLs lived under `/assets/images/...`.",
+          zh: "这导致列表页与详情页的高亮行为不一致，尤其是 URL 位于 `/assets/images/...` 时更明显。",
+        },
+        "result-label": { en: "Result", zh: "结果" },
+        "result-title": { en: "Outcome of This Pass", zh: "该阶段产出" },
+        "result-p1": {
+          en: "The key result was a clearer distinction between section anchors and content detail paths, which later enabled stable active-state mapping across the whole site.",
+          zh: "这次改动最关键的结果，是明确区分了分区入口与详情路径，为全站稳定 active 映射打下基础。",
+        },
+      };
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

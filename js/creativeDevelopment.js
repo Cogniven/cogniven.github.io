@@ -12,7 +12,7 @@ const CreativeDevelopment = [
       en: "/assets/images/projects/creative-development/project-001-arkham-town-adventure-visualization/cover.png",
       zh: "/assets/images/projects/creative-development/project-001-arkham-town-adventure-visualization/cover.png",
     },
-    link: "/assets/images/projects/creative-development/project-001-arkham-town-adventure-visualization/index.html",
+    link: "/projects/creative-development/project-001-arkham-town-adventure-visualization/",
     date: "2026-03-22",
   },
   {
@@ -28,7 +28,7 @@ const CreativeDevelopment = [
       en: "/assets/images/projects/creative-development/project-002-ai-voice-simulation-with-ddsp/cover.svg",
       zh: "/assets/images/projects/creative-development/project-002-ai-voice-simulation-with-ddsp/cover.svg",
     },
-    link: "/assets/images/projects/creative-development/project-002-ai-voice-simulation-with-ddsp/index.html",
+    link: "/projects/creative-development/project-002-ai-voice-simulation-with-ddsp/",
     date: "2026-04-12",
   },
 ];

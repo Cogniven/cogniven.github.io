@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Artistry Research - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .log-cover,
+      .log-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+      }
+
+      .log-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .log-meta-card {
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        border-radius: 14px;
+        padding: 14px 16px;
+      }
+
+      .log-meta-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .log-meta-card strong {
+        font-size: 1rem;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .log-block {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .log-block-note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding-top: 4px;
+      }
+
+      .log-block-content h2 {
+        margin-top: 0;
+        margin-bottom: 14px;
+      }
+
+      .log-block-content p {
+        line-height: 1.78;
+        color: var(--text-soft);
+      }
+
+      .iteration-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .iteration-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--bg-soft);
+        padding: 18px;
+      }
+
+      .iteration-label {
+        font-size: 0.82rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 8px;
+      }
+
+      .iteration-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+      }
+
+      .iteration-card p {
+        margin-bottom: 14px;
+      }
+
+      @media (max-width: 860px) {
+        .log-meta-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .log-block {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .log-meta-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container narrow">
+          <p class="eyebrow" id="exp-eyebrow">Works · Experimental Forms</p>
+          <h1 id="exp-title">QR Code Artistry Research</h1>
+          <p class="hero-text" id="exp-hero-text">
+            An experiment on turning QR codes into visual material while keeping
+            them functional, moving from manual drawing to AI-assisted image
+            generation.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <img
+            class="log-cover"
+            src="/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/cover.png"
+            alt="QR Code Artistry Research cover"
+            onerror="
+              this.src =
+                'data:image/svg+xml;utf8,' +
+                encodeURIComponent(
+                  `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Cover not added yet</text></svg>`,
+                )
+            "
+          />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <div class="log-meta-grid">
+            <div class="log-meta-card">
+              <span id="meta-date-label">Date</span>
+              <strong id="meta-date-value">2022–2024</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-status-label">Status</span>
+              <strong id="meta-status-value">Paused</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-field-label">Field</span>
+              <strong id="meta-field-value">Visual Experiment</strong>
+            </div>
+            <div class="log-meta-card">
+              <span id="meta-mode-label">Mode</span>
+              <strong id="meta-mode-value">Research / Production</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="exp-note-label">Experiment Note</p>
+          <p class="lead-paragraph" id="exp-note-text">
+            This project explored whether a QR code could remain scannable while
+            also becoming a visual object with its own aesthetic language.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="intent-label">Intent</div>
+          <div class="log-block-content">
+            <h2 id="intent-title">Starting Point</h2>
+            <p id="intent-p1">
+              The project began with a basic question: after understanding how
+              QR codes work, could their structure be visually transformed
+              without losing their original function?
+            </p>
+            <p id="intent-p2">
+              From there, the work moved in two directions: manual drawing and
+              later AI-assisted generation, both aimed at testing how far a QR
+              code could be pushed toward image-making.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="research-label">Research</div>
+          <div class="log-block-content">
+            <h2 id="research-title">Understanding the Code</h2>
+            <p id="research-p1">
+              Before making any images, the first stage was to understand QR
+              codes themselves: what they are, how they are structured, and
+              which parts can tolerate modification.
+            </p>
+            <p id="research-p2">
+              This stage made the later visual experiments possible, because the
+              project depended on knowing which transformations still allowed
+              the code to function.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="iterations-label">Iterations</div>
+          <div class="log-block-content">
+            <h2 id="iterations-title">Development Stages</h2>
+
+            <div class="iteration-stack">
+              <article class="iteration-card">
+                <div class="iteration-label" id="v1-label">Stage 01</div>
+                <h3 id="v1-title">Manual Drawing Period</h3>
+                <p id="v1-text">
+                  Around June 2022, the first direction was manual production.
+                  Using Procreate, Photoshop, and related tools, the work
+                  focused on directly drawing and reshaping QR codes into more
+                  image-like forms.
+                </p>
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/manual-01.png"
+                  alt="Manual QR experiment 01"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Manual QR Image 01</text></svg>`,
+                      )
+                  "
+                />
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/manual-02.png"
+                  alt="Manual QR experiment 02"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>Manual QR Image 02</text></svg>`,
+                      )
+                  "
+                  style="margin-top: 14px"
+                />
+              </article>
+
+              <article class="iteration-card">
+                <div class="iteration-label" id="v2-label">Stage 02</div>
+                <h3 id="v2-title">AI-Assisted Attempts</h3>
+                <p id="v2-text">
+                  From 2023 onward, the project shifted toward AI tools. Stable
+                  Diffusion was tested first, but local hardware limitations
+                  made it difficult to continue. Later, Midjourney became the
+                  main tool because cloud-based generation made the process more
+                  feasible.
+                </p>
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/ai-01.png"
+                  alt="AI QR experiment 01"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>AI QR Image 01</text></svg>`,
+                      )
+                  "
+                />
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/ai-02.png"
+                  alt="AI QR experiment 02"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>AI QR Image 02</text></svg>`,
+                      )
+                  "
+                  style="margin-top: 14px"
+                />
+                <img
+                  class="log-image"
+                  src="/assets/images/works/experimental-forms/work-001-qr-code-artistry-research/ai-03.png"
+                  alt="AI QR experiment 03"
+                  onerror="
+                    this.src =
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'><rect width='900' height='600' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='28' font-family='Georgia, serif'>AI QR Image 03</text></svg>`,
+                      )
+                  "
+                  style="margin-top: 14px"
+                />
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="obs-label">Observations</div>
+          <div class="log-block-content">
+            <h2 id="obs-title">What Changed</h2>
+            <p id="obs-p1">
+              The project gradually shifted from “making an artistic QR code by
+              hand” to “testing how image systems interpret QR structures.” The
+              focus moved away from a single object and toward a broader visual
+              method.
+            </p>
+            <p id="obs-p2">
+              At the same time, AI development accelerated quickly. What had
+              once required individual experimentation later became much easier,
+              and even batch-generation scripts began to appear.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow log-block">
+          <div class="log-block-note" id="next-label">Status</div>
+          <div class="log-block-content">
+            <h2 id="next-title">Where It Stopped</h2>
+            <p id="next-p1">
+              Because the field moved so quickly, the project was not followed
+              further after its earlier stages. The main value now lies in the
+              fact that it records an earlier moment of experimentation.
+            </p>
+            <p id="next-p2">
+              What remains here is not an ongoing system, but a trace of how the
+              question was approached across different tools and technical
+              conditions.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      const pageContent = {
+        "exp-eyebrow": {
+          en: "Works · Experimental Forms",
+          zh: "作品 · 实验形式",
+        },
+        "exp-title": {
+          en: "QR Code Artistry Research",
+          zh: "二维码艺术化制作研究",
+        },
+        "exp-hero-text": {
+          en: "An experiment on turning QR codes into visual material while keeping them functional, moving from manual drawing to AI-assisted image generation.",
+          zh: "一个在保留二维码功能前提下将其转化为视觉材料的实验，从手工绘制逐步转向借助 AI 生成图像。",
+        },
+
+        "meta-date-label": { en: "Date", zh: "日期" },
+        "meta-date-value": { en: "2022–2024", zh: "2022–2024" },
+        "meta-status-label": { en: "Status", zh: "状态" },
+        "meta-status-value": { en: "Paused", zh: "已暂停" },
+        "meta-field-label": { en: "Field", zh: "领域" },
+        "meta-field-value": { en: "Visual Experiment", zh: "视觉实验" },
+        "meta-mode-label": { en: "Mode", zh: "模式" },
+        "meta-mode-value": { en: "Research / Production", zh: "研究 / 制作" },
+
+        "exp-note-label": { en: "Experiment Note", zh: "实验说明" },
+        "exp-note-text": {
+          en: "This project explored whether a QR code could remain scannable while also becoming a visual object with its own aesthetic language.",
+          zh: "这个项目试图回答一个问题：二维码在仍然能够被识别的前提下，是否也可以成为一种具有自身审美语言的视觉对象。",
+        },
+
+        "intent-label": { en: "Intent", zh: "意图" },
+        "intent-title": { en: "Starting Point", zh: "起点" },
+        "intent-p1": {
+          en: "The project began with a basic question: after understanding how QR codes work, could their structure be visually transformed without losing their original function?",
+          zh: "这个项目从一个很基础的问题开始：在了解二维码如何工作之后，它的结构是否可以被视觉化改造，而不失去原本的功能？",
+        },
+        "intent-p2": {
+          en: "From there, the work moved in two directions: manual drawing and later AI-assisted generation, both aimed at testing how far a QR code could be pushed toward image-making.",
+          zh: "由此，工作逐渐分成两个方向：一是手工绘制，二是后来的 AI 辅助生成。两者都在测试二维码向图像表达推进的边界。",
+        },
+
+        "research-label": { en: "Research", zh: "研究" },
+        "research-title": { en: "Understanding the Code", zh: "先理解二维码" },
+        "research-p1": {
+          en: "Before making any images, the first stage was to understand QR codes themselves: what they are, how they are structured, and which parts can tolerate modification.",
+          zh: "在开始做图像之前，第一步是先理解二维码本身：它是什么，它如何形成，以及哪些部分可以承受改动。",
+        },
+        "research-p2": {
+          en: "This stage made the later visual experiments possible, because the project depended on knowing which transformations still allowed the code to function.",
+          zh: "这一步为后续视觉实验提供了基础，因为整个项目依赖于判断：哪些变化仍然允许二维码保持可用。",
+        },
+
+        "iterations-label": { en: "Iterations", zh: "阶段" },
+        "iterations-title": { en: "Development Stages", zh: "发展阶段" },
+
+        "v1-label": { en: "Stage 01", zh: "阶段 01" },
+        "v1-title": { en: "Manual Drawing Period", zh: "手工绘制阶段" },
+        "v1-text": {
+          en: "Around June 2022, the first direction was manual production. Using Procreate, Photoshop, and related tools, the work focused on directly drawing and reshaping QR codes into more image-like forms.",
+          zh: "大约在 2022 年 6 月，项目首先进入手工制作阶段。当时主要使用 Procreate、Photoshop 等工具，直接对二维码进行绘制和重构，使其更接近图像形式。",
+        },
+
+        "v2-label": { en: "Stage 02", zh: "阶段 02" },
+        "v2-title": { en: "AI-Assisted Attempts", zh: "AI 辅助尝试阶段" },
+        "v2-text": {
+          en: "From 2023 onward, the project shifted toward AI tools. Stable Diffusion was tested first, but local hardware limitations made it difficult to continue. Later, Midjourney became the main tool because cloud-based generation made the process more feasible.",
+          zh: "从 2023 年开始，项目逐渐转向 AI 工具。最初尝试过 Stable Diffusion，但因为本地算力不足，没有继续深入。后来改用 Midjourney，借助云端算力继续进行艺术二维码的创作尝试。",
+        },
+
+        "obs-label": { en: "Observations", zh: "观察" },
+        "obs-title": { en: "What Changed", zh: "后来发生了什么" },
+        "obs-p1": {
+          en: "The project gradually shifted from “making an artistic QR code by hand” to “testing how image systems interpret QR structures.” The focus moved away from a single object and toward a broader visual method.",
+          zh: "这个项目逐渐从“手工做出一个艺术二维码”转向“测试图像系统如何理解二维码结构”。重点不再只是一个对象，而是更广义的视觉方法。",
+        },
+        "obs-p2": {
+          en: "At the same time, AI development accelerated quickly. What had once required individual experimentation later became much easier, and even batch-generation scripts began to appear.",
+          zh: "与此同时，AI 的发展速度非常快。很多原本需要单独实验的过程，后来已经被大幅简化，甚至出现了可以直接批量生成的脚本。",
+        },
+
+        "next-label": { en: "Status", zh: "状态" },
+        "next-title": { en: "Where It Stopped", zh: "项目停在了哪里" },
+        "next-p1": {
+          en: "Because AI development accelerated quickly, the project was not followed further after its earlier stages. The main value now lies in the fact that it records an earlier moment of experimentation.",
+          zh: "由于AI发展得太快，项目在前几个阶段之后就没有再继续跟进。它现在更重要的意义，在于保留了一个较早时期的实验切面。",
+        },
+        "next-p2": {
+          en: "What remains here is not an ongoing system, but a trace of how the question was approached across different tools and technical conditions.",
+          zh: "这里留下来的已经不是一个继续推进中的系统，而是一个问题在不同工具和技术条件下被尝试过的痕迹。",
+        },
+      };
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
+    </script>
+
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

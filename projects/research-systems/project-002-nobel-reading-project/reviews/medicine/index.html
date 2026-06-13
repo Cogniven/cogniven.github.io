@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medicine Reviews - Alterven</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a href="/index.html" class="logo" id="logo-text">Alterven</a>
+        <div class="lang-switcher">
+          <button id="lang-en" class="lang-btn">EN</button>
+          <button id="lang-zh" class="lang-btn">中文</button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container narrow">
+          <h1 id="cat-title">Physiology or Medicine</h1>
+          <p id="cat-sub">生理学或医学奖</p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container narrow">
+          <p>Reviews will be organized by year.</p>
+          <p>评述将按年份整理。</p>
+        </div>
+      </section>
+    </main>
+    <script src="/js/i18n.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      function setLang(newLang) { lang = newLang; localStorage.setItem("lang", lang); }
+      document.addEventListener("DOMContentLoaded", function () { document.getElementById("lang-en").onclick = () => setLang("en"); document.getElementById("lang-zh").onclick = () => setLang("zh"); });
+    </script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

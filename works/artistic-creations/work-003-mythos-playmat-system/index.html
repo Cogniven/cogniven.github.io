@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mythos Playmat System - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .work-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 32px;
+      }
+      .work-meta-card,
+      .slot-card,
+      .spec-card,
+      .info-panel {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--bg-soft);
+        padding: 18px;
+      }
+      .work-meta-label,
+      .spec-label {
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .work-meta-value,
+      .spec-value {
+        margin: 0;
+        color: var(--text);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+      .statement-block {
+        max-width: 920px;
+      }
+      .statement-block p {
+        color: var(--text);
+        line-height: 1.95;
+        margin: 0 0 18px;
+      }
+      .playmat-frame {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--bg-soft);
+        overflow: hidden;
+      }
+      .playmat-image-wrap {
+        padding: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      .playmat-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid rgba(128, 128, 128, 0.22);
+        background: #05070c;
+      }
+      .playmat-caption,
+      .print-note {
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.85;
+      }
+      .slot-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .slot-card {
+        border-radius: 18px;
+        padding: 22px 24px;
+      }
+      .slot-card h3 {
+        margin: 0 0 12px;
+        font-size: 20px;
+        line-height: 1.4;
+      }
+      .slot-card p {
+        margin: 0;
+        color: var(--text);
+        line-height: 1.9;
+      }
+      .slot-list {
+        margin: 14px 0 0;
+        padding-left: 18px;
+        color: var(--text);
+        line-height: 1.95;
+      }
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .spec-card {
+        border-radius: 16px;
+        padding: 18px;
+      }
+      @media (max-width: 900px) {
+        .spec-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .slot-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 760px) {
+        .work-meta-grid {
+          grid-template-columns: 1fr;
+        }
+        .playmat-image-wrap {
+          padding: 12px;
+        }
+        .slot-card {
+          padding: 20px;
+        }
+      }
+      @media (max-width: 560px) {
+        .spec-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a
+            ><a href="/writing.html">Writing</a
+            ><a href="/projects.html">Projects</a
+            ><a href="/about.html">About</a
+            ><a href="/archive.html">Archive</a>
+          </div>
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN</button
+            ><button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span
+            ><span class="hamburger-line"></span
+            ><span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow" id="work-eyebrow">
+            Works · Artistic Creations · Tabletop Interface
+          </p>
+          <h1 id="work-title">Mythos Playmat System</h1>
+          <p class="hero-text" id="work-hero-text">
+            A custom playmat design for Arkham Horror: The Card Game, combining
+            functional card zones, occult ornamentation, and a printable
+            tabletop layout.
+          </p>
+          <div class="work-meta-grid">
+            <div class="work-meta-card">
+              <p class="work-meta-label" id="meta-type-label">Type</p>
+              <p class="work-meta-value" id="meta-type-value">
+                Playmat / tabletop interface design
+              </p>
+            </div>
+            <div class="work-meta-card">
+              <p class="work-meta-label" id="meta-format-label">Format</p>
+              <p class="work-meta-value" id="meta-format-value">
+                7500 × 4500 px · suggested print 150 × 90 cm
+              </p>
+            </div>
+            <div class="work-meta-card">
+              <p class="work-meta-label" id="meta-card-label">Card size</p>
+              <p class="work-meta-value" id="meta-card-value">
+                Designed around 90 mm × 65 mm sleeved cards
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section intro-band">
+        <div class="container narrow">
+          <p class="section-note" id="overview-note">Overview</p>
+          <p class="lead-paragraph" id="overview-text">
+            This work is a fan-made playmat layout for Arkham Horror: The Card
+            Game. It treats the play surface as a tabletop interface: player
+            areas, scenario areas, encounter zones, discard zones, and common
+            supply positions are arranged into a single symmetrical ritual map.
+          </p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="final-note">Final Image</p>
+              <h2 id="final-title">Full playmat layout</h2>
+            </div>
+            <p class="section-side-text" id="final-side-text">
+              The outer black margin is intentionally reserved for printing and
+              trimming tolerance.
+            </p>
+          </div>
+          <article class="playmat-frame">
+            <div class="playmat-image-wrap">
+              <img
+                class="playmat-image"
+                src="/assets/images/works/artistic-creations/work-003-mythos-playmat-system/cover.jpg"
+                alt="Mythos Playmat System full layout"
+              />
+              <p class="playmat-caption" id="playmat-caption">
+                Final layout preview. The design keeps the main table surface
+                inside the ornamental border and leaves a black outer edge for
+                print handling.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="concept-note">Concept</p>
+              <h2 id="concept-title">A functional ritual map</h2>
+            </div>
+          </div>
+          <div class="statement-block">
+            <p id="concept-p1">
+              The design combines two layers: a practical layer for card
+              placement and a visual layer based on cosmic horror, occult
+              diagrams, and weathered ornamental framing. The goal is to make
+              the table easier to manage while preserving the atmosphere of an
+              investigation board.
+            </p>
+            <p id="concept-p2">
+              The layout is built for a two-sided table arrangement. Player
+              areas are mirrored across the upper and lower edges, while shared
+              scenario and encounter zones are placed on the side so that the
+              play state remains readable during a campaign session.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="slot-note">Slots</p>
+              <h2 id="slot-title">Functional card zones</h2>
+            </div>
+            <p class="section-side-text" id="slot-side-text">
+              The slot text follows the Chinese labels used in the current print
+              draft.
+            </p>
+          </div>
+          <div class="slot-grid">
+            <article class="slot-card">
+              <h3 id="player-slot-title">Player areas</h3>
+              <p id="player-slot-text">
+                The top and bottom edges are arranged as mirrored player zones.
+                Each side contains slots for investigator-related play: player
+                card area, hand reference positions, ally, body, accessory,
+                spell slots, asset/event/skill areas, draw pile, discard pile,
+                blood/SAN tracking reference, and resource/clue reference.
+              </p>
+              <ul class="slot-list" id="player-slot-list">
+                <li>角色卡 / Investigator card</li>
+                <li>手部 1、手部 2 / Hand slots 1–2</li>
+                <li>盟友、身体、饰品 / Ally, body, accessory</li>
+                <li>法术 1、法术 2 / Spell slots 1–2</li>
+                <li>事件牌、技能牌、资产牌 / Event, skill, asset areas</li>
+                <li>摸牌堆、弃牌堆 / Draw pile and discard pile</li>
+                <li>
+                  血 / SAN、资源 / 线索 / Health, sanity, resources, clues
+                </li>
+              </ul>
+            </article>
+            <article class="slot-card">
+              <h3 id="scenario-slot-title">Scenario and encounter areas</h3>
+              <p id="scenario-slot-text">
+                The left side is reserved for shared game-state components,
+                keeping scenario progression and encounter handling separate
+                from the player card zones.
+              </p>
+              <ul class="slot-list" id="scenario-slot-list">
+                <li>密谋卡牌 / Agenda cards</li>
+                <li>密谋牌 / Agenda deck</li>
+                <li>场景牌 / Act cards</li>
+                <li>剧本牌 / Scenario reference card</li>
+                <li>遭遇牌堆 / Encounter deck</li>
+                <li>弃牌堆 / Encounter discard pile</li>
+                <li>胜利区 / Victory display</li>
+              </ul>
+            </article>
+            <article class="slot-card">
+              <h3 id="layout-slot-title">Symmetry and table flow</h3>
+              <p id="layout-slot-text">
+                The composition is horizontally symmetrical, allowing two
+                investigators or two play sides to face each other. The central
+                circle is left open as the main play space, suitable for
+                locations, enemies, clue tokens, and temporary scenario
+                components.
+              </p>
+            </article>
+            <article class="slot-card">
+              <h3 id="print-slot-title">Print margin</h3>
+              <p id="print-slot-text">
+                A black border is intentionally left around the artwork. This
+                gives the print shop additional tolerance for cropping, edge
+                binding, or minor cutting deviation, while keeping the visible
+                play area away from the trim edge.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-note" id="spec-note">Print Specification</p>
+              <h2 id="spec-title">Size and scaling</h2>
+            </div>
+          </div>
+          <div class="spec-grid">
+            <div class="spec-card">
+              <p class="spec-label" id="spec-resolution-label">Resolution</p>
+              <p class="spec-value" id="spec-resolution-value">
+                7500 × 4500 px
+              </p>
+            </div>
+            <div class="spec-card">
+              <p class="spec-label" id="spec-print-label">Suggested print</p>
+              <p class="spec-value" id="spec-print-value">150 × 90 cm</p>
+            </div>
+            <div class="spec-card">
+              <p class="spec-label" id="spec-scale-label">Scale</p>
+              <p class="spec-value" id="spec-scale-value">
+                50 px / cm · approx. 127 DPI
+              </p>
+            </div>
+            <div class="spec-card">
+              <p class="spec-label" id="spec-card-size-label">Card basis</p>
+              <p class="spec-value" id="spec-card-size-value">
+                90 mm × 65 mm cards
+              </p>
+            </div>
+          </div>
+          <p class="print-note" id="print-note-text">
+            The current layout is calculated around 90 mm × 65 mm cards. If the
+            printed size changes, the card slots scale proportionally. For
+            example, printing at 120 cm wide gives a scale ratio of 120 / 150 =
+            0.800, so a 90 mm card slot becomes about 72.0 mm. Printing at 150
+            cm × 88 cm keeps the intended physical card fit.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />Unauthorized reproduction, distribution, or commercial
+          use is prohibited.
+        </p>
+      </div>
+    </footer>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/nav.js"></script>
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+      function setText(id, value) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+      }
+      function setHtml(id, value) {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = value;
+      }
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+        if (typeof i18n !== "undefined" && i18n[lang]) {
+          setText("logo-text", i18n[lang].logo || "Alterven");
+          const footerFirst = document.querySelector(
+            ".footer-inner p:first-child",
+          );
+          const footerSecond = document.querySelector(
+            ".footer-inner p:last-child",
+          );
+          if (footerFirst && i18n[lang].copyright) {
+            footerFirst.textContent = i18n[lang].copyright;
+          }
+          if (footerSecond && i18n[lang].copyright2) {
+            footerSecond.innerHTML = i18n[lang].copyright2;
+          }
+        }
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+        if (lang === "zh") {
+          document.documentElement.lang = "zh-CN";
+          document.title = "秘仪牌垫系统 - Alterven";
+          setText("work-eyebrow", "作品 · 艺术创作 · 桌面界面设计");
+          setText("work-title", "秘仪牌垫系统");
+          setText(
+            "work-hero-text",
+            "一张为《诡镇奇谈》设计的自定义牌垫，将功能卡位、秘仪装饰和可打印的桌面布局整合到同一张图中。",
+          );
+          setText("meta-type-label", "类型");
+          setText("meta-type-value", "牌垫 / 桌面界面设计");
+          setText("meta-format-label", "格式");
+          setText("meta-format-value", "7500 × 4500 px · 建议打印 150 × 90 cm");
+          setText("meta-card-label", "卡牌尺寸");
+          setText("meta-card-value", "按 90 mm × 65 mm 牌套后卡牌设计");
+          setText("overview-note", "概览");
+          setText(
+            "overview-text",
+            "这是一张为《诡镇奇谈》制作的同人牌垫布局。它把牌桌表面视作一个桌面交互界面：调查员区域、剧本区域、遭遇区域、弃牌区域和公共供应位置被整合进一张对称的秘仪地图中。",
+          );
+          setText("final-note", "最终图");
+          setText("final-title", "完整牌垫布局");
+          setText("final-side-text", "外侧黑边是有意保留的打印与裁切余量。");
+          setText(
+            "playmat-caption",
+            "最终布局预览。主体牌桌区域被控制在装饰边框之内，外侧黑边用于打印、裁切和包边时保留容错。",
+          );
+          setText("concept-note", "概念");
+          setText("concept-title", "一张功能性的秘仪地图");
+          setText(
+            "concept-p1",
+            "这张图包含两层结构：一层用于实际放置卡牌，另一层来自宇宙恐怖、秘仪图案和旧化装饰边框。目标是在提升牌桌管理效率的同时，保留调查行动中的仪式感和压迫感。",
+          );
+          setText(
+            "concept-p2",
+            "布局按照双边牌桌关系组织。上下边缘是互相镜像的调查员区域，左侧则放置共享的剧本、场景、密谋和遭遇相关区域，使战役过程中的公共状态更容易被读取。",
+          );
+          setText("slot-note", "槽位");
+          setText("slot-title", "功能卡位说明");
+          setText("slot-side-text", "槽位名称沿用当前打印草稿中的中文标注。");
+          setText("player-slot-title", "调查员区域");
+          setText(
+            "player-slot-text",
+            "上下边缘被设计为镜像的玩家区域。每一侧都包含调查员游玩过程中常用的卡牌位置，包括角色卡、手部、盟友、身体、饰品、法术、事件/技能/资产区域、摸牌堆、弃牌堆，以及血量、理智、资源和线索的参考位置。",
+          );
+          setHtml(
+            "player-slot-list",
+            "<li>角色卡</li><li>手部 1、手部 2</li><li>盟友、身体、饰品</li><li>法术 1、法术 2</li><li>事件牌、技能牌、资产牌</li><li>摸牌堆、弃牌堆</li><li>血 / SAN、资源 / 线索</li>",
+          );
+          setText("scenario-slot-title", "剧本与遭遇区域");
+          setText(
+            "scenario-slot-text",
+            "左侧用于放置公共游戏状态组件，把剧本推进和遭遇处理从玩家个人区域中分离出来。",
+          );
+          setHtml(
+            "scenario-slot-list",
+            "<li>密谋卡牌</li><li>密谋牌</li><li>场景牌</li><li>剧本牌</li><li>遭遇牌堆</li><li>弃牌堆</li><li>胜利区</li>",
+          );
+          setText("layout-slot-title", "对称结构与牌桌流线");
+          setText(
+            "layout-slot-text",
+            "整体构图为横向对称结构，适合两名调查员或牌桌两侧玩家相对摆放。中央圆形区域保持开放，可用于放置地点、敌人、线索标记和临时剧本组件。",
+          );
+          setText("print-slot-title", "打印黑边");
+          setText(
+            "print-slot-text",
+            "图像外侧有意保留黑色边缘，用于给打印店提供裁切、包边和轻微偏移的余量，避免主体牌桌区域贴近成品边缘。",
+          );
+          setText("spec-note", "打印规格");
+          setText("spec-title", "尺寸与缩放");
+          setText("spec-resolution-label", "分辨率");
+          setText("spec-resolution-value", "7500 × 4500 px");
+          setText("spec-print-label", "建议打印");
+          setText("spec-print-value", "150 × 90 cm");
+          setText("spec-scale-label", "比例");
+          setText("spec-scale-value", "50 px / cm · 约 127 DPI");
+          setText("spec-card-size-label", "卡牌基准");
+          setText("spec-card-size-value", "90 mm × 65 mm 卡牌");
+          setText(
+            "print-note-text",
+            "当前布局按 90 mm × 65 mm 卡牌设计。如果改变打印尺寸，卡位会随整体比例同步缩放。例如改为 120 cm 宽打印，缩放比例为 120 / 132 = 0.909，原本 90 mm 的卡位会变为约 81.8 mm。按 150 × 90 cm 打印时，卡位尺寸最接近设计预期。",
+          );
+        } else {
+          document.documentElement.lang = "en";
+          document.title = "Mythos Playmat System - Alterven";
+        }
+      }
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        renderLang();
+      });
+    </script>
+  </body>
+</html>
