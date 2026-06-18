@@ -336,7 +336,7 @@
 
             <div class="project-meta-card">
               <span id="meta-update-label">Updated</span>
-              <strong id="meta-update-value">2026-06-13</strong>
+              <strong id="meta-update-value">2026-06-18</strong>
             </div>
           </div>
         </div>
@@ -349,8 +349,9 @@
           <p class="lead-paragraph" id="project-note-text">
             This project records several attempts to build and refine a voice
             simulation workflow using DDSP. The focus is not only the final
-            model, but also the dataset decisions, preprocessing choices, failed
-            experiments, and checkpoints that shaped the process.
+            model, but also the dataset decisions, preprocessing choices,
+            inference results, failed paths, and checkpoints that shaped the
+            process.
           </p>
         </div>
       </section>
@@ -360,28 +361,26 @@
           <div class="project-block-note" id="latest-label">Latest</div>
 
           <div class="project-block-content">
-            <h2 id="latest-title">Update · 2026-06-13</h2>
+            <h2 id="latest-title">Update · 2026-06-18</h2>
 
             <p id="latest-p1">
-              A new batch of recordings was reviewed today. Most of the material
-              was discarded because the usable portion was too limited or not
-              stable enough for training. One recording was kept for further
-              processing.
+              The current training run has reached roughly 50,000 steps. This
+              round uses audio derived from the previous training dataset after
+              de-harmonization processing, rather than continuing with the new
+              recording path that sounded muffled.
             </p>
 
             <p id="latest-p2">
-              The selected recording was split in Adobe Audition, then processed
-              and sliced through MSST before being used for DDSP 6.3 training.
-              After an initial training run, both the source sound and the
-              inference result from the 6000-step checkpoint sounded noticeably
-              muffled.
+              Several songs have been inferred with the current model. The model
+              is already able to produce usable song outputs, but some tracks
+              show electronic-sounding artifacts because of limitations in the
+              original source domain.
             </p>
 
             <p id="latest-p3">
-              The current decision is to return to the dataset from the second
-              attempt and retrain it under DDSP 6.3, then compare whether the
-              older dataset produces a clearer inference result than the newly
-              processed recording.
+              The next plan is to choose a desired vocal source and use it for
+              model inference. After original songs are written, this inferred
+              model can be used as a singing voice for those works.
             </p>
           </div>
         </div>
@@ -396,35 +395,34 @@
 
             <div class="project-module-grid">
               <div class="project-module-card">
-                <h3 id="workflow-1-title">Recording Review</h3>
+                <h3 id="workflow-1-title">Dataset Return</h3>
                 <p id="workflow-1-text">
-                  Newly collected audio was screened first. Low-value or
-                  unstable material was removed before entering the processing
-                  chain.
+                  The project returned to the previous training dataset instead
+                  of relying on the newly collected recording.
                 </p>
               </div>
 
               <div class="project-module-card">
-                <h3 id="workflow-2-title">AU Splitting</h3>
+                <h3 id="workflow-2-title">De-harmonization</h3>
                 <p id="workflow-2-text">
-                  The remaining recording was split manually in Adobe Audition
-                  to prepare cleaner segments for later processing.
+                  The reused dataset was processed through a de-harmonization
+                  path to prepare cleaner vocal material for retraining.
                 </p>
               </div>
 
               <div class="project-module-card">
-                <h3 id="workflow-3-title">MSST Processing</h3>
+                <h3 id="workflow-3-title">DDSP 6.3 Training</h3>
                 <p id="workflow-3-text">
-                  The selected audio was sent into MSST for processing and
-                  slicing before entering the training dataset.
+                  The current DDSP 6.3 run has reached roughly 50,000 training
+                  steps, making it ready for broader inference testing.
                 </p>
               </div>
 
               <div class="project-module-card">
-                <h3 id="workflow-4-title">DDSP 6.3 Training</h3>
+                <h3 id="workflow-4-title">Song Inference</h3>
                 <p id="workflow-4-text">
-                  The processed slices were used for training in DDSP 6.3, with
-                  early inference tested at the 6000-step checkpoint.
+                  The model has been used to infer several songs, exposing both
+                  usable vocal results and source-domain limitations.
                 </p>
               </div>
             </div>
@@ -472,12 +470,12 @@
 
                 <p id="log2-text">
                   The second attempt used DDSP-Barbara 6.1 and reached around
-                  110,000 steps. This dataset is now being reconsidered as a
-                  more stable base for retraining under DDSP 6.3.
+                  110,000 steps. This dataset later became the stronger base for
+                  the DDSP 6.3 retraining route.
                 </p>
               </article>
 
-              <article class="project-log-card project-current">
+              <article class="project-log-card">
                 <div class="project-log-top">
                   <span class="project-log-date" id="log3-date"
                     >2026-06-13</span
@@ -492,8 +490,29 @@
                 <p id="log3-text">
                   A new recording was processed through AU and MSST, then used
                   for DDSP 6.3 training. The sound remained muffled, including
-                  the 6000-step inference result, so the next step is to retrain
-                  the second-attempt dataset with the newer DDSP 6.3 workflow.
+                  the 6000-step inference result, so the project returned to the
+                  second-attempt dataset for retraining.
+                </p>
+              </article>
+
+              <article class="project-log-card project-current">
+                <div class="project-log-top">
+                  <span class="project-log-date" id="log4-date"
+                    >2026-06-18</span
+                  >
+                  <span class="project-log-tag" id="log4-tag">~50k Steps</span>
+                </div>
+
+                <h3 id="log4-title">
+                  De-harmonized dataset and song inference
+                </h3>
+
+                <p id="log4-text">
+                  The current model has trained for roughly 50,000 steps using
+                  de-harmonized audio derived from the previous dataset. Several
+                  songs were inferred successfully, though some outputs still
+                  carry electronic-sounding artifacts due to the original source
+                  domain.
                 </p>
               </article>
             </div>
@@ -511,33 +530,34 @@
             <div class="project-status-list">
               <div class="project-status-item">
                 <strong id="diagnosis-1-title"
-                  >The new recording is not ideal.</strong
+                  >The reused dataset is more productive.</strong
                 >
                 <span id="diagnosis-1-text">
-                  The retained material was technically usable, but the
-                  resulting sound quality was not clear enough. It produced a
-                  muffled impression before and after inference.
+                  Returning to the previous dataset after de-harmonization has
+                  produced a more usable training path than the newly recorded
+                  audio.
                 </span>
               </div>
 
               <div class="project-status-item">
                 <strong id="diagnosis-2-title"
-                  >Dataset quality remains central.</strong
+                  >The model can already infer songs.</strong
                 >
                 <span id="diagnosis-2-text">
-                  The result suggests that model version alone is not enough.
-                  Source clarity, segmentation quality, and dataset consistency
-                  are still decisive.
+                  The roughly 50,000-step model has produced several song
+                  inference results, which means the workflow is now useful for
+                  practical music testing.
                 </span>
               </div>
 
               <div class="project-status-item">
                 <strong id="diagnosis-3-title"
-                  >The second dataset will be reused.</strong
+                  >Source-domain limits remain visible.</strong
                 >
                 <span id="diagnosis-3-text">
-                  The next experiment will reuse the dataset from the second
-                  attempt and retrain it with DDSP 6.3 for comparison.
+                  Some songs still show electronic artifacts because the model
+                  is constrained by the domain and quality of the original
+                  source material.
                 </span>
               </div>
             </div>
@@ -550,13 +570,13 @@
           <p class="section-note" id="closing-note">Next</p>
 
           <h2 class="closing-title" id="closing-title">
-            Return to the stronger dataset.
+            Prepare a voice for future songs.
           </h2>
 
           <p class="closing-text" id="closing-text">
-            The next stage is to retrain the second-attempt dataset under DDSP
-            6.3 and compare its clarity against the discarded new recording
-            path.
+            The next stage is to select the desired vocal source, use it for
+            model inference, and prepare a singing voice that can later perform
+            original songs after they are written.
           </p>
         </div>
       </section>
@@ -611,33 +631,33 @@
         "meta-version-label": { en: "Version", zh: "版本" },
         "meta-version-value": { en: "DDSP 6.3", zh: "DDSP 6.3" },
         "meta-update-label": { en: "Updated", zh: "更新" },
-        "meta-update-value": { en: "2026-06-13", zh: "2026-06-13" },
+        "meta-update-value": { en: "2026-06-18", zh: "2026-06-18" },
 
         "project-note-label": {
           en: "Project Note",
           zh: "项目说明",
         },
         "project-note-text": {
-          en: "This project records several attempts to build and refine a voice simulation workflow using DDSP. The focus is not only the final model, but also the dataset decisions, preprocessing choices, failed experiments, and checkpoints that shaped the process.",
-          zh: "这个项目记录了多次使用 DDSP 构建和调整人声模拟流程的尝试。重点不只是最终模型，也包括数据集取舍、预处理选择、失败实验与训练检查点。",
+          en: "This project records several attempts to build and refine a voice simulation workflow using DDSP. The focus is not only the final model, but also the dataset decisions, preprocessing choices, inference results, failed paths, and checkpoints that shaped the process.",
+          zh: "这个项目记录了多次使用 DDSP 构建和调整人声模拟流程的尝试。重点不只是最终模型，也包括数据集取舍、预处理选择、推理结果、失败路径与训练检查点。",
         },
 
         "latest-label": { en: "Latest", zh: "最新" },
         "latest-title": {
-          en: "Update · 2026-06-13",
-          zh: "更新 · 2026-06-13",
+          en: "Update · 2026-06-18",
+          zh: "更新 · 2026-06-18",
         },
         "latest-p1": {
-          en: "A new batch of recordings was reviewed today. Most of the material was discarded because the usable portion was too limited or not stable enough for training. One recording was kept for further processing.",
-          zh: "今天对一批新的录音进行了检查。由于可用部分过少或稳定性不足，大部分材料被舍弃，只保留了一个录音继续处理。",
+          en: "The current training run has reached roughly 50,000 steps. This round uses audio derived from the previous training dataset after de-harmonization processing, rather than continuing with the new recording path that sounded muffled.",
+          zh: "当前训练大约已经完成 5 万步。这一轮使用的是上次训练数据经过和声处理后的音频，而不是继续使用此前听感偏闷的新录音路径。",
         },
         "latest-p2": {
-          en: "The selected recording was split in Adobe Audition, then processed and sliced through MSST before being used for DDSP 6.3 training. After an initial training run, both the source sound and the inference result from the 6000-step checkpoint sounded noticeably muffled.",
-          zh: "保留下来的录音先用 Adobe Audition 拆分，然后放入 MSST 处理和切片，再用于 DDSP 6.3 训练。初步训练后，无论原始声音效果还是 6000 步模型的推理结果，听起来都明显偏闷。",
+          en: "Several songs have been inferred with the current model. The model is already able to produce usable song outputs, but some tracks show electronic-sounding artifacts because of limitations in the original source domain.",
+          zh: "目前已经用这个模型推理出了一些歌曲。模型已经能够产出可用的歌曲结果，但由于原声域限制，部分歌曲的表现仍会出现电音感。",
         },
         "latest-p3": {
-          en: "The current decision is to return to the dataset from the second attempt and retrain it under DDSP 6.3, then compare whether the older dataset produces a clearer inference result than the newly processed recording.",
-          zh: "目前的决定是回到第二次尝试使用的数据集，并用 DDSP 6.3 重新训练，再比较旧数据集是否能比这次新处理的录音得到更清晰的推理效果。",
+          en: "The next plan is to choose a desired vocal source and use it for model inference. After original songs are written, this inferred model can be used as a singing voice for those works.",
+          zh: "下一步计划是选取想要的人声，并用它来进行模型推理。之后如果写完原创歌曲，就可以用这个推理后的模型来演唱。",
         },
 
         "workflow-label": { en: "Workflow", zh: "流程" },
@@ -646,36 +666,36 @@
           zh: "当前处理路线",
         },
         "workflow-1-title": {
-          en: "Recording Review",
-          zh: "录音筛选",
+          en: "Dataset Return",
+          zh: "回到旧数据集",
         },
         "workflow-1-text": {
-          en: "Newly collected audio was screened first. Low-value or unstable material was removed before entering the processing chain.",
-          zh: "先检查新收集的音频。价值较低或不稳定的材料在进入处理链之前被剔除。",
+          en: "The project returned to the previous training dataset instead of relying on the newly collected recording.",
+          zh: "项目回到了此前使用过的训练数据集，而不是继续依赖新收集的录音。",
         },
         "workflow-2-title": {
-          en: "AU Splitting",
-          zh: "AU 拆分",
+          en: "De-harmonization",
+          zh: "和声处理",
         },
         "workflow-2-text": {
-          en: "The remaining recording was split manually in Adobe Audition to prepare cleaner segments for later processing.",
-          zh: "保留下来的录音在 Adobe Audition 中进行手动拆分，以便为后续处理准备更清晰的片段。",
+          en: "The reused dataset was processed through a de-harmonization path to prepare cleaner vocal material for retraining.",
+          zh: "复用的数据集经过和声处理，以便为重新训练准备更可用的人声材料。",
         },
         "workflow-3-title": {
-          en: "MSST Processing",
-          zh: "MSST 处理",
-        },
-        "workflow-3-text": {
-          en: "The selected audio was sent into MSST for processing and slicing before entering the training dataset.",
-          zh: "选中的音频被放入 MSST 进行处理和切片，再进入训练数据集。",
-        },
-        "workflow-4-title": {
           en: "DDSP 6.3 Training",
           zh: "DDSP 6.3 训练",
         },
+        "workflow-3-text": {
+          en: "The current DDSP 6.3 run has reached roughly 50,000 training steps, making it ready for broader inference testing.",
+          zh: "当前 DDSP 6.3 训练大约达到 5 万步，已经可以进入更广泛的推理测试。",
+        },
+        "workflow-4-title": {
+          en: "Song Inference",
+          zh: "歌曲推理",
+        },
         "workflow-4-text": {
-          en: "The processed slices were used for training in DDSP 6.3, with early inference tested at the 6000-step checkpoint.",
-          zh: "处理后的切片用于 DDSP 6.3 训练，并在 6000 步检查点进行了早期推理测试。",
+          en: "The model has been used to infer several songs, exposing both usable vocal results and source-domain limitations.",
+          zh: "该模型已经被用于推理若干歌曲，既展现了可用的人声结果，也暴露出原声域限制。",
         },
 
         "history-label": { en: "History", zh: "历史" },
@@ -703,8 +723,8 @@
           zh: "第二数据集与更长训练",
         },
         "log2-text": {
-          en: "The second attempt used DDSP-Barbara 6.1 and reached around 110,000 steps. This dataset is now being reconsidered as a more stable base for retraining under DDSP 6.3.",
-          zh: "第二次尝试使用 DDSP-Barbara 6.1，训练达到约 11 万步。这个数据集现在被重新考虑，作为 DDSP 6.3 下重新训练的更稳定基础。",
+          en: "The second attempt used DDSP-Barbara 6.1 and reached around 110,000 steps. This dataset later became the stronger base for the DDSP 6.3 retraining route.",
+          zh: "第二次尝试使用 DDSP-Barbara 6.1，训练达到约 11 万步。这个数据集后来成为 DDSP 6.3 重新训练路线中更稳定的基础。",
         },
         "log3-date": { en: "2026-06-13", zh: "2026-06-13" },
         "log3-tag": { en: "DDSP 6.3", zh: "DDSP 6.3" },
@@ -713,8 +733,18 @@
           zh: "新录音测试与重新训练决定",
         },
         "log3-text": {
-          en: "A new recording was processed through AU and MSST, then used for DDSP 6.3 training. The sound remained muffled, including the 6000-step inference result, so the next step is to retrain the second-attempt dataset with the newer DDSP 6.3 workflow.",
-          zh: "新的录音经过 AU 和 MSST 处理后用于 DDSP 6.3 训练。声音仍然偏闷，包括 6000 步推理结果，因此下一步是使用新的 DDSP 6.3 流程重新训练第二次尝试的数据集。",
+          en: "A new recording was processed through AU and MSST, then used for DDSP 6.3 training. The sound remained muffled, including the 6000-step inference result, so the project returned to the second-attempt dataset for retraining.",
+          zh: "新的录音经过 AU 和 MSST 处理后用于 DDSP 6.3 训练。声音仍然偏闷，包括 6000 步推理结果，因此项目回到了第二次尝试的数据集重新训练。",
+        },
+        "log4-date": { en: "2026-06-18", zh: "2026-06-18" },
+        "log4-tag": { en: "~50k Steps", zh: "约 5 万步" },
+        "log4-title": {
+          en: "De-harmonized dataset and song inference",
+          zh: "和声处理数据集与歌曲推理",
+        },
+        "log4-text": {
+          en: "The current model has trained for roughly 50,000 steps using de-harmonized audio derived from the previous dataset. Several songs were inferred successfully, though some outputs still carry electronic-sounding artifacts due to the original source domain.",
+          zh: "当前模型使用上次数据集经过和声处理后的音频训练到了约 5 万步，并已经推理出若干歌曲。部分输出仍因原声域限制而带有电音感。",
         },
 
         "diagnosis-label": { en: "Diagnosis", zh: "判断" },
@@ -723,38 +753,38 @@
           zh: "当前判断",
         },
         "diagnosis-1-title": {
-          en: "The new recording is not ideal.",
-          zh: "新的录音并不理想。",
+          en: "The reused dataset is more productive.",
+          zh: "复用数据集更有效。",
         },
         "diagnosis-1-text": {
-          en: "The retained material was technically usable, but the resulting sound quality was not clear enough. It produced a muffled impression before and after inference.",
-          zh: "保留下来的材料在技术上可以使用，但声音质量不够清晰。无论处理前还是推理后，都呈现出偏闷的听感。",
+          en: "Returning to the previous dataset after de-harmonization has produced a more usable training path than the newly recorded audio.",
+          zh: "回到上次数据集并经过和声处理后，训练路径比新录音路线更可用。",
         },
         "diagnosis-2-title": {
-          en: "Dataset quality remains central.",
-          zh: "数据集质量仍然是核心。",
+          en: "The model can already infer songs.",
+          zh: "模型已经可以推理歌曲。",
         },
         "diagnosis-2-text": {
-          en: "The result suggests that model version alone is not enough. Source clarity, segmentation quality, and dataset consistency are still decisive.",
-          zh: "这次结果说明，仅仅更换模型版本并不足够。原始音源清晰度、切片质量和数据集一致性仍然是决定因素。",
+          en: "The roughly 50,000-step model has produced several song inference results, which means the workflow is now useful for practical music testing.",
+          zh: "约 5 万步模型已经生成了一些歌曲推理结果，说明当前流程已经可以用于实际音乐测试。",
         },
         "diagnosis-3-title": {
-          en: "The second dataset will be reused.",
-          zh: "将重新使用第二次数据集。",
+          en: "Source-domain limits remain visible.",
+          zh: "原声域限制仍然明显。",
         },
         "diagnosis-3-text": {
-          en: "The next experiment will reuse the dataset from the second attempt and retrain it with DDSP 6.3 for comparison.",
-          zh: "下一次实验将重新使用第二次尝试的数据集，并用 DDSP 6.3 重新训练，以便进行对比。",
+          en: "Some songs still show electronic artifacts because the model is constrained by the domain and quality of the original source material.",
+          zh: "部分歌曲仍然会出现电音感，因为模型仍受限于原始音源的声域和质量。",
         },
 
         "closing-note": { en: "Next", zh: "下一步" },
         "closing-title": {
-          en: "Return to the stronger dataset.",
-          zh: "回到更稳定的数据集。",
+          en: "Prepare a voice for future songs.",
+          zh: "为未来歌曲准备可用人声。",
         },
         "closing-text": {
-          en: "The next stage is to retrain the second-attempt dataset under DDSP 6.3 and compare its clarity against the discarded new recording path.",
-          zh: "下一阶段将使用 DDSP 6.3 重新训练第二次尝试的数据集，并与这次被舍弃的新录音路径进行清晰度对比。",
+          en: "The next stage is to select the desired vocal source, use it for model inference, and prepare a singing voice that can later perform original songs after they are written.",
+          zh: "下一阶段将选取想要的人声，用它进行模型推理，并准备一个之后能演唱原创歌曲的声音模型。",
         },
       };
 
