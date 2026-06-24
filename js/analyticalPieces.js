@@ -1,16 +1,17 @@
 const AnalyticalPieces = [
   {
     title: {
-      en: "Empty Piece",
-      zh: "这里没有内容",
+      en: "Trading Strategy Evaluation",
+      zh: "策略评价中的本金锚定与回撤修复",
     },
     desc: {
-      en: "test",
-      zh: "测试。",
+      en: "An analytical essay on common strategy evaluation metrics, principal-anchored drawdown, and recovery exposure.",
+      zh: "一篇关于策略评价的分析文章，讨论常见指标、本金锚定回撤与修复机会暴露。",
     },
-    cover: "/assets/images/works/analytical-pieces/work-001/cover.jpg",
-    link: "/works/analytical-pieces/work-001/",
-    date: "2026-03-22",
+    cover:
+      "/assets/images/works/analytical-pieces/work-001-trading-strategy-evaluation/cover.jpg",
+    link: "/works/analytical-pieces/work-001-trading-strategy-evaluation/",
+    date: "2026-06-24",
   },
 
   {

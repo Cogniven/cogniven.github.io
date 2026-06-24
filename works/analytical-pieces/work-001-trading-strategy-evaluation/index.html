@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Trading Strategy Evaluation - Alterven</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      .essay-page {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .essay-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .essay-meta span {
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 6px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .essay-subtitle {
+        color: var(--text-soft);
+        line-height: 1.76;
+        font-size: 1.06rem;
+        margin: 0;
+        max-width: 700px;
+      }
+
+      .essay-divider {
+        width: 56px;
+        height: 1px;
+        background: var(--line);
+        margin: 18px 0 0;
+      }
+
+      .essay-abstract {
+        color: var(--text-soft);
+        line-height: 1.9;
+        font-size: 1.04rem;
+        margin: 0;
+      }
+
+      .essay-body {
+        font-size: 1.06rem;
+        line-height: 1.92;
+        color: var(--text);
+      }
+
+      .essay-body h2 {
+        font-size: 1.35rem;
+        margin: 2.2em 0 0.8em;
+        line-height: 1.3;
+        color: var(--text);
+      }
+
+      .essay-body p {
+        margin: 0 0 1.35em;
+        color: var(--text-soft);
+      }
+
+      .essay-figure {
+        margin: 2.2em 0 2em;
+      }
+
+      .essay-figure img {
+        width: 100%;
+        display: block;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+      }
+
+      .essay-caption {
+        margin-top: 12px;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .pdf-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 22px 0 24px;
+      }
+
+      .pdf-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--text);
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.03);
+        transition:
+          border-color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .pdf-link:hover {
+        border-color: var(--text-soft);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .pdf-frame-wrap {
+        width: 100%;
+        height: 760px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        background: var(--bg-soft);
+        margin-top: 18px;
+      }
+
+      .pdf-frame-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+        background: var(--bg-soft);
+      }
+
+      .essay-note-block {
+        margin: 2.2em 0 0;
+        padding: 18px 18px 16px;
+        border-left: 2px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 0 10px 10px 0;
+      }
+
+      .essay-note-title {
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 8px;
+      }
+
+      .essay-note-block p:last-child {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 720px) {
+        .essay-page {
+          max-width: 100%;
+        }
+
+        .pdf-frame-wrap {
+          height: 560px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a
+          href="/index.html"
+          class="logo"
+          id="logo-text"
+          style="margin-right: auto"
+          >Alterven</a
+        >
+
+        <div style="display: flex; align-items: center; gap: 24px">
+          <div
+            class="nav-links"
+            id="nav-links"
+            style="display: flex; gap: 24px"
+          >
+            <a href="/works.html">Works</a>
+            <a href="/writing.html">Writing</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About</a>
+            <a href="/archive.html">Archive</a>
+          </div>
+
+          <div class="lang-switcher">
+            <button id="lang-en" class="lang-btn" style="margin-right: 4px">
+              EN
+            </button>
+            <button id="lang-zh" class="lang-btn">中文</button>
+          </div>
+
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle navigation"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner essay-page">
+          <p class="eyebrow" id="essay-eyebrow">Works · Analytical Pieces</p>
+          <h1 id="essay-title">Trading Strategy Evaluation</h1>
+
+          <div class="essay-meta">
+            <span id="essay-meta-year">2026</span>
+            <span id="essay-meta-type">Essay</span>
+            <span id="essay-meta-tag">Strategy Evaluation</span>
+          </div>
+
+          <p class="essay-subtitle" id="essay-subtitle">
+            A note on common performance metrics, principal-anchored drawdown,
+            and recovery exposure in strategy evaluation.
+          </p>
+
+          <div class="essay-divider"></div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="container essay-page">
+          <p class="section-note" id="essay-abstract-label">Abstract</p>
+          <p class="essay-abstract" id="essay-abstract">
+            This piece starts from common indicators such as Sharpe ratio,
+            Calmar ratio, and maximum drawdown, then points out a problem in
+            finite backtests: the equity curve may conceal the difference
+            between compound growth and principal risk. It proposes a
+            supplementary perspective based on principal anchoring, recovery
+            time, and recovery opportunity exposure.
+          </p>
+
+          <div class="pdf-actions">
+            <a
+              class="pdf-link"
+              id="essay-pdf-open"
+              href="/assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              Open PDF
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container essay-page">
+          <article class="essay-body">
+            <h2 id="essay-h2-1">1. Motivation</h2>
+            <p id="essay-p1">
+              Conventional evaluation metrics summarize the observed equity
+              curve, but they do not always show whether a strategy is robust
+              under principal-anchored risk. A strategy that looks acceptable
+              after compounding may still expose the initial capital to a much
+              larger effective loss.
+            </p>
+
+            <h2 id="essay-h2-2">2. Core Question</h2>
+            <p id="essay-p2">
+              The central question is not only how much the strategy earns, but
+              how the strategy repairs damage after loss. Recovery time, average
+              holding period, and entry frequency together determine how many
+              realistic recovery opportunities the strategy has after drawdown.
+            </p>
+
+            <div class="essay-figure">
+              <img
+                src="/assets/images/works/analytical-pieces/work-001-trading-strategy-evaluation/cover.jpg"
+                alt="Trading Strategy Evaluation"
+                onerror="
+                  this.src =
+                    'data:image/svg+xml;utf8,' +
+                    encodeURIComponent(
+                      `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='760' viewBox='0 0 1200 760'><rect width='1200' height='760' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='30' font-family='Georgia, serif'>Trading Strategy Evaluation</text></svg>`,
+                    )
+                "
+              />
+              <p class="essay-caption" id="essay-caption">
+                Figure 1. Cover image for the analytical piece.
+              </p>
+            </div>
+
+            <h2 id="essay-h2-3">3. Full Text</h2>
+            <p id="essay-p3">
+              The complete text is embedded below. If the preview does not load
+              in the browser, open the PDF directly.
+            </p>
+
+            <div class="pdf-frame-wrap">
+              <iframe
+                src="/assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf"
+                title="Trading Strategy Evaluation PDF"
+              >
+              </iframe>
+            </div>
+
+            <div class="essay-note-block">
+              <p class="essay-note-title" id="essay-note-title">File</p>
+              <p id="essay-note-text">
+                PDF file path:
+                /assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section closing-section">
+        <div class="container essay-page center">
+          <p class="section-note" id="essay-ending-label">Ending</p>
+          <h2 class="closing-title" id="essay-closing-title">
+            Evaluation should include recovery structure.
+          </h2>
+          <p class="closing-text" id="essay-closing-text">
+            A strategy is not only judged by its return curve, but also by how
+            its drawdowns are produced, repaired, and exposed to time.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Alterven. All rights reserved.</p>
+        <p>
+          The works presented on this site are original and protected by
+          copyright.<br />
+          Unauthorized reproduction, distribution, or commercial use is
+          prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/i18n.js"></script>
+
+    <script>
+      let lang = localStorage.getItem("lang") || "en";
+
+      const pageContent = {
+        "essay-eyebrow": {
+          en: "Works · Analytical Pieces",
+          zh: "作品 · 分析作品",
+        },
+        "essay-title": {
+          en: "Trading Strategy Evaluation",
+          zh: "策略评价中的本金锚定与回撤修复",
+        },
+        "essay-meta-year": {
+          en: "2026",
+          zh: "2026年",
+        },
+        "essay-meta-type": {
+          en: "Essay",
+          zh: "文章",
+        },
+        "essay-meta-tag": {
+          en: "Strategy Evaluation",
+          zh: "策略评价",
+        },
+        "essay-subtitle": {
+          en: "A note on common performance metrics, principal-anchored drawdown, and recovery exposure in strategy evaluation.",
+          zh: "一篇关于常见绩效指标、本金锚定回撤与修复机会暴露的策略评价札记。",
+        },
+        "essay-abstract-label": {
+          en: "Abstract",
+          zh: "摘要",
+        },
+        "essay-abstract": {
+          en: "This piece starts from common indicators such as Sharpe ratio, Calmar ratio, and maximum drawdown, then points out a problem in finite backtests: the equity curve may conceal the difference between compound growth and principal risk. It proposes a supplementary perspective based on principal anchoring, recovery time, and recovery opportunity exposure.",
+          zh: "这篇文章从夏普比率、卡玛比率、最大回撤等常见指标出发，指出有限回测中的一个问题：权益曲线可能遮蔽复利增长与本金风险之间的差异。文章进一步提出以本金锚定、修复时间与修复机会暴露为核心的补充评价视角。",
+        },
+        "essay-pdf-open": {
+          en: "Open PDF",
+          zh: "打开 PDF",
+        },
+        "essay-h2-1": {
+          en: "1. Motivation",
+          zh: "1. 问题动机",
+        },
+        "essay-p1": {
+          en: "Conventional evaluation metrics summarize the observed equity curve, but they do not always show whether a strategy is robust under principal-anchored risk. A strategy that looks acceptable after compounding may still expose the initial capital to a much larger effective loss.",
+          zh: "常见评价指标能够概括已经观察到的权益曲线，但它们并不总能说明策略在本金锚定风险下是否稳健。一个在复利曲线上看起来可以接受的策略，仍然可能让初始本金承受更大的有效损失。",
+        },
+        "essay-h2-2": {
+          en: "2. Core Question",
+          zh: "2. 核心问题",
+        },
+        "essay-p2": {
+          en: "The central question is not only how much the strategy earns, but how the strategy repairs damage after loss. Recovery time, average holding period, and entry frequency together determine how many realistic recovery opportunities the strategy has after drawdown.",
+          zh: "核心问题不只是策略赚了多少，而是策略在亏损后如何修复损伤。修复时间、平均持仓周期与开仓频率共同决定了策略在回撤后拥有多少现实可用的修复机会。",
+        },
+        "essay-caption": {
+          en: "Figure 1. Cover image for the analytical piece.",
+          zh: "图 1：分析作品封面图。",
+        },
+        "essay-h2-3": {
+          en: "3. Full Text",
+          zh: "3. 全文",
+        },
+        "essay-p3": {
+          en: "The complete text is embedded below. If the preview does not load in the browser, open the PDF directly.",
+          zh: "完整文章嵌入在下方。如果浏览器没有加载预览，可以直接打开 PDF。",
+        },
+        "essay-note-title": {
+          en: "File",
+          zh: "文件",
+        },
+        "essay-note-text": {
+          en: "PDF file path: /assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf",
+          zh: "PDF 文件路径：/assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf",
+        },
+        "essay-ending-label": {
+          en: "Ending",
+          zh: "结尾",
+        },
+        "essay-closing-title": {
+          en: "Evaluation should include recovery structure.",
+          zh: "策略评价应当包含修复结构。",
+        },
+        "essay-closing-text": {
+          en: "A strategy is not only judged by its return curve, but also by how its drawdowns are produced, repaired, and exposed to time.",
+          zh: "评价一个策略时，不只要看收益曲线，也要看回撤如何产生、如何修复，以及如何暴露在时间之中。",
+        },
+      };
+
+      function setLang(newLang) {
+        lang = newLang;
+        localStorage.setItem("lang", lang);
+        renderLang();
+      }
+
+      function renderLang() {
+        if (window.buildNav) {
+          window.buildNav(lang);
+        }
+
+        document.getElementById("logo-text").textContent = i18n[lang].logo;
+        document
+          .getElementById("lang-en")
+          .classList.toggle("active", lang === "en");
+        document
+          .getElementById("lang-zh")
+          .classList.toggle("active", lang === "zh");
+
+        if (window.applyPageContentOverrides) {
+          window.applyPageContentOverrides(lang, pageContent);
+        }
+
+        document.querySelector(".footer-inner p:first-child").textContent =
+          i18n[lang].copyright;
+        document.querySelector(".footer-inner p:last-child").innerHTML =
+          i18n[lang].copyright2;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("lang-en").onclick = () => setLang("en");
+        document.getElementById("lang-zh").onclick = () => setLang("zh");
+        setLang(lang);
+      });
+    </script>
+
+    <script src="/js/nav.js"></script>
+  </body>
+</html>
