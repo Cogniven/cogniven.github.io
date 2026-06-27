@@ -4,11 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>译名的结构 - Alterven</title>
+    <meta
+      name="description"
+      content="音形义兼构译名的哲学：从《阿甘正传》《天使爱美丽》、阿西莫夫“夫铭”到 Truman 的中文再命名。"
+    />
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/css/style.css" />
+
     <style>
       .essay-page {
-        max-width: 760px;
+        max-width: 820px;
         margin: 0 auto;
       }
 
@@ -25,7 +30,7 @@
         line-height: 1.76;
         font-size: 1.06rem;
         margin: 0;
-        max-width: 700px;
+        max-width: 740px;
       }
 
       .essay-divider {
@@ -36,26 +41,127 @@
       }
 
       .essay-body {
-        font-size: 1.06rem;
-        line-height: 1.92;
-        color: var(--text);
+        font-size: 1.04rem;
+        line-height: 1.9;
+        color: var(--text-soft);
       }
 
       .essay-body h2 {
-        font-size: 1.35rem;
-        margin: 2.2em 0 0.8em;
-        line-height: 1.3;
+        font-size: 1.36rem;
+        margin: 2.35em 0 0.85em;
+        line-height: 1.35;
         color: var(--text);
       }
 
+      .essay-body h3 {
+        font-size: 1.12rem;
+        margin: 1.8em 0 0.7em;
+        line-height: 1.45;
+        color: var(--text);
+      }
+
+      .essay-body p,
+      .essay-body li,
+      .essay-body td {
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+
       .essay-body p {
-        margin: 0 0 1.35em;
+        margin: 0 0 1.25em;
         color: var(--text-soft);
       }
 
       .essay-body strong {
         color: var(--text);
         font-weight: 600;
+      }
+
+      .essay-body em {
+        font-style: italic;
+      }
+
+      .essay-body ul,
+      .essay-body ol {
+        margin: 0 0 1.35em 1.25em;
+        padding: 0;
+      }
+
+      .essay-body li {
+        margin: 0 0 0.55em;
+      }
+
+      .lang-article {
+        display: none;
+      }
+
+      .lang-article.active {
+        display: block;
+      }
+
+      #article-en {
+        text-align: left;
+      }
+
+      .essay-title-full {
+        padding: 22px 22px 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+        margin: 0 0 2.2em;
+      }
+
+      .essay-title-full p {
+        margin: 0;
+        color: var(--text);
+        font-size: 1.08rem;
+        line-height: 1.75;
+      }
+
+      .essay-table-wrap {
+        overflow-x: auto;
+        margin: 1.6em 0;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .essay-table {
+        width: 100%;
+        min-width: 720px;
+        border-collapse: collapse;
+      }
+
+      .essay-table caption {
+        caption-side: top;
+        text-align: left;
+        padding: 14px 16px 8px;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .essay-table th,
+      .essay-table td {
+        border-top: 1px solid var(--line);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .essay-table th {
+        color: var(--text);
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .essay-table td {
+        color: var(--text-soft);
+      }
+
+      .references {
+        font-size: 0.96rem;
+        line-height: 1.78;
       }
 
       .essay-actions {
@@ -102,12 +208,21 @@
           max-width: 100%;
         }
 
+        .essay-body {
+          font-size: 1rem;
+          line-height: 1.82;
+        }
+
         .essay-actions {
           flex-direction: column;
         }
 
         .essay-btn {
           width: 100%;
+        }
+
+        .essay-table {
+          min-width: 680px;
         }
       }
     </style>
@@ -123,6 +238,7 @@
           style="margin-right: auto"
           >Alterven</a
         >
+
         <div style="display: flex; align-items: center; gap: 24px">
           <div
             class="nav-links"
@@ -135,12 +251,14 @@
             <a href="/about.html">About</a>
             <a href="/archive.html">Archive</a>
           </div>
+
           <div class="lang-switcher">
             <button id="lang-en" class="lang-btn" style="margin-right: 4px">
               EN
             </button>
             <button id="lang-zh" class="lang-btn">中文</button>
           </div>
+
           <button
             class="hamburger"
             id="hamburger-btn"
@@ -169,24 +287,806 @@
 
       <section class="section">
         <div class="container essay-page">
-          <article class="essay-body">
+          <article
+            class="essay-body lang-article active"
+            id="article-zh"
+            lang="zh-CN"
+          >
+            <div class="essay-title-full">
+              <p>
+                <strong>音形义兼构译名的哲学：</strong
+                >从《阿甘正传》《天使爱美丽》、阿西莫夫“夫铭”到
+                <em>Truman</em> 的中文再命名
+              </p>
+            </div>
+
             <h2>摘要</h2>
 
             <p>
-              本文讨论电影与文学中的译名命名问题。文章认为，优秀译名不应只在“音译”与“意译”之间选择，而应在声音、字形、意义和文体之间形成结构性平衡。译名既要像一个可以被呼唤的名字，也要能在中文语境中继续生成解释空间。
+              本文主张：在电影与文学中，优秀的中文译名不应只在“像不像原音”与“达不达原义”之间二选一，而应在音近、形邻、义生、体合四项之间取得动态平衡。所谓“音形义兼构”，不是把音译与意译机械相加，而是在不破坏专名识别的前提下，让译名同时具备三种能力：第一，听起来仍像一个来自原文的人名；第二，看起来像一个能够在中文里成立的人名；第三，读起来还能向人物的存在方式、叙事功能与作品气质继续生义。
             </p>
 
             <p>
-              文章以《阿甘正传》《天使爱美丽》和阿西莫夫《基地前奏》中
-              <strong>Hummin / 夫铭</strong>
-              的译名为主要案例，进一步讨论
-              <strong>Truman</strong>
-              在中文中的文学化再命名可能。文章提出，“储民”虽然不适合作为替代既有商业片名的方案，却可以作为评论写作中的再译名，用来指向“一个普通人被系统储存、观看和消费”的结构性处境。
+              就此标准看，《阿甘正传》把意义更多地转移到文体框架上，《天使爱美丽》把外来人名重构成中文可读短语，而阿西莫夫《基地前奏》中
+              <em>Hummin</em>
+              译作“夫铭”，其真正高明处不仅在音近，更在于它在中文字形层复现了
+              <em>Hummin / Human</em>
+              那种“像人而又不全是人”的邻接关系。以此反观《The Truman
+              Show》，影片角色的规范拼写是
+              <em>Truman</em>，而不是 <em>Trueman</em>；但在中文接受中，对其作
+              <em>true-man</em>
+              式再分析仍然合法。依此区分历史旧译与文学再译，本文最终给出双轨判断：作为商业与传播上的既有片名，“楚门”仍最稳固；作为评论写作与文学化重译中的新命名，“储民”比“楚门”“楚明”“楚民”“褚民”更能承担影片关于“普通人被系统安置、保存、观看”的结构性主题。
             </p>
 
-            <h2>阅读全文</h2>
+            <h2>1 问题意识：专名不是纯标签</h2>
 
-            <p>正文以 PDF 形式保存。点击下方链接可以直接打开或下载完整文章。</p>
+            <p>
+              专名翻译长期被放在“名从主人”与“功能对等”的张力之间讨论，但这组对立若被理解得过于僵硬，就会遮蔽虚构文本中名字本身的叙事功能。Vaxelaire
+              指出，专名并非绝对不可译；文本类型、历史语境、源语传统与承载者的本体类型，都会影响译者究竟选择保留、改写还是解释其形式。Nord
+              则进一步说明：在虚构文本中，专名虽然首先承担识别功能，却绝不只有识别功能；作家完全可能通过名字传递人物性别、地域、时代气质、文化背景乃至象征意图。与之呼应，Newmark
+              也提醒译者，专名与词语一样，往往伴随陌生的联想义与象征义；其中某些文化性符号，不但可以翻译，而且往往需要在翻译中得到阐释。
+            </p>
+
+            <p>
+              若把这一点放回汉语语境，问题会变得更复杂。英汉人名转写并不是纯声学匹配。Kwong
+              对英汉人名音译的总结指出，一个可接受的中文转写至少要同时满足三项条件：它要在语音上与原名近似，要符合汉语音系与正字习惯，还要与目标读者对“这个名字在中文里应该长成什么样”的直觉相协调。进一步说，这类转写还会受悦耳性、声调感受以及不利谐音回避等社会与认知因素影响，因此它天然超出“纯音位等值”的范围。
+            </p>
+
+            <p>
+              因此，本文不再把问题表述为“音译还是意译”，而改用四个判断维度来讨论译名：音近，即保留原名可辨识的声音轮廓；形邻，即在可能时让字形关系也参与意义制造；义生，即让名字在中文里自行长出与人物相关的附加义；体合，即让译名既像人名，又符合片名、书名或评论中的文体场景。音、形、义、体并不总能兼得，但越是高质量的译名，越能在这四项之间形成稳定而有节制的平衡。
+            </p>
+
+            <h2>2 中文语境：片名既是文本，也是传播装置</h2>
+
+            <p>
+              电影片名从来都不仅是文本标签，同时也是一种广告语体。王娟娟在比较两岸三地英语电影译名时指出，电影片名与书名、商品名和新闻标题类似，其翻译天然同时承担宣传与示范功能，因此不可能只按词典对应机械处理。近年的比较研究也反复说明，同一部英语电影在中国大陆、香港和台湾地区常常出现不同中文译名，而差异背后既有传播目的不同，也有地方语言习惯与文化期待不同：大陆往往较为直接、保守，香港与台湾则更倾向概括、改写与地方化表达。
+            </p>
+
+            <p>
+              这一点也与更广义的中文视听翻译生态有关。Casas-Tost 与
+              Rovira-Esteva
+              指出，大陆对外语影视长期更偏配音，香港与台湾则更偏字幕；三地长期面对的观看机制、听觉环境与汉字显现方式并不相同。译名在这样的媒介生态中自然会长成不同面貌。换言之，三地译名差异不是简单的“谁更忠实”，而是不同传播制度、阅读节奏与地方语言文化共同塑造的结果。
+            </p>
+
+            <p>
+              如果再把 Venuti
+              的“归化／异化”框架纳入考察，则可进一步看出：片名与人名未必需要同向操作。一个译名完全可以在人名部分保留异域指称性，在整部作品标题层面则采取更归化、更具有市场识别性的方案；也可以反过来，在标题上保留外来性，而在人物专名中加入更强的中文意义。翻译实践真正需要的，不是抽象地宣布“忠实最好”或“本土化最好”，而是在每个具体文本里判断哪一层应该更陌生，哪一层应该更可进入。
+            </p>
+
+            <p>
+              顺带一提，中文世界其实并不缺“音义兼顾”的成功传统。关于外来词汉化的研究常把“可口可乐”“基因”等视为典型范例：它们并非对原词逐音死守，而是在基本音近之上，让字义也为目标语读者服务。这个传统提醒我们：中文命名本就允许一定程度的主动再造；真正的问题从来不是“能不能再造”，而是“再造得是否克制，是否贴合对象”。
+            </p>
+
+            <h2>3 比较个案：从音义兼顾到音形义兼构</h2>
+
+            <h3>3.1 《阿甘正传》</h3>
+
+            <p>
+              <em>Forrest Gump</em>
+              若严格转写，可以译作“福雷斯特·甘普”；这样做确能保存英语姓名的表层轮廓，却几乎无法在中文里激活任何额外意义。“阿甘正传”的精妙，恰恰在于它主动放弃了对原姓原名的精确复制，而把力量转移到中文叙事传统上。“阿甘”让人物从异域固有名转入汉语口语环境，显得亲近、朴拙、无姿态；“正传”则立刻为这部电影加上了章回体、人物传、平民列传那一类文体滤镜。于是，题名本身就完成了一个判断：这里要写的不是一个美国名字，而是一个看似平常、却值得立传的人。换言之，这个译名的成功，不在于逐字对应原名，而在于它把人物的可亲度与作品的传记气质一并压入了中文标题。
+            </p>
+
+            <h3>3.2 《天使爱美丽》</h3>
+
+            <p>
+              法国电影的原题是
+              <em>Le Fabuleux Destin d’Amélie Poulain</em
+              >；按照句法，显义中心其实更接近“艾米丽·普兰的奇妙命运”。UniFrance
+              与 BFI 都沿用了这一法文原题，并将
+              <em>Amélie</em> 作为影片国际传播中的核心识别点；UniFrance
+              还记录了该片在五大洲五十个国家上映、触及近二千三百万观众的国际传播成绩，可见这是一个高度外向流通的片名系统。
+            </p>
+
+            <p>
+              正因为原题的国际识别性很强，大陆译名“天使爱美丽”的大胆之处才更值得注意。它没有照句法翻译“奇妙命运”，而是把
+              <em>Amélie</em>
+              拆入“爱美丽”：这个中文短语既保留了人名的音影，又立刻生出轻盈、善意、童话化的审美气质。与之相比，台湾常见译名“艾蜜莉的异想世界”更接近叙事归纳与剧情氛围的概括，名字仍主要被当作人名处理；大陆译名则进一步把人名本身重做成一个中文可读意象。于是，这个例子显示出另一条路径：有些译名的成功，不是把意义移出人名，而是恰好把意义重新压回人名之内。
+            </p>
+
+            <h3>3.3 Hummin／夫铭</h3>
+
+            <p>
+              阿西莫夫《Prelude to Foundation》中的
+              <em>Chetter Hummin</em>
+              是一个格外适合讨论译名哲学的名字。原著中，Hummin
+              的身份并不单纯；相关评论资料也明确提到，Hari Seldon 结识的 Chetter
+              Hummin 在后文会被揭示为机器人，这使得“Hummin 究竟是不是
+              human”的问题不仅是读音游戏，也是人物本体问题。
+            </p>
+
+            <p>
+              中文通行译名“夫铭”的高明处，过去往往只被概括为“音近而好听”，这还说得不够深。它真正厉害的地方在于：它把原文中
+              <em>Hummin / Human</em>
+              的邻接关系，从英语的声形邻接，转译成了中文的字形邻接。若单看中文，“夫铭”首先像一个可以成立的人名；但若把它放到“人名”这个普通词旁边，就会发现它只差两处微小改动：“夫”比“人”多一横，“铭”比“名”多一偏旁。于是，译名在中文里复现出一种非常精细的效果：它看上去几乎就是“人名”，却又不是“人名”；它像人，却略微偏离人。这个偏离不是靠剧情解释硬加上去的，而是直接写在字形里。
+            </p>
+
+            <p>
+              这一观察并非全无先例。Kuang
+              在比较近年两岸三地电影片名时提到，香港将
+              <em>Free Guy</em>
+              译为“爆机自由仁”，其中“仁”借“人”的同音近形关系，点出主角并非“真实的人”。这个例子说明，在中文命名实践里，利用近音近形字去提示“似人非人”或“并非原貌”的存在状态，本来就是可成立的创作策略。以此回看“夫铭”，便能看出它不是单纯音译，而是一个更高阶的音形义兼构范例。
+            </p>
+
+            <h2>4 Truman 的中文再命名：为什么是“储民”</h2>
+
+            <p>
+              讨论
+              <em>The Truman Show</em>
+              时，必须先分清两个层次。第一，影片的规范写法是
+              <em>Truman</em>，角色全名为 <em>Truman Burbank</em>；Britannica
+              与剧本资料都沿用这一拼写，不存在正式片方将其写作
+              <em>Trueman</em> 的事实。第二，香港正式放映场景中长期使用《真人
+              Show》这一片名，大陆与台湾则更稳定地使用《楚门的世界》。这说明：围绕这部电影，历史上本来就已经存在不同题名策略，而且它们分别服务于不同传播环境。
+            </p>
+
+            <p>
+              因此，本文讨论的不是“要不要推翻《楚门的世界》”，而是：如果在评论写作、文学重译或译名哲学层面，重新为
+              <em>Truman</em>
+              寻找一个最有意味的中文名字，哪一个更强。这里的关键不在语文学考据，而在接受中的合法再分析。虽然正式拼写是
+              <em>Truman</em>，但中文读者天然会被它诱向
+              <em>true man</em>
+              的重读，因为影片主题正是“一个平凡人被安置在巨型拟真世界里，最后争取真实存在”。这种重读并非词源学事实，却是高度契合作品的接受事实。
+            </p>
+
+            <p>在这个前提下，可以比较几种候选：</p>
+
+            <div class="essay-table-wrap">
+              <table class="essay-table">
+                <caption>
+                  表 1：Truman 中文再命名候选比较
+                </caption>
+                <thead>
+                  <tr>
+                    <th>候选</th>
+                    <th>音近</th>
+                    <th>义层</th>
+                    <th>形体与名体</th>
+                    <th>判断</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>楚门</td>
+                    <td>高</td>
+                    <td>“清楚”“门槛”“出口”等观后联想</td>
+                    <td>姓名感强，但“门”不对应 man</td>
+                    <td>
+                      历史旧译最稳，传播优势极强；作为新译，哲学负载偏后设。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>储民</td>
+                    <td>中上</td>
+                    <td>储存、安置、被系统保存；“民”指普通人、众人之一</td>
+                    <td>像真实中文姓名，同时保留制度语感</td>
+                    <td>文学化新译最强：既像名字，又写出主角的结构处境。</td>
+                  </tr>
+                  <tr>
+                    <td>楚明</td>
+                    <td>中</td>
+                    <td>从蒙昧到明白、被置于明处</td>
+                    <td>姓名感好，书卷气强</td>
+                    <td>偏重觉醒叙事，弱化“人／民”维度。</td>
+                  </tr>
+                  <tr>
+                    <td>楚民</td>
+                    <td>中</td>
+                    <td>清楚之民、普通之人</td>
+                    <td>朴素自然，但锋芒较弱</td>
+                    <td>能传达“人”的层次，但缺少独特结构义。</td>
+                  </tr>
+                  <tr>
+                    <td>褚民</td>
+                    <td>中</td>
+                    <td>额外义层较少，主要依靠姓名自然度</td>
+                    <td>最像现实姓名</td>
+                    <td>适合低解释度译法，但几乎放弃概念力。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              综合来看，“储民”最值得作为文学化再命名保留。理由有三。其一，它并未完全破坏
+              <em>Tru-</em>
+              的声音轮廓，仍保留了一定的呼唤感。其二，“民”比“人”更稳：它既能承接
+              <em>man / human</em>
+              的人义，又天然包含“普通人”“被治理者”“众人之一”的社会位置。其三，也是最关键的一点，“储”把影片最核心的结构写了出来：Truman
+              不是单纯“追求真实的人”，他首先是一个被储存、被安置、被长期观看的人。换言之，他的悲剧不是抽象的“虚假”，而是存在本身被制度化保存、管理与消费。
+            </p>
+
+            <p>
+              所以，本文的结论必须分成两层说。若讨论历史接受、市场传播与既有片名资产，那么《楚门的世界》没有必要被替换；它顺口、稳固、几乎已成为作品的一部分。若讨论的是评论写作中的再命名、文学化重译或译名哲学实验，那么“储民”更强，因为它不止解释结尾觉醒，而是直接命中影片最冷峻的中心结构：一个普通人被世界储存起来，然后才开始追问什么是真实。
+            </p>
+
+            <h2>5 结语：译名是可被呼唤的概念</h2>
+
+            <p>
+              通过以上几个个案，可以把本文的中心判断说得更明确一些。中文世界最好的译名，往往不是“最贴字面”的，也不是“最会营销”的，而是能让名字在中文里再次成为作品结构的一部分。《阿甘正传》把意义放进文体框架，《天使爱美丽》把意义压回名字内部，“夫铭”甚至更进一步，在字形上重造了“似人非人”的本体暧昧；到了
+              <em>Truman</em>
+              这里，真正高质量的新译也不应只是找一个更像音的汉字组合，而应当把人物存在方式本身写进名字。
+            </p>
+
+            <p>
+              因此，本文愿意把译名哲学最后压缩成一句话：名字既要能被叫出，也要值得被解释。如果一个中文译名只能被读出，不能被细读，它大多只是转写；如果它只供阐释、不能像一个真正的名字那样被叫唤，它又往往沦为概念口号。真正成熟的专名翻译，必须同时守住这两端。就这一点看，“夫铭”与“储民”之所以重要，并不是因为它们要取代既有经典译名，而是因为它们提醒我们：译名可以不是附属品，它本身就可以成为作品思想的一部分。
+            </p>
+
+            <h2>参考文献</h2>
+
+            <ol class="references">
+              <li>
+                阿西莫夫，艾萨克（1988）：<em>Prelude to Foundation</em>. New
+                York: Doubleday.
+              </li>
+              <li>
+                阿西莫夫，艾萨克（2015）：《银河帝国
+                4：基地前奏》，叶李华译，南京：江苏凤凰文艺出版社。
+              </li>
+              <li>
+                Casas-Tost, Helena, and Sara Rovira-Esteva (2019): “A Quest for
+                Effective and Inclusive Design of Chinese Characters in
+                Subtitling.”
+              </li>
+              <li>
+                Kuang, Zhuoqi (2023): “A Comparative Study of the Chinese
+                Translations of English Film Titles from the Perspective of
+                Skopos Theory.”
+              </li>
+              <li>
+                Kwong, Oi Yee (2015): “Regularity and Flexibility in
+                English-Chinese Name Transliteration.” In
+                <em>Proceedings of the Fifth Named Entity Workshop</em>, 34–42.
+              </li>
+              <li>M+（2026）：〈真人 Show The Truman Show〉节目页。</li>
+              <li>
+                Newmark, Peter (1988): <em>A Textbook of Translation</em>. New
+                York: Prentice Hall.
+              </li>
+              <li>
+                Nida, Eugene A. (1964):
+                <em>Toward a Science of Translating</em>. Leiden: Brill.
+              </li>
+              <li>
+                Nord, Christiane (2003): “Proper Names in Translations for
+                Children: Alice in Wonderland as a Case in Point.”
+                <em>Meta</em> 48(1–2): 182–196.
+              </li>
+              <li>
+                Script Slug（1998）：<em>The Truman Show</em> screenplay page.
+              </li>
+              <li>
+                UniFrance（2021）：〈Les 20 ans de la fabuleuse carrière
+                internationale d’Amélie Poulain〉；以及影片页〈Le Fabuleux
+                Destin d’Amélie Poulain〉。
+              </li>
+              <li>
+                Vaxelaire, Jean-Louis (2006): “Pistes pour une nouvelle approche
+                de la traduction automatique des noms propres.”
+                <em>Meta</em> 51(4): 719–738.
+              </li>
+              <li>
+                Venuti, Lawrence (1995):
+                <em>The Translator’s Invisibility: A History of Translation</em
+                >. London: Routledge.
+              </li>
+              <li>
+                王娟娟（2005）：〈兩岸三地英語電影譯名比較及翻譯模式建立與應用〉，《翻譯學研究集刊》第
+                9 期，33–79。
+              </li>
+              <li>
+                《海外华文教育》相关论文汇编：关于“可口可乐”“基因”等外来词音义兼顾译例的讨论。
+              </li>
+              <li>
+                The Guardian（2013）：“Prelude to Foundation by Isaac Asimov –
+                review.”
+              </li>
+              <li>Britannica（2026）：“The Truman Show.”</li>
+              <li>BFI（2026）：“25th Anniversary: Amélie.”</li>
+            </ol>
+
+            <h2>PDF 文件</h2>
+
+            <p>
+              PDF
+              版保留原始排版与参考文献格式。需要查看或下载时，可以打开下方链接。
+            </p>
+
+            <div class="essay-actions">
+              <a
+                class="essay-btn"
+                href="/assets/files/writing/essays/essay-001-translation-naming/essay-001-translation-naming.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                打开 PDF
+              </a>
+              <a class="essay-btn" href="/writing.html">返回写作</a>
+            </div>
+
+            <p class="essay-note">
+              File:
+              /assets/files/writing/essays/essay-001-translation-naming/essay-001-translation-naming.pdf
+            </p>
+          </article>
+
+          <article class="essay-body lang-article" id="article-en" lang="en">
+            <div class="essay-title-full">
+              <p>
+                <strong
+                  >The Philosophy of Sound-Form-Meaning Translation:</strong
+                >
+                From <em>Forrest Gump</em>, <em>Amélie</em>, and Asimov’s
+                “Hummin / Fuming” to the Chinese Renaming of
+                <em>Truman</em>
+              </p>
+            </div>
+
+            <h2>Abstract</h2>
+
+            <p>
+              This essay argues that a good Chinese title or character name in
+              film and literature should not be judged only by whether it sounds
+              close to the original or whether it directly conveys the original
+              meaning. A more productive criterion is a dynamic balance among
+              four dimensions: phonetic proximity, graphic adjacency, semantic
+              generation, and stylistic fit. “Sound-form-meaning construction”
+              does not mean mechanically adding transliteration to free
+              translation. It means allowing a translated name, without losing
+              its identity as a proper name, to perform three tasks at once: it
+              should still sound like a name that can be traced back to the
+              source text; it should look like a plausible Chinese name; and it
+              should continue to generate meaning in relation to the character’s
+              mode of existence, narrative function, and the atmosphere of the
+              work.
+            </p>
+
+            <p>
+              By this standard, the Chinese title <em>Forrest Gump</em> as
+              “阿甘正传” transfers meaning into a Chinese narrative frame;
+              <em>Amélie</em> as “天使爱美丽” reconstructs a foreign name into a
+              readable Chinese phrase; and the Chinese rendering of Asimov’s
+              <em>Hummin</em> as “夫铭” is not merely phonetically close, but
+              graphically reproduces the adjacency between <em>Hummin</em> and
+              <em>human</em>: a name that looks human but is not quite human.
+              Against this background, this essay reconsiders
+              <em>The Truman Show</em>. The character’s standard spelling is
+              <em>Truman</em>, not <em>Trueman</em>; however, in Chinese
+              reception, a “true-man” rereading is still legitimate because it
+              closely matches the film’s theme. The essay therefore gives a
+              two-track conclusion: as an established commercial and historical
+              title, “楚门” remains the strongest; as a literary or critical
+              renaming, “储民” is stronger than “楚门,” “楚明,” “楚民,” or
+              “褚民,” because it better carries the structural theme of an
+              ordinary person being stored, arranged, preserved, and watched by
+              a system.
+            </p>
+
+            <h2>1 The Problem: Proper Names Are Not Pure Labels</h2>
+
+            <p>
+              The translation of proper names is often discussed between two
+              poles: following the original name and achieving functional
+              equivalence. If this opposition is treated too rigidly, it hides
+              the narrative function of names in fictional texts. Proper names
+              are not always untranslatable. Their treatment depends on textual
+              type, historical setting, source-language convention, and the
+              ontological status of the bearer. In fiction, a name may first
+              identify a character, but it may also signal gender, place, era,
+              class, cultural background, or symbolic intention. Proper names,
+              like ordinary words, can carry associations and cultural
+              resonances; some of them not only can be translated, but need to
+              be interpreted through translation.
+            </p>
+
+            <p>
+              In the Chinese context, the problem becomes even more complex.
+              English-Chinese name transliteration is not merely a matter of
+              sound matching. A successful Chinese rendering must approximate
+              the original sound, conform to Chinese phonology and orthographic
+              habits, and fit the target reader’s intuition of what a plausible
+              Chinese name should look like. Euphony, tonal impression, and the
+              avoidance of undesirable homophones also shape naming choices.
+              Therefore, the issue exceeds pure phonemic equivalence.
+            </p>
+
+            <p>
+              This essay therefore avoids the simple question of
+              “transliteration or free translation” and instead uses four
+              dimensions. Phonetic proximity preserves the recognizable sound
+              contour of the original name. Graphic adjacency allows the visual
+              form of Chinese characters to participate in meaning. Semantic
+              generation allows the name to produce additional meanings inside
+              Chinese. Stylistic fit requires the name to function as a name, a
+              title, or a critical term in the appropriate register. These
+              dimensions cannot always be maximized at the same time, but a
+              strong translation maintains a stable and restrained balance among
+              them.
+            </p>
+
+            <h2>2 The Chinese Context: A Title Is Both Text and Device</h2>
+
+            <p>
+              A film title is never only a textual label. It is also an
+              advertising form. Studies comparing Chinese translations of
+              English film titles across Mainland China, Hong Kong, and Taiwan
+              have shown that film titles, like book titles, product names, and
+              headlines, carry both promotional and demonstrative functions.
+              They cannot be treated as mechanical dictionary correspondences.
+              Different Chinese-speaking regions often produce different titles
+              for the same English-language film because their communicative
+              goals, linguistic habits, and cultural expectations differ.
+            </p>
+
+            <p>
+              This also relates to the broader ecology of audiovisual
+              translation. Mainland China has historically leaned more toward
+              dubbing, while Hong Kong and Taiwan have relied more heavily on
+              subtitles. These environments shape how foreign names and titles
+              are heard, seen, and remembered. The difference among regional
+              titles is therefore not simply a matter of which one is more
+              faithful, but the result of different media systems, reading
+              rhythms, and local linguistic cultures.
+            </p>
+
+            <p>
+              If Venuti’s framework of domestication and foreignization is
+              introduced, the point becomes clearer: the title of a work and the
+              names inside the work do not have to follow the same strategy. A
+              translation may preserve foreignness in the character name while
+              domesticating the title for market recognition. It may also do the
+              reverse. What matters is not an abstract declaration that fidelity
+              or localization is always better, but a concrete judgment about
+              which layer should remain strange and which layer should become
+              accessible.
+            </p>
+
+            <p>
+              Chinese itself has a strong tradition of sound-meaning naming.
+              Examples such as “可口可乐” for Coca-Cola and “基因” for gene show
+              that Chinese translations often move beyond rigid sound
+              reproduction. They preserve enough phonetic trace while allowing
+              character meaning to serve the target reader. This tradition
+              reminds us that Chinese naming has always permitted controlled
+              recreation. The question is not whether recreation is allowed, but
+              whether it is restrained and appropriate to the object.
+            </p>
+
+            <h2>3 Case Studies: From Sound-Meaning to Sound-Form-Meaning</h2>
+
+            <h3>3.1 Forrest Gump</h3>
+
+            <p>
+              <em>Forrest Gump</em> could be strictly transliterated as
+              “福雷斯特·甘普.” Such a rendering preserves the surface contour of
+              the English name, but it activates almost no additional meaning in
+              Chinese. The brilliance of “阿甘正传” lies in its willingness to
+              give up exact name-for-name reproduction and move the force of the
+              title into a Chinese narrative tradition.
+            </p>
+
+            <p>
+              “阿甘” brings the character from a foreign proper name into a
+              colloquial Chinese environment. It sounds close, familiar,
+              unpretentious, and plain. “正传” immediately gives the film the
+              register of a full biography, a chaptered life story, or a
+              vernacular record of an ordinary person. The title therefore makes
+              a judgment before the story begins: this is not merely the story
+              of an American name; it is the life of a seemingly ordinary person
+              who deserves a biography. Its success is not literal fidelity, but
+              the compression of approachability and biographical dignity into a
+              Chinese title.
+            </p>
+
+            <h3>3.2 Amélie</h3>
+
+            <p>
+              The French title <em>Le Fabuleux Destin d’Amélie Poulain</em> more
+              literally centers on the fabulous destiny of Amélie Poulain.
+              Internationally, <em>Amélie</em> remains the central identifying
+              element of the film. The Mainland Chinese title “天使爱美丽” is
+              therefore especially bold: instead of translating the sentence
+              structure of “fabulous destiny,” it folds <em>Amélie</em> into the
+              Chinese phrase “爱美丽.”
+            </p>
+
+            <p>
+              “爱美丽” preserves a trace of the name while immediately producing
+              the meanings of love and beauty. With “天使” added in front, the
+              title prepares a light, kind, fairy-tale-like emotional entrance
+              for Chinese viewers. Compared with the Taiwan title
+              “艾蜜莉的异想世界,” which keeps the name more clearly as a name
+              and summarizes the film’s imaginative world, “天使爱美丽” remakes
+              the name itself as a readable Chinese image. This case shows a
+              second route: a successful translation can place meaning not
+              outside the name, but back inside the name.
+            </p>
+
+            <h3>3.3 Hummin / 夫铭</h3>
+
+            <p>
+              Chetter Hummin in Isaac Asimov’s
+              <em>Prelude to Foundation</em> is a particularly useful case for
+              discussing the philosophy of translated naming. The character’s
+              identity is not simple. Hummin is later revealed to be a robot,
+              which means the question of whether <em>Hummin</em> is
+              <em>human</em> is not only a sound game, but also an ontological
+              problem.
+            </p>
+
+            <p>
+              The Chinese rendering “夫铭” is often described as elegant and
+              phonetically close, but that explanation is not sufficient. Its
+              deeper strength lies in the way it translates the
+              <em>Hummin / human</em> adjacency from English sound and spelling
+              into Chinese graphic adjacency. In Chinese, “夫铭” first looks
+              like a plausible personal name. But when it is placed next to the
+              ordinary word “人名,” the relation becomes visible: “夫” is “人”
+              with an extra horizontal stroke, and “铭” is “名” with an extra
+              radical. Thus the Chinese name reproduces a precise effect: it
+              almost looks like “人名,” but is not “人名”; it looks human, but
+              deviates slightly from the human.
+            </p>
+
+            <p>
+              This is not an interpretation forced onto the plot after the fact.
+              The deviation is written into the graphic form itself. A related
+              strategy can be seen in the Hong Kong title of <em>Free Guy</em>,
+              “爆机自由仁,” where “仁” uses phonetic and graphic closeness to
+              “人” to suggest that the protagonist is not a real human being. In
+              this light, “夫铭” is not merely a transliteration. It is a
+              higher-level example of sound-form-meaning construction.
+            </p>
+
+            <h2>4 Renaming Truman: Why “储民”</h2>
+
+            <p>
+              When discussing <em>The Truman Show</em>, two levels must be kept
+              separate. First, the standard spelling of the character’s name is
+              <em>Truman</em>, and his full name is <em>Truman Burbank</em>.
+              There is no formal basis for claiming that the film spells the
+              name as <em>Trueman</em>. Second, Chinese reception has already
+              included different title strategies: Hong Kong has used “真人
+              Show,” while Mainland China and Taiwan have stabilized around
+              “楚门的世界.” These titles serve different communicative settings.
+            </p>
+
+            <p>
+              The point, then, is not to replace the established title
+              <em>The Truman Show</em> has already received in Chinese. The
+              question is narrower: in critical writing, literary retranslation,
+              or the philosophy of naming, if one were to seek the most
+              meaningful Chinese name for <em>Truman</em>, which one is
+              strongest? The key is not etymological fact, but legitimate
+              reception-based reanalysis. Although the formal spelling is
+              <em>Truman</em>, Chinese readers can still be drawn toward a “true
+              man” rereading because the film itself concerns an ordinary man
+              placed inside a giant simulated world and gradually struggling
+              toward real existence.
+            </p>
+
+            <p>Under this premise, several candidates can be compared:</p>
+
+            <div class="essay-table-wrap">
+              <table class="essay-table">
+                <caption>
+                  Table 1. Candidate Chinese Renamings of Truman
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Candidate</th>
+                    <th>Sound</th>
+                    <th>Meaning Layer</th>
+                    <th>Name Form</th>
+                    <th>Judgment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>楚门</td>
+                    <td>High</td>
+                    <td>
+                      After-the-fact associations with clarity, threshold, and
+                      exit
+                    </td>
+                    <td>
+                      Strong name feel, but “门” does not correspond to man
+                    </td>
+                    <td>
+                      The most stable historical title; strong in circulation,
+                      but philosophically somewhat retrospective.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>储民</td>
+                    <td>Medium-high</td>
+                    <td>
+                      Storage, placement, preservation by a system; “民” as
+                      ordinary person or one among the governed
+                    </td>
+                    <td>
+                      Looks like a real Chinese name while preserving
+                      institutional coldness
+                    </td>
+                    <td>
+                      The strongest literary renaming: it is name-like and
+                      captures the character’s structural condition.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>楚明</td>
+                    <td>Medium</td>
+                    <td>From ignorance to clarity; being placed in the open</td>
+                    <td>Good name feel, literary tone</td>
+                    <td>
+                      Emphasizes awakening, but weakens the man / people
+                      dimension.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>楚民</td>
+                    <td>Medium</td>
+                    <td>A clear person, an ordinary person</td>
+                    <td>Plain and natural, but less sharp</td>
+                    <td>
+                      Conveys the human layer, but lacks a distinctive
+                      structural meaning.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>褚民</td>
+                    <td>Medium</td>
+                    <td>
+                      Little additional meaning, mainly based on name
+                      naturalness
+                    </td>
+                    <td>The most realistic as a personal name</td>
+                    <td>
+                      Suitable for low-interpretation naming, but almost gives
+                      up conceptual force.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              Overall, “储民” is the strongest candidate for literary renaming.
+              There are three reasons. First, it does not completely break the
+              sound contour of <em>Tru-</em>, so it still retains some calling
+              force. Second, “民” is steadier than “人”: it can carry the man /
+              human dimension while also suggesting an ordinary person, a
+              governed person, and one among the many. Third, and most
+              importantly, “储” writes the core structure of the film into the
+              name. Truman is not merely “a person who seeks truth.” He is first
+              a person stored, arranged, preserved, and watched by a system. His
+              tragedy is not abstract falsity, but the institutional
+              preservation, management, and consumption of existence itself.
+            </p>
+
+            <p>
+              The conclusion must therefore be two-layered. If one is discussing
+              historical reception, market circulation, and established title
+              value, “楚门的世界” does not need to be replaced. It is smooth,
+              stable, and has almost become part of the work’s Chinese identity.
+              But if one is discussing critical renaming, literary
+              retranslation, or an experiment in translated-name philosophy,
+              “储民” is stronger, because it does not merely explain the final
+              awakening. It directly names the film’s coldest structure: an
+              ordinary person is stored by the world before he begins to ask
+              what reality is.
+            </p>
+
+            <h2>5 Conclusion: A Translated Name Is a Callable Concept</h2>
+
+            <p>
+              These cases clarify the central argument of this essay. The best
+              Chinese translated names are often not the most literal, nor
+              necessarily the most marketable. They are the ones that allow the
+              name to become part of the work’s structure again. “阿甘正传”
+              places meaning inside a narrative frame. “天使爱美丽” folds
+              meaning back into the name. “夫铭” goes further by graphically
+              recreating the ontological ambiguity of being almost human but not
+              fully human. In the case of <em>Truman</em>, a strong new
+              translation should not merely find a more phonetically similar
+              Chinese form. It should write the character’s mode of existence
+              into the name.
+            </p>
+
+            <p>
+              The philosophy of translated naming can be compressed into one
+              sentence: a name must be callable, and it must be worth
+              interpreting. If a translated name can only be pronounced but not
+              read closely, it is mostly transcription. If it can only be
+              interpreted but cannot be called like a real name, it tends to
+              become a slogan. A mature translation of a proper name must hold
+              both ends at once. In this sense, “夫铭” and “储民” matter not
+              because they must replace established classics, but because they
+              remind us that a translated name need not be an accessory. It can
+              itself become part of the work’s thought.
+            </p>
+
+            <h2>References</h2>
+
+            <ol class="references">
+              <li>
+                Asimov, Isaac (1988): <em>Prelude to Foundation</em>. New York:
+                Doubleday.
+              </li>
+              <li>
+                Asimov, Isaac (2015):
+                <em>Foundation 4: Prelude to Foundation</em>, translated by Ye
+                Lihua. Nanjing: Jiangsu Phoenix Literature and Art Publishing.
+              </li>
+              <li>
+                Casas-Tost, Helena, and Sara Rovira-Esteva (2019): “A Quest for
+                Effective and Inclusive Design of Chinese Characters in
+                Subtitling.”
+              </li>
+              <li>
+                Kuang, Zhuoqi (2023): “A Comparative Study of the Chinese
+                Translations of English Film Titles from the Perspective of
+                Skopos Theory.”
+              </li>
+              <li>
+                Kwong, Oi Yee (2015): “Regularity and Flexibility in
+                English-Chinese Name Transliteration.” In
+                <em>Proceedings of the Fifth Named Entity Workshop</em>, 34–42.
+              </li>
+              <li>M+ (2026): “The Truman Show” programme page.</li>
+              <li>
+                Newmark, Peter (1988): <em>A Textbook of Translation</em>. New
+                York: Prentice Hall.
+              </li>
+              <li>
+                Nida, Eugene A. (1964):
+                <em>Toward a Science of Translating</em>. Leiden: Brill.
+              </li>
+              <li>
+                Nord, Christiane (2003): “Proper Names in Translations for
+                Children: Alice in Wonderland as a Case in Point.”
+                <em>Meta</em> 48(1–2): 182–196.
+              </li>
+              <li>
+                Script Slug (1998): <em>The Truman Show</em> screenplay page.
+              </li>
+              <li>
+                UniFrance (2021): “Les 20 ans de la fabuleuse carrière
+                internationale d’Amélie Poulain” and the film page “Le Fabuleux
+                Destin d’Amélie Poulain.”
+              </li>
+              <li>
+                Vaxelaire, Jean-Louis (2006): “Pistes pour une nouvelle approche
+                de la traduction automatique des noms propres.”
+                <em>Meta</em> 51(4): 719–738.
+              </li>
+              <li>
+                Venuti, Lawrence (1995):
+                <em>The Translator’s Invisibility: A History of Translation</em
+                >. London: Routledge.
+              </li>
+              <li>
+                Wang, Juanjuan (2005): “A Comparative Study of English Film
+                Title Translation in Mainland China, Hong Kong, and Taiwan.”
+                <em>Studies in Translation</em>, no. 9, 33–79.
+              </li>
+              <li>
+                Related collections in <em>Overseas Chinese Education</em> on
+                sound-meaning translations such as “Coca-Cola” and “gene.”
+              </li>
+              <li>
+                The Guardian (2013): “Prelude to Foundation by Isaac Asimov –
+                review.”
+              </li>
+              <li>Britannica (2026): “The Truman Show.”</li>
+              <li>BFI (2026): “25th Anniversary: Amélie.”</li>
+            </ol>
+
+            <h2>PDF File</h2>
+
+            <p>
+              The PDF version preserves the original layout and reference
+              format. It can be opened through the link below.
+            </p>
 
             <div class="essay-actions">
               <a
@@ -197,7 +1097,7 @@
               >
                 Open PDF
               </a>
-              <a class="essay-btn" href="/writing.html"> Back to Writing </a>
+              <a class="essay-btn" href="/writing.html">Back to Writing</a>
             </div>
 
             <p class="essay-note">
@@ -255,11 +1155,14 @@
           window.buildNav(lang);
         }
 
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
         document.getElementById("logo-text").textContent = i18n[lang].logo;
 
         document
           .getElementById("lang-en")
           .classList.toggle("active", lang === "en");
+
         document
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
@@ -268,8 +1171,17 @@
           window.applyPageContentOverrides(lang, pageContent);
         }
 
+        const articleZh = document.getElementById("article-zh");
+        const articleEn = document.getElementById("article-en");
+
+        if (articleZh && articleEn) {
+          articleZh.classList.toggle("active", lang === "zh");
+          articleEn.classList.toggle("active", lang === "en");
+        }
+
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;
+
         document.querySelector(".footer-inner p:last-child").innerHTML =
           i18n[lang].copyright2;
       }
