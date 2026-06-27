@@ -519,18 +519,49 @@ a {
   line-height: 1.75;
 }
 
-.essay-body h2 {
-  margin: 52px 0 18px;
-  font-size: 28px;
-  line-height: 1.2;
-  font-weight: 600;
+.essay-body {
+  font-size: 1.02rem;
+  line-height: 1.82;
+  color: var(--text-soft);
+  text-align: justify;
+  text-justify: inter-ideograph;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .essay-body p {
-  margin: 0 0 18px;
-  font-size: 19px;
-  line-height: 1.95;
-  color: var(--text-soft);
+  margin: 0 0 1.15em;
+}
+
+.essay-body h2 {
+  font-size: 1.42rem;
+  margin: 2.5em 0 0.9em;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.essay-body h3 {
+  font-size: 1.12rem;
+  margin: 1.9em 0 0.7em;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.formula {
+  overflow-x: auto;
+  margin: 1.35em 0;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text);
+  text-align: center;
+}
+
+mjx-container[jax="SVG"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
 }
 
 .essay-figure {
@@ -1379,4 +1410,23 @@ p {
   .capability-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.lang-article {
+  display: none;
+}
+
+.lang-article.active {
+  display: block;
+}
+
+#article-en {
+  text-align: left;
+}
+
+#article-en p,
+#article-en li,
+#article-en td {
+  word-break: normal;
+  overflow-wrap: normal;
 }

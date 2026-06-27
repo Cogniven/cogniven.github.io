@@ -1,16 +1,51 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Trading Strategy Evaluation - Alterven</title>
+    <title>从回撤到修复 - Alterven</title>
+    <meta
+      name="description"
+      content="从回撤到修复：策略评估中的本金锚定与机会时间。一篇关于策略评估、CAD 与 NOAR 的分析文章。"
+    />
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/css/style.css" />
 
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["\\(", "\\)"],
+            ["$", "$"],
+          ],
+          displayMath: [["\\[", "\\]"]],
+        },
+        svg: {
+          fontCache: "global",
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+
     <style>
+      /* Fix article paragraph wrapping */
+      .essay-body p,
+      .essay-body li,
+      .essay-body td,
+      .essay-body .figure-caption {
+        white-space: normal;
+      }
+
+      .essay-body p {
+        word-break: normal;
+        overflow-wrap: normal;
+      }
       .essay-page {
-        max-width: 760px;
+        max-width: 920px;
         margin: 0 auto;
       }
 
@@ -37,7 +72,7 @@
         line-height: 1.76;
         font-size: 1.06rem;
         margin: 0;
-        max-width: 700px;
+        max-width: 760px;
       }
 
       .essay-divider {
@@ -47,55 +82,191 @@
         margin: 18px 0 0;
       }
 
-      .essay-abstract {
-        color: var(--text-soft);
-        line-height: 1.9;
-        font-size: 1.04rem;
-        margin: 0;
-      }
-
       .essay-body {
-        font-size: 1.06rem;
-        line-height: 1.92;
-        color: var(--text);
+        font-size: 1.02rem;
+        line-height: 1.82;
+        color: var(--text-soft);
+        text-align: justify;
+        text-justify: inter-ideograph;
+        word-break: normal;
+        overflow-wrap: normal;
       }
 
       .essay-body h2 {
-        font-size: 1.35rem;
-        margin: 2.2em 0 0.8em;
-        line-height: 1.3;
+        font-size: 1.42rem;
+        margin: 2.5em 0 0.9em;
+        line-height: 1.35;
+        color: var(--text);
+      }
+
+      .essay-body h3 {
+        font-size: 1.12rem;
+        margin: 1.9em 0 0.7em;
+        line-height: 1.45;
         color: var(--text);
       }
 
       .essay-body p {
-        margin: 0 0 1.35em;
+        margin: 0 0 1.15em;
+      }
+
+      .essay-body strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .essay-body ul,
+      .essay-body ol {
+        margin: 0 0 1.35em 1.25em;
+        padding: 0;
+      }
+
+      .essay-body li {
+        margin: 0 0 0.65em;
+      }
+
+      .lang-article {
+        display: none;
+      }
+
+      .lang-article.active {
+        display: block;
+      }
+
+      #article-en {
+        text-align: left;
+      }
+
+      #article-en p,
+      #article-en li,
+      #article-en td {
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+
+      .abstract-block {
+        padding: 22px 22px 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+        margin: 0 0 2.2em;
+      }
+
+      .abstract-title {
+        margin: 0 0 10px;
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .formula {
+        overflow-x: auto;
+        margin: 1.35em 0;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.025);
+        color: var(--text);
+        text-align: center;
+      }
+
+      mjx-container[jax="SVG"] {
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        margin: 1.6em 0;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+      }
+
+      caption {
+        caption-side: top;
+        text-align: left;
+        padding: 14px 16px 8px;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      th,
+      td {
+        border-top: 1px solid var(--line);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--text);
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      td {
         color: var(--text-soft);
       }
 
-      .essay-figure {
-        margin: 2.2em 0 2em;
-      }
-
-      .essay-figure img {
-        width: 100%;
-        display: block;
-        border-radius: 14px;
+      .figure-block {
+        margin: 2em 0;
+        padding: 18px;
         border: 1px solid var(--line);
-        background: var(--bg-soft);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
       }
 
-      .essay-caption {
-        margin-top: 12px;
+      .figure-block svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .figure-caption {
+        margin: 12px 0 0;
         font-size: 0.92rem;
         line-height: 1.7;
         color: var(--muted);
+        text-align: left;
+      }
+
+      pre {
+        overflow-x: auto;
+        margin: 1.5em 0;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-soft);
+        line-height: 1.65;
+        font-size: 0.92rem;
+      }
+
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+
+      .references {
+        font-size: 0.95rem;
+        line-height: 1.75;
       }
 
       .pdf-actions {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
-        margin: 22px 0 24px;
+        margin: 28px 0 0;
       }
 
       .pdf-link {
@@ -110,50 +281,14 @@
         background: rgba(255, 255, 255, 0.03);
         transition:
           border-color 0.2s ease,
-          background 0.2s ease;
+          background 0.2s ease,
+          transform 0.2s ease;
       }
 
       .pdf-link:hover {
         border-color: var(--text-soft);
         background: rgba(255, 255, 255, 0.06);
-      }
-
-      .pdf-frame-wrap {
-        width: 100%;
-        height: 760px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        overflow: hidden;
-        background: var(--bg-soft);
-        margin-top: 18px;
-      }
-
-      .pdf-frame-wrap iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        display: block;
-        background: var(--bg-soft);
-      }
-
-      .essay-note-block {
-        margin: 2.2em 0 0;
-        padding: 18px 18px 16px;
-        border-left: 2px solid var(--line);
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 0 10px 10px 0;
-      }
-
-      .essay-note-title {
-        font-size: 0.82rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin: 0 0 8px;
-      }
-
-      .essay-note-block p:last-child {
-        margin-bottom: 0;
+        transform: translateY(-1px);
       }
 
       @media (max-width: 720px) {
@@ -161,8 +296,22 @@
           max-width: 100%;
         }
 
-        .pdf-frame-wrap {
-          height: 560px;
+        .essay-body {
+          font-size: 1rem;
+          line-height: 1.78;
+          text-align: left;
+        }
+
+        .pdf-actions {
+          flex-direction: column;
+        }
+
+        .pdf-link {
+          width: 100%;
+        }
+
+        table {
+          min-width: 680px;
         }
       }
     </style>
@@ -216,121 +365,2146 @@
       <section class="hero">
         <div class="container hero-inner essay-page">
           <p class="eyebrow" id="essay-eyebrow">Works · Analytical Pieces</p>
-          <h1 id="essay-title">Trading Strategy Evaluation</h1>
+
+          <h1 id="essay-title">从回撤到修复：策略评估中的本金锚定与机会时间</h1>
 
           <div class="essay-meta">
-            <span id="essay-meta-year">2026</span>
-            <span id="essay-meta-type">Essay</span>
-            <span id="essay-meta-tag">Strategy Evaluation</span>
+            <span id="essay-meta-year">2026年</span>
+            <span id="essay-meta-type">文章</span>
+            <span id="essay-meta-tag">策略评价</span>
           </div>
 
           <p class="essay-subtitle" id="essay-subtitle">
-            A note on common performance metrics, principal-anchored drawdown,
-            and recovery exposure in strategy evaluation.
+            一篇关于常见绩效指标、本金锚定回撤 CAD 与标准化机会调整修复指标 NOAR
+            的分析文章。
           </p>
 
           <div class="essay-divider"></div>
         </div>
       </section>
 
-      <section class="section intro-band">
-        <div class="container essay-page">
-          <p class="section-note" id="essay-abstract-label">Abstract</p>
-          <p class="essay-abstract" id="essay-abstract">
-            This piece starts from common indicators such as Sharpe ratio,
-            Calmar ratio, and maximum drawdown, then points out a problem in
-            finite backtests: the equity curve may conceal the difference
-            between compound growth and principal risk. It proposes a
-            supplementary perspective based on principal anchoring, recovery
-            time, and recovery opportunity exposure.
-          </p>
-
-          <div class="pdf-actions">
-            <a
-              class="pdf-link"
-              id="essay-pdf-open"
-              href="/assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf"
-              target="_blank"
-              rel="noopener"
-            >
-              Open PDF
-            </a>
-          </div>
-        </div>
-      </section>
-
       <section class="section">
         <div class="container essay-page">
-          <article class="essay-body">
-            <h2 id="essay-h2-1">1. Motivation</h2>
-            <p id="essay-p1">
-              Conventional evaluation metrics summarize the observed equity
-              curve, but they do not always show whether a strategy is robust
-              under principal-anchored risk. A strategy that looks acceptable
-              after compounding may still expose the initial capital to a much
-              larger effective loss.
-            </p>
-
-            <h2 id="essay-h2-2">2. Core Question</h2>
-            <p id="essay-p2">
-              The central question is not only how much the strategy earns, but
-              how the strategy repairs damage after loss. Recovery time, average
-              holding period, and entry frequency together determine how many
-              realistic recovery opportunities the strategy has after drawdown.
-            </p>
-
-            <div class="essay-figure">
-              <img
-                src="/assets/images/works/analytical-pieces/work-001-trading-strategy-evaluation/cover.jpg"
-                alt="Trading Strategy Evaluation"
-                onerror="
-                  this.src =
-                    'data:image/svg+xml;utf8,' +
-                    encodeURIComponent(
-                      `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='760' viewBox='0 0 1200 760'><rect width='1200' height='760' fill='#161b22'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#9aa3ad' font-size='30' font-family='Georgia, serif'>Trading Strategy Evaluation</text></svg>`,
-                    )
-                "
-              />
-              <p class="essay-caption" id="essay-caption">
-                Figure 1. Cover image for the analytical piece.
+          <article
+            class="essay-body lang-article active"
+            id="article-zh"
+            lang="zh-CN"
+          >
+            <div class="abstract-block">
+              <p class="abstract-title">摘要</p>
+              <p>
+                本文讨论“优秀策略”应如何被评价，并提出两个扩展指标：本金锚定回撤
+                Capital-Anchored Drawdown, CAD 与标准化机会调整修复指标
+                Normalized Opportunity-Adjusted Recovery,
+                NOAR。文章首先简述夏普比率、索提诺比率、卡玛比率、最大回撤、Ulcer
+                Index
+                以及回撤持续时间等常见指标的定义、公式与局限。随后指出：当回测区间较长且仓位采用固定金额开单时，传统最大回撤会因为分母采用历史峰值权益而被机械压缩，从而低估策略早期或低权益阶段的生存风险。为刻画这种风险，本文引入
+                CAD，将回撤金额重新锚定到初始本金尺度。
+              </p>
+              <p>
+                在此基础上，本文进一步讨论“回撤后多久恢复新高”这一维度。单纯采用自然时间衡量修复速度并不充分，因为不同策略的平均持仓周期与各交易对开仓频率差异很大。为此，本文在“日历时间”与“事件时间”区分的思想下，提出
+                NOAR：它将回撤修复过程转写为“消耗了多少个标准化交易机会/生命周期”这一量纲，从而使修复难度的比较更接近策略的运行节奏，而不是仅仅落在自然时间尺度之上。
+              </p>
+              <p>
+                本文的主要结论有三点。其一，单看收益率、夏普或卡玛，无法完整评价策略的生存性与恢复性。其二，在固定开单金额或弱复利结构中，CAD
+                能揭示传统回撤因分母膨胀而隐藏的破坏力。其三，在多交易对策略中，修复时间应至少同时报告自然时间、回撤深度和
+                NOAR；只有这样，才能区分“机会本来就稀少”与“机会很多却迟迟无法修复”的根本差异。
               </p>
             </div>
 
-            <h2 id="essay-h2-3">3. Full Text</h2>
-            <p id="essay-p3">
-              The complete text is embedded below. If the preview does not load
-              in the browser, open the PDF directly.
+            <h2>1 引言</h2>
+
+            <p>
+              评价一个策略是否优秀，不能只看收益率。收益只是结果变量，策略是否优秀，至少还取决于以下三类问题：第一，收益是以多大的风险代价换来的；第二，这种风险在回测区间内是否被恰当地度量；第三，策略在经历损伤后的恢复过程是否足够快、足够稳健。Sharpe
+              比率、Sortino 比率、Calmar
+              比率等经典指标之所以长期被引用，正是因为它们分别从“波动—回报”“下行风险—回报”“最大回撤—回报”这些角度，试图把收益与风险放在同一坐标系中进行比较
+              [1, 2, 4, 3, 6]。
             </p>
 
-            <div class="pdf-frame-wrap">
-              <iframe
-                src="/assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf"
-                title="Trading Strategy Evaluation PDF"
+            <p>
+              然而，经典指标并不覆盖全部情形。尤其在策略研究中，策略的资金曲线往往受到仓位规则的强影响：固定金额开单、固定张数开单、分层加仓、按权益比例复利、限仓上限、交易对异步开仓等，都会改变“同一笔亏损”在不同阶段的统计含义。若仍用单一分母上的回撤比例概括全部生存风险，结论容易失真。本文要讨论的核心问题正源于此：当权益曲线已经累计了大量收益后，传统最大回撤常常会把同样的绝对亏损显示成较小的百分比回撤，这在固定金额开单的策略中尤其明显。
+            </p>
+
+            <p>
+              为弥补这一缺口，本文提出两个扩展指标。其一是本金锚定回撤
+              CAD，用初始本金而不是历史峰值权益作为分母，以刻画“这次回撤相当于吃掉了多少个初始本金单位”。其二是标准化机会调整修复指标
+              NOAR，它不再只问“恢复用了多少天”，而是问“恢复到新高到底消耗了多少个按策略机会密度与持仓周期标准化后的交易生命周期”。这两个指标分别服务于两个不同维度：CAD
+              服务于破坏力，NOAR 服务于恢复力。
+            </p>
+
+            <h2>2 常见评价指标及其边界</h2>
+
+            <h3>2.1 夏普比率</h3>
+
+            <p>
+              Sharpe
+              比率是最常见的风险调整后收益指标之一。其基本思想是：如果把收益中高于无风险利率的部分视为“超额收益”，那么每承担一单位总波动，究竟获得了多少超额收益。常见写法为
+            </p>
+
+            <div class="formula">\[ SR = \frac{\bar r - r_f}{\sigma(r)} \]</div>
+
+            <p>
+              其中，\(\bar r\) 表示样本平均收益率，\(r_f\)
+              表示同期无风险利率，\(\sigma(r)\) 表示收益率序列的标准差。Sharpe
+              在 1966 年首先以 reward-to-variability ratio
+              的形式提出这一思路，并在后续文章中系统讨论了其含义与适用边界 [1,
+              2]。
+            </p>
+
+            <p>
+              它的优点是形式简洁、便于跨策略比较，而且在收益分布近似对称、波动近似可加总时具有较强的可解释性。缺点也同样明显：其一，它把上行波动与下行波动一并视为“风险”，对偏好正偏收益分布的投资者并不完全合理；其二，它对收益分布的偏度、峰度与序列相关较敏感；其三，若收益被平滑记账或存在估值滞后，标准差会被低估，从而抬高
+              Sharpe 比率 [3, 6]。
+            </p>
+
+            <h3>2.2 索提诺比率</h3>
+
+            <p>
+              Sortino 比率是对 Sharpe
+              比率的定向修正，它只把低于目标收益率，或最低可接受收益率 Minimum
+              Acceptable Return, MAR 的部分视为风险。常见写法为
+            </p>
+
+            <div class="formula">\[ SoR = \frac{\bar r - MAR}{\sigma_d} \]</div>
+
+            <p>其中下行偏差 \(\sigma_d\) 可写为</p>
+
+            <div class="formula">
+              \[ \sigma_d = \sqrt{ \frac{1}{N} \sum_{t=1}^{N} \min(0, r_t -
+              MAR)^2 } \]
+            </div>
+
+            <p>
+              CFA Institute 的说明中明确指出，Sortino 比率本质上是用 MAR 取代了
+              Sharpe 比率分子中的无风险利率，并用 downside deviation
+              替代了总标准差 [3, 4]。
+            </p>
+
+            <p>
+              它优于 Sharpe
+              的地方在于：如果研究者确实只关心“未达到目标”的不利波动，那么
+              Sortino
+              在逻辑上更加贴近投资者的损失厌恶偏好。不过，它并非没有问题。第一，MAR
+              的选取没有唯一标准，不同 MAR
+              会显著改变结论。第二，下行偏差的离散估计方法本身存在计算差异；Kidd
+              的综述就指出，简单地只使用历史上低于 MAR
+              的观测值，可能低估真实下行风险 [3]。因此，Sortino 适合作为 Sharpe
+              的补充，而不是替代一切的单一答案。
+            </p>
+
+            <h3>2.3 卡玛比率</h3>
+
+            <p>
+              Calmar 比率关注的不是波动，而是最糟糕的一次峰谷跌落。常见写法为
+            </p>
+
+            <div class="formula">\[ Calmar = \frac{CAGR}{MDD} \]</div>
+
+            <p>
+              其中 CAGR 是复合年化收益率，MDD 是最大回撤。Magdon-Ismail 与 Atiya
+              在分析最大回撤风险时，把 Calmar
+              明确写为“区间收益与区间最大回撤之比”的风险调整绩效指标，并指出实践中常把时窗统一到相同长度，如三年，后再比较
+              [6]。
+            </p>
+
+            <p>
+              它的优点在于直观：如果一个策略赚了很多钱，但中间经历了极深的资金坑，那么
+              Calmar 会直接把这类“痛苦”写进分母。与 Sharpe
+              相比，它更加贴近很多实盘投资者真正关心的问题，即“为了赚这些收益，我到底要忍受多大的最坏跌幅”。但它也高度依赖样本路径：一次异常深的极端回撤会支配整个比率，而这次回撤所对应的机制是否仍会出现，并不总能从一个历史区间中可靠推断
+              [6, 5]。
+            </p>
+
+            <h3>2.4 最大回撤</h3>
+
+            <p>
+              最大回撤 Maximum Drawdown, MDD
+              是回撤体系中最基础的指标。设总权益曲线为
+              \(\{E_t\}_{t=0}^T\)，运行峰值为
+            </p>
+
+            <div class="formula">\[ P_t = \max_{0 \leq s \leq t} E_s \]</div>
+
+            <p>则时点 \(t\) 的相对回撤为</p>
+
+            <div class="formula">\[ DD_t = \frac{P_t - E_t}{P_t} \]</div>
+
+            <p>最大回撤为</p>
+
+            <div class="formula">\[ MDD = \max_{0 \leq t \leq T} DD_t \]</div>
+
+            <p>这一类定义在学术与工业实现中都很常见 [6, 13, 12]。</p>
+
+            <p>
+              MDD
+              的优点在于：它直接针对“最坏情形”，对止损约束、风控阈值、出资人容忍度都很有意义。它的不足也同样明显。第一，它只看最深的一次回撤，不看同等重要的持续时间。第二，它以历史峰值作为分母，这在固定金额开单或弱复利策略中，会随着权益增长而机械压缩相同绝对损失的百分比值。第三，它严重依赖观察频率；日线、小时线与成交级数据计算出的
+              MDD 可能不同 [6, 13]。
+            </p>
+
+            <h3>2.5 Ulcer Index</h3>
+
+            <p>
+              Ulcer Index，简称 UI，由 Peter Martin 于 1987
+              年提出，核心思想不是抽取“单一最坏点”，而是用均方根方式累计一个回溯窗口内的全部回撤痛感。若回溯窗口长度为
+              \(L\)，窗口内第 \(j\) 个时点相对于窗口高点的百分比回撤为
+              \(DD_j\)，则
+            </p>
+
+            <div class="formula">
+              \[ UI = \sqrt{ \frac{1}{L} \sum_{j=1}^{L} DD_j^2 } \]
+            </div>
+
+            <p>
+              TradingView 的官方说明明确指出，Ulcer Index
+              同时强调了回撤深度与持续时间，并建议在某些风险相关指标中用 UI
+              替代标准差 [8, 7]。
+            </p>
+
+            <p>
+              UI 的优点在于，它不再像 MDD
+              那样只盯住一个点，而是将“长期在水下”和“短期深跌”都计入总痛苦。对于偏好平滑资金曲线的策略评价，UI
+              往往比标准差更贴近直觉。其缺点是：它依赖回溯窗口 \(L\)
+              的设定，不同窗口的数值不具有直接可比性；而且，它仍然没有回答一个关键问题——策略回撤之后，到底需要多长时间才能恢复到先前高点。这正是修复指标需要补充的空间
+              [8]。
+            </p>
+
+            <h3>2.6 回撤持续时间、修复时间与水下期</h3>
+
+            <p>
+              MDD
+              只告诉我们“跌得多深”，但不告诉我们“跌了多久”和“多久才能回到原高点”。因此，回撤分析至少还应同时记录三个时间点：回撤起点
+              \(t^{(p)}\)，即高点；回撤低点 \(t^{(b)}\)，即谷底；恢复高点
+              \(t^{(r)}\)。据此可以定义
+            </p>
+
+            <div class="formula">
+              \[ D_{draw} = t^{(b)} - t^{(p)} \] \[ D_{rec} = t^{(r)} - t^{(p)}
+              \]
+            </div>
+
+            <p>
+              其中 \(D_{draw}\) 可称为回撤持续时间 peak-to-trough
+              duration，\(D_{rec}\) 可称为恢复时间或水下期 peak-to-recovery time
+              under water。Morgan Stanley
+              的研究明确将二者区分开来，并在经验统计中同时报告“最大回撤幅度”“峰到谷的持续时间”“回到前高所需时间”
+              [9]。
+            </p>
+
+            <p>
+              这类时间指标的优点在于，能够补充 MDD
+              对“路径长度”完全失明的缺陷。短而深的回撤，与浅而长的回撤，对投资者心理和资金使用效率的影响并不相同。其局限在于：自然时间仍然无法反映策略的交易节奏。对于一个日内高频策略，60
+              天不创新高与一个中长周期趋势策略 60
+              天不创新高，性质显然不同。于是，问题自然转向本文后半部分：如何把“恢复所需时间”改写为更贴近策略自身运行机制的量。
+            </p>
+
+            <h2>3 单利与复利下的极限回撤问题</h2>
+
+            <h3>3.1 基本假设与未指定参数</h3>
+
+            <p>
+              本文后续推导采用如下符号与假设。凡用户或数据源未提供、且会影响数值结果的参数，一律显式记为“未指定”。
+            </p>
+
+            <ul>
+              <li>初始本金：\(E_0 > 0\)。</li>
+              <li>
+                总权益曲线：\(E_t\)，默认包含已实现盈亏与未实现盈亏；若仅有已实现曲线，则应单独标注。该点若数据源未说明，则为未指定。
+              </li>
+              <li>
+                观察频率：日频、小时频、逐笔成交频等；若未给出，则为未指定。
+              </li>
+              <li>无风险利率 \(r_f\)：未指定。</li>
+              <li>MAR，最低可接受收益率：未指定。</li>
+              <li>同一交易对是否允许重叠持仓：未指定。</li>
+              <li>手续费、滑点、资金费率是否纳入收益序列：未指定。</li>
+              <li>
+                基准窗口长度
+                \(|W|\)，用于估计各交易对开仓频率与平均持仓周期：未指定。
+              </li>
+              <li>多交易对权重 \(w_i\)：若未指定，默认等权。</li>
+            </ul>
+
+            <p>
+              本文特别强调，与仓位规则有关的指标推导不能脱离仓位规则本身。若一个策略的头寸规模与当前权益无关，和一个完全按权益百分比复利的策略放在同一分母上比较回撤，统计解释会发生变化。
+            </p>
+
+            <h3>3.2 传统回撤的分母问题</h3>
+
+            <p>
+              由式 \(DD_t = (P_t - E_t)/P_t\) 可知，传统回撤以历史峰值 \(P_t\)
+              为分母。因此，同样的绝对亏损
+            </p>
+
+            <div class="formula">\[ A_t = P_t - E_t \]</div>
+
+            <p>在不同峰值水平上，会被映射成不同的百分比损失：</p>
+
+            <div class="formula">\[ DD_t = \frac{A_t}{P_t} \]</div>
+
+            <p>
+              如果峰值因为前期盈利而不断增大，那么相同的绝对亏损会对应越来越小的
+              \(DD_t\)。这意味着：传统回撤不是绝对损伤的直接尺度，而是相对于当前峰值的损伤比例。在复利系统中，这样定义是自然的；但在固定金额开单的系统中，它会产生一种统计错觉——风险似乎因为赚了钱而自动变小了。
+            </p>
+
+            <p>
+              为了把绝对回撤重新锚定到初始资本尺度，本文定义本金锚定回撤
+              Capital-Anchored Drawdown, CAD 为
+            </p>
+
+            <div class="formula">
+              \[ CAD_t = \frac{P_t - E_t}{E_0} = \frac{A_t}{E_0} \]
+            </div>
+
+            <p>其最大值定义为</p>
+
+            <div class="formula">\[ MCAD = \max_{0 \leq t \leq T} CAD_t \]</div>
+
+            <p>
+              CAD
+              的意义十分直接：它回答的不是“相对当前峰值亏了多少”，而是“这次回撤相当于吃掉了多少个初始本金单位”。
+            </p>
+
+            <p>由 \(DD_t\) 与 \(CAD_t\) 的定义可得</p>
+
+            <div class="formula">\[ CAD_t = DD_t \cdot \frac{P_t}{E_0} \]</div>
+
+            <p>
+              因此，当 \(P_t/E_0\) 很大时，即便 \(DD_t\) 只是中等数值，\(CAD_t\)
+              也可能极高。例如，若账户由 1 增长到 4，之后回撤到
+              3.1，则绝对回撤金额为 0.9。这时
+            </p>
+
+            <div class="formula">
+              \[ DD_t = \frac{0.9}{4} = 22.5\%, \qquad CAD_t = \frac{0.9}{1} =
+              90\%. \]
+            </div>
+
+            <p>
+              对前者而言，这似乎只是一段“尚可承受”的中等回撤；对后者而言，这实际上相当于接近一个初始本金单位的破坏。两者不是互相矛盾，而是在回答不同问题。
+            </p>
+
+            <h3>3.3 固定开单金额与单利近似下的极限回撤</h3>
+
+            <p>
+              考虑固定金额开单规则。设策略在时点 \(t\) 有活动头寸集合 \(\mathcal
+              A_t\)，其中第 \(j\) 个活动头寸使用固定名义金额
+              \(q_j\)，其在极端不利情形下的最大损失比例上界为 \(\ell_j \in [0,
+              1]\)。则该时点的极限绝对亏损上界可写为
+            </p>
+
+            <div class="formula">
+              \[ L^{max}_t = \sum_{j \in \mathcal A_t} q_j \ell_j \]
+            </div>
+
+            <p>
+              若所有头寸使用同一固定金额 \(q\)，且统一极限损失比例为
+              \(\ell\)，活动头寸数为 \(m_t\)，则
+            </p>
+
+            <div class="formula">\[ L^{max}_t = m_t q \ell. \]</div>
+
+            <p>这时，传统峰值回撤口径下的极限回撤为</p>
+
+            <div class="formula">
+              \[ EDD^{peak}_t = \frac{L^{max}_t}{P_t} \]
+            </div>
+
+            <p>而本金锚定口径下的极限回撤为</p>
+
+            <div class="formula">\[ EDD^{CAD}_t = \frac{L^{max}_t}{E_0} \]</div>
+
+            <p>
+              如果 \(q, \ell, m_t\) 保持不变，则 \(EDD^{peak}_t\) 会随着 \(P_t\)
+              上升而下降，而 \(EDD^{CAD}_t\)
+              保持不变。也就是说，在固定开单金额模型中，传统相对回撤会把同一绝对风险机械压缩，但
+              CAD 不会。
+            </p>
+
+            <p>若进一步把收益过程简化为固定金额的单利近似，即</p>
+
+            <div class="formula">
+              \[ E_{t+1} = E_t + X_{t+1}, \qquad X_{t+1} \text{ 与 } E_t \text{
+              弱相关或无关} \]
+            </div>
+
+            <p>则策略经历 \(k\) 次连续极端亏损后的最坏权益可写为</p>
+
+            <div class="formula">
+              \[ E^{min}_{t+k} = E_t - \sum_{u=1}^{k} L^{max}_{t+u} \]
+            </div>
+
+            <p>当 \(L^{max}_{t+u} \equiv L^{max}\) 为常数时，</p>
+
+            <div class="formula">\[ E^{min}_{t+k} = E_t - kL^{max}. \]</div>
+
+            <p>于是，只要</p>
+
+            <div class="formula">\[ kL^{max} \geq E_0 \]</div>
+
+            <p>
+              策略就已经达到“吃掉至少一个初始本金单位”的破坏级别；从 CAD
+              角度看，这对应
+            </p>
+
+            <div class="formula">\[ CAD \geq 1. \]</div>
+
+            <p>
+              这条结论说明：对固定开单金额策略而言，传统 MDD
+              可能看起来温和，但极端亏损的生存含义并未因为后期盈利而改变。
+            </p>
+
+            <h3>3.4 按比例复利下的极限回撤</h3>
+
+            <p>
+              再看另一类规则：按权益比例开仓。设时点 \(t\) 的权益为
+              \(E_t\)，活动头寸对应的风险权重为 \(f_j\)，极限损失比例上界为
+              \(\ell_j\)，则极限绝对亏损上界可写为
+            </p>
+
+            <div class="formula">
+              \[ L^{max}_t = E_t \sum_{j \in \mathcal A_t} f_j \ell_j \]
+            </div>
+
+            <p>若 \(E_t\) 恰好接近回撤开始前峰值 \(P_t\)，则传统极限回撤为</p>
+
+            <div class="formula">
+              \[ EDD^{peak}_t \approx \sum_{j \in \mathcal A_t} f_j \ell_j \]
+            </div>
+
+            <p>
+              它与先前累计盈利关系不大，而主要由当前风险预算决定。此时，传统以峰值为分母的回撤定义与“当前资本风险”是基本一致的。换言之，对严格按权益比例复利的策略而言，\(DD_t\)
+              本身就是一个较合理的路径风险度量。
+            </p>
+
+            <p>但 CAD 仍然有补充价值。由上式可得</p>
+
+            <div class="formula">
+              \[ EDD^{CAD}_t = \frac{E_t}{E_0} \sum_{j \in \mathcal A_t} f_j
+              \ell_j \]
+            </div>
+
+            <p>
+              这说明在复利系统中，随着权益增长，同样的相对风险预算会对应更大的初始本金尺度上的绝对损伤。因此，CAD
+              在复利策略里回答的是另一个问题：这次回撤相当于打掉了多少个最初投入的资本单位。它不替代传统回撤，而是把传统回撤换到另一把尺子上重新衡量。
+            </p>
+
+            <h3>3.5 CAD 的适用边界与解释原则</h3>
+
+            <p>据此可以作出一个比较清楚的区分。</p>
+
+            <p>
+              第一，如果策略采用固定张数、固定金额或其他“绝对仓位”规则，那么 CAD
+              应当被视为核心补充指标。此时 CAD
+              能显著削弱“分母膨胀”带来的假平滑。
+            </p>
+
+            <p>
+              第二，如果策略采用严格比例复利，那么传统回撤对当前资本风险仍是恰当的主指标，而
+              CAD 更适合作为初始资本破坏力的补充刻画。
+            </p>
+
+            <p>
+              第三，CAD 与 MDD 不应互相替代。MDD 衡量的是路径相对损伤，MCAD
+              衡量的是绝对回撤相对于初始本金的尺度。对策略研究而言，二者并列报告通常比单独报告任何一个都更有信息量。
+            </p>
+
+            <h2>4 周期与机会调整的回撤修复指标 NOAR</h2>
+
+            <h3>4.1 问题提出：为什么自然时间不够</h3>
+
+            <p>
+              在最大回撤之后，许多实践者还会追问一个更接近真实体验的问题：策略多久能回到新高。这一问题很重要，因为一条资金曲线是否“可持有”，不仅取决于它会不会跌得很深，还取决于投资者会被困多久
+              [9]。但是，如果仅用“天数”“周数”来衡量恢复速度，就会遇到一个明显问题：不同策略的平均持仓周期和开仓频率差异极大。
+            </p>
+
+            <p>
+              一条资金曲线在 60 天后恢复新高，对一个平均持仓 2
+              天、每天都可能开仓的策略而言，意味着大量机会被消耗却没有恢复；但对一个平均持仓
+              20 天、每月只产生少量机会的策略而言，60
+              天也许只是两个正常的策略节拍。也就是说，自然时间只是一种日历时间，却未必是合适的策略时间。State
+              Street 关于 Event Time
+              的报告指出，把收益与事件强度而非日历时间对应起来，在一些情形下会更有解释力；SAFE
+              的资产定价教学资料也明确区分了 calendar-time 与 event-time
+              两种分析框架 [10, 11]。
+            </p>
+
+            <p>
+              因此，回撤修复应尽量从“过去了多少天”改写为“消耗了多少个标准化机会单位”。这正是本文引入
+              NOAR 的出发点。
+            </p>
+
+            <h3>4.2 恢复区间与基准窗口的严格定义</h3>
+
+            <p>考虑第 \(k\) 个回撤修复事件。定义：</p>
+
+            <ul>
+              <li>回撤起点，前高时点：\(t_k^{(p)}\)。</li>
+              <li>回撤谷底时点：\(t_k^{(b)}\)。</li>
+              <li>恢复时点，首次重新达到或超过前高：\(t_k^{(r)}\)。</li>
+              <li>
+                恢复自然时间长度：\(\Delta t_k^{rec} = t_k^{(r)} - t_k^{(p)}\)。
+              </li>
+            </ul>
+
+            <p>为了避免“事后频率”污染估计，需要在回撤开始前定义一个基准窗口</p>
+
+            <div class="formula">\[ W_k = [t_k^{(p)} - B, t_k^{(p)}) \]</div>
+
+            <p>
+              其中 \(B\)
+              为基准窗口长度，若用户未指定，则为未指定。基准窗口用于估计各交易对在正常状态下的开仓频率与平均持仓周期。
+            </p>
+
+            <p>
+              设策略总共交易 \(M\) 个交易对或资产，第 \(i\) 个交易对在窗口
+              \(W_k\) 中的开仓次数为 \(N_i(W_k)\)。其基准开仓频率估计为
+            </p>
+
+            <div class="formula">
+              \[ \hat\lambda_{i,k} = \frac{N_i(W_k)}{|W_k|}, \qquad i =
+              1,\ldots,M. \]
+            </div>
+
+            <p>
+              单位可取“次/天”“次/小时”等，与时间粒度保持一致。再设窗口 \(W_k\)
+              内该交易对已完成交易的平均持仓周期为
+            </p>
+
+            <div class="formula">
+              \[ \hat h_{i,k} = \frac{1}{N_i^{closed}(W_k)} \sum_{u \in
+              C_i(W_k)} h_{i,u} \]
+            </div>
+
+            <p>
+              其中 \(C_i(W_k)\) 表示窗口内第 \(i\)
+              个交易对已闭合仓位的集合，\(h_{i,u}\) 表示第 \(u\)
+              笔交易的持仓时长。若某交易对在窗口内没有已闭合交易，则该交易对的
+              \(\hat h_{i,k}\) 属于未指定，需要单独处理。
+            </p>
+
+            <h3>4.3 NOAR 的定义</h3>
+
+            <p>
+              先给出“机会时间”思想下的恢复负担。设第 \(i\) 个交易对在恢复区间
+              \([t_k^{(p)}, t_k^{(r)}]\) 内的实际开仓次数为
+            </p>
+
+            <div class="formula">
+              \[ N_i^{rec} = N_i([t_k^{(p)}, t_k^{(r)}]). \]
+            </div>
+
+            <p>定义多交易对权重为 \(w_{i,k} \geq 0\)，并满足</p>
+
+            <div class="formula">\[ \sum_{i=1}^{M} w_{i,k} = 1. \]</div>
+
+            <p>
+              若用户未指定，则默认等权，即 \(w_{i,k} =
+              1/M\)。本文定义标准化机会调整修复指标 Normalized
+              Opportunity-Adjusted Recovery, NOAR 为
+            </p>
+
+            <div class="formula">
+              \[ \widehat{NOAR}_k = \frac{ \sum_{i=1}^{M} w_{i,k} N_i^{rec} }{
+              \sum_{i=1}^{M} w_{i,k} \hat\lambda_{i,k} \hat h_{i,k} }. \]
+            </div>
+
+            <p>这一表达式的含义可以拆开理解：</p>
+
+            <ol>
+              <li>
+                分子 \(\sum_i w_i N_i^{rec}\) 是恢复到新高中实际消耗的机会数量。
+              </li>
+              <li>
+                分母 \(\sum_i w_i \hat\lambda_{i,k}\hat h_{i,k}\)
+                是在基准状态下，一个平均持仓生命周期中预期会到来的机会数量。
+              </li>
+              <li>
+                因此，NOAR
+                表示：回撤修复一共消耗了多少个“基准交易生命周期单位”。
+              </li>
+            </ol>
+
+            <p>
+              若只关心理论期望而非历史实现，可以把恢复区间内的实际机会数量
+              \(N_i^{rec}\) 换成其在基准强度下的期望值 \(\hat\lambda_{i,k}\Delta
+              t_k^{rec}\)，得到期望型指标
+            </p>
+
+            <div class="formula">
+              \[ NOAR_k^{exp} = \frac{ \sum_{i=1}^{M} w_{i,k} \hat\lambda_{i,k}
+              \Delta t_k^{rec} }{ \sum_{i=1}^{M} w_{i,k} \hat\lambda_{i,k} \hat
+              h_{i,k} }. \]
+            </div>
+
+            <p>
+              在同质性较强的单交易对情形下，期望型指标近似退化为“恢复时间 /
+              平均持仓周期”；而在多交易对、异质开仓频率的情形下，频率项不再完全消失，因而能体现多资产机会密度的差异。
+            </p>
+
+            <h3>4.4 NOAR 的经济解释</h3>
+
+            <p>
+              定义 NOAR
+              的目的并不是制造一个比“恢复天数”更复杂的数字，而是把修复过程切换到更贴近策略机制的尺度上。若某策略在恢复区间内经历了大量机会，却仍然无法恢复到前高，那么它的修复失败不是因为“机会不够”，而更可能是因为策略在该市场阶段失效、边际优势下降，或者风险暴露结构发生了变化。反过来，如果一个策略恢复缓慢，但其开仓机会本来就极其稀疏，那么较长的自然时间并不能直接说明修复效率差。
+            </p>
+
+            <p>
+              因此，NOAR
+              与恢复自然时间并非替代关系，而是互补关系。恢复天数回答“现实世界过了多久”，NOAR
+              回答“就策略自己的节拍而言，这次修复到底拖了多少个有效生命周期”。有了这把尺子，修复能力的比较才不会完全受制于策略频率差异。
+            </p>
+
+            <h3>4.5 样例计算</h3>
+
+            <p>
+              下面给出一个多交易对、等权重、恢复区间为 45
+              天的样例。设基准窗口长度为 180
+              天，三个交易对在基准窗口与恢复窗口中的统计如下表所示。
+            </p>
+
+            <div class="table-wrap">
+              <table>
+                <caption>
+                  表 1：NOAR 样例计算：多交易对、等权重情形
+                </caption>
+                <thead>
+                  <tr>
+                    <th>交易对</th>
+                    <th>基准窗天数</th>
+                    <th>基准开仓数 \(N_i(W)\)</th>
+                    <th>\(\hat\lambda_i\)（次/天）</th>
+                    <th>\(\hat h_i\)（天）</th>
+                    <th>恢复窗开仓数 \(N_i^{rec}\)</th>
+                    <th>\(\hat\lambda_i\hat h_i\)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>BTC/USDT</td>
+                    <td>180</td>
+                    <td>36</td>
+                    <td>0.20</td>
+                    <td>4</td>
+                    <td>8</td>
+                    <td>0.80</td>
+                  </tr>
+                  <tr>
+                    <td>ETH/USDT</td>
+                    <td>180</td>
+                    <td>18</td>
+                    <td>0.10</td>
+                    <td>7</td>
+                    <td>5</td>
+                    <td>0.70</td>
+                  </tr>
+                  <tr>
+                    <td>SOL/USDT</td>
+                    <td>180</td>
+                    <td>9</td>
+                    <td>0.05</td>
+                    <td>10</td>
+                    <td>2</td>
+                    <td>0.50</td>
+                  </tr>
+                  <tr>
+                    <td>合计/求和</td>
+                    <td>—</td>
+                    <td>63</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>15</td>
+                    <td>2.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              设 \(w_i =
+              1/3\)。由于分子与分母同乘相同权重，最终结果与上表“求和”比值一致。由
+              NOAR 的定义：
+            </p>
+
+            <div class="formula">
+              \[ \widehat{NOAR} = \frac{15}{2.00} = 7.50. \]
+            </div>
+
+            <p>
+              这表示：该次从前高到恢复新高的过程，大致消耗了 7.5
+              个“基准交易生命周期单位”。如果再用期望机会数来估计，则有
+            </p>
+
+            <div class="formula">
+              \[ NOAR^{exp} = \frac{45 \times (0.20 + 0.10 + 0.05)} {0.80 + 0.70
+              + 0.50} = \frac{15.75}{2.00} = 7.875. \]
+            </div>
+
+            <p>
+              实际值与期望值接近，说明恢复区间内的机会到达频率与基准状态大致一致；若两者差距很大，则意味着恢复期的市场机会密度本身发生了显著变化。
+            </p>
+
+            <h3>4.6 一个未恢复样本的处理</h3>
+
+            <p>
+              若到样本结束时策略尚未恢复到先前高点，即不存在
+              \(t_k^{(r)}\)，则该回撤事件应视为右删失 right-censored
+              episode。这时可以报告删失版本
+            </p>
+
+            <div class="formula">
+              \[ \widehat{NOAR}^{cens}_k = \frac{ \sum_{i=1}^{M} w_{i,k}
+              N_i([t_k^{(p)}, T]) }{ \sum_{i=1}^{M} w_{i,k}\hat\lambda_{i,k}\hat
+              h_{i,k} }. \]
+            </div>
+
+            <p>
+              其中 \(T\)
+              为样本终点。对这类事件，不应与已修复事件直接按点估计比较，而应在表格中单独标注“未恢复”。
+            </p>
+
+            <h2>5 图表示意</h2>
+
+            <h3>5.1 资金曲线与本金锚定回撤示意</h3>
+
+            <div class="figure-block">
+              <svg viewBox="0 0 760 360" role="img" aria-label="资金曲线示意">
+                <rect x="0" y="0" width="760" height="360" fill="transparent" />
+                <line
+                  x1="70"
+                  y1="300"
+                  x2="710"
+                  y2="300"
+                  stroke="#6b7280"
+                  stroke-width="1"
+                />
+                <line
+                  x1="70"
+                  y1="40"
+                  x2="70"
+                  y2="300"
+                  stroke="#6b7280"
+                  stroke-width="1"
+                />
+                <text
+                  x="390"
+                  y="340"
+                  fill="#9aa3ad"
+                  font-size="14"
+                  text-anchor="middle"
+                >
+                  时点
+                </text>
+                <text
+                  x="22"
+                  y="175"
+                  fill="#9aa3ad"
+                  font-size="14"
+                  transform="rotate(-90 22 175)"
+                  text-anchor="middle"
+                >
+                  账户权益
+                </text>
+                <g stroke="#30363d" stroke-width="1">
+                  <line x1="70" y1="240" x2="710" y2="240" />
+                  <line x1="70" y1="180" x2="710" y2="180" />
+                  <line x1="70" y1="120" x2="710" y2="120" />
+                  <line x1="70" y1="60" x2="710" y2="60" />
+                </g>
+                <polyline
+                  points="70,270 134,258 198,234 262,198 326,156 390,60 454,114 518,108 582,90 646,72 710,54"
+                  fill="none"
+                  stroke="#d7dde5"
+                  stroke-width="2.4"
+                />
+                <g fill="#d7dde5">
+                  <circle cx="70" cy="270" r="4" />
+                  <circle cx="134" cy="258" r="4" />
+                  <circle cx="198" cy="234" r="4" />
+                  <circle cx="262" cy="198" r="4" />
+                  <circle cx="326" cy="156" r="4" />
+                  <circle cx="390" cy="60" r="5" />
+                  <circle cx="454" cy="114" r="5" />
+                  <circle cx="518" cy="108" r="4" />
+                  <circle cx="582" cy="90" r="4" />
+                  <circle cx="646" cy="72" r="4" />
+                  <circle cx="710" cy="54" r="4" />
+                </g>
+                <line
+                  x1="390"
+                  y1="60"
+                  x2="454"
+                  y2="60"
+                  stroke="#9aa3ad"
+                  stroke-dasharray="5 5"
+                />
+                <line
+                  x1="454"
+                  y1="60"
+                  x2="454"
+                  y2="114"
+                  stroke="#9aa3ad"
+                  stroke-dasharray="5 5"
+                />
+                <text x="405" y="48" fill="#d7dde5" font-size="14">
+                  峰值 P = 4.0
+                </text>
+                <text x="466" y="118" fill="#d7dde5" font-size="14">
+                  谷值 E = 3.1
+                </text>
+                <text
+                  x="62"
+                  y="275"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="end"
+                >
+                  1
+                </text>
+                <text
+                  x="62"
+                  y="215"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="end"
+                >
+                  2
+                </text>
+                <text
+                  x="62"
+                  y="155"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="end"
+                >
+                  3
+                </text>
+                <text
+                  x="62"
+                  y="65"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="end"
+                >
+                  4
+                </text>
+              </svg>
+              <p class="figure-caption">
+                图 1：资金曲线示意：从 1 增长至 4 后回撤 0.9。传统回撤为 0.9/4 =
+                22.5%，而本金锚定回撤为 0.9/1 = 90%。
+              </p>
+            </div>
+
+            <p>
+              图 1
+              的意义在于说明：若仓位规则没有随权益同步放大，峰值分母会把同一绝对损失缩小成看似温和的百分比回撤。此时
+              MDD 并未“错误”，但其问题意识与生存性问题并不一致。
+            </p>
+
+            <h3>5.2 日历时间与事件时间示意</h3>
+
+            <div class="figure-block">
+              <svg
+                viewBox="0 0 760 250"
+                role="img"
+                aria-label="日历时间与事件时间示意"
               >
-              </iframe>
+                <rect x="0" y="0" width="760" height="250" fill="transparent" />
+                <text x="70" y="45" fill="#d7dde5" font-size="14">
+                  日历时间
+                </text>
+                <line
+                  x1="150"
+                  y1="40"
+                  x2="680"
+                  y2="40"
+                  stroke="#9aa3ad"
+                  stroke-width="2"
+                />
+                <g fill="#d7dde5" font-size="13">
+                  <text x="145" y="25">t0</text>
+                  <text x="275" y="25">t1</text>
+                  <text x="405" y="25">t2</text>
+                  <text x="535" y="25">t3</text>
+                  <text x="670" y="25">t4</text>
+                </g>
+                <g stroke="#9aa3ad" stroke-width="2">
+                  <line x1="150" y1="34" x2="150" y2="46" />
+                  <line x1="280" y1="34" x2="280" y2="46" />
+                  <line x1="410" y1="34" x2="410" y2="46" />
+                  <line x1="540" y1="34" x2="540" y2="46" />
+                  <line x1="680" y1="34" x2="680" y2="46" />
+                </g>
+                <g fill="#9aa3ad" font-size="13">
+                  <text x="205" y="72">λ 低</text>
+                  <text x="335" y="72">λ 高</text>
+                  <text x="460" y="72">λ 很低</text>
+                  <text x="605" y="72">λ 中</text>
+                </g>
+                <text x="70" y="150" fill="#d7dde5" font-size="14">
+                  事件时间
+                </text>
+                <line
+                  x1="150"
+                  y1="145"
+                  x2="680"
+                  y2="145"
+                  stroke="#9aa3ad"
+                  stroke-width="2"
+                />
+                <g stroke="#9aa3ad" stroke-width="2">
+                  <line x1="150" y1="139" x2="150" y2="151" />
+                  <line x1="230" y1="139" x2="230" y2="151" />
+                  <line x1="470" y1="139" x2="470" y2="151" />
+                  <line x1="535" y1="139" x2="535" y2="151" />
+                  <line x1="680" y1="139" x2="680" y2="151" />
+                </g>
+                <g fill="#9aa3ad" font-size="13">
+                  <text x="180" y="178">低</text>
+                  <text x="340" y="178">高</text>
+                  <text x="492" y="178">很低</text>
+                  <text x="600" y="178">中</text>
+                </g>
+                <text
+                  x="380"
+                  y="220"
+                  fill="#9aa3ad"
+                  font-size="14"
+                  text-anchor="middle"
+                >
+                  同样的日历时间区间，在事件时间中会因机会密度不同而被重新拉伸或压缩
+                </text>
+              </svg>
+              <p class="figure-caption">
+                图
+                2：事件时间示意：机会密度高的区段，在事件时间坐标下会被拉长；机会密度低的区段会被压缩。
+              </p>
             </div>
 
-            <div class="essay-note-block">
-              <p class="essay-note-title" id="essay-note-title">File</p>
-              <p id="essay-note-text">
-                PDF file path:
-                /assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf
-              </p>
+            <p>
+              图 2
+              表达的是一个原则：若研究对象本身是由交易机会驱动的，那么“过了多久”并不只由时钟决定，也由机会到达强度决定
+              [10, 11]。
+            </p>
+
+            <h3>5.3 NOAR 的计算流程图</h3>
+
+            <div class="figure-block">
+              <svg
+                viewBox="0 0 760 430"
+                role="img"
+                aria-label="CAD 与 NOAR 的计算流程"
+              >
+                <defs>
+                  <marker
+                    id="arrow-zh"
+                    markerWidth="10"
+                    markerHeight="10"
+                    refX="8"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <path d="M0,0 L0,6 L9,3 z" fill="#9aa3ad" />
+                  </marker>
+                </defs>
+                <rect
+                  x="285"
+                  y="25"
+                  width="190"
+                  height="48"
+                  rx="10"
+                  fill="transparent"
+                  stroke="#9aa3ad"
+                />
+                <text
+                  x="380"
+                  y="47"
+                  fill="#d7dde5"
+                  font-size="14"
+                  text-anchor="middle"
+                >
+                  输入数据
+                </text>
+                <text
+                  x="380"
+                  y="65"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="middle"
+                >
+                  权益曲线 + 交易明细
+                </text>
+                <rect
+                  x="285"
+                  y="105"
+                  width="190"
+                  height="48"
+                  rx="10"
+                  fill="transparent"
+                  stroke="#9aa3ad"
+                />
+                <text
+                  x="380"
+                  y="127"
+                  fill="#d7dde5"
+                  font-size="14"
+                  text-anchor="middle"
+                >
+                  识别回撤事件
+                </text>
+                <text
+                  x="380"
+                  y="145"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="middle"
+                >
+                  峰值、谷值、恢复时点
+                </text>
+                <rect
+                  x="80"
+                  y="205"
+                  width="220"
+                  height="58"
+                  rx="10"
+                  fill="transparent"
+                  stroke="#9aa3ad"
+                />
+                <text
+                  x="190"
+                  y="228"
+                  fill="#d7dde5"
+                  font-size="14"
+                  text-anchor="middle"
+                >
+                  计算回撤路径
+                </text>
+                <text
+                  x="190"
+                  y="248"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="middle"
+                >
+                  DDt, CADt, MCAD
+                </text>
+                <rect
+                  x="460"
+                  y="205"
+                  width="220"
+                  height="58"
+                  rx="10"
+                  fill="transparent"
+                  stroke="#9aa3ad"
+                />
+                <text
+                  x="570"
+                  y="228"
+                  fill="#d7dde5"
+                  font-size="14"
+                  text-anchor="middle"
+                >
+                  设定基准窗口
+                </text>
+                <text
+                  x="570"
+                  y="248"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="middle"
+                >
+                  估计 λ̂i, ĥi
+                </text>
+                <rect
+                  x="460"
+                  y="305"
+                  width="220"
+                  height="48"
+                  rx="10"
+                  fill="transparent"
+                  stroke="#9aa3ad"
+                />
+                <text
+                  x="570"
+                  y="328"
+                  fill="#d7dde5"
+                  font-size="14"
+                  text-anchor="middle"
+                >
+                  统计恢复窗开仓数
+                </text>
+                <text
+                  x="570"
+                  y="346"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="middle"
+                >
+                  Nirec
+                </text>
+                <rect
+                  x="285"
+                  y="305"
+                  width="190"
+                  height="48"
+                  rx="10"
+                  fill="transparent"
+                  stroke="#9aa3ad"
+                />
+                <text
+                  x="380"
+                  y="327"
+                  fill="#d7dde5"
+                  font-size="14"
+                  text-anchor="middle"
+                >
+                  计算 NOAR
+                </text>
+                <text
+                  x="380"
+                  y="345"
+                  fill="#9aa3ad"
+                  font-size="12"
+                  text-anchor="middle"
+                >
+                  机会时间尺度
+                </text>
+                <rect
+                  x="285"
+                  y="375"
+                  width="190"
+                  height="42"
+                  rx="10"
+                  fill="transparent"
+                  stroke="#9aa3ad"
+                />
+                <text
+                  x="380"
+                  y="400"
+                  fill="#d7dde5"
+                  font-size="14"
+                  text-anchor="middle"
+                >
+                  输出报告
+                </text>
+                <g
+                  stroke="#9aa3ad"
+                  stroke-width="1.5"
+                  fill="none"
+                  marker-end="url(#arrow-zh)"
+                >
+                  <line x1="380" y1="73" x2="380" y2="104" />
+                  <line x1="345" y1="153" x2="235" y2="204" />
+                  <line x1="415" y1="153" x2="525" y2="204" />
+                  <line x1="570" y1="263" x2="570" y2="304" />
+                  <line x1="525" y1="329" x2="476" y2="329" />
+                  <line x1="380" y1="354" x2="380" y2="374" />
+                </g>
+              </svg>
+              <p class="figure-caption">图 3：CAD 与 NOAR 的计算流程。</p>
+            </div>
+
+            <h2>6 可计算的算法步骤与伪代码</h2>
+
+            <h3>6.1 算法步骤</h3>
+
+            <p>若已有回测或实盘明细数据，可按以下步骤计算。</p>
+
+            <ol>
+              <li>
+                构造总权益序列
+                \(E_t\)。若只有交易明细而无现成权益曲线，则将现金流水、已实现盈亏、未实现盈亏、手续费和滑点统一并入同一时间轴。
+              </li>
+              <li>
+                计算运行峰值 \(P_t = \max_{s \leq t} E_s\)，得到 \(DD_t\) 与
+                \(CAD_t\)。
+              </li>
+              <li>
+                识别每个回撤事件 \((t_k^{(p)}, t_k^{(b)},
+                t_k^{(r)})\)；若样本结束仍未恢复，则标记为删失事件。
+              </li>
+              <li>
+                对每个回撤事件，在其起点之前截取基准窗口 \(W_k = [t_k^{(p)} - B,
+                t_k^{(p)})\)。
+              </li>
+              <li>
+                在 \(W_k\) 内按交易对估计 \(\hat\lambda_{i,k}\) 与 \(\hat
+                h_{i,k}\)。
+              </li>
+              <li>
+                在恢复区间 \([t_k^{(p)}, t_k^{(r)}]\) 内按交易对统计实际开仓次数
+                \(N_i^{rec}\)。
+              </li>
+              <li>
+                选择权重
+                \(w_{i,k}\)。若策略对每个交易对等额分配关注，可用等权；若策略在资金上存在稳定的偏置，可用资金占用权重或风险预算权重。
+              </li>
+              <li>
+                代入 NOAR 公式得到 \(\widehat{NOAR}_k\)，与
+                \(D_{draw}\)、\(D_{rec}\)、MDD、MCAD 一并输出。
+              </li>
+            </ol>
+
+            <h3>6.2 伪代码</h3>
+
+            <pre><code>Input:
+equity_series E[t]
+trade_log
+initial_capital E0
+baseline_window_days B
+weights w_i  # if unspecified, use equal weights
+
+Step 1. Compute running peak:
+P[t] = cumulative_max(E[t])
+
+Step 2. Compute drawdown paths:
+DD[t]  = (P[t] - E[t]) / P[t]
+CAD[t] = (P[t] - E[t]) / E0
+
+Step 3. Detect drawdown episodes:
+for each peak-to-recovery episode k:
+    identify tp_k  # peak time
+    identify tb_k  # trough time
+    identify tr_k  # recovery time, or sample end if unrecovered
+
+Step 4. For each episode k:
+W_k = [tp_k - B, tp_k)
+
+for each symbol i:
+    lambda_i = open_count(symbol=i, window=W_k) / window_length_in_days(W_k)
+    h_i = mean_holding_days(symbol=i, completed_trades_in=W_k)
+    n_i_rec = open_count(symbol=i, window=[tp_k, tr_k])
+
+numerator   = sum_i w_i * n_i_rec
+denominator = sum_i w_i * lambda_i * h_i
+
+if denominator > 0:
+    NOAR_k = numerator / denominator
+else:
+    NOAR_k = NaN  # or mark as unspecified
+
+Step 5. Summary statistics:
+MDD  = max_t DD[t]
+MCAD = max_t CAD[t]
+drawdown_duration_k = tb_k - tp_k
+recovery_time_k = tr_k - tp_k
+
+Output:
+episode-level:
+peak_time, trough_time, recovery_time
+MDD_episode, CAD_episode, drawdown_duration, recovery_time, NOAR
+
+full-sample:
+MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
+
+            <h2>7 回测与实盘中的实现要求</h2>
+
+            <h3>7.1 数据字段需求</h3>
+
+            <div class="table-wrap">
+              <table>
+                <caption>
+                  表 2：实现 CAD 与 NOAR 的最低字段需求
+                </caption>
+                <thead>
+                  <tr>
+                    <th>字段</th>
+                    <th>是否必需</th>
+                    <th>用途说明</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>时间戳 timestamp</td>
+                    <td>必需</td>
+                    <td>
+                      用于构造权益曲线、识别回撤区间、统计恢复时间与开仓次数。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>总权益 equity</td>
+                    <td>必需</td>
+                    <td>
+                      用于计算运行峰值、回撤、MDD 和
+                      CAD。若无现成字段，需要由现金与持仓估值重建。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>交易对 symbol</td>
+                    <td>必需</td>
+                    <td>NOAR 需要按交易对估计开仓频率与平均持仓周期。</td>
+                  </tr>
+                  <tr>
+                    <td>开仓时间 entry_time</td>
+                    <td>必需</td>
+                    <td>
+                      用于统计 \(N_i(W)\) 与恢复区间开仓数 \(N_i^{rec}\)。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>平仓时间 exit_time</td>
+                    <td>建议必需</td>
+                    <td>
+                      用于计算持仓周期 \(\hat
+                      h_i\)。若无该字段，则平均持仓周期无法直接估计。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>交易方向 side</td>
+                    <td>建议</td>
+                    <td>若多空策略混合，建议分别统计或至少保留方向标签。</td>
+                  </tr>
+                  <tr>
+                    <td>成交数量/名义金额 qty/notional</td>
+                    <td>建议</td>
+                    <td>用于区分固定金额与按比例复利，并辅助解释 CAD。</td>
+                  </tr>
+                  <tr>
+                    <td>已实现盈亏 realized_pnl</td>
+                    <td>建议</td>
+                    <td>用于重建权益曲线，或与未实现盈亏合并。</td>
+                  </tr>
+                  <tr>
+                    <td>未实现盈亏 unrealized_pnl</td>
+                    <td>建议</td>
+                    <td>若忽略该字段，则回撤可能被低估。</td>
+                  </tr>
+                  <tr>
+                    <td>手续费 fee 与滑点 slippage</td>
+                    <td>建议</td>
+                    <td>风险调整指标应尽量在净收益层面计算。</td>
+                  </tr>
+                  <tr>
+                    <td>是否允许重叠持仓 allow_overlap</td>
+                    <td>未指定时需说明</td>
+                    <td>会影响“开仓机会”和“平均持仓周期”的统计口径。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3>7.2 处理流程</h3>
+
+            <p>
+              回测数据的处理流程通常比实盘数据更容易，因为回测系统往往直接输出完整权益曲线与交易明细。实盘数据则经常分散在不同源中：成交回报、持仓快照、资金流水、手续费记录可能分别存放。若要保证
+              CAD 与 NOAR 的结果可信，建议遵循以下原则。
+            </p>
+
+            <p>
+              第一，回撤分析优先基于总权益而非仅已实现权益。若只用已实现部分，会把“浮亏阶段”延后到平仓时一次性确认，从而扭曲回撤路径。第二，NOAR
+              的基准窗口必须放在回撤起点之前，不能混入恢复期信息。第三，若交易对层面开仓极其稀疏，可提高基准窗口长度；否则
+              \(\hat\lambda_i\) 与 \(\hat h_i\)
+              的估计噪声会很大。第四，未恢复事件必须显式标记，不能伪装成已恢复但数值很大。
+            </p>
+
+            <h3>7.3 固定金额与比例复利在实现层面的识别</h3>
+
+            <p>
+              在代码实现时，判断策略更接近“固定金额”还是“比例复利”，不能只看收益曲线，而应看下单规则本身：
+            </p>
+
+            <ul>
+              <li>
+                若下单名义金额长期近似常数、随权益变化不显著，则应视为固定金额或弱复利。
+              </li>
+              <li>
+                若下单名义金额与权益高度同步，例如“每次使用权益的
+                \(f\%\)”，则应视为比例复利。
+              </li>
+              <li>
+                若存在上限、分层仓位、人工限仓等情形，二者之间可能出现混合结构，应单独标注。
+              </li>
+            </ul>
+
+            <p>
+              对第一类策略，应把 MCAD 与传统 MDD
+              并列为主指标。对第二类策略，应把 MDD 保持为主指标，同时把 CAD
+              作为补充项，用于衡量绝对资本破坏量。
+            </p>
+
+            <h2>8 判定阈值建议</h2>
+
+            <p>
+              本节阈值仅作为一般性经验建议，不是统一行业标准，也不能脱离采样频率、净收益口径、交易成本口径与策略容量约束单独使用。
+            </p>
+
+            <div class="table-wrap">
+              <table>
+                <caption>
+                  表 3：一般性判定阈值建议
+                </caption>
+                <thead>
+                  <tr>
+                    <th>指标</th>
+                    <th>一般性建议</th>
+                    <th>说明</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sharpe 比率</td>
+                    <td>
+                      &lt; 1 仅作初筛；1–2 可继续验证；&gt; 2 值得重点审查
+                    </td>
+                    <td>
+                      必须在净收益口径下报告；若存在收益平滑或估值滞后，需谨慎解释。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sortino 比率</td>
+                    <td>&lt; 1 偏弱；1–2 可用；≥ 2 通常较强</td>
+                    <td>市场实践中常把 ≥ 2 视为较理想，但仍依赖 MAR 设定。</td>
+                  </tr>
+                  <tr>
+                    <td>Calmar 比率</td>
+                    <td>&lt; 0.5 偏弱；0.5–1 需谨慎；1–2 尚可；&gt; 2 较强</td>
+                    <td>强依赖样本路径与时窗；应与 MDD 一起报告。</td>
+                  </tr>
+                  <tr>
+                    <td>MCAD</td>
+                    <td>≥ 1 视为严重警报</td>
+                    <td>
+                      表示单次最大绝对回撤已达到或超过一个初始本金单位；对固定金额策略尤其重要。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>恢复自然时间</td>
+                    <td>不建议单独设统一阈值</td>
+                    <td>应与平均持仓周期、交易对机会密度和 NOAR 联合解释。</td>
+                  </tr>
+                  <tr>
+                    <td>NOAR</td>
+                    <td>
+                      &lt; 2 恢复较快；2–5 中等；&gt; 5 偏慢；&gt; 8
+                      需解释其合理性
+                    </td>
+                    <td>
+                      这是本文建议阈值，适合先做初筛，再按策略频率分层比较。
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              若策略属于短周期、高频、开仓机会密集型，则对 NOAR
+              的容忍区间通常应更严格；若策略属于中长周期趋势跟随、机会稀疏型，则同样的
+              NOAR
+              数值可能仍可接受。因此，更稳妥的做法是：在同策略族、同频率层级内比较
+              NOAR，而不是拿所有策略共同使用单一阈值。
+            </p>
+
+            <h2>9 结论与实践建议</h2>
+
+            <p>
+              本文试图回答的，不是“哪一个单一指标最好”，而是“怎样才能更完整地评价一个策略的优秀程度”。从这一目标出发，可以得到几个较为清楚的判断。
+            </p>
+
+            <p>
+              第一，经典指标仍然重要。Sharpe、Sortino、Calmar、MDD、Ulcer Index
+              与回撤持续时间分别从不同角度刻画了收益—风险关系，它们不应被抛弃。尤其在策略初筛时，这些指标仍然是必要的第一层描述
+              [1, 3, 6, 8, 9]。
+            </p>
+
+            <p>
+              第二，传统回撤并不总能完整表达生存风险。在固定金额开单、固定张数开单或弱复利的结构下，峰值分母的不断升高会压缩传统回撤百分比，使得同一绝对亏损在后期看起来“更温和”。CAD
+              的意义正在这里：它把回撤重新锚定到初始资本尺度，从而回答“这次回撤相当于打掉了多少个初始本金单位”。因此，若仓位与权益脱钩，MCAD
+              应与 MDD 并列报告，而不应被视为可有可无的附属指标。
+            </p>
+
+            <p>
+              第三，恢复能力不能只用自然时间衡量。回撤后多久回到新高当然重要，但“60
+              天”对不同策略含义不同。NOAR
+              的价值在于，它把恢复过程重写成“消耗了多少个标准化机会/生命周期”，从而在策略节拍层面对恢复困难度进行刻画。对于多交易对策略，这一调整尤为必要，因为不同交易对开仓频率相差很大，单看天数会把“无机会”与“有很多机会但没恢复”混为一谈。
+            </p>
+
+            <p>
+              综上所述，若要对策略的优秀程度作出更严谨的判断，建议至少同时报告以下五类结果：收益指标，如
+              CAGR；经典风险调整指标，如
+              Sharpe、Sortino、Calmar；路径风险指标，如
+              MDD、UI；生存性补充指标，如
+              MCAD；以及恢复性指标，如恢复自然时间、NOAR。只有当一个策略在这几个维度上同时表现为“可赚、可活、可修复”时，它才更接近“优秀策略”这一判断，而不是仅仅拥有一段漂亮的历史收益曲线。
+            </p>
+
+            <h2>参考文献</h2>
+
+            <ol class="references">
+              <li>
+                Sharpe, W. F. (1994). The Sharpe Ratio.
+                <em>The Journal of Portfolio Management</em>.
+              </li>
+              <li>
+                TradingView. (2026). 夏普比率／Sharpe Ratio 官方帮助说明。
+              </li>
+              <li>
+                Kidd, D. (2011, updated by CFA Institute). The Sortino Ratio.
+                CFA Institute.
+              </li>
+              <li>TradingView. (2026). Sortino Ratio 官方帮助说明。</li>
+              <li>
+                Young, T. W. (1991). Calmar Ratio: A Smoother Tool.
+                <em>Futures</em>.
+              </li>
+              <li>
+                Magdon-Ismail, M., & Atiya, A. F. (2004). An Analysis of the
+                Maximum Drawdown Risk Measure.
+              </li>
+              <li>
+                Martin, P., & McCann, B. (1989).
+                <em>The Investor’s Guide to Fidelity Funds</em>. John Wiley &
+                Sons.
+              </li>
+              <li>TradingView. (2026). Ulcer Index 官方帮助说明。</li>
+              <li>
+                Morgan Stanley Investment Management. (2025). Drawdowns and
+                Recoveries.
+              </li>
+              <li>
+                Czasonis, M., Kritzman, M., Page, S., & Turkington, D. (2022).
+                Event Time. State Street Associates.
+              </li>
+              <li>
+                Hillert, A. (2024). Methods in Empirical Asset Pricing:
+                Calendar-time Portfolios. Leibniz Institute for Financial
+                Research SAFE.
+              </li>
+              <li>Darwinex. (2023). Drawdown calculation at Darwinex.</li>
+              <li>
+                MathWorks. (2026). maxdrawdown / Maximum Drawdown documentation.
+              </li>
+            </ol>
+
+            <h2>PDF 文件</h2>
+
+            <p>
+              PDF
+              版保留原始排版、分页和公式布局。需要查看或下载时，可以打开下方链接。
+            </p>
+
+            <div class="pdf-actions">
+              <a
+                class="pdf-link"
+                href="/assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                打开 PDF
+              </a>
+              <a class="pdf-link" href="/works.html">返回 Works</a>
             </div>
           </article>
-        </div>
-      </section>
 
-      <section class="section closing-section">
-        <div class="container essay-page center">
-          <p class="section-note" id="essay-ending-label">Ending</p>
-          <h2 class="closing-title" id="essay-closing-title">
-            Evaluation should include recovery structure.
-          </h2>
-          <p class="closing-text" id="essay-closing-text">
-            A strategy is not only judged by its return curve, but also by how
-            its drawdowns are produced, repaired, and exposed to time.
-          </p>
+          <article class="essay-body lang-article" id="article-en" lang="en">
+            <div class="abstract-block">
+              <p class="abstract-title">Abstract</p>
+              <p>
+                This article discusses how an “excellent strategy” should be
+                evaluated and proposes two supplementary metrics:
+                Capital-Anchored Drawdown (CAD) and Normalized
+                Opportunity-Adjusted Recovery (NOAR). It first reviews common
+                metrics such as the Sharpe ratio, Sortino ratio, Calmar ratio,
+                Maximum Drawdown, Ulcer Index, and drawdown duration. It then
+                points out a limitation in finite backtests: when a strategy
+                uses fixed-size positions, traditional maximum drawdown may be
+                mechanically compressed because its denominator is historical
+                peak equity.
+              </p>
+              <p>
+                CAD reanchors the drawdown amount to the initial capital scale.
+                NOAR further rewrites recovery after drawdown as the number of
+                standardized trading opportunities or life cycles consumed. The
+                purpose is to evaluate not only how much a strategy earns, but
+                also how much damage it can survive and how efficiently it can
+                recover.
+              </p>
+            </div>
+
+            <h2>1 Introduction</h2>
+
+            <p>
+              Evaluating a strategy cannot rely only on return. Return is an
+              outcome variable. Whether a strategy is robust also depends on the
+              risk paid for that return, whether the risk is measured properly
+              within the backtest interval, and whether the strategy can recover
+              after damage. Classical metrics such as the Sharpe ratio, Sortino
+              ratio, and Calmar ratio remain useful because they place return
+              and risk in the same coordinate system.
+            </p>
+
+            <p>
+              However, they do not cover every practical situation. In strategy
+              research, the equity curve is strongly affected by position sizing
+              rules: fixed-size entries, fixed contract size, layered positions,
+              proportional compounding, position caps, and asynchronous
+              multi-pair entries may all change the statistical meaning of the
+              same absolute loss.
+            </p>
+
+            <p>
+              This article therefore proposes two supplementary perspectives.
+              CAD serves the dimension of damage. NOAR serves the dimension of
+              recovery.
+            </p>
+
+            <h2>2 Common Evaluation Metrics and Their Boundaries</h2>
+
+            <h3>2.1 Sharpe Ratio</h3>
+
+            <p>
+              The Sharpe ratio measures how much excess return is obtained per
+              unit of total volatility. A common form is:
+            </p>
+
+            <div class="formula">\[ SR = \frac{\bar r - r_f}{\sigma(r)} \]</div>
+
+            <p>
+              Here, \(\bar r\) is the sample mean return, \(r_f\) is the
+              risk-free rate, and \(\sigma(r)\) is the standard deviation of the
+              return series. The advantage of the Sharpe ratio is its simplicity
+              and comparability. Its weakness is that it treats upside and
+              downside volatility symmetrically and can be distorted by
+              skewness, kurtosis, serial correlation, and smoothed accounting.
+            </p>
+
+            <h3>2.2 Sortino Ratio</h3>
+
+            <p>
+              The Sortino ratio modifies the Sharpe ratio by treating only
+              returns below the minimum acceptable return (MAR) as downside
+              risk:
+            </p>
+
+            <div class="formula">\[ SoR = \frac{\bar r - MAR}{\sigma_d} \]</div>
+
+            <p>where downside deviation can be written as:</p>
+
+            <div class="formula">
+              \[ \sigma_d = \sqrt{ \frac{1}{N} \sum_{t=1}^{N} \min(0, r_t -
+              MAR)^2 } \]
+            </div>
+
+            <p>
+              Sortino is closer to investor loss aversion when only downside
+              movement is regarded as risk. Its limitation is that MAR is not
+              uniquely defined, and different estimation methods for downside
+              deviation may produce different results.
+            </p>
+
+            <h3>2.3 Calmar Ratio</h3>
+
+            <p>
+              The Calmar ratio focuses on the worst peak-to-trough loss instead
+              of total volatility:
+            </p>
+
+            <div class="formula">\[ Calmar = \frac{CAGR}{MDD} \]</div>
+
+            <p>
+              Its advantage is directness: if a strategy earns high returns but
+              suffers a deep capital valley, the denominator immediately
+              reflects that pain. Its limitation is path dependence. A single
+              extreme drawdown may dominate the entire ratio.
+            </p>
+
+            <h3>2.4 Maximum Drawdown</h3>
+
+            <p>
+              Let the equity curve be \(\{E_t\}_{t=0}^{T}\). The running peak
+              is:
+            </p>
+
+            <div class="formula">\[ P_t = \max_{0 \leq s \leq t} E_s \]</div>
+
+            <p>The drawdown at time \(t\) is:</p>
+
+            <div class="formula">\[ DD_t = \frac{P_t - E_t}{P_t} \]</div>
+
+            <p>Maximum drawdown is:</p>
+
+            <div class="formula">\[ MDD = \max_{0 \leq t \leq T} DD_t \]</div>
+
+            <p>
+              MDD directly measures the worst observed path damage. However, it
+              ignores duration, uses the historical peak as its denominator, and
+              is sensitive to observation frequency. In fixed-size or weakly
+              compounded systems, the same absolute loss may look smaller after
+              equity has grown because the denominator has expanded.
+            </p>
+
+            <h3>2.5 Ulcer Index</h3>
+
+            <p>
+              The Ulcer Index accumulates drawdown pain within a lookback window
+              instead of focusing only on one worst point. If the window length
+              is \(L\), then:
+            </p>
+
+            <div class="formula">
+              \[ UI = \sqrt{ \frac{1}{L} \sum_{j=1}^{L} DD_j^2 } \]
+            </div>
+
+            <p>
+              Compared with MDD, it captures both depth and persistence. Its
+              limitation is that it still does not answer how long it takes for
+              the strategy to recover to a previous high.
+            </p>
+
+            <h3>2.6 Drawdown Duration and Recovery Time</h3>
+
+            <p>
+              MDD tells us how deep the loss is, but not how long the strategy
+              remains underwater. Define \(t^{(p)}\) as the peak time,
+              \(t^{(b)}\) as the trough time, and \(t^{(r)}\) as the recovery
+              time. Then:
+            </p>
+
+            <div class="formula">
+              \[ D_{draw} = t^{(b)} - t^{(p)} \] \[ D_{rec} = t^{(r)} - t^{(p)}
+              \]
+            </div>
+
+            <p>
+              Natural time is useful, but it does not reflect strategy rhythm.
+              Sixty days underwater means something different for a
+              high-frequency intraday strategy and for a long-cycle
+              trend-following strategy.
+            </p>
+
+            <h2>3 Extreme Drawdown Under Simple and Compound Structures</h2>
+
+            <h3>3.1 Assumptions</h3>
+
+            <ul>
+              <li>Initial capital: \(E_0 > 0\).</li>
+              <li>Total equity curve: \(E_t\).</li>
+              <li>
+                Observation frequency: daily, hourly, tick-level, or
+                unspecified.
+              </li>
+              <li>Risk-free rate \(r_f\): unspecified unless provided.</li>
+              <li>MAR: unspecified unless provided.</li>
+              <li>
+                Baseline window length \(|W|\): unspecified unless provided.
+              </li>
+              <li>Multi-pair weights \(w_i\): equal weights if unspecified.</li>
+            </ul>
+
+            <p>
+              Metrics related to position sizing cannot be interpreted
+              independently of the position sizing rule itself.
+            </p>
+
+            <h3>3.2 The Denominator Problem</h3>
+
+            <p>
+              Since traditional drawdown uses \(P_t\) as the denominator, the
+              same absolute loss:
+            </p>
+
+            <div class="formula">\[ A_t = P_t - E_t \]</div>
+
+            <p>is mapped into:</p>
+
+            <div class="formula">\[ DD_t = \frac{A_t}{P_t} \]</div>
+
+            <p>
+              If \(P_t\) grows because of previous profits, the same absolute
+              loss becomes a smaller percentage drawdown. This is natural in a
+              fully compounded system, but it may create a statistical illusion
+              in a fixed-size position system.
+            </p>
+
+            <p>Capital-Anchored Drawdown is defined as:</p>
+
+            <div class="formula">
+              \[ CAD_t = \frac{P_t - E_t}{E_0} = \frac{A_t}{E_0} \]
+            </div>
+
+            <p>Its maximum value is:</p>
+
+            <div class="formula">\[ MCAD = \max_{0 \leq t \leq T} CAD_t \]</div>
+
+            <p>Therefore:</p>
+
+            <div class="formula">\[ CAD_t = DD_t \cdot \frac{P_t}{E_0} \]</div>
+
+            <p>
+              If an account grows from 1 to 4 and then falls to 3.1, the
+              absolute loss is 0.9. Traditional drawdown is:
+            </p>
+
+            <div class="formula">
+              \[ DD_t = \frac{0.9}{4} = 22.5\%, \qquad CAD_t = \frac{0.9}{1} =
+              90\%. \]
+            </div>
+
+            <p>
+              These two readings are not contradictory. They answer different
+              questions: MDD measures relative path damage, while CAD measures
+              damage relative to initial capital.
+            </p>
+
+            <h3>3.3 Fixed-Size Positions</h3>
+
+            <p>
+              Suppose the strategy has an active position set \(\mathcal A_t\).
+              The \(j\)th active position uses fixed notional size \(q_j\), and
+              its extreme loss ratio is bounded by \(\ell_j \in [0,1]\). The
+              upper bound of absolute loss is:
+            </p>
+
+            <div class="formula">
+              \[ L^{max}_t = \sum_{j \in \mathcal A_t} q_j \ell_j \]
+            </div>
+
+            <p>
+              If all positions use the same fixed amount \(q\), the same loss
+              bound \(\ell\), and there are \(m_t\) active positions, then:
+            </p>
+
+            <div class="formula">\[ L^{max}_t = m_t q \ell. \]</div>
+
+            <p>The traditional peak-denominator extreme drawdown is:</p>
+
+            <div class="formula">
+              \[ EDD^{peak}_t = \frac{L^{max}_t}{P_t} \]
+            </div>
+
+            <p>The CAD version is:</p>
+
+            <div class="formula">\[ EDD^{CAD}_t = \frac{L^{max}_t}{E_0} \]</div>
+
+            <p>
+              If \(q\), \(\ell\), and \(m_t\) remain unchanged, \(EDD^{peak}_t\)
+              falls as \(P_t\) rises, while \(EDD^{CAD}_t\) remains unchanged.
+              Thus traditional drawdown compresses the same absolute risk, but
+              CAD does not.
+            </p>
+
+            <h3>3.4 Proportional Compounding</h3>
+
+            <p>
+              If positions are sized proportionally to current equity, the
+              extreme absolute loss can be written as:
+            </p>
+
+            <div class="formula">
+              \[ L^{max}_t = E_t \sum_{j \in \mathcal A_t} f_j \ell_j \]
+            </div>
+
+            <p>If \(E_t\) is close to the previous peak \(P_t\), then:</p>
+
+            <div class="formula">
+              \[ EDD^{peak}_t \approx \sum_{j \in \mathcal A_t} f_j \ell_j \]
+            </div>
+
+            <p>
+              In this case, traditional drawdown is a reasonable measure of
+              current capital risk. CAD still has supplementary value because it
+              measures how much initial-capital-scale damage the same relative
+              risk budget represents:
+            </p>
+
+            <div class="formula">
+              \[ EDD^{CAD}_t = \frac{E_t}{E_0} \sum_{j \in \mathcal A_t} f_j
+              \ell_j \]
+            </div>
+
+            <h3>3.5 Interpretation of CAD</h3>
+
+            <p>
+              If a strategy uses fixed-size positions, CAD should be treated as
+              a core supplementary metric. If a strategy uses strict
+              proportional compounding, traditional drawdown remains the main
+              path-risk metric, while CAD measures initial-capital-scale damage.
+              CAD and MDD should not replace each other; reporting both is
+              usually more informative.
+            </p>
+
+            <h2>4 NOAR: Opportunity-Adjusted Recovery</h2>
+
+            <h3>4.1 Why Natural Time Is Not Enough</h3>
+
+            <p>
+              After a major drawdown, practitioners often ask how long it takes
+              for the strategy to reach a new high. This is important because an
+              equity curve is not only judged by how deep it falls, but also by
+              how long capital remains trapped.
+            </p>
+
+            <p>
+              However, calendar time is not always the right scale. For a
+              strategy with a two-day average holding period and frequent
+              entries, 60 days underwater may mean many opportunities have
+              failed. For a strategy with a 20-day average holding period and
+              rare entries, 60 days may represent only a few normal strategy
+              cycles.
+            </p>
+
+            <h3>4.2 Recovery Interval and Baseline Window</h3>
+
+            <p>For the \(k\)th drawdown recovery event, define:</p>
+
+            <ul>
+              <li>Peak time: \(t_k^{(p)}\).</li>
+              <li>Trough time: \(t_k^{(b)}\).</li>
+              <li>Recovery time: \(t_k^{(r)}\).</li>
+              <li>
+                Calendar recovery length: \(\Delta t_k^{rec} = t_k^{(r)} -
+                t_k^{(p)}\).
+              </li>
+            </ul>
+
+            <p>The baseline window is defined before the drawdown starts:</p>
+
+            <div class="formula">\[ W_k = [t_k^{(p)} - B, t_k^{(p)}) \]</div>
+
+            <p>
+              Let the strategy trade \(M\) symbols. The baseline entry frequency
+              for symbol \(i\) is:
+            </p>
+
+            <div class="formula">
+              \[ \hat\lambda_{i,k} = \frac{N_i(W_k)}{|W_k|}, \qquad i =
+              1,\ldots,M. \]
+            </div>
+
+            <p>The average holding period is:</p>
+
+            <div class="formula">
+              \[ \hat h_{i,k} = \frac{1}{N_i^{closed}(W_k)} \sum_{u \in
+              C_i(W_k)} h_{i,u} \]
+            </div>
+
+            <h3>4.3 Definition of NOAR</h3>
+
+            <p>
+              Let the actual number of entries for symbol \(i\) during the
+              recovery interval be:
+            </p>
+
+            <div class="formula">
+              \[ N_i^{rec} = N_i([t_k^{(p)}, t_k^{(r)}]). \]
+            </div>
+
+            <p>Let \(w_{i,k} \geq 0\) and:</p>
+
+            <div class="formula">\[ \sum_{i=1}^{M} w_{i,k} = 1. \]</div>
+
+            <p>Then NOAR is defined as:</p>
+
+            <div class="formula">
+              \[ \widehat{NOAR}_k = \frac{ \sum_{i=1}^{M} w_{i,k} N_i^{rec} }{
+              \sum_{i=1}^{M} w_{i,k} \hat\lambda_{i,k} \hat h_{i,k} }. \]
+            </div>
+
+            <p>
+              The numerator is the weighted number of opportunities consumed
+              during recovery. The denominator is the expected number of
+              opportunities in one baseline holding life cycle. Therefore, NOAR
+              measures how many standardized strategy life cycles the recovery
+              process consumed.
+            </p>
+
+            <p>An expectation-based version is:</p>
+
+            <div class="formula">
+              \[ NOAR_k^{exp} = \frac{ \sum_{i=1}^{M} w_{i,k} \hat\lambda_{i,k}
+              \Delta t_k^{rec} }{ \sum_{i=1}^{M} w_{i,k} \hat\lambda_{i,k} \hat
+              h_{i,k} }. \]
+            </div>
+
+            <h3>4.4 Economic Interpretation</h3>
+
+            <p>
+              NOAR is not meant to be complexity for its own sake. It changes
+              the recovery scale from calendar time to strategy time. If a
+              strategy experiences many opportunities during recovery but still
+              fails to reach a new high, the problem is unlikely to be a lack of
+              opportunity. It may indicate that edge has weakened, market regime
+              has changed, or risk exposure has become unstable.
+            </p>
+
+            <h3>4.5 Example</h3>
+
+            <p>
+              Consider a multi-symbol strategy with equal weights and a 45-day
+              recovery interval. The baseline window is 180 days.
+            </p>
+
+            <div class="table-wrap">
+              <table>
+                <caption>
+                  Table 1. NOAR example: multi-symbol equal-weight case
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Symbol</th>
+                    <th>Baseline Days</th>
+                    <th>Entries \(N_i(W)\)</th>
+                    <th>\(\hat\lambda_i\)</th>
+                    <th>\(\hat h_i\)</th>
+                    <th>Recovery Entries \(N_i^{rec}\)</th>
+                    <th>\(\hat\lambda_i\hat h_i\)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>BTC/USDT</td>
+                    <td>180</td>
+                    <td>36</td>
+                    <td>0.20</td>
+                    <td>4</td>
+                    <td>8</td>
+                    <td>0.80</td>
+                  </tr>
+                  <tr>
+                    <td>ETH/USDT</td>
+                    <td>180</td>
+                    <td>18</td>
+                    <td>0.10</td>
+                    <td>7</td>
+                    <td>5</td>
+                    <td>0.70</td>
+                  </tr>
+                  <tr>
+                    <td>SOL/USDT</td>
+                    <td>180</td>
+                    <td>9</td>
+                    <td>0.05</td>
+                    <td>10</td>
+                    <td>2</td>
+                    <td>0.50</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>—</td>
+                    <td>63</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>15</td>
+                    <td>2.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="formula">
+              \[ \widehat{NOAR} = \frac{15}{2.00} = 7.50. \]
+            </div>
+
+            <p>
+              This means the recovery consumed about 7.5 baseline trading life
+              cycles. The expectation-based version is:
+            </p>
+
+            <div class="formula">
+              \[ NOAR^{exp} = \frac{45 \times (0.20 + 0.10 + 0.05)} {0.80 + 0.70
+              + 0.50} = 7.875. \]
+            </div>
+
+            <h3>4.6 Unrecovered Samples</h3>
+
+            <p>
+              If the strategy has not recovered by the end of the sample, the
+              episode should be treated as right-censored. A censored version
+              can be reported:
+            </p>
+
+            <div class="formula">
+              \[ \widehat{NOAR}^{cens}_k = \frac{ \sum_{i=1}^{M} w_{i,k}
+              N_i([t_k^{(p)}, T]) }{ \sum_{i=1}^{M} w_{i,k}\hat\lambda_{i,k}\hat
+              h_{i,k} }. \]
+            </div>
+
+            <h2>5 Implementation</h2>
+
+            <h3>5.1 Required Data Fields</h3>
+
+            <p>
+              To compute CAD and NOAR, the minimum required fields include
+              timestamp, total equity, symbol, entry time, exit time, position
+              notional or quantity, realized and unrealized PnL, fees, slippage,
+              and whether overlapping positions are allowed.
+            </p>
+
+            <h3>5.2 Processing Principles</h3>
+
+            <p>
+              Drawdown analysis should preferably use total equity rather than
+              realized equity only. The NOAR baseline window must be defined
+              before the drawdown starts. Sparse symbols require longer baseline
+              windows. Unrecovered episodes must be explicitly marked rather
+              than forced into recovered samples.
+            </p>
+
+            <h2>6 Threshold Suggestions</h2>
+
+            <p>
+              The following thresholds are only practical references, not
+              universal industry standards. They should be interpreted together
+              with sampling frequency, net-return calculation, trading costs,
+              and strategy capacity.
+            </p>
+
+            <ul>
+              <li>
+                Sharpe Ratio: below 1 is weak; 1–2 is worth further validation;
+                above 2 deserves careful review.
+              </li>
+              <li>
+                Sortino Ratio: below 1 is weak; 1–2 is acceptable; above 2 is
+                usually strong.
+              </li>
+              <li>
+                Calmar Ratio: below 0.5 is weak; 0.5–1 requires caution; 1–2 is
+                acceptable; above 2 is strong.
+              </li>
+              <li>
+                MCAD: values greater than or equal to 1 should be treated as a
+                serious warning.
+              </li>
+              <li>
+                NOAR: below 2 is fast recovery; 2–5 is moderate; above 5 is
+                slow; above 8 requires explanation.
+              </li>
+            </ul>
+
+            <h2>7 Conclusion</h2>
+
+            <p>
+              The question is not which single metric is best, but how a
+              strategy can be evaluated more completely. Classical metrics
+              remain necessary. However, traditional drawdown may fail to
+              express survival risk under fixed-size or weakly compounded
+              position rules. CAD reanchors drawdown damage to the initial
+              capital scale. NOAR shifts recovery analysis from calendar time to
+              opportunity time.
+            </p>
+
+            <p>
+              A more complete evaluation should report return metrics,
+              risk-adjusted metrics, path-risk metrics, survival metrics, and
+              recovery metrics together. A strategy is closer to being excellent
+              only when it is profitable, survivable, and recoverable.
+            </p>
+
+            <h2>PDF File</h2>
+
+            <p>
+              The PDF version preserves the original layout, pagination,
+              formulas, and references.
+            </p>
+
+            <div class="pdf-actions">
+              <a
+                class="pdf-link"
+                href="/assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                Open PDF
+              </a>
+              <a class="pdf-link" href="/works.html">Back to Works</a>
+            </div>
+          </article>
         </div>
       </section>
     </main>
@@ -348,9 +2522,8 @@
     </footer>
 
     <script src="/js/i18n.js"></script>
-
     <script>
-      let lang = localStorage.getItem("lang") || "en";
+      let lang = localStorage.getItem("lang") || "zh";
 
       const pageContent = {
         "essay-eyebrow": {
@@ -358,8 +2531,8 @@
           zh: "作品 · 分析作品",
         },
         "essay-title": {
-          en: "Trading Strategy Evaluation",
-          zh: "策略评价中的本金锚定与回撤修复",
+          en: "From Drawdown to Recovery",
+          zh: "从回撤到修复：策略评估中的本金锚定与机会时间",
         },
         "essay-meta-year": {
           en: "2026",
@@ -374,68 +2547,8 @@
           zh: "策略评价",
         },
         "essay-subtitle": {
-          en: "A note on common performance metrics, principal-anchored drawdown, and recovery exposure in strategy evaluation.",
-          zh: "一篇关于常见绩效指标、本金锚定回撤与修复机会暴露的策略评价札记。",
-        },
-        "essay-abstract-label": {
-          en: "Abstract",
-          zh: "摘要",
-        },
-        "essay-abstract": {
-          en: "This piece starts from common indicators such as Sharpe ratio, Calmar ratio, and maximum drawdown, then points out a problem in finite backtests: the equity curve may conceal the difference between compound growth and principal risk. It proposes a supplementary perspective based on principal anchoring, recovery time, and recovery opportunity exposure.",
-          zh: "这篇文章从夏普比率、卡玛比率、最大回撤等常见指标出发，指出有限回测中的一个问题：权益曲线可能遮蔽复利增长与本金风险之间的差异。文章进一步提出以本金锚定、修复时间与修复机会暴露为核心的补充评价视角。",
-        },
-        "essay-pdf-open": {
-          en: "Open PDF",
-          zh: "打开 PDF",
-        },
-        "essay-h2-1": {
-          en: "1. Motivation",
-          zh: "1. 问题动机",
-        },
-        "essay-p1": {
-          en: "Conventional evaluation metrics summarize the observed equity curve, but they do not always show whether a strategy is robust under principal-anchored risk. A strategy that looks acceptable after compounding may still expose the initial capital to a much larger effective loss.",
-          zh: "常见评价指标能够概括已经观察到的权益曲线，但它们并不总能说明策略在本金锚定风险下是否稳健。一个在复利曲线上看起来可以接受的策略，仍然可能让初始本金承受更大的有效损失。",
-        },
-        "essay-h2-2": {
-          en: "2. Core Question",
-          zh: "2. 核心问题",
-        },
-        "essay-p2": {
-          en: "The central question is not only how much the strategy earns, but how the strategy repairs damage after loss. Recovery time, average holding period, and entry frequency together determine how many realistic recovery opportunities the strategy has after drawdown.",
-          zh: "核心问题不只是策略赚了多少，而是策略在亏损后如何修复损伤。修复时间、平均持仓周期与开仓频率共同决定了策略在回撤后拥有多少现实可用的修复机会。",
-        },
-        "essay-caption": {
-          en: "Figure 1. Cover image for the analytical piece.",
-          zh: "图 1：分析作品封面图。",
-        },
-        "essay-h2-3": {
-          en: "3. Full Text",
-          zh: "3. 全文",
-        },
-        "essay-p3": {
-          en: "The complete text is embedded below. If the preview does not load in the browser, open the PDF directly.",
-          zh: "完整文章嵌入在下方。如果浏览器没有加载预览，可以直接打开 PDF。",
-        },
-        "essay-note-title": {
-          en: "File",
-          zh: "文件",
-        },
-        "essay-note-text": {
-          en: "PDF file path: /assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf",
-          zh: "PDF 文件路径：/assets/files/works/analytical-pieces/work-001-trading-strategy-evaluation/work-001-trading-strategy-evaluation.pdf",
-        },
-        "essay-ending-label": {
-          en: "Ending",
-          zh: "结尾",
-        },
-        "essay-closing-title": {
-          en: "Evaluation should include recovery structure.",
-          zh: "策略评价应当包含修复结构。",
-        },
-        "essay-closing-text": {
-          en: "A strategy is not only judged by its return curve, but also by how its drawdowns are produced, repaired, and exposed to time.",
-          zh: "评价一个策略时，不只要看收益曲线，也要看回撤如何产生、如何修复，以及如何暴露在时间之中。",
+          en: "An analytical piece on common performance metrics, Capital-Anchored Drawdown, and Normalized Opportunity-Adjusted Recovery.",
+          zh: "一篇关于常见绩效指标、本金锚定回撤 CAD 与标准化机会调整修复指标 NOAR 的分析文章。",
         },
       };
 
@@ -451,9 +2564,11 @@
         }
 
         document.getElementById("logo-text").textContent = i18n[lang].logo;
+
         document
           .getElementById("lang-en")
           .classList.toggle("active", lang === "en");
+
         document
           .getElementById("lang-zh")
           .classList.toggle("active", lang === "zh");
@@ -462,10 +2577,25 @@
           window.applyPageContentOverrides(lang, pageContent);
         }
 
+        const articleZh = document.getElementById("article-zh");
+        const articleEn = document.getElementById("article-en");
+
+        if (articleZh && articleEn) {
+          articleZh.classList.toggle("active", lang === "zh");
+          articleEn.classList.toggle("active", lang === "en");
+        }
+
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
         document.querySelector(".footer-inner p:first-child").textContent =
           i18n[lang].copyright;
+
         document.querySelector(".footer-inner p:last-child").innerHTML =
           i18n[lang].copyright2;
+
+        if (window.MathJax && window.MathJax.typesetPromise) {
+          window.MathJax.typesetPromise();
+        }
       }
 
       document.addEventListener("DOMContentLoaded", function () {
