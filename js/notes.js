@@ -31,4 +31,20 @@ const Notes = [
     link: "/writing/notes/note-002-diluted-expression/",
     date: "2026-04-01",
   },
+  {
+    title: {
+      en: "For the One Who Arrives",
+      zh: "为将至者",
+    },
+    desc: {
+      en: "On finite lives, generational waiting, and how one person may become a condition for another age.",
+      zh: "关于有限生命、代际等待，以及一个人可能如何成为另一种时代的前置条件。",
+    },
+    text: {
+      en: "A human life is brief. It is brief enough that many questions have not yet reached their final form before the body reaches its limit.",
+      zh: "人的一生很短。短到许多事还没有形成完整的答案，肉身已经先一步抵达边界。",
+    },
+    link: "/writing/notes/note-003-for-the-one-who-arrives/",
+    date: "2026-06-28",
+  },
 ];
