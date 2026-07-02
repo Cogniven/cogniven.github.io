@@ -402,12 +402,12 @@
                 CAD，将回撤金额重新锚定到初始本金尺度。
               </p>
               <p>
-                在此基础上，本文进一步讨论“回撤后多久恢复新高”这一维度。单纯采用自然时间衡量修复速度并不充分，因为不同策略的平均持仓周期与各交易对开仓频率差异很大。为此，本文在“日历时间”与“事件时间”区分的思想下，提出
+                在此基础上，本文进一步讨论“回撤后多久恢复新高”这一维度。单纯采用自然时间衡量修复速度并不充分，因为不同策略的平均持仓周期与各标的开仓频率差异很大。为此，本文在“日历时间”与“事件时间”区分的思想下，提出
                 NOAR：它将回撤修复过程转写为“消耗了多少个标准化交易机会/生命周期”这一量纲，从而使修复难度的比较更接近策略的运行节奏，而不是仅仅落在自然时间尺度之上。
               </p>
               <p>
                 本文的主要结论有三点。其一，单看收益率、夏普或卡玛，无法完整评价策略的生存性与恢复性。其二，在固定开单金额或弱复利结构中，CAD
-                能揭示传统回撤因分母膨胀而隐藏的破坏力。其三，在多交易对策略中，修复时间应至少同时报告自然时间、回撤深度和
+                能揭示传统回撤因分母膨胀而隐藏的破坏力。其三，在多标的策略中，修复时间应至少同时报告自然时间、回撤深度和
                 NOAR；只有这样，才能区分“机会本来就稀少”与“机会很多却迟迟无法修复”的根本差异。
               </p>
             </div>
@@ -422,7 +422,7 @@
             </p>
 
             <p>
-              然而，经典指标并不覆盖全部情形。尤其在策略研究中，策略的资金曲线往往受到仓位规则的强影响：固定金额开单、固定张数开单、分层加仓、按权益比例复利、限仓上限、交易对异步开仓等，都会改变“同一笔亏损”在不同阶段的统计含义。若仍用单一分母上的回撤比例概括全部生存风险，结论容易失真。本文要讨论的核心问题正源于此：当权益曲线已经累计了大量收益后，传统最大回撤常常会把同样的绝对亏损显示成较小的百分比回撤，这在固定金额开单的策略中尤其明显。
+              然而，经典指标并不覆盖全部情形。尤其在策略研究中，策略的资金曲线往往受到仓位规则的强影响：固定金额开单、固定张数开单、分层加仓、按权益比例复利、限仓上限、标的异步开仓等，都会改变“同一笔亏损”在不同阶段的统计含义。若仍用单一分母上的回撤比例概括全部生存风险，结论容易失真。本文要讨论的核心问题正源于此：当权益曲线已经累计了大量收益后，传统最大回撤常常会把同样的绝对亏损显示成较小的百分比回撤，这在固定金额开单的策略中尤其明显。
             </p>
 
             <p>
@@ -613,13 +613,15 @@
               </li>
               <li>无风险利率 \(r_f\)：未指定。</li>
               <li>MAR，最低可接受收益率：未指定。</li>
-              <li>同一交易对是否允许重叠持仓：未指定。</li>
-              <li>手续费、滑点、资金费率是否纳入收益序列：未指定。</li>
+              <li>同一标的是否允许重叠持仓：未指定。</li>
+              <li>
+                手续费、滑点、融资成本或持仓成本是否纳入收益序列：未指定。
+              </li>
               <li>
                 基准窗口长度
-                \(|W|\)，用于估计各交易对开仓频率与平均持仓周期：未指定。
+                \(|W|\)，用于估计各标的开仓频率与平均持仓周期：未指定。
               </li>
-              <li>多交易对权重 \(w_i\)：若未指定，默认等权。</li>
+              <li>多标的权重 \(w_i\)：若未指定，默认等权。</li>
             </ul>
 
             <p>
@@ -850,12 +852,12 @@
 
             <p>
               其中 \(B\)
-              为基准窗口长度，若用户未指定，则为未指定。基准窗口用于估计各交易对在正常状态下的开仓频率与平均持仓周期。
+              为基准窗口长度，若用户未指定，则为未指定。基准窗口用于估计各标的在正常状态下的开仓频率与平均持仓周期。
             </p>
 
             <p>
-              设策略总共交易 \(M\) 个交易对或资产，第 \(i\) 个交易对在窗口
-              \(W_k\) 中的开仓次数为 \(N_i(W_k)\)。其基准开仓频率估计为
+              设策略覆盖 \(M\) 个标的或资产，第 \(i\) 个标的在窗口 \(W_k\)
+              中的开仓次数为 \(N_i(W_k)\)。其基准开仓频率估计为
             </p>
 
             <div class="formula">
@@ -865,7 +867,7 @@
 
             <p>
               单位可取“次/天”“次/小时”等，与时间粒度保持一致。再设窗口 \(W_k\)
-              内该交易对已完成交易的平均持仓周期为
+              内该标的已完成交易的平均持仓周期为
             </p>
 
             <div class="formula">
@@ -875,15 +877,15 @@
 
             <p>
               其中 \(C_i(W_k)\) 表示窗口内第 \(i\)
-              个交易对已闭合仓位的集合，\(h_{i,u}\) 表示第 \(u\)
-              笔交易的持仓时长。若某交易对在窗口内没有已闭合交易，则该交易对的
+              个标的已闭合仓位的集合，\(h_{i,u}\) 表示第 \(u\)
+              笔交易的持仓时长。若某标的在窗口内没有已闭合交易，则该标的的
               \(\hat h_{i,k}\) 属于未指定，需要单独处理。
             </p>
 
             <h3>4.3 NOAR 的定义</h3>
 
             <p>
-              先给出“机会时间”思想下的恢复负担。设第 \(i\) 个交易对在恢复区间
+              先给出“机会时间”思想下的恢复负担。设第 \(i\) 个标的在恢复区间
               \([t_k^{(p)}, t_k^{(r)}]\) 内的实际开仓次数为
             </p>
 
@@ -891,7 +893,7 @@
               \[ N_i^{rec} = N_i([t_k^{(p)}, t_k^{(r)}]). \]
             </div>
 
-            <p>定义多交易对权重为 \(w_{i,k} \geq 0\)，并满足</p>
+            <p>定义多标的权重为 \(w_{i,k} \geq 0\)，并满足</p>
 
             <div class="formula">\[ \sum_{i=1}^{M} w_{i,k} = 1. \]</div>
 
@@ -935,8 +937,8 @@
             </div>
 
             <p>
-              在同质性较强的单交易对情形下，期望型指标近似退化为“恢复时间 /
-              平均持仓周期”；而在多交易对、异质开仓频率的情形下，频率项不再完全消失，因而能体现多资产机会密度的差异。
+              在同质性较强的单标的情形下，期望型指标近似退化为“恢复时间 /
+              平均持仓周期”；而在多标的、异质开仓频率的情形下，频率项不再完全消失，因而能体现多资产机会密度的差异。
             </p>
 
             <h3>4.4 NOAR 的经济解释</h3>
@@ -963,11 +965,11 @@
             <div class="table-wrap">
               <table>
                 <caption>
-                  表 1：NOAR 样例计算：多交易对、等权重情形
+                  表 1：NOAR 样例计算：多标的、等权重情形
                 </caption>
                 <thead>
                   <tr>
-                    <th>交易对</th>
+                    <th>标的</th>
                     <th>基准窗天数</th>
                     <th>基准开仓数 \(N_i(W)\)</th>
                     <th>\(\hat\lambda_i\)（次/天）</th>
@@ -978,7 +980,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>资产A</td>
+                    <td>资产 A</td>
                     <td>180</td>
                     <td>36</td>
                     <td>0.20</td>
@@ -987,7 +989,7 @@
                     <td>0.80</td>
                   </tr>
                   <tr>
-                    <td>资产B</td>
+                    <td>资产 B</td>
                     <td>180</td>
                     <td>18</td>
                     <td>0.10</td>
@@ -996,7 +998,7 @@
                     <td>0.70</td>
                   </tr>
                   <tr>
-                    <td>资产C</td>
+                    <td>资产 C</td>
                     <td>180</td>
                     <td>9</td>
                     <td>0.05</td>
@@ -1525,16 +1527,16 @@
                 t_k^{(p)})\)。
               </li>
               <li>
-                在 \(W_k\) 内按交易对估计 \(\hat\lambda_{i,k}\) 与 \(\hat
+                在 \(W_k\) 内按标的估计 \(\hat\lambda_{i,k}\) 与 \(\hat
                 h_{i,k}\)。
               </li>
               <li>
-                在恢复区间 \([t_k^{(p)}, t_k^{(r)}]\) 内按交易对统计实际开仓次数
+                在恢复区间 \([t_k^{(p)}, t_k^{(r)}]\) 内按标的统计实际开仓次数
                 \(N_i^{rec}\)。
               </li>
               <li>
                 选择权重
-                \(w_{i,k}\)。若策略对每个交易对等额分配关注，可用等权；若策略在资金上存在稳定的偏置，可用资金占用权重或风险预算权重。
+                \(w_{i,k}\)。若策略对每个标的等额分配关注，可用等权；若策略在资金上存在稳定的偏置，可用资金占用权重或风险预算权重。
               </li>
               <li>
                 代入 NOAR 公式得到 \(\widehat{NOAR}_k\)，与
@@ -1567,10 +1569,10 @@ for each peak-to-recovery episode k:
 Step 4. For each episode k:
 W_k = [tp_k - B, tp_k)
 
-for each symbol i:
-    lambda_i = open_count(symbol=i, window=W_k) / window_length_in_days(W_k)
-    h_i = mean_holding_days(symbol=i, completed_trades_in=W_k)
-    n_i_rec = open_count(symbol=i, window=[tp_k, tr_k])
+for each asset i:
+    lambda_i = open_count(asset=i, window=W_k) / window_length_in_days(W_k)
+    h_i = mean_holding_days(asset=i, completed_trades_in=W_k)
+    n_i_rec = open_count(asset=i, window=[tp_k, tr_k])
 
 numerator   = sum_i w_i * n_i_rec
 denominator = sum_i w_i * lambda_i * h_i
@@ -1627,9 +1629,9 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
                     </td>
                   </tr>
                   <tr>
-                    <td>交易对 symbol</td>
+                    <td>标的代码 asset</td>
                     <td>必需</td>
-                    <td>NOAR 需要按交易对估计开仓频率与平均持仓周期。</td>
+                    <td>NOAR 需要按标的估计开仓频率与平均持仓周期。</td>
                   </tr>
                   <tr>
                     <td>开仓时间 entry_time</td>
@@ -1689,7 +1691,7 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
 
             <p>
               第一，回撤分析优先基于总权益而非仅已实现权益。若只用已实现部分，会把“浮亏阶段”延后到平仓时一次性确认，从而扭曲回撤路径。第二，NOAR
-              的基准窗口必须放在回撤起点之前，不能混入恢复期信息。第三，若交易对层面开仓极其稀疏，可提高基准窗口长度；否则
+              的基准窗口必须放在回撤起点之前，不能混入恢复期信息。第三，若标的层面开仓极其稀疏，可提高基准窗口长度；否则
               \(\hat\lambda_i\) 与 \(\hat h_i\)
               的估计噪声会很大。第四，未恢复事件必须显式标记，不能伪装成已恢复但数值很大。
             </p>
@@ -1767,7 +1769,7 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
                   <tr>
                     <td>恢复自然时间</td>
                     <td>不建议单独设统一阈值</td>
-                    <td>应与平均持仓周期、交易对机会密度和 NOAR 联合解释。</td>
+                    <td>应与平均持仓周期、标的机会密度和 NOAR 联合解释。</td>
                   </tr>
                   <tr>
                     <td>NOAR</td>
@@ -1812,7 +1814,7 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
             <p>
               第三，恢复能力不能只用自然时间衡量。回撤后多久回到新高当然重要，但“60
               天”对不同策略含义不同。NOAR
-              的价值在于，它把恢复过程重写成“消耗了多少个标准化机会/生命周期”，从而在策略节拍层面对恢复困难度进行刻画。对于多交易对策略，这一调整尤为必要，因为不同交易对开仓频率相差很大，单看天数会把“无机会”与“有很多机会但没恢复”混为一谈。
+              的价值在于，它把恢复过程重写成“消耗了多少个标准化机会/生命周期”，从而在策略节拍层面对恢复困难度进行刻画。对于多标的策略，这一调整尤为必要，因为不同标的开仓频率相差很大，单看天数会把“无机会”与“有很多机会但没恢复”混为一谈。
             </p>
 
             <p>
@@ -1933,7 +1935,7 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
               research, the equity curve is strongly affected by position sizing
               rules: fixed-size entries, fixed contract size, layered positions,
               proportional compounding, position caps, and asynchronous
-              multi-pair entries may all change the statistical meaning of the
+              multi-asset entries may all change the statistical meaning of the
               same absolute loss.
             </p>
 
@@ -2083,7 +2085,9 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
               <li>
                 Baseline window length \(|W|\): unspecified unless provided.
               </li>
-              <li>Multi-pair weights \(w_i\): equal weights if unspecified.</li>
+              <li>
+                Multi-asset weights \(w_i\): equal weights if unspecified.
+              </li>
             </ul>
 
             <p>
@@ -2257,8 +2261,8 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
             <div class="formula">\[ W_k = [t_k^{(p)} - B, t_k^{(p)}) \]</div>
 
             <p>
-              Let the strategy trade \(M\) symbols. The baseline entry frequency
-              for symbol \(i\) is:
+              Let the strategy cover \(M\) assets. The baseline entry frequency
+              for asset \(i\) is:
             </p>
 
             <div class="formula">
@@ -2276,7 +2280,7 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
             <h3>4.3 Definition of NOAR</h3>
 
             <p>
-              Let the actual number of entries for symbol \(i\) during the
+              Let the actual number of entries for asset \(i\) during the
               recovery interval be:
             </p>
 
@@ -2332,11 +2336,11 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
             <div class="table-wrap">
               <table>
                 <caption>
-                  Table 1. NOAR example: multi-symbol equal-weight case
+                  Table 1. NOAR example: multi-asset equal-weight case
                 </caption>
                 <thead>
                   <tr>
-                    <th>Symbol</th>
+                    <th>Asset</th>
                     <th>Baseline Days</th>
                     <th>Entries \(N_i(W)\)</th>
                     <th>\(\hat\lambda_i\)</th>
@@ -2430,7 +2434,7 @@ MDD, MCAD, median_recovery_time, median_NOAR, unrecovered_ratio</code></pre>
             <p>
               Drawdown analysis should preferably use total equity rather than
               realized equity only. The NOAR baseline window must be defined
-              before the drawdown starts. Sparse symbols require longer baseline
+              before the drawdown starts. Sparse assets require longer baseline
               windows. Unrecovered episodes must be explicitly marked rather
               than forced into recovered samples.
             </p>
